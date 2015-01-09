@@ -57,7 +57,7 @@
 	}</string>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="st_DataMaster_Menu">
              <layout class="QGridLayout" name="igr_DataMaster_Menu">
@@ -241,9 +241,9 @@
                   <number>1</number>
                  </property>
                  <item>
-                  <widget class="QScrollArea" name="sc_DataMaster_DataCommon_Fbody_Slist">
+                  <widget class="QFrame" name="fr_DataMaster_DataCommon_Fbody_Slist_Container">
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                      <horstretch>1</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -260,8 +260,35 @@
                      <height>16777215</height>
                     </size>
                    </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton{
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="ivl_fr_DataMaster_DataCommon_Fbody_Slist_Container">
+                    <item>
+                     <widget class="QScrollArea" name="sc_DataMaster_DataCommon_Fbody_Slist">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+                        <horstretch>1</horstretch>
+                        <verstretch>1</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>250</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>350</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton{
 	background:#ffffff;
 	color:rgb(20,20,30);
 	padding-top:20px;
@@ -275,31 +302,53 @@ QPushButton::hover{
 	color:rgb(200,200,180);
      border-color: rgb(50,50,80);
 }</string>
-                   </property>
-                   <property name="widgetResizable">
-                    <bool>true</bool>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                   </property>
-                   <widget class="QWidget" name="scontent_DataMaster_DataCommon_Fbody_Slist">
-                    <property name="geometry">
-                     <rect>
-                      <x>0</x>
-                      <y>0</y>
-                      <width>350</width>
-                      <height>464</height>
-                     </rect>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">border-radius:0px;</string>
-                    </property>
-                    <layout class="QVBoxLayout" name="ivl_DataMaster_DataCommon_Fbody_Slist">
-                     <property name="spacing">
-                      <number>1</number>
-                     </property>
-                    </layout>
-                   </widget>
+                      </property>
+                      <property name="widgetResizable">
+                       <bool>true</bool>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                      </property>
+                      <widget class="QWidget" name="scontent_DataMaster_DataCommon_Fbody_Slist">
+                       <property name="geometry">
+                        <rect>
+                         <x>0</x>
+                         <y>0</y>
+                         <width>332</width>
+                         <height>410</height>
+                        </rect>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">border-radius:0px;</string>
+                       </property>
+                       <layout class="QVBoxLayout" name="ivl_DataMaster_DataCommon_Fbody_Slist">
+                        <property name="spacing">
+                         <number>1</number>
+                        </property>
+                       </layout>
+                      </widget>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="vs_DataMaster_DataCommon_Fbody_Slist_Spaser">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Expanding</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                   </layout>
+                   <zorder>sc_DataMaster_DataCommon_Fbody_Slist</zorder>
+                   <zorder>sc_DataMaster_DataCommon_Fbody_Slist</zorder>
+                   <zorder>vs_DataMaster_DataCommon_Fbody_Slist_Spaser</zorder>
                   </widget>
                  </item>
                  <item>
@@ -2784,7 +2833,7 @@ QPushButton::hover{
           <item>
            <widget class="QStackedWidget" name="st_Penjualan">
             <property name="currentIndex">
-             <number>0</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="st_Penjualan_Menu">
              <layout class="QHBoxLayout" name="horizontalLayout">

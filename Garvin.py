@@ -6,7 +6,7 @@ from PyQt4 import QtGui
 from PyQt4 import QtSvg
 from PyQt4.QtCore import * #nganggo QDateTime, ra apal e package ngarepe opo QtCore.QDateTime rung nyobo
 from PyQt4.QtGui import *
-import sip#lali nggo ngopo
+import sip #lali nggo ngopo
 import sys,os
 import functools #partial
 import itertools #ubah tuple ke array
@@ -247,6 +247,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			
 			sql = "SELECT * FROM `gd_nama_alamat` "
 			result = self.DatabaseRunQuery(sql)
+			tinggi = len(result)*60
+			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 			for x in range(0,len(result)):
 				obj_Tb_ListPelanggan = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataNamaAlamat_ListPelanggan"+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")]))
 				if (len(obj_Tb_ListPelanggan)<1):
@@ -284,6 +286,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			
 			sql = "SELECT * FROM `gd_data_produk` "
 			result = self.DatabaseRunQuery(sql)
+			tinggi = len(result)*60
+			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 			for x in range(0,len(result)):
 				obj_Tb_ListProduk = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataProduk_List"+str(result[x][self.DataMaster_DataProduk_Field.index("namaBarang")]))
 				if (len(obj_Tb_ListProduk)<1):
@@ -322,6 +326,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			
 			sql = "SELECT * FROM `gd_data_pajak` "
 			result = self.DatabaseRunQuery(sql)
+			tinggi = len(result)*60
+			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 			for x in range(0,len(result)):
 				obj_Tb_ListPajak = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataPajak_List"+str(result[x][self.DataMaster_DataPajak_Field.index("namaPajak")]))
 				if (len(obj_Tb_ListPajak)<1):
@@ -363,6 +369,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			
 			sql = "SELECT * FROM `gd_proyek` "
 			result = self.DatabaseRunQuery(sql)
+			tinggi = len(result)*60
+			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 			for x in range(0,len(result)):
 				Tb_ListProyek = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataProyek_List"+str(result[x][self.DataMaster_DataProyek_Field.index("namaProyek")]))
 				if (len(Tb_ListProyek)<1):
@@ -400,6 +408,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			
 			sql = "SELECT * FROM `gd_satuan_pengukuran` "
 			result = self.DatabaseRunQuery(sql)
+			tinggi = len(result)*60
+			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 			for x in range(0,len(result)):
 				Tb_ListSatuan = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataSatuan_List"+str(result[x][self.DataMaster_DataSatuanPengukuran_Field.index("namaSatuan")]))
 				if (len(Tb_ListSatuan)<1):
@@ -416,19 +426,6 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 						Tb_ListSatuan[y].setText(str(result[x][self.DataMaster_DataSatuan_Field.index("namaSatuan")]))
 						Tb_ListSatuan[y].clicked.disconnect()
 						Tb_ListSatuan[y].clicked.connect(functools.partial(self.DataMaster_DataSatuanPengukuran_DrawInfo,result[x]))
-		
-			#~ 
-			#~ self.initDatabase()
-			#~ cursor = self.db.cursor()
-			#~ sql = "SELECT * FROM `gd_satuan_pengukuran` "
-			#~ cursor.execute(sql)
-			#~ result = cursor.fetchall()
-			#~ for x in range(0,len(result)):
-				#~ self.pushButton = QtGui.QPushButton(self.scontent_DataMaster_DataCommon_Fbody_Slist)
-				#~ self.pushButton.setObjectName(_fromUtf8("pushButton"))
-				#~ self.pushButton.setText(_fromUtf8(result[x][self.DataMaster_DataSatuanPengukuran_Field.index("namaSatuan")]))
-				#~ self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0].addWidget(self.pushButton)
-			#~ self.db.close()
 		
 	
 	def DataMaster_DataNamaAlamat_DrawInfo(self,data): #nama,perusahaan,tipe,npwp,diskon,jatuhtempo,diskonawal,dendaketerlambatan,alamat,kodepelanggan
