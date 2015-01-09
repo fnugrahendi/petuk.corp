@@ -1,0 +1,2701 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>786</width>
+    <height>627</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>45</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="1">
+     <layout class="QVBoxLayout" name="vl_MainWindow_Vcentral">
+      <item>
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="currentIndex">
+         <number>1</number>
+        </property>
+        <widget class="QWidget" name="tab_DataMaster">
+         <attribute name="title">
+          <string>Data Master</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QStackedWidget" name="stackedWidget">
+            <widget class="QWidget" name="page"/>
+            <widget class="QWidget" name="page_2"/>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_Penjualan">
+         <attribute name="title">
+          <string>Penjualan</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QStackedWidget" name="st_Penjualan">
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="st_Penjualan_Menu">
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <item>
+               <layout class="QGridLayout" name="gr_Penjualan_Menu">
+                <item row="0" column="0">
+                 <widget class="QPushButton" name="tb_Penjualan_PenawaranHarga">
+                  <property name="text">
+                   <string>Penawaran Harga</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QPushButton" name="tb_Penjualan_OrderPenjualan">
+                  <property name="text">
+                   <string>Order Penjualan</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QPushButton" name="tb_Penjualan_Piutang">
+                  <property name="text">
+                   <string>Piutang Usaha</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QPushButton" name="tb_Penjualan_Retur">
+                  <property name="text">
+                   <string>Retur Penjualan</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="tb_Penjualan_PembayaranPiutang">
+                  <property name="text">
+                   <string>Pembayaran Piutang</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QPushButton" name="tb_Penjualan_Pengiriman">
+                  <property name="text">
+                   <string>Pengiriman</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="gridLayout_11">
+                <property name="sizeConstraint">
+                 <enum>QLayout::SetMinimumSize</enum>
+                </property>
+                <item row="0" column="0" colspan="3">
+                 <spacer name="horizontalSpacer_6">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="1" column="0" colspan="3">
+                 <widget class="QLabel" name="label">
+                  <property name="text">
+                   <string>Menu</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <spacer name="horizontalSpacer_7">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QPushButton" name="tb_Penjualan_Keluar">
+                  <property name="text">
+                   <string>Keluar</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+             <zorder></zorder>
+             <zorder></zorder>
+            </widget>
+            <widget class="QWidget" name="st_Penjualan_PenawaranHarga">
+             <layout class="QVBoxLayout" name="verticalLayout">
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PenawaranHarga_title">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>55</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_PenawaranHarga_title">
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_PenawaranHarga_title">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI Semilight</family>
+                     <pointsize>18</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Penawaran Harga</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PenawaranHarga_tabel">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_PenawaranHarga_tabel">
+                 <item row="0" column="0">
+                  <widget class="QTableWidget" name="tbl_Penjualan_PenawaranHarga">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>200</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>1366</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
+                   </property>
+                   <property name="showGrid">
+                    <bool>false</bool>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                   <property name="cornerButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                   <property name="rowCount">
+                    <number>0</number>
+                   </property>
+                   <property name="columnCount">
+                    <number>5</number>
+                   </property>
+                   <column>
+                    <property name="text">
+                     <string>No Referensi</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Tanggal</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Pelanggan</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Kurs</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Nilai</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PenawaranHarga_tombol">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>55</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>100</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="hl_Penjualan_PenawaranHarga_tombol">
+                 <item>
+                  <widget class="QPushButton" name="tb_PenawaranHarga_baru">
+                   <property name="text">
+                    <string>Baru</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_PenawaranHarga_tutup">
+                   <property name="text">
+                    <string>Tutup</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="st_Penjualan_PenawaranHarga_baru">
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PenawaranHarga_baru_title">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_PenawaranHarga_baru_title">
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_PenawaranHarga_baru_title">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI Semilight</family>
+                     <pointsize>18</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Membuat Penawaran Harga</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PenawaranHarga_baru_input_line">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_PenawaranHarga_baru_input">
+                 <item row="3" column="5">
+                  <widget class="QLineEdit" name="le_Penjualan_PenawaranHarga_baru_Departemen"/>
+                 </item>
+                 <item row="2" column="5">
+                  <widget class="QLabel" name="lb_Penjualan_PenawaranHarga_baru_Departemen">
+                   <property name="text">
+                    <string>Departemen</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_PenawaranHarga_baru_Nama">
+                   <property name="text">
+                    <string>Nama Pelanggan</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="6">
+                  <widget class="QLabel" name="lb_Penjualan_PenawaranHarga_baru_Kurs">
+                   <property name="text">
+                    <string>Mata Uang</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_PenawaranHarga_baru_Keluar">
+                   <property name="text">
+                    <string>Keluar dari Gudang</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLineEdit" name="le_Penjualan_PenawaranHarga_baru_SOPenawaran"/>
+                 </item>
+                 <item row="0" column="5">
+                  <widget class="QLabel" name="lb_Penjualan_PenawaranHarga_baru_Proyek">
+                   <property name="text">
+                    <string>Proyek</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="8">
+                  <widget class="QCheckBox" name="chk_Penjualan_PenawaranHarga_baru_input_selesai">
+                   <property name="text">
+                    <string>Selesai</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="5">
+                  <widget class="QLineEdit" name="le_Penjualan_PenawaranHarga_baru_Proyek"/>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QLabel" name="lb_Penjualan_PenawaranHarga_baru_SOPenawaran">
+                   <property name="text">
+                    <string>SO Penawaran</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1" colspan="3">
+                  <widget class="QLineEdit" name="le_Penjualan_PenawaranHarga_baru_Keterangan"/>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLabel" name="lb_Penjualan_PenawaranHarga_baru_Keterangan">
+                   <property name="text">
+                    <string>Keterangan</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="8">
+                  <widget class="QCheckBox" name="chk_Penjualan_PenawaranHarga_baru_input_jasa">
+                   <property name="text">
+                    <string>Jasa</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="7">
+                  <spacer name="hs_Penjualan_PenawaranHarga_baru_input2">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="1" column="4">
+                  <spacer name="hs_Penjualan_PenawaranHarga_baru_input">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="1" column="2">
+                  <widget class="QDateEdit" name="dte_Penjualan_PenawaranHarga_baru_input_tanggal">
+                   <property name="wrapping">
+                    <bool>false</bool>
+                   </property>
+                   <property name="frame">
+                    <bool>true</bool>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                   </property>
+                   <property name="accelerated">
+                    <bool>false</bool>
+                   </property>
+                   <property name="displayFormat">
+                    <string>d/M/yyyy</string>
+                   </property>
+                   <property name="calendarPopup">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="2">
+                  <widget class="QLabel" name="lb_Penjualan_PenawaranHarga_baru_Tanggal">
+                   <property name="text">
+                    <string>Tanggal</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="6">
+                  <widget class="QComboBox" name="cb_Penjualan_PenawaranHarga_baru_input_kurs">
+                   <item>
+                    <property name="text">
+                     <string>IDR</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QComboBox" name="cb_Penjualan_PenawaranHarga_Baru_Nama"/>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QComboBox" name="cb_Penjualan_PenawaranHarga_Baru_Gudang"/>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PenawaranHarga_baru_input">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>210</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_PenawaranHarga_baru_tabel">
+                 <item row="1" column="0" rowspan="2">
+                  <widget class="QTableWidget" name="tbl_Penjualan_PenawaranHarga_baru">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>200</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>1366</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
+                   </property>
+                   <property name="showGrid">
+                    <bool>false</bool>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                   <property name="cornerButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                   <property name="rowCount">
+                    <number>4</number>
+                   </property>
+                   <property name="columnCount">
+                    <number>8</number>
+                   </property>
+                   <row>
+                    <property name="text">
+                     <string>1</string>
+                    </property>
+                   </row>
+                   <row>
+                    <property name="text">
+                     <string>2</string>
+                    </property>
+                   </row>
+                   <row>
+                    <property name="text">
+                     <string>3</string>
+                    </property>
+                   </row>
+                   <row>
+                    <property name="text">
+                     <string>4</string>
+                    </property>
+                   </row>
+                   <column>
+                    <property name="text">
+                     <string>No Barang</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Nama</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Jumlah</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Satuan</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Harga</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Diskon</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Total</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Pajak</string>
+                    </property>
+                   </column>
+                   <item row="0" column="0">
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="flags">
+                     <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+                    </property>
+                   </item>
+                   <item row="3" column="2">
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PenawaranHarga_baru_tombol">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="hl_Penjualan_PenawaranHarga_baru_tombol">
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_PenawaranHarga_baru_baru">
+                   <property name="text">
+                    <string>Baru</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_PenawaranHarga_baru_batal">
+                   <property name="text">
+                    <string>Batal</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_2">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_PenawaranHarga_baru_rekam">
+                   <property name="text">
+                    <string>Rekam</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_PenawaranHarga_baru_tutup">
+                   <property name="text">
+                    <string>Tutup</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="st_Penjualan_OrderPenjualan">
+             <layout class="QVBoxLayout" name="verticalLayout_9">
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_OrderPenjualan_title">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_OrderPenjualan_title">
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_OrderPenjualan_title">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI Semilight</family>
+                     <pointsize>18</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Order Penjualan</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_OrderPenjualan_input_line">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_OrderPenjualan_input">
+                 <item row="3" column="5">
+                  <widget class="QLineEdit" name="le_Penjualan_OrderPenjualan_Departemen"/>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLineEdit" name="le_Penjualan_OrderPenjualan_Nama"/>
+                 </item>
+                 <item row="2" column="5">
+                  <widget class="QLabel" name="lb_Penjualan_OrderPenjualan_Departemen">
+                   <property name="text">
+                    <string>Departemen</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_OrderPenjualan_Nama">
+                   <property name="text">
+                    <string>Nama Pelanggan</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="6">
+                  <widget class="QLabel" name="lb_Penjualan_OrderPenjualan_Kurs">
+                   <property name="text">
+                    <string>Mata Uang</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_OrderPenjualan_Keluar">
+                   <property name="text">
+                    <string>Keluar dari Gudang</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLineEdit" name="le_Penjualan_OrderPenjualan_NoSO"/>
+                 </item>
+                 <item row="1" column="5">
+                  <widget class="QLineEdit" name="le_Penjualan_OrderPenjualan_Proyek"/>
+                 </item>
+                 <item row="0" column="3">
+                  <widget class="QLabel" name="lb_Penjualan_OrderPenjualan_Tanggal">
+                   <property name="text">
+                    <string>Tanggal</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="3">
+                  <widget class="QDateEdit" name="de_Penjualan_OrderPenjualan_Tanggal">
+                   <property name="calendarPopup">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1" colspan="4">
+                  <widget class="QLineEdit" name="le_Penjualan_OrderPenjualan_Keterangan"/>
+                 </item>
+                 <item row="0" column="5">
+                  <widget class="QLabel" name="lb_Penjualan_OrderPenjualan_Proyek">
+                   <property name="text">
+                    <string>Proyek</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="8">
+                  <widget class="QCheckBox" name="chk_Penjualan_OrderPenjualan_Selesai">
+                   <property name="text">
+                    <string>Selesai</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLineEdit" name="le_Penjualan_OrderPenjualan_Keluar"/>
+                 </item>
+                 <item row="1" column="8">
+                  <widget class="QCheckBox" name="chk_Penjualan_OrderPenjualan_Jasa">
+                   <property name="text">
+                    <string>Jasa</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLabel" name="lb_Penjualan_OrderPenjualan_Keterangan">
+                   <property name="text">
+                    <string>Keterangan</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="7">
+                  <spacer name="hs_Penjualan_OrderPenjualan">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="1" column="6">
+                  <widget class="QComboBox" name="cb_Penjualan_OrderPenjualan_Kurs">
+                   <item>
+                    <property name="text">
+                     <string>IDR</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QLabel" name="lb_Penjualan_OrderPenjualan_NoSO">
+                   <property name="text">
+                    <string>No. SO</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="2">
+                  <widget class="QLabel" name="lb_Penjualan_OrderPenjualan_Penawaran">
+                   <property name="text">
+                    <string>Penawaran No.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="2">
+                  <widget class="QLineEdit" name="le_Penjualan_OrderPenjualan_Penawaran"/>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_OrderPenjualan_input">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_OrderPenjualan_tabel">
+                 <item row="2" column="0">
+                  <widget class="QTableWidget" name="tbl_Penjualan_OrderPenjualan">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>250</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>1366</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
+                   </property>
+                   <property name="showGrid">
+                    <bool>false</bool>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                   <property name="cornerButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                   <property name="rowCount">
+                    <number>0</number>
+                   </property>
+                   <property name="columnCount">
+                    <number>8</number>
+                   </property>
+                   <column>
+                    <property name="text">
+                     <string>No Barang</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Deskripsi</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Jumlah</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Satuan</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Harga</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Diskon</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Total</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Pajak</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_OrderPenjualan_tombol">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="hl_Penjualan_OrderPenjualan_tombol">
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_OrderPenjualan_Baru">
+                   <property name="text">
+                    <string>Baru</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_OrderPenjualan_Batal">
+                   <property name="text">
+                    <string>Batal</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_3">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_OrderPenjualan_Rekam">
+                   <property name="text">
+                    <string>Rekam</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_OrderPenjualan_Tutup">
+                   <property name="text">
+                    <string>Tutup</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="st_Penjualan_Pengiriman">
+             <layout class="QVBoxLayout" name="verticalLayout_10">
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_Pengiriman_title">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_PengirimanBarang_title">
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_Pengiriman_title">
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI Semilight</family>
+                     <pointsize>18</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Pengiriman Barang</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_Pengiriman_tabel">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_PengirimanBarang_tabel">
+                 <item row="0" column="0">
+                  <widget class="QTableWidget" name="tbl_Penjualan_Pengiriman">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>200</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>1366</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
+                   </property>
+                   <property name="showGrid">
+                    <bool>false</bool>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                   <property name="cornerButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                   <property name="rowCount">
+                    <number>0</number>
+                   </property>
+                   <property name="columnCount">
+                    <number>6</number>
+                   </property>
+                   <column>
+                    <property name="text">
+                     <string>No Referensi</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>No. SO</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Tanggal</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Pelanggan</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Kurs</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Nilai</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_Pengiriman_tombol">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="hl_PengirimanBarang_tombol">
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_Pengiriman_Baru">
+                   <property name="text">
+                    <string>Baru</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_Pengiriman_Hapus">
+                   <property name="text">
+                    <string>Hapus</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_4">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_Pengiriman_Cetak">
+                   <property name="text">
+                    <string>Cetak</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_Pengiriman_Tutup">
+                   <property name="text">
+                    <string>Tutup</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="st_Penjualan_Pengiriman_baru">
+             <layout class="QVBoxLayout" name="verticalLayout_12">
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PengirimanBaru_title">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_PengirimanBarang_Baru_title">
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_PengirimanBaru_title">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI Semilight</family>
+                     <pointsize>18</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Pengiriman Barang</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PengirimanBaru_input1">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_PengirimanBarang_Baru_input">
+                 <item row="3" column="5">
+                  <widget class="QLineEdit" name="le_Penjualan_PengirimanBaru_Departemen"/>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLineEdit" name="le_Penjualan_PengirimanBaru_Nama"/>
+                 </item>
+                 <item row="2" column="5">
+                  <widget class="QLabel" name="lb_Penjualan_PengirimanBaru_Departemen">
+                   <property name="text">
+                    <string>Departemen</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_PengirimanBaru_Nama">
+                   <property name="text">
+                    <string>Nama Pelanggan</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="6">
+                  <widget class="QLabel" name="lb_Penjualan_PengirimanBaru_Kurs">
+                   <property name="text">
+                    <string>Mata Uang</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_PengirimanBaru_Keluar">
+                   <property name="text">
+                    <string>Keluar dari Gudang</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLineEdit" name="le_Penjualan_PengirimanBaru_NoSO"/>
+                 </item>
+                 <item row="1" column="5">
+                  <widget class="QLineEdit" name="le_Penjualan_PengirimanBaru_Proyek"/>
+                 </item>
+                 <item row="0" column="3">
+                  <widget class="QLabel" name="lb_Penjualan_PengirimanBaru_Tanggal">
+                   <property name="text">
+                    <string>Tanggal</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="3">
+                  <widget class="QDateEdit" name="de_Penjualan_PengirimanBaru_Tanggal">
+                   <property name="calendarPopup">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1" colspan="4">
+                  <widget class="QLineEdit" name="le_Penjualan_PengirimanBaru_Keterangan"/>
+                 </item>
+                 <item row="0" column="5">
+                  <widget class="QLabel" name="lb_Penjualan_PengirimanBaru_Proyek">
+                   <property name="text">
+                    <string>Proyek</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="8">
+                  <widget class="QCheckBox" name="chk_Penjualan_PengirimanBaru_Selesai">
+                   <property name="text">
+                    <string>Selesai</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLineEdit" name="le_Penjualan_PengirimanBaru_Keluar"/>
+                 </item>
+                 <item row="1" column="8">
+                  <widget class="QCheckBox" name="chk_Penjualan_PengirimanBaru_Jasa">
+                   <property name="text">
+                    <string>Jasa</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLabel" name="lb_Penjualan_PengirimanBaru_Keterangan">
+                   <property name="text">
+                    <string>Keterangan</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="7">
+                  <spacer name="hs_Penjualan_PengirimanBaru">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="1" column="6">
+                  <widget class="QComboBox" name="cb_Penjualan_PengirimanBaru_Kurs">
+                   <item>
+                    <property name="text">
+                     <string>IDR</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QLabel" name="lb_Penjualan_PengirimanBaru_NoSO">
+                   <property name="text">
+                    <string>No. SO</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="2">
+                  <widget class="QLabel" name="lb_Penjualan_PengirimanBaru_Penawaran">
+                   <property name="text">
+                    <string>Penawaran No.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="2">
+                  <widget class="QLineEdit" name="le_Penjualan_PengirimanBaru_Penawaran"/>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PengirimanBaru_input">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_PengirimanBarang_Baru_tabel">
+                 <item row="1" column="0">
+                  <widget class="QTableWidget" name="tbl_Penjualan_PengirimanBaru">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>250</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>1366</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
+                   </property>
+                   <property name="showGrid">
+                    <bool>false</bool>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                   <property name="cornerButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                   <property name="rowCount">
+                    <number>0</number>
+                   </property>
+                   <property name="columnCount">
+                    <number>8</number>
+                   </property>
+                   <column>
+                    <property name="text">
+                     <string>No Barang</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Deskripsi</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Jumlah</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Satuan</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Harga</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Diskon</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Total</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Pajak</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PengirimanBaru_tombol">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="hl_Penjualan_PengirimanBarang_Baru_tombol">
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_PengirimanBaru_Batal">
+                   <property name="text">
+                    <string>Batal</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_PengirimanBaru_Hapus">
+                   <property name="text">
+                    <string>Hapus Baris</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_5">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_PengirimanBaru_Rekam">
+                   <property name="text">
+                    <string>Rekam</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_PengirimanBaru_Tutup">
+                   <property name="text">
+                    <string>Tutup</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="st_Penjualan_PiutangUsaha">
+             <layout class="QVBoxLayout" name="verticalLayout_11">
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_Piutang_title">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_Piutang_title">
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_Piutang_title">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI Semilight</family>
+                     <pointsize>18</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Daftar Piutang Usaha</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_Piutang_input">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_Piutang_tabel">
+                 <item row="2" column="1">
+                  <widget class="QLabel" name="lb_Penjualan_Piutang_Total">
+                   <property name="text">
+                    <string>Total :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="2">
+                  <widget class="QLabel" name="lb_Penjualan_Piutang_TotalNilai">
+                   <property name="text">
+                    <string>Rp 000.000.000.000,00</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <spacer name="hs_Penjualan_Piutang_atas">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="1" column="0" colspan="3">
+                  <widget class="QTableWidget" name="tbl_Penjualan_Piutang">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>270</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>1366</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
+                   </property>
+                   <property name="showGrid">
+                    <bool>false</bool>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                   <property name="cornerButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                   <property name="rowCount">
+                    <number>0</number>
+                   </property>
+                   <property name="columnCount">
+                    <number>5</number>
+                   </property>
+                   <column>
+                    <property name="text">
+                     <string>Pelanggan</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Kurs</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Debet</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Piutang Terbayar</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Saldo Piutang</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_Piutang_tombol">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="hl_Penjualan_Piutang_tombol">
+                 <item>
+                  <spacer name="hs_Penjualan_Piutang_bawah">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_Piutang_Perincian">
+                   <property name="text">
+                    <string>Perincian</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_Piutang_Tutup">
+                   <property name="text">
+                    <string>Tutup</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="st_Penjualan_RincianPiutang">
+             <layout class="QVBoxLayout" name="verticalLayout_13">
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_RincianPiutang_title">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_RincianPiutang_title">
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_RincianPiutang_title">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI Semilight</family>
+                     <pointsize>18</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Rincian Piutang Usaha - </string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QLabel" name="lb_Penjualan_RincianPiutang_title_nama">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI Semilight</family>
+                     <pointsize>18</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Nama</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="2">
+                  <widget class="QLabel" name="lb_Penjualan_RincianPiutang_title_kurs">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI Semilight</family>
+                     <pointsize>18</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>(kurs)</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="3">
+                  <spacer name="hs_Penjualan_RincianPiutang_title">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_RincianPiutang_tabel">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="vl_Penjualan_RincianPiutang_tabel">
+                 <item>
+                  <widget class="QTableWidget" name="tbl_Penjualan_RincianPiutang">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>270</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>1366</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
+                   </property>
+                   <property name="showGrid">
+                    <bool>false</bool>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                   <property name="cornerButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                   <property name="rowCount">
+                    <number>8</number>
+                   </property>
+                   <property name="columnCount">
+                    <number>6</number>
+                   </property>
+                   <attribute name="verticalHeaderVisible">
+                    <bool>false</bool>
+                   </attribute>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <column>
+                    <property name="text">
+                     <string>Tanggal</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>No. Invoice</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>0 - 30 Hari</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>30 - 60 Hari</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>60 - 90 Hari</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>&gt; 90 Hari</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_RincianPiutang_tombol">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="hl_Penjualan_RincianPiutang_tombol">
+                 <item>
+                  <spacer name="hs_Penjualan_RincianPiutang_tombol">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>523</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_RincianPiutang_Perincian">
+                   <property name="text">
+                    <string>Perincian</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_RincianPiutang_Tutup">
+                   <property name="text">
+                    <string>Tutup</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="st_Penjualan_PembayaranPiutang">
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PembayaranPiutang_title">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_PembayaranPiutang_title">
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_title">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI Semilight</family>
+                     <pointsize>18</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Pembayaran Piutang Usaha</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PembayaranPiutang_tabel">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="vl_Penjualan_PembayaranPiutang_tabel">
+                 <item>
+                  <widget class="QTableWidget" name="tbl_Penjualan_PembayaranPiutang">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="showGrid">
+                    <bool>true</bool>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                   <property name="cornerButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                   <column>
+                    <property name="text">
+                     <string>Referensi</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Tanggal</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Pelanggan</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Keterangan</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Nilai</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PembayaranPiutang_tombol">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="hl_Penjualan_PembayaranPiutang_tombol">
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_PembayaranPiutang_Baru">
+                   <property name="text">
+                    <string>Baru</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_PembayaranPiutang_Hapus">
+                   <property name="text">
+                    <string>Hapus</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="hs_Penjualan_PembayaranPiutang_tombol">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_PembayaranPiutang_Perincian">
+                   <property name="text">
+                    <string>Perincian</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_PembayaranPiutang_Cetak">
+                   <property name="text">
+                    <string>Cetak</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_PembayaranPiutang_Tutup">
+                   <property name="text">
+                    <string>Tutup</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="st_Penjualan_PembayaranPiutang_Baru">
+             <layout class="QVBoxLayout" name="verticalLayout_8">
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PembayaranPiutang_Baru_title">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_PembayaranPiutang_Baru_title">
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_title">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Segoe UI Semilight</family>
+                     <pointsize>18</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Pembayaran Piutang Usaha</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PembayaranPiutang_Baru_input">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_PembayaranPiutang_Baru_input">
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Memo">
+                   <property name="text">
+                    <string>Memo :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Dari">
+                   <property name="text">
+                    <string>Dari :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1" colspan="3">
+                  <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Akun">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="4">
+                  <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Dept">
+                   <property name="text">
+                    <string>Dept. :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="7">
+                  <widget class="QCheckBox" name="chk_Penjualan_PembayaranPiutang_Baru_Giro">
+                   <property name="text">
+                    <string>Giro</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Akun">
+                   <property name="text">
+                    <string>Akun Kas : </string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="5">
+                  <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Dept"/>
+                 </item>
+                 <item row="4" column="3">
+                  <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Nominal"/>
+                 </item>
+                 <item row="5" column="1" colspan="3">
+                  <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Memo"/>
+                 </item>
+                 <item row="4" column="2">
+                  <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Nominal">
+                   <property name="text">
+                    <string>Nominal :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="2">
+                  <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Tanggal">
+                   <property name="text">
+                    <string>Tanggal :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="5">
+                  <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Proyek"/>
+                 </item>
+                 <item row="2" column="4">
+                  <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Proyek">
+                   <property name="text">
+                    <string>Proyek :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="3">
+                  <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_NoRef"/>
+                 </item>
+                 <item row="2" column="2">
+                  <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_NoRef">
+                   <property name="text">
+                    <string>Ref. No :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Dari">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="8">
+                  <spacer name="hs_Penjualan_PembayaranPiutang_Baru_input">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="3" column="3">
+                  <widget class="QDateEdit" name="de_Penjualan_PembayaranPiutang_Baru_Tanggal">
+                   <property name="calendarPopup">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+                <zorder>lb_Penjualan_PembayaranPiutang_Baru_Akun</zorder>
+                <zorder>lb_Penjualan_PembayaranPiutang_Baru_Dari</zorder>
+                <zorder>le_Penjualan_PembayaranPiutang_Baru_Akun</zorder>
+                <zorder>le_Penjualan_PembayaranPiutang_Baru_Dari</zorder>
+                <zorder>lb_Penjualan_PembayaranPiutang_Baru_NoRef</zorder>
+                <zorder>le_Penjualan_PembayaranPiutang_Baru_NoRef</zorder>
+                <zorder>lb_Penjualan_PembayaranPiutang_Baru_Proyek</zorder>
+                <zorder>le_Penjualan_PembayaranPiutang_Baru_Proyek</zorder>
+                <zorder>lb_Penjualan_PembayaranPiutang_Baru_Tanggal</zorder>
+                <zorder>lb_Penjualan_PembayaranPiutang_Baru_Nominal</zorder>
+                <zorder>lb_Penjualan_PembayaranPiutang_Baru_Memo</zorder>
+                <zorder>le_Penjualan_PembayaranPiutang_Baru_Nominal</zorder>
+                <zorder>le_Penjualan_PembayaranPiutang_Baru_Memo</zorder>
+                <zorder>lb_Penjualan_PembayaranPiutang_Baru_Dept</zorder>
+                <zorder>le_Penjualan_PembayaranPiutang_Baru_Dept</zorder>
+                <zorder>chk_Penjualan_PembayaranPiutang_Baru_Giro</zorder>
+                <zorder>hs_Penjualan_PembayaranPiutang_Baru_input</zorder>
+                <zorder>de_Penjualan_PembayaranPiutang_Baru_Tanggal</zorder>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PembayaranPiutang_Baru_tabel">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gl_Penjualan_PembayaranPiutang_Baru_tabel">
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_NoDolumen">
+                   <property name="text">
+                    <string>No. Dokumen :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_NoDokumen">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0" colspan="7">
+                  <widget class="QTableWidget" name="tbl_Penjualan_PembayaranPiutang_Baru">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <column>
+                    <property name="text">
+                     <string>No Invoice</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Tanggal</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Saldo</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Discount</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Jumlah Dibayar</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                 <item row="2" column="2">
+                  <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_TanggalDok">
+                   <property name="text">
+                    <string>Tanggal Dokumen :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="5">
+                  <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Denda">
+                   <property name="text">
+                    <string>Denda (Rp) :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="4">
+                  <spacer name="hs_Penjualan_PembayaranPiutang_Baru_tengah">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="2" column="6">
+                  <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Denda">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="3">
+                  <widget class="QDateEdit" name="de_Penjualan_PembayaranPiutang_Baru_Dokumen">
+                   <property name="calendarPopup">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_Penjualan_PembayaranPiutang_Baru_tombol">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="hl_Penjualan_PembayaranPiutang_Baru_tombol">
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_PembayaranPiutang_Baru_Hapus">
+                   <property name="text">
+                    <string>Hapus Baris</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="hs_Penjualan_PembayaranPiutang_Baru_bawah">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="chk_Penjualan_PembayaranPiutang_Baru_Cetak">
+                   <property name="text">
+                    <string>Cetak</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_PembayaranPiutang_Baru_Batal">
+                   <property name="text">
+                    <string>Batal</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_Penjualan_PembayaranPiutang_Baru_Rekam">
+                   <property name="text">
+                    <string>Rekam</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0">
+     <widget class="QFrame" name="fr_MainWindow">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>786</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
