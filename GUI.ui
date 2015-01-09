@@ -41,7 +41,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab_DataMaster">
          <attribute name="title">
@@ -60,7 +60,7 @@
              <number>0</number>
             </property>
             <widget class="QWidget" name="st_DataMaster_Menu">
-             <layout class="QGridLayout" name="gridLayout_3">
+             <layout class="QGridLayout" name="igr_DataMaster_Menu">
               <item row="0" column="0">
                <widget class="QFrame" name="fr_DataMaster_Menu">
                 <property name="minimumSize">
@@ -5405,7 +5405,7 @@ QPushButton::hover{
              <number>0</number>
             </property>
             <widget class="QWidget" name="st_Pembelian_Menu">
-             <layout class="QGridLayout" name="gridLayout_2">
+             <layout class="QGridLayout" name="igr_Pembelian_Menu">
               <item row="0" column="0">
                <widget class="QFrame" name="fr_Pembelian_Menu_Fmenu">
                 <property name="minimumSize">
@@ -5429,7 +5429,7 @@ QPushButton::hover{
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_7">
+                <layout class="QVBoxLayout" name="ivl_Pembelian_Menu_FMenu">
                  <property name="spacing">
                   <number>1</number>
                  </property>
