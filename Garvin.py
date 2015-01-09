@@ -6,6 +6,13 @@ from PyQt4 import QtGui
 import sys,os
 from GUI import Ui_MainWindow
 
+try:
+	_fromUtf8 = QtCore.QString.fromUtf8
+except AttributeError:
+	def _fromUtf8(s):
+		return s
+
+
 class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 	def __init__(self, parent= None):
 		super(MainGUI,self).__init__(parent)
@@ -170,6 +177,41 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.db.commit()
 		self.db.close()
 		return result
+	
+		
+	def clearLayout(self, layout):
+		for i in reversed(range(layout.count())):
+			item = layout.itemAt(i)
+			
+			if isinstance(item, QtGui.QWidgetItem):
+				#~ print "widget" + str(item)
+				item.widget().close()
+				#--------------------------------------------------------------------------------------------------or
+				#--------------------------------------------------------------------------------------------------item.widget().setParent(None)
+			elif isinstance(item, QtGui.QSpacerItem):
+				#~ print "spacer " + str(item)
+				None
+				#just so it's not a layout "else" bellow
+				#--------------------------------------------------------------------------------------------------no need to do extra stuff
+			else:
+				#~ print "layout " + str(item)
+				self.clearLayout(item.layout())
+			#------------------------------------------------------------------------------------------------------remove the item from layout
+			layout.removeItem(item)
+	def clearGrid(self,grid):
+		for r in reversed(range(grid.rowCount())):
+			for c in reversed(range(grid.columnCount())):
+				item = grid.itemAtPosition(r,c)
+				if isinstance(item, QtGui.QWidgetItem):
+					item.widget().close()
+				elif isinstance(item, QtGui.QSpacerItem):
+					None
+				else:
+					#~ self.clearGrid(item.grid())
+					None
+				grid.removeItem(item)
+		self.DataMaster_CommonRoom_cleared = 1
+	
 			
 app = QtGui.QApplication(sys.argv)
 dmw = MainGUI()

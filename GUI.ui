@@ -51,84 +51,75 @@
           <item>
            <widget class="QStackedWidget" name="st_DataMaster">
             <property name="currentIndex">
-             <number>6</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="st_DataMaster_Menu">
-             <layout class="QGridLayout" name="igr_DataMaster_Menu">
-              <item row="0" column="4">
-               <layout class="QHBoxLayout" name="hl_DataMaster_Menu_LayoutLeft">
-                <item>
-                 <widget class="QFrame" name="fr_DataMaster_Menu_FrameLeft">
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{height:50px;border-radius:0px;}</string>
-                  </property>
-                  <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
-                  </property>
-                  <widget class="QWidget" name="verticalLayoutWidget">
-                   <property name="geometry">
-                    <rect>
-                     <x>0</x>
-                     <y>10</y>
-                     <width>181</width>
-                     <height>252</height>
-                    </rect>
-                   </property>
-                   <layout class="QVBoxLayout" name="vl_DataMaster_Menu_MenuLayout">
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <item>
-                     <widget class="QPushButton" name="tb_DataMaster_DataNamaAlamat">
-                      <property name="styleSheet">
-                       <string notr="true">height:50px;</string>
-                      </property>
-                      <property name="text">
-                       <string>Data Nama Alamat</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QPushButton" name="tb_DataMaster_DataProduk">
-                      <property name="text">
-                       <string>Data Produk</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QPushButton" name="tb_DataMaster_DataPajak">
-                      <property name="text">
-                       <string>Data Pajak</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QPushButton" name="tb_DataMaster_DataProyek">
-                      <property name="text">
-                       <string>Data Proyek</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QPushButton" name="tb_DataMaster_DataSatuanPengukuran">
-                      <property name="text">
-                       <string>Satuan Pengukuran</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item row="0" column="5">
-               <layout class="QHBoxLayout" name="hl_DataMaster_Menu_LayoutRight"/>
-              </item>
-             </layout>
+             <widget class="QFrame" name="fr_DataMaster_Menu">
+              <property name="geometry">
+               <rect>
+                <x>9</x>
+                <y>9</y>
+                <width>241</width>
+                <height>361</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton{height:50px;border-radius:0px;background:rgb(220, 224, 238);}</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QVBoxLayout" name="ivl_DataMaster_Menu">
+               <item>
+                <widget class="QPushButton" name="tb_DataMaster_DataNamaAlamat">
+                 <property name="styleSheet">
+                  <string notr="true">height:50px;</string>
+                 </property>
+                 <property name="text">
+                  <string>Data Nama Alamat</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="tb_DataMaster_DataProduk">
+                 <property name="text">
+                  <string>Data Produk</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="tb_DataMaster_DataPajak">
+                 <property name="text">
+                  <string>Data Pajak</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="tb_DataMaster_DataProyek">
+                 <property name="text">
+                  <string>Data Proyek</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="tb_DataMaster_DataSatuanPengukuran">
+                 <property name="text">
+                  <string>Satuan Pengukuran</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="tb_DataMaster_DataRekening">
+                 <property name="text">
+                  <string>Data Rekening</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
             </widget>
             <widget class="QWidget" name="st_DataMaster_DataCommon">
              <layout class="QVBoxLayout" name="ivl_DataMaster_DataCommon">
@@ -251,7 +242,7 @@ QPushButton::hover{
                       <x>0</x>
                       <y>0</y>
                       <width>348</width>
-                      <height>28</height>
+                      <height>461</height>
                      </rect>
                     </property>
                     <property name="styleSheet">
@@ -2179,8 +2170,8 @@ QPushButton::hover{
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>98</width>
-                      <height>198</height>
+                      <width>69</width>
+                      <height>410</height>
                      </rect>
                     </property>
                     <property name="styleSheet">
