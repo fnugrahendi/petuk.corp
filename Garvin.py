@@ -1939,8 +1939,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 				grid.removeItem(item)
 		self.DataMaster_CommonRoom_cleared = 1
 	
-			
-app = QtGui.QApplication(sys.argv)
-dmw = MainGUI()
-dmw.showFullScreen()
-sys.exit(app.exec_())
+if __name__=="__main__":
+	app = QtGui.QApplication(sys.argv)
+	dmw = MainGUI()
+	dmw.showFullScreen()
+	sys.exit(app.exec_())
