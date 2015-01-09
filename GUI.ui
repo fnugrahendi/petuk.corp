@@ -41,7 +41,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab_DataMaster">
          <attribute name="title">
@@ -49,9 +49,2692 @@
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QStackedWidget" name="stackedWidget">
-            <widget class="QWidget" name="page"/>
-            <widget class="QWidget" name="page_2"/>
+           <widget class="QStackedWidget" name="st_DataMaster">
+            <property name="currentIndex">
+             <number>6</number>
+            </property>
+            <widget class="QWidget" name="st_DataMaster_Menu">
+             <layout class="QGridLayout" name="igr_DataMaster_Menu">
+              <item row="0" column="4">
+               <layout class="QHBoxLayout" name="hl_DataMaster_Menu_LayoutLeft">
+                <item>
+                 <widget class="QFrame" name="fr_DataMaster_Menu_FrameLeft">
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{height:50px;border-radius:0px;}</string>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <widget class="QWidget" name="verticalLayoutWidget">
+                   <property name="geometry">
+                    <rect>
+                     <x>0</x>
+                     <y>10</y>
+                     <width>181</width>
+                     <height>252</height>
+                    </rect>
+                   </property>
+                   <layout class="QVBoxLayout" name="vl_DataMaster_Menu_MenuLayout">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QPushButton" name="tb_DataMaster_DataNamaAlamat">
+                      <property name="styleSheet">
+                       <string notr="true">height:50px;</string>
+                      </property>
+                      <property name="text">
+                       <string>Data Nama Alamat</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="tb_DataMaster_DataProduk">
+                      <property name="text">
+                       <string>Data Produk</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="tb_DataMaster_DataPajak">
+                      <property name="text">
+                       <string>Data Pajak</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="tb_DataMaster_DataProyek">
+                      <property name="text">
+                       <string>Data Proyek</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="tb_DataMaster_DataSatuanPengukuran">
+                      <property name="text">
+                       <string>Satuan Pengukuran</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="0" column="5">
+               <layout class="QHBoxLayout" name="hl_DataMaster_Menu_LayoutRight"/>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="st_DataMaster_DataCommon">
+             <layout class="QVBoxLayout" name="ivl_DataMaster_DataCommon">
+              <property name="spacing">
+               <number>1</number>
+              </property>
+              <property name="margin">
+               <number>2</number>
+              </property>
+              <item>
+               <widget class="QFrame" name="fr_DataMaster_DataCommon_Ftop">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>1</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="ivl_DataMaster_DataCommon_Ftop">
+                 <item>
+                  <widget class="QLabel" name="lb_DataMaster_DataCommon_Judul">
+                   <property name="font">
+                    <font>
+                     <pointsize>18</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Judul</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_DataMaster_DataCommon_Fbody">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>4</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="ihl_DataMaster_DataCommon_Fbody">
+                 <property name="spacing">
+                  <number>2</number>
+                 </property>
+                 <property name="margin">
+                  <number>1</number>
+                 </property>
+                 <item>
+                  <widget class="QScrollArea" name="sc_DataMaster_DataCommon_Fbody_Slist">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>350</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>350</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton{
+	background:#ffffff;
+	color:rgb(20,20,30);
+	padding-top:20px;
+	padding-bottom:20px;
+     border-style: solid;
+     border-width: 1px;
+     border-color: rgb(181, 181, 181);
+}
+QPushButton::hover{
+	background:rgb(50,50,80);
+	color:rgb(200,200,180);
+     border-color: rgb(50,50,80);
+}</string>
+                   </property>
+                   <property name="widgetResizable">
+                    <bool>true</bool>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                   </property>
+                   <widget class="QWidget" name="scontent_DataMaster_DataCommon_Fbody_Slist">
+                    <property name="geometry">
+                     <rect>
+                      <x>0</x>
+                      <y>0</y>
+                      <width>348</width>
+                      <height>28</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border-radius:0px;</string>
+                    </property>
+                    <layout class="QVBoxLayout" name="ivl_DataMaster_DataCommon_Fbody_Slist">
+                     <property name="spacing">
+                      <number>1</number>
+                     </property>
+                    </layout>
+                   </widget>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="fr_DataMaster_DataCommon_Fbody_FR">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>3</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="ivl_DataMaster_DataCommon_Fbody_FR">
+                    <property name="spacing">
+                     <number>2</number>
+                    </property>
+                    <property name="margin">
+                     <number>1</number>
+                    </property>
+                    <item>
+                     <widget class="QFrame" name="fr_DataMaster_DataCommon_Fbody_FR_Ftop">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>4</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QGridLayout" name="igr_DataMaster_DataCommon_Fbody_FR_Ftop">
+                       <property name="leftMargin">
+                        <number>50</number>
+                       </property>
+                      </layout>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QFrame" name="fr_DataMaster_DataCommon_Fbody_FR_Fbot">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                        <horstretch>0</horstretch>
+                        <verstretch>1</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>50</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>50</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton{
+	border-radius:15px;
+	background:rgb(206, 206, 206);
+}</string>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QHBoxLayout" name="ihl_DataMaster_DataCommon_Fbody_FR_Fbot">
+                       <property name="spacing">
+                        <number>2</number>
+                       </property>
+                       <property name="margin">
+                        <number>1</number>
+                       </property>
+                       <item>
+                        <widget class="QPushButton" name="tb_DataMaster_DataCommon_Tambah">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>30</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>30</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="text">
+                          <string>+</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="tb_DataMaster_DataCommon_Edit">
+                         <property name="minimumSize">
+                          <size>
+                           <width>30</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>30</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true"/>
+                         </property>
+                         <property name="text">
+                          <string/>
+                         </property>
+                         <property name="icon">
+                          <iconset>
+                           <normalon>:/DataMaster/img/edit.png</normalon>
+                          </iconset>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="tb_DataMaster_DataCommon_Delete">
+                         <property name="minimumSize">
+                          <size>
+                           <width>30</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>30</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true"/>
+                         </property>
+                         <property name="text">
+                          <string/>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="../../../src/DataMaster.qrc">
+                           <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QFrame" name="fr_DataMaster_DataCommon_Fbody_FR_Fbot_Fspace">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>3</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="tb_DataMaster_DataCommon_Tutup">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>50</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>50</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="text">
+                          <string>Tutup</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="st_DataMaster_DataNamaAlamat_Tambah">
+             <layout class="QVBoxLayout" name="ivl_DataMaster_DataNamaAlamat_Tambah">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <property name="margin">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QFrame" name="fr_DataMaster_DataNamaAlamat_Tambah_Ftop">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>1</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="ihl_DataMaster_DataNamaAlamat_Tambah_Ftop">
+                 <item>
+                  <widget class="QLabel" name="lb_DataMaster_DataNamaAlamat_Tambah_Ftop_Judul">
+                   <property name="font">
+                    <font>
+                     <pointsize>18</pointsize>
+                     <weight>75</weight>
+                     <italic>false</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>+ Data Nama &amp; Alamat</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_DataMaster_DataNamaAlamat_Tambah_Fcontent">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>3</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel{
+	font-size:10pt;
+}
+*{
+	min-height:20px;
+}</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QFormLayout" name="formLayout_2">
+                 <property name="fieldGrowthPolicy">
+                  <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataNamaAlamat_Tambah_KodePelanggan">
+                   <property name="text">
+                    <string>Kode :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QLineEdit" name="le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>150</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="toolTip">
+                    <string comment="Unique Code for Identity">Kode unik sebagai identitas</string>
+                   </property>
+                   <property name="inputMask">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataNamaAlamat_Tambah_Nama">
+                   <property name="text">
+                    <string>Nama :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLineEdit" name="le_DataMaster_DataNamaAlamat_Tambah_Nama">
+                   <property name="minimumSize">
+                    <size>
+                     <width>400</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>400</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataNamaAlamat_Tambah_Tipe">
+                   <property name="text">
+                    <string>Tipe :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="QComboBox" name="cb_DataMaster_DataNamaAlamat_Tambah_Tipe">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>150</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>Employee</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Vendor</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Customer</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Other</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataNamaAlamat_Tambah_Kontak">
+                   <property name="text">
+                    <string>Nomor Kontak :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="1">
+                  <widget class="QLineEdit" name="le_DataMaster_DataNamaAlamat_Tambah_Kontak">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>150</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataNamaAlamat_Tambah_NPWP">
+                   <property name="text">
+                    <string>NPWP :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="1">
+                  <widget class="QLineEdit" name="le_DataMaster_DataNamaAlamat_Tambah_NPWP">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>150</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataNamaAlamat_Tambah_Diskon">
+                   <property name="text">
+                    <string>Diskon :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="1">
+                  <widget class="QDoubleSpinBox" name="dsb_DataMaster_DataNamaAlamat_Tambah_Diskon">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>150</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="decimals">
+                    <number>3</number>
+                   </property>
+                   <property name="minimum">
+                    <double>-99.000000000000000</double>
+                   </property>
+                   <property name="maximum">
+                    <double>100.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataNamaAlamat_Tambah_DiskonAwal">
+                   <property name="text">
+                    <string>Diskon Awal :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="7" column="1">
+                  <widget class="QDoubleSpinBox" name="dsb_DataMaster_DataNamaAlamat_Tambah_DiskonAwal">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>150</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="decimals">
+                    <number>3</number>
+                   </property>
+                   <property name="minimum">
+                    <double>-100.000000000000000</double>
+                   </property>
+                   <property name="maximum">
+                    <double>100.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="8" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataNamaAlamat_Tambah_DendaKeterlambatan">
+                   <property name="text">
+                    <string>Denda Keterlambatan :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="8" column="1">
+                  <widget class="QLineEdit" name="le_DataMaster_DataNamaAlamat_Tambah_DendaKeterlambatan">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>150</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="9" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataNamaAlamat_Tambah_Alamat">
+                   <property name="text">
+                    <string>Alamat :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="9" column="1">
+                  <widget class="QLineEdit" name="le_DataMaster_DataNamaAlamat_Tambah_Alamat">
+                   <property name="minimumSize">
+                    <size>
+                     <width>400</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>400</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="10" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataNamaAlamat_Tambah_JatuhTempo">
+                   <property name="text">
+                    <string>Jatuh Tempo Data :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="10" column="1">
+                  <widget class="QDateTimeEdit" name="dte_DataMaster_DataNamaAlamat_Tambah_JatuhTempo">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>150</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="readOnly">
+                    <bool>false</bool>
+                   </property>
+                   <property name="displayFormat">
+                    <string>dd/MM/yyyy HH.mm</string>
+                   </property>
+                   <property name="calendarPopup">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="11" column="1">
+                  <widget class="QCheckBox" name="chk_DataMaster_DataNamaAlamat_Tambah_JatuhTempo">
+                   <property name="text">
+                    <string>Pakai Jatuh Tempo</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_DataMaster_DataNamaAlamat_Tambah_Fbot">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>1</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>400</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>4000</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+	min-height:30px;
+}</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="ihl_DataMaster_DataNamaAlamat_Tambah_Fbot">
+                 <property name="spacing">
+                  <number>2</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>1</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>1</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>6</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>11</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="tb_DataMaster_DataNamaAlamat_Tambah_Reset">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Baru (reset form)</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_DataMaster_DataNamaAlamat_Tambah_Simpan">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Simpan</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="fr_DataMaster_DataNamaAlamat_Tambah_Fbot_Fm">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>3</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_DataMaster_DataNamaAlamat_Tambah_Batal">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>50</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>50</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton{
+	border-radius:15px;
+}</string>
+                   </property>
+                   <property name="text">
+                    <string>Batal</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="st_DataMaster_DataProduk_Tambah">
+             <layout class="QVBoxLayout" name="ivl_DataMaster_DataProduk_Tambah">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <property name="margin">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QFrame" name="fr_DataMaster_DataProduk_Tambah_Ftop">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="ivl_DataMaster_DataProduk_Tambah_Ftop">
+                 <item>
+                  <widget class="QLabel" name="lb_DataMaster_DataProduk_Tambah_Ftop_Judul">
+                   <property name="font">
+                    <font>
+                     <pointsize>18</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>+ Data Produk</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_DataMaster_DataProduk_Tambah_Fcontent">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>4</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel{
+	font-size:10pt;
+}
+*{
+	min-height:20px;
+}</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QFormLayout" name="formLayout_3">
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataProduk_Tambah_KodeBarang">
+                   <property name="text">
+                    <string>Kode Barang :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QLineEdit" name="le_DataMaster_DataProduk_Tambah_KodeBarang">
+                   <property name="minimumSize">
+                    <size>
+                     <width>200</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>200</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataProduk_Tambah_NamaBarang">
+                   <property name="text">
+                    <string>Nama Barang :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLineEdit" name="le_DataMaster_DataProduk_Tambah_NamaBarang">
+                   <property name="minimumSize">
+                    <size>
+                     <width>400</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>400</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataProduk_Tambah_Deskripsi">
+                   <property name="text">
+                    <string>Deskripsi :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLineEdit" name="le_DataMaster_DataProduk_Tambah_Deskripsi">
+                   <property name="minimumSize">
+                    <size>
+                     <width>400</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>400</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataProduk_Tambah_HPP">
+                   <property name="text">
+                    <string>HPP :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="QLineEdit" name="le_DataMaster_DataProduk_Tambah_HPP">
+                   <property name="minimumSize">
+                    <size>
+                     <width>200</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>200</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataProduk_Tambah_Sifat">
+                   <property name="text">
+                    <string>Sifat :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="1">
+                  <widget class="QComboBox" name="cb_DataMaster_DataProduk_Tambah_Sifat">
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>FIFO</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>LIFO</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Average</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataProduk_Tambah_Stok">
+                   <property name="text">
+                    <string>Stok :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="1">
+                  <widget class="QLineEdit" name="le_DataMaster_DataProduk_Tambah_Stok">
+                   <property name="minimumSize">
+                    <size>
+                     <width>200</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>200</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataProduk_Tambah_Satuan">
+                   <property name="text">
+                    <string>Satuan</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="1">
+                  <widget class="QComboBox" name="cb_DataMaster_DataProduk_Tambah_Satuan">
+                   <property name="minimumSize">
+                    <size>
+                     <width>200</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>200</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_DataMaster_DataProduk_Tambah_Fbot">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+                  <horstretch>1</horstretch>
+                  <verstretch>1</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>400</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>4000</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="ihl_DataMaster_DataProduk_Tambah_Fbot">
+                 <property name="spacing">
+                  <number>2</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>1</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>1</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>6</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>11</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="tb_DataMaster_DataProduk_Tambah_Reset">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Baru (reset form)</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_DataMaster_DataProduk_Tambah_Simpan">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Simpan</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="fr_DataMaster_DataProduk_Tambah_Fbot_Fm">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>3</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_DataMaster_DataProduk_Tambah_Batal">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>50</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>50</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Batal</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="st_DataMaster_DataPajak_Tambah">
+             <layout class="QVBoxLayout" name="ivl_DataMaster_DataPajak_Tambah">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <property name="margin">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QFrame" name="fr_DataMaster_DataPajak_Tambah_Ftop">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>1</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <item>
+                  <widget class="QLabel" name="lb_DataMaster_DataPajak_Tambah_Ftop_Judul">
+                   <property name="font">
+                    <font>
+                     <pointsize>18</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>+ Data Pajak</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_DataMaster_DataPajak_Tambah_Fcontent">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>4</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel{
+	font-size:10pt;
+}
+*{
+	min-height:20px;
+}</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <widget class="QLabel" name="lb_DataMaster_DataPajak_Tambah_KodePajak">
+                 <property name="geometry">
+                  <rect>
+                   <x>20</x>
+                   <y>10</y>
+                   <width>91</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>Kode Pajak :</string>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="le_DataMaster_DataPajak_Tambah_KodePajak">
+                 <property name="geometry">
+                  <rect>
+                   <x>120</x>
+                   <y>10</y>
+                   <width>161</width>
+                   <height>24</height>
+                  </rect>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="lb_DataMaster_DataPajak_Tambah_NamaPajak">
+                 <property name="geometry">
+                  <rect>
+                   <x>20</x>
+                   <y>40</y>
+                   <width>91</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>Nama Pajak :</string>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="le_DataMaster_DataPajak_Tambah_NamaPajak">
+                 <property name="geometry">
+                  <rect>
+                   <x>120</x>
+                   <y>40</y>
+                   <width>571</width>
+                   <height>24</height>
+                  </rect>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="lb_DataMaster_DataPajak_Tambah_Keterangan">
+                 <property name="geometry">
+                  <rect>
+                   <x>20</x>
+                   <y>70</y>
+                   <width>91</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>Keterangan :</string>
+                 </property>
+                </widget>
+                <widget class="QLineEdit" name="le_DataMaster_DataPajak_Tambah_Keterangan">
+                 <property name="geometry">
+                  <rect>
+                   <x>120</x>
+                   <y>70</y>
+                   <width>571</width>
+                   <height>24</height>
+                  </rect>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="lb_DataMaster_DataPajak_Tambah_PersenPajak">
+                 <property name="geometry">
+                  <rect>
+                   <x>20</x>
+                   <y>100</y>
+                   <width>101</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>Persen Pajak :</string>
+                 </property>
+                </widget>
+                <widget class="QDoubleSpinBox" name="dsb_DataMaster_DataPajak_Tambah_PersenPajak">
+                 <property name="geometry">
+                  <rect>
+                   <x>120</x>
+                   <y>100</y>
+                   <width>81</width>
+                   <height>26</height>
+                  </rect>
+                 </property>
+                 <property name="readOnly">
+                  <bool>false</bool>
+                 </property>
+                 <property name="decimals">
+                  <number>2</number>
+                 </property>
+                 <property name="minimum">
+                  <double>0.000000000000000</double>
+                 </property>
+                 <property name="maximum">
+                  <double>100.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.100000000000000</double>
+                 </property>
+                </widget>
+                <widget class="QLabel" name="lb_DataMaster_DataPajak_Tambah_PersenPajak_Persen">
+                 <property name="geometry">
+                  <rect>
+                   <x>210</x>
+                   <y>100</y>
+                   <width>21</width>
+                   <height>20</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>%</string>
+                 </property>
+                </widget>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_DataMaster_DataPajak_Tambah_Fbot">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>1</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_2">
+                 <property name="spacing">
+                  <number>2</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>1</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>1</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>6</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>11</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="tb_DataMaster_DataPajak_Tambah_Reset">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Baru (reset form)</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_DataMaster_DataPajak_Tambah_Simpan">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Simpan</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="fr_DataMaster_DataPajak_Tambah_Fbot_Fm">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>3</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_DataMaster_DataPajak_Tambah_Batal">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>50</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>50</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Batal</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="st_DataMaster_DataProyek_Tambah">
+             <layout class="QVBoxLayout" name="ivl_DataMaster_DataProyek_Tambah">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <property name="margin">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QFrame" name="fr_DataMaster_DataProyek_Ftop">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>1</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="ivl_DataMaster_DataProyek_Ftop">
+                 <item>
+                  <widget class="QLabel" name="lb_DataMaster_DataProyek_Ftop_Judul">
+                   <property name="font">
+                    <font>
+                     <pointsize>18</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>+ Data Proyek</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_DataMaster_DataProyek_Tambah_Fc">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>4</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="ihl_DataMaster_DataProyek_Tambah_Fc">
+                 <property name="spacing">
+                  <number>2</number>
+                 </property>
+                 <property name="margin">
+                  <number>1</number>
+                 </property>
+                 <item>
+                  <widget class="QFrame" name="fr_DataMaster_DataProyek_Tambah_Fcontent">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                     <horstretch>2</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>600</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>600</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <widget class="QLineEdit" name="le_DataMaster_DataProyek_Tambah_KodeProyek">
+                    <property name="geometry">
+                     <rect>
+                      <x>140</x>
+                      <y>10</y>
+                      <width>261</width>
+                      <height>22</height>
+                     </rect>
+                    </property>
+                   </widget>
+                   <widget class="QDateTimeEdit" name="dte_DataMaster_DataProyek_Tambah_TanggalSelesai">
+                    <property name="geometry">
+                     <rect>
+                      <x>140</x>
+                      <y>190</y>
+                      <width>194</width>
+                      <height>22</height>
+                     </rect>
+                    </property>
+                    <property name="minimumDateTime">
+                     <datetime>
+                      <hour>0</hour>
+                      <minute>0</minute>
+                      <second>0</second>
+                      <year>1752</year>
+                      <month>10</month>
+                      <day>1</day>
+                     </datetime>
+                    </property>
+                    <property name="minimumDate">
+                     <date>
+                      <year>1752</year>
+                      <month>10</month>
+                      <day>1</day>
+                     </date>
+                    </property>
+                    <property name="displayFormat">
+                     <string>dd/MM/yyyy HH.mm</string>
+                    </property>
+                    <property name="calendarPopup">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                   <widget class="QLineEdit" name="le_DataMaster_DataProyek_Tambah_NamaProyek">
+                    <property name="geometry">
+                     <rect>
+                      <x>140</x>
+                      <y>40</y>
+                      <width>431</width>
+                      <height>22</height>
+                     </rect>
+                    </property>
+                   </widget>
+                   <widget class="QLineEdit" name="le_DataMaster_DataProyek_Tambah_AnggaranTotal">
+                    <property name="geometry">
+                     <rect>
+                      <x>140</x>
+                      <y>220</y>
+                      <width>261</width>
+                      <height>22</height>
+                     </rect>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_PenanggungJawab">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>70</y>
+                      <width>131</width>
+                      <height>20</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string>Penanggung Jawab :</string>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_TanggalMulai">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>160</y>
+                      <width>131</width>
+                      <height>20</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string>Tanggal Mulai :</string>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_AnggaranTotal">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>220</y>
+                      <width>131</width>
+                      <height>20</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string>Anggaran Total :</string>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_KodeProyek">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>10</y>
+                      <width>91</width>
+                      <height>20</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string>Kode Proyek :</string>
+                    </property>
+                   </widget>
+                   <widget class="QCheckBox" name="chk_DataMaster_DataProyek_Tambah_PakaiFase">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>280</y>
+                      <width>111</width>
+                      <height>20</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string>Gunakan Fase</string>
+                    </property>
+                   </widget>
+                   <widget class="QDoubleSpinBox" name="dsb_DataMaster_DataProyek_Tambah_Progress">
+                    <property name="geometry">
+                     <rect>
+                      <x>140</x>
+                      <y>130</y>
+                      <width>62</width>
+                      <height>22</height>
+                     </rect>
+                    </property>
+                    <property name="maximum">
+                     <double>100.000000000000000</double>
+                    </property>
+                    <property name="singleStep">
+                     <double>0.500000000000000</double>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_Progress">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>130</y>
+                      <width>131</width>
+                      <height>20</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string>Progress :</string>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_TanggalSelesai">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>190</y>
+                      <width>131</width>
+                      <height>20</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string>Tanggal Selesai :</string>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_NamaProyek">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>40</y>
+                      <width>91</width>
+                      <height>20</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string>Nama Proyek :</string>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_RealisasiTotal">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>250</y>
+                      <width>131</width>
+                      <height>20</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string>Realisasi Total :</string>
+                    </property>
+                   </widget>
+                   <widget class="QLineEdit" name="le_DataMaster_DataProyek_Tambah_RealisasiTotal">
+                    <property name="geometry">
+                     <rect>
+                      <x>140</x>
+                      <y>250</y>
+                      <width>261</width>
+                      <height>22</height>
+                     </rect>
+                    </property>
+                   </widget>
+                   <widget class="QLineEdit" name="le_DataMaster_DataProyek_Tambah_PenanggungJawab">
+                    <property name="geometry">
+                     <rect>
+                      <x>140</x>
+                      <y>70</y>
+                      <width>261</width>
+                      <height>22</height>
+                     </rect>
+                    </property>
+                   </widget>
+                   <widget class="QPushButton" name="tb_DataMaster_DataProyek_Tambah_PenanggungJawab">
+                    <property name="geometry">
+                     <rect>
+                      <x>400</x>
+                      <y>70</y>
+                      <width>20</width>
+                      <height>20</height>
+                     </rect>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>20</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>20</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>8</pointsize>
+                      <weight>50</weight>
+                      <bold>false</bold>
+                      <kerning>true</kerning>
+                     </font>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background:rgb(20, 203, 203);
+border:solid 1px #000;
+min-height:20px;</string>
+                    </property>
+                    <property name="text">
+                     <string>&gt;</string>
+                    </property>
+                    <property name="checkable">
+                     <bool>false</bool>
+                    </property>
+                    <property name="checked">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                   <widget class="QDateTimeEdit" name="dte_DataMaster_DataProyek_Tambah_TanggalMulai">
+                    <property name="geometry">
+                     <rect>
+                      <x>140</x>
+                      <y>160</y>
+                      <width>194</width>
+                      <height>22</height>
+                     </rect>
+                    </property>
+                    <property name="displayFormat">
+                     <string>dd/MM/yyyy HH.mm</string>
+                    </property>
+                    <property name="calendarPopup">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                   <widget class="QLineEdit" name="le_DataMaster_DataProyek_Tambah_KodePenanggungJawab">
+                    <property name="geometry">
+                     <rect>
+                      <x>140</x>
+                      <y>100</y>
+                      <width>121</width>
+                      <height>21</height>
+                     </rect>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_KodePenanggungJawab">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>100</y>
+                      <width>131</width>
+                      <height>16</height>
+                     </rect>
+                    </property>
+                    <property name="text">
+                     <string>Kode Penanggung Jawab :</string>
+                    </property>
+                   </widget>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_PilihPenjab">
+                   <property name="text">
+                    <string>Pilih Penanggung Jawab:</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QScrollArea" name="sc_DataMaster_DataProyek_Tambah_Penjab">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>200</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>300</width>
+                     <height>2000</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton{
+	background:#ffffff;
+	color:rgb(20,20,30);
+	padding-top:5px;
+	padding-bottom:5px;
+     border-style: solid;
+     border-width: 1px;
+     border-color: rgb(181, 181, 181);
+	min-height: 15px;
+}
+QPushButton::hover{
+	background:rgb(50,50,80);
+	color:rgb(200,200,180);
+     border-color: rgb(50,50,80);
+}</string>
+                   </property>
+                   <property name="widgetResizable">
+                    <bool>true</bool>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                   </property>
+                   <widget class="QWidget" name="scontent_DataMaster_DataProyek_Tambah_Penjab">
+                    <property name="geometry">
+                     <rect>
+                      <x>0</x>
+                      <y>0</y>
+                      <width>98</width>
+                      <height>198</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border-radius:0px;</string>
+                    </property>
+                    <layout class="QVBoxLayout" name="ivl_DataMaster_DataProyek_Tambah_Penjab">
+                     <property name="spacing">
+                      <number>1</number>
+                     </property>
+                    </layout>
+                   </widget>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="hs_DataMaster_DataProyek_Tambah_Fc_Hr">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_DataMaster_DataProyek_Fb">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>1</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="ihl_DataMaster_DataProyek_Fb">
+                 <property name="spacing">
+                  <number>2</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>1</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>1</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>6</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>11</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="tb_DataMaster_DataProyek_Tambah_Reset">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Baru (reset form)</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_DataMaster_DataProyek_Tambah_Simpan">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Simpan</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="fr_DataMaster_DataProyek_Tambah_Fb_Fm">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>3</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_DataMaster_DataProyek_Tambah_Batal">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>50</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>50</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Batal</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="st_DataMaster_DataSatuanPengukuran_Tambah">
+             <layout class="QVBoxLayout" name="ivl_DataMaster_DataSatuanPengukuran_Tambah">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <property name="margin">
+               <number>1</number>
+              </property>
+              <item>
+               <widget class="QFrame" name="fr_DataMaster_DataSatuanPengukuran_Tambah_Ft">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>1</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="ihl_DataMaster_DataSatuanPengukuran_Tambah_Ft">
+                 <property name="spacing">
+                  <number>2</number>
+                 </property>
+                 <property name="margin">
+                  <number>1</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="lb_DataMaster_DataSatuanPengukuran_Tambah_Ft_Judul">
+                   <property name="font">
+                    <font>
+                     <pointsize>18</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>+ Satuan Pengukuran</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_DataMaster_DataSatuanPengukuran_Tambah_Fcontent">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>4</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel{
+	font-size:10pt;
+}
+*{
+	min-height:20px;
+}</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QFormLayout" name="formLayout">
+                 <property name="fieldGrowthPolicy">
+                  <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataSatuanPengukuran_Tambah_KodeSatuan">
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Kode Satuan :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QLineEdit" name="le_DataMaster_DataSatuanPengukuran_Tambah_KodeSatuan">
+                   <property name="minimumSize">
+                    <size>
+                     <width>200</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>200</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataSatuanPengukuran_Tambah_NamaSatuan">
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Nama Satuan :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QLineEdit" name="le_DataMaster_DataSatuanPengukuran_Tambah_NamaSatuan">
+                   <property name="minimumSize">
+                    <size>
+                     <width>500</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>500</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataSatuanPengukuran_Tambah_Keterangan">
+                   <property name="text">
+                    <string>Keterangan :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLineEdit" name="le_DataMaster_DataSatuanPengukuran_Tambah_Keterangan">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>500</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>500</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="QComboBox" name="cb_DataMaster_DataSatuanPengukuran_Tambah_SatuanInduk">
+                   <property name="minimumSize">
+                    <size>
+                     <width>200</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>200</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>Tanpa Induk</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item row="3" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataSatuanPengukuran_Tambah_KodeSatuanInduk">
+                   <property name="text">
+                    <string>Satuan Induk :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QLabel" name="lb_DataMaster_DataSatuanPengukuran_Tambah_FaktorPengali">
+                   <property name="text">
+                    <string>Faktor Pengali :</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="1">
+                  <widget class="QDoubleSpinBox" name="dsb_DataMaster_DataSatuanPengukuran_Tambah_FaktorPengali">
+                   <property name="minimumSize">
+                    <size>
+                     <width>200</width>
+                     <height>22</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>200</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="decimals">
+                    <number>9</number>
+                   </property>
+                   <property name="minimum">
+                    <double>-999999999.000000000000000</double>
+                   </property>
+                   <property name="maximum">
+                    <double>999999999.000000000000000</double>
+                   </property>
+                   <property name="singleStep">
+                    <double>1.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="fr_DataMaster_DataSatuanPengukuran_Tambah_Fb">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                  <horstretch>0</horstretch>
+                  <verstretch>1</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="ihl_DataMaster_DataSatuanPengukuran_Tambah_Fb">
+                 <property name="spacing">
+                  <number>2</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>1</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>1</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>6</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>11</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="tb_DataMaster_DataSatuanPengukuran_Tambah_Reset">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Baru (reset form)</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_DataMaster_DataSatuanPengukuran_Tambah_Simpan">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>100</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Simpan</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="fr_DataMaster_DataSatuanPengukuran_Tambah_Fb_Fm">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>3</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="tb_DataMaster_DataSatuanPengukuran_Tambah_Batal">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>50</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>50</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>Batal</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
            </widget>
           </item>
          </layout>
@@ -2696,6 +5379,8 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../../src/DataMaster.qrc"/>
+ </resources>
  <connections/>
 </ui>
