@@ -657,12 +657,12 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 					"<rect x='"+str(10+0*svgW/6)+"' y='"+str(-10+svgH-100)+"' height='100' width='80' style='stroke:#ff0000; fill: #CBCBFD'/>"+\
 					"<rect x='"+str(10+1*svgW/6)+"' y='"+str(-10+svgH-200)+"' height='200' width='80' style='stroke:#ff0000; fill: #CBCBFD'/>"+\
 				"</svg>"
-			f = open("./img/svg.svg","w")
+			f = open("./img/DataMaster_svg.svg","w")
 			f.write(svg)
 			f.close()
 			
 			self.svg_DataMaster_DataNamaAlamat_TransaksiOrang = QtSvg.QSvgWidget(self.fr_DataMaster_DataNamaAlamat_FGraph)
-			self.svg_DataMaster_DataNamaAlamat_TransaksiOrang.load("./img/svg.svg")
+			self.svg_DataMaster_DataNamaAlamat_TransaksiOrang.load("./img/DataMaster_svg.svg")
 			self.svg_DataMaster_DataNamaAlamat_TransaksiOrang.setGeometry(QtCore.QRect(10, 10, svgW, svgH))
 			#~ self.ihl_DataMaster_DataNamaAlamat_FGraph.addWidget(self.svg_DataMaster_DataNamaAlamat_TransaksiOrang)
 
@@ -908,12 +908,12 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 					"<rect x='"+str(10+0*svgW/6)+"' y='"+str(-10+svgH-100)+"' height='100' width='80' style='stroke:#ff0000; fill: #CBCBFD'/>"+\
 					"<rect x='"+str(10+1*svgW/6)+"' y='"+str(-10+svgH-200)+"' height='200' width='80' style='stroke:#ff0000; fill: #CBCBFD'/>"+\
 				"</svg>"
-			f = open("./img/svg.svg","w")
+			f = open("./img/DataMaster_svg.svg","w")
 			f.write(svg)
 			f.close()
 			
 			self.svg_DataMaster_DataProduk_TransaksiOrang = QtSvg.QSvgWidget(self.fr_DataMaster_DataProduk_FGraph)
-			self.svg_DataMaster_DataProduk_TransaksiOrang.load("./img/svg.svg")
+			self.svg_DataMaster_DataProduk_TransaksiOrang.load("./img/DataMaster_svg.svg")
 			self.svg_DataMaster_DataProduk_TransaksiOrang.setGeometry(QtCore.QRect(10, 10, svgW, svgH))
 			
 		self.DataMaster_CommonRoom_cleared = 0
@@ -1141,12 +1141,12 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 					"<rect x='"+str(10+0*svgW/6)+"' y='"+str(-10+svgH-100)+"' height='100' width='80' style='stroke:#ff0000; fill: #CBCBFD'/>"+\
 					"<rect x='"+str(10+1*svgW/6)+"' y='"+str(-10+svgH-200)+"' height='200' width='80' style='stroke:#ff0000; fill: #CBCBFD'/>"+\
 				"</svg>"
-			f = open("./img/svg.svg","w")
+			f = open("./img/DataMaster_svg.svg","w")
 			f.write(svg)
 			f.close()
 			
 			self.svg_DataMaster_DataPajak_TransaksiOrang = QtSvg.QSvgWidget(self.fr_DataMaster_DataPajak_FGraph)
-			self.svg_DataMaster_DataPajak_TransaksiOrang.load("./img/svg.svg")
+			self.svg_DataMaster_DataPajak_TransaksiOrang.load("./img/DataMaster_svg.svg")
 			self.svg_DataMaster_DataPajak_TransaksiOrang.setGeometry(QtCore.QRect(10, 10, svgW, svgH))
 			
 		self.DataMaster_CommonRoom_cleared = 0
@@ -1377,12 +1377,12 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 					"<rect x='"+str(10+0*svgW/6)+"' y='"+str(-10+svgH-100)+"' height='100' width='80' style='stroke:#ff0000; fill: #CBCBFD'/>"+\
 					"<rect x='"+str(10+1*svgW/6)+"' y='"+str(-10+svgH-200)+"' height='200' width='80' style='stroke:#ff0000; fill: #CBCBFD'/>"+\
 				"</svg>"
-			f = open("./img/svg.svg","w")
+			f = open("./img/DataMaster_svg.svg","w")
 			f.write(svg)
 			f.close()
 			
 			self.svg_DataMaster_DataProyek_TransaksiOrang = QtSvg.QSvgWidget(self.fr_DataMaster_DataProyek_FGraph)
-			self.svg_DataMaster_DataProyek_TransaksiOrang.load("./img/svg.svg")
+			self.svg_DataMaster_DataProyek_TransaksiOrang.load("./img/DataMaster_svg.svg")
 			self.svg_DataMaster_DataProyek_TransaksiOrang.setGeometry(QtCore.QRect(10, 10, svgW, svgH))
 			
 		self.DataMaster_CommonRoom_cleared = 0
@@ -1611,12 +1611,12 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			svg = "<svg  xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>"+\
 					"<rect x='0' y='0' height='"+str(svgH)+"' width='"+str(svgW)+"' style='stroke:#F7F7F7; fill: #ffffff'/>"+\
 				"</svg>"
-			f = open("./img/svg.svg","w")
+			f = open("./img/DataMaster_svg.svg","w")
 			f.write(svg)
 			f.close()
 			
 			self.svg_DataMaster_DataSatuanPengukuran_TransaksiOrang = QtSvg.QSvgWidget(self.fr_DataMaster_DataSatuanPengukuran_FGraph)
-			self.svg_DataMaster_DataSatuanPengukuran_TransaksiOrang.load("./img/svg.svg")
+			self.svg_DataMaster_DataSatuanPengukuran_TransaksiOrang.load("./img/DataMaster_svg.svg")
 			self.svg_DataMaster_DataSatuanPengukuran_TransaksiOrang.setGeometry(QtCore.QRect(10, 10, svgW, svgH))
 			
 		self.DataMaster_CommonRoom_cleared = 0
