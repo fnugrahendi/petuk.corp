@@ -112,7 +112,16 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.lb_DataMaster_DataProyek_Tambah_PilihPenjab.hide()
 		#~ self.ile_DataMaster_DataProyek_Tambah_PenanggungJawab.hide()
 		self.le_DataMaster_DataProyek_Tambah_KodePenanggungJawab.setReadOnly(True)
-		self.tb_DataMaster_DataProyek_Tambah_PenanggungJawab.clicked.connect(self.DataMaster_DataProyek_Tambah_Showlist)
+		
+		#---------- Tombol biru: Buka popup tambah
+		#~ self.tb_DataMaster_DataProyek_Tambah_PenanggungJawab.clicked.connect(self.DataMaster_DataProyek_Tambah_Showlist)
+		def ____DataMaster_DataProyek_Tambah_Penjab_Ok():
+			self.le_DataMaster_DataProyek_Tambah_PenanggungJawab.setText(self.le_DataMaster_DataNamaAlamat_Tambah_Nama.text())
+			self.le_DataMaster_DataProyek_Tambah_KodePenanggungJawab.setText(self.le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan.text())
+			
+		self.tb_DataMaster_DataProyek_Tambah_PenanggungJawab.clicked.connect(functools.partial(self.DataMaster_DataNamaAlamat_Popup_Tambah,____DataMaster_DataProyek_Tambah_Penjab_Ok,self.DataMaster_None,self.DataMaster_None,self.DataMaster_None))
+		
+		
 		self.le_DataMaster_DataProyek_Tambah_PenanggungJawab.textEdited.connect(self.DataMaster_DataProyek_Tambah_Showlist_Change)
 		#~ QtCore.QObject.connect(self.le_DataMaster_DataProyek_Tambah_PenanggungJawab, QtCore.SIGNAL(_fromUtf8("editingFinished()")), MainWindow.showFullScreen)
 		
@@ -197,6 +206,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 	#===============
 	#ROOM DataMaster
 	#===============
+	def DataMaster_None(self):
+		None
 	def DataMaster_Goto(self,goto_roomID):
 		self.st_DataMaster.setCurrentIndex(goto_roomID)
 	
@@ -247,7 +258,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			
 			sql = "SELECT * FROM `gd_nama_alamat` "
 			result = self.DatabaseRunQuery(sql)
-			tinggi = len(result)*60
+			tinggi = len(result)*65
 			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 			for x in range(0,len(result)):
 				obj_Tb_ListPelanggan = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataNamaAlamat_ListPelanggan"+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")]))
@@ -286,7 +297,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			
 			sql = "SELECT * FROM `gd_data_produk` "
 			result = self.DatabaseRunQuery(sql)
-			tinggi = len(result)*60
+			tinggi = len(result)*65
 			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 			for x in range(0,len(result)):
 				obj_Tb_ListProduk = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataProduk_List"+str(result[x][self.DataMaster_DataProduk_Field.index("namaBarang")]))
@@ -326,7 +337,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			
 			sql = "SELECT * FROM `gd_data_pajak` "
 			result = self.DatabaseRunQuery(sql)
-			tinggi = len(result)*60
+			tinggi = len(result)*65
 			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 			for x in range(0,len(result)):
 				obj_Tb_ListPajak = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataPajak_List"+str(result[x][self.DataMaster_DataPajak_Field.index("namaPajak")]))
@@ -369,7 +380,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			
 			sql = "SELECT * FROM `gd_proyek` "
 			result = self.DatabaseRunQuery(sql)
-			tinggi = len(result)*60
+			tinggi = len(result)*65
 			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 			for x in range(0,len(result)):
 				Tb_ListProyek = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataProyek_List"+str(result[x][self.DataMaster_DataProyek_Field.index("namaProyek")]))
@@ -408,7 +419,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			
 			sql = "SELECT * FROM `gd_satuan_pengukuran` "
 			result = self.DatabaseRunQuery(sql)
-			tinggi = len(result)*60
+			tinggi = len(result)*65
 			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 			for x in range(0,len(result)):
 				Tb_ListSatuan = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataSatuan_List"+str(result[x][self.DataMaster_DataSatuanPengukuran_Field.index("namaSatuan")]))
@@ -719,18 +730,14 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		"""	Generate kode otomatis untuk lineEdit le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan, 
 			dipanggil ketika menambah data nama alamat baru, atau ganti tipe pada combo box cb_
 		"""
-		self.initDatabase()
-		cursor = self.db.cursor()
 		sql = "SELECT `id` FROM `"+self.dbDatabase+"`.`gd_nama_alamat` ORDER BY `gd_nama_alamat`.`id` DESC LIMIT 0 , 1"
-		cursor.execute(sql)
-		result = cursor.fetchall()
+		result = self.DatabaseRunQuery(sql)
 		#beri nilai default untuk kodeID nama alamat untuk memudahkan
 		kode_default = str(int(result[0][0])+1)
 		while (len(kode_default)<6):
 			kode_default = "0"+kode_default
 		kode_default = str(self.cb_DataMaster_DataNamaAlamat_Tambah_Tipe.currentText()).upper() + "."+kode_default
 		self.le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan.setText(kode_default)
-		self.db.close()
 	
 	def DataMaster_DataProduk_Tambah_Act_Simpan(self):
 		kode = str(self.le_DataMaster_DataProduk_Tambah_KodeBarang.text())
@@ -1692,6 +1699,76 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		aa = aa.replace("OTHER",cb)
 		self.le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan.setText(_fromUtf8(aa))
 	
+	def DataMaster_DataNamaAlamat_Popup_Tambah(self, fcallback_ok=None,fcallback_cancel=None,fcallback_enter=None,fcallback_exit=None):
+		"""
+		Tampilkan popup untuk menambah DataNamaAlamat
+		fcallback_enter dieksekusi sebelum membangun popup, (A)
+		fcallback_ok dieksekusi jika ok di klik pada popup (B)
+		fcallback_cancel diekseskusi jika cancel/close diklik pada popup (B)
+		fcallback_exit dieksekusi saat fungsi selesai (B)
+		"""
+		if fcallback_enter==None:
+			fcallback_enter = self.DataMaster_None
+		if fcallback_cancel==None:
+			fcallback_cancel = self.DataMaster_None
+		if fcallback_ok==None:
+			fcallback_ok = self.DataMaster_None
+		if fcallback_exit==None:
+			fcallback_exit = self.DataMaster_None
+		WinW = self.centralwidget.geometry().width()
+		WinH = self.centralwidget.geometry().height()
+		fcallback_enter() #-----A
+		def exit_function():
+			self.fr_DataMaster_DataNamaAlamat_Tambah.setParent(None)
+			self.fr_DataMaster_DataNamaAlamat_Tambah.setParent(self.st_DataMaster_DataNamaAlamat_Tambah)
+			self.ivl_DataMaster_DataNamaAlamat_Tambah_Luar.addWidget(self.fr_DataMaster_DataNamaAlamat_Tambah)
+			self.fr_DataMaster_DataNamaAlamat_Tambah_Fbot.show()
+		self.DataMaster_DataNamaAlamat_Tambah_GenerateKode()
+		self.DataMaster_Popup("",functools.partial(self.DataMaster_DataNamaAlamat_Popup_Act_Tambah,fcallback_ok),WinW-10,WinH-200,fcallback_exit,fcallback_cancel) #----B
+		
+		FrameWindow = self.findChild(QtGui.QFrame,_fromUtf8("DataMaster_Popup_FrameWindow"))
+		self.fr_DataMaster_DataNamaAlamat_Tambah.setParent(FrameWindow)
+		self.fr_DataMaster_DataNamaAlamat_Tambah.show()
+		self.fr_DataMaster_DataNamaAlamat_Tambah.setGeometry(QtCore.QRect(5,5,WinW-20,WinH-250))
+		self.fr_DataMaster_DataNamaAlamat_Tambah_Fbot.hide()
+		
+	def DataMaster_DataNamaAlamat_Popup_Act_Tambah(self,fcallback_exit):
+		
+		self.le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan.setReadOnly(False)
+		nama = str(self.le_DataMaster_DataNamaAlamat_Tambah_Nama.text())
+		tipe = str(self.cb_DataMaster_DataNamaAlamat_Tambah_Tipe.currentText())
+		npwp = str(self.le_DataMaster_DataNamaAlamat_Tambah_NPWP.text())
+		diskon = str(self.dsb_DataMaster_DataNamaAlamat_Tambah_Diskon.value())
+		jatuhtempo = ("0000-00-00 00:00:00" if (self.chk_DataMaster_DataNamaAlamat_Tambah_JatuhTempo.checkState()==0) else str(self.dte_DataMaster_DataNamaAlamat_Tambah_JatuhTempo.dateTime().toString("yyyy-MM-dd hh:mm:ss")) )
+		diskonawal = str(self.dsb_DataMaster_DataNamaAlamat_Tambah_DiskonAwal.value())
+		dendaketerlambatan = str(self.le_DataMaster_DataNamaAlamat_Tambah_DendaKeterlambatan.text())
+		alamat = str(self.le_DataMaster_DataNamaAlamat_Tambah_Alamat.text())
+		kodepelanggan = str(self.le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan.text())
+		kontak = str(self.le_DataMaster_DataNamaAlamat_Tambah_Kontak.text())
+		sql = ""
+		if (self.DataMaster_DataNamaAlamat_Edit_idEDIT >=0):
+			sql = "UPDATE `"+self.dbDatabase+"`.`gd_nama_alamat` "+\
+			"SET `namaPelanggan` = '"+nama+"',"+\
+				"`kodePelanggan` = '"+kodepelanggan+"',"+\
+				"`tipe` = '"+tipe+"',"+\
+				"`npwp` = '"+npwp+"',"+\
+				"`diskon` = '"+diskon+"',"+\
+				"`jatuhTempo` = '"+jatuhtempo+"',"+\
+				"`diskonAwal` = '"+diskonawal+"',"+\
+				"`dendaKeterlambatan` = '"+dendaketerlambatan+"',"+\
+				"`alamat` = '"+alamat+"',"+\
+				"`kontak` = '"+kontak+"'"+\
+			"WHERE `gd_nama_alamat`.`id`='"+str(self.DataMaster_DataNamaAlamat_Edit_idEDIT)+"'"
+			self.DataMaster_DataNamaAlamat_Edit_idEDIT = -1
+		else:
+			sql = "INSERT INTO `"+self.dbDatabase+"`.`gd_nama_alamat` "+\
+				"(`id`, `kodePelanggan`, `namaPelanggan`, `tipe`, `npwp`, `diskon`, `jatuhTempo`, `diskonAwal`, `dendaKeterlambatan`, `alamat`, `kontak`)"+\
+				"VALUES "+\
+				"(NULL, '"+kodepelanggan+"', '"+nama+"', '"+tipe+"', '"+npwp+"', '"+diskon+"', '"+jatuhtempo+"', '"+diskonawal+"', '"+dendaketerlambatan+"', '"+alamat+"', '"+kontak+"');"
+		self.DatabaseRunQuery(sql)
+		fcallback_exit()
+		return
+	
 	def DataMaster_DataNamaAlamat_Edit(self):
 		field = self.DataMaster_DataNamaAlamat_Field.index
 		kode = str(self.lb_DataMaster_DataNamaAlamat_kode.text()).replace("\n","")
@@ -1712,11 +1789,16 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.DataMaster_DataNamaAlamat_Edit_idEDIT = barang[0][field("id")]
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATANAMAALAMAT_TAMBAH)
 		
-	def DataMaster_Popup(self,text,function_callback):
+	def DataMaster_Popup(self,text,function_callback,FW=500,FH=200,function_exit=None,function_close=None):
 		WinW = self.centralwidget.geometry().width()
 		WinH = self.centralwidget.geometry().height()
-		FW = 500
-		FH = 200
+		if (function_close==None):
+			function_close = self.DataMaster_None
+		if (function_exit==None):
+			function_exit = self.DataMaster_None
+		#~ ConfirmClose.clicked.connect(function_exit) if (function_exit!=None) else None
+		#~ FW = 500
+		#~ FH = 200
 		FrameWindowS = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_Popup_FrameWindowS"))
 		if (len(FrameWindowS)<1):
 			FrameWindowS = QtGui.QFrame(self.centralwidget)
@@ -1755,7 +1837,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			ConfirmOk.setGeometry(QtCore.QRect(FW/2-42-85, FH-45, 85, 30))
 			ConfirmOk.setObjectName(_fromUtf8("DataMaster_Popup_ConfirmOk"))
 			ConfirmOk.setText(_fromUtf8("Ok"))
-			ConfirmOk.setStyleSheet(_fromUtf8("QPushButton{background:#555555;}"))
+			ConfirmOk.setStyleSheet(_fromUtf8("QPushButton{background:#555555;color:white;}"))
 		else:
 			ConfirmOk = ConfirmOk[0]
 		try:
@@ -1767,6 +1849,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		ConfirmOk.clicked.connect(functools.partial(tutup,FrameWindow))
 		ConfirmOk.clicked.connect(functools.partial(tutup,FrameWindowS))
 		ConfirmOk.clicked.connect(function_callback)
+		ConfirmOk.clicked.connect(function_exit)
 		ConfirmOk.show()
 		
 		ConfirmClose = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_Popup_ConfirmClose"))
@@ -1775,12 +1858,17 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			ConfirmClose.setGeometry(QtCore.QRect(FW/2-42+85, FH-45, 85, 30))
 			ConfirmClose.setObjectName(_fromUtf8("DataMaster_Popup_ConfirmClose"))
 			ConfirmClose.setText(_fromUtf8("Cancel"))
-			ConfirmClose.setStyleSheet(_fromUtf8("QPushButton{background:#555555;}"))
+			ConfirmClose.setStyleSheet(_fromUtf8("QPushButton{background:#555555;color:white;}"))
 		else:
 			ConfirmClose = ConfirmClose[0]
 		ConfirmClose.show()
 		ConfirmClose.clicked.connect(functools.partial(tutup,FrameWindow))
 		ConfirmClose.clicked.connect(functools.partial(tutup,FrameWindowS))
+		ConfirmClose.clicked.connect(function_close)
+		ConfirmClose.clicked.connect(function_exit)
+		#execute exit function if any
+		#~ if (function_exit!=None
+		#~ function_exit() if (function_exit!=None) else None
 		#~ aa = raw_input()
 	
 	def DataMaster_DataNamaAlamat_Delete(self):
