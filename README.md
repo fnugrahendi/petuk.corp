@@ -3,12 +3,9 @@
 
 Petuk
 ============
-LGPL license. 
 consider contact goodel.akunting@gmail.com first before contributing for more info
 
-
-deps
-============
+ndro kyne bakal butuh kie jg
 lpod-python
 setuptools
 lxml
