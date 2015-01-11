@@ -1844,8 +1844,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			ConfirmOk.clicked.disconnect()
 		except:
 			pass
-		def tutup(f):
-			f.close()
+		#~ def tutup(f):
+			#~ f.close()
+		tutup = lambda fr: fr.close()
 		ConfirmOk.clicked.connect(functools.partial(tutup,FrameWindow))
 		ConfirmOk.clicked.connect(functools.partial(tutup,FrameWindowS))
 		ConfirmOk.clicked.connect(function_callback)
