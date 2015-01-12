@@ -98,6 +98,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		
 		#init room2
 		#---------------------------------------------------------------Satuan Pengukuran combobox di room Data Produk & room Satuan Pengukuran
+		self.tb_DataMaster_DataRekening.clicked.connect(functools.partial(self.DataMaster_DataProduk_Popup_Tambah,None,None,None,None))
+		
 		self.initDatabase()
 		cursor = self.db.cursor()
 		sql = "SELECT * FROM `gd_satuan_pengukuran` "
@@ -775,7 +777,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		fcallback_enter dieksekusi sebelum membangun popup, (A)
 		fcallback_ok dieksekusi jika ok di klik pada popup (B)
 		fcallback_cancel diekseskusi jika cancel/close diklik pada popup (B)
-		fcallback_exit dieksekusi saat fungsi selesai (B)
+		fcallback_exit dieksekusi saat fungsi selesai (C)
 		"""
 		if fcallback_enter==None:
 			fcallback_enter = self.DataMaster_None
@@ -793,14 +795,20 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			self.fr_DataMaster_DataProduk_Tambah.setParent(self.st_DataMaster_DataProduk_Tambah)
 			self.ivl_DataMaster_DataProduk_Tambah_Luar.addWidget(self.fr_DataMaster_DataProduk_Tambah)
 			self.fr_DataMaster_DataProduk_Tambah_Fbot.show()
+			fcallback_exit()#---(C)
+			
 		self.DataMaster_DataProduk_Tambah_GenerateKode()
-		self.DataMaster_Popup("",functools.partial(self.DataMaster_DataProduk_Popup_Act_Tambah,fcallback_ok),WinW-10,WinH-200,fcallback_exit,fcallback_cancel) #----B
+		self.DataMaster_Popup("",functools.partial(self.DataMaster_DataProduk_Popup_Act_Tambah,fcallback_ok),WinW-10,WinH-200,exit_function,fcallback_cancel) #----B
 		
 		FrameWindow = self.findChild(QtGui.QFrame,_fromUtf8("DataMaster_Popup_FrameWindow"))
 		self.fr_DataMaster_DataProduk_Tambah.setParent(FrameWindow)
 		self.fr_DataMaster_DataProduk_Tambah.show()
 		self.fr_DataMaster_DataProduk_Tambah.setGeometry(QtCore.QRect(5,5,WinW-20,WinH-250))
 		self.fr_DataMaster_DataProduk_Tambah_Fbot.hide()
+		
+	def DataMaster_DataProduk_Popup_Act_Tambah(self):
+		None
+	
 	
 	def DataMaster_DataProduk_DrawInfo(self,data):
 		#~ def field(fieldname):
@@ -1738,7 +1746,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		fcallback_enter dieksekusi sebelum membangun popup, (A)
 		fcallback_ok dieksekusi jika ok di klik pada popup (B)
 		fcallback_cancel diekseskusi jika cancel/close diklik pada popup (B)
-		fcallback_exit dieksekusi saat fungsi selesai (B)
+		fcallback_exit dieksekusi saat fungsi selesai (C)
 		"""
 		if fcallback_enter==None:
 			fcallback_enter = self.DataMaster_None
@@ -1756,8 +1764,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			self.fr_DataMaster_DataNamaAlamat_Tambah.setParent(self.st_DataMaster_DataNamaAlamat_Tambah)
 			self.ivl_DataMaster_DataNamaAlamat_Tambah_Luar.addWidget(self.fr_DataMaster_DataNamaAlamat_Tambah)
 			self.fr_DataMaster_DataNamaAlamat_Tambah_Fbot.show()
+			fcallback_exit() #-----(C)
+			
 		self.DataMaster_DataNamaAlamat_Tambah_GenerateKode()
-		self.DataMaster_Popup("",functools.partial(self.DataMaster_DataNamaAlamat_Popup_Act_Tambah,fcallback_ok),WinW-10,WinH-200,fcallback_exit,fcallback_cancel) #----B
+		self.DataMaster_Popup("",functools.partial(self.DataMaster_DataNamaAlamat_Popup_Act_Tambah,fcallback_ok),WinW-10,WinH-200,exit_function,fcallback_cancel) #----B
 		
 		FrameWindow = self.findChild(QtGui.QFrame,_fromUtf8("DataMaster_Popup_FrameWindow"))
 		self.fr_DataMaster_DataNamaAlamat_Tambah.setParent(FrameWindow)

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Sun Jan 11 13:16:47 2015
+# Created: Mon Jan 12 15:32:22 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -58,6 +58,10 @@ class Ui_MainWindow(object):
 "    }"))
         self.st_DataMaster.setObjectName(_fromUtf8("st_DataMaster"))
         self.st_DataMaster_Menu = QtGui.QWidget()
+        self.st_DataMaster_Menu.setStyleSheet(_fromUtf8("QFrame{\n"
+"    border-style:none;\n"
+"    border-width:0px;\n"
+"    }"))
         self.st_DataMaster_Menu.setObjectName(_fromUtf8("st_DataMaster_Menu"))
         self.igr_DataMaster_Menu = QtGui.QGridLayout(self.st_DataMaster_Menu)
         self.igr_DataMaster_Menu.setObjectName(_fromUtf8("igr_DataMaster_Menu"))
@@ -300,10 +304,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(3)
         sizePolicy.setHeightForWidth(self.fr_DataMaster_DataNamaAlamat_Tambah.sizePolicy().hasHeightForWidth())
         self.fr_DataMaster_DataNamaAlamat_Tambah.setSizePolicy(sizePolicy)
-        self.fr_DataMaster_DataNamaAlamat_Tambah.setStyleSheet(_fromUtf8("QFrame{\n"
-"    border-style:none;\n"
-"    border-width:0px;\n"
-"    }"))
+        self.fr_DataMaster_DataNamaAlamat_Tambah.setStyleSheet(_fromUtf8(""))
         self.fr_DataMaster_DataNamaAlamat_Tambah.setFrameShape(QtGui.QFrame.StyledPanel)
         self.fr_DataMaster_DataNamaAlamat_Tambah.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_DataMaster_DataNamaAlamat_Tambah.setObjectName(_fromUtf8("fr_DataMaster_DataNamaAlamat_Tambah"))
@@ -516,11 +517,24 @@ class Ui_MainWindow(object):
         self.st_DataMaster.addWidget(self.st_DataMaster_DataNamaAlamat_Tambah)
         self.st_DataMaster_DataProduk_Tambah = QtGui.QWidget()
         self.st_DataMaster_DataProduk_Tambah.setObjectName(_fromUtf8("st_DataMaster_DataProduk_Tambah"))
-        self.ivl_DataMaster_DataProduk_Tambah = QtGui.QVBoxLayout(self.st_DataMaster_DataProduk_Tambah)
-        self.ivl_DataMaster_DataProduk_Tambah.setSpacing(2)
-        self.ivl_DataMaster_DataProduk_Tambah.setMargin(1)
-        self.ivl_DataMaster_DataProduk_Tambah.setObjectName(_fromUtf8("ivl_DataMaster_DataProduk_Tambah"))
-        self.fr_DataMaster_DataProduk_Tambah_Ftop = QtGui.QFrame(self.st_DataMaster_DataProduk_Tambah)
+        self.ivl_DataMaster_DataProduk_Tambah_Luar = QtGui.QVBoxLayout(self.st_DataMaster_DataProduk_Tambah)
+        self.ivl_DataMaster_DataProduk_Tambah_Luar.setSpacing(0)
+        self.ivl_DataMaster_DataProduk_Tambah_Luar.setMargin(0)
+        self.ivl_DataMaster_DataProduk_Tambah_Luar.setObjectName(_fromUtf8("ivl_DataMaster_DataProduk_Tambah_Luar"))
+        self.fr_DataMaster_DataProduk_Tambah = QtGui.QFrame(self.st_DataMaster_DataProduk_Tambah)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(1)
+        sizePolicy.setHeightForWidth(self.fr_DataMaster_DataProduk_Tambah.sizePolicy().hasHeightForWidth())
+        self.fr_DataMaster_DataProduk_Tambah.setSizePolicy(sizePolicy)
+        self.fr_DataMaster_DataProduk_Tambah.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.fr_DataMaster_DataProduk_Tambah.setFrameShadow(QtGui.QFrame.Raised)
+        self.fr_DataMaster_DataProduk_Tambah.setObjectName(_fromUtf8("fr_DataMaster_DataProduk_Tambah"))
+        self.ivl_DataMaster_DataProduk_Tambah_Dalam = QtGui.QVBoxLayout(self.fr_DataMaster_DataProduk_Tambah)
+        self.ivl_DataMaster_DataProduk_Tambah_Dalam.setSpacing(2)
+        self.ivl_DataMaster_DataProduk_Tambah_Dalam.setMargin(1)
+        self.ivl_DataMaster_DataProduk_Tambah_Dalam.setObjectName(_fromUtf8("ivl_DataMaster_DataProduk_Tambah_Dalam"))
+        self.fr_DataMaster_DataProduk_Tambah_Ftop = QtGui.QFrame(self.fr_DataMaster_DataProduk_Tambah)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -541,8 +555,8 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataProduk_Tambah_Ftop_Judul.setFont(font)
         self.lb_DataMaster_DataProduk_Tambah_Ftop_Judul.setObjectName(_fromUtf8("lb_DataMaster_DataProduk_Tambah_Ftop_Judul"))
         self.ivl_DataMaster_DataProduk_Tambah_Ftop.addWidget(self.lb_DataMaster_DataProduk_Tambah_Ftop_Judul)
-        self.ivl_DataMaster_DataProduk_Tambah.addWidget(self.fr_DataMaster_DataProduk_Tambah_Ftop)
-        self.fr_DataMaster_DataProduk_Tambah_Fcontent = QtGui.QFrame(self.st_DataMaster_DataProduk_Tambah)
+        self.ivl_DataMaster_DataProduk_Tambah_Dalam.addWidget(self.fr_DataMaster_DataProduk_Tambah_Ftop)
+        self.fr_DataMaster_DataProduk_Tambah_Fcontent = QtGui.QFrame(self.fr_DataMaster_DataProduk_Tambah)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(4)
@@ -618,8 +632,8 @@ class Ui_MainWindow(object):
         self.cb_DataMaster_DataProduk_Tambah_Satuan.setMaximumSize(QtCore.QSize(200, 16777215))
         self.cb_DataMaster_DataProduk_Tambah_Satuan.setObjectName(_fromUtf8("cb_DataMaster_DataProduk_Tambah_Satuan"))
         self.formLayout_3.setWidget(6, QtGui.QFormLayout.FieldRole, self.cb_DataMaster_DataProduk_Tambah_Satuan)
-        self.ivl_DataMaster_DataProduk_Tambah.addWidget(self.fr_DataMaster_DataProduk_Tambah_Fcontent)
-        self.fr_DataMaster_DataProduk_Tambah_Fbot = QtGui.QFrame(self.st_DataMaster_DataProduk_Tambah)
+        self.ivl_DataMaster_DataProduk_Tambah_Dalam.addWidget(self.fr_DataMaster_DataProduk_Tambah_Fcontent)
+        self.fr_DataMaster_DataProduk_Tambah_Fbot = QtGui.QFrame(self.fr_DataMaster_DataProduk_Tambah)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(1)
@@ -674,7 +688,8 @@ class Ui_MainWindow(object):
         self.tb_DataMaster_DataProduk_Tambah_Batal.setMaximumSize(QtCore.QSize(50, 16777215))
         self.tb_DataMaster_DataProduk_Tambah_Batal.setObjectName(_fromUtf8("tb_DataMaster_DataProduk_Tambah_Batal"))
         self.ihl_DataMaster_DataProduk_Tambah_Fbot.addWidget(self.tb_DataMaster_DataProduk_Tambah_Batal)
-        self.ivl_DataMaster_DataProduk_Tambah.addWidget(self.fr_DataMaster_DataProduk_Tambah_Fbot)
+        self.ivl_DataMaster_DataProduk_Tambah_Dalam.addWidget(self.fr_DataMaster_DataProduk_Tambah_Fbot)
+        self.ivl_DataMaster_DataProduk_Tambah_Luar.addWidget(self.fr_DataMaster_DataProduk_Tambah)
         self.st_DataMaster.addWidget(self.st_DataMaster_DataProduk_Tambah)
         self.st_DataMaster_DataPajak_Tambah = QtGui.QWidget()
         self.st_DataMaster_DataPajak_Tambah.setObjectName(_fromUtf8("st_DataMaster_DataPajak_Tambah"))
@@ -973,7 +988,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataProyek_Tambah_Penjab.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataProyek_Tambah_Penjab.setObjectName(_fromUtf8("sc_DataMaster_DataProyek_Tambah_Penjab"))
         self.scontent_DataMaster_DataProyek_Tambah_Penjab = QtGui.QWidget()
-        self.scontent_DataMaster_DataProyek_Tambah_Penjab.setGeometry(QtCore.QRect(0, 0, 100, 200))
+        self.scontent_DataMaster_DataProyek_Tambah_Penjab.setGeometry(QtCore.QRect(0, 0, 73, 423))
         self.scontent_DataMaster_DataProyek_Tambah_Penjab.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataProyek_Tambah_Penjab.setObjectName(_fromUtf8("scontent_DataMaster_DataProyek_Tambah_Penjab"))
         self.ivl_DataMaster_DataProyek_Tambah_Penjab = QtGui.QVBoxLayout(self.scontent_DataMaster_DataProyek_Tambah_Penjab)
@@ -2558,7 +2573,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
-        self.st_DataMaster.setCurrentIndex(2)
+        self.st_DataMaster.setCurrentIndex(0)
         self.st_Penjualan.setCurrentIndex(8)
         self.st_Pembelian.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
