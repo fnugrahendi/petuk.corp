@@ -1975,7 +1975,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 	def Penjualan_GoTo_PenawaranHarga_baru(self):
 		self.cb_Penjualan_PenawaranHarga_Baru_Nama.clear()
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PHB)
-		self.Penjualan_PenawaranHarga_Baru_TabelComplete()
+		#self.Penjualan_PenawaranHarga_Baru_TabelComplete()
 		query = "SELECT * FROM gd_nama_alamat"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
 			self.cb_Penjualan_PenawaranHarga_Baru_Nama.addItem(self.DatabaseRunQuery(query)[a][2])
