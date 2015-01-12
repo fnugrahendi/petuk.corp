@@ -687,7 +687,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			datadihapus = str(self.lb_DataMaster_DataNamaAlamat_Nama.text())
 		except:
 			datadihapus = ""
-		self.tb_DataMaster_DataCommon_Delete.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan menghapus data "+datadihapus+" ini?",self.DataMaster_DataNamaAlamat_Delete))
+		self.tb_DataMaster_DataCommon_Delete.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan menghapus data "+datadihapus+" ini?",self.DataMaster_DataNamaAlamat_Delete,500,200,None,None))
 		
 		
 	def DataMaster_DataNamaAlamat_Tambah_Act_Simpan(self):
@@ -768,6 +768,39 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.le_DataMaster_DataProduk_Tambah_KodeBarang.setReadOnly(False)
 		#----------------------------------------------------------------------------------------------------------back to where it should be
 		self.DataMaster_Goto_Common(self.INDEX_ST_DATAMASTER_DATAPRODUK)
+	
+	def DataMaster_DataProduk_Popup_Tambah(self, fcallback_ok=None,fcallback_cancel=None,fcallback_enter=None,fcallback_exit=None):
+		"""
+		Tampilkan popup untuk menambah DataProduk
+		fcallback_enter dieksekusi sebelum membangun popup, (A)
+		fcallback_ok dieksekusi jika ok di klik pada popup (B)
+		fcallback_cancel diekseskusi jika cancel/close diklik pada popup (B)
+		fcallback_exit dieksekusi saat fungsi selesai (B)
+		"""
+		if fcallback_enter==None:
+			fcallback_enter = self.DataMaster_None
+		if fcallback_cancel==None:
+			fcallback_cancel = self.DataMaster_None
+		if fcallback_ok==None:
+			fcallback_ok = self.DataMaster_None
+		if fcallback_exit==None:
+			fcallback_exit = self.DataMaster_None
+		WinW = self.centralwidget.geometry().width()
+		WinH = self.centralwidget.geometry().height()
+		fcallback_enter() #-----A
+		def exit_function():
+			self.fr_DataMaster_DataProduk_Tambah.setParent(None)
+			self.fr_DataMaster_DataProduk_Tambah.setParent(self.st_DataMaster_DataProduk_Tambah)
+			self.ivl_DataMaster_DataProduk_Tambah_Luar.addWidget(self.fr_DataMaster_DataProduk_Tambah)
+			self.fr_DataMaster_DataProduk_Tambah_Fbot.show()
+		self.DataMaster_DataProduk_Tambah_GenerateKode()
+		self.DataMaster_Popup("",functools.partial(self.DataMaster_DataProduk_Popup_Act_Tambah,fcallback_ok),WinW-10,WinH-200,fcallback_exit,fcallback_cancel) #----B
+		
+		FrameWindow = self.findChild(QtGui.QFrame,_fromUtf8("DataMaster_Popup_FrameWindow"))
+		self.fr_DataMaster_DataProduk_Tambah.setParent(FrameWindow)
+		self.fr_DataMaster_DataProduk_Tambah.show()
+		self.fr_DataMaster_DataProduk_Tambah.setGeometry(QtCore.QRect(5,5,WinW-20,WinH-250))
+		self.fr_DataMaster_DataProduk_Tambah_Fbot.hide()
 	
 	def DataMaster_DataProduk_DrawInfo(self,data):
 		#~ def field(fieldname):
@@ -932,7 +965,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			datadihapus = str(self.lb_DataMaster_DataProduk_Nama.text())
 		except:
 			datadihapus = ""
-		self.tb_DataMaster_DataCommon_Delete.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan menghapus data "+datadihapus+" ini?",self.DataMaster_DataProduk_Delete))
+		self.tb_DataMaster_DataCommon_Delete.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan menghapus data "+datadihapus+" ini?",self.DataMaster_DataProduk_Delete,500,200,None,None))
 		
 	
 	def DataMaster_DataProduk_Tambah_GenerateKode(self):
@@ -1165,7 +1198,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			datadihapus = str(self.lb_DataMaster_DataPajak_Nama.text())
 		except:
 			datadihapus = ""
-		self.tb_DataMaster_DataCommon_Delete.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan menghapus data "+datadihapus+" ini?",self.DataMaster_DataPajak_Delete))
+		self.tb_DataMaster_DataCommon_Delete.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan menghapus data "+datadihapus+" ini?",self.DataMaster_DataPajak_Delete,500,200,None,None))
 		
 	
 	def DataMaster_DataProyek_Tambah_Act_Simpan(self):
@@ -1401,7 +1434,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			datadihapus = str(self.lb_DataMaster_DataProyek_Nama.text())
 		except:
 			datadihapus = ""
-		self.tb_DataMaster_DataCommon_Delete.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan menghapus data "+datadihapus+" ini?",self.DataMaster_DataProyek_Delete))
+		self.tb_DataMaster_DataCommon_Delete.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan menghapus data "+datadihapus+" ini?",self.DataMaster_DataProyek_Delete,500,200,None,None))
 	
 	
 	def DataMaster_DataProyek_Edit(self):
@@ -1635,7 +1668,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			datadihapus = str(self.lb_DataMaster_DataSatuanPengukuran_Nama.text())
 		except:
 			datadihapus = ""
-		self.tb_DataMaster_DataCommon_Delete.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan menghapus data "+datadihapus+" ini?",self.DataMaster_DataSatuanPengukuran_Delete))
+		self.tb_DataMaster_DataCommon_Delete.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan menghapus data "+datadihapus+" ini?",self.DataMaster_DataSatuanPengukuran_Delete,500,200,None,None))
 		
 	
 	
