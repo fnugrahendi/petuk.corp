@@ -2025,10 +2025,12 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.cb_Penjualan_OrderPenjualan_Nama.clear()
 		self.cb_Penjualan_OrderPenjualan_Gudang.clear()
 		jumlahRow = self.tbl_Penjualan_OrderPenjualan.rowCount()
+		print jumlahRow
 		if jumlahRow != 0:
 			for a in range (0,jumlahRow):
 				self.tbl_Penjualan_OrderPenjualan.removeRow(a)
 		kodePenjualan = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
+		print kodePenjualan
 		query = "SELECT * FROM gd_nama_alamat"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
 			self.cb_Penjualan_OrderPenjualan_Nama.addItem(self.DatabaseRunQuery(query)[a][2])
@@ -2039,18 +2041,20 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		result = self.DatabaseRunQuery(query) 
 		if len(result) != 0:
 			for a in range(0,len(result)):
-				self.tbl_Penjualan_OrderPenjualan.insertRow(1)
+				print "tambah row"
+				self.tbl_Penjualan_OrderPenjualan.insertRow(a)
 				self.tbl_Penjualan_OrderPenjualan.setItem(a,0,QtGui.QTableWidgetItem(result[a][3])) #kode
-				self.tbl_Penjualan_OrderPenjualan.setItem(a,2,QtGui.QTableWidgetItem(result[a][4])) #jumlah
-				self.tbl_Penjualan_OrderPenjualan.setItem(a,4,QtGui.QTableWidgetItem(result[a][5])) #harga
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][4]))) #jumlah
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][5]))) #harga
 				self.tbl_Penjualan_OrderPenjualan.setItem(a,5,QtGui.QTableWidgetItem(result[a][6])) #diskon
 				total = result[a][4]*result[a][5]
-				self.tbl_Penjualan_OrderPenjualan.setItem(a,6,QtGui.QTableWidgetItem(total)) #total harga
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,6,QtGui.QTableWidgetItem(str(total))) #total harga
 				self.tbl_Penjualan_OrderPenjualan.setItem(a,7,QtGui.QTableWidgetItem(result[a][7]))
 		
 	
 	def Penjualan_GoTo_OP_TambahProduk(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP_TAMBAHPRODUK)
+		print "pindah"
 		self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan.clear()
 		self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.clear()
 		query = "SELECT * FROM gd_data_produk"
@@ -2063,7 +2067,6 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		query = "SELECT * FROM `gd_data_produk` WHERE `namaBarang` LIKE '"+nama+"'"
 		kodeBarang = self.DatabaseRunQuery(query)[0][1]
 		self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Kode.setText(kodeBarang)
-		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
 			
 	def Penjualan_OrderPenjualan_TambahProduk(self):
 		nama = str(self.cb_Penjualan_OrderPenjualan_Nama.currentText())
@@ -2082,9 +2085,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			",`jumlah`,`harga`,`diskon`,`kodePajak`) VALUES"+\
 			"('"+kodeTransaksi+"','"+kodeMatauang+"','"+kodePelanggan+"','"+kodeBarang+"','"+jumlah+"','"+harga+"','"+diskon+"','"+kodePajak+"')"
 		self.DatabaseRunQuery(query)
-		print kodePelanggan
-		print kodePajak
-	
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
+		
 	def Penjualan_GoTo_Pengiriman(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PENGIRIMAN)
 		
