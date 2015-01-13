@@ -28,7 +28,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		
 		def ___metu():
 			exit(0)
-		self.tb_Penjualan_Keluar.clicked.connect(___metu)
+			return True
+		self.tb_Penjualan_Keluar.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan keluar dari aplikasi?",___metu))
         
 		#Tombol pada Halaman Menu
 		self.tb_Penjualan_PenawaranHarga.clicked.connect(self.Penjualan_GoTo_PenawaranHarga)
@@ -95,10 +96,11 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.INDEX_ST_DATAMASTER_DATAPROYEK_TAMBAH = 5
 		self.INDEX_ST_DATAMASTER_DATASATUANPENGUKURAN = 61
 		self.INDEX_ST_DATAMASTER_DATASATUANPENGUKURAN_TAMBAH = 6
+		self.INDEX_ST_DATAMASTER_DATAREKENING = 7
+		self.INDEX_ST_DATAMASTER_DATAREKENING_TAMBAH = 8
 		
 		#init room2
 		#---------------------------------------------------------------Satuan Pengukuran combobox di room Data Produk & room Satuan Pengukuran
-		self.tb_DataMaster_DataRekening.clicked.connect(functools.partial(self.DataMaster_DataProduk_Popup_Tambah,None,None,None,None))
 		
 		self.initDatabase()
 		cursor = self.db.cursor()
@@ -167,6 +169,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.tb_DataMaster_DataSatuanPengukuran.clicked.connect				(functools.partial(self.DataMaster_Goto_Common,self.INDEX_ST_DATAMASTER_DATASATUANPENGUKURAN))
 		self.tb_DataMaster_DataSatuanPengukuran_Tambah_Batal.clicked.connect(functools.partial(self.DataMaster_Goto_Common,self.INDEX_ST_DATAMASTER_DATASATUANPENGUKURAN))
 		self.tb_DataMaster_DataSatuanPengukuran_Tambah_Simpan.clicked.connect(self.DataMaster_DataSatuanPengukuran_Tambah_Act_Simpan)
+		
+		#~ self.tb_DataMaster_DataRekening.clicked.connect(functools.partial(self.DataMaster_DataProduk_Popup_Tambah,None,None,None,None))
+		self.tb_DataMaster_DataRekening.clicked.connect(self.DataMaster_DataRekening)
 		
 		
 		self.tb_DataMaster_DataCommon_Tutup.clicked.connect(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_MENU)
@@ -440,6 +445,32 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 						Tb_ListSatuan[y].clicked.disconnect()
 						Tb_ListSatuan[y].clicked.connect(functools.partial(self.DataMaster_DataSatuanPengukuran_DrawInfo,result[x]))
 		
+	def DataMaster_DataRekening(self):
+		sql = "SELECT * FROM `gd_rekening_jurnal` ORDER BY `gd_rekening_jurnal`.`noAkun` ASC;"
+		result = self.DatabaseRunQuery(sql)
+		self.tw_DataMaster_DataRekening_Fcontent_LRekening.setRowCount(len(result))
+		for row in range(0,len(result)):
+			
+			if (self.tw_DataMaster_DataRekening_Fcontent_LRekening.item(row,0)==None):
+				item = QtGui.QTableWidgetItem()
+				#~ item.setColumnWidth(300)
+				self.tw_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 0, item)
+			if (self.tw_DataMaster_DataRekening_Fcontent_LRekening.item(row,1)==None):
+				itema = QtGui.QTableWidgetItem()
+				self.tw_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 1, itema)
+			if (self.tw_DataMaster_DataRekening_Fcontent_LRekening.item(row,2)==None):
+				itemb = QtGui.QTableWidgetItem()
+				self.tw_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 2, itemb)
+			
+			item = self.tw_DataMaster_DataRekening_Fcontent_LRekening.item(row,0)
+			item.setText(result[row][1])
+			item = self.tw_DataMaster_DataRekening_Fcontent_LRekening.item(row,1)
+			item.setText(result[row][2])
+			item = self.tw_DataMaster_DataRekening_Fcontent_LRekening.item(row,2)
+			item.setText(result[row][3])
+		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAREKENING)
+		#~ functools.partial(self.DataMaster_DataProduk_Popup_Tambah,None,None,None,None)()
+	
 	
 	def DataMaster_DataNamaAlamat_DrawInfo(self,data): #nama,perusahaan,tipe,npwp,diskon,jatuhtempo,diskonawal,dendaketerlambatan,alamat,kodepelanggan
 		#~ def field(fieldname):
@@ -779,14 +810,15 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		fcallback_cancel diekseskusi jika cancel/close diklik pada popup (B)
 		fcallback_exit dieksekusi saat fungsi selesai (C)
 		"""
-		if fcallback_enter==None:
+		if fcallback_enter==None or fcallback_enter==False:
 			fcallback_enter = self.DataMaster_None
-		if fcallback_cancel==None:
+		if fcallback_cancel==None or fcallback_cancel==False:
 			fcallback_cancel = self.DataMaster_None
-		if fcallback_ok==None:
+		if fcallback_ok==None or fcallback_ok==False:
 			fcallback_ok = self.DataMaster_None
-		if fcallback_exit==None:
+		if fcallback_exit==None or fcallback_exit==False:
 			fcallback_exit = self.DataMaster_None
+			
 		WinW = self.centralwidget.geometry().width()
 		WinH = self.centralwidget.geometry().height()
 		fcallback_enter() #-----A
@@ -1748,13 +1780,13 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		fcallback_cancel diekseskusi jika cancel/close diklik pada popup (B)
 		fcallback_exit dieksekusi saat fungsi selesai (C)
 		"""
-		if fcallback_enter==None:
+		if fcallback_enter==None or fcallback_enter==False:
 			fcallback_enter = self.DataMaster_None
-		if fcallback_cancel==None:
+		if fcallback_cancel==None or fcallback_cancel==False:
 			fcallback_cancel = self.DataMaster_None
-		if fcallback_ok==None:
+		if fcallback_ok==None or fcallback_ok==False:
 			fcallback_ok = self.DataMaster_None
-		if fcallback_exit==None:
+		if fcallback_exit==None or fcallback_exit==False:
 			fcallback_exit = self.DataMaster_None
 		WinW = self.centralwidget.geometry().width()
 		WinH = self.centralwidget.geometry().height()
@@ -1833,6 +1865,19 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATANAMAALAMAT_TAMBAH)
 		
 	def DataMaster_Popup(self,text,function_callback,FW=500,FH=200,function_exit=None,function_close=None):
+		#~ print FW
+		#~ print FH
+		#~ print function_exit
+		#~ print function_close
+		if (FW == False):
+			FW = 500
+		if (FH == False):
+			FH = 500
+		if function_exit==False:
+			function_exit = self.DataMaster_None
+		if function_close==False:
+			function_close = self.DataMaster_None
+			
 		WinW = self.centralwidget.geometry().width()
 		WinH = self.centralwidget.geometry().height()
 		if (function_close==None):
