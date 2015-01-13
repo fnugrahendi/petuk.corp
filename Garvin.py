@@ -477,15 +477,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		
 		
 		def _SetActiveIndex(a,b):
-			print a
-			print b
 			kode = str(self.tw_DataMaster_DataRekening_Fcontent_LRekening.item(a,0).text())
-			print kode
 			sql = "SELECT * FROM `gd_rekening_jurnal` WHERE `noAkun` LIKE '"+kode+"' ;"
-			print sql
 			res = self.DatabaseRunQuery(sql)
 			self.DataMaster_DataRekening_Edit_idEDIT = res[0][0]
-			print self.DataMaster_DataRekening_Edit_idEDIT
 			return
 		#~ def aaaaa(z):
 			#~ z.setText("aaa")
