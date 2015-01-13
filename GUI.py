@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Tue Jan 13 15:20:34 2015
+# Created: Tue Jan 13 15:45:50 2015
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -1965,9 +1965,9 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addItem(spacerItem14, 0, 3, 1, 1)
         spacerItem15 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.gridLayout_3.addItem(spacerItem15, 0, 2, 1, 1)
-        self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Nama = QtGui.QLineEdit(self.fr_Penjualan_OrderPenjualan_TambahProduk_Input)
-        self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.setObjectName(_fromUtf8("le_Penjualan_OrderPenjualan_TambahProduk_Input_Nama"))
-        self.gridLayout_3.addWidget(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Nama, 1, 1, 1, 2)
+        self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama = QtGui.QComboBox(self.fr_Penjualan_OrderPenjualan_TambahProduk_Input)
+        self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.setObjectName(_fromUtf8("cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama"))
+        self.gridLayout_3.addWidget(self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama, 1, 1, 1, 1)
         self.verticalLayout_7.addWidget(self.fr_Penjualan_OrderPenjualan_TambahProduk_Input)
         self.fr_Penjualan_OrderPenjualan_TambahProduk_Tombol = QtGui.QFrame(self.st_Penjualan_PenawaranHarga_Baru_TambahProduk)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Maximum)

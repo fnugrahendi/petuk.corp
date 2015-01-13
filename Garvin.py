@@ -2033,21 +2033,37 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 	def Penjualan_GoTo_OP_TambahProduk(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP_TAMBAHPRODUK)
 		self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan.clear()
+		self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.clear()
+		query = "SELECT * FROM gd_data_produk"
+		for a in range(0,len(self.DatabaseRunQuery(query))):
+			self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.addItem(self.DatabaseRunQuery(query)[a][5])
 		query = "SELECT * FROM gd_satuan_pengukuran"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
 			self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan.addItem(self.DatabaseRunQuery(query)[a][1])
+		nama = str(self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.currentText())
+		query = "SELECT * FROM `gd_data_produk` WHERE `namaBarang` LIKE '"+nama+"'"
+		kodeBarang = self.DatabaseRunQuery(query)[0][1]
+		self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Kode.setText(kodeBarang)
 			
 	def Penjualan_OrderPenjualan_TambahProduk(self):
 		nama = str(self.cb_Penjualan_OrderPenjualan_Nama.currentText())
 		query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
-		kodePelanggan = self.DatabaseRunQuery(query)[a][1]
+		kodePelanggan = self.DatabaseRunQuery(query)[0][1]
+		kodeTransaksi = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
 		kodeBarang = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Kode.text())
 		jumlah = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Jumlah.text())
 		harga = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Harga.text())
 		diskon = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Diskon.text())
 		pajak = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Pajak.text())
 		query = "SELECT * FROM `gd_data_pajak` WHERE `namaPajak` LIKE '"+pajak+"'"
-		kodePajak = self.DatabaseRunQuery(query)[a][1]
+		kodePajak = str(self.DatabaseRunQuery(query)[0][1])
+		kodeMatauang = str(self.cb_Penjualan_OrderPenjualan_Kurs.currentText())
+		query = "INSERT INTO `gd_order_penjualan` (`kodeTransaksi`,`kodeMatauang`,`kodePelanggan`,`kodeBarang`"+\
+			",`jumlah`,`harga`,`diskon`,`kodePajak`) VALUES"+\
+			"('"+kodeTransaksi+"','"+kodeMatauang+"','"+kodePelanggan+"','"+kodeBarang+"','"+jumlah+"','"+harga+"','"+diskon+"','"+kodePajak+"')"
+		self.DatabaseRunQuery(query)
+		print kodePelanggan
+		print kodePajak
 	
 	def Penjualan_GoTo_Pengiriman(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PENGIRIMAN)
@@ -2067,7 +2083,6 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 	def Penjualan_GoTo_PenawaranHarga_baru(self):
 		self.cb_Penjualan_PenawaranHarga_Baru_Nama.clear()
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PHB)
-		#self.Penjualan_PenawaranHarga_Baru_TabelComplete()
 		query = "SELECT * FROM gd_nama_alamat"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
 			self.cb_Penjualan_PenawaranHarga_Baru_Nama.addItem(self.DatabaseRunQuery(query)[a][2])

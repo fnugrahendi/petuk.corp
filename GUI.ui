@@ -4461,8 +4461,8 @@ QPushButton::hover{
                    </property>
                   </spacer>
                  </item>
-                 <item row="1" column="1" colspan="2">
-                  <widget class="QLineEdit" name="le_Penjualan_OrderPenjualan_TambahProduk_Input_Nama"/>
+                 <item row="1" column="1">
+                  <widget class="QComboBox" name="cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama"/>
                  </item>
                 </layout>
                </widget>
