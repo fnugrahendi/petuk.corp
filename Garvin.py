@@ -210,9 +210,22 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		
 		#---------------------------------------------------------------Buku Besar init 
 		#init konstanta index
+		def BukuBesarInit():
+			"""bookmark baris"""
+			pass
 		self.INDEX_ST_BUKUBESAR_MENU = 0
 		self.INDEX_ST_BUKUBESAR_DAFTARTRANSAKSIJURNAL = 1
+		self.INDEX_ST_BUKUBESAR_DAFTARTRANSAKSIJURNAL_TAMBAH = 2
+		
+		self.BukuBesar_DaftarTransaksiJurnal_idEDIT = -1
 		self.tb_BukuBesar_DaftarTransaksiJurnal.clicked.connect(functools.partial(self.BukuBesar_DaftarTransaksiJurnal))
+		self.st_BukuBesar.setCurrentIndex(0)
+		
+		result = self.DatabaseRunQuery("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_transaksi_jurnal';")
+		self.BukuBesar_TransaksiJurnal_Field = list(itertools.chain.from_iterable(result))
+		
+		result = self.DatabaseRunQuery("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_detail_transaksi_jurnal';")
+		self.BukuBesar_DetailTransaksiJurnal_Field = list(itertools.chain.from_iterable(result))
 		
 	#-------------------------------------------------------------------DataMaster
 	#-------------------------------------------------------------------DataMaster
@@ -1991,10 +2004,11 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.dbUser = "gd_user_akunting"
 		try:
 			self.db = MySQLdb.connect(self.dbHost,self.dbUser,self.dbPass,self.dbDatabase)
-			#print ("Success")
+			print ("connected database to generic mysql port")
 		except:
 			try:
 				self.db = MySQLdb.Connect(host=self.dbHost, port=self.dbPort, user=self.dbUser, passwd=self.dbPass, db=self.dbDatabase)
+				print ("connected database to default port")
 			except:
 				print ("This software should be ran with correct procedure. Contact customer service for help.")
 				print ("run mysql? only works on makin's platform (y/n)")
@@ -2171,50 +2185,110 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		return
 	
 	def BukuBesar_DaftarTransaksiJurnal(self):
+		"""Draw info Daftar Transaksi Jurnal """
 		self.st_BukuBesar.setCurrentIndex(self.INDEX_ST_BUKUBESAR_DAFTARTRANSAKSIJURNAL)
 		result = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal`")
-		
-		
+		field = self.BukuBesar_TransaksiJurnal_Field.index
+		CTANGGAL = 0
+		CNOMOR_REFERENSI = 1
+		CKETERANGAN = 2
+		CNILAI = 3
 		self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setRowCount(len(result))
 		for row in range(0,len(result)):
 			
-			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,0)==None):
+			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CTANGGAL)==None):
 				item = QtGui.QTableWidgetItem()
-				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, 0, item)
-			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,1)==None):
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, CTANGGAL, item)
+			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CNOMOR_REFERENSI)==None):
 				item = QtGui.QTableWidgetItem()
-				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, 1, item)
-			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,2)==None):
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, CNOMOR_REFERENSI, item)
+			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CKETERANGAN)==None):
 				item = QtGui.QTableWidgetItem()
-				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, 2, item)
-			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,3)==None):
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, CKETERANGAN, item)
+			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CNILAI)==None):
 				item = QtGui.QTableWidgetItem()
-				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, 3, item)
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, CNILAI, item)
 			
-			item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,0)
-			item.setText(str(result[row][1]))
-			item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,1)
-			item.setText(str(result[row][2]))
-			item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,2)
-			item.setText(str(result[row][3]))
-			item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,3)
-			item.setText(str(result[row][3]))
-		def _SetActiveIndexa(a,b):
-			dt = str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(a,0).text())
-		def _EditCertainCell(a,b):
-			dt = str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(a,0).text())
+			item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CTANGGAL)
+			item.setText(str(result[row][field("tanggal")]))
+			item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CNOMOR_REFERENSI)
+			item.setText(str(result[row][CNOMOR_REFERENSI]))
+			item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CKETERANGAN)
+			item.setText(str(result[row][CKETERANGAN]))
+			item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CNILAI)
+			item.setText(str(result[row][CNILAI]))
+		def _SetActiveIndex(a,b):
+			return
+			dt = str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(a,1).text())
 			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.setText(dt)
-			self.st_BukuBesar.setCurrentIndex(2)
-			None
+			self.BukuBesar_DaftarTransaksiJurnal_idEDIT = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal` WHERE `kodeTransaksi` LIKE '"+dt+"' ;")[0][0] #id always field 0
+		def _EditCertainCell(a,b):
+			nomorreferensi = str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(a,CNOMOR_REFERENSI).text())
+			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.setText(nomorreferensi)
+			tanggal = str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(a,CTANGGAL).text())
+			self.dte_BukuBesar_DaftarTransaksiJurnal_Tambah_Tanggal.setDateTime(QDateTime.fromString(tanggal,"yyyy-MM-dd hh:mm:ss"))
+			ket = str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(a,CKETERANGAN).text())
+			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_Keterangan.setText(ket)
+			self.BukuBesar_DaftarTransaksiJurnal_idEDIT = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal` WHERE `kodeTransaksi` LIKE '"+nomorreferensi+"' ;")[0][0] #id always field 0
+			self.BukuBesar_DaftarTransaksiJurnal_Tambah()
+			return
+		
+		self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setColumnWidth(0,400)#check this miracle out!
+		
 		#--------------------Data Rekening tabel
-		QtCore.QObject.disconnect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List,QtCore.SIGNAL(_fromUtf8("cellClicked(int,int)")),_SetActiveIndexa)
-		#~ QtCore.QObject.connect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List, QtCore.SIGNAL(_fromUtf8("cellClicked(int,int)")), _SetActiveIndexa)
-		#~ QtCore.QObject.connect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List, QtCore.SIGNAL(_fromUtf8("cellClicked(int,int)")), _SetActiveIndexa)
-		self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.cellClicked.connect(_SetActiveIndexa)
+		try:
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.cellClicked.disconnect()
+		except:
+			pass
+		try:
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.cellDoubleClicked.disconnect()
+		except:
+			pass
+		self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.cellClicked.connect(_SetActiveIndex)
 		self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.cellDoubleClicked.connect(_EditCertainCell)
-		#~ QtCore.QObject.connect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List, QtCore.SIGNAL(_fromUtf8("cellDoubleClicked(int,int)")), _EditCertainCell)
 		
+	def BukuBesar_DaftarTransaksiJurnal_Tambah(self):
+		""" masuk & kontrol Room tambah Daftar Transaksi jurnal """
+		self.st_BukuBesar.setCurrentIndex(self.INDEX_ST_BUKUBESAR_DAFTARTRANSAKSIJURNAL_TAMBAH)
+		field = self.BukuBesar_DetailTransaksiJurnal_Field.index
+		CKODE_AKUN = 0
+		CNAMA_AKUN = 1
+		CDEPARTEMEN = 2
+		CDEBIT = 3
+		CKREDIT = 4
 		
+		if (self.BukuBesar_DaftarTransaksiJurnal_idEDIT > -1):
+			sql = "SELECT * FROM `gd_detail_transaksi_jurnal` WHERE `kodeTransaksi` LIKE '"+str(self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.text())+"' ;"
+			result = self.DatabaseRunQuery(sql)
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setRowCount(len(result))
+			for r in range(0,len(result)):
+				if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CKODE_AKUN)==None):
+					item = QtGui.QTableWidgetItem()
+					self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(r, CKODE_AKUN, item)
+				if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CNAMA_AKUN)==None):
+					item = QtGui.QTableWidgetItem()
+					self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(r, CNAMA_AKUN, item)
+				if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CDEPARTEMEN)==None):
+					item = QtGui.QTableWidgetItem()
+					self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(r, CDEPARTEMEN, item)
+				if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CDEBIT)==None):
+					item = QtGui.QTableWidgetItem()
+					self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(r, CDEBIT, item)
+				if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CKREDIT)==None):
+					item = QtGui.QTableWidgetItem()
+					self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(r, CKREDIT, item)
+					
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CKODE_AKUN).setText(str(result[r][field("noAkunJurnal")]))
+				sql = "SELECT * FROM `gd_rekening_jurnal` WHERE `noAkun` LIKE '"+str(result[r][field("noAkunJurnal")])+"' ;"
+				namaAkun = self.DatabaseRunQuery(sql)[0][self.DataMaster_DataRekening_Field.index("namaAkun")]
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CNAMA_AKUN).setText(str(namaAkun))
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CDEPARTEMEN).setText(str(result[r][field("kodeDepartemen")]))
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CDEBIT).setText(str(result[r][field("debit")]))
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,4).setText(str(result[r][field("kredit")]))
+				
+		
+		return
+	
 	def DatabaseRunQuery(self,query):
 		self.initDatabase()
 		cursor = self.db.cursor()

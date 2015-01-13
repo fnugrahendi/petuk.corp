@@ -41,7 +41,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="tab_DataMaster">
          <attribute name="title">
@@ -317,8 +317,8 @@ QPushButton::hover{
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>332</width>
-                         <height>411</height>
+                         <width>250</width>
+                         <height>30</height>
                         </rect>
                        </property>
                        <property name="styleSheet">
@@ -2321,8 +2321,8 @@ QPushButton::hover{
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>69</width>
-                      <height>424</height>
+                      <width>100</width>
+                      <height>200</height>
                      </rect>
                     </property>
                     <property name="styleSheet">
@@ -6278,13 +6278,13 @@ QPushButton::hover{
                       </property>
                       <property name="minimumSize">
                        <size>
-                        <width>200</width>
+                        <width>300</width>
                         <height>0</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>200</width>
+                        <width>300</width>
                         <height>16777215</height>
                        </size>
                       </property>
@@ -6562,7 +6562,7 @@ QPushButton::hover{
                        </font>
                       </property>
                       <property name="text">
-                       <string>Daftar Transaksi Jurnal</string>
+                       <string>Jurnal Umum</string>
                       </property>
                      </widget>
                     </item>
@@ -6616,18 +6616,14 @@ QPushButton::hover{
                      <widget class="QLineEdit" name="le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi">
                       <property name="minimumSize">
                        <size>
-                        <width>0</width>
+                        <width>200</width>
                         <height>24</height>
                        </size>
                       </property>
-                     </widget>
-                    </item>
-                    <item row="2" column="1">
-                     <widget class="QLineEdit" name="le_BukuBesar_DaftarTransaksiJurnal_Tambah_Tanggal">
-                      <property name="minimumSize">
+                      <property name="maximumSize">
                        <size>
-                        <width>0</width>
-                        <height>24</height>
+                        <width>200</width>
+                        <height>16777215</height>
                        </size>
                       </property>
                      </widget>
@@ -6663,6 +6659,25 @@ QPushButton::hover{
                       </property>
                      </widget>
                     </item>
+                    <item row="2" column="1">
+                     <widget class="QDateTimeEdit" name="dte_BukuBesar_DaftarTransaksiJurnal_Tambah_Tanggal">
+                      <property name="minimumSize">
+                       <size>
+                        <width>200</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>200</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="calendarPopup">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
                    </layout>
                   </widget>
                  </item>
@@ -6681,7 +6696,7 @@ QPushButton::hover{
                    </row>
                    <column>
                     <property name="text">
-                     <string>Kode</string>
+                     <string>Kode Akun</string>
                     </property>
                    </column>
                    <column>
