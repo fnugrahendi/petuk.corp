@@ -212,7 +212,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		#init konstanta index
 		self.INDEX_ST_BUKUBESAR_MENU = 0
 		self.INDEX_ST_BUKUBESAR_DAFTARTRANSAKSIJURNAL = 1
-		self.tb_BukuBesar_DaftarTransaksiJurnal.clicked.connect(functools.partial(self.BukuBesar_Goto,self.INDEX_ST_BUKUBESAR_DAFTARTRANSAKSIJURNAL))
+		self.tb_BukuBesar_DaftarTransaksiJurnal.clicked.connect(functools.partial(self.BukuBesar_DaftarTransaksiJurnal))
 		
 	#-------------------------------------------------------------------DataMaster
 	#-------------------------------------------------------------------DataMaster
@@ -2122,8 +2122,50 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.st_BukuBesar.setCurrentIndex(st_index)
 		return
 	
-
-
+	def BukuBesar_DaftarTransaksiJurnal(self):
+		self.st_BukuBesar.setCurrentIndex(self.INDEX_ST_BUKUBESAR_DAFTARTRANSAKSIJURNAL)
+		result = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal`")
+		
+		
+		self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setRowCount(len(result))
+		for row in range(0,len(result)):
+			
+			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,0)==None):
+				item = QtGui.QTableWidgetItem()
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, 0, item)
+			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,1)==None):
+				item = QtGui.QTableWidgetItem()
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, 1, item)
+			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,2)==None):
+				item = QtGui.QTableWidgetItem()
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, 2, item)
+			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,3)==None):
+				item = QtGui.QTableWidgetItem()
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, 3, item)
+			
+			item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,0)
+			item.setText(str(result[row][1]))
+			item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,1)
+			item.setText(str(result[row][2]))
+			item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,2)
+			item.setText(str(result[row][3]))
+			item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,3)
+			item.setText(str(result[row][3]))
+		def _SetActiveIndexa(a,b):
+			dt = str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(a,0).text())
+		def _EditCertainCell(a,b):
+			dt = str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(a,0).text())
+			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.setText(dt)
+			self.st_BukuBesar.setCurrentIndex(2)
+			None
+		#--------------------Data Rekening tabel
+		QtCore.QObject.disconnect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List,QtCore.SIGNAL(_fromUtf8("cellClicked(int,int)")),_SetActiveIndexa)
+		#~ QtCore.QObject.connect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List, QtCore.SIGNAL(_fromUtf8("cellClicked(int,int)")), _SetActiveIndexa)
+		#~ QtCore.QObject.connect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List, QtCore.SIGNAL(_fromUtf8("cellClicked(int,int)")), _SetActiveIndexa)
+		self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.cellClicked.connect(_SetActiveIndexa)
+		self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.cellDoubleClicked.connect(_EditCertainCell)
+		#~ QtCore.QObject.connect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List, QtCore.SIGNAL(_fromUtf8("cellDoubleClicked(int,int)")), _EditCertainCell)
+		
 		
 	def DatabaseRunQuery(self,query):
 		self.initDatabase()

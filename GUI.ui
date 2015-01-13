@@ -41,7 +41,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="tab_DataMaster">
          <attribute name="title">
@@ -2319,7 +2319,7 @@ QPushButton::hover{
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
+                      <width>30</width>
                       <height>200</height>
                      </rect>
                     </property>
@@ -6363,6 +6363,9 @@ QPushButton::hover{
                    <layout class="QVBoxLayout" name="ivl_BukuBesar_DaftarTransaksiJurnal_Fcontent">
                     <item>
                      <widget class="QTableWidget" name="tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List">
+                      <property name="editTriggers">
+                       <set>QAbstractItemView::NoEditTriggers</set>
+                      </property>
                       <row>
                        <property name="text">
                         <string>1</string>
@@ -6427,6 +6430,29 @@ QPushButton::hover{
                      <number>1</number>
                     </property>
                     <item>
+                     <widget class="QPushButton" name="tb_BukuBesar_DaftarTransaksiJurnal_Buka">
+                      <property name="text">
+                       <string>Buka</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="hs_BukuBesar_DaftarTransaksiJurnal_Fb_SpL">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Fixed</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
                      <widget class="QPushButton" name="tb_BukuBesar_DaftarTransaksiJurnal_Tambah">
                       <property name="text">
                        <string>Tambah</string>
@@ -6452,6 +6478,311 @@ QPushButton::hover{
                        </size>
                       </property>
                      </spacer>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="st_BukuBesar_DaftarTransaksiJurnal_Tambah">
+             <layout class="QVBoxLayout" name="ivl_BukuBesar_DaftarTransaksiJurnal_Tambah_Luar">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="margin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QFrame" name="fr_BukuBesar_DaftarTransaksiJurnal_Tambah">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="ivl_BukuBesar_DaftarTransaksiJurnal_Tambah_Dalam">
+                 <property name="spacing">
+                  <number>2</number>
+                 </property>
+                 <property name="margin">
+                  <number>1</number>
+                 </property>
+                 <item>
+                  <widget class="QFrame" name="fr_BukuBesar_DaftarTransaksiJurnal_Tambah_Ft">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>1</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="ihl_BukuBesar_DaftarTransaksiJurnal_Tambah_Ft">
+                    <item>
+                     <widget class="QLabel" name="lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Ft_Judul">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>1</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>200</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>200</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>18</pointsize>
+                        <weight>75</weight>
+                        <italic>false</italic>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Daftar Transaksi Jurnal</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="hs_BukuBesar_DaftarTransaksiJurnal_Tambah_Ft_sp">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>377</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="fr_BukuBesar_DaftarTransaksiJurnal_Tambah_Fcontent">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>1</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>100</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>100</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QFormLayout" name="ifl_BukuBesar_DaftarTransaksiJurnal_Tambah_Fcontent">
+                    <property name="verticalSpacing">
+                     <number>4</number>
+                    </property>
+                    <item row="1" column="1">
+                     <widget class="QLineEdit" name="le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="QLineEdit" name="le_BukuBesar_DaftarTransaksiJurnal_Tambah_Tanggal">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="1">
+                     <widget class="QLineEdit" name="le_BukuBesar_DaftarTransaksiJurnal_Tambah_Keterangan">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="3" column="0">
+                     <widget class="QLabel" name="lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Keterangan">
+                      <property name="text">
+                       <string>Keterangan</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Tanggal">
+                      <property name="text">
+                       <string>Tanggal</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="lb_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi">
+                      <property name="text">
+                       <string>Nomor Referensi</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QTableWidget" name="tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>1</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <row>
+                    <property name="text">
+                     <string>1</string>
+                    </property>
+                   </row>
+                   <column>
+                    <property name="text">
+                     <string>Kode</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Nama Akun</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Departemen</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Debit</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Kredit</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="fr_BukuBesar_DaftarTransaksiJurnal_Tambah_Fb">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>1</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="ihl_BukuBesar_DaftarTransaksiJurnal_Tambah_Fb">
+                    <property name="spacing">
+                     <number>2</number>
+                    </property>
+                    <property name="margin">
+                     <number>1</number>
+                    </property>
+                    <item>
+                     <widget class="QPushButton" name="tb_BukuBesar_DaftarTransaksiJurnal_Tambah_TambahBaris">
+                      <property name="text">
+                       <string>Tambah Baris</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Delete">
+                      <property name="text">
+                       <string>Hapus</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="hs_BukuBesar_DaftarTransaksiJurnal_Tambah_Fb_Sp">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>631</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Simpan">
+                      <property name="text">
+                       <string>Simpan</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Batal">
+                      <property name="text">
+                       <string>Batal</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </widget>
