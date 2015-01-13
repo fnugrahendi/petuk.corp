@@ -50,6 +50,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.tb_Penjualan_OrderPenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
 		self.tb_Penjualan_OrderPenjualan_Baru.clicked.connect(self.Penjualan_GoTo_OP_TambahProduk)
 		self.tb_Penjualan_OrderPenjualan_TambahProduk_Batal.clicked.connect(self.Penjualan_GoTo_OrderPenjualan)
+		self.tb_Penjualan_OrderPenjualan_TambahProduk_Simpan.clicked.connect(self.Penjualan_OrderPenjualan_TambahProduk)
 		
 		self.tb_Penjualan_Pengiriman_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
 		self.tb_Penjualan_Pengiriman_Baru.clicked.connect(self.Penjualan_GoTo_Pengiriman_Baru)
@@ -2031,6 +2032,22 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 	
 	def Penjualan_GoTo_OP_TambahProduk(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP_TAMBAHPRODUK)
+		self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan.clear()
+		query = "SELECT * FROM gd_satuan_pengukuran"
+		for a in range(0,len(self.DatabaseRunQuery(query))):
+			self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan.addItem(self.DatabaseRunQuery(query)[a][1])
+			
+	def Penjualan_OrderPenjualan_TambahProduk(self):
+		nama = str(self.cb_Penjualan_OrderPenjualan_Nama.currentText())
+		query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
+		kodePelanggan = self.DatabaseRunQuery(query)[a][1]
+		kodeBarang = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Kode.text())
+		jumlah = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Jumlah.text())
+		harga = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Harga.text())
+		diskon = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Diskon.text())
+		pajak = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Pajak.text())
+		query = "SELECT * FROM `gd_data_pajak` WHERE `namaPajak` LIKE '"+pajak+"'"
+		kodePajak = self.DatabaseRunQuery(query)[a][1]
 	
 	def Penjualan_GoTo_Pengiriman(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PENGIRIMAN)

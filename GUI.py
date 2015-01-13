@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Tue Jan 13 14:49:01 2015
+# Created: Tue Jan 13 15:20:34 2015
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -986,7 +986,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataProyek_Tambah_Penjab.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataProyek_Tambah_Penjab.setObjectName(_fromUtf8("sc_DataMaster_DataProyek_Tambah_Penjab"))
         self.scontent_DataMaster_DataProyek_Tambah_Penjab = QtGui.QWidget()
-        self.scontent_DataMaster_DataProyek_Tambah_Penjab.setGeometry(QtCore.QRect(0, 0, 100, 200))
+        self.scontent_DataMaster_DataProyek_Tambah_Penjab.setGeometry(QtCore.QRect(0, 0, 69, 424))
         self.scontent_DataMaster_DataProyek_Tambah_Penjab.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataProyek_Tambah_Penjab.setObjectName(_fromUtf8("scontent_DataMaster_DataProyek_Tambah_Penjab"))
         self.ivl_DataMaster_DataProyek_Tambah_Penjab = QtGui.QVBoxLayout(self.scontent_DataMaster_DataProyek_Tambah_Penjab)
@@ -1950,13 +1950,15 @@ class Ui_MainWindow(object):
         self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Harga = QtGui.QLineEdit(self.fr_Penjualan_OrderPenjualan_TambahProduk_Input)
         self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Harga.setObjectName(_fromUtf8("le_Penjualan_OrderPenjualan_TambahProduk_Input_Harga"))
         self.gridLayout_3.addWidget(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Harga, 4, 1, 1, 1)
-        self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Pajak_2 = QtGui.QLineEdit(self.fr_Penjualan_OrderPenjualan_TambahProduk_Input)
-        self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Pajak_2.setObjectName(_fromUtf8("le_Penjualan_OrderPenjualan_TambahProduk_Input_Pajak_2"))
-        self.gridLayout_3.addWidget(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Pajak_2, 8, 1, 1, 1)
+        self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Diskon = QtGui.QLineEdit(self.fr_Penjualan_OrderPenjualan_TambahProduk_Input)
+        self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Diskon.setObjectName(_fromUtf8("le_Penjualan_OrderPenjualan_TambahProduk_Input_Diskon"))
+        self.gridLayout_3.addWidget(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Diskon, 8, 1, 1, 1)
         self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Pajak = QtGui.QLineEdit(self.fr_Penjualan_OrderPenjualan_TambahProduk_Input)
         self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Pajak.setObjectName(_fromUtf8("le_Penjualan_OrderPenjualan_TambahProduk_Input_Pajak"))
         self.gridLayout_3.addWidget(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Pajak, 9, 1, 1, 1)
         self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan = QtGui.QComboBox(self.fr_Penjualan_OrderPenjualan_TambahProduk_Input)
+        self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan.setEditable(False)
+        self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan.setInsertPolicy(QtGui.QComboBox.InsertAtBottom)
         self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan.setObjectName(_fromUtf8("cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan"))
         self.gridLayout_3.addWidget(self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan, 3, 1, 1, 1)
         spacerItem14 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
@@ -2843,7 +2845,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(1)
-        self.st_DataMaster.setCurrentIndex(1)
+        self.st_DataMaster.setCurrentIndex(3)
         self.st_Penjualan.setCurrentIndex(4)
         self.st_Pembelian.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)

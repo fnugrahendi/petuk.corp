@@ -57,7 +57,7 @@
 	}</string>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="st_DataMaster_Menu">
              <property name="styleSheet">
@@ -2321,8 +2321,8 @@ QPushButton::hover{
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>200</height>
+                      <width>69</width>
+                      <height>424</height>
                      </rect>
                     </property>
                     <property name="styleSheet">
@@ -4420,13 +4420,20 @@ QPushButton::hover{
                   <widget class="QLineEdit" name="le_Penjualan_OrderPenjualan_TambahProduk_Input_Harga"/>
                  </item>
                  <item row="8" column="1">
-                  <widget class="QLineEdit" name="le_Penjualan_OrderPenjualan_TambahProduk_Input_Pajak_2"/>
+                  <widget class="QLineEdit" name="le_Penjualan_OrderPenjualan_TambahProduk_Input_Diskon"/>
                  </item>
                  <item row="9" column="1">
                   <widget class="QLineEdit" name="le_Penjualan_OrderPenjualan_TambahProduk_Input_Pajak"/>
                  </item>
                  <item row="3" column="1">
-                  <widget class="QComboBox" name="cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan"/>
+                  <widget class="QComboBox" name="cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan">
+                   <property name="editable">
+                    <bool>false</bool>
+                   </property>
+                   <property name="insertPolicy">
+                    <enum>QComboBox::InsertAtBottom</enum>
+                   </property>
+                  </widget>
                  </item>
                  <item row="0" column="3">
                   <spacer name="hs_Penjualan_OrderPenjualan_TambahProduk_Input_mid">
