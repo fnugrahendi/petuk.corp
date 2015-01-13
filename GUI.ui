@@ -41,7 +41,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab_DataMaster">
          <attribute name="title">
@@ -57,7 +57,7 @@
 	}</string>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="st_DataMaster_Menu">
              <property name="styleSheet">
@@ -318,7 +318,7 @@ QPushButton::hover{
                          <x>0</x>
                          <y>0</y>
                          <width>332</width>
-                         <height>410</height>
+                         <height>411</height>
                         </rect>
                        </property>
                        <property name="styleSheet">
@@ -687,7 +687,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>150</width>
-                        <height>24</height>
+                        <height>22</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -716,7 +716,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>400</width>
-                        <height>24</height>
+                        <height>22</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -739,7 +739,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>150</width>
-                        <height>24</height>
+                        <height>22</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -782,7 +782,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>150</width>
-                        <height>24</height>
+                        <height>22</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -805,7 +805,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>150</width>
-                        <height>24</height>
+                        <height>22</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -828,7 +828,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>150</width>
-                        <height>26</height>
+                        <height>22</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -860,7 +860,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>150</width>
-                        <height>26</height>
+                        <height>22</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -892,7 +892,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>150</width>
-                        <height>24</height>
+                        <height>22</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -915,7 +915,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>400</width>
-                        <height>24</height>
+                        <height>22</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -938,7 +938,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>150</width>
-                        <height>26</height>
+                        <height>22</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -1080,7 +1080,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>50</width>
-                        <height>34</height>
+                        <height>30</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -1090,7 +1090,9 @@ QPushButton::hover{
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true"/>
+                       <string notr="true">QPushButton{
+	border-radius:15px;
+}</string>
                       </property>
                       <property name="text">
                        <string>Batal</string>
@@ -1216,7 +1218,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>200</width>
-                        <height>24</height>
+                        <height>22</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -1239,7 +1241,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>400</width>
-                        <height>24</height>
+                        <height>22</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -1262,7 +1264,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>400</width>
-                        <height>24</height>
+                        <height>22</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -1285,7 +1287,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>200</width>
-                        <height>24</height>
+                        <height>22</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -1308,7 +1310,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>100</width>
-                        <height>24</height>
+                        <height>22</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -1346,7 +1348,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>200</width>
-                        <height>24</height>
+                        <height>22</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -1369,7 +1371,7 @@ QPushButton::hover{
                       <property name="minimumSize">
                        <size>
                         <width>200</width>
-                        <height>24</height>
+                        <height>22</height>
                        </size>
                       </property>
                       <property name="maximumSize">
@@ -2319,8 +2321,8 @@ QPushButton::hover{
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>200</height>
+                      <width>69</width>
+                      <height>424</height>
                      </rect>
                     </property>
                     <property name="styleSheet">
@@ -2596,7 +2598,7 @@ QPushButton::hover{
                    <property name="minimumSize">
                     <size>
                      <width>200</width>
-                     <height>24</height>
+                     <height>22</height>
                     </size>
                    </property>
                    <property name="maximumSize">
@@ -2631,7 +2633,7 @@ QPushButton::hover{
                    <property name="minimumSize">
                     <size>
                      <width>500</width>
-                     <height>24</height>
+                     <height>22</height>
                     </size>
                    </property>
                    <property name="maximumSize">
@@ -2660,7 +2662,7 @@ QPushButton::hover{
                    <property name="minimumSize">
                     <size>
                      <width>500</width>
-                     <height>24</height>
+                     <height>22</height>
                     </size>
                    </property>
                    <property name="maximumSize">
@@ -2676,7 +2678,7 @@ QPushButton::hover{
                    <property name="minimumSize">
                     <size>
                      <width>200</width>
-                     <height>24</height>
+                     <height>22</height>
                     </size>
                    </property>
                    <property name="maximumSize">
@@ -2711,7 +2713,7 @@ QPushButton::hover{
                    <property name="minimumSize">
                     <size>
                      <width>200</width>
-                     <height>26</height>
+                     <height>22</height>
                     </size>
                    </property>
                    <property name="maximumSize">
@@ -2964,7 +2966,7 @@ QPushButton::hover{
                    </property>
                    <layout class="QVBoxLayout" name="ivl_DataMaster_DataRekening_Fcontent">
                     <item>
-                     <widget class="QTableWidget" name="tbl_DataMaster_DataRekening_Fcontent_LRekening">
+                     <widget class="QTableWidget" name="tw_DataMaster_DataRekening_Fcontent_LRekening">
                       <property name="editTriggers">
                        <set>QAbstractItemView::NoEditTriggers</set>
                       </property>
@@ -3188,7 +3190,7 @@ QPushButton::hover{
           <item>
            <widget class="QStackedWidget" name="st_Penjualan">
             <property name="currentIndex">
-             <number>4</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="st_Penjualan_Menu">
              <layout class="QHBoxLayout" name="horizontalLayout">
@@ -6192,278 +6194,9 @@ QPushButton::hover{
          </layout>
         </widget>
         <widget class="QWidget" name="tab_BukuBesar">
-         <property name="styleSheet">
-          <string notr="true">QFrame{
-	border-style:none;
-	border-width:0px;
-	}</string>
-         </property>
          <attribute name="title">
           <string>Buku Besar</string>
          </attribute>
-         <layout class="QVBoxLayout" name="verticalLayout_14">
-          <item>
-           <widget class="QStackedWidget" name="st_BukuBesar">
-            <property name="currentIndex">
-             <number>0</number>
-            </property>
-            <widget class="QWidget" name="st_BukuBesar_Menu">
-             <widget class="QPushButton" name="tb_BukuBesar_DaftarTransaksiJurnal">
-              <property name="geometry">
-               <rect>
-                <x>40</x>
-                <y>40</y>
-                <width>211</width>
-                <height>131</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>Daftar Transaksi Jurnal</string>
-              </property>
-             </widget>
-            </widget>
-            <widget class="QWidget" name="st_BukuBesar_DaftarTransaksiJurnal">
-             <layout class="QVBoxLayout" name="ivl_BukuBesar_DaftarTransaksiJurnal_Luar">
-              <property name="spacing">
-               <number>0</number>
-              </property>
-              <property name="margin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QFrame" name="fr_BukuBesar_DaftarTransaksiJurnal">
-                <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
-                </property>
-                <layout class="QVBoxLayout" name="ivl_BukuBesar_DaftarTransaksiJurnal_Dalem">
-                 <property name="spacing">
-                  <number>2</number>
-                 </property>
-                 <property name="margin">
-                  <number>1</number>
-                 </property>
-                 <item>
-                  <widget class="QFrame" name="fr_BukuBesar_DaftarTransaksiJurnal_Ft">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                     <horstretch>0</horstretch>
-                     <verstretch>1</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="ihl_BukuBesar_DaftarTransaksiJurnal_Ft">
-                    <item>
-                     <widget class="QLabel" name="lb_BukuBesar_DaftarTransaksiJurnal_Ft_Judul">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                        <horstretch>0</horstretch>
-                        <verstretch>1</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>200</width>
-                        <height>0</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>200</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="font">
-                       <font>
-                        <pointsize>18</pointsize>
-                        <weight>75</weight>
-                        <italic>false</italic>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>Daftar Transaksi Jurnal</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <spacer name="hs_BukuBesar_DaftarTransaksiJurnal_Ft_Sp">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>377</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item>
-                     <widget class="QLineEdit" name="le_BukuBesar_Search">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>1</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>200</width>
-                        <height>0</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>200</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="placeholderText">
-                       <string>Type to search...</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="fr_BukuBesar_DaftarTransaksiJurnal_Fcontent">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                     <horstretch>0</horstretch>
-                     <verstretch>1</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QVBoxLayout" name="ivl_BukuBesar_DaftarTransaksiJurnal_Fcontent">
-                    <item>
-                     <widget class="QTableWidget" name="tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List">
-                      <row>
-                       <property name="text">
-                        <string>1</string>
-                       </property>
-                      </row>
-                      <column>
-                       <property name="text">
-                        <string>Tanggal</string>
-                       </property>
-                      </column>
-                      <column>
-                       <property name="text">
-                        <string>Nomor Referensi</string>
-                       </property>
-                      </column>
-                      <column>
-                       <property name="text">
-                        <string>Keterangan</string>
-                       </property>
-                      </column>
-                      <column>
-                       <property name="text">
-                        <string>Nilai</string>
-                       </property>
-                      </column>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="fr_BukuBesar_DaftarTransaksiJurnal_Fb">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                     <horstretch>0</horstretch>
-                     <verstretch>1</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="ihl_BukuBesar_DaftarTransaksiJurnal_Fb">
-                    <property name="spacing">
-                     <number>2</number>
-                    </property>
-                    <property name="margin">
-                     <number>1</number>
-                    </property>
-                    <item>
-                     <widget class="QPushButton" name="tb_BukuBesar_DaftarTransaksiJurnal_Tambah">
-                      <property name="text">
-                       <string>Tambah</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QPushButton" name="tb_BukuBesar_DaftarTransaksiJurnal_Delete">
-                      <property name="text">
-                       <string>Hapus</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <spacer name="hs_BukuBesar_DaftarTransaksiJurnal_Fb_Sp">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>631</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </widget>
-          </item>
-         </layout>
         </widget>
        </widget>
       </item>
@@ -6487,7 +6220,7 @@ QPushButton::hover{
      <x>0</x>
      <y>0</y>
      <width>870</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
