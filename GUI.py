@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Tue Jan 13 14:44:17 2015
+# Created: Tue Jan 13 14:49:01 2015
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -2844,7 +2844,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(1)
         self.st_DataMaster.setCurrentIndex(1)
-        self.st_Penjualan.setCurrentIndex(3)
+        self.st_Penjualan.setCurrentIndex(4)
         self.st_Pembelian.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
