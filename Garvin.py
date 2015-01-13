@@ -40,17 +40,18 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.tb_Penjualan_PembayaranPiutang.clicked.connect(self.Penjualan_GoTo_PembayaranPiutang)
 		self.tb_Penjualan_Retur.clicked.connect(self.Penjualan_GoTo_ReturPenjualan)
 		
+		#Tombol pada Halaman PenawaranHarga
 		self.tb_PenawaranHarga_tutup.clicked.connect(self.Penjualan_GoTo_Menu)
 		self.tb_PenawaranHarga_baru.clicked.connect(self.Penjualan_GoTo_PenawaranHarga_baru)
-		#self.tbl_Penjualan_PenawaranHarga_baru.cellChanged.connect(self.Penjualan_PenawaranHarga_Baru_TabelComplete)
-		#QtCore.QObject.connect( self.tbl_Penjualan_PenawaranHarga_baru, QtCore.SIGNAL("cellChanged(int,int)"), self.Penjualan_PenawaranHarga_Baru_TabelComplete)
-		#self.isiKodeBarang.connect(self.Penjualan_PenawaranHarga_Baru_TabelComplete)
-		#self.isiKodeBarang.emit(0,0)
 		
 		self.tb_Penjualan_PenawaranHarga_baru_rekam.clicked.connect(self.Penjualan_PenawaranHarga_Baru_Rekam)
 		self.tb_Penjualan_PenawaranHarga_baru_tutup.clicked.connect(self.Penjualan_GoTo_PenawaranHarga)
 		
+		#Tombol pada Halaman OrderPenjualan
 		self.tb_Penjualan_OrderPenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
+		self.tb_Penjualan_OrderPenjualan_Baru.clicked.connect(self.Penjualan_GoTo_OP_TambahProduk)
+		self.tb_Penjualan_OrderPenjualan_TambahProduk_Batal.clicked.connect(self.Penjualan_GoTo_OrderPenjualan)
+		self.tb_Penjualan_OrderPenjualan_TambahProduk_Simpan.clicked.connect(self.Penjualan_OrderPenjualan_TambahProduk)
 		
 		self.tb_Penjualan_Pengiriman_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
 		self.tb_Penjualan_Pengiriman_Baru.clicked.connect(self.Penjualan_GoTo_Pengiriman_Baru)
@@ -67,13 +68,14 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.INDEX_ST_PENJUALAN_PH = 1
 		self.INDEX_ST_PENJUALAN_PHB = 2
 		self.INDEX_ST_PENJUALAN_OP = 3
-		self.INDEX_ST_PENJUALAN_PENGIRIMAN = 4
-		self.INDEX_ST_PENJUALAN_PENGIRIMANB = 5
-		self.INDEX_ST_PENJUALAN_PU = 6
-		self.INDEX_ST_PENJUALAN_RPU = 7
-		self.INDEX_ST_PENJUALAN_PP = 8
-		self.INDEX_ST_PENJUALAN_PPB = 9
-		self.INDEX_ST_PENJUALAN_RP = 10
+		self.INDEX_ST_PENJUALAN_OP_TAMBAHPRODUK = 4
+		self.INDEX_ST_PENJUALAN_PENGIRIMAN = 5
+		self.INDEX_ST_PENJUALAN_PENGIRIMANB = 6
+		self.INDEX_ST_PENJUALAN_PU = 7
+		self.INDEX_ST_PENJUALAN_RPU = 8
+		self.INDEX_ST_PENJUALAN_PP = 9
+		self.INDEX_ST_PENJUALAN_PPB = 10
+		self.INDEX_ST_PENJUALAN_RP = 11
 		
 		
 		#---------------------------------------------------------------Data Master init
@@ -2020,6 +2022,33 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		
 	def Penjualan_GoTo_OrderPenjualan(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
+		self.cb_Penjualan_OrderPenjualan_Nama.clear()
+		self.cb_Penjualan_OrderPenjualan_Gudang.clear()
+		query = "SELECT * FROM gd_nama_alamat"
+		for a in range(0,len(self.DatabaseRunQuery(query))):
+			self.cb_Penjualan_OrderPenjualan_Nama.addItem(self.DatabaseRunQuery(query)[a][2])
+		query = "SELECT * FROM gd_data_gudang"
+		for a in range(0,len(self.DatabaseRunQuery(query))):
+			self.cb_Penjualan_OrderPenjualan_Gudang.addItem(self.DatabaseRunQuery(query)[a][2])
+	
+	def Penjualan_GoTo_OP_TambahProduk(self):
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP_TAMBAHPRODUK)
+		self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan.clear()
+		query = "SELECT * FROM gd_satuan_pengukuran"
+		for a in range(0,len(self.DatabaseRunQuery(query))):
+			self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan.addItem(self.DatabaseRunQuery(query)[a][1])
+			
+	def Penjualan_OrderPenjualan_TambahProduk(self):
+		nama = str(self.cb_Penjualan_OrderPenjualan_Nama.currentText())
+		query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
+		kodePelanggan = self.DatabaseRunQuery(query)[a][1]
+		kodeBarang = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Kode.text())
+		jumlah = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Jumlah.text())
+		harga = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Harga.text())
+		diskon = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Diskon.text())
+		pajak = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Pajak.text())
+		query = "SELECT * FROM `gd_data_pajak` WHERE `namaPajak` LIKE '"+pajak+"'"
+		kodePajak = self.DatabaseRunQuery(query)[a][1]
 	
 	def Penjualan_GoTo_Pengiriman(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PENGIRIMAN)
