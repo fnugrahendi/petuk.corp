@@ -6205,7 +6205,7 @@ QPushButton::hover{
           <item>
            <widget class="QStackedWidget" name="st_BukuBesar">
             <property name="currentIndex">
-             <number>0</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="st_BukuBesar_Menu">
              <widget class="QPushButton" name="tb_BukuBesar_DaftarTransaksiJurnal">

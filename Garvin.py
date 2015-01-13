@@ -1985,6 +1985,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 	
 	def initDatabase(self):
 		self.dbHost = "127.0.0.1"
+		self.dbPort = 33063
 		self.dbDatabase = "gd_db_akunting"
 		self.dbPass = "nyungsep"
 		self.dbUser = "gd_user_akunting"
@@ -1992,7 +1993,18 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			self.db = MySQLdb.connect(self.dbHost,self.dbUser,self.dbPass,self.dbDatabase)
 			#print ("Success")
 		except:
-			print ("This software should be ran with correct procedure. Contact customer service for help.")
+			try:
+				self.db = MySQLdb.Connect(host=self.dbHost, port=self.dbPort, user=self.dbUser, passwd=self.dbPass, db=self.dbDatabase)
+			except:
+				print ("This software should be ran with correct procedure. Contact customer service for help.")
+				print ("run mysql? only works on makin's platform (y/n)")
+				if (raw_input()=="y"):
+					os.system("start mysql/mysql5.6.12/bin/mysqld --port="+str(self.dbPort))
+					import time
+					time.sleep(3)
+					print "ok"
+					self.db = MySQLdb.Connect(host=self.dbHost, port=self.dbPort, user=self.dbUser, passwd=self.dbPass, db=self.dbDatabase)
+					
 		return
 	
 	
