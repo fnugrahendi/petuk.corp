@@ -31,6 +31,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			return True
 		self.tb_Penjualan_Keluar.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan keluar dari aplikasi?",___metu))
         
+        #---------------------------------------------------------------Penjualan Init Itut
 		#Tombol pada Halaman Menu
 		self.tb_Penjualan_PenawaranHarga.clicked.connect(self.Penjualan_GoTo_PenawaranHarga)
 		self.tb_Penjualan_OrderPenjualan.clicked.connect(self.Penjualan_GoTo_OrderPenjualan)
@@ -77,14 +78,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.INDEX_ST_PENJUALAN_RP = 11
 		
 		
-		#-----------------------------------------------------------------------------------------------------
-		#-----------------------------------------------------------------------------------------------------
-		
-		# 									Data Master init
-		
-		
-		#-----------------------------------------------------------------------------------------------------
-		#-----------------------------------------------------------------------------------------------------
+		#---------------------------------------------------------------Data Master init
 		#init konstanta index
 		self.INDEX_ST_DATAMASTER_MENU = 0
 		self.INDEX_ST_DATAMASTER_COMMON = 1
@@ -104,32 +98,11 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		#init room2
 		#---------------------------------------------------------------Satuan Pengukuran combobox di room Data Produk & room Satuan Pengukuran
 		
-		self.initDatabase()
-		cursor = self.db.cursor()
 		sql = "SELECT * FROM `gd_satuan_pengukuran` "
-		cursor.execute(sql)
-		result = cursor.fetchall()
+		result = self.DatabaseRunQuery(sql)
 		for a in range(0,len(result)):
 			self.cb_DataMaster_DataProduk_Tambah_Satuan.addItem(str(result[a][2])+" (kode: "+result[a][1]+")")
 			self.cb_DataMaster_DataSatuanPengukuran_Tambah_SatuanInduk.addItem(str(result[a][2])+" (kode: "+result[a][1]+")")
-		self.db.close()
-		#---------------------------------------------------------------List pilihan di Data Proyek
-		self.sc_DataMaster_DataProyek_Tambah_Penjab.hide()
-		self.lb_DataMaster_DataProyek_Tambah_PilihPenjab.hide()
-		#~ self.ile_DataMaster_DataProyek_Tambah_PenanggungJawab.hide()
-		self.le_DataMaster_DataProyek_Tambah_KodePenanggungJawab.setReadOnly(True)
-		
-		#---------- Tombol biru: Buka popup tambah
-		#~ self.tb_DataMaster_DataProyek_Tambah_PenanggungJawab.clicked.connect(self.DataMaster_DataProyek_Tambah_Showlist)
-		def ____DataMaster_DataProyek_Tambah_Penjab_Ok():
-			self.le_DataMaster_DataProyek_Tambah_PenanggungJawab.setText(self.le_DataMaster_DataNamaAlamat_Tambah_Nama.text())
-			self.le_DataMaster_DataProyek_Tambah_KodePenanggungJawab.setText(self.le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan.text())
-			
-		self.tb_DataMaster_DataProyek_Tambah_PenanggungJawab.clicked.connect(functools.partial(self.DataMaster_DataNamaAlamat_Popup_Tambah,____DataMaster_DataProyek_Tambah_Penjab_Ok,self.DataMaster_None,self.DataMaster_None,self.DataMaster_None))
-		
-		
-		self.le_DataMaster_DataProyek_Tambah_PenanggungJawab.textEdited.connect(self.DataMaster_DataProyek_Tambah_Showlist_Change)
-		#~ QtCore.QObject.connect(self.le_DataMaster_DataProyek_Tambah_PenanggungJawab, QtCore.SIGNAL(_fromUtf8("editingFinished()")), MainWindow.showFullScreen)
 		
 		#---------------------------------------------------------------DataNamaAlamat
 		self.dte_DataMaster_DataNamaAlamat_Tambah_JatuhTempo.setReadOnly(True)
@@ -140,10 +113,29 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.DataMaster_DataProduk_Edit_idEDIT = -1
 		#---------------------------------------------------------------DataPajak
 		self.DataMaster_DataPajak_Edit_idEDIT = -1
+		
 		#---------------------------------------------------------------DataProyek
+		#List pilihan di Data Proyek
+		self.sc_DataMaster_DataProyek_Tambah_Penjab.hide()
+		self.lb_DataMaster_DataProyek_Tambah_PilihPenjab.hide()
+		#~ self.ile_DataMaster_DataProyek_Tambah_PenanggungJawab.hide()
+		self.le_DataMaster_DataProyek_Tambah_KodePenanggungJawab.setReadOnly(True)
+		
+		#Tombol biru: Buka popup tambah
+		def ____DataMaster_DataProyek_Tambah_Penjab_Ok():
+			self.le_DataMaster_DataProyek_Tambah_PenanggungJawab.setText(self.le_DataMaster_DataNamaAlamat_Tambah_Nama.text())
+			self.le_DataMaster_DataProyek_Tambah_KodePenanggungJawab.setText(self.le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan.text())
+			
+		self.tb_DataMaster_DataProyek_Tambah_PenanggungJawab.clicked.connect(functools.partial(self.DataMaster_DataNamaAlamat_Popup_Tambah,____DataMaster_DataProyek_Tambah_Penjab_Ok,self.DataMaster_None,self.DataMaster_None,self.DataMaster_None))
+		self.le_DataMaster_DataProyek_Tambah_PenanggungJawab.textEdited.connect(self.DataMaster_DataProyek_Tambah_Showlist_Change)
+		#~ QtCore.QObject.connect(self.le_DataMaster_DataProyek_Tambah_PenanggungJawab, QtCore.SIGNAL(_fromUtf8("editingFinished()")), MainWindow.showFullScreen)
 		self.DataMaster_DataProyek_Edit_idEDIT = -1
+		
+		
 		#---------------------------------------------------------------DataSatuan
 		self.DataMaster_DataSatuanPengukuran_Edit_idEDIT = -1
+		
+		
 		#---------------------------------------------------------------DataRekening
 		self.DataMaster_DataRekening_Edit_idEDIT = -1
 		
@@ -153,7 +145,6 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.showFullScreen()
 		
 		#---------------------------------------------------------------sinyal pindah room
-		#~ CLEAR_LINEEDIT=1
 		self.tb_DataMaster_DataNamaAlamat.clicked.connect				(functools.partial(self.DataMaster_Goto_Common,self.INDEX_ST_DATAMASTER_DATANAMAALAMAT))
 		self.tb_DataMaster_DataNamaAlamat_Tambah_Batal.clicked.connect	(functools.partial(self.DataMaster_Goto_Common,self.INDEX_ST_DATAMASTER_DATANAMAALAMAT))
 		self.tb_DataMaster_DataNamaAlamat_Tambah_Simpan.clicked.connect	(self.DataMaster_DataNamaAlamat_Tambah_Act_Simpan)
@@ -182,44 +173,49 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		
 		self.initDatabase()
 		cursor = self.db.cursor()
-		#================================================================================================Get Field gd_nama_alamat
+		#Get Field gd_nama_alamat
 		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_nama_alamat';"
 		cursor.execute(sql)
 		result = cursor.fetchall()
 		self.DataMaster_DataNamaAlamat_Field = list(itertools.chain.from_iterable(result))
-		#================================================================================================Get Field gd_data_produk
+		#Get Field gd_data_produk
 		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_data_produk';"
 		cursor.execute(sql)
 		result = cursor.fetchall()
 		self.DataMaster_DataProduk_Field = list(itertools.chain.from_iterable(result))
-		#================================================================================================Get Field gd_data_pajak
+		#Get Field gd_data_pajak
 		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_data_pajak';"
 		cursor.execute(sql)
 		result = cursor.fetchall()
 		self.DataMaster_DataPajak_Field = list(itertools.chain.from_iterable(result))
-		#================================================================================================Get Field gd_proyek
+		#Get Field gd_proyek
 		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_proyek';"
 		cursor.execute(sql)
 		result = cursor.fetchall()
 		self.DataMaster_DataProyek_Field = list(itertools.chain.from_iterable(result))
-		#================================================================================================Get Field gd_satuan_pengukuran
+		#Get Field gd_satuan_pengukuran
 		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_satuan_pengukuran';"
 		cursor.execute(sql)
 		result = cursor.fetchall()
 		self.DataMaster_DataSatuanPengukuran_Field = list(itertools.chain.from_iterable(result))
-		#================================================================================================Get Field gd_rekening_jurnal
+		#Get Field gd_rekening_jurnal
 		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_rekening_jurnal';"
 		cursor.execute(sql)
 		result = cursor.fetchall()
 		self.DataMaster_DataRekening_Field = list(itertools.chain.from_iterable(result))
-		#--OK
 		self.db.close()
 		
 		self.DataMaster_CommonRoom_cleared = 0
-	
-	#===============
-	#ROOM DataMaster
-	#===============
+		
+		
+		#---------------------------------------------------------------Buku Besar init 
+		#init konstanta index
+		self.INDEX_ST_BUKUBESAR_MENU = 0
+		self.INDEX_ST_BUKUBESAR_DAFTARTRANSAKSIJURNAL = 1
+		self.tb_BukuBesar_DaftarTransaksiJurnal.clicked.connect(functools.partial(self.BukuBesar_Goto,self.INDEX_ST_BUKUBESAR_DAFTARTRANSAKSIJURNAL))
+		
+	#-------------------------------------------------------------------DataMaster
+	#-------------------------------------------------------------------DataMaster
 	def DataMaster_None(self):
 		None
 	def DataMaster_Goto(self,goto_roomID):
@@ -455,31 +451,31 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 	def DataMaster_DataRekening(self):
 		sql = "SELECT * FROM `gd_rekening_jurnal` ORDER BY `gd_rekening_jurnal`.`noAkun` ASC;"
 		result = self.DatabaseRunQuery(sql)
-		self.tw_DataMaster_DataRekening_Fcontent_LRekening.setRowCount(len(result))
+		self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setRowCount(len(result))
 		for row in range(0,len(result)):
 			
-			if (self.tw_DataMaster_DataRekening_Fcontent_LRekening.item(row,0)==None):
+			if (self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,0)==None):
 				item = QtGui.QTableWidgetItem()
 				#~ item.setColumnWidth(300)
-				self.tw_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 0, item)
-			if (self.tw_DataMaster_DataRekening_Fcontent_LRekening.item(row,1)==None):
+				self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 0, item)
+			if (self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,1)==None):
 				itema = QtGui.QTableWidgetItem()
-				self.tw_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 1, itema)
-			if (self.tw_DataMaster_DataRekening_Fcontent_LRekening.item(row,2)==None):
+				self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 1, itema)
+			if (self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,2)==None):
 				itemb = QtGui.QTableWidgetItem()
-				self.tw_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 2, itemb)
+				self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 2, itemb)
 			
-			item = self.tw_DataMaster_DataRekening_Fcontent_LRekening.item(row,0)
+			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,0)
 			item.setText(result[row][1])
-			item = self.tw_DataMaster_DataRekening_Fcontent_LRekening.item(row,1)
+			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,1)
 			item.setText(result[row][2])
-			item = self.tw_DataMaster_DataRekening_Fcontent_LRekening.item(row,2)
+			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,2)
 			item.setText(result[row][3])
 		
 		
 		
 		def _SetActiveIndex(a,b):
-			kode = str(self.tw_DataMaster_DataRekening_Fcontent_LRekening.item(a,0).text())
+			kode = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(a,0).text())
 			sql = "SELECT * FROM `gd_rekening_jurnal` WHERE `noAkun` LIKE '"+kode+"' ;"
 			res = self.DatabaseRunQuery(sql)
 			self.DataMaster_DataRekening_Edit_idEDIT = res[0][0]
@@ -487,10 +483,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		#~ def aaaaa(z):
 			#~ z.setText("aaa")
 		#--------------------Data Rekening tabel
-		QtCore.QObject.disconnect(self.tw_DataMaster_DataRekening_Fcontent_LRekening,QtCore.SIGNAL(_fromUtf8("cellClicked(int,int)")),_SetActiveIndex)
-		#~ QtCore.QObject.disconnect(self.tw_DataMaster_DataRekening_Fcontent_LRekening,QtCore.SIGNAL(_fromUtf8("itemClicked(QTableWidgetItem*)")),aaaaa)
-		QtCore.QObject.connect(self.tw_DataMaster_DataRekening_Fcontent_LRekening, QtCore.SIGNAL(_fromUtf8("cellClicked(int,int)")), _SetActiveIndex)
-		#~ QtCore.QObject.connect(self.tw_DataMaster_DataRekening_Fcontent_LRekening, QtCore.SIGNAL(_fromUtf8("itemClicked(QTableWidgetItem*)")), aaaaa)
+		QtCore.QObject.disconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening,QtCore.SIGNAL(_fromUtf8("cellClicked(int,int)")),_SetActiveIndex)
+		#~ QtCore.QObject.disconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening,QtCore.SIGNAL(_fromUtf8("itemClicked(QTableWidgetItem*)")),aaaaa)
+		QtCore.QObject.connect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening, QtCore.SIGNAL(_fromUtf8("cellClicked(int,int)")), _SetActiveIndex)
+		#~ QtCore.QObject.connect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening, QtCore.SIGNAL(_fromUtf8("itemClicked(QTableWidgetItem*)")), aaaaa)
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAREKENING)
 	
 	
@@ -1998,7 +1994,12 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		except:
 			print ("This software should be ran with correct procedure. Contact customer service for help.")
 		return
-		
+	
+	
+	#-------------------------------------------------------------------Penjualan
+	#-------------------------------------------------------------------Penjualan
+	
+	
 	def Penjualan_GoTo_Menu(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_MENU)
 		
@@ -2127,6 +2128,17 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		
 	def Penjualan_GoTo_PembayaranPiutang_Baru(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PPB)
+
+
+
+	#------------------------------------------------------------------- Buku Besar
+	#------------------------------------------------------------------- Buku Besar
+	def BukuBesar_Goto(self,st_index):
+		self.st_BukuBesar.setCurrentIndex(st_index)
+		return
+	
+
+
 		
 	def DatabaseRunQuery(self,query):
 		self.initDatabase()
