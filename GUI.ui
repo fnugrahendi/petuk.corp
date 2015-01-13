@@ -3190,7 +3190,7 @@ QPushButton::hover{
           <item>
            <widget class="QStackedWidget" name="st_Penjualan">
             <property name="currentIndex">
-             <number>4</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="st_Penjualan_Menu">
              <layout class="QHBoxLayout" name="horizontalLayout">
@@ -4461,7 +4461,7 @@ QPushButton::hover{
                </widget>
               </item>
               <item>
-               <widget class="QFrame" name="frame_3">
+               <widget class="QFrame" name="fr_Penjualan_OrderPenjualan_TambahProduk_Tombol">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
                   <horstretch>0</horstretch>
@@ -4476,21 +4476,21 @@ QPushButton::hover{
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_3">
                  <item>
-                  <widget class="QPushButton" name="pushButton">
+                  <widget class="QPushButton" name="tb_Penjualan_OrderPenjualan_TambahProduk_Baru">
                    <property name="text">
                     <string>Baru</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_2">
+                  <widget class="QPushButton" name="tb_Penjualan_OrderPenjualan_TambahProduk_Simpan">
                    <property name="text">
                     <string>Simpan</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <spacer name="horizontalSpacer_11">
+                  <spacer name="hs_Penjualan_OrderPenjualan_TambahProduk_Tombol">
                    <property name="orientation">
                     <enum>Qt::Horizontal</enum>
                    </property>
@@ -4503,7 +4503,7 @@ QPushButton::hover{
                   </spacer>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_3">
+                  <widget class="QPushButton" name="tb_Penjualan_OrderPenjualan_TambahProduk_Batal">
                    <property name="text">
                     <string>Batal</string>
                    </property>
