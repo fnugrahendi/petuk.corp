@@ -142,6 +142,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.DataMaster_DataProyek_Edit_idEDIT = -1
 		#---------------------------------------------------------------DataSatuan
 		self.DataMaster_DataSatuanPengukuran_Edit_idEDIT = -1
+		#---------------------------------------------------------------DataRekening
+		self.DataMaster_DataRekening_Edit_idEDIT = -1
+		
+		
 		#----------------------------------------------------------------Set index and window size
 		self.st_DataMaster.setCurrentIndex(self.INDEX_ST_DATAMASTER_MENU)
 		self.showFullScreen()
@@ -170,9 +174,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.tb_DataMaster_DataSatuanPengukuran_Tambah_Batal.clicked.connect(functools.partial(self.DataMaster_Goto_Common,self.INDEX_ST_DATAMASTER_DATASATUANPENGUKURAN))
 		self.tb_DataMaster_DataSatuanPengukuran_Tambah_Simpan.clicked.connect(self.DataMaster_DataSatuanPengukuran_Tambah_Act_Simpan)
 		
-		#~ self.tb_DataMaster_DataRekening.clicked.connect(functools.partial(self.DataMaster_DataProduk_Popup_Tambah,None,None,None,None))
 		self.tb_DataMaster_DataRekening.clicked.connect(self.DataMaster_DataRekening)
-		
 		
 		self.tb_DataMaster_DataCommon_Tutup.clicked.connect(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_MENU)
 		
@@ -203,9 +205,12 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		cursor.execute(sql)
 		result = cursor.fetchall()
 		self.DataMaster_DataSatuanPengukuran_Field = list(itertools.chain.from_iterable(result))
-		
-		
-		
+		#================================================================================================Get Field gd_rekening_jurnal
+		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_rekening_jurnal';"
+		cursor.execute(sql)
+		result = cursor.fetchall()
+		self.DataMaster_DataRekening_Field = list(itertools.chain.from_iterable(result))
+		#--OK
 		self.db.close()
 		
 		self.DataMaster_CommonRoom_cleared = 0
@@ -468,13 +473,31 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			item.setText(result[row][2])
 			item = self.tw_DataMaster_DataRekening_Fcontent_LRekening.item(row,2)
 			item.setText(result[row][3])
+		
+		
+		
+		def _SetActiveIndex(a,b):
+			print a
+			print b
+			kode = str(self.tw_DataMaster_DataRekening_Fcontent_LRekening.item(a,0).text())
+			print kode
+			sql = "SELECT * FROM `gd_rekening_jurnal` WHERE `noAkun` LIKE '"+kode+"' ;"
+			print sql
+			res = self.DatabaseRunQuery(sql)
+			self.DataMaster_DataRekening_Edit_idEDIT = res[0][0]
+			print self.DataMaster_DataRekening_Edit_idEDIT
+			return
+		#~ def aaaaa(z):
+			#~ z.setText("aaa")
+		#--------------------Data Rekening tabel
+		QtCore.QObject.disconnect(self.tw_DataMaster_DataRekening_Fcontent_LRekening,QtCore.SIGNAL(_fromUtf8("cellClicked(int,int)")),_SetActiveIndex)
+		#~ QtCore.QObject.disconnect(self.tw_DataMaster_DataRekening_Fcontent_LRekening,QtCore.SIGNAL(_fromUtf8("itemClicked(QTableWidgetItem*)")),aaaaa)
+		QtCore.QObject.connect(self.tw_DataMaster_DataRekening_Fcontent_LRekening, QtCore.SIGNAL(_fromUtf8("cellClicked(int,int)")), _SetActiveIndex)
+		#~ QtCore.QObject.connect(self.tw_DataMaster_DataRekening_Fcontent_LRekening, QtCore.SIGNAL(_fromUtf8("itemClicked(QTableWidgetItem*)")), aaaaa)
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAREKENING)
-		#~ functools.partial(self.DataMaster_DataProduk_Popup_Tambah,None,None,None,None)()
 	
 	
 	def DataMaster_DataNamaAlamat_DrawInfo(self,data): #nama,perusahaan,tipe,npwp,diskon,jatuhtempo,diskonawal,dendaketerlambatan,alamat,kodepelanggan
-		#~ def field(fieldname):
-			#~ return self.DataMaster_DataNamaAlamat_Field.index(fieldname)
 		field = self.DataMaster_DataNamaAlamat_Field.index
 		f14 = QtGui.QFont()
 		f14.setPointSize(14)
