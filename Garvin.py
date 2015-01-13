@@ -1985,7 +1985,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 	
 	def initDatabase(self):
 		self.dbHost = "127.0.0.1"
-		self.dbPort = 33063
+		self.dbPort = 44559
 		self.dbDatabase = "gd_db_akunting"
 		self.dbPass = "nyungsep"
 		self.dbUser = "gd_user_akunting"
