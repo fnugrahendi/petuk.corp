@@ -12,7 +12,8 @@ import functools #partial
 import itertools #ubah tuple ke array
 import re #regular expression
 from GUI import Ui_MainWindow
-#----Buku Besar
+from datetime import datetime #tanggal, a= datetime.now(); cobo dicheck dir(a); a.year, etc.
+#----Data tab
 from bukubesar import BukuBesar
 from datamaster import DataMaster
 
