@@ -358,7 +358,12 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		
 	def HapusBaris(self, namaTabel):
 		#print self.tbl_Penjualan_OrderPenjualan.currentRow()
+		kodeTransaksi = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
 		currentRow = self.tbl_Penjualan_OrderPenjualan.currentRow()
+		kodeBarang = self.tbl_Penjualan_OrderPenjualan.item(currentRow,0).text()
+		query = "DELETE FROM `gd_order_penjualan` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"' AND `kodeBarang` LIKE '"+kodeBarang+"';"
+		print query
+		#self.DatabaseRunQuery(query)
 		namaTabel.removeRow(currentRow)
 		
 	def Penjualan_GoTo_Pengiriman(self):
