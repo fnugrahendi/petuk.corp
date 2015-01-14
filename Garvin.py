@@ -2015,7 +2015,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		tutup = lambda fr: fr.close()
 		ConfirmOk.clicked.connect(functools.partial(tutup,FrameWindow))
 		ConfirmOk.clicked.connect(functools.partial(tutup,FrameWindowS))
-		ConfirmOk.clicked.connect(functools.partial(tutup,FrameWindowH))
+		if (hide_surrounding):
+			ConfirmOk.clicked.connect(functools.partial(tutup,FrameWindowH))
 		ConfirmOk.clicked.connect(function_callback)
 		ConfirmOk.clicked.connect(function_exit)
 		ConfirmOk.show()
@@ -2032,7 +2033,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		ConfirmClose.show()
 		ConfirmClose.clicked.connect(functools.partial(tutup,FrameWindow))
 		ConfirmClose.clicked.connect(functools.partial(tutup,FrameWindowS))
-		ConfirmClose.clicked.connect(functools.partial(tutup,FrameWindowH))
+		if (hide_surrounding):
+			ConfirmClose.clicked.connect(functools.partial(tutup,FrameWindowH))
 		ConfirmClose.clicked.connect(function_close)
 		ConfirmClose.clicked.connect(function_exit)
 		#execute exit function if any
