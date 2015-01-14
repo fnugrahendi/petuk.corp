@@ -41,7 +41,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="tab_DataMaster">
          <attribute name="title">
@@ -317,8 +317,8 @@ QPushButton::hover{
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>315</width>
-                         <height>18</height>
+                         <width>250</width>
+                         <height>30</height>
                         </rect>
                        </property>
                        <property name="styleSheet">
@@ -2321,7 +2321,7 @@ QPushButton::hover{
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>30</width>
+                      <width>100</width>
                       <height>200</height>
                      </rect>
                     </property>
