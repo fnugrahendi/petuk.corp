@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Wed Jan 14 13:20:17 2015
+# Created: Wed Jan 14 15:20:57 2015
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -1852,6 +1852,9 @@ class Ui_MainWindow(object):
         self.tb_Penjualan_OrderPenjualan_Batal = QtGui.QPushButton(self.fr_Penjualan_OrderPenjualan_tombol)
         self.tb_Penjualan_OrderPenjualan_Batal.setObjectName(_fromUtf8("tb_Penjualan_OrderPenjualan_Batal"))
         self.hl_Penjualan_OrderPenjualan_tombol.addWidget(self.tb_Penjualan_OrderPenjualan_Batal)
+        self.tb_Penjualan_OrderPenjualan_HapusBaris = QtGui.QPushButton(self.fr_Penjualan_OrderPenjualan_tombol)
+        self.tb_Penjualan_OrderPenjualan_HapusBaris.setObjectName(_fromUtf8("tb_Penjualan_OrderPenjualan_HapusBaris"))
+        self.hl_Penjualan_OrderPenjualan_tombol.addWidget(self.tb_Penjualan_OrderPenjualan_HapusBaris)
         spacerItem11 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.hl_Penjualan_OrderPenjualan_tombol.addItem(spacerItem11)
         self.tb_Penjualan_OrderPenjualan_Rekam = QtGui.QPushButton(self.fr_Penjualan_OrderPenjualan_tombol)
@@ -3320,6 +3323,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Pajak", None))
         self.tb_Penjualan_OrderPenjualan_Baru.setText(_translate("MainWindow", "Baru", None))
         self.tb_Penjualan_OrderPenjualan_Batal.setText(_translate("MainWindow", "Batal", None))
+        self.tb_Penjualan_OrderPenjualan_HapusBaris.setText(_translate("MainWindow", "Hapus Baris", None))
         self.tb_Penjualan_OrderPenjualan_Rekam.setText(_translate("MainWindow", "Rekam", None))
         self.tb_Penjualan_OrderPenjualan_Tutup.setText(_translate("MainWindow", "Tutup", None))
         self.lb_Penjualan_OrderPenjualan_TambahProduk_Judul.setText(_translate("MainWindow", "+ Produk dijual", None))
