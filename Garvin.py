@@ -209,12 +209,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar):
 		
 		self.DataMaster_CommonRoom_cleared = 0
 		
-		
 		#---------------------------------------------------------------Buku Besar init 
 		#init konstanta index
-		def BukuBesarInit():
-			"""bookmark baris"""
-			pass
 		self.INDEX_ST_BUKUBESAR_MENU = 0
 		self.INDEX_ST_BUKUBESAR_DAFTARTRANSAKSIJURNAL = 1
 		self.INDEX_ST_BUKUBESAR_DAFTARTRANSAKSIJURNAL_TAMBAH = 2

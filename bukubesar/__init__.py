@@ -1,1 +1,2 @@
-from .kontrol import BukuBesar
+from .BukuBesarK import BukuBesar
+
