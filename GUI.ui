@@ -41,7 +41,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab_DataMaster">
          <attribute name="title">
@@ -317,8 +317,8 @@ QPushButton::hover{
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>332</width>
-                         <height>411</height>
+                         <width>250</width>
+                         <height>30</height>
                         </rect>
                        </property>
                        <property name="styleSheet">
@@ -4133,6 +4133,9 @@ QPushButton::hover{
                    <property name="frameShape">
                     <enum>QFrame::NoFrame</enum>
                    </property>
+                   <property name="editTriggers">
+                    <set>QAbstractItemView::NoEditTriggers</set>
+                   </property>
                    <property name="showGrid">
                     <bool>false</bool>
                    </property>
@@ -4150,12 +4153,12 @@ QPushButton::hover{
                    </property>
                    <column>
                     <property name="text">
-                     <string>No Barang</string>
+                     <string>Kode</string>
                     </property>
                    </column>
                    <column>
                     <property name="text">
-                     <string>Deskripsi</string>
+                     <string>Nama Produk</string>
                     </property>
                    </column>
                    <column>
