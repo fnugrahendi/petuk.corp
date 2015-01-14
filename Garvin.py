@@ -486,7 +486,28 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 			return 1
 		except:
 			return 0
-	
+	def DatabaseInsertReplace(self,db,table,keyfield,keyvalue,fields,values):
+		"""masukkan (list) values pada (list) fields ke table dengan keyfield dan value tertentu, bila sudah ada update, bila belum insert
+		15 Jan 2015 06:37
+		"""
+		sql = "SELECT * FROM `"+table+"` WHERE `"+keyfield+"` LIKE '"+keyvalue+"' ;"
+		data = self.DatabaseRunQuery(sql)
+		ada_data = False
+		if len(data)>0:
+			ada_data = True
+		
+		if (ada_data):
+			if len(fields)!=len(values):
+				#salah
+				return False
+			sql = "UPDATE `"+db+"`.`"+table+"` SET "
+			for x in range(0,len(fields)):
+				sql = sql + " `"+str(fields[x])+"` = '"+str(values[x])+"',"
+			#remove last koma ,
+			sql = sql[:-1]
+			sql = sql+"WHERE `"+table+"`.`"+str(keyfield)+"` LIKE '"+str(keyvalue)+"';"
+			print sql
+		pass
 if __name__=="__main__":
 	app = QtGui.QApplication(sys.argv)
 	dmw = MainGUI()
