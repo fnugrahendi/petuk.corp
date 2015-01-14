@@ -55,7 +55,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		self.tb_Penjualan_OrderPenjualan_Baru.clicked.connect(self.Penjualan_GoTo_OP_TambahProduk)
 		self.tb_Penjualan_OrderPenjualan_TambahProduk_Batal.clicked.connect(self.Penjualan_GoTo_OrderPenjualan)
 		self.tb_Penjualan_OrderPenjualan_TambahProduk_Simpan.clicked.connect(self.Penjualan_OrderPenjualan_TambahProduk)
-		self.tb_Penjualan_OrderPenjualan_HapusBaris.clicked.connect(self.HapusBaris)
+		self.tb_Penjualan_OrderPenjualan_HapusBaris.clicked.connect(functools.partial(self.HapusBaris,self.tbl_Penjualan_OrderPenjualan))
 		
 		#Tombol pada Halaman Pengiriman
 		self.tb_Penjualan_Pengiriman_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -356,8 +356,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		self.DatabaseRunQuery(query)
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
 		
-	def HapusBaris(self):
-		print self.tbl_Penjualan_OrderPenjualan.currentRow()
+	def HapusBaris(self, namaTabel):
+		#print self.tbl_Penjualan_OrderPenjualan.currentRow()
+		currentRow = self.tbl_Penjualan_OrderPenjualan.currentRow()
+		namaTabel.removeRow(currentRow)
 		
 	def Penjualan_GoTo_Pengiriman(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PENGIRIMAN)
