@@ -324,7 +324,15 @@ class DataMaster(object):
 		WinW = self.centralwidget.geometry().width()
 		WinH = self.centralwidget.geometry().height()
 		
-		self.DataMaster_Popup("",fcb_ok,650,WinH-200,None,fcb_cancel,True)
+		
+		def kembalikan():
+			self.fr_DataMaster_DataRekening.setParent(self.st_DataMaster_DataRekening)
+			self.ivl_DataMaster_DataRekening_Luar.addWidget(self.fr_DataMaster_DataRekening)
+			self.fr_DataMaster_DataRekening_Fb.show()
+			
+		#---------------------------------------------------------------Panggil Popup disini
+		self.DataMaster_Popup("",fcb_ok,650,WinH-200,kembalikan,fcb_cancel,True)
+		
 		FrameWindow = self.findChild(QtGui.QFrame,_fromUtf8("DataMaster_Popup_FrameWindow"))
 		
 		self.fr_DataMaster_DataRekening.setParent(FrameWindow)
@@ -339,6 +347,9 @@ class DataMaster(object):
 		def setDatarekeningTerpilih(row,column):
 			self.DataMaster_DataRekening_RekeningTerpilih[0] = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,CNOMOR_REKENING).text())
 			self.DataMaster_DataRekening_RekeningTerpilih[1] = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,CNAMA_REKENING).text())
+			self.fr_DataMaster_DataRekening.setParent(self.st_DataMaster_DataRekening)
+			self.ivl_DataMaster_DataRekening_Luar.addWidget(self.fr_DataMaster_DataRekening)
+			self.fr_DataMaster_DataRekening_Fb.show()
 			self.DataMaster_Popup_Tutup()
 			
 		def setDatarekeningTerpilihNC(row,column):
