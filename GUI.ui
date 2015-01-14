@@ -4226,7 +4226,14 @@ QPushButton::hover{
                   </widget>
                  </item>
                  <item>
-                  <spacer name="horizontalSpacer_3">
+                  <widget class="QPushButton" name="tb_Penjualan_OrderPenjualan_HapusBaris">
+                   <property name="text">
+                    <string>Hapus Baris</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="hs_Penjualan_OrderPenjualan_Tombol">
                    <property name="orientation">
                     <enum>Qt::Horizontal</enum>
                    </property>

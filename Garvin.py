@@ -52,14 +52,18 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.tb_Penjualan_OrderPenjualan_Baru.clicked.connect(self.Penjualan_GoTo_OP_TambahProduk)
 		self.tb_Penjualan_OrderPenjualan_TambahProduk_Batal.clicked.connect(self.Penjualan_GoTo_OrderPenjualan)
 		self.tb_Penjualan_OrderPenjualan_TambahProduk_Simpan.clicked.connect(self.Penjualan_OrderPenjualan_TambahProduk)
+		self.tb_Penjualan_OrderPenjualan_HapusBaris.clicked.connect(self.HapusBaris)
 		
+		#Tombol pada Halaman Pengiriman
 		self.tb_Penjualan_Pengiriman_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
 		self.tb_Penjualan_Pengiriman_Baru.clicked.connect(self.Penjualan_GoTo_Pengiriman_Baru)
 		self.tb_Penjualan_PengirimanBaru_Tutup.clicked.connect(self.Penjualan_GoTo_Pengiriman)
 		
+		#Tombol pada Halaman Piutang
 		self.tb_Penjualan_Piutang_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
 		self.tb_Penjualan_RincianPiutang_Tutup.clicked.connect(self.Penjualan_GoTo_PiutangUsaha)
 		
+		#Tombol pada Halaman Pembayaran Piutang
 		self.tb_Penjualan_PembayaranPiutang_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
 		self.tb_Penjualan_PembayaranPiutang_Baru.clicked.connect(self.Penjualan_GoTo_PembayaranPiutang_Baru)
 		self.tb_Penjualan_PembayaranPiutang_Baru_Batal.clicked.connect(self.Penjualan_GoTo_PembayaranPiutang)
@@ -2166,6 +2170,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			"('"+kodeTransaksi+"','"+kodeMatauang+"','"+kodePelanggan+"','"+kodeBarang+"','"+jumlah+"','"+harga+"','"+diskon+"','"+kodePajak+"')"
 		self.DatabaseRunQuery(query)
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
+		
+	def HapusBaris(self):
+		print self.tbl_Penjualan_OrderPenjualan.currentRow()
 		
 	def Penjualan_GoTo_Pengiriman(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PENGIRIMAN)
