@@ -119,25 +119,40 @@ class BukuBesar(object):
 				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CNAMA_AKUN).setText(str(namaAkun))
 				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CDEPARTEMEN).setText(str(result[r][field("kodeDepartemen")]))
 				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CDEBIT).setText(str(result[r][field("debit")]))
-				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,4).setText(str(result[r][field("kredit")]))
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CKREDIT).setText(str(result[r][field("kredit")]))
 		
-		try:
-			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellClicked.disconnect()
-		except:
-			pass
-		try:
-			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked.disconnect()
-		except:
-			pass
+		self.GarvinDisconnect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellClicked)
+		self.GarvinDisconnect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked)
 		self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked.connect(self.BukuBesar_DaftarTransaksiJurnal_PilihRekening)
 		
 		
+		#hitung balance
+		jmlKredit = 0
+		jmlDebit = 0
+		#todo: cell changed signal to recount these
+		for row in range(0,self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()):
+			jmlKredit = jmlKredit+ float(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKREDIT).text())
+			jmlDebit = jmlDebit + float(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEBIT).text())
+		self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VtDebit.setText(str(jmlDebit))
+		self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VtKredit.setText(str(jmlKredit))
+		self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VBalance.setText(str(jmlDebit - jmlKredit))
 		return
 	
 	def BukuBesar_DaftarTransaksiJurnal_PilihRekening(self,row,column):
-		
-		self.DataMaster_DataRekening_Popup_Pilih()
-		
+		"pilih rekening untuk data transaksi jurnal pada baris $row"
+		CNOMOR_REKENING = 0
+		CNAMA_REKENING = 1
+		if (column>1):
+			"bukan pilih data rekening"
+			return
+		def UbahCell():
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CNOMOR_REKENING).setText(self.DataMaster_DataRekening_RekeningTerpilih[0])
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CNAMA_REKENING).setText(self.DataMaster_DataRekening_RekeningTerpilih[1])
+			self.GarvinDisconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellClicked)
+			self.GarvinDisconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellDoubleClicked)
+			
+			
+		self.DataMaster_DataRekening_Popup_Pilih(UbahCell)
 	
 	
 

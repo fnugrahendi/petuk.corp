@@ -471,6 +471,14 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 				grid.removeItem(item)
 		self.DataMaster_CommonRoom_cleared = 1
 	
+	def GarvinDisconnect(self,stuff):
+		"nyimpel2ke disconnect signal, cara manggil koyo self.GarvinDisconnect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked)"
+		try:
+			stuff.disconnect()
+			return 1
+		except:
+			return 0
+	
 if __name__=="__main__":
 	app = QtGui.QApplication(sys.argv)
 	dmw = MainGUI()
