@@ -41,7 +41,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab_DataMaster">
          <attribute name="title">
@@ -57,7 +57,7 @@
 	}</string>
             </property>
             <property name="currentIndex">
-             <number>3</number>
+             <number>7</number>
             </property>
             <widget class="QWidget" name="st_DataMaster_Menu">
              <property name="styleSheet">
@@ -317,8 +317,8 @@ QPushButton::hover{
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>250</width>
-                         <height>30</height>
+                         <width>332</width>
+                         <height>411</height>
                         </rect>
                        </property>
                        <property name="styleSheet">
@@ -2887,6 +2887,9 @@ QPushButton::hover{
               </property>
               <item>
                <widget class="QFrame" name="fr_DataMaster_DataRekening">
+                <property name="styleSheet">
+                 <string notr="true">QFrame{border-style:none;border-width:0px;}</string>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
@@ -2966,12 +2969,12 @@ QPushButton::hover{
                    </property>
                    <layout class="QVBoxLayout" name="ivl_DataMaster_DataRekening_Fcontent">
                     <item>
-                     <widget class="QTableWidget" name="tw_DataMaster_DataRekening_Fcontent_LRekening">
+                     <widget class="QTableWidget" name="tbl_DataMaster_DataRekening_Fcontent_LRekening">
                       <property name="editTriggers">
                        <set>QAbstractItemView::NoEditTriggers</set>
                       </property>
                       <attribute name="horizontalHeaderVisible">
-                       <bool>false</bool>
+                       <bool>true</bool>
                       </attribute>
                       <attribute name="horizontalHeaderCascadingSectionResizes">
                        <bool>true</bool>
@@ -6201,7 +6204,7 @@ QPushButton::hover{
           <item>
            <widget class="QStackedWidget" name="st_BukuBesar">
             <property name="currentIndex">
-             <number>2</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="st_BukuBesar_Menu">
              <widget class="QPushButton" name="tb_BukuBesar_DaftarTransaksiJurnal">

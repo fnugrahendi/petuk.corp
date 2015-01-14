@@ -484,24 +484,62 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			item.setText(result[row][2])
 			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,2)
 			item.setText(result[row][3])
-		
-		
-		
+	
 		def _SetActiveIndex(a,b):
 			kode = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(a,0).text())
 			sql = "SELECT * FROM `gd_rekening_jurnal` WHERE `noAkun` LIKE '"+kode+"' ;"
 			res = self.DatabaseRunQuery(sql)
 			self.DataMaster_DataRekening_Edit_idEDIT = res[0][0]
 			return
-		#~ def aaaaa(z):
-			#~ z.setText("aaa")
-		#--------------------Data Rekening tabel
+		
 		QtCore.QObject.disconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening,QtCore.SIGNAL(_fromUtf8("cellClicked(int,int)")),_SetActiveIndex)
 		#~ QtCore.QObject.disconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening,QtCore.SIGNAL(_fromUtf8("itemClicked(QTableWidgetItem*)")),aaaaa)
-		QtCore.QObject.connect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening, QtCore.SIGNAL(_fromUtf8("cellClicked(int,int)")), _SetActiveIndex)
+		#~ QtCore.QObject.connect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening, QtCore.SIGNAL(_fromUtf8("cellClicked(int,int)")), _SetActiveIndex)
+		self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellClicked.connect(_SetActiveIndex)
 		#~ QtCore.QObject.connect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening, QtCore.SIGNAL(_fromUtf8("itemClicked(QTableWidgetItem*)")), aaaaa)
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAREKENING)
 	
+	def DataMaster_DataRekening_Popup_Pilih(self,fcb_ok=False,fcb_cancel=False):
+		if fcb_ok==False:
+			fcb_ok = self.DataMaster_None
+		if fcb_cancel==False:
+			fcb_cancel = self.DataMaster_None
+		
+		sql = "SELECT * FROM `gd_rekening_jurnal` ORDER BY `gd_rekening_jurnal`.`noAkun` ASC;"
+		result = self.DatabaseRunQuery(sql)
+		self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setRowCount(len(result))
+		for row in range(0,len(result)):
+			
+			if (self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,0)==None):
+				item = QtGui.QTableWidgetItem()
+				#~ item.setColumnWidth(300)
+				self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 0, item)
+			if (self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,1)==None):
+				itema = QtGui.QTableWidgetItem()
+				self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 1, itema)
+			if (self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,2)==None):
+				itemb = QtGui.QTableWidgetItem()
+				self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 2, itemb)
+			
+			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,0)
+			item.setText(result[row][1])
+			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,1)
+			item.setText(result[row][2])
+			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,2)
+			item.setText(result[row][3])
+	
+		WinW = self.centralwidget.geometry().width()
+		WinH = self.centralwidget.geometry().height()
+		
+		self.DataMaster_Popup("",fcb_ok,650,WinH-200,None,fcb_cancel,True)
+		FrameWindow = self.findChild(QtGui.QFrame,_fromUtf8("DataMaster_Popup_FrameWindow"))
+		
+		self.fr_DataMaster_DataRekening.setParent(FrameWindow)
+		self.fr_DataMaster_DataRekening.show()
+		self.fr_DataMaster_DataRekening.setGeometry(QtCore.QRect(5,5,640,WinH-250))
+		self.fr_DataMaster_DataRekening_Fb.hide()
+		
+		
 	
 	def DataMaster_DataNamaAlamat_DrawInfo(self,data): #nama,perusahaan,tipe,npwp,diskon,jatuhtempo,diskonawal,dendaketerlambatan,alamat,kodepelanggan
 		field = self.DataMaster_DataNamaAlamat_Field.index
@@ -1893,7 +1931,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.DataMaster_DataNamaAlamat_Edit_idEDIT = barang[0][field("id")]
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATANAMAALAMAT_TAMBAH)
 		
-	def DataMaster_Popup(self,text,function_callback,FW=500,FH=200,function_exit=None,function_close=None):
+	def DataMaster_Popup(self,text,function_callback,FW=500,FH=200,function_exit=None,function_close=None,hide_surrounding=False):
 		#~ print FW
 		#~ print FH
 		#~ print function_exit
@@ -1916,6 +1954,17 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		#~ ConfirmClose.clicked.connect(function_exit) if (function_exit!=None) else None
 		#~ FW = 500
 		#~ FH = 200
+		if (hide_surrounding):
+			FrameWindowH = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_Popup_FrameWindowH"))
+			if (len(FrameWindowH)<1):
+				FrameWindowH = QtGui.QFrame(self.centralwidget)
+			else:
+				FrameWindowH = FrameWindowH[0]
+			FrameWindowH.setGeometry(QtCore.QRect(0, 0, WinW+20, WinH+20))
+			FrameWindowH.setObjectName(_fromUtf8("DataMaster_Popup_FrameWindowH"))
+			FrameWindowH.setStyleSheet(_fromUtf8("QFrame{background:#E3EFE8;border-radius:0px;border-style: solid;border-width: 2px;border-color:#828282;}"))
+			FrameWindowH.show()
+		
 		FrameWindowS = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_Popup_FrameWindowS"))
 		if (len(FrameWindowS)<1):
 			FrameWindowS = QtGui.QFrame(self.centralwidget)
@@ -1966,6 +2015,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		tutup = lambda fr: fr.close()
 		ConfirmOk.clicked.connect(functools.partial(tutup,FrameWindow))
 		ConfirmOk.clicked.connect(functools.partial(tutup,FrameWindowS))
+		ConfirmOk.clicked.connect(functools.partial(tutup,FrameWindowH))
 		ConfirmOk.clicked.connect(function_callback)
 		ConfirmOk.clicked.connect(function_exit)
 		ConfirmOk.show()
@@ -1982,6 +2032,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		ConfirmClose.show()
 		ConfirmClose.clicked.connect(functools.partial(tutup,FrameWindow))
 		ConfirmClose.clicked.connect(functools.partial(tutup,FrameWindowS))
+		ConfirmClose.clicked.connect(functools.partial(tutup,FrameWindowH))
 		ConfirmClose.clicked.connect(function_close)
 		ConfirmClose.clicked.connect(function_exit)
 		#execute exit function if any
@@ -2217,20 +2268,18 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 			item.setText(str(result[row][CKETERANGAN]))
 			item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CNILAI)
 			item.setText(str(result[row][CNILAI]))
+		data = None
 		def _SetActiveIndex(a,b):
 			return
-			dt = str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(a,1).text())
-			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.setText(dt)
-			self.BukuBesar_DaftarTransaksiJurnal_idEDIT = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal` WHERE `kodeTransaksi` LIKE '"+dt+"' ;")[0][0] #id always field 0
+			nomorreferensi = str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(a,CNOMOR_REFERENSI).text())
+			data = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal` WHERE `kodeTransaksi` LIKE '"+nomorreferensi+"' ;")[0] #id always field 0
+			self.BukuBesar_DaftarTransaksiJurnal_idEDIT = data[0]
+			
 		def _EditCertainCell(a,b):
 			nomorreferensi = str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(a,CNOMOR_REFERENSI).text())
-			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.setText(nomorreferensi)
-			tanggal = str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(a,CTANGGAL).text())
-			self.dte_BukuBesar_DaftarTransaksiJurnal_Tambah_Tanggal.setDateTime(QDateTime.fromString(tanggal,"yyyy-MM-dd hh:mm:ss"))
-			ket = str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(a,CKETERANGAN).text())
-			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_Keterangan.setText(ket)
-			self.BukuBesar_DaftarTransaksiJurnal_idEDIT = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal` WHERE `kodeTransaksi` LIKE '"+nomorreferensi+"' ;")[0][0] #id always field 0
-			self.BukuBesar_DaftarTransaksiJurnal_Tambah()
+			data = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal` WHERE `kodeTransaksi` LIKE '"+nomorreferensi+"' ;")[0]
+			self.BukuBesar_DaftarTransaksiJurnal_idEDIT = data[0]
+			self.BukuBesar_DaftarTransaksiJurnal_Tambah(data)
 			return
 		
 		self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setColumnWidth(0,400)#check this miracle out!
@@ -2247,7 +2296,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.cellClicked.connect(_SetActiveIndex)
 		self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.cellDoubleClicked.connect(_EditCertainCell)
 		
-	def BukuBesar_DaftarTransaksiJurnal_Tambah(self):
+	def BukuBesar_DaftarTransaksiJurnal_Tambah(self,dataTransaksiJurnal=None):
 		""" masuk & kontrol Room tambah Daftar Transaksi jurnal """
 		self.st_BukuBesar.setCurrentIndex(self.INDEX_ST_BUKUBESAR_DAFTARTRANSAKSIJURNAL_TAMBAH)
 		field = self.BukuBesar_DetailTransaksiJurnal_Field.index
@@ -2256,6 +2305,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 		CDEPARTEMEN = 2
 		CDEBIT = 3
 		CKREDIT = 4
+		
+		self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.setText(dataTransaksiJurnal[self.BukuBesar_TransaksiJurnal_Field.index("kodeTransaksi")])
+		self.dte_BukuBesar_DaftarTransaksiJurnal_Tambah_Tanggal.setDateTime(QDateTime.fromString(str(dataTransaksiJurnal[self.BukuBesar_TransaksiJurnal_Field.index("tanggal")]),"yyyy-MM-dd hh:mm:ss"))
+		self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_Keterangan.setText(dataTransaksiJurnal[self.BukuBesar_TransaksiJurnal_Field.index("catatan")])
 		
 		if (self.BukuBesar_DaftarTransaksiJurnal_idEDIT > -1):
 			sql = "SELECT * FROM `gd_detail_transaksi_jurnal` WHERE `kodeTransaksi` LIKE '"+str(self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.text())+"' ;"
@@ -2285,9 +2338,24 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow):
 				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CDEPARTEMEN).setText(str(result[r][field("kodeDepartemen")]))
 				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CDEBIT).setText(str(result[r][field("debit")]))
 				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,4).setText(str(result[r][field("kredit")]))
-				
+		
+		try:
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellClicked.disconnect()
+		except:
+			pass
+		try:
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked.disconnect()
+		except:
+			pass
+		self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked.connect(self.BukuBesar_DaftarTransaksiJurnal_PilihRekening)
+		
 		
 		return
+	
+	def BukuBesar_DaftarTransaksiJurnal_PilihRekening(self,row,column):
+		
+		self.DataMaster_DataRekening_Popup_Pilih()
+		
 	
 	def DatabaseRunQuery(self,query):
 		self.initDatabase()
