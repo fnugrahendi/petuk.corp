@@ -326,6 +326,7 @@ class DataMaster(object):
 		
 		
 		def kembalikan():
+			#----Kembalikan, dan disconnect sinyal dilakukan di BukuBesar_DaftarTransaksiJurnal_PilihRekening.ubahcell instead
 			self.fr_DataMaster_DataRekening.setParent(self.st_DataMaster_DataRekening)
 			self.ivl_DataMaster_DataRekening_Luar.addWidget(self.fr_DataMaster_DataRekening)
 			self.fr_DataMaster_DataRekening_Fb.show()
@@ -347,6 +348,7 @@ class DataMaster(object):
 		def setDatarekeningTerpilih(row,column):
 			self.DataMaster_DataRekening_RekeningTerpilih[0] = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,CNOMOR_REKENING).text())
 			self.DataMaster_DataRekening_RekeningTerpilih[1] = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,CNAMA_REKENING).text())
+			#----Kembalikan, jangan disconnect sinyal krna ini sinyal itu sendiri, dilakukan di BukuBesar_DaftarTransaksiJurnal_PilihRekening.ubahcell instead
 			self.fr_DataMaster_DataRekening.setParent(self.st_DataMaster_DataRekening)
 			self.ivl_DataMaster_DataRekening_Luar.addWidget(self.fr_DataMaster_DataRekening)
 			self.fr_DataMaster_DataRekening_Fb.show()
