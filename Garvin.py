@@ -34,6 +34,13 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 			return True
 		self.tb_Penjualan_Keluar.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan keluar dari aplikasi?",___metu))
         
+        
+        
+		self.dbHost = "127.0.0.1"
+		self.dbPort = 44559
+		self.dbDatabase = "gd_db_akunting"
+		self.dbPass = "nyungsep"
+		self.dbUser = "gd_user_akunting"
         #---------------------------------------------------------------Penjualan Init Itut
 		#Tombol pada Halaman Menu
 		self.tb_Penjualan_PenawaranHarga.clicked.connect(self.Penjualan_GoTo_PenawaranHarga)
@@ -237,11 +244,6 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		None
 	
 	def initDatabase(self):
-		self.dbHost = "127.0.0.1"
-		self.dbPort = 44559
-		self.dbDatabase = "gd_db_akunting"
-		self.dbPass = "nyungsep"
-		self.dbUser = "gd_user_akunting"
 		try:
 			self.db = MySQLdb.connect(self.dbHost,self.dbUser,self.dbPass,self.dbDatabase)
 			print ("connected database to generic mysql port")
