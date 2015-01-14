@@ -278,20 +278,26 @@ class DataMaster(object):
 			res = self.DatabaseRunQuery(sql)
 			self.DataMaster_DataRekening_Edit_idEDIT = res[0][0]
 			return
-		
-		QtCore.QObject.disconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening,QtCore.SIGNAL(_fromUtf8("cellClicked(int,int)")),_SetActiveIndex)
-		#~ QtCore.QObject.disconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening,QtCore.SIGNAL(_fromUtf8("itemClicked(QTableWidgetItem*)")),aaaaa)
-		#~ QtCore.QObject.connect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening, QtCore.SIGNAL(_fromUtf8("cellClicked(int,int)")), _SetActiveIndex)
+		try:
+			self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellClicked.disconnect()
+		except:
+			pass
+		try:
+			self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellDoubleClicked.disconnect()
+		except:
+			pass
 		self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellClicked.connect(_SetActiveIndex)
-		#~ QtCore.QObject.connect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening, QtCore.SIGNAL(_fromUtf8("itemClicked(QTableWidgetItem*)")), aaaaa)
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAREKENING)
 	
 	def DataMaster_DataRekening_Popup_Pilih(self,fcb_ok=False,fcb_cancel=False):
+		"Tunjukkan Popup untuk memilih data rekening"
 		if fcb_ok==False:
 			fcb_ok = self.DataMaster_None
 		if fcb_cancel==False:
 			fcb_cancel = self.DataMaster_None
 		
+		CNOMOR_REKENING = 0
+		CNAMA_REKENING = 1
 		sql = "SELECT * FROM `gd_rekening_jurnal` ORDER BY `gd_rekening_jurnal`.`noAkun` ASC;"
 		result = self.DatabaseRunQuery(sql)
 		self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setRowCount(len(result))
@@ -325,7 +331,23 @@ class DataMaster(object):
 		self.fr_DataMaster_DataRekening.show()
 		self.fr_DataMaster_DataRekening.setGeometry(QtCore.QRect(5,5,640,WinH-250))
 		self.fr_DataMaster_DataRekening_Fb.hide()
+		self.DataMaster_DataRekening_RekeningTerpilih = ["",""]
 		
+		self.GarvinDisconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellDoubleClicked)
+		self.GarvinDisconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellClicked)
+		
+		def setDatarekeningTerpilih(row,column):
+			self.DataMaster_DataRekening_RekeningTerpilih[0] = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,CNOMOR_REKENING).text())
+			self.DataMaster_DataRekening_RekeningTerpilih[1] = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,CNAMA_REKENING).text())
+			self.DataMaster_Popup_Tutup()
+			
+		def setDatarekeningTerpilihNC(row,column):
+			self.DataMaster_DataRekening_RekeningTerpilih[0] = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,CNOMOR_REKENING).text())
+			self.DataMaster_DataRekening_RekeningTerpilih[1] = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,CNAMA_REKENING).text())
+		
+		self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellDoubleClicked.connect(setDatarekeningTerpilih)
+		self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellDoubleClicked.connect(fcb_ok)
+		self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellClicked.connect(setDatarekeningTerpilihNC)
 		
 	
 	def DataMaster_DataNamaAlamat_DrawInfo(self,data): #nama,perusahaan,tipe,npwp,diskon,jatuhtempo,diskonawal,dendaketerlambatan,alamat,kodepelanggan
@@ -1784,19 +1806,17 @@ class DataMaster(object):
 		ConfirmOk = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_Popup_ConfirmOk"))
 		if (len(ConfirmOk)<1):
 			ConfirmOk = QtGui.QPushButton(FrameWindow)
-			ConfirmOk.setGeometry(QtCore.QRect(FW/2-42-85, FH-45, 85, 30))
-			ConfirmOk.setObjectName(_fromUtf8("DataMaster_Popup_ConfirmOk"))
-			ConfirmOk.setText(_fromUtf8("Ok"))
-			ConfirmOk.setStyleSheet(_fromUtf8("QPushButton{background:#555555;color:white;}"))
 		else:
 			ConfirmOk = ConfirmOk[0]
-		try:
-			ConfirmOk.clicked.disconnect()
-		except:
-			pass
+		ConfirmOk.setGeometry(QtCore.QRect(FW/2-42-85, FH-45, 85, 30))
+		ConfirmOk.setObjectName(_fromUtf8("DataMaster_Popup_ConfirmOk"))
+		ConfirmOk.setText(_fromUtf8("Ok"))
+		ConfirmOk.setStyleSheet(_fromUtf8("QPushButton{background:#555555;color:white;}"))
+		
+		self.GarvinDisconnect(ConfirmOk.clicked)
+		
 		def tutup(f):
 			f.close()
-		#~ tutup = lambda fr: fr.close()
 		ConfirmOk.clicked.connect(functools.partial(tutup,FrameWindow))
 		ConfirmOk.clicked.connect(functools.partial(tutup,FrameWindowS))
 		ConfirmOk.clicked.connect(functools.partial(tutup,FrameWindowH))
@@ -1807,13 +1827,17 @@ class DataMaster(object):
 		ConfirmClose = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_Popup_ConfirmClose"))
 		if (len(ConfirmClose)<1):
 			ConfirmClose = QtGui.QPushButton(FrameWindow)
-			ConfirmClose.setGeometry(QtCore.QRect(FW/2-42+85, FH-45, 85, 30))
-			ConfirmClose.setObjectName(_fromUtf8("DataMaster_Popup_ConfirmClose"))
-			ConfirmClose.setText(_fromUtf8("Cancel"))
-			ConfirmClose.setStyleSheet(_fromUtf8("QPushButton{background:#555555;color:white;}"))
 		else:
 			ConfirmClose = ConfirmClose[0]
+		
+		ConfirmClose.setGeometry(QtCore.QRect(FW/2-42+85, FH-45, 85, 30))
+		ConfirmClose.setObjectName(_fromUtf8("DataMaster_Popup_ConfirmClose"))
+		ConfirmClose.setText(_fromUtf8("Cancel"))
+		ConfirmClose.setStyleSheet(_fromUtf8("QPushButton{background:#555555;color:white;}"))
 		ConfirmClose.show()
+		self.GarvinDisconnect(ConfirmClose.clicked)
+		
+		
 		ConfirmClose.clicked.connect(functools.partial(tutup,FrameWindow))
 		ConfirmClose.clicked.connect(functools.partial(tutup,FrameWindowS))
 		ConfirmClose.clicked.connect(functools.partial(tutup,FrameWindowH))
@@ -1824,6 +1848,14 @@ class DataMaster(object):
 		#~ function_exit() if (function_exit!=None) else None
 		#~ aa = raw_input()
 	
+	def DataMaster_Popup_Tutup(self):
+		FrameWindow = self.findChild(QtGui.QFrame,("DataMaster_Popup_FrameWindow"))
+		FrameWindowS = self.findChild(QtGui.QFrame,("DataMaster_Popup_FrameWindowS"))
+		FrameWindowH = self.findChild(QtGui.QFrame,("DataMaster_Popup_FrameWindowH"))
+		FrameWindow.close()
+		FrameWindowS.close()
+		FrameWindowH.close()
+		
 	def DataMaster_DataNamaAlamat_Delete(self):
 		kode = str(self.lb_DataMaster_DataNamaAlamat_kode.text()).replace("\n","")
 		sql = "DELETE FROM `"+self.dbDatabase+"`.`gd_nama_alamat` WHERE `gd_nama_alamat`.`kodePelanggan` = '"+kode+"'"
