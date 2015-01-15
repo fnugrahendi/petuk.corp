@@ -83,7 +83,7 @@ class BukuBesar(object):
 		#at first we clear the rows
 		for r in range(0,self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.rowCount()+1):
 			self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.removeRow(r)
-			self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setRowCount(0)
+		self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setRowCount(0)
 		
 		result = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal`")
 		#~ self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setRowCount(len(result))
