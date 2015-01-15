@@ -3,8 +3,4 @@
     <file>img/edit.png</file>
     <file>img/del.png</file>
   </qresource>
-  <qresource prefix="Windows">
-    <file>path2998-4.png</file>
-    <file>p.ico</file>
-  </qresource>
 </RCC>
