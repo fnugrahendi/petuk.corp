@@ -516,7 +516,6 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 				sql = sql + " '"+str(values[x])+"', "
 			sql = sql[:-2]
 			sql = sql + ");"
-			print sql
 		self.DatabaseRunQuery(sql)
 		pass
 if __name__=="__main__":
