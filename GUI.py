@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Thu Jan 15 15:19:18 2015
+# Created: Thu Jan 15 15:22:28 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -1285,7 +1285,6 @@ class Ui_MainWindow(object):
         self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setItem(1, 0, item)
         item = QtGui.QTableWidgetItem()
         self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setItem(1, 2, item)
-        self.tbl_DataMaster_DataRekening_Fcontent_LRekening.horizontalHeader().setVisible(False)
         self.tbl_DataMaster_DataRekening_Fcontent_LRekening.horizontalHeader().setCascadingSectionResizes(True)
         self.tbl_DataMaster_DataRekening_Fcontent_LRekening.horizontalHeader().setDefaultSectionSize(200)
         self.ivl_DataMaster_DataRekening_Fcontent.addWidget(self.tbl_DataMaster_DataRekening_Fcontent_LRekening)
@@ -3166,7 +3165,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
-        self.st_DataMaster.setCurrentIndex(0)
+        self.st_DataMaster.setCurrentIndex(7)
         self.st_Penjualan.setCurrentIndex(7)
         self.st_Pembelian.setCurrentIndex(0)
         self.st_BukuBesar.setCurrentIndex(0)
