@@ -295,7 +295,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		self.cb_Penjualan_OrderPenjualan_Nama.clear()
 		self.cb_Penjualan_OrderPenjualan_Gudang.clear()
 		jumlahRow = self.tbl_Penjualan_OrderPenjualan.rowCount()
-		print jumlahRow
+		#print jumlahRow
 		if jumlahRow != 0:
 			for a in range (0,jumlahRow):
 				self.tbl_Penjualan_OrderPenjualan.removeRow(a)
@@ -352,7 +352,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		diskon = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Diskon.text())
 		pajak = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Pajak.text())
 		query = "SELECT * FROM `gd_data_pajak` WHERE `namaPajak` LIKE '"+pajak+"'"
-		kodePajak = str(self.DatabaseRunQuery(query)[0][1])
+		try:
+			kodePajak = str(self.DatabaseRunQuery(query)[0][1])
+		except:
+			kodePajak = 'NULL'
 		kodeMatauang = str(self.cb_Penjualan_OrderPenjualan_Kurs.currentText())
 		query = "INSERT INTO `gd_order_penjualan` (`kodeTransaksi`,`kodeMatauang`,`kodePelanggan`,`kodeBarang`"+\
 			",`jumlah`,`harga`,`diskon`,`kodePajak`) VALUES"+\
@@ -361,9 +364,13 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
 	
 	def Penjualan_OrderPenjualan_Batal(self):
+		jumlahRow = self.tbl_Penjualan_OrderPenjualan.rowCount()
+		if jumlahRow != 0:
+			for a in range (0,jumlahRow):
+				self.tbl_Penjualan_OrderPenjualan.removeRow(a)
 		kodeTransaksi = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
 		del_query = "DELETE FROM `gd_order_penjualan` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"'"
-		self.DatabaseRunQuery(query)
+		self.DatabaseRunQuery(del_query)
 
 	def HapusBaris(self, namaTabel):
 		#print self.tbl_Penjualan_OrderPenjualan.currentRow()
