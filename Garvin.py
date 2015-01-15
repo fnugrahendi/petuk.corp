@@ -64,6 +64,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		self.tb_Penjualan_OrderPenjualan_TambahProduk_Batal.clicked.connect(self.Penjualan_GoTo_OrderPenjualan)
 		self.tb_Penjualan_OrderPenjualan_TambahProduk_Simpan.clicked.connect(self.Penjualan_OrderPenjualan_TambahProduk)
 		self.tb_Penjualan_OrderPenjualan_HapusBaris.clicked.connect(functools.partial(self.HapusBaris,self.tbl_Penjualan_OrderPenjualan))
+		self.tb_Penjualan_OrderPenjualan_Batal.clicked.connect(self.Penjualan_OrderPenjualan_Batal)
 		
 		#Tombol pada Halaman Pengiriman
 		self.tb_Penjualan_Pengiriman_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -358,7 +359,12 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 			"('"+kodeTransaksi+"','"+kodeMatauang+"','"+kodePelanggan+"','"+kodeBarang+"','"+jumlah+"','"+harga+"','"+diskon+"','"+kodePajak+"')"
 		self.DatabaseRunQuery(query)
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
-		
+	
+	def Penjualan_OrderPenjualan_Batal(self)
+		kodeTransaksi = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
+		del_query = "DELETE FROM `gd_order_penjualan` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"'"
+		self.DatabaseRunQuery(query)
+
 	def HapusBaris(self, namaTabel):
 		#print self.tbl_Penjualan_OrderPenjualan.currentRow()
 		kodeTransaksi = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
@@ -416,11 +422,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		#departemen = str(self.le_Penjualan_PenawaranHarga_baru_Departemen.text())
 		jumlahRow = self.tbl_Penjualan_PenawaranHarga_baru.rowCount()
 		
-		#~ kodeBarang = 
-		
 		self.initDatabase()
 		cursor = self.db.cursor()
-		#~ kodeBarang = int(self.tbl_Penjualan_PenawaranHarga_baru.item(0,0))
 		query = "INSERT INTO `"+self.dbDatabase+"`.`gd_order_penjualan`"+\
 			" (`nama`, `kodeTransaksi`, `departemen`) "+\
 			"VALUES ('"+nama+"', '"+SOPenawaran+"', '"+departemen+"');"

@@ -41,7 +41,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab_DataMaster">
          <attribute name="title">
@@ -317,8 +317,8 @@ QPushButton::hover{
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>332</width>
-                         <height>410</height>
+                         <width>250</width>
+                         <height>30</height>
                         </rect>
                        </property>
                        <property name="styleSheet">
@@ -3190,7 +3190,7 @@ QPushButton::hover{
           <item>
            <widget class="QStackedWidget" name="st_Penjualan">
             <property name="currentIndex">
-             <number>3</number>
+             <number>7</number>
             </property>
             <widget class="QWidget" name="st_Penjualan_Menu">
              <layout class="QHBoxLayout" name="horizontalLayout">
