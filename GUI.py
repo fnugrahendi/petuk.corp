@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Thu Jan 15 15:22:28 2015
+# Created: Thu Jan 15 15:50:15 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,6 +33,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
         MainWindow.setMinimumSize(QtCore.QSize(0, 45))
+        MainWindow.setStyleSheet(_fromUtf8(""))
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.gridLayout = QtGui.QGridLayout(self.centralwidget)
@@ -1259,6 +1260,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(3)
         sizePolicy.setHeightForWidth(self.fr_DataMaster_DataRekening_Fcontent.sizePolicy().hasHeightForWidth())
         self.fr_DataMaster_DataRekening_Fcontent.setSizePolicy(sizePolicy)
+        self.fr_DataMaster_DataRekening_Fcontent.setStyleSheet(_fromUtf8("border-color:rgb(150, 137, 188);border-style:outset;border-radius:0px;"))
         self.fr_DataMaster_DataRekening_Fcontent.setFrameShape(QtGui.QFrame.StyledPanel)
         self.fr_DataMaster_DataRekening_Fcontent.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_DataMaster_DataRekening_Fcontent.setObjectName(_fromUtf8("fr_DataMaster_DataRekening_Fcontent"))
@@ -1338,16 +1340,16 @@ class Ui_MainWindow(object):
         self.fr_DataMaster_DataRekening_Fb_Space.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_DataMaster_DataRekening_Fb_Space.setObjectName(_fromUtf8("fr_DataMaster_DataRekening_Fb_Space"))
         self.ihl_DataMaster_DataRekening_Fb.addWidget(self.fr_DataMaster_DataRekening_Fb_Space)
-        self.tb_DataMaster_DatRekening_Tutup = QtGui.QPushButton(self.fr_DataMaster_DataRekening_Fb)
+        self.tb_DataMaster_DataRekening_Tutup = QtGui.QPushButton(self.fr_DataMaster_DataRekening_Fb)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.tb_DataMaster_DatRekening_Tutup.sizePolicy().hasHeightForWidth())
-        self.tb_DataMaster_DatRekening_Tutup.setSizePolicy(sizePolicy)
-        self.tb_DataMaster_DatRekening_Tutup.setMinimumSize(QtCore.QSize(50, 30))
-        self.tb_DataMaster_DatRekening_Tutup.setMaximumSize(QtCore.QSize(50, 16777215))
-        self.tb_DataMaster_DatRekening_Tutup.setObjectName(_fromUtf8("tb_DataMaster_DatRekening_Tutup"))
-        self.ihl_DataMaster_DataRekening_Fb.addWidget(self.tb_DataMaster_DatRekening_Tutup)
+        sizePolicy.setHeightForWidth(self.tb_DataMaster_DataRekening_Tutup.sizePolicy().hasHeightForWidth())
+        self.tb_DataMaster_DataRekening_Tutup.setSizePolicy(sizePolicy)
+        self.tb_DataMaster_DataRekening_Tutup.setMinimumSize(QtCore.QSize(50, 30))
+        self.tb_DataMaster_DataRekening_Tutup.setMaximumSize(QtCore.QSize(50, 16777215))
+        self.tb_DataMaster_DataRekening_Tutup.setObjectName(_fromUtf8("tb_DataMaster_DataRekening_Tutup"))
+        self.ihl_DataMaster_DataRekening_Fb.addWidget(self.tb_DataMaster_DataRekening_Tutup)
         self.ivl_DataMaster_DataRekening_Dalam.addWidget(self.fr_DataMaster_DataRekening_Fb)
         self.ivl_DataMaster_DataRekening_Luar.addWidget(self.fr_DataMaster_DataRekening)
         self.st_DataMaster.addWidget(self.st_DataMaster_DataRekening)
@@ -3162,6 +3164,9 @@ class Ui_MainWindow(object):
         self.statusbar = QtGui.QStatusBar(MainWindow)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
         MainWindow.setStatusBar(self.statusbar)
+        self.toolBar = QtGui.QToolBar(MainWindow)
+        self.toolBar.setObjectName(_fromUtf8("toolBar"))
+        MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
@@ -3275,7 +3280,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "444", None))
         self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setSortingEnabled(__sortingEnabled)
         self.tb_DataMaster_DataRekening_Tambah.setText(_translate("MainWindow", "+", None))
-        self.tb_DataMaster_DatRekening_Tutup.setText(_translate("MainWindow", "Tutup", None))
+        self.tb_DataMaster_DataRekening_Tutup.setText(_translate("MainWindow", "Tutup", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_DataMaster), _translate("MainWindow", "Data Master", None))
         self.tb_Penjualan_PenawaranHarga.setText(_translate("MainWindow", "Penawaran Harga", None))
         self.tb_Penjualan_OrderPenjualan.setText(_translate("MainWindow", "Order Penjualan", None))
@@ -3559,5 +3564,6 @@ class Ui_MainWindow(object):
         self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Simpan.setText(_translate("MainWindow", "Simpan", None))
         self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Batal.setText(_translate("MainWindow", "Batal", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_BukuBesar), _translate("MainWindow", "Buku Besar", None))
+        self.toolBar.setWindowTitle(_translate("MainWindow", "toolBar", None))
 
 import DataMaster_rc
