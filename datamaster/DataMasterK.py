@@ -249,11 +249,12 @@ class DataMaster(object):
 						Tb_ListSatuan[y].clicked.connect(functools.partial(self.DataMaster_DataSatuanPengukuran_DrawInfo,result[x]))
 		
 	def DataMaster_DataRekening(self):
+		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAREKENING)
 		sql = "SELECT * FROM `gd_rekening_jurnal` ORDER BY `gd_rekening_jurnal`.`noAkun` ASC;"
 		result = self.DatabaseRunQuery(sql)
-		self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setRowCount(len(result))
+		#~ self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setRowCount(len(result))
 		for row in range(0,len(result)):
-			
+			self.tbl_DataMaster_DataRekening_Fcontent_LRekening.insertRow(row)
 			if (self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,0)==None):
 				item = QtGui.QTableWidgetItem()
 				#~ item.setColumnWidth(300)
@@ -278,16 +279,35 @@ class DataMaster(object):
 			res = self.DatabaseRunQuery(sql)
 			self.DataMaster_DataRekening_Edit_idEDIT = res[0][0]
 			return
-		try:
-			self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellClicked.disconnect()
-		except:
-			pass
-		try:
-			self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellDoubleClicked.disconnect()
-		except:
-			pass
+		self.GarvinDisconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellDoubleClicked)
+		self.GarvinDisconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellClicked)
 		self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellClicked.connect(_SetActiveIndex)
-		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAREKENING)
+		#---Sinyal tombol tambah
+		self.GarvinDisconnect(self.tb_DataMaster_DataRekening_Tambah.clicked)
+		self.tb_DataMaster_DataRekening_Tambah.clicked.connect(self.DataMaster_DataRekening_Tambah)
+	
+	def DataMaster_DataRekening_Tambah(self):
+		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAREKENING_TAMBAH)
+		self.GarvinDisconnect(self.tb_DataMaster_DataRekening_Tambah_Batal.clicked)
+		self.tb_DataMaster_DataRekening_Tambah_Batal.clicked.connect(self.DataMaster_DataRekening)
+		self.GarvinDisconnect(self.tb_DataMaster_DataRekening_Tambah_Simpan.clicked)
+		self.tb_DataMaster_DataRekening_Tambah_Simpan.clicked.connect(self.DataMaster_DataRekening_Tambah_Act_Simpan)
+		pass
+		
+	def DataMaster_DataRekening_Tambah_Act_Simpan(self):
+		nomor = str(self.le_DataMaster_DataRekening_NomorAkun.text())
+		nama = str(self.le_DataMaster_DataRekening_NamaAkun.text())
+		namaalias = str(self.le_DataMaster_DataRekening_NamaAliasAkun.text())
+		jadi = self.DatabaseInsertAvoidreplace(self.dbDatabase,"gd_rekening_jurnal","noAkun",nomor,
+										["noAkun","namaAkun","namaAliasAkun"],
+										[nomor,nama,namaalias],
+										"Penyimpanan tidak dapat dilakukan karena telah terdapat nomor akun yang sama!",
+										self.DataMaster_DataRekening_Tambah)
+		if (jadi):
+			#---Kembali ke room DataRekening
+			self.DataMaster_DataRekening()
+		#~ self.DatabaseInsertReplace(self.dbDatabase,"gd_rekening_jurnal",
+		pass
 	
 	def DataMaster_DataRekening_Popup_Pilih(self,fcb_ok=False,fcb_cancel=False):
 		"Tunjukkan Popup untuk memilih data rekening, hasil disimpen ke variabel public self.DataMaster_DataRekening_RekeningTerpilih"
