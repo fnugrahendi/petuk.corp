@@ -41,7 +41,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="tab_DataMaster">
          <attribute name="title">
@@ -57,7 +57,7 @@
 	}</string>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="st_DataMaster_Menu">
              <property name="styleSheet">
@@ -6241,6 +6241,9 @@ QPushButton::hover{
               </property>
               <item>
                <widget class="QFrame" name="fr_BukuBesar_DaftarTransaksiJurnal">
+                <property name="styleSheet">
+                 <string notr="true">QFrame{border-style:none;border-width:0px;}</string>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
@@ -6508,6 +6511,9 @@ QPushButton::hover{
               </property>
               <item>
                <widget class="QFrame" name="fr_BukuBesar_DaftarTransaksiJurnal_Tambah">
+                <property name="styleSheet">
+                 <string notr="true">QFrame{border-style:none;border-width:0px;}</string>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>

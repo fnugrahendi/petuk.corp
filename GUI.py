@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Thu Jan 15 13:14:39 2015
+# Created: Thu Jan 15 13:36:07 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -2848,6 +2848,7 @@ class Ui_MainWindow(object):
         self.ivl_BukuBesar_DaftarTransaksiJurnal_Luar.setMargin(0)
         self.ivl_BukuBesar_DaftarTransaksiJurnal_Luar.setObjectName(_fromUtf8("ivl_BukuBesar_DaftarTransaksiJurnal_Luar"))
         self.fr_BukuBesar_DaftarTransaksiJurnal = QtGui.QFrame(self.st_BukuBesar_DaftarTransaksiJurnal)
+        self.fr_BukuBesar_DaftarTransaksiJurnal.setStyleSheet(_fromUtf8("QFrame{border-style:none;border-width:0px;}"))
         self.fr_BukuBesar_DaftarTransaksiJurnal.setFrameShape(QtGui.QFrame.StyledPanel)
         self.fr_BukuBesar_DaftarTransaksiJurnal.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_BukuBesar_DaftarTransaksiJurnal.setObjectName(_fromUtf8("fr_BukuBesar_DaftarTransaksiJurnal"))
@@ -2964,6 +2965,7 @@ class Ui_MainWindow(object):
         self.ivl_BukuBesar_DaftarTransaksiJurnal_Tambah_Luar.setMargin(0)
         self.ivl_BukuBesar_DaftarTransaksiJurnal_Tambah_Luar.setObjectName(_fromUtf8("ivl_BukuBesar_DaftarTransaksiJurnal_Tambah_Luar"))
         self.fr_BukuBesar_DaftarTransaksiJurnal_Tambah = QtGui.QFrame(self.st_BukuBesar_DaftarTransaksiJurnal_Tambah)
+        self.fr_BukuBesar_DaftarTransaksiJurnal_Tambah.setStyleSheet(_fromUtf8("QFrame{border-style:none;border-width:0px;}"))
         self.fr_BukuBesar_DaftarTransaksiJurnal_Tambah.setFrameShape(QtGui.QFrame.StyledPanel)
         self.fr_BukuBesar_DaftarTransaksiJurnal_Tambah.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_BukuBesar_DaftarTransaksiJurnal_Tambah.setObjectName(_fromUtf8("fr_BukuBesar_DaftarTransaksiJurnal_Tambah"))
@@ -3163,8 +3165,8 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
-        self.st_DataMaster.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(3)
+        self.st_DataMaster.setCurrentIndex(2)
         self.st_Penjualan.setCurrentIndex(7)
         self.st_Pembelian.setCurrentIndex(0)
         self.st_BukuBesar.setCurrentIndex(0)
