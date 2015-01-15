@@ -439,7 +439,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 			cursor.execute(query)
 		except Exception, e:
 			print repr(e)
-			self.statusbar.showMessage(repr(e),20000)
+			self.statusbar.showMessage(repr(e),120000)
 		result = cursor.fetchall()
 		self.db.commit()
 		self.db.close()
@@ -488,6 +488,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 			return 0
 	def DatabaseInsertReplace(self,db,table,keyfield,keyvalue,fields,values):
 		"""masukkan (list) values pada (list) fields ke table dengan keyfield dan value tertentu, bila sudah ada update, bila belum insert
+		note that keyfield must be rewritten on fields too, due too incase keyfields keyvalue is just in-purpose-False escaper that is not used
 		15 Jan 2015 06:37
 		"""
 		sql = "SELECT * FROM `"+table+"` WHERE `"+keyfield+"` LIKE '"+keyvalue+"' ;"
@@ -495,18 +496,28 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		ada_data = False
 		if len(data)>0:
 			ada_data = True
-		
+		if len(fields)!=len(values):
+			#salah
+			return False			
 		if (ada_data):
-			if len(fields)!=len(values):
-				#salah
-				return False
 			sql = "UPDATE `"+db+"`.`"+table+"` SET "
 			for x in range(0,len(fields)):
-				sql = sql + " `"+str(fields[x])+"` = '"+str(values[x])+"',"
-			#remove last koma ,
-			sql = sql[:-1]
-			sql = sql+"WHERE `"+table+"`.`"+str(keyfield)+"` LIKE '"+str(keyvalue)+"';"
+				sql = sql + " `"+str(fields[x])+"` = '"+str(values[x])+"', "
+			#remove last koma , (-2karakter: dengan spasi setelahnya)
+			sql = sql[:-2]
+			sql = sql+" WHERE `"+table+"`.`"+str(keyfield)+"` LIKE '"+str(keyvalue)+"';"
+		else:
+			sql = "INSERT INTO `"+db+"`.`"+table+"` ("
+			for x in range(0,len(fields)):
+				sql = sql + " `"+str(fields[x])+"`, "
+			sql = sql[:-2]
+			sql = sql + ") VALUES ("
+			for x in range(0,len(values)):
+				sql = sql + " '"+str(values[x])+"', "
+			sql = sql[:-2]
+			sql = sql + ");"
 			print sql
+		self.DatabaseRunQuery(sql)
 		pass
 if __name__=="__main__":
 	app = QtGui.QApplication(sys.argv)
