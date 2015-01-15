@@ -1,9 +1,10 @@
+guiconvert:
+	pyuic4 GUI.ui -o GUI.py
+
 all: rcconvert guiconvert 
 
 rcconvert:
 	pyrcc4 DataMaster.qrc -o DataMaster_rc.py
-guiconvert:
-	pyuic4 GUI.ui -o GUI.py
 
 guib:
 	pyuic4 GUI_b.ui -o GUI.py
