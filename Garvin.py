@@ -533,7 +533,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		"""
 		if (type(keyvalue) == str):
 			sql = "SELECT * FROM `"+table+"` WHERE `"+str(keyfield)+"` LIKE '"+str(keyvalue)+"' ;"
-		else
+		else:
 			sql = "SELECT * FROM `"+table+"` WHERE `"+str(keyfield)+"` = "+str(keyvalue)+" ;"
 		data = self.DatabaseRunQuery(sql)
 		ada_data = False
