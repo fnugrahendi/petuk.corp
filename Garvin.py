@@ -531,7 +531,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		note that keyfield must be rewritten on fields too, due too incase keyfields keyvalue is just in-purpose-False escaper that is not used
 		15 Jan 2015 06:37
 		"""
-		sql = "SELECT * FROM `"+table+"` WHERE `"+str(keyfield)+"` LIKE '"+str(keyvalue)+"' ;"
+		if (type(keyvalue) == str):
+			sql = "SELECT * FROM `"+table+"` WHERE `"+str(keyfield)+"` LIKE '"+str(keyvalue)+"' ;"
+		else
+			sql = "SELECT * FROM `"+table+"` WHERE `"+str(keyfield)+"` = "+str(keyvalue)+" ;"
 		data = self.DatabaseRunQuery(sql)
 		ada_data = False
 		if len(data)>0:
@@ -545,7 +548,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 				sql = sql + " `"+str(fields[x])+"` = '"+str(values[x])+"', "
 			#remove last koma , (-2karakter: dengan spasi setelahnya)
 			sql = sql[:-2]
-			sql = sql+" WHERE `"+table+"`.`"+str(keyfield)+"` LIKE '"+str(keyvalue)+"';"
+			if (type(keyvalue) == str):
+				sql = sql+" WHERE `"+table+"`.`"+str(keyfield)+"` LIKE '"+str(keyvalue)+"';"
+			else:
+				sql = sql+" WHERE `"+table+"`.`"+str(keyfield)+"` = "+str(keyvalue)+";"
 		else:
 			sql = "INSERT INTO `"+db+"`.`"+table+"` ("
 			for x in range(0,len(fields)):
@@ -562,7 +568,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		"""Masukkan (list) values pada (list) fields ke table dengan keyfield dan value tertentu,
 		bila sudah ada batal insert & muncul popup peringatan (diaktivasi), bila belum insert aja"""
 		
-		sql = "SELECT * FROM `"+table+"` WHERE `"+str(keyfield)+"` LIKE '"+str(keyvalue)+"' ;"
+		if (type(keyvalue) == str):
+			sql = "SELECT * FROM `"+table+"` WHERE `"+str(keyfield)+"` LIKE '"+str(keyvalue)+"' ;"
+		else:
+			sql = "SELECT * FROM `"+table+"` WHERE `"+str(keyfield)+"` = "+str(keyvalue)+" ;"
 		data = self.DatabaseRunQuery(sql)
 		ada_data = False
 		if len(data)>0:
