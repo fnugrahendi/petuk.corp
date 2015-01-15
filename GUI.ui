@@ -41,7 +41,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab_DataMaster">
          <attribute name="title">
@@ -57,7 +57,7 @@
 	}</string>
             </property>
             <property name="currentIndex">
-             <number>7</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="st_DataMaster_Menu">
              <property name="styleSheet">
@@ -6214,7 +6214,7 @@ QPushButton::hover{
           <item>
            <widget class="QStackedWidget" name="st_BukuBesar">
             <property name="currentIndex">
-             <number>2</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="st_BukuBesar_Menu">
              <widget class="QPushButton" name="tb_BukuBesar_DaftarTransaksiJurnal">
@@ -6482,6 +6482,13 @@ QPushButton::hover{
                        </size>
                       </property>
                      </spacer>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="tb_BukuBesar_DaftarTransaksiJurnal_Tutup">
+                      <property name="text">
+                       <string>Tutup</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </widget>

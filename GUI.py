@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Wed Jan 14 22:49:31 2015
+# Created: Thu Jan 15 13:14:39 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -2951,6 +2951,9 @@ class Ui_MainWindow(object):
         self.ihl_BukuBesar_DaftarTransaksiJurnal_Fb.addWidget(self.tb_BukuBesar_DaftarTransaksiJurnal_Delete)
         spacerItem32 = QtGui.QSpacerItem(631, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.ihl_BukuBesar_DaftarTransaksiJurnal_Fb.addItem(spacerItem32)
+        self.tb_BukuBesar_DaftarTransaksiJurnal_Tutup = QtGui.QPushButton(self.fr_BukuBesar_DaftarTransaksiJurnal_Fb)
+        self.tb_BukuBesar_DaftarTransaksiJurnal_Tutup.setObjectName(_fromUtf8("tb_BukuBesar_DaftarTransaksiJurnal_Tutup"))
+        self.ihl_BukuBesar_DaftarTransaksiJurnal_Fb.addWidget(self.tb_BukuBesar_DaftarTransaksiJurnal_Tutup)
         self.ivl_BukuBesar_DaftarTransaksiJurnal_Dalem.addWidget(self.fr_BukuBesar_DaftarTransaksiJurnal_Fb)
         self.ivl_BukuBesar_DaftarTransaksiJurnal_Luar.addWidget(self.fr_BukuBesar_DaftarTransaksiJurnal)
         self.st_BukuBesar.addWidget(self.st_BukuBesar_DaftarTransaksiJurnal)
@@ -3160,11 +3163,11 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(3)
-        self.st_DataMaster.setCurrentIndex(7)
+        self.tabWidget.setCurrentIndex(0)
+        self.st_DataMaster.setCurrentIndex(0)
         self.st_Penjualan.setCurrentIndex(7)
         self.st_Pembelian.setCurrentIndex(0)
-        self.st_BukuBesar.setCurrentIndex(2)
+        self.st_BukuBesar.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -3530,6 +3533,7 @@ class Ui_MainWindow(object):
         self.tb_BukuBesar_DaftarTransaksiJurnal_Buka.setText(_translate("MainWindow", "Buka", None))
         self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah.setText(_translate("MainWindow", "Tambah", None))
         self.tb_BukuBesar_DaftarTransaksiJurnal_Delete.setText(_translate("MainWindow", "Hapus", None))
+        self.tb_BukuBesar_DaftarTransaksiJurnal_Tutup.setText(_translate("MainWindow", "Tutup", None))
         self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Ft_Judul.setText(_translate("MainWindow", "Jurnal Umum", None))
         self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Keterangan.setText(_translate("MainWindow", "Keterangan", None))
         self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Tanggal.setText(_translate("MainWindow", "Tanggal", None))
