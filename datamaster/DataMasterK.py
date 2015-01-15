@@ -250,9 +250,14 @@ class DataMaster(object):
 		
 	def DataMaster_DataRekening(self):
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAREKENING)
+		
+		#---got to clear table first
+		for r in range(0,self.tbl_DataMaster_DataRekening_Fcontent_LRekening.rowCount()+1):
+			self.tbl_DataMaster_DataRekening_Fcontent_LRekening.removeRow(r)
+		self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setRowCount(0)
+		
 		sql = "SELECT * FROM `gd_rekening_jurnal` ORDER BY `gd_rekening_jurnal`.`noAkun` ASC;"
 		result = self.DatabaseRunQuery(sql)
-		#~ self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setRowCount(len(result))
 		for row in range(0,len(result)):
 			self.tbl_DataMaster_DataRekening_Fcontent_LRekening.insertRow(row)
 			if (self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,0)==None):
@@ -285,6 +290,10 @@ class DataMaster(object):
 		#---Sinyal tombol tambah
 		self.GarvinDisconnect(self.tb_DataMaster_DataRekening_Tambah.clicked)
 		self.tb_DataMaster_DataRekening_Tambah.clicked.connect(self.DataMaster_DataRekening_Tambah)
+		#---tombol edit
+		self.GarvinDisconnect(self.tb_DataMaster_DataRekening_Edit.clicked)
+		#--- confirmasi edit
+		self.tb_DataMaster_DataRekening_Edit.clicked.connect(functools.partial(self.DataMaster_Popup,"Edit nomor rekening jurnal ini? Hanya lanjutkan bila anda faham apa yang anda lakukan!",self.DataMaster_DataRekening_Edit))
 	
 	def DataMaster_DataRekening_Tambah(self):
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAREKENING_TAMBAH)
@@ -298,16 +307,35 @@ class DataMaster(object):
 		nomor = str(self.le_DataMaster_DataRekening_NomorAkun.text())
 		nama = str(self.le_DataMaster_DataRekening_NamaAkun.text())
 		namaalias = str(self.le_DataMaster_DataRekening_NamaAliasAkun.text())
-		jadi = self.DatabaseInsertAvoidreplace(self.dbDatabase,"gd_rekening_jurnal","noAkun",nomor,
-										["noAkun","namaAkun","namaAliasAkun"],
-										[nomor,nama,namaalias],
-										"Penyimpanan tidak dapat dilakukan karena telah terdapat nomor akun yang sama!",
-										self.DataMaster_DataRekening_Tambah)
+		jadi = False
+		if (self.DataMaster_DataRekening_Edit_idEDIT<0):
+			jadi = self.DatabaseInsertAvoidreplace(self.dbDatabase,"gd_rekening_jurnal","noAkun",nomor,
+											["noAkun","namaAkun","namaAliasAkun"],
+											[nomor,nama,namaalias],
+											"Penyimpanan tidak dapat dilakukan karena telah terdapat nomor akun yang sama!",
+											self.DataMaster_DataRekening_Tambah)
+		else:
+			jadi = self.DatabaseInsertReplace(self.dbDatabase,"gd_rekening_jurnal","id",self.DataMaster_DataRekening_Edit_idEDIT,
+											["noAkun","namaAkun","namaAliasAkun"],
+											[nomor,nama,namaalias])
 		if (jadi):
-			#---Kembali ke room DataRekening
+			#---sukses Kembali ke room DataRekening
 			self.DataMaster_DataRekening()
-		#~ self.DatabaseInsertReplace(self.dbDatabase,"gd_rekening_jurnal",
+			self.DataMaster_DataRekening_Edit_idEDIT = -1
+		#----bila tidak sukses, bertahan di room tambah
 		pass
+	
+	def DataMaster_DataRekening_Edit(self):
+		if (self.DataMaster_DataRekening_Edit_idEDIT<0):
+			return
+		data = self.DatabaseRunQuery("SELECT * FROM `gd_rekening_jurnal` WHERE `id` = "+str(self.DataMaster_DataRekening_Edit_idEDIT)+" ;")
+		if len(data)<0:
+			return
+		
+		self.le_DataMaster_DataRekening_NomorAkun.setText(data[0][self.DataMaster_DataRekening_Field.index("noAkun")])
+		self.le_DataMaster_DataRekening_NamaAkun.setText(data[0][self.DataMaster_DataRekening_Field.index("namaAkun")])
+		self.le_DataMaster_DataRekening_NamaAliasAkun.setText(data[0][self.DataMaster_DataRekening_Field.index("namaAliasAkun")])
+		self.DataMaster_DataRekening_Tambah()
 	
 	def DataMaster_DataRekening_Popup_Pilih(self,fcb_ok=False,fcb_cancel=False):
 		"Tunjukkan Popup untuk memilih data rekening, hasil disimpen ke variabel public self.DataMaster_DataRekening_RekeningTerpilih"
