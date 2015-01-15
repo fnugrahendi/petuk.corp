@@ -58,13 +58,14 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		self.tb_Penjualan_PenawaranHarga_baru_rekam.clicked.connect(self.Penjualan_PenawaranHarga_Baru_Rekam)
 		self.tb_Penjualan_PenawaranHarga_baru_tutup.clicked.connect(self.Penjualan_GoTo_PenawaranHarga)
 		
-		#Tombol pada Halaman OrderPenjualan
+		#Tombol&Sinyal pada Halaman OrderPenjualan
 		self.tb_Penjualan_OrderPenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
 		self.tb_Penjualan_OrderPenjualan_Baru.clicked.connect(self.Penjualan_GoTo_OP_TambahProduk)
 		self.tb_Penjualan_OrderPenjualan_TambahProduk_Batal.clicked.connect(self.Penjualan_GoTo_OrderPenjualan)
 		self.tb_Penjualan_OrderPenjualan_TambahProduk_Simpan.clicked.connect(self.Penjualan_OrderPenjualan_TambahProduk)
 		self.tb_Penjualan_OrderPenjualan_HapusBaris.clicked.connect(functools.partial(self.HapusBaris,self.tbl_Penjualan_OrderPenjualan))
 		self.tb_Penjualan_OrderPenjualan_Batal.clicked.connect(self.Penjualan_OrderPenjualan_Batal)
+		self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.currentIndexChanged.connect(self.Penjualan_OrderPenjualan_TambahProduk_UpdateKode)
 		
 		#Tombol pada Halaman Pengiriman
 		self.tb_Penjualan_Pengiriman_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -269,7 +270,13 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 	#-------------------------------------------------------------------Penjualan
 	#-------------------------------------------------------------------Penjualan
 	
-	
+	def Penjualan_OrderPenjualan_TambahProduk_UpdateKode(self,index):
+		namaProduk = str(self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.currentText())
+		query = "SELECT * FROM `gd_data_produk` WHERE `namaBarang` LIKE '"+namaProduk+"'"
+		self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Kode.setText
+		kodeBarang = self.DatabaseRunQuery(query)[0][1]
+		self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Kode.setText(kodeBarang)
+		
 	def Penjualan_GoTo_Menu(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_MENU)
 		
@@ -327,9 +334,12 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 	
 	def Penjualan_GoTo_OP_TambahProduk(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP_TAMBAHPRODUK)
-		print "pindah"
 		self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan.clear()
 		self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.clear()
+		self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Jumlah.clear()
+		self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Harga.clear()
+		self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Diskon.clear()
+		self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Pajak.clear()
 		query = "SELECT * FROM gd_data_produk"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
 			self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.addItem(self.DatabaseRunQuery(query)[a][5])
@@ -361,7 +371,27 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 			",`jumlah`,`harga`,`diskon`,`kodePajak`) VALUES"+\
 			"('"+kodeTransaksi+"','"+kodeMatauang+"','"+kodePelanggan+"','"+kodeBarang+"','"+jumlah+"','"+harga+"','"+diskon+"','"+kodePajak+"')"
 		self.DatabaseRunQuery(query)
+		jumlahRow = self.tbl_Penjualan_OrderPenjualan.rowCount()
+		if jumlahRow != 0:
+			for a in range (0,jumlahRow):
+				self.tbl_Penjualan_OrderPenjualan.removeRow(a)
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
+		query = "SELECT * FROM `gd_order_penjualan` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"'"
+		result = self.DatabaseRunQuery(query) 
+		if len(result) != 0:
+			for a in range(0,len(result)):
+				print "tambah row"
+				self.tbl_Penjualan_OrderPenjualan.insertRow(a)
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,0,QtGui.QTableWidgetItem(result[a][3])) #kode
+				sql = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` = '"+result[a][3]+"'"
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,1,QtGui.QTableWidgetItem(str(self.DatabaseRunQuery(sql)[0][5]))) #nama produk
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,3,QtGui.QTableWidgetItem(str(self.DatabaseRunQuery(sql)[0][3]))) #jumlah
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][4]))) #satuan
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][5]))) #harga
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,5,QtGui.QTableWidgetItem(result[a][6])) #diskon
+				total = result[a][4]*result[a][5]
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,6,QtGui.QTableWidgetItem(str(total))) #total harga
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,7,QtGui.QTableWidgetItem(result[a][7]))
 	
 	def Penjualan_OrderPenjualan_Batal(self):
 		jumlahRow = self.tbl_Penjualan_OrderPenjualan.rowCount()
