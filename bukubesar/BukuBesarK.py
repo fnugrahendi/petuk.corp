@@ -113,8 +113,8 @@ class BukuBesar(object):
 			item.setText(str(result[row][CNILAI]))
 		data = None
 		self.BukuBesar_DaftarTransaksiJurnal_RowColumnTerpilih = [-1,-1]
+		
 		def _SetActiveIndex(a,b):
-			#~ return
 			nomorreferensi = str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(a,CNOMOR_REFERENSI).text())
 			data = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal` WHERE `kodeTransaksi` LIKE '"+nomorreferensi+"' ;")[0] #id always field 0
 			self.BukuBesar_DaftarTransaksiJurnal_idEDIT = data[0]
@@ -302,9 +302,29 @@ class BukuBesar(object):
 			self.dte_BukuBesar_DaftarTransaksiJurnal_Tambah_Tanggal.setDateTime(QDateTime.fromString(tanggal.strftime("%Y-%m-%d %H:%M:%S"),"yyyy-MM-dd hh:mm:ss"))
 			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_Keterangan.setText("")
 			tambahbaris()
+		
+		#-----------Todo hapus baris
+		def _SetActiveIndex(a,b):
+			self.BukuBesar_DaftarTransaksiJurnal_Tambah_RowColumnTerpilih = [a,b]
+			print self.BukuBesar_DaftarTransaksiJurnal_Tambah_RowColumnTerpilih
+		
+		def _DeleteCertainCell():
+			a = self.BukuBesar_DaftarTransaksiJurnal_Tambah_RowColumnTerpilih[0]
+			if (a<0):
+				return
+			sql = "DELETE FROM `gd_detail_transaksi_jurnal` WHERE `gd_detail_transaksi_jurnal`.`id` = "+str(idies[a])+" ;"
+			self.DatabaseRunQuery(sql)
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.removeRow(a)
+			
+		def _ConfirmDeleteCertainCell():
+			a = self.BukuBesar_DaftarTransaksiJurnal_Tambah_RowColumnTerpilih[0]
+			if (a<0):
+				return
+			self.DataMaster_Popup("Anda yakin akan menghapus data baris "+str(a+1)+"?",_DeleteCertainCell)
 			
 		self.GarvinDisconnect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellClicked)
 		self.GarvinDisconnect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked)
+		self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellClicked.connect(_SetActiveIndex)
 		self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked.connect(self.BukuBesar_DaftarTransaksiJurnal_PilihRekening)
 		
 		
@@ -316,10 +336,10 @@ class BukuBesar(object):
 		self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Batal.clicked.connect(self.BukuBesar_DaftarTransaksiJurnal)
 		self.GarvinDisconnect(self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_TambahBaris.clicked)
 		self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_TambahBaris.clicked.connect(tambahbaris)
+		self.GarvinDisconnect(self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Delete.clicked)
+		self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Delete.clicked.connect(_ConfirmDeleteCertainCell)
 		self.GarvinDisconnect(self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Simpan.clicked)
-		#~ if len(idies)==0:
-			#~ idies = False
-		#kalau len idies 0, langsung masuk ke for row in range(len(idies),self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()): tanpa masalah
+		#-----kalau len idies 0, langsung masuk ke for row in range(len(idies),self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()): tanpa masalah
 		self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Simpan.clicked.connect(functools.partial(self.BukuBesar_DaftarTransaksiJurnal_Tambah_Act_Simpan,idies))
 		return
 	
