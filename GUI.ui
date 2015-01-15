@@ -320,8 +320,8 @@ QPushButton::hover{
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>250</width>
-                         <height>30</height>
+                         <width>332</width>
+                         <height>399</height>
                         </rect>
                        </property>
                        <property name="styleSheet">
@@ -1019,25 +1019,6 @@ QPushButton::hover{
                      <number>11</number>
                     </property>
                     <item>
-                     <widget class="QPushButton" name="tb_DataMaster_DataNamaAlamat_Tambah_Reset">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                        <horstretch>1</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>100</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string>Baru (reset form)</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
                      <widget class="QPushButton" name="tb_DataMaster_DataNamaAlamat_Tambah_Simpan">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -1431,31 +1412,6 @@ QPushButton::hover{
                      <number>11</number>
                     </property>
                     <item>
-                     <widget class="QPushButton" name="tb_DataMaster_DataProduk_Tambah_Reset">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                        <horstretch>1</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>100</width>
-                        <height>30</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>100</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string>Baru (reset form)</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
                      <widget class="QPushButton" name="tb_DataMaster_DataProduk_Tambah_Simpan">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -1767,31 +1723,6 @@ QPushButton::hover{
                  <property name="bottomMargin">
                   <number>11</number>
                  </property>
-                 <item>
-                  <widget class="QPushButton" name="tb_DataMaster_DataPajak_Tambah_Reset">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                     <horstretch>1</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>100</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>100</width>
-                     <height>16777215</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string>Baru (reset form)</string>
-                   </property>
-                  </widget>
-                 </item>
                  <item>
                   <widget class="QPushButton" name="tb_DataMaster_DataPajak_Tambah_Simpan">
                    <property name="sizePolicy">
@@ -2324,8 +2255,8 @@ QPushButton::hover{
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>200</height>
+                      <width>69</width>
+                      <height>412</height>
                      </rect>
                     </property>
                     <property name="styleSheet">
@@ -2397,31 +2328,6 @@ QPushButton::hover{
                  <property name="bottomMargin">
                   <number>11</number>
                  </property>
-                 <item>
-                  <widget class="QPushButton" name="tb_DataMaster_DataProyek_Tambah_Reset">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                     <horstretch>1</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>100</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>100</width>
-                     <height>16777215</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string>Baru (reset form)</string>
-                   </property>
-                  </widget>
-                 </item>
                  <item>
                   <widget class="QPushButton" name="tb_DataMaster_DataProyek_Tambah_Simpan">
                    <property name="sizePolicy">
@@ -2784,31 +2690,6 @@ QPushButton::hover{
                  <property name="bottomMargin">
                   <number>11</number>
                  </property>
-                 <item>
-                  <widget class="QPushButton" name="tb_DataMaster_DataSatuanPengukuran_Tambah_Reset">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                     <horstretch>1</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>100</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>100</width>
-                     <height>16777215</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string>Baru (reset form)</string>
-                   </property>
-                  </widget>
-                 </item>
                  <item>
                   <widget class="QPushButton" name="tb_DataMaster_DataSatuanPengukuran_Tambah_Simpan">
                    <property name="sizePolicy">
