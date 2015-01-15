@@ -41,7 +41,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab_DataMaster">
          <attribute name="title">
@@ -57,7 +57,7 @@
 	}</string>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>7</number>
             </property>
             <widget class="QWidget" name="st_DataMaster_Menu">
              <property name="styleSheet">
@@ -317,8 +317,8 @@ QPushButton::hover{
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>250</width>
-                         <height>30</height>
+                         <width>332</width>
+                         <height>410</height>
                         </rect>
                        </property>
                        <property name="styleSheet">
@@ -2973,9 +2973,6 @@ QPushButton::hover{
                       <property name="editTriggers">
                        <set>QAbstractItemView::NoEditTriggers</set>
                       </property>
-                      <attribute name="horizontalHeaderVisible">
-                       <bool>false</bool>
-                      </attribute>
                       <attribute name="horizontalHeaderCascadingSectionResizes">
                        <bool>true</bool>
                       </attribute>
