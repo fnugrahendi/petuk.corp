@@ -28,10 +28,16 @@ class BukuBesar(object):
 		CKETERANGAN = 2
 		CNILAI = 3
 		
+		#at first we clear the rows
+		for r in range(0,self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.rowCount()+1):
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.removeRow(r)
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setRowCount(0)
+		
 		result = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal`")
-		self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setRowCount(len(result))
+		#~ self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setRowCount(len(result))
 		for row in range(0,len(result)):
 			
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.insertRow(row)
 			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CTANGGAL)==None):
 				item = QtGui.QTableWidgetItem()
 				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, CTANGGAL, item)
@@ -79,7 +85,7 @@ class BukuBesar(object):
 		self.GarvinDisconnect(self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah.clicked)
 		self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah.clicked.connect(self.BukuBesar_DaftarTransaksiJurnal_Tambah)
 		
-	def BukuBesar_DaftarTransaksiJurnal_Tambah(self,dataTransaksiJurnal=None):
+	def BukuBesar_DaftarTransaksiJurnal_Tambah(self,dataTransaksiJurnal=False):
 		""" masuk & kontrol Room tambah Daftar Transaksi jurnal """
 		#set index
 		self.st_BukuBesar.setCurrentIndex(self.INDEX_ST_BUKUBESAR_DAFTARTRANSAKSIJURNAL_TAMBAH)
@@ -91,18 +97,86 @@ class BukuBesar(object):
 		CDEBIT = 3
 		CKREDIT = 4
 		
+		if dataTransaksiJurnal==False:
+			self.BukuBesar_DaftarTransaksiJurnal_idEDIT = -1
 		
+		def hitungulang():
+			"kepicu ketika cell diubah"
+			#hitung balance
+			jmlKredit = 0
+			jmlDebit = 0
+			if self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()>0:
+				for row in range(0,self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()):
+					#----check kalau diisi selain angka
+					try:
+						jmlKredit = jmlKredit+ float(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKREDIT).text())
+					except ValueError:
+					#------ambil bilangan disitu dgn regex bila sukses, bila tidak beri nilai 0
+						try:
+							t = self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKREDIT).text()
+							self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKREDIT).setText(str(re.search('\d+', t).group()))
+						except AttributeError:
+							self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKREDIT).setText("0")
+					except:
+						pass
+					try:
+						jmlDebit = jmlDebit + float(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEBIT).text())
+					except ValueError:
+						try:
+							t = self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEBIT).text()
+							self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEBIT).setText(str(re.search('\d+', t).group()))
+						except AttributeError:
+							self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEBIT).setText("0")
+					except:
+						pass
+							
+			self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VtDebit.setText(str(jmlDebit))
+			self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VtKredit.setText(str(jmlKredit))
+			self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VBalance.setText(str(jmlDebit - jmlKredit))
+			if (jmlDebit!=jmlKredit):
+				self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VBalance.setStyleSheet("QLabel{color:red;}")
+			else:
+				self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VBalance.setStyleSheet("")
+		
+		def tambahbaris():
+			newrow = self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.insertRow(newrow)
+			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(newrow,CKODE_AKUN)==None):
+				item = QtGui.QTableWidgetItem()
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(newrow, CKODE_AKUN, item)
+			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(newrow,CNAMA_AKUN)==None):
+				item = QtGui.QTableWidgetItem()
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(newrow, CNAMA_AKUN, item)
+			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(newrow,CDEPARTEMEN)==None):
+				item = QtGui.QTableWidgetItem()
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(newrow, CDEPARTEMEN, item)
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(newrow, CDEPARTEMEN).setText("0")
+			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(newrow,CDEBIT)==None):
+				item = QtGui.QTableWidgetItem()
+				item.setText("0")
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(newrow, CDEBIT, item)
+			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(newrow,CKREDIT)==None):
+				item = QtGui.QTableWidgetItem()
+				item.setText("0")
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(newrow, CKREDIT, item)
+		
+		#at first we clear the rows
+		for r in range(0,self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()+1):
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.removeRow(r)
+		self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setRowCount(0)
 		
 		idies = []
 		if (self.BukuBesar_DaftarTransaksiJurnal_idEDIT > -1):
 			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.setText(dataTransaksiJurnal[self.BukuBesar_TransaksiJurnal_Field.index("kodeTransaksi")])
+			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.setReadOnly(True)
 			self.dte_BukuBesar_DaftarTransaksiJurnal_Tambah_Tanggal.setDateTime(QDateTime.fromString(str(dataTransaksiJurnal[self.BukuBesar_TransaksiJurnal_Field.index("tanggal")]),"yyyy-MM-dd hh:mm:ss"))
 			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_Keterangan.setText(dataTransaksiJurnal[self.BukuBesar_TransaksiJurnal_Field.index("catatan")])
 			
 			sql = "SELECT * FROM `gd_detail_transaksi_jurnal` WHERE `kodeTransaksi` LIKE '"+str(self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.text())+"' ;"
 			result = self.DatabaseRunQuery(sql)
-			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setRowCount(len(result))
+			#~ self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setRowCount(len(result))
 			for r in range(0,len(result)):
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.insertRow(r)
 				if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CKODE_AKUN)==None):
 					item = QtGui.QTableWidgetItem()
 					self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(r, CKODE_AKUN, item)
@@ -118,7 +192,6 @@ class BukuBesar(object):
 				if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CKREDIT)==None):
 					item = QtGui.QTableWidgetItem()
 					self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(r, CKREDIT, item)
-					
 				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CKODE_AKUN).setText(str(result[r][field("noAkunJurnal")]))
 				sql = "SELECT * FROM `gd_rekening_jurnal` WHERE `noAkun` LIKE '"+str(result[r][field("noAkunJurnal")])+"' ;"
 				namaAkun = self.DatabaseRunQuery(sql)[0][self.DataMaster_DataRekening_Field.index("namaAkun")]
@@ -128,6 +201,7 @@ class BukuBesar(object):
 				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CKREDIT).setText(str(result[r][field("kredit")]))
 				idies.append(result[r][0])
 		else:
+			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.setReadOnly(False)
 			#tambah baru: set text top ke defaultaja
 			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.setText("")
 			#Generate code setelahnya
@@ -135,71 +209,85 @@ class BukuBesar(object):
 			tanggal = datetime.now()
 			self.dte_BukuBesar_DaftarTransaksiJurnal_Tambah_Tanggal.setDateTime(QDateTime.fromString(tanggal.strftime("%Y-%m-%d %H:%M:%S"),"yyyy-MM-dd hh:mm:ss"))
 			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_Keterangan.setText("")
+			tambahbaris()
 			
 		self.GarvinDisconnect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellClicked)
 		self.GarvinDisconnect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked)
 		self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked.connect(self.BukuBesar_DaftarTransaksiJurnal_PilihRekening)
 		
 		
-		#todo: cell changed signal to recount these
-		def hitungulang():
-			#hitung balance
-			jmlKredit = 0
-			jmlDebit = 0
-			if self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()>0:
-				for row in range(0,self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()):
-					jmlKredit = jmlKredit+ float(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKREDIT).text())
-					jmlDebit = jmlDebit + float(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEBIT).text())
-			self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VtDebit.setText(str(jmlDebit))
-			self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VtKredit.setText(str(jmlKredit))
-			self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VBalance.setText(str(jmlDebit - jmlKredit))
-			if (jmlDebit!=jmlKredit):
-				self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VBalance.setStyleSheet("QLabel{color:red;}")
-			else:
-				self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VBalance.setStyleSheet("")
-		#~ if (self.BukuBesar_DaftarTransaksiJurnal_idEDIT > -1):
 		hitungulang()
 		self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellChanged.connect(hitungulang)
 		
 		#----Tombol-tombol di room ini
 		self.GarvinDisconnect(self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Batal.clicked)
 		self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Batal.clicked.connect(self.BukuBesar_DaftarTransaksiJurnal)
+		self.GarvinDisconnect(self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_TambahBaris.clicked)
+		self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_TambahBaris.clicked.connect(tambahbaris)
 		self.GarvinDisconnect(self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Simpan.clicked)
-		if len(idies)==0:
-			idies = False
+		#~ if len(idies)==0:
+			#~ idies = False
+		#kalau len idies 0, langsung masuk ke for row in range(len(idies),self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()): tanpa masalah
 		self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Simpan.clicked.connect(functools.partial(self.BukuBesar_DaftarTransaksiJurnal_Tambah_Act_Simpan,idies))
 		return
 	
-	def BukuBesar_DaftarTransaksiJurnal_Tambah_Act_Simpan(self,idies=False):
+	def BukuBesar_DaftarTransaksiJurnal_Tambah_Act_Simpan(self,idies=[]):
 		CKODE_AKUN = 0
 		CNAMA_AKUN = 1
 		CDEPARTEMEN = 2
 		CDEBIT = 3
 		CKREDIT = 4
-		if idies==False:
-			#Tambah baru
-			pass
-		else:
-			#edit (simpen replace)
-			row = 0
-			for tablerow in idies:
-				sql = """UPDATE `"""+self.dbDatabase+"""`.`gd_detail_transaksi_jurnal` 
-						SET `kodeTransaksi` = '"""+str(self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.text())+"""',
-							`noAkunJurnal` 	= '"""+str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKODE_AKUN).text())+"""',
-							`kodeDepartemen`= '"""+str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEPARTEMEN).text())+"""',
-							`debit`			= '"""+str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEBIT).text())+"""',
-							`kredit`		= '"""+str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKREDIT).text())+"""',
-							`tanggal`		= '"""+str(self.dte_BukuBesar_DaftarTransaksiJurnal_Tambah_Tanggal.dateTime().toString("yyyy-MM-dd hh:mm:ss"))+"""'
-							
-						WHERE `gd_detail_transaksi_jurnal`.`id` ="""+str(tablerow)+""";
-				"""
+		#edit (simpen replace)
+		#update dan tambah detail transaksi jurnal
+		row = 0
+		for tablerowid in idies:
+			sql = """UPDATE `"""+self.dbDatabase+"""`.`gd_detail_transaksi_jurnal` 
+					SET `kodeTransaksi` = '"""+str(self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.text())+"""',
+						`noAkunJurnal` 	= '"""+str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKODE_AKUN).text())+"""',
+						`kodeDepartemen`= '"""+str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEPARTEMEN).text())+"""',
+						`debit`			= '"""+str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEBIT).text())+"""',
+						`kredit`		= '"""+str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKREDIT).text())+"""',
+						`tanggal`		= '"""+str(self.dte_BukuBesar_DaftarTransaksiJurnal_Tambah_Tanggal.dateTime().toString("yyyy-MM-dd hh:mm:ss"))+"""'
+						
+					WHERE `gd_detail_transaksi_jurnal`.`id` ="""+str(tablerowid)+""";
+			"""
+			self.DatabaseRunQuery(sql)
+			row+=1
+		if self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()>len(idies):
+			#"ada tambahan baru"
+			for row in range(len(idies),self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()):
+				sql = """INSERT INTO `"""+self.dbDatabase+"""`.`gd_detail_transaksi_jurnal` (
+						`id` ,
+						`kodeTransaksi` ,
+						`noAkunJurnal` ,
+						`kodeDepartemen` ,
+						`debit` ,
+						`kredit` ,
+						`tanggal`
+					)
+					VALUES (
+						NULL ,"""+\
+						"'"+str(self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.text())+"',"+\
+						"'"+str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKODE_AKUN).text())+"',"+\
+						"'"+str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEPARTEMEN).text())+"',"+\
+						"'"+str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEBIT).text())+"',"+\
+						"'"+str(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKREDIT).text())+"',"+\
+						"'"+str(self.dte_BukuBesar_DaftarTransaksiJurnal_Tambah_Tanggal.dateTime().toString("yyyy-MM-dd hh:mm:ss"))+"' );"
 				self.DatabaseRunQuery(sql)
-				row+=1
-		sql = """UPDATE `"""+self.dbDatabase+"""`.`gd_transaksi_jurnal` 
-				SET `nilaiTransaksi` = '"""+str(self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VtDebit.text())+"""'
-				WHERE `gd_transaksi_jurnal`.`kodeTransaksi` = '"""+str(self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.text())+"""';
-		"""
-		self.DatabaseRunQuery(sql)
+				
+		self.DatabaseInsertReplace(self.dbDatabase,
+									"gd_transaksi_jurnal",
+									"kodeTransaksi",
+									str(self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.text()),
+									["kodeTransaksi","catatan","nilaiTransaksi","tanggal"],
+									[
+										str(self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.text()),	
+										str(self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_Keterangan.text()),
+										str(self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VtDebit.text()),
+										str(self.dte_BukuBesar_DaftarTransaksiJurnal_Tambah_Tanggal.dateTime().toString("yyyy-MM-dd hh:mm:ss"))
+									]
+								)
+		#~ self.DatabaseRunQuery(sql)
 		self.BukuBesar_DaftarTransaksiJurnal()
 		return
 	
@@ -211,6 +299,12 @@ class BukuBesar(object):
 			"bukan pilih data rekening"
 			return
 		def UbahCell():
+			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CNOMOR_REKENING)==None):
+				item = QtGui.QTableWidgetItem()
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(row, CNOMOR_REKENING, item)
+			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CNAMA_REKENING)==None):
+				item = QtGui.QTableWidgetItem()
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(row, CNAMA_REKENING, item)
 			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CNOMOR_REKENING).setText(self.DataMaster_DataRekening_RekeningTerpilih[0])
 			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CNAMA_REKENING).setText(self.DataMaster_DataRekening_RekeningTerpilih[1])
 			self.GarvinDisconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellClicked)

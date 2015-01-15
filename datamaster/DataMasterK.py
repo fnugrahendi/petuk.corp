@@ -290,7 +290,7 @@ class DataMaster(object):
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAREKENING)
 	
 	def DataMaster_DataRekening_Popup_Pilih(self,fcb_ok=False,fcb_cancel=False):
-		"Tunjukkan Popup untuk memilih data rekening"
+		"Tunjukkan Popup untuk memilih data rekening, hasil disimpen ke variabel public self.DataMaster_DataRekening_RekeningTerpilih"
 		if fcb_ok==False:
 			fcb_ok = self.DataMaster_None
 		if fcb_cancel==False:
