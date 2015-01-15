@@ -243,7 +243,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 	#-------------------------------------------------------------------DataMaster
 	#-------------------------------------------------------------------DataMaster
 	def DataMaster_None(self):
-		None
+		pass
 	
 	def initDatabase(self):
 		try:
@@ -492,7 +492,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		note that keyfield must be rewritten on fields too, due too incase keyfields keyvalue is just in-purpose-False escaper that is not used
 		15 Jan 2015 06:37
 		"""
-		sql = "SELECT * FROM `"+table+"` WHERE `"+keyfield+"` LIKE '"+keyvalue+"' ;"
+		sql = "SELECT * FROM `"+table+"` WHERE `"+str(keyfield)+"` LIKE '"+str(keyvalue)+"' ;"
 		data = self.DatabaseRunQuery(sql)
 		ada_data = False
 		if len(data)>0:
@@ -518,7 +518,39 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 			sql = sql[:-2]
 			sql = sql + ");"
 		self.DatabaseRunQuery(sql)
-		pass
+		return True
+	def DatabaseInsertAvoidreplace(self,db,table,keyfield,keyvalue,fields,values,showPopupText=False,showPopupFunctionCallback=False):
+		"""Masukkan (list) values pada (list) fields ke table dengan keyfield dan value tertentu,
+		bila sudah ada batal insert & muncul popup peringatan (diaktivasi), bila belum insert aja"""
+		
+		sql = "SELECT * FROM `"+table+"` WHERE `"+str(keyfield)+"` LIKE '"+str(keyvalue)+"' ;"
+		data = self.DatabaseRunQuery(sql)
+		ada_data = False
+		if len(data)>0:
+			ada_data = True
+		if len(fields)!=len(values):
+			#salah
+			return False			
+		if (ada_data):
+			if (showPopupText!=False):
+				if showPopupFunctionCallback==False:
+					showPopupFunctionCallback = self.DataMaster_None
+				self.DataMaster_Popup(str(showPopupText),showPopupFunctionCallback)
+			else:
+				self.statusbar.showMessage("Penambahan data tidak dilakukan karena terdapat data duplikat untuk "+str(keyvalue),30000)
+			return False
+		else:
+			sql = "INSERT INTO `"+db+"`.`"+table+"` ("
+			for x in range(0,len(fields)):
+				sql = sql + " `"+str(fields[x])+"`, "
+			sql = sql[:-2]
+			sql = sql + ") VALUES ("
+			for x in range(0,len(values)):
+				sql = sql + " '"+str(values[x])+"', "
+			sql = sql[:-2]
+			sql = sql + ");"
+		self.DatabaseRunQuery(sql)
+		return True
 if __name__=="__main__":
 	app = QtGui.QApplication(sys.argv)
 	dmw = MainGUI()
