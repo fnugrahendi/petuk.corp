@@ -303,17 +303,19 @@ class BukuBesar(object):
 			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_Keterangan.setText("")
 			tambahbaris()
 		
-		#-----------Todo hapus baris
+		#-----------hapus baris
+		#----Hapus baris hanya terjadi bila sudah di Act_Simpan, sql query diantrikan
+		sqltorun = []
 		def _SetActiveIndex(a,b):
 			self.BukuBesar_DaftarTransaksiJurnal_Tambah_RowColumnTerpilih = [a,b]
-			print self.BukuBesar_DaftarTransaksiJurnal_Tambah_RowColumnTerpilih
 		
 		def _DeleteCertainCell():
 			a = self.BukuBesar_DaftarTransaksiJurnal_Tambah_RowColumnTerpilih[0]
 			if (a<0):
 				return
-			sql = "DELETE FROM `gd_detail_transaksi_jurnal` WHERE `gd_detail_transaksi_jurnal`.`id` = "+str(idies[a])+" ;"
-			self.DatabaseRunQuery(sql)
+			if (a<len(idies)):
+				sqltorun.append( "DELETE FROM `gd_detail_transaksi_jurnal` WHERE `gd_detail_transaksi_jurnal`.`id` = "+str(idies[a])+" ;")
+				idies.pop(a)
 			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.removeRow(a)
 			
 		def _ConfirmDeleteCertainCell():
@@ -340,10 +342,11 @@ class BukuBesar(object):
 		self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Delete.clicked.connect(_ConfirmDeleteCertainCell)
 		self.GarvinDisconnect(self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Simpan.clicked)
 		#-----kalau len idies 0, langsung masuk ke for row in range(len(idies),self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()): tanpa masalah
-		self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Simpan.clicked.connect(functools.partial(self.BukuBesar_DaftarTransaksiJurnal_Tambah_Act_Simpan,idies))
+		self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Simpan.clicked.connect(functools.partial(self.BukuBesar_DaftarTransaksiJurnal_Tambah_Act_Simpan,idies,sqltorun))
 		return
 	
-	def BukuBesar_DaftarTransaksiJurnal_Tambah_Act_Simpan(self,idies=[]):
+	#-------------------------------------------------------------------- TAMBAH ACT SIMPAN
+	def BukuBesar_DaftarTransaksiJurnal_Tambah_Act_Simpan(self,idies=[],sqltorun=[]):
 		CKODE_AKUN = 0
 		CNAMA_AKUN = 1
 		CDEPARTEMEN = 2
@@ -399,7 +402,9 @@ class BukuBesar(object):
 										str(self.dte_BukuBesar_DaftarTransaksiJurnal_Tambah_Tanggal.dateTime().toString("yyyy-MM-dd hh:mm:ss"))
 									]
 								)
-		#~ self.DatabaseRunQuery(sql)
+		#---------at last, we execute sqltorun queries
+		for sql in sqltorun:
+			self.DatabaseRunQuery(sql)
 		self.BukuBesar_DaftarTransaksiJurnal()
 		return
 	
