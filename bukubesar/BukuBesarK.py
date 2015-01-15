@@ -28,38 +28,48 @@ class BukuBesar(object):
 		CKETERANGAN = 2
 		CNILAI = 3
 		
+		def DrawIfExist(hasil):
+			for row in range(0,len(result)):
+				try:
+					idtertampil.index(result[row][0])
+					#---sudah ada id tersebut di list
+					continue
+				except ValueError:
+					idtertampil.append(result[row][0])
+				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.insertRow(row)
+				if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CTANGGAL)==None):
+					item = QtGui.QTableWidgetItem()
+					self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, CTANGGAL, item)
+				if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CNOMOR_REFERENSI)==None):
+					item = QtGui.QTableWidgetItem()
+					self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, CNOMOR_REFERENSI, item)
+				if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CKETERANGAN)==None):
+					item = QtGui.QTableWidgetItem()
+					self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, CKETERANGAN, item)
+				if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CNILAI)==None):
+					item = QtGui.QTableWidgetItem()
+					self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, CNILAI, item)
+				
+				item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CTANGGAL)
+				item.setText(str(result[row][field("tanggal")]))
+				item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CNOMOR_REFERENSI)
+				item.setText(str(result[row][CNOMOR_REFERENSI]))
+				item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CKETERANGAN)
+				item.setText(str(result[row][CKETERANGAN]))
+				item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CNILAI)
+				item.setText(str(result[row][CNILAI]))
 		#at first we clear the rows
 		for r in range(0,self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.rowCount()+1):
 			self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.removeRow(r)
 			self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setRowCount(0)
 		
-		result = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal` WHERE `gd_transaksi_jurnal`.`kodeTransaksi` %LIKE% '"+searchtext+"'")
-		#~ self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setRowCount(len(result))
-		for row in range(0,len(result)):
-			
-			self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.insertRow(row)
-			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CTANGGAL)==None):
-				item = QtGui.QTableWidgetItem()
-				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, CTANGGAL, item)
-			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CNOMOR_REFERENSI)==None):
-				item = QtGui.QTableWidgetItem()
-				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, CNOMOR_REFERENSI, item)
-			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CKETERANGAN)==None):
-				item = QtGui.QTableWidgetItem()
-				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, CKETERANGAN, item)
-			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CNILAI)==None):
-				item = QtGui.QTableWidgetItem()
-				self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.setItem(row, CNILAI, item)
-			
-			item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CTANGGAL)
-			item.setText(str(result[row][field("tanggal")]))
-			item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CNOMOR_REFERENSI)
-			item.setText(str(result[row][CNOMOR_REFERENSI]))
-			item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CKETERANGAN)
-			item.setText(str(result[row][CKETERANGAN]))
-			item = self.tbl_BukuBesar_DaftarTransaksiJurnal_Fcontent_List.item(row,CNILAI)
-			item.setText(str(result[row][CNILAI]))
-		
+		idtertampil = []
+		result = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal` WHERE `gd_transaksi_jurnal`.`kodeTransaksi` LIKE '%"+searchtext+"%'")
+		DrawIfExist(result)
+		result = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal` WHERE `gd_transaksi_jurnal`.`catatan` LIKE '%"+searchtext+"%'")
+		DrawIfExist(result)
+		result = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal` WHERE `gd_transaksi_jurnal`.`tanggal` LIKE '%"+searchtext+"%'")
+		DrawIfExist(result)
 	def BukuBesar_DaftarTransaksiJurnal(self):
 		"""Draw info Daftar Transaksi Jurnal """
 		#set index
