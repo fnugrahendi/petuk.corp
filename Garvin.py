@@ -360,7 +360,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		self.DatabaseRunQuery(query)
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
 	
-	def Penjualan_OrderPenjualan_Batal(self)
+	def Penjualan_OrderPenjualan_Batal(self):
 		kodeTransaksi = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
 		del_query = "DELETE FROM `gd_order_penjualan` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"'"
 		self.DatabaseRunQuery(query)
