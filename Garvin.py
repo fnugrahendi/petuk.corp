@@ -365,7 +365,6 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		currentRow = self.tbl_Penjualan_OrderPenjualan.currentRow()
 		kodeBarang = str(self.tbl_Penjualan_OrderPenjualan.item(currentRow,0).text())
 		query = "DELETE FROM `gd_order_penjualan` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"' AND `kodeBarang` LIKE '"+kodeBarang+"';"
-		print query
 		self.DatabaseRunQuery(query)
 		namaTabel.removeRow(currentRow)
 		
