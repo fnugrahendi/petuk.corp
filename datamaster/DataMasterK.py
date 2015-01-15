@@ -247,7 +247,34 @@ class DataMaster(object):
 						Tb_ListSatuan[y].setText(str(result[x][self.DataMaster_DataSatuan_Field.index("namaSatuan")]))
 						Tb_ListSatuan[y].clicked.disconnect()
 						Tb_ListSatuan[y].clicked.connect(functools.partial(self.DataMaster_DataSatuanPengukuran_DrawInfo,result[x]))
+	
+	def DataMaster_DataRekening_RefreshInfo(self):
+		#---got to clear table first
+		for r in range(0,self.tbl_DataMaster_DataRekening_Fcontent_LRekening.rowCount()+1):
+			self.tbl_DataMaster_DataRekening_Fcontent_LRekening.removeRow(r)
+		self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setRowCount(0)
 		
+		sql = "SELECT * FROM `gd_rekening_jurnal` ORDER BY `gd_rekening_jurnal`.`noAkun` ASC;"
+		result = self.DatabaseRunQuery(sql)
+		for row in range(0,len(result)):
+			self.tbl_DataMaster_DataRekening_Fcontent_LRekening.insertRow(row)
+			if (self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,0)==None):
+				item = QtGui.QTableWidgetItem()
+				#~ item.setColumnWidth(300)
+				self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 0, item)
+			if (self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,1)==None):
+				itema = QtGui.QTableWidgetItem()
+				self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 1, itema)
+			if (self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,2)==None):
+				itemb = QtGui.QTableWidgetItem()
+				self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 2, itemb)
+			
+			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,0)
+			item.setText(result[row][1])
+			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,1)
+			item.setText(result[row][2])
+			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,2)
+			item.setText(result[row][3])
 	def DataMaster_DataRekening(self):
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAREKENING)
 		
@@ -290,6 +317,9 @@ class DataMaster(object):
 		#---Sinyal tombol tambah
 		self.GarvinDisconnect(self.tb_DataMaster_DataRekening_Tambah.clicked)
 		self.tb_DataMaster_DataRekening_Tambah.clicked.connect(self.DataMaster_DataRekening_Tambah)
+		#---Sinyal tombol hapus
+		self.GarvinDisconnect(self.tb_DataMaster_DataRekening_Delete.clicked)
+		self.tb_DataMaster_DataRekening_Delete.clicked.connect(self.DataMaster_DataRekening_Delete)
 		#---tombol edit
 		self.GarvinDisconnect(self.tb_DataMaster_DataRekening_Edit.clicked)
 		#--- confirmasi edit
@@ -332,11 +362,24 @@ class DataMaster(object):
 		if len(data)<0:
 			return
 		
-		self.le_DataMaster_DataRekening_NomorAkun.setText(data[0][self.DataMaster_DataRekening_Field.index("noAkun")])
-		self.le_DataMaster_DataRekening_NamaAkun.setText(data[0][self.DataMaster_DataRekening_Field.index("namaAkun")])
-		self.le_DataMaster_DataRekening_NamaAliasAkun.setText(data[0][self.DataMaster_DataRekening_Field.index("namaAliasAkun")])
+		self.le_DataMaster_DataRekening_NomorAkun.setText(str(data[0][self.DataMaster_DataRekening_Field.index("noAkun")]))
+		self.le_DataMaster_DataRekening_NamaAkun.setText(str(data[0][self.DataMaster_DataRekening_Field.index("namaAkun")]))
+		self.le_DataMaster_DataRekening_NamaAliasAkun.setText(str(data[0][self.DataMaster_DataRekening_Field.index("namaAliasAkun")]))
 		self.DataMaster_DataRekening_Tambah()
 	
+	def DataMaster_DataRekening_Delete(self):
+		if (self.DataMaster_DataRekening_Edit_idEDIT<0):
+			return
+		def _CommitDelete():
+			self.DatabaseRunQuery("DELETE FROM `gd_rekening_jurnal` WHERE `id` = "+str(self.DataMaster_DataRekening_Edit_idEDIT)+" ;")
+			self.DataMaster_DataRekening_RefreshInfo()
+		data = self.DatabaseRunQuery("SELECT * FROM `gd_rekening_jurnal` WHERE `id` = "+str(self.DataMaster_DataRekening_Edit_idEDIT)+" ;")
+		if len(data)<0:
+			return
+		self.DataMaster_Popup("Anda yakin akan menghapus rekening "+str(data[0][self.DataMaster_DataRekening_Field.index("noAkun")])+"?\n\n"+\
+								"Lanjutkan hapus hanya bila anda mengerti apa yang anda lakukan!",
+								_CommitDelete)
+		
 	def DataMaster_DataRekening_Popup_Pilih(self,fcb_ok=False,fcb_cancel=False):
 		"Tunjukkan Popup untuk memilih data rekening, hasil disimpen ke variabel public self.DataMaster_DataRekening_RekeningTerpilih"
 		if fcb_ok==False:
