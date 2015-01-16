@@ -66,6 +66,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		self.tb_Penjualan_OrderPenjualan_HapusBaris.clicked.connect(functools.partial(self.HapusBaris,self.tbl_Penjualan_OrderPenjualan))
 		self.tb_Penjualan_OrderPenjualan_Batal.clicked.connect(self.Penjualan_OrderPenjualan_Batal)
 		self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.currentIndexChanged.connect(self.Penjualan_OrderPenjualan_TambahProduk_UpdateKode)
+		self.tb_Penjualan_OrderPenjualan_Rekam.clicked.connect(self.Penjualan_OrderPenjualan_Rekam)
 		
 		#Tombol pada Halaman Pengiriman
 		self.tb_Penjualan_Pengiriman_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -394,6 +395,21 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 				self.tbl_Penjualan_OrderPenjualan.setItem(a,6,QtGui.QTableWidgetItem(str(total))) #total harga
 				self.tbl_Penjualan_OrderPenjualan.setItem(a,7,QtGui.QTableWidgetItem(result[a][7]))
 	
+	def Penjualan_OrderPenjualan_Rekam(self):
+		kodeTransaksi = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
+		jumlahRow = self.tbl_Penjualan_OrderPenjualan.rowCount()
+		if jumlahRow != 0:
+			for a in range (0,jumlahRow):
+				kodeBarang = str(self.tbl_Penjualan_OrderPenjualan.item(a,0).text())
+				jumlahDijual =  str(self.tbl_Penjualan_OrderPenjualan.item(a,2).text())
+				query = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` LIKE '"+kodeBarang+"'"
+				stok = self.DatabaseRunQuery(query)[0][7]
+				stok = stok - jumlahDijual
+				self.DatabaseInsertReplace(self.dbDatabase,"gd_data_produk",
+															"kodeBarang", kodeBarang,
+															["stok"],
+															[stok])
+
 	def Penjualan_OrderPenjualan_Batal(self):
 		jumlahRow = self.tbl_Penjualan_OrderPenjualan.rowCount()
 		if jumlahRow != 0:
