@@ -367,8 +367,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		try:
 			kodePajak = str(self.DatabaseRunQuery(query)[0][1])
 		except:
-			kodePajak = 'NULL'
-		kodeMatauang = str(self.cb_Penjualan_OrderPenjualan_Kurs.currentText())
+			kodePajak = ""		kodeMatauang = str(self.cb_Penjualan_OrderPenjualan_Kurs.currentText())
 		query = "INSERT INTO `gd_order_penjualan` (`kodeTransaksi`,`kodeMatauang`,`kodePelanggan`,`kodeBarang`"+\
 			",`jumlah`,`harga`,`diskon`,`kodePajak`) VALUES"+\
 			"('"+kodeTransaksi+"','"+kodeMatauang+"','"+kodePelanggan+"','"+kodeBarang+"','"+jumlah+"','"+harga+"','"+diskon+"','"+kodePajak+"')"
@@ -404,7 +403,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 				jumlahDijual =  str(self.tbl_Penjualan_OrderPenjualan.item(a,2).text())
 				query = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` LIKE '"+kodeBarang+"'"
 				stok = self.DatabaseRunQuery(query)[0][7]
-				stok = stok - jumlahDijual
+				stok = int(stok - long(jumlahDijual))
 				self.DatabaseInsertReplace(self.dbDatabase,"gd_data_produk",
 															"kodeBarang", kodeBarang,
 															["stok"],
