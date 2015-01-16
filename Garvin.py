@@ -367,7 +367,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		try:
 			kodePajak = str(self.DatabaseRunQuery(query)[0][1])
 		except:
-			kodePajak = ""		kodeMatauang = str(self.cb_Penjualan_OrderPenjualan_Kurs.currentText())
+			kodePajak = ""
+		kodeMatauang = str(self.cb_Penjualan_OrderPenjualan_Kurs.currentText())
 		query = "INSERT INTO `gd_order_penjualan` (`kodeTransaksi`,`kodeMatauang`,`kodePelanggan`,`kodeBarang`"+\
 			",`jumlah`,`harga`,`diskon`,`kodePajak`) VALUES"+\
 			"('"+kodeTransaksi+"','"+kodeMatauang+"','"+kodePelanggan+"','"+kodeBarang+"','"+jumlah+"','"+harga+"','"+diskon+"','"+kodePajak+"')"
@@ -395,6 +396,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 				self.tbl_Penjualan_OrderPenjualan.setItem(a,7,QtGui.QTableWidgetItem(result[a][7]))
 	
 	def Penjualan_OrderPenjualan_Rekam(self):
+		nama = str(self.cb_Penjualan_OrderPenjualan_Nama.currentText())
+		query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
+		kodePelanggan = self.DatabaseRunQuery(query)[0][1]
 		kodeTransaksi = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
 		jumlahRow = self.tbl_Penjualan_OrderPenjualan.rowCount()
 		if jumlahRow != 0:
@@ -408,6 +412,13 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 															"kodeBarang", kodeBarang,
 															["stok"],
 															[stok])
+		query = "SELECT SUM(`harga`*`jumlah`) FROM `gd_order_penjualan` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"'"
+		totalSaldoPiutang = str(self.DatabaseRunQuery(query)[0][0])
+		print totalSaldoPiutang
+		query = "INSERT INTO `"+self.dbDatabase+"`.`gd_piutang`"+\
+				"(`kodePelanggan`, `kodeTransaksi`, `totalSaldo`) "+\
+				"VALUES ('"+kodePelanggan+"', '"+kodeTransaksi+"', '"+totalSaldoPiutang+"');"
+		self.DatabaseRunQuery(query)
 
 	def Penjualan_OrderPenjualan_Batal(self):
 		jumlahRow = self.tbl_Penjualan_OrderPenjualan.rowCount()
