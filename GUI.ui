@@ -44,7 +44,7 @@
          <string notr="true"/>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="tab_DataMaster">
          <attribute name="title">
@@ -2255,8 +2255,8 @@ QPushButton::hover{
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>69</width>
-                      <height>412</height>
+                      <width>100</width>
+                      <height>200</height>
                      </rect>
                     </property>
                     <property name="styleSheet">
@@ -3364,7 +3364,7 @@ QPushButton::hover{
           <item>
            <widget class="QStackedWidget" name="st_Penjualan">
             <property name="currentIndex">
-             <number>4</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="st_Penjualan_Menu">
              <layout class="QHBoxLayout" name="horizontalLayout">
@@ -3914,7 +3914,10 @@ QPushButton::hover{
                     <set>QAbstractItemView::NoEditTriggers</set>
                    </property>
                    <property name="showGrid">
-                    <bool>false</bool>
+                    <bool>true</bool>
+                   </property>
+                   <property name="gridStyle">
+                    <enum>Qt::NoPen</enum>
                    </property>
                    <property name="wordWrap">
                     <bool>true</bool>
@@ -6323,14 +6326,14 @@ QPushButton::hover{
                  <item>
                   <widget class="QPushButton" name="tb_Pembelian_PiutangUsaha">
                    <property name="text">
-                    <string>Piutang Usaha</string>
+                    <string>Hutang Usaha</string>
                    </property>
                   </widget>
                  </item>
                  <item>
                   <widget class="QPushButton" name="tb_Pembelian_PembayaranPiutang">
                    <property name="text">
-                    <string>Pembayaran Piutang</string>
+                    <string>Pembayaran Hutang</string>
                    </property>
                   </widget>
                  </item>
