@@ -112,6 +112,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		self.INDEX_ST_DATAMASTER_DATASATUANPENGUKURAN_TAMBAH = 6
 		self.INDEX_ST_DATAMASTER_DATAREKENING = 7
 		self.INDEX_ST_DATAMASTER_DATAREKENING_TAMBAH = 8
+		self.INDEX_ST_DATAMASTER_DATADEPARTEMEN = 9
+		self.INDEX_ST_DATAMASTER_DATADEPARTEMEN_TAMBAH = 10
 		
 		#init room2
 		#---------------------------------------------------------------Satuan Pengukuran combobox di room Data Produk & room Satuan Pengukuran
