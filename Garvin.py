@@ -455,7 +455,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 			saldoPiutang = str(int(result[a][3]))
 			self.tbl_Penjualan_Piutang.insertRow(a)
 			self.tbl_Penjualan_Piutang.setItem(a,0,QtGui.QTableWidgetItem(nama)) #nama
-			self.tbl_Penjualan_Piutang.setItem(a,3,QtGui.QTableWidgetItem(saldoPiutang)) #nama
+			self.tbl_Penjualan_Piutang.setItem(a,4,QtGui.QTableWidgetItem(saldoPiutang)) #nama
+		query = "SELECT SUM(totalSaldo) FROM `gd_piutang`"
+		self.lb_Penjualan_Piutang_TotalNilai.setText("Rp "+str(int(self.DatabaseRunQuery(query)[0][0])))
 	
 	def Penjualan_GoTo_PembayaranPiutang(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PP)
