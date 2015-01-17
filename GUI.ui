@@ -3442,12 +3442,12 @@ QPushButton::hover{
                 </layout>
                </item>
                <item>
-                <layout class="QGridLayout" name="gridLayout_11">
+                <layout class="QGridLayout" name="gl_Penjualan_Menu_Info">
                  <property name="sizeConstraint">
                   <enum>QLayout::SetMinimumSize</enum>
                  </property>
                  <item row="0" column="0" colspan="3">
-                  <spacer name="horizontalSpacer_6">
+                  <spacer name="hs_Penjualan_Menu_Info_1">
                    <property name="orientation">
                     <enum>Qt::Horizontal</enum>
                    </property>
@@ -3460,14 +3460,14 @@ QPushButton::hover{
                   </spacer>
                  </item>
                  <item row="1" column="0" colspan="3">
-                  <widget class="QLabel" name="label">
+                  <widget class="QLabel" name="lb_Penjualan_Menu_Info">
                    <property name="text">
                     <string>Menu</string>
                    </property>
                   </widget>
                  </item>
                  <item row="2" column="0">
-                  <spacer name="horizontalSpacer_7">
+                  <spacer name="hs_Penjualan_Menu_Info_2">
                    <property name="orientation">
                     <enum>Qt::Horizontal</enum>
                    </property>
@@ -6333,7 +6333,7 @@ QPushButton::hover{
                    <number>3</number>
                   </property>
                   <item>
-                   <widget class="QPushButton" name="tb_Pembelian_PenawaranHarga">
+                   <widget class="QPushButton" name="tb_Pembelian_PermintaanBarang">
                     <property name="text">
                      <string>Permintaan Barang</string>
                     </property>
@@ -6347,21 +6347,21 @@ QPushButton::hover{
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="tb_Pembelian_Pengiriman">
+                   <widget class="QPushButton" name="tb_Pembelian_Penerimaan">
                     <property name="text">
                      <string>Penerimaan Barang</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="tb_Pembelian_PiutangUsaha">
+                   <widget class="QPushButton" name="tb_Pembelian_HutangUsaha">
                     <property name="text">
                      <string>Hutang Usaha</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="tb_Pembelian_PembayaranPiutang">
+                   <widget class="QPushButton" name="tb_Pembelian_PembayaranHutang">
                     <property name="text">
                      <string>Pembayaran Hutang</string>
                     </property>
@@ -6378,7 +6378,7 @@ QPushButton::hover{
                 </widget>
                </item>
                <item row="0" column="1">
-                <spacer name="horizontalSpacer_8">
+                <spacer name="hs_Pembelian_Menu">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
@@ -6391,7 +6391,7 @@ QPushButton::hover{
                 </spacer>
                </item>
                <item row="1" column="0">
-                <spacer name="verticalSpacer">
+                <spacer name="vs_Pembelian_Menu">
                  <property name="orientation">
                   <enum>Qt::Vertical</enum>
                  </property>
@@ -6405,7 +6405,548 @@ QPushButton::hover{
                </item>
               </layout>
              </widget>
-             <widget class="QWidget" name="st_Pembelian_akssjkj"/>
+             <widget class="QWidget" name="st_Pembelian_PermintaanBarang">
+              <layout class="QVBoxLayout" name="verticalLayout_15">
+               <item>
+                <widget class="QFrame" name="fr_Pembelian_PermintaanBarang_Title">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>55</height>
+                  </size>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QGridLayout" name="gl_Penjualan_PenawaranHarga_title_2">
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="lb_Pembelian_PermintaanBarang_Title">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Segoe UI Semilight</family>
+                      <pointsize>18</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Permintaan Barang</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="fr_Pembelian_PermintaanBarang_Tabel">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QGridLayout" name="gl_Penjualan_PenawaranHarga_tabel_2">
+                  <item row="0" column="0">
+                   <widget class="QTableWidget" name="tbl_Pembelian_PermintaanBarang">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Maximum" vsizetype="MinimumExpanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>200</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>1366</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <property name="showGrid">
+                     <bool>false</bool>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
+                    <property name="cornerButtonEnabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="rowCount">
+                     <number>0</number>
+                    </property>
+                    <property name="columnCount">
+                     <number>5</number>
+                    </property>
+                    <column>
+                     <property name="text">
+                      <string>No Referensi</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Tanggal</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Pelanggan</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Kurs</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Nilai</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="fr_Pembelian_PermintaanBarang_Tombol">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>55</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>100</height>
+                  </size>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="hl_Penjualan_PenawaranHarga_tombol_2">
+                  <item>
+                   <widget class="QPushButton" name="tb_Pembelian_PermintaanBarang_Baru">
+                    <property name="text">
+                     <string>Baru</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="hs_Pembelian_PermintaanBarang_Tombol">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="tb_Pembelian_PermintaanBarang_Tutup">
+                    <property name="text">
+                     <string>Tutup</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="st_Pembelian_OrderPembelian">
+              <layout class="QVBoxLayout" name="verticalLayout_16">
+               <item>
+                <widget class="QFrame" name="fr_Pembelian_OrderPembelian_Title">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QGridLayout" name="gl_Penjualan_OrderPenjualan_title_2">
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="lb_Pembelian_OrderPembelian_Title">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Segoe UI Semilight</family>
+                      <pointsize>18</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Order Pembelian</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="fr_Pembelian_OrderPembelian_Input_Line">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QGridLayout" name="gl_Penjualan_OrderPenjualan_input_2">
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="lb_Pembelian_OrderPembelian_Nama">
+                    <property name="text">
+                     <string>Nama Pemasok</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLabel" name="lb_Pembelian_OrderPembelian_NoPO">
+                    <property name="text">
+                     <string>No. PO</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <widget class="QLabel" name="lb_Pembelian_OrderPembelian_Penawaran">
+                    <property name="text">
+                     <string>Penawaran No.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="3">
+                   <widget class="QLabel" name="lb_Pembelian_OrderPembelian_Tanggal">
+                    <property name="text">
+                     <string>Tanggal</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QComboBox" name="cb_Pembelian_OrderPembelian_Gudang"/>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QComboBox" name="cb_Pembelian_OrderPembelian_Nama"/>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QLabel" name="lb_Pembelian_OrderPembelian_Keterangan">
+                    <property name="text">
+                     <string>Keterangan</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="lb_Pembelian_OrderPembelian_Gudang">
+                    <property name="text">
+                     <string>Masuk ke Gudang</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="5">
+                   <widget class="QComboBox" name="cb_Pembelian_OrderPembelian_Kurs">
+                    <item>
+                     <property name="text">
+                      <string>IDR</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item row="1" column="3">
+                   <widget class="QDateEdit" name="de_Pembelian_OrderPembelian_Tanggal">
+                    <property name="calendarPopup">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QLineEdit" name="le_Pembelian_OrderPembelian_Penawaran"/>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="le_Pembelian_OrderPembelian_NoPO"/>
+                  </item>
+                  <item row="0" column="7">
+                   <widget class="QCheckBox" name="chk_Pembelian_OrderPembelian_Selesai">
+                    <property name="text">
+                     <string>Selesai</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="5">
+                   <widget class="QLabel" name="lb_Pembelian_OrderPembelian_Kurs">
+                    <property name="text">
+                     <string>Mata Uang</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="6">
+                   <spacer name="hs_Pembelian_OrderPembelian_Input">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item row="1" column="7">
+                   <widget class="QCheckBox" name="chk_Pembelian_OrderPembelian_Jasa">
+                    <property name="text">
+                     <string>Jasa</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1" colspan="4">
+                   <widget class="QLineEdit" name="le_Pembelian_OrderPembelian_Keterangan"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="fr_Pembelian_OrderPembelian_Tabel">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QGridLayout" name="gl_Penjualan_OrderPenjualan_tabel_2">
+                  <item row="2" column="0">
+                   <widget class="QTableWidget" name="tbl_Pembelian_OrderPembelian">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Maximum" vsizetype="MinimumExpanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>250</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>1366</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <property name="editTriggers">
+                     <set>QAbstractItemView::NoEditTriggers</set>
+                    </property>
+                    <property name="showGrid">
+                     <bool>false</bool>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
+                    <property name="cornerButtonEnabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="rowCount">
+                     <number>0</number>
+                    </property>
+                    <property name="columnCount">
+                     <number>8</number>
+                    </property>
+                    <column>
+                     <property name="text">
+                      <string>Kode</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Nama Produk</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Jumlah</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Satuan</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Harga</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Diskon</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Total</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Pajak</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="fr_Pembelian_OrderPembelian_Tombol">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="hl_Penjualan_OrderPenjualan_tombol_2">
+                  <item>
+                   <widget class="QPushButton" name="tb_Pembelian_OrderPembelian_Baru">
+                    <property name="text">
+                     <string>Baru</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="tb_Pembelian_OrderPembelian_Batal">
+                    <property name="text">
+                     <string>Batal</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="tb_Pembelian_OrderPembelian_HapusBaris">
+                    <property name="text">
+                     <string>Hapus Baris</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="hs_Pembelian_OrderPembelian_Tombol">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="tb_Pembelian_OrderPembelian_Rekam">
+                    <property name="text">
+                     <string>Rekam</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="tb_Pembelian_OrderPembelian_Tutup">
+                    <property name="text">
+                     <string>Tutup</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="st_Pembelian_Penerimaan"/>
+             <widget class="QWidget" name="st_Pembelian_HutangUsaha"/>
+             <widget class="QWidget" name="st_Pembelian_PembayaranHutang"/>
+             <widget class="QWidget" name="st_Pembelian_ReturPembelian"/>
             </widget>
            </item>
           </layout>
