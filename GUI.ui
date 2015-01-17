@@ -6335,7 +6335,7 @@ QPushButton::hover{
                   <item>
                    <widget class="QPushButton" name="tb_Pembelian_PenawaranHarga">
                     <property name="text">
-                     <string>Penawaran Harga</string>
+                     <string>Permintaan Barang</string>
                     </property>
                    </widget>
                   </item>
@@ -6349,7 +6349,7 @@ QPushButton::hover{
                   <item>
                    <widget class="QPushButton" name="tb_Pembelian_Pengiriman">
                     <property name="text">
-                     <string>Pengiriman</string>
+                     <string>Penerimaan Barang</string>
                     </property>
                    </widget>
                   </item>
