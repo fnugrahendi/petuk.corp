@@ -446,6 +446,16 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 	
 	def Penjualan_GoTo_PiutangUsaha(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PU)
+		query = "SELECT * FROM `gd_piutang`"
+		result = self.DatabaseRunQuery(query)
+		for a in range (0,len(result)):
+			kodePelanggan = str(result[a][1])
+			query = "SELECT * FROM `gd_nama_alamat` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"'"
+			nama = str(self.DatabaseRunQuery(query)[0][2])
+			saldoPiutang = str(int(result[a][3]))
+			self.tbl_Penjualan_Piutang.insertRow(a)
+			self.tbl_Penjualan_Piutang.setItem(a,0,QtGui.QTableWidgetItem(nama)) #nama
+			self.tbl_Penjualan_Piutang.setItem(a,3,QtGui.QTableWidgetItem(saldoPiutang)) #nama
 	
 	def Penjualan_GoTo_PembayaranPiutang(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PP)
