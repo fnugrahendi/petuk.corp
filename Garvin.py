@@ -112,8 +112,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		self.INDEX_ST_DATAMASTER_DATASATUANPENGUKURAN_TAMBAH = 6
 		self.INDEX_ST_DATAMASTER_DATAREKENING = 7
 		self.INDEX_ST_DATAMASTER_DATAREKENING_TAMBAH = 8
-		self.INDEX_ST_DATAMASTER_DATADEPARTEMEN = 9
-		self.INDEX_ST_DATAMASTER_DATADEPARTEMEN_TAMBAH = 10
+		self.INDEX_ST_DATAMASTER_DATADEPARTEMEN = 91
+		self.INDEX_ST_DATAMASTER_DATADEPARTEMEN_TAMBAH = 9
 		
 		#init room2
 		#---------------------------------------------------------------Satuan Pengukuran combobox di room Data Produk & room Satuan Pengukuran
@@ -190,6 +190,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		self.tb_DataMaster_DataRekening.clicked.connect(self.DataMaster_DataRekening)
 		self.tb_DataMaster_DataRekening_Tutup.clicked.connect(functools.partial(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_MENU))
 		
+		self.tb_DataMaster_DataDepartemen.clicked.connect				(functools.partial(self.DataMaster_Goto_Common,self.INDEX_ST_DATAMASTER_DATADEPARTEMEN))
+		
 		self.tb_DataMaster_DataCommon_Tutup.clicked.connect(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_MENU)
 		
 		self.initDatabase()
@@ -224,6 +226,11 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		cursor.execute(sql)
 		result = cursor.fetchall()
 		self.DataMaster_DataRekening_Field = list(itertools.chain.from_iterable(result))
+		#Get Field gd_rekening_jurnal
+		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_data_departemen';"
+		cursor.execute(sql)
+		result = cursor.fetchall()
+		self.DataMaster_DataDepartemen_Field = list(itertools.chain.from_iterable(result))
 		self.db.close()
 		
 		self.DataMaster_CommonRoom_cleared = 0
