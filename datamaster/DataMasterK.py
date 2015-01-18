@@ -19,7 +19,147 @@ except AttributeError:
 		return s
 
 class DataMaster(object):
-
+	def DataMaster_init(self):
+		
+		#---------------------------------------------------------------Data Master init
+		#init konstanta index
+		self.INDEX_ST_DATAMASTER_MENU = 0
+		self.INDEX_ST_DATAMASTER_COMMON = 1
+		self.INDEX_ST_DATAMASTER_DATANAMAALAMAT = 21 #just make it unique
+		self.INDEX_ST_DATAMASTER_DATANAMAALAMAT_TAMBAH = 2
+		self.INDEX_ST_DATAMASTER_DATAPRODUK = 31 #just make it unique
+		self.INDEX_ST_DATAMASTER_DATAPRODUK_TAMBAH = 3
+		self.INDEX_ST_DATAMASTER_DATAPAJAK = 41 #just make it unique
+		self.INDEX_ST_DATAMASTER_DATAPAJAK_TAMBAH = 4
+		self.INDEX_ST_DATAMASTER_DATAPROYEK = 51
+		self.INDEX_ST_DATAMASTER_DATAPROYEK_TAMBAH = 5
+		self.INDEX_ST_DATAMASTER_DATASATUANPENGUKURAN = 61
+		self.INDEX_ST_DATAMASTER_DATASATUANPENGUKURAN_TAMBAH = 6
+		self.INDEX_ST_DATAMASTER_DATAREKENING = 7
+		self.INDEX_ST_DATAMASTER_DATAREKENING_TAMBAH = 8
+		self.INDEX_ST_DATAMASTER_DATADEPARTEMEN = 9
+		self.INDEX_ST_DATAMASTER_DATADEPARTEMEN_TAMBAH = 10
+		
+		#init room2
+		#---------------------------------------------------------------Satuan Pengukuran combobox di room Data Produk & room Satuan Pengukuran
+		
+		sql = "SELECT * FROM `gd_satuan_pengukuran` "
+		result = self.DatabaseRunQuery(sql)
+		for a in range(0,len(result)):
+			self.cb_DataMaster_DataProduk_Tambah_Satuan.addItem(str(result[a][2])+" (kode: "+result[a][1]+")")
+			self.cb_DataMaster_DataSatuanPengukuran_Tambah_SatuanInduk.addItem(str(result[a][2])+" (kode: "+result[a][1]+")")
+		
+		#---------------------------------------------------------------DataNamaAlamat
+		self.dte_DataMaster_DataNamaAlamat_Tambah_JatuhTempo.setReadOnly(True)
+		self.chk_DataMaster_DataNamaAlamat_Tambah_JatuhTempo.stateChanged.connect(self.DataMaster_DataNamaAlamat_Tambah_JatuhTempoSet)
+		self.DataMaster_DataNamaAlamat_Edit_idEDIT = -1 #untuk penanda apakah update atau insert pada tombol simpan
+		
+		#---------------------------------------------------------------DataProduk
+		self.DataMaster_DataProduk_Edit_idEDIT = -1
+		#---------------------------------------------------------------DataPajak
+		self.DataMaster_DataPajak_Edit_idEDIT = -1
+		
+		#---------------------------------------------------------------DataProyek
+		#List pilihan di Data Proyek
+		self.sc_DataMaster_DataProyek_Tambah_Penjab.hide()
+		self.lb_DataMaster_DataProyek_Tambah_PilihPenjab.hide()
+		#~ self.ile_DataMaster_DataProyek_Tambah_PenanggungJawab.hide()
+		self.le_DataMaster_DataProyek_Tambah_KodePenanggungJawab.setReadOnly(True)
+		
+		#Tombol biru: Buka popup tambah
+		def ____DataMaster_DataProyek_Tambah_Penjab_Ok():
+			self.le_DataMaster_DataProyek_Tambah_PenanggungJawab.setText(self.le_DataMaster_DataNamaAlamat_Tambah_Nama.text())
+			self.le_DataMaster_DataProyek_Tambah_KodePenanggungJawab.setText(self.le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan.text())
+			
+		self.tb_DataMaster_DataProyek_Tambah_PenanggungJawab.clicked.connect(functools.partial(self.DataMaster_DataNamaAlamat_Popup_Tambah,____DataMaster_DataProyek_Tambah_Penjab_Ok,self.DataMaster_None,self.DataMaster_None,self.DataMaster_None))
+		self.le_DataMaster_DataProyek_Tambah_PenanggungJawab.textEdited.connect(self.DataMaster_DataProyek_Tambah_Showlist_Change)
+		#~ QtCore.QObject.connect(self.le_DataMaster_DataProyek_Tambah_PenanggungJawab, QtCore.SIGNAL(_fromUtf8("editingFinished()")), MainWindow.showFullScreen)
+		self.DataMaster_DataProyek_Edit_idEDIT = -1
+		
+		
+		#---------------------------------------------------------------DataSatuan
+		self.DataMaster_DataSatuanPengukuran_Edit_idEDIT = -1
+		
+		
+		#---------------------------------------------------------------DataRekening
+		self.DataMaster_DataRekening_Edit_idEDIT = -1
+		
+		
+		#----------------------------------------------------------------Set index and window size
+		self.st_DataMaster.setCurrentIndex(self.INDEX_ST_DATAMASTER_MENU)
+		self.showFullScreen()
+		
+		#---------------------------------------------------------------sinyal pindah room
+		self.tb_DataMaster_DataNamaAlamat.clicked.connect				(functools.partial(self.DataMaster_Goto_Common,self.INDEX_ST_DATAMASTER_DATANAMAALAMAT))
+		self.tb_DataMaster_DataNamaAlamat_Tambah_Batal.clicked.connect	(functools.partial(self.DataMaster_Goto_Common,self.INDEX_ST_DATAMASTER_DATANAMAALAMAT))
+		self.tb_DataMaster_DataNamaAlamat_Tambah_Simpan.clicked.connect	(self.DataMaster_DataNamaAlamat_Tambah_Act_Simpan)
+		QtCore.QObject.connect(self.cb_DataMaster_DataNamaAlamat_Tambah_Tipe, QtCore.SIGNAL(_fromUtf8("currentIndexChanged(QString)")), self.DataMaster_DataNamaAlamat_Tambah_Tipe_Change)
+		
+		
+		self.tb_DataMaster_DataProduk.clicked.connect					(functools.partial(self.DataMaster_Goto_Common,self.INDEX_ST_DATAMASTER_DATAPRODUK))
+		self.tb_DataMaster_DataProduk_Tambah_Batal.clicked.connect		(functools.partial(self.DataMaster_Goto_Common,self.INDEX_ST_DATAMASTER_DATAPRODUK))
+		self.tb_DataMaster_DataProduk_Tambah_Simpan.clicked.connect		(self.DataMaster_DataProduk_Tambah_Act_Simpan)
+		
+		self.tb_DataMaster_DataPajak.clicked.connect					(functools.partial(self.DataMaster_Goto_Common,self.INDEX_ST_DATAMASTER_DATAPAJAK))
+		self.tb_DataMaster_DataPajak_Tambah_Batal.clicked.connect		(functools.partial(self.DataMaster_Goto_Common,self.INDEX_ST_DATAMASTER_DATAPAJAK))
+		self.tb_DataMaster_DataPajak_Tambah_Simpan.clicked.connect		(self.DataMaster_DataPajak_Tambah_Act_Simpan)
+		
+		self.tb_DataMaster_DataProyek.clicked.connect					(functools.partial(self.DataMaster_Goto_Common,self.INDEX_ST_DATAMASTER_DATAPROYEK))
+		self.tb_DataMaster_DataProyek_Tambah_Batal.clicked.connect		(functools.partial(self.DataMaster_Goto_Common,self.INDEX_ST_DATAMASTER_DATAPROYEK))
+		self.tb_DataMaster_DataProyek_Tambah_Simpan.clicked.connect		(self.DataMaster_DataProyek_Tambah_Act_Simpan)
+		
+		self.tb_DataMaster_DataSatuanPengukuran.clicked.connect				(functools.partial(self.DataMaster_Goto_Common,self.INDEX_ST_DATAMASTER_DATASATUANPENGUKURAN))
+		self.tb_DataMaster_DataSatuanPengukuran_Tambah_Batal.clicked.connect(functools.partial(self.DataMaster_Goto_Common,self.INDEX_ST_DATAMASTER_DATASATUANPENGUKURAN))
+		self.tb_DataMaster_DataSatuanPengukuran_Tambah_Simpan.clicked.connect(self.DataMaster_DataSatuanPengukuran_Tambah_Act_Simpan)
+		
+		self.tb_DataMaster_DataRekening.clicked.connect(self.DataMaster_DataRekening)
+		self.tb_DataMaster_DataRekening_Tutup.clicked.connect(functools.partial(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_MENU))
+		
+		self.tb_DataMaster_DataDepartemen.clicked.connect				(self.DataMaster_DataDepartemen)
+		
+		self.tb_DataMaster_DataCommon_Tutup.clicked.connect(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_MENU)
+		
+		self.initDatabase()
+		cursor = self.db.cursor()
+		#Get Field gd_nama_alamat
+		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_nama_alamat';"
+		cursor.execute(sql)
+		result = cursor.fetchall()
+		self.DataMaster_DataNamaAlamat_Field = list(itertools.chain.from_iterable(result))
+		#Get Field gd_data_produk
+		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_data_produk';"
+		cursor.execute(sql)
+		result = cursor.fetchall()
+		self.DataMaster_DataProduk_Field = list(itertools.chain.from_iterable(result))
+		#Get Field gd_data_pajak
+		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_data_pajak';"
+		cursor.execute(sql)
+		result = cursor.fetchall()
+		self.DataMaster_DataPajak_Field = list(itertools.chain.from_iterable(result))
+		#Get Field gd_proyek
+		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_proyek';"
+		cursor.execute(sql)
+		result = cursor.fetchall()
+		self.DataMaster_DataProyek_Field = list(itertools.chain.from_iterable(result))
+		#Get Field gd_satuan_pengukuran
+		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_satuan_pengukuran';"
+		cursor.execute(sql)
+		result = cursor.fetchall()
+		self.DataMaster_DataSatuanPengukuran_Field = list(itertools.chain.from_iterable(result))
+		#Get Field gd_rekening_jurnal
+		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_rekening_jurnal';"
+		cursor.execute(sql)
+		result = cursor.fetchall()
+		self.DataMaster_DataRekening_Field = list(itertools.chain.from_iterable(result))
+		#Get Field gd_rekening_jurnal
+		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_data_departemen';"
+		cursor.execute(sql)
+		result = cursor.fetchall()
+		self.DataMaster_DataDepartemen_Field = list(itertools.chain.from_iterable(result))
+		self.db.close()
+		
+		self.DataMaster_CommonRoom_cleared = 0
+		
 	#-------------------------------------------------------------------DataMaster
 	#-------------------------------------------------------------------DataMaster
 	def DataMaster_None(self):
@@ -2013,6 +2153,43 @@ class DataMaster(object):
 		sql = "DELETE FROM `"+self.dbDatabase+"`.`gd_nama_alamat` WHERE `gd_nama_alamat`.`kodePelanggan` = '"+kode+"'"
 		self.DatabaseRunQuery(sql)
 		self.DataMaster_Goto_Common(self.INDEX_ST_DATAMASTER_DATANAMAALAMAT)
+	
+	
+	def DataMaster_DataDepartemen(self):
+		self.st_DataMaster.setCurrentIndex(self.INDEX_ST_DATAMASTER_DATADEPARTEMEN)
+		self.lb_DataMaster_DataDepartemen_Judul.setText("Data Departemen ")
+		self.tb_DataMaster_DataDepartemen_Tambah.clicked.connect(functools.partial(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_DATADEPARTEMEN_TAMBAH))
+		self.tb_DataMaster_DataDepartemen_Edit.clicked.connect(self.DataMaster_DataDepartemen_Edit)
+		self.clearLayout(self.scontent_DataMaster_DataDepartemen_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
+		#~ self.le_DataMaster_DataDepartemen_Tambah_KodeDepartemen.setReadOnly(False)
+		#~ if (not keep):
+			#~ """Kosongkan isi line edit"""
+			#~ lels = self.fr_DataMaster_DataDepartemen_Tambah_Fcontent.findChildren(QtGui.QLineEdit)
+			#~ for x in range(0,len(lels)):
+				#~ lels[x].setText("")
+		
+		#~ self.DataMaster_DataDepartemen_Tambah_GenerateKode()
+		
+		sql = "SELECT * FROM `gd_data_departemen` "
+		result = self.DatabaseRunQuery(sql)
+		tinggi = len(result)*65
+		self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
+		for x in range(0,len(result)):
+			Tb_ListDepartemen = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataDepartemen_List"+str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")]))
+			if (len(Tb_ListDepartemen)<1):
+				Tb_Departemen = QtGui.QPushButton(self.scontent_DataMaster_DataDepartemen_Fbody_Slist)
+				Tb_Departemen.setObjectName(_fromUtf8("dynamic_tb_DataMaster_DataDepartemen_ListDepartemen"+str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")])))
+				local_name = str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")])
+				Tb_Departemen.setText(local_name)
+				self.ivl_DataMaster_DataDepartemen_Fbody_Slist.addWidget(Tb_Departemen,QtCore.Qt.AlignLeading|QtCore.Qt.AlignTop)
+				Tb_Departemen.clicked.connect(functools.partial(self.DataMaster_DataDepartemen_DrawInfo,result[x]))
+			else:
+				for y in range(0, len(Tb_ListDepartemen)):
+					self.ivl_DataMaster_DataDepartemen_Fbody_Slist.addWidget(Tb_ListDepartemen[y],QtCore.Qt.AlignLeading|QtCore.Qt.AlignTop)
+					Tb_ListDepartemen[y].show()
+					Tb_ListDepartemen[y].setText(str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")]))
+					Tb_ListDepartemen[y].clicked.disconnect()
+					Tb_ListDepartemen[y].clicked.connect(functools.partial(self.DataMaster_DataDepartemen_DrawInfo,result[x]))
 	
 	
 	def DataMaster_DataDepartemen_Edit(self):
