@@ -67,7 +67,7 @@
 	}</string>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>9</number>
              </property>
              <widget class="QWidget" name="st_DataMaster_Menu">
               <property name="styleSheet">
@@ -150,7 +150,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton">
+                   <widget class="QPushButton" name="tb_DataMaster_DataDepartemen">
                     <property name="text">
                      <string>Data Departemen</string>
                     </property>
@@ -335,7 +335,7 @@ QPushButton::hover{
                           <x>0</x>
                           <y>0</y>
                           <width>332</width>
-                          <height>18</height>
+                          <height>381</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -3366,6 +3366,7 @@ QPushButton::hover{
                </item>
               </layout>
              </widget>
+             <widget class="QWidget" name="st_DataMaster_DataDepartemen_Tambah"/>
             </widget>
            </item>
           </layout>

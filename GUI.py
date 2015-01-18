@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Sat Jan 17 12:59:54 2015
+# Created: Sat Jan 17 16:32:55 2015
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -97,9 +97,9 @@ class Ui_MainWindow(object):
         self.tb_DataMaster_DataRekening = QtGui.QPushButton(self.fr_DataMaster_Menu)
         self.tb_DataMaster_DataRekening.setObjectName(_fromUtf8("tb_DataMaster_DataRekening"))
         self.ivl_DataMaster_Menu.addWidget(self.tb_DataMaster_DataRekening)
-        self.pushButton = QtGui.QPushButton(self.fr_DataMaster_Menu)
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.ivl_DataMaster_Menu.addWidget(self.pushButton)
+        self.tb_DataMaster_DataDepartemen = QtGui.QPushButton(self.fr_DataMaster_Menu)
+        self.tb_DataMaster_DataDepartemen.setObjectName(_fromUtf8("tb_DataMaster_DataDepartemen"))
+        self.ivl_DataMaster_Menu.addWidget(self.tb_DataMaster_DataDepartemen)
         self.igr_DataMaster_Menu.addWidget(self.fr_DataMaster_Menu, 0, 0, 1, 1)
         spacerItem = QtGui.QSpacerItem(585, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.igr_DataMaster_Menu.addItem(spacerItem, 0, 1, 1, 1)
@@ -186,7 +186,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataCommon_Fbody_Slist.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataCommon_Fbody_Slist.setObjectName(_fromUtf8("sc_DataMaster_DataCommon_Fbody_Slist"))
         self.scontent_DataMaster_DataCommon_Fbody_Slist = QtGui.QWidget()
-        self.scontent_DataMaster_DataCommon_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 332, 18))
+        self.scontent_DataMaster_DataCommon_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 332, 381))
         self.scontent_DataMaster_DataCommon_Fbody_Slist.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataCommon_Fbody_Slist.setObjectName(_fromUtf8("scontent_DataMaster_DataCommon_Fbody_Slist"))
         self.ivl_DataMaster_DataCommon_Fbody_Slist = QtGui.QVBoxLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist)
@@ -1440,6 +1440,9 @@ class Ui_MainWindow(object):
         self.ivl_DataMaster_DataRekening_Tambah_Dalam.addWidget(self.fr_DataMaster_DataRekening_Tambah_Fb)
         self.ivl_DataMaster_DataRekening_Tambah_Luar.addWidget(self.fr_DataMaster_DataRekening_Tambah)
         self.st_DataMaster.addWidget(self.st_DataMaster_DataRekening_Tambah)
+        self.st_DataMaster_DataDepartemen_Tambah = QtGui.QWidget()
+        self.st_DataMaster_DataDepartemen_Tambah.setObjectName(_fromUtf8("st_DataMaster_DataDepartemen_Tambah"))
+        self.st_DataMaster.addWidget(self.st_DataMaster_DataDepartemen_Tambah)
         self.verticalLayout_3.addWidget(self.st_DataMaster)
         self.tabWidget.addTab(self.tab_DataMaster, _fromUtf8(""))
         self.tab_Penjualan = QtGui.QWidget()
@@ -3253,7 +3256,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
-        self.st_DataMaster.setCurrentIndex(0)
+        self.st_DataMaster.setCurrentIndex(9)
         self.st_Penjualan.setCurrentIndex(3)
         self.st_Pembelian.setCurrentIndex(0)
         self.st_BukuBesar.setCurrentIndex(0)
@@ -3267,7 +3270,7 @@ class Ui_MainWindow(object):
         self.tb_DataMaster_DataProyek.setText(_translate("MainWindow", "Data Proyek", None))
         self.tb_DataMaster_DataSatuanPengukuran.setText(_translate("MainWindow", "Satuan Pengukuran", None))
         self.tb_DataMaster_DataRekening.setText(_translate("MainWindow", "Data Rekening", None))
-        self.pushButton.setText(_translate("MainWindow", "Data Departemen", None))
+        self.tb_DataMaster_DataDepartemen.setText(_translate("MainWindow", "Data Departemen", None))
         self.lb_DataMaster_DataCommon_Judul.setText(_translate("MainWindow", "Judul", None))
         self.tb_DataMaster_DataCommon_Tambah.setText(_translate("MainWindow", "+", None))
         self.tb_DataMaster_DataCommon_Tutup.setText(_translate("MainWindow", "Tutup", None))

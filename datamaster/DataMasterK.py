@@ -247,6 +247,47 @@ class DataMaster(object):
 						Tb_ListSatuan[y].setText(str(result[x][self.DataMaster_DataSatuan_Field.index("namaSatuan")]))
 						Tb_ListSatuan[y].clicked.disconnect()
 						Tb_ListSatuan[y].clicked.connect(functools.partial(self.DataMaster_DataSatuanPengukuran_DrawInfo,result[x]))
+		
+		elif (as_roomID==self.INDEX_ST_DATAMASTER_DATADEPARTEMEN):
+			def DataDepartemen():
+				""""Bookmark baris, delete this later"""
+				None
+				
+			self.lb_DataMaster_DataCommon_Judul.setText("Data Departemen ")
+			self.tb_DataMaster_DataCommon_Tambah.clicked.connect(functools.partial(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_DATADEPARTEMEN_TAMBAH))
+			self.tb_DataMaster_DataCommon_Edit.clicked.connect(self.DataMaster_DataDepartemen_Edit)
+			self.clearLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
+			#~ self.le_DataMaster_DataDepartemen_Tambah_KodeDepartemen.setReadOnly(False)
+			#~ if (not keep):
+				#~ """Kosongkan isi line edit"""
+				#~ lels = self.fr_DataMaster_DataDepartemen_Tambah_Fcontent.findChildren(QtGui.QLineEdit)
+				#~ for x in range(0,len(lels)):
+					#~ lels[x].setText("")
+			
+			#~ self.DataMaster_DataDepartemen_Tambah_GenerateKode()
+			
+			sql = "SELECT * FROM `gd_data_departemen` "
+			result = self.DatabaseRunQuery(sql)
+			tinggi = len(result)*65
+			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
+			for x in range(0,len(result)):
+				Tb_ListDepartemen = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataDepartemen_List"+str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")]))
+				if (len(Tb_ListDepartemen)<1):
+					Tb_Departemen = QtGui.QPushButton(self.scontent_DataMaster_DataCommon_Fbody_Slist)
+					Tb_Departemen.setObjectName(_fromUtf8("dynamic_tb_DataMaster_DataDepartemen_ListDepartemen"+str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")])))
+					local_name = str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")])
+					Tb_Departemen.setText(local_name)
+					self.ivl_DataMaster_DataCommon_Fbody_Slist.addWidget(Tb_Departemen,QtCore.Qt.AlignLeading|QtCore.Qt.AlignTop)
+					Tb_Departemen.clicked.connect(functools.partial(self.DataMaster_DataDepartemen_DrawInfo,result[x]))
+				else:
+					for y in range(0, len(Tb_ListDepartemen)):
+						self.ivl_DataMaster_DataCommon_Fbody_Slist.addWidget(Tb_ListDepartemen[y],QtCore.Qt.AlignLeading|QtCore.Qt.AlignTop)
+						Tb_ListDepartemen[y].show()
+						Tb_ListDepartemen[y].setText(str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")]))
+						Tb_ListDepartemen[y].clicked.disconnect()
+						Tb_ListDepartemen[y].clicked.connect(functools.partial(self.DataMaster_DataDepartemen_DrawInfo,result[x]))
+		
+		
 	
 	def DataMaster_DataRekening_RefreshInfo(self):
 		#---got to clear table first
@@ -1967,3 +2008,9 @@ class DataMaster(object):
 		self.DataMaster_Goto_Common(self.INDEX_ST_DATAMASTER_DATANAMAALAMAT)
 	
 	
+	def DataMaster_DataDepartemen_Edit(self):
+		pass
+	def DataMaster_DataDepartemen_DrawInfo(self,data):
+		
+		pass
+		
