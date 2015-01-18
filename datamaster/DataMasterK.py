@@ -2014,10 +2014,10 @@ class DataMaster(object):
 		FrameDepartemenL = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_DataDepartemenL_FrameInfo"))
 		if (len(FrameDepartemenL)<1):
 			FrameDepartemenL = QtGui.QFrame(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
+			FrameDepartemenL.setObjectName(_fromUtf8("DataMaster_Popup_FrameDepartemenL"))
+			FrameDepartemenL.setStyleSheet(_fromUtf8("QFrame{background:#828282;border-radius:0px;border-style: solid;border-width: 2px;border-color:#828282;}"))			
 		else:
 			FrameDepartemenL = FrameDepartemenL[0]
-		FrameDepartemenL.setObjectName(_fromUtf8("DataMaster_Popup_FrameDepartemenL"))
-		FrameDepartemenL.setStyleSheet(_fromUtf8("QFrame{background:#828282;border-radius:0px;border-style: solid;border-width: 2px;border-color:#828282;}"))
 		self.igr_DataMaster_DataCommon_Fbody_FR_Ftop.addWidget(FrameDepartemenL, 0, 0, 1, 1)
 		
 		
@@ -2025,11 +2025,11 @@ class DataMaster(object):
 		FrameDepartemenR = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_DataDepartemenR_FrameInfo"))
 		if (len(FrameDepartemenR)<1):
 			FrameDepartemenR = QtGui.QFrame(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
+			FrameDepartemenR.setObjectName(_fromUtf8("DataMaster_Popup_FrameDepartemenR"))
+			FrameDepartemenR.setStyleSheet(_fromUtf8("QFrame{background:#828282;border-radius:0px;border-style: solid;border-width: 2px;border-color:#828282;}"))			
 		else:
 			FrameDepartemenR = FrameDepartemenR[0]
-		FrameDepartemenR.setObjectName(_fromUtf8("DataMaster_Popup_FrameDepartemenR"))
-		FrameDepartemenR.setStyleSheet(_fromUtf8("QFrame{background:#828282;border-radius:0px;border-style: solid;border-width: 2px;border-color:#828282;}"))
 		self.igr_DataMaster_DataCommon_Fbody_FR_Ftop.addWidget(FrameDepartemenR, 0, 1, 1, 1)
-		#aku ki nambah iki test
-		pass
 		
+		
+		#---end of def DataMaster_DataDepartemen_DrawInfo
