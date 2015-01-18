@@ -512,6 +512,15 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 			sql = sql + ");"
 		self.DatabaseRunQuery(sql)
 		return True
+	def DatabaseFetchResult(self,db,table,keyfield=False,keyvalue=False):
+		""" biasa fetch result wae result in array, 
+		misal data = self.DatabaseFetchResult(self.dbDatabase,"gd_nama_alamat","kodePelanggan","%MAKIN%")"""
+		if keyfield==False:
+			return self.DatabaseRunQuery("SELECT * FROM `"+db+"`.`"+table"`; ")
+		elif (type(keyvalue)==str):
+			return self.DatabaseRunQuery("SELECT * FROM `"+db+"`.`"+table"` WHERE `"+keyfield+"` LIKE '"+keyvalue+"';")
+		else:
+			return self.DatabaseRunQuery("SELECT * FROM `"+db+"`.`"+table"` WHERE `"+keyfield+"` = "+keyvalue+";")
 if __name__=="__main__":
 	app = QtGui.QApplication(sys.argv)
 	dmw = MainGUI()
