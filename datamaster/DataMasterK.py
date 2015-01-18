@@ -1,3 +1,4 @@
+#---------- just learned qt whilst writing this DataMaster, it's all messed up indeed, but DataRekening & DataDepartemen  was built a bit cleaner
 import MySQLdb
 from PyQt4.QtCore import QObject, pyqtSignal
 from PyQt4 import QtCore
@@ -18,6 +19,12 @@ except AttributeError:
 		return s
 
 class DataMaster(object):
+
+	#-------------------------------------------------------------------DataMaster
+	#-------------------------------------------------------------------DataMaster
+	def DataMaster_None(self):
+		pass
+	
 	def DataMaster_Goto(self,goto_roomID):
 		self.st_DataMaster.setCurrentIndex(goto_roomID)
 	
@@ -2011,25 +2018,131 @@ class DataMaster(object):
 	def DataMaster_DataDepartemen_Edit(self):
 		pass
 	def DataMaster_DataDepartemen_DrawInfo(self,data):
-		FrameDepartemenL = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_DataDepartemenL_FrameInfo"))
+		fdepartemen = self.DataMaster_DataDepartemen_Field.index
+		#------------------ Draw Form Layout Left
+		FrameDepartemenL = self.findChildren(QtGui.QFrame,"dfr_DataMaster_DataDepartemen_FrameInfo_Left")
 		if (len(FrameDepartemenL)<1):
 			FrameDepartemenL = QtGui.QFrame(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
-			FrameDepartemenL.setObjectName(_fromUtf8("DataMaster_Popup_FrameDepartemenL"))
-			FrameDepartemenL.setStyleSheet(_fromUtf8("QFrame{background:#828282;border-radius:0px;border-style: solid;border-width: 2px;border-color:#828282;}"))			
+			FrameDepartemenL.setObjectName(_fromUtf8("dfr_DataMaster_DataDepartemen_FrameInfo_Left"))
+			FrameDepartemenL.setStyleSheet(_fromUtf8("QFrame{background:#FFFFFF;border-radius:0px;border-style: solid;border-width: 0px;border-color:#FFFFFF;}"))
+			ivl_FrameDepartemenL = QtGui.QVBoxLayout(FrameDepartemenL)
+			ivl_FrameDepartemenL.setObjectName(_fromUtf8("divl_DataMaster_DataDepartemen_FrameInfo_Left"))
+		
 		else:
 			FrameDepartemenL = FrameDepartemenL[0]
+			#~ ivl_FrameDepartemenL = ivl_FrameDepartemenL[0]
 		self.igr_DataMaster_DataCommon_Fbody_FR_Ftop.addWidget(FrameDepartemenL, 0, 0, 1, 1)
+		FrameDepartemenL.setMaximumSize(QtCore.QSize(150,15000))
 		
-		
-		
-		FrameDepartemenR = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_DataDepartemenR_FrameInfo"))
+		#------------------ Draw Form Layout Right
+		FrameDepartemenR = self.findChildren(QtGui.QFrame,"dfr_DataMaster_DataDepartemen_FrameInfo_Right")
 		if (len(FrameDepartemenR)<1):
 			FrameDepartemenR = QtGui.QFrame(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
-			FrameDepartemenR.setObjectName(_fromUtf8("DataMaster_Popup_FrameDepartemenR"))
-			FrameDepartemenR.setStyleSheet(_fromUtf8("QFrame{background:#828282;border-radius:0px;border-style: solid;border-width: 2px;border-color:#828282;}"))			
+			FrameDepartemenR.setObjectName(_fromUtf8("dfr_DataMaster_DataDepartemen_FrameInfo_Right"))
+			FrameDepartemenR.setStyleSheet(_fromUtf8("QFrame{background:#FFFFFF;border-radius:0px;border-style: solid;border-width: 0px;border-color:#FFFFFF;}"))
+			ivl_FrameDepartemenR = QtGui.QVBoxLayout(FrameDepartemenR)
+			ivl_FrameDepartemenR.setObjectName(_fromUtf8("divl_DataMaster_DataDepartemen_FrameInfo_Right"))
 		else:
 			FrameDepartemenR = FrameDepartemenR[0]
+			#~ ivl_FrameDepartemenR = ivl_FrameDepartemenR[0]
 		self.igr_DataMaster_DataCommon_Fbody_FR_Ftop.addWidget(FrameDepartemenR, 0, 1, 1, 1)
 		
+		self.clearLayout(FrameDepartemenL.findChild(QtGui.QVBoxLayout))
+		self.clearLayout(FrameDepartemenR.findChild(QtGui.QVBoxLayout))
 		
+		
+		#-------------------Frame Bawah (graphic)
+		
+		FrameGrafik = self.findChildren(QtGui.QFrame,_fromUtf8("dfr_DataMaster_DataDepartemen_FrameGrafik"))
+		if len(FrameGrafik)<1:
+			FrameGrafik = QtGui.QFrame(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
+			FrameGrafik.setObjectName(_fromUtf8("dfr_DataMaster_DataDepartemen_FrameGrafik"))
+			FrameGrafik.setStyleSheet(_fromUtf8("QFrame{background:#FFFFFF;border-radius:0px;border-style: solid;border-width: 1px;border-color:#E1E1E1;}"))
+		else:
+			FrameGrafik = FrameGrafik[0]
+		self.igr_DataMaster_DataCommon_Fbody_FR_Ftop.addWidget(FrameGrafik, 1, 0, 1, 2)
+		
+		
+		#-------------------Draw labels
+		#------------------ semua raceto gara2 Form Layout ra ono remove row, nganggo ivl sidane, soft coding ra dadi
+		objecttag = "dlb_"
+		roomname = "DataMaster_DataDepartemen_"
+		tablename = "gd_data_departemen"
+		specialfield = ["parentDepartemen","kodePenjab"]
+		specialfieldvalue = [
+								["gd_data_departemen","kodeDepartemen",
+								self.DataMaster_DataDepartemen_Field.index("namaDepartemen")],
+								["gd_nama_alamat","kodePelanggan",
+								self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")]
+							]
+		#---- Makin try to use regex 18 Jan 2015
+		regexlabel = QRegExp("("+objecttag+""+roomname+"\d+\w+)")
+		Labels = self.findChildren(QtGui.QLabel,regexlabel)
+		if len(Labels)<1:
+			"""
+				Label di form layout:
+				
+				Label   |  LabelValue
+				Label   |  LabelValue
+				Label   |  LabelValue
+			"""
+			l = QtGui.QLabel(FrameDepartemenL)
+			l.setObjectName(objecttag+""+roomname+"1Nama___Departemen") #---- angka ini urutan di formlayout
+			l = QtGui.QLabel(FrameDepartemenR)
+			l.setObjectName(objecttag+""+roomname+"V_1namaDepartemen") #--- Yang ini label Value, berisi nilai dari nama label
+																				#----- _V_(URUTAN)(NAMAFIELD)
+			l = QtGui.QLabel(FrameDepartemenL)
+			l.setObjectName(objecttag+""+roomname+"2Kode___Departemen")
+			l = QtGui.QLabel(FrameDepartemenR)
+			l.setObjectName(objecttag+""+roomname+"V_2kodeDepartemen")
+			
+			l = QtGui.QLabel(FrameDepartemenL)
+			l.setObjectName(objecttag+""+roomname+"3Departemen___Induk")
+			l = QtGui.QLabel(FrameDepartemenR)
+			l.setObjectName(objecttag+""+roomname+"V_3parentDepartemen")
+			
+			l = QtGui.QLabel(FrameDepartemenL)
+			l.setObjectName(objecttag+""+roomname+"4Penanggung___Jawab")
+			l = QtGui.QLabel(FrameDepartemenR)
+			l.setObjectName(objecttag+""+roomname+"V_4kodePenjab")
+			
+			l = QtGui.QLabel(FrameDepartemenL)
+			l.setObjectName(objecttag+""+roomname+"5Catatan")
+			l = QtGui.QLabel(FrameDepartemenR)
+			l.setObjectName(objecttag+""+roomname+"V_5catatan")
+			
+			
+			#---- now we refresh the labels
+			Labels = self.findChildren(QtGui.QLabel,regexlabel)
+		
+		#~ self.clearLayout(FrameDepartemenL.findChild(QtGui.QVBoxLayout))
+		for label in Labels:
+			#---fetch text dari format dlb_"+roomname+"(PRINT TEXT)
+			text = re.findall(objecttag+""+roomname+"\d+(\w+)",str(label.objectName())).pop().replace("___"," ")
+			label.setText(text)
+			nomor = int(re.findall(objecttag+""+roomname+"(\d+)\w+",str(label.objectName())).pop())
+			FrameDepartemenL.findChild(QtGui.QVBoxLayout).addWidget(label)
+			label.show()
+		
+		#~ FrameDepartemenL.findChild(QtGui.QVBoxLayout).addItem(QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding))
+			
+		#---- this ought to be success at this line as it built along labels 
+		ValueLabels = self.findChildren(QtGui.QLabel,QRegExp("("+objecttag+""+roomname+"V_\d+\w+)"))
+		#~ self.clearLayout(FrameDepartemenR.findChild(QtGui.QVBoxLayout))
+		for vlabel in ValueLabels:
+			nomor = int(re.findall(objecttag+""+roomname+"V_(\d+)\w+",str(vlabel.objectName())).pop())
+			fieldname = re.findall(objecttag+""+roomname+"V_\d+(\w+)",str(vlabel.objectName())).pop()
+			text = ""
+			try:
+				x = specialfield.index(fieldname)
+				text = ": "+str(self.DatabaseRunQuery("SELECT * FROM `"+specialfieldvalue[x][0]+\
+											"` WHERE `"+specialfieldvalue[x][1]+"` LIKE '"+data[fdepartemen(fieldname)]+"'")[0][specialfieldvalue[x][2]])
+			except:
+				text = ": "+data[fdepartemen(fieldname)]
+			vlabel.setText(text)
+			FrameDepartemenR.findChild(QtGui.QVBoxLayout).addWidget(vlabel)
+			vlabel.show()
+		#~ FrameDepartemenR.findChild(QtGui.QVBoxLayout).addItem(QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding))
+			
+			
 		#---end of def DataMaster_DataDepartemen_DrawInfo
