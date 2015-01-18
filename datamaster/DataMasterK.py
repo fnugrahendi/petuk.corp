@@ -2020,6 +2020,8 @@ class DataMaster(object):
 		FrameDepartemenL.setStyleSheet(_fromUtf8("QFrame{background:#828282;border-radius:0px;border-style: solid;border-width: 2px;border-color:#828282;}"))
 		self.igr_DataMaster_DataCommon_Fbody_FR_Ftop.addWidget(FrameDepartemenL, 0, 0, 1, 1)
 		
+		
+		
 		FrameDepartemenR = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_DataDepartemenR_FrameInfo"))
 		if (len(FrameDepartemenR)<1):
 			FrameDepartemenR = QtGui.QFrame(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
@@ -2028,6 +2030,6 @@ class DataMaster(object):
 		FrameDepartemenR.setObjectName(_fromUtf8("DataMaster_Popup_FrameDepartemenR"))
 		FrameDepartemenR.setStyleSheet(_fromUtf8("QFrame{background:#828282;border-radius:0px;border-style: solid;border-width: 2px;border-color:#828282;}"))
 		self.igr_DataMaster_DataCommon_Fbody_FR_Ftop.addWidget(FrameDepartemenR, 0, 1, 1, 1)
-		
+		#aku ki nambah iki test
 		pass
 		
