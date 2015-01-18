@@ -253,11 +253,6 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		result = self.DatabaseRunQuery("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_detail_transaksi_jurnal';")
 		self.BukuBesar_DetailTransaksiJurnal_Field = list(itertools.chain.from_iterable(result))
 		
-	#-------------------------------------------------------------------DataMaster
-	#-------------------------------------------------------------------DataMaster
-	def DataMaster_None(self):
-		pass
-	
 	def initDatabase(self):
 		try:
 			self.db = MySQLdb.connect(self.dbHost,self.dbUser,self.dbPass,self.dbDatabase)
