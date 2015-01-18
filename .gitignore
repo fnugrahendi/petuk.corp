@@ -1,2 +1,5 @@
-/img/DataMaster_svg.svg
+img/DataMaster_svg.svg
 *.pyc
+dist/
+build/
+Garvin.spec
