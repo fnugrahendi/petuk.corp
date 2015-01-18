@@ -67,7 +67,7 @@
 	}</string>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>1</number>
              </property>
              <widget class="QWidget" name="st_DataMaster_Menu">
               <property name="styleSheet">
@@ -410,7 +410,7 @@ QPushButton::hover{
                        </property>
                        <layout class="QGridLayout" name="igr_DataMaster_DataCommon_Fbody_FR_Ftop">
                         <property name="leftMargin">
-                         <number>50</number>
+                         <number>9</number>
                         </property>
                        </layout>
                       </widget>

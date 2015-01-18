@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Sun Jan 18 11:30:25 2015
+# Created: Sun Jan 18 11:35:50 2015
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -221,7 +221,7 @@ class Ui_MainWindow(object):
         self.fr_DataMaster_DataCommon_Fbody_FR_Ftop.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_DataMaster_DataCommon_Fbody_FR_Ftop.setObjectName(_fromUtf8("fr_DataMaster_DataCommon_Fbody_FR_Ftop"))
         self.igr_DataMaster_DataCommon_Fbody_FR_Ftop = QtGui.QGridLayout(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
-        self.igr_DataMaster_DataCommon_Fbody_FR_Ftop.setContentsMargins(50, -1, -1, -1)
+        self.igr_DataMaster_DataCommon_Fbody_FR_Ftop.setContentsMargins(9, -1, -1, -1)
         self.igr_DataMaster_DataCommon_Fbody_FR_Ftop.setObjectName(_fromUtf8("igr_DataMaster_DataCommon_Fbody_FR_Ftop"))
         self.ivl_DataMaster_DataCommon_Fbody_FR.addWidget(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
         self.fr_DataMaster_DataCommon_Fbody_FR_Fbot = QtGui.QFrame(self.fr_DataMaster_DataCommon_Fbody_FR)
@@ -3529,7 +3529,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
-        self.st_DataMaster.setCurrentIndex(0)
+        self.st_DataMaster.setCurrentIndex(1)
         self.st_Penjualan.setCurrentIndex(0)
         self.st_Pembelian.setCurrentIndex(0)
         self.st_BukuBesar.setCurrentIndex(0)
