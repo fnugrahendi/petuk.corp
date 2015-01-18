@@ -2157,12 +2157,40 @@ class DataMaster(object):
 		self.DataMaster_Goto_Common(self.INDEX_ST_DATAMASTER_DATANAMAALAMAT)
 	
 	
+	def DataMaster_DataDepartemen_RefreshList(self):
+		"""sql karena sinyal je, threading bro, most updated value comes by sql"""
+		self.clearLayout(self.scontent_DataMaster_DataDepartemen_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
+		
+		result = self.DatabaseFetchResult(self.dbDatabase,"gd_data_departemen","namaDepartemen","%"+str(self.le_DataMaster_DataDepartemen_Search.text()+"%"))
+		#~ result = self.DatabaseRunQuery(sql)
+		tinggi = len(result)*80
+		self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
+		for x in range(0,len(result)):
+			Tb_ListDepartemen = self.findChildren(QtGui.QPushButton,"dtb_DataMaster_DataDepartemen_List"+str(result[x][self.DataMaster_DataDepartemen_Field.index("kodeDepartemen")]))
+			if (len(Tb_ListDepartemen)<1):
+				Tb_Departemen = QtGui.QPushButton(self.scontent_DataMaster_DataDepartemen_Fbody_Slist)
+				Tb_Departemen.setObjectName(_fromUtf8("dtb_DataMaster_DataDepartemen_ListDepartemen"+str(result[x][self.DataMaster_DataDepartemen_Field.index("kodeDepartemen")])))
+				local_name = str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")])
+				Tb_Departemen.setText(local_name)
+				self.ivl_DataMaster_DataDepartemen_Fbody_Slist.addWidget(Tb_Departemen,QtCore.Qt.AlignLeading|QtCore.Qt.AlignTop)
+				Tb_Departemen.clicked.connect(functools.partial(self.DataMaster_DataDepartemen_DrawInfo,result[x]))
+			else:
+				for y in range(0, len(Tb_ListDepartemen)):
+					self.ivl_DataMaster_DataDepartemen_Fbody_Slist.addWidget(Tb_ListDepartemen[y],QtCore.Qt.AlignLeading|QtCore.Qt.AlignTop)
+					Tb_ListDepartemen[y].show()
+					Tb_ListDepartemen[y].setText(str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")]))
+					self.GarvinDisconnect(Tb_ListDepartemen[y].clicked)
+					Tb_ListDepartemen[y].clicked.connect(functools.partial(self.DataMaster_DataDepartemen_DrawInfo,result[x]))
+	
 	def DataMaster_DataDepartemen(self):
 		self.st_DataMaster.setCurrentIndex(self.INDEX_ST_DATAMASTER_DATADEPARTEMEN)
 		self.lb_DataMaster_DataDepartemen_Judul.setText("Data Departemen ")
 		self.tb_DataMaster_DataDepartemen_Tambah.clicked.connect(functools.partial(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_DATADEPARTEMEN_TAMBAH))
 		self.tb_DataMaster_DataDepartemen_Edit.clicked.connect(self.DataMaster_DataDepartemen_Edit)
 		self.clearLayout(self.scontent_DataMaster_DataDepartemen_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
+		
+		self.GarvinDisconnect(self.le_DataMaster_DataDepartemen_Search.textChanged)
+		self.le_DataMaster_DataDepartemen_Search.textChanged.connect(self.DataMaster_DataDepartemen_RefreshList)
 		#~ self.le_DataMaster_DataDepartemen_Tambah_KodeDepartemen.setReadOnly(False)
 		#~ if (not keep):
 			#~ """Kosongkan isi line edit"""
@@ -2334,15 +2362,20 @@ class DataMaster(object):
 		#---end of def DataMaster_DataDepartemen_DrawInfo
 	
 	def DataMaster_DataDepartemen_Popup_Pilih(self,dipilih,fcb_ok=False, fcb_cancel=False, hideSurrounding=False):
-		"""18 Jan 2015 try to use kodeReturn
-		Buka popup untuk memilih kodedepartemen, karena jalan di threading, pakai variabel (dipilih) untuk nilai return nya
-		variabel dipilih harus berupa array, nilai akan dimasukkan ke elemen pertama contoh manggil :
-			isi = []
-			self.DataMaster_DataDepartemen_Popup(isi)
-			print isi[0]
+		"""Buka popup untuk pilih datadepartemen, carane hack dewe yoh neng fcb_ok
 		"""
+		self.GarvinDisconnect(self.le_DataMaster_DataDepartemen_Search.textChanged)
+		self.le_DataMaster_DataDepartemen_Search.textChanged.connect(self.DataMaster_DataDepartemen_RefreshList)
+		
 		WinW = self.centralwidget.geometry().width()
 		WinH = self.centralwidget.geometry().height()
+		#--- fungsi exit:kembalikan
+		def revertDataDepartemen():
+			self.fr_DataMaster_DataDepartemen_Fbody_Slist_Container.setParent(self.fr_DataMaster_DataDepartemen_Fbody)
+			self.ihl_DataMaster_DataDepartemen_Fbody.insertWidget(0,self.fr_DataMaster_DataDepartemen_Fbody_Slist_Container,1)
+			self.fr_DataMaster_DataDepartemen_Fbody_Slist_Container.show()
+		
+		
 		#--- set to none
 		if (fcb_ok==False):
 			fcb_ok = self.DataMaster_None
@@ -2353,9 +2386,14 @@ class DataMaster(object):
 		if len(dipilih)<1:
 			dipilih.append("-")
 		
+		def ubahDipilih(data):
+			""" karena threading, bisa ngubah pakai fungsi: nunggu fungsi dipanggil"""
+			dipilih[0] = data
+			revertDataDepartemen()
+		
 		
 		#--- Popup dipanggil dulu, baru dimanipulasi isinya
-		self.DataMaster_Popup("",self.DataMaster_None,400,WinH-50,False,False,True)
+		self.DataMaster_Popup("",fcb_ok,360,WinH-250,False,False,True)
 		
 		
 		FrameWindow = self.findChild(QtGui.QFrame,"DataMaster_Popup_FrameWindow")
@@ -2369,6 +2407,9 @@ class DataMaster(object):
 		self.clearLayout(self.scontent_DataMaster_DataDepartemen_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
 		
 		result = self.DatabaseFetchResult(self.dbDatabase,"gd_data_departemen")
+		tinggi = len(result)*80
+		#~ self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMinimumSize(QtCore.QSize(330, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMinimumSize(QtCore.QSize(330, 600))
+		#~ self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMaximumSize(QtCore.QSize(330, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMaximumSize(QtCore.QSize(330, 600))
 		for x in range(0,len(result)):
 			Tb_ListDepartemen = self.findChildren(QtGui.QPushButton,"dtb_DataMaster_DataDepartemen_List"+str(result[x][self.DataMaster_DataDepartemen_Field.index("kodeDepartemen")]))
 			if (len(Tb_ListDepartemen)<1):
@@ -2382,8 +2423,10 @@ class DataMaster(object):
 			Tb_Departemen.show()
 			self.ivl_DataMaster_DataDepartemen_Fbody_Slist.addWidget(Tb_Departemen)
 			self.GarvinDisconnect(Tb_Departemen.clicked)
-			Tb_Departemen.clicked.connect(functools.partial(self.DataMaster_DataDepartemen_DrawInfo,result[x]))
-			
+			Tb_Departemen.clicked.connect(functools.partial(ubahDipilih,str(result[x][self.DataMaster_DataDepartemen_Field.index("kodeDepartemen")])))
+			Tb_Departemen.clicked.connect(self.DataMaster_Popup_Tutup)
+			Tb_Departemen.clicked.connect(fcb_ok)
+        
 		#~ Tb_ListDepartemen = self.findChildren(QtGui.QPushButton,QRegExp("dynamic_tb_DataMaster_DataDepartemen_List\w+"))
 		
 		pass
