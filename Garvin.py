@@ -99,6 +99,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		self.DataMaster_init()
 		self.BukuBesar_init()
 		
+		#--- kalau pindah tab, set semua stackedWidget ke index 0 (suppose to be _Menu index)
+		self.tabWidget.currentChanged.connect(self.ResetRooms)
+		
 	def initDatabase(self):
 		try:
 			self.db = MySQLdb.connect(self.dbHost,self.dbUser,self.dbPass,self.dbDatabase)
@@ -119,7 +122,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 					
 		return
 	
-	
+	def ResetRooms(self):
+		#--- search pakai regexp, karena ternyata tab widget pakai stackedwidget juga!
+		for st in self.findChildren(QtGui.QStackedWidget,QRegExp("st_\w+")):
+			st.setCurrentIndex(0)
 	#-------------------------------------------------------------------Penjualan
 	#-------------------------------------------------------------------Penjualan
 	
