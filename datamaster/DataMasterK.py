@@ -2011,6 +2011,23 @@ class DataMaster(object):
 	def DataMaster_DataDepartemen_Edit(self):
 		pass
 	def DataMaster_DataDepartemen_DrawInfo(self,data):
+		FrameDepartemenL = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_DataDepartemenL_FrameInfo"))
+		if (len(FrameDepartemenL)<1):
+			FrameDepartemenL = QtGui.QFrame(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
+		else:
+			FrameDepartemenL = FrameDepartemenL[0]
+		FrameDepartemenL.setObjectName(_fromUtf8("DataMaster_Popup_FrameDepartemenL"))
+		FrameDepartemenL.setStyleSheet(_fromUtf8("QFrame{background:#828282;border-radius:0px;border-style: solid;border-width: 2px;border-color:#828282;}"))
+		self.igr_DataMaster_DataCommon_Fbody_FR_Ftop.addWidget(FrameDepartemenL, 0, 0, 1, 1)
+		
+		FrameDepartemenR = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_DataDepartemenR_FrameInfo"))
+		if (len(FrameDepartemenR)<1):
+			FrameDepartemenR = QtGui.QFrame(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
+		else:
+			FrameDepartemenR = FrameDepartemenR[0]
+		FrameDepartemenR.setObjectName(_fromUtf8("DataMaster_Popup_FrameDepartemenR"))
+		FrameDepartemenR.setStyleSheet(_fromUtf8("QFrame{background:#828282;border-radius:0px;border-style: solid;border-width: 2px;border-color:#828282;}"))
+		self.igr_DataMaster_DataCommon_Fbody_FR_Ftop.addWidget(FrameDepartemenR, 0, 1, 1, 1)
 		
 		pass
 		

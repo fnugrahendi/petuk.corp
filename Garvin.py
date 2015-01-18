@@ -76,6 +76,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		#Tombol pada Halaman Piutang
 		self.tb_Penjualan_Piutang_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
 		self.tb_Penjualan_RincianPiutang_Tutup.clicked.connect(self.Penjualan_GoTo_PiutangUsaha)
+		self.tb_Penjualan_Piutang_Perincian.clicked.connect(self.Penjualan_GoTo_PiutangUsaha_Rincian)
 		
 		#Tombol pada Halaman Pembayaran Piutang
 		self.tb_Penjualan_PembayaranPiutang_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -454,7 +455,43 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PENGIRIMANB)
 	
 	def Penjualan_GoTo_PiutangUsaha(self):
+		jumlahRow = self.tbl_Penjualan_Piutang.rowCount()
+		if jumlahRow != 0:
+			for x in range (0,jumlahRow+1):
+				self.tbl_Penjualan_Piutang.removeRow(x)
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PU)
+		query = "SELECT `kodePelanggan`, SUM(`totalSaldo`) FROM `gd_piutang` GROUP BY `kodePelanggan`"
+		result = self.DatabaseRunQuery(query)
+		for a in range (0,len(result)):
+			kodePelanggan = str(result[a][0])
+			query = "SELECT * FROM `gd_nama_alamat` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"'"
+			nama = str(self.DatabaseRunQuery(query)[0][2])
+			saldoPiutang = str(int(result[a][1]))
+			self.tbl_Penjualan_Piutang.insertRow(a)
+			self.tbl_Penjualan_Piutang.setItem(a,0,QtGui.QTableWidgetItem(nama)) #nama
+			self.tbl_Penjualan_Piutang.setItem(a,4,QtGui.QTableWidgetItem(saldoPiutang)) #nama
+		query = "SELECT SUM(totalSaldo) FROM `gd_piutang`"
+		self.lb_Penjualan_Piutang_TotalNilai.setText("Rp "+str(int(self.DatabaseRunQuery(query)[0][0])))
+		
+	def Penjualan_GoTo_PiutangUsaha_Rincian(self):
+		currentRow = self.tbl_Penjualan_Piutang.currentRow()
+		nama = str(self.tbl_Penjualan_Piutang.item(currentRow,0).text())
+		query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
+		kodePelanggan = str(self.DatabaseRunQuery(query)[0][1])
+		jumlahRow = self.tbl_Penjualan_RincianPiutang.rowCount()
+		if jumlahRow != 0:
+			for x in range (0,jumlahRow):
+				self.tbl_Penjualan_RincianPiutang.removeRow(x)
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_RPU)
+		self.lb_Penjualan_RincianPiutang_title_nama.setText(nama)
+		query = "SELECT * FROM `gd_piutang` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"'"
+		result = self.DatabaseRunQuery(query)
+		print result
+		for a in range (0,len(result)):
+			self.tbl_Penjualan_RincianPiutang.insertRow(a)
+			self.tbl_Penjualan_RincianPiutang.setItem(a,0,QtGui.QTableWidgetItem(str(result[a][5])))
+			self.tbl_Penjualan_RincianPiutang.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][2])))
+		return
 	
 	def Penjualan_GoTo_PembayaranPiutang(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PP)
