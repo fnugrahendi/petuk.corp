@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Sun Jan 18 10:25:00 2015
+# Created: Sun Jan 18 11:30:25 2015
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -965,7 +965,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataProyek_Tambah_Penjab.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataProyek_Tambah_Penjab.setObjectName(_fromUtf8("sc_DataMaster_DataProyek_Tambah_Penjab"))
         self.scontent_DataMaster_DataProyek_Tambah_Penjab = QtGui.QWidget()
-        self.scontent_DataMaster_DataProyek_Tambah_Penjab.setGeometry(QtCore.QRect(0, 0, 30, 200))
+        self.scontent_DataMaster_DataProyek_Tambah_Penjab.setGeometry(QtCore.QRect(0, 0, 100, 200))
         self.scontent_DataMaster_DataProyek_Tambah_Penjab.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataProyek_Tambah_Penjab.setObjectName(_fromUtf8("scontent_DataMaster_DataProyek_Tambah_Penjab"))
         self.ivl_DataMaster_DataProyek_Tambah_Penjab = QtGui.QVBoxLayout(self.scontent_DataMaster_DataProyek_Tambah_Penjab)
@@ -3529,7 +3529,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
-        self.st_DataMaster.setCurrentIndex(1)
+        self.st_DataMaster.setCurrentIndex(0)
         self.st_Penjualan.setCurrentIndex(0)
         self.st_Pembelian.setCurrentIndex(0)
         self.st_BukuBesar.setCurrentIndex(0)
