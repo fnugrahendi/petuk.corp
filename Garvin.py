@@ -516,11 +516,11 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		""" biasa fetch result wae result in array, 
 		misal data = self.DatabaseFetchResult(self.dbDatabase,"gd_nama_alamat","kodePelanggan","%MAKIN%")"""
 		if keyfield==False:
-			return self.DatabaseRunQuery("SELECT * FROM `"+db+"`.`"+table"`; ")
+			return self.DatabaseRunQuery("SELECT * FROM `"+db+"`.`"+table+"`; ")
 		elif (type(keyvalue)==str):
-			return self.DatabaseRunQuery("SELECT * FROM `"+db+"`.`"+table"` WHERE `"+keyfield+"` LIKE '"+keyvalue+"';")
+			return self.DatabaseRunQuery("SELECT * FROM `"+db+"`.`"+table+"` WHERE `"+keyfield+"` LIKE '"+keyvalue+"';")
 		else:
-			return self.DatabaseRunQuery("SELECT * FROM `"+db+"`.`"+table"` WHERE `"+keyfield+"` = "+keyvalue+";")
+			return self.DatabaseRunQuery("SELECT * FROM `"+db+"`.`"+table+"` WHERE `"+keyfield+"` = "+keyvalue+";")
 if __name__=="__main__":
 	app = QtGui.QApplication(sys.argv)
 	dmw = MainGUI()
