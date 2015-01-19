@@ -19,7 +19,8 @@ except AttributeError:
 
 class DataDepartemen(object):
 	def __init__(self, parent=None):
-		print "Data departemen init invoked!"
+		#~ print "Data departemen init invoked!"
+		return
 		
 	def DataMaster_DataDepartemen_RefreshList(self):
 		"""sql karena sinyal je, threading bro, most updated value comes by sql"""
@@ -259,7 +260,7 @@ class DataDepartemen(object):
 		
 		#--- Popup dipanggil dulu, baru dimanipulasi isinya
 		#thanks to function_exit
-		self.DataMaster_Popup("",fcb_ok,360,WinH-250,revertDataDepartemen,False,True)
+		self.DataMaster_Popup("",fcb_ok,360,WinH-250,revertDataDepartemen,fcb_cancel,True)
 		
 		
 		FrameWindow = self.findChild(QtGui.QFrame,"DataMaster_Popup_FrameWindow")
@@ -305,23 +306,50 @@ class DataDepartemen(object):
 		self.GarvinDisconnect(self.tb_DataMaster_DataDepartemen_Tambah_Simpan.clicked)
 		self.tb_DataMaster_DataDepartemen_Tambah_Simpan.clicked.connect(self.DataMaster_DataDepartemen_Tambah_Act_Simpan)
 		self.tb_DataMaster_DataDepartemen_Tambah_Batal.clicked.connect(self.DataMaster_DataDepartemen)
+		#--- pilih induk departemen, dan pilih penjab
+		self.tb_DataMaster_DataDepartemen_ParentDepartemen.clicked.connect(self.DataMaster_DataDepartemen_Tambah_PilihParent)
+		self.tb_DataMaster_DataDepartemen_KodePenjab.clicked.connect(self.DataMaster_DataDepartemen_Tambah_PilihPenjab)
 		return #--- end Tambah
+		
+	def DataMaster_DataDepartemen_Tambah_PilihParent(self):
+		data = []
+		def isi():
+			self.tb_DataMaster_DataDepartemen_ParentDepartemen.setText(str(data[0]))
+		def batal():
+			self.tb_DataMaster_DataDepartemen_ParentDepartemen.setText("-")
+		self.DataMaster_DataDepartemen_Popup_Pilih(data,isi,batal)
 	
+	def DataMaster_DataDepartemen_Tambah_PilihPenjab(self):
+		data = []
+		def isi():
+			self.tb_DataMaster_DataDepartemen_KodePenjab.setText(str(data[0]))
+		def batal():
+			self.tb_DataMaster_DataDepartemen_KodePenjab.setText("-")
+		self.DataMaster_DataNamaAlamat_Popup_Pilih(data,isi,batal)
+		
 	def DataMaster_DataDepartemen_Tambah_GenerateKode(self):
 		"""	Generate kode otomatis untuk lineEdit"""
 		sql = "SELECT `id` FROM `"+self.dbDatabase+"`.`gd_data_departemen` ORDER BY `gd_data_departemen`.`id` DESC LIMIT 0 , 1"
 		result = self.DatabaseRunQuery(sql)
-		kode_default = str(int(result[0][0])+1)
-		while (len(kode_default)<8):
-			kode_default = "0"+kode_default
+		if len(result)<1:
+			kode_default = "00000000"
+		else:
+			kode_default = str(int(result[0][0])+1)
+			while (len(kode_default)<8):
+				kode_default = "0"+kode_default
 		self.le_DataMaster_DataDepartemen_KodeDepartemen.setText(kode_default)
 		return #--- end generate kode
 
 	def DataMaster_DataDepartemen_Tambah_Act_Simpan(self):
 		kode = self.le_DataMaster_DataDepartemen_KodeDepartemen.text()
 		nama = self.le_DataMaster_DataDepartemen_NamaDepartemen.text()
-		induk = self.le_DataMaster_DataDepartemen_ParentDepartemen.text()
-		penjab = self.le_DataMaster_DataDepartemen_KodePenjab.text()
+		induk = self.tb_DataMaster_DataDepartemen_ParentDepartemen.text()
+		penjab = self.tb_DataMaster_DataDepartemen_KodePenjab.text()
 		catatan = self.le_DataMaster_DataDepartemen_Catatan.text()
 		
+		sukses = self.DatabaseInsertAvoidreplace(self.dbDatabase,"gd_data_departemen","kodeDepartemen",kode,
+										["kodeDepartemen","namaDepartemen","parentDepartemen","kodePenjab","catatan"],
+										[kode,nama,induk,penjab,catatan], "Kode Departemen ini sudah digunakan! Gunakan nomor kode lain!")
+		if (sukses):
+			self.DataMaster_DataDepartemen()
 		return #-- end simpan
