@@ -431,4 +431,73 @@ class DataNamaAlamat(object):
 		aa = aa.replace("CUSTOMER",cb)
 		aa = aa.replace("OTHER",cb)
 		self.le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan.setText(_fromUtf8(aa))
+	
+	def DataMaster_DataNamaAlamat_Popup_Pilih(self,dipilih,fcb_ok=False, fcb_cancel=False, hideSurrounding=False):
+		"""Buka popup untuk pilih dataNamaAlamat, carane hack dewe yoh neng fcb_ok
+		"""
+		#~ self.GarvinDisconnect(self.le_DataMaster_DataNamaAlamat_Search.textChanged)
+		#~ self.le_DataMaster_DataNamaAlamat_Search.textChanged.connect(self.DataMaster_DataNamaAlamat_RefreshList)
 		
+		WinW = self.centralwidget.geometry().width()
+		WinH = self.centralwidget.geometry().height()
+		#--- fungsi exit:kembalikan
+		def revertDataNamaAlamat():
+			self.fr_DataMaster_DataCommon_Fbody_Slist_Container.setParent(self.fr_DataMaster_DataCommon_Fbody)
+			self.ihl_DataMaster_DataCommon_Fbody.insertWidget(0,self.fr_DataMaster_DataCommon_Fbody_Slist_Container,1)
+			self.fr_DataMaster_DataCommon_Fbody_Slist_Container.show()
+		
+		#------ Is it weak reference? when will python's garbage collector delete this revertDataNamaAlamat()?
+		#--- set to none
+		if (fcb_ok==False):
+			fcb_ok = self.DataMaster_None
+		if (fcb_cancel==False):
+			fcb_cancel = self.DataMaster_None
+		
+		#--- bila arraykosong
+		if len(dipilih)<1:
+			dipilih.append("-")
+		
+		def ubahDipilih(data):
+			""" karena threading, bisa ngubah pakai fungsi: nunggu fungsi dipanggil"""
+			dipilih[0] = data
+			revertDataNamaAlamat()
+		
+		
+		#--- Popup dipanggil dulu, baru dimanipulasi isinya
+		#thanks to function_exit
+		self.DataMaster_Popup("",fcb_ok,360,WinH-250,revertDataNamaAlamat,fcb_cancel,True)
+		
+		
+		FrameWindow = self.findChild(QtGui.QFrame,"DataMaster_Popup_FrameWindow")
+		PopupW = FrameWindow.geometry().width()
+		PopupH = FrameWindow.geometry().height()
+		self.fr_DataMaster_DataCommon_Fbody_Slist_Container.setParent(FrameWindow)
+		self.fr_DataMaster_DataCommon_Fbody_Slist_Container.show()
+		self.fr_DataMaster_DataCommon_Fbody_Slist_Container.setGeometry(QtCore.QRect(5,5,PopupW-5,PopupH-50))
+		
+		#Hapus layout list, buat baru
+		self.clearLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
+		
+		result = self.DatabaseFetchResult(self.dbDatabase,"gd_nama_alamat")
+		tinggi = len(result)*80
+		#~ self.sc_DataMaster_DataNamaAlamat_Fbody_Slist.setMinimumSize(QtCore.QSize(330, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataNamaAlamat_Fbody_Slist.setMinimumSize(QtCore.QSize(330, 600))
+		#~ self.sc_DataMaster_DataNamaAlamat_Fbody_Slist.setMaximumSize(QtCore.QSize(330, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataNamaAlamat_Fbody_Slist.setMaximumSize(QtCore.QSize(330, 600))
+		for x in range(0,len(result)):
+			Tb_ListNamaAlamat = self.findChildren(QtGui.QPushButton,"dtb_DataMaster_DataNamaAlamat_List"+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("kodePelanggan")]))
+			if (len(Tb_ListNamaAlamat)<1):
+				Tb_NamaAlamat = QtGui.QPushButton(self.scontent_DataMaster_DataCommon_Fbody_Slist)
+				Tb_NamaAlamat.setObjectName(_fromUtf8("dtb_DataMaster_DataNamaAlamat_ListNamaAlamat"+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("kodePelanggan")])))
+			else:
+				Tb_NamaAlamat = Tb_ListNamaAlamat[0]
+
+			local_name = str(result[x][self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")])
+			Tb_NamaAlamat.setText(local_name)
+			Tb_NamaAlamat.show()
+			#--- disini nambahnya
+			self.ivl_DataMaster_DataCommon_Fbody_Slist.addWidget(Tb_NamaAlamat)
+			self.GarvinDisconnect(Tb_NamaAlamat.clicked)
+			Tb_NamaAlamat.clicked.connect(functools.partial(ubahDipilih,str(result[x][self.DataMaster_DataNamaAlamat_Field.index("kodePelanggan")])))
+			Tb_NamaAlamat.clicked.connect(self.DataMaster_Popup_Tutup)
+			Tb_NamaAlamat.clicked.connect(fcb_ok)
+        
+		#~ Tb_ListNamaAlamat = self.findChildren(QtGui.QPushButton,QRegExp("dynamic_tb_DataMaster_DataNamaAlamat_List\w+"))
