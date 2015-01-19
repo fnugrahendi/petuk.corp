@@ -22,6 +22,7 @@ class DataMaster(DataDepartemen):
 	def DataMaster_init(self, parent=None):
 		
 		super(DataMaster,self).__init__(parent)
+		self.DataMaster_Focus = QtGui.QFocusEvent(QEvent.FocusIn)
 		#---------------------------------------------------------------Data Master init
 		#init konstanta index
 		self.INDEX_ST_DATAMASTER_MENU = 0
@@ -937,10 +938,12 @@ class DataMaster(DataDepartemen):
 		"""
 		sql = "SELECT `id` FROM `"+self.dbDatabase+"`.`gd_nama_alamat` ORDER BY `gd_nama_alamat`.`id` DESC LIMIT 0 , 1"
 		result = self.DatabaseRunQuery(sql)
-		#beri nilai default untuk kodeID nama alamat untuk memudahkan
-		kode_default = str(int(result[0][0])+1)
-		while (len(kode_default)<8):
-			kode_default = "0"+kode_default
+		if len(result)<1:
+			kode_default = "00000000"
+		else:
+			kode_default = str(int(result[0][0])+1)
+			while (len(kode_default)<8):
+				kode_default = "0"+kode_default
 		kode_default = str(self.cb_DataMaster_DataNamaAlamat_Tambah_Tipe.currentText()).upper() + "."+kode_default
 		self.le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan.setText(kode_default)
 	
@@ -1188,10 +1191,12 @@ class DataMaster(DataDepartemen):
 		sql = "SELECT `id` FROM `"+self.dbDatabase+"`.`gd_data_produk` ORDER BY `gd_data_produk`.`id` DESC LIMIT 0 , 1"
 		cursor.execute(sql)
 		result = cursor.fetchall()
-		#beri nilai default untuk kodeID nama alamat untuk memudahkan
-		kode_default = str(int(result[0][0])+1)
-		while (len(kode_default)<8):
-			kode_default = "0"+kode_default
+		if len(result)<1:
+			kode_default = "00000000"
+		else:
+			kode_default = str(int(result[0][0])+1)
+			while (len(kode_default)<8):
+				kode_default = "0"+kode_default
 		kode_default = "PRD" + "."+kode_default
 		self.le_DataMaster_DataProduk_Tambah_KodeBarang.setText(kode_default)
 		self.db.close()
@@ -1257,9 +1262,12 @@ class DataMaster(DataDepartemen):
 		"""
 		sql = "SELECT `id` FROM `"+self.dbDatabase+"`.`gd_data_pajak` ORDER BY `gd_data_pajak`.`id` DESC LIMIT 0 , 1"
 		result = self.DatabaseRunQuery(sql)
-		kode_default = str(int(result[0][0])+1)
-		while (len(kode_default)<8):
-			kode_default = "0"+kode_default
+		if len(result)<1:
+			kode_default = "00000000"
+		else:
+			kode_default = str(int(result[0][0])+1)
+			while (len(kode_default)<8):
+				kode_default = "0"+kode_default
 		kode_default = "PJK" + "."+kode_default
 		self.le_DataMaster_DataPajak_Tambah_KodePajak.setText(kode_default)
 		
@@ -1687,9 +1695,12 @@ class DataMaster(DataDepartemen):
 		"""
 		sql = "SELECT `id` FROM `"+self.dbDatabase+"`.`gd_proyek` ORDER BY `gd_proyek`.`id` DESC LIMIT 0 , 1"
 		result = self.DatabaseRunQuery(sql)
-		kode_default = str(int(result[0][0])+1)
-		while (len(kode_default)<8):
-			kode_default = "0"+kode_default
+		if len(result)<1:
+			kode_default = "00000000"
+		else:
+			kode_default = str(int(result[0][0])+1)
+			while (len(kode_default)<8):
+				kode_default = "0"+kode_default
 		kode_default = "PROYEK" + "."+kode_default
 		self.le_DataMaster_DataProyek_Tambah_KodeProyek.setText(kode_default)
 		
@@ -1725,9 +1736,12 @@ class DataMaster(DataDepartemen):
 		"""
 		sql = "SELECT `id` FROM `"+self.dbDatabase+"`.`gd_satuan_pengukuran` ORDER BY `gd_satuan_pengukuran`.`id` DESC LIMIT 0 , 1"
 		result = self.DatabaseRunQuery(sql)
-		kode_default = str(int(result[0][0])+1)
-		while (len(kode_default)<8):
-			kode_default = "0"+kode_default
+		if len(result)<1:
+			kode_default = "00000000"
+		else:
+			kode_default = str(int(result[0][0])+1)
+			while (len(kode_default)<8):
+				kode_default = "0"+kode_default
 		kode_default = "UNIT" + "."+kode_default
 		self.le_DataMaster_DataSatuanPengukuran_Tambah_KodeSatuan.setText(kode_default)
 		
