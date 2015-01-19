@@ -334,8 +334,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>250</width>
-                          <height>30</height>
+                          <width>332</width>
+                          <height>18</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -2269,7 +2269,7 @@ QPushButton::hover{
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>100</width>
+                       <width>30</width>
                        <height>200</height>
                       </rect>
                      </property>
@@ -3514,8 +3514,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>250</width>
-                          <height>30</height>
+                          <width>332</width>
+                          <height>18</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -3861,20 +3861,6 @@ QPushButton::hover{
                      <property name="fieldGrowthPolicy">
                       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
                      </property>
-                     <item row="1" column="0">
-                      <widget class="QLabel" name="lb_DataMaster_DataDepartemen_NamaDepartemen">
-                       <property name="text">
-                        <string>Nama Departemen :</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="2" column="0">
-                      <widget class="QLabel" name="lb_DataMaster_DataDepartemen_ParentDepartemen">
-                       <property name="text">
-                        <string>Departemen Induk :</string>
-                       </property>
-                      </widget>
-                     </item>
                      <item row="0" column="0">
                       <widget class="QLabel" name="lb_DataMaster_DataDepartemen_KodeDepartemen">
                        <property name="text">
@@ -3898,6 +3884,13 @@ QPushButton::hover{
                        </property>
                       </widget>
                      </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="lb_DataMaster_DataDepartemen_NamaDepartemen">
+                       <property name="text">
+                        <string>Nama Departemen :</string>
+                       </property>
+                      </widget>
+                     </item>
                      <item row="1" column="1">
                       <widget class="QLineEdit" name="le_DataMaster_DataDepartemen_NamaDepartemen">
                        <property name="minimumSize">
@@ -3914,19 +3907,10 @@ QPushButton::hover{
                        </property>
                       </widget>
                      </item>
-                     <item row="2" column="1">
-                      <widget class="QLineEdit" name="le_DataMaster_DataDepartemen_ParentDepartemen">
-                       <property name="minimumSize">
-                        <size>
-                         <width>200</width>
-                         <height>24</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>200</width>
-                         <height>16777215</height>
-                        </size>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="lb_DataMaster_DataDepartemen_ParentDepartemen">
+                       <property name="text">
+                        <string>Departemen Induk :</string>
                        </property>
                       </widget>
                      </item>
@@ -3944,16 +3928,6 @@ QPushButton::hover{
                        </property>
                       </widget>
                      </item>
-                     <item row="3" column="1">
-                      <widget class="QLineEdit" name="le_DataMaster_DataDepartemen_KodePenjab">
-                       <property name="maximumSize">
-                        <size>
-                         <width>200</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
                      <item row="4" column="1">
                       <widget class="QLineEdit" name="le_DataMaster_DataDepartemen_Catatan">
                        <property name="maximumSize">
@@ -3961,6 +3935,32 @@ QPushButton::hover{
                          <width>800</width>
                          <height>16777215</height>
                         </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QPushButton" name="tb_DataMaster_DataDepartemen_ParentDepartemen">
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="3" column="1">
+                      <widget class="QPushButton" name="tb_DataMaster_DataDepartemen_KodePenjab">
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>-</string>
                        </property>
                       </widget>
                      </item>
