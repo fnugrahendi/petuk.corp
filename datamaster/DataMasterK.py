@@ -2200,7 +2200,7 @@ class DataMaster(object):
 		
 		#~ self.DataMaster_DataDepartemen_Tambah_GenerateKode()
 		
-		sql = "SELECT * FROM `gd_data_departemen` "
+		sql = "SELECT * FROM `"+self.dbDatabase+"`.`gd_data_departemen` "
 		result = self.DatabaseRunQuery(sql)
 		tinggi = len(result)*65
 		self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
@@ -2375,7 +2375,7 @@ class DataMaster(object):
 			self.ihl_DataMaster_DataDepartemen_Fbody.insertWidget(0,self.fr_DataMaster_DataDepartemen_Fbody_Slist_Container,1)
 			self.fr_DataMaster_DataDepartemen_Fbody_Slist_Container.show()
 		
-		
+		#------ Is it weak reference? when will python's garbage collector delete this revertDataDepartemen()?
 		#--- set to none
 		if (fcb_ok==False):
 			fcb_ok = self.DataMaster_None
@@ -2393,7 +2393,8 @@ class DataMaster(object):
 		
 		
 		#--- Popup dipanggil dulu, baru dimanipulasi isinya
-		self.DataMaster_Popup("",fcb_ok,360,WinH-250,False,False,True)
+		#thanks to function_exit
+		self.DataMaster_Popup("",fcb_ok,360,WinH-250,revertDataDepartemen,False,True)
 		
 		
 		FrameWindow = self.findChild(QtGui.QFrame,"DataMaster_Popup_FrameWindow")
