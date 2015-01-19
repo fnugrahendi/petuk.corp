@@ -168,6 +168,9 @@ class DataMaster(object):
 	def DataMaster_Goto(self,goto_roomID):
 		self.st_DataMaster.setCurrentIndex(goto_roomID)
 	
+	def DataMaster_Menu(self):
+		self.st_DataMaster.setCurrentIndex(self.INDEX_ST_DATAMASTER_MENU)
+		
 	def DataMaster_Goto_Common(self,as_roomID,keep=False):
 		self.st_DataMaster.setCurrentIndex(self.INDEX_ST_DATAMASTER_COMMON)
 		self.clearLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
@@ -2032,7 +2035,7 @@ class DataMaster(object):
 		self.DataMaster_DataNamaAlamat_Edit_idEDIT = barang[0][field("id")]
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATANAMAALAMAT_TAMBAH)
 		
-	def DataMaster_Popup(self,text,function_callback,FW=500,FH=200,function_exit=None,function_close=None,hide_surrounding=False):
+	def DataMaster_Popup(self,text,function_callback,FW=500,FH=200,function_exit=False,function_close=False,hide_surrounding=False):
 		
 		if (FW == False):
 			FW = 500
@@ -2042,13 +2045,13 @@ class DataMaster(object):
 			function_exit = self.DataMaster_None
 		if function_close==False:
 			function_close = self.DataMaster_None
-			
-		WinW = self.centralwidget.geometry().width()
-		WinH = self.centralwidget.geometry().height()
 		if (function_close==None):
 			function_close = self.DataMaster_None
 		if (function_exit==None):
 			function_exit = self.DataMaster_None
+			
+		WinW = self.centralwidget.geometry().width()
+		WinH = self.centralwidget.geometry().height()
 			
 		FrameWindowH = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_Popup_FrameWindowH"))
 		if (len(FrameWindowH)<1):
@@ -2080,7 +2083,7 @@ class DataMaster(object):
 			FrameWindow = FrameWindow[0]
 		FrameWindow.setGeometry(QtCore.QRect((WinW/2)-FW/2, WinH/2- FH/2, FW, FH))
 		FrameWindow.setObjectName(_fromUtf8("DataMaster_Popup_FrameWindow"))
-		FrameWindow.setStyleSheet(_fromUtf8("QFrame{background:#ffffff;border-radius:0px;border-style: solid;border-width: 2px;border-color:#868686;}"))
+		FrameWindow.setStyleSheet(_fromUtf8("QFrame{background:#ffffff;border-radius:0px;border-style: solid;border-width: 2px;border-color:#868686;}QFrame>QFrame{border-style:none;border-width:0px;}"))
 		FrameWindow.show()
 		
 		Label = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_Popup_Label"))
@@ -2095,16 +2098,16 @@ class DataMaster(object):
 		Label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignCenter)
 		Label.show()
 		
-		ConfirmOk = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_Popup_ConfirmOk"))
+		ConfirmOk = self.findChildren(QtGui.QPushButton,_fromUtf8("DataMaster_Popup_ConfirmOk"))
 		if (len(ConfirmOk)<1):
 			ConfirmOk = QtGui.QPushButton(FrameWindow)
+			ConfirmOk.setObjectName(_fromUtf8("DataMaster_Popup_ConfirmOk"))
+			ConfirmOk.setText(_fromUtf8("Ok"))
+			ConfirmOk.setStyleSheet(_fromUtf8("QPushButton{background:#555555;color:white;}"))
 		else:
 			ConfirmOk = ConfirmOk[0]
-		ConfirmOk.setGeometry(QtCore.QRect(FW/2-42-85, FH-45, 85, 30))
-		ConfirmOk.setObjectName(_fromUtf8("DataMaster_Popup_ConfirmOk"))
-		ConfirmOk.setText(_fromUtf8("Ok"))
-		ConfirmOk.setStyleSheet(_fromUtf8("QPushButton{background:#555555;color:white;}"))
 		
+		ConfirmOk.setGeometry(QtCore.QRect(FW/2-42-85, FH-45, 85, 30))
 		self.GarvinDisconnect(ConfirmOk.clicked)
 		
 		def tutup(f):
@@ -2116,25 +2119,24 @@ class DataMaster(object):
 		ConfirmOk.clicked.connect(function_exit)
 		ConfirmOk.show()
 		
-		ConfirmClose = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_Popup_ConfirmClose"))
+		ConfirmClose = self.findChildren(QtGui.QPushButton,_fromUtf8("DataMaster_Popup_ConfirmClose"))
 		if (len(ConfirmClose)<1):
 			ConfirmClose = QtGui.QPushButton(FrameWindow)
+			ConfirmClose.setObjectName(_fromUtf8("DataMaster_Popup_ConfirmClose"))
+			ConfirmClose.setText(_fromUtf8("Cancel"))
+			ConfirmClose.setStyleSheet(_fromUtf8("QPushButton{background:#555555;color:white;}"))
 		else:
 			ConfirmClose = ConfirmClose[0]
 		
 		ConfirmClose.setGeometry(QtCore.QRect(FW/2-42+85, FH-45, 85, 30))
-		ConfirmClose.setObjectName(_fromUtf8("DataMaster_Popup_ConfirmClose"))
-		ConfirmClose.setText(_fromUtf8("Cancel"))
-		ConfirmClose.setStyleSheet(_fromUtf8("QPushButton{background:#555555;color:white;}"))
-		ConfirmClose.show()
 		self.GarvinDisconnect(ConfirmClose.clicked)
-		
 		
 		ConfirmClose.clicked.connect(functools.partial(tutup,FrameWindow))
 		ConfirmClose.clicked.connect(functools.partial(tutup,FrameWindowS))
 		ConfirmClose.clicked.connect(functools.partial(tutup,FrameWindowH))
 		ConfirmClose.clicked.connect(function_close)
 		ConfirmClose.clicked.connect(function_exit)
+		ConfirmClose.show()
 		#execute exit function if any
 		#~ if (function_exit!=None
 		#~ function_exit() if (function_exit!=None) else None
@@ -2155,30 +2157,19 @@ class DataMaster(object):
 		self.DataMaster_Goto_Common(self.INDEX_ST_DATAMASTER_DATANAMAALAMAT)
 	
 	
-	def DataMaster_DataDepartemen(self):
-		self.st_DataMaster.setCurrentIndex(self.INDEX_ST_DATAMASTER_DATADEPARTEMEN)
-		self.lb_DataMaster_DataDepartemen_Judul.setText("Data Departemen ")
-		self.tb_DataMaster_DataDepartemen_Tambah.clicked.connect(functools.partial(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_DATADEPARTEMEN_TAMBAH))
-		self.tb_DataMaster_DataDepartemen_Edit.clicked.connect(self.DataMaster_DataDepartemen_Edit)
+	def DataMaster_DataDepartemen_RefreshList(self):
+		"""sql karena sinyal je, threading bro, most updated value comes by sql"""
 		self.clearLayout(self.scontent_DataMaster_DataDepartemen_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
-		#~ self.le_DataMaster_DataDepartemen_Tambah_KodeDepartemen.setReadOnly(False)
-		#~ if (not keep):
-			#~ """Kosongkan isi line edit"""
-			#~ lels = self.fr_DataMaster_DataDepartemen_Tambah_Fcontent.findChildren(QtGui.QLineEdit)
-			#~ for x in range(0,len(lels)):
-				#~ lels[x].setText("")
 		
-		#~ self.DataMaster_DataDepartemen_Tambah_GenerateKode()
-		
-		sql = "SELECT * FROM `gd_data_departemen` "
-		result = self.DatabaseRunQuery(sql)
-		tinggi = len(result)*65
+		result = self.DatabaseFetchResult(self.dbDatabase,"gd_data_departemen","namaDepartemen","%"+str(self.le_DataMaster_DataDepartemen_Search.text()+"%"))
+		#~ result = self.DatabaseRunQuery(sql)
+		tinggi = len(result)*80
 		self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 		for x in range(0,len(result)):
-			Tb_ListDepartemen = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataDepartemen_List"+str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")]))
+			Tb_ListDepartemen = self.findChildren(QtGui.QPushButton,"dtb_DataMaster_DataDepartemen_List"+str(result[x][self.DataMaster_DataDepartemen_Field.index("kodeDepartemen")]))
 			if (len(Tb_ListDepartemen)<1):
 				Tb_Departemen = QtGui.QPushButton(self.scontent_DataMaster_DataDepartemen_Fbody_Slist)
-				Tb_Departemen.setObjectName(_fromUtf8("dynamic_tb_DataMaster_DataDepartemen_ListDepartemen"+str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")])))
+				Tb_Departemen.setObjectName(_fromUtf8("dtb_DataMaster_DataDepartemen_ListDepartemen"+str(result[x][self.DataMaster_DataDepartemen_Field.index("kodeDepartemen")])))
 				local_name = str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")])
 				Tb_Departemen.setText(local_name)
 				self.ivl_DataMaster_DataDepartemen_Fbody_Slist.addWidget(Tb_Departemen,QtCore.Qt.AlignLeading|QtCore.Qt.AlignTop)
@@ -2188,9 +2179,55 @@ class DataMaster(object):
 					self.ivl_DataMaster_DataDepartemen_Fbody_Slist.addWidget(Tb_ListDepartemen[y],QtCore.Qt.AlignLeading|QtCore.Qt.AlignTop)
 					Tb_ListDepartemen[y].show()
 					Tb_ListDepartemen[y].setText(str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")]))
-					Tb_ListDepartemen[y].clicked.disconnect()
+					self.GarvinDisconnect(Tb_ListDepartemen[y].clicked)
 					Tb_ListDepartemen[y].clicked.connect(functools.partial(self.DataMaster_DataDepartemen_DrawInfo,result[x]))
 	
+	def DataMaster_DataDepartemen(self):
+		self.st_DataMaster.setCurrentIndex(self.INDEX_ST_DATAMASTER_DATADEPARTEMEN)
+		self.lb_DataMaster_DataDepartemen_Judul.setText("Data Departemen ")
+		self.tb_DataMaster_DataDepartemen_Tambah.clicked.connect(functools.partial(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_DATADEPARTEMEN_TAMBAH))
+		self.tb_DataMaster_DataDepartemen_Edit.clicked.connect(self.DataMaster_DataDepartemen_Edit)
+		self.clearLayout(self.scontent_DataMaster_DataDepartemen_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
+		
+		self.GarvinDisconnect(self.le_DataMaster_DataDepartemen_Search.textChanged)
+		self.le_DataMaster_DataDepartemen_Search.textChanged.connect(self.DataMaster_DataDepartemen_RefreshList)
+		#~ self.le_DataMaster_DataDepartemen_Tambah_KodeDepartemen.setReadOnly(False)
+		#~ if (not keep):
+			#~ """Kosongkan isi line edit"""
+			#~ lels = self.fr_DataMaster_DataDepartemen_Tambah_Fcontent.findChildren(QtGui.QLineEdit)
+			#~ for x in range(0,len(lels)):
+				#~ lels[x].setText("")
+		
+		#~ self.DataMaster_DataDepartemen_Tambah_GenerateKode()
+		
+		sql = "SELECT * FROM `"+self.dbDatabase+"`.`gd_data_departemen` "
+		result = self.DatabaseRunQuery(sql)
+		tinggi = len(result)*65
+		self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
+		for x in range(0,len(result)):
+			Tb_ListDepartemen = self.findChildren(QtGui.QPushButton,"dtb_DataMaster_DataDepartemen_List"+str(result[x][self.DataMaster_DataDepartemen_Field.index("kodeDepartemen")]))
+			if (len(Tb_ListDepartemen)<1):
+				Tb_Departemen = QtGui.QPushButton(self.scontent_DataMaster_DataDepartemen_Fbody_Slist)
+				Tb_Departemen.setObjectName(_fromUtf8("dtb_DataMaster_DataDepartemen_ListDepartemen"+str(result[x][self.DataMaster_DataDepartemen_Field.index("kodeDepartemen")])))
+				local_name = str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")])
+				Tb_Departemen.setText(local_name)
+				self.ivl_DataMaster_DataDepartemen_Fbody_Slist.addWidget(Tb_Departemen,QtCore.Qt.AlignLeading|QtCore.Qt.AlignTop)
+				Tb_Departemen.clicked.connect(functools.partial(self.DataMaster_DataDepartemen_DrawInfo,result[x]))
+			else:
+				for y in range(0, len(Tb_ListDepartemen)):
+					self.ivl_DataMaster_DataDepartemen_Fbody_Slist.addWidget(Tb_ListDepartemen[y],QtCore.Qt.AlignLeading|QtCore.Qt.AlignTop)
+					Tb_ListDepartemen[y].show()
+					Tb_ListDepartemen[y].setText(str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")]))
+					self.GarvinDisconnect(Tb_ListDepartemen[y].clicked)
+					Tb_ListDepartemen[y].clicked.connect(functools.partial(self.DataMaster_DataDepartemen_DrawInfo,result[x]))
+		self.GarvinDisconnect(self.tb_DataMaster_DataDepartemen_Tutup.clicked)
+		self.GarvinDisconnect(self.tb_DataMaster_DataDepartemen_Tambah.clicked)
+		self.GarvinDisconnect(self.tb_DataMaster_DataDepartemen_Edit.clicked)
+		self.GarvinDisconnect(self.tb_DataMaster_DataDepartemen_Delete.clicked)
+		self.tb_DataMaster_DataDepartemen_Tutup.clicked.connect(self.DataMaster_Menu)
+		#~ self.tb_DataMaster_DataDepartemen_Tutup.clicked.connect(tulis)
+	#~ def DataMaster_DataDepartemen_DrawInfo(self,data):
+		
 	
 	def DataMaster_DataDepartemen_Edit(self):
 		pass
@@ -2199,7 +2236,7 @@ class DataMaster(object):
 		#------------------ Draw Form Layout Left
 		FrameDepartemenL = self.findChildren(QtGui.QFrame,"dfr_DataMaster_DataDepartemen_FrameInfo_Left")
 		if (len(FrameDepartemenL)<1):
-			FrameDepartemenL = QtGui.QFrame(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
+			FrameDepartemenL = QtGui.QFrame(self.fr_DataMaster_DataDepartemen_Fbody_FR_Ftop)
 			FrameDepartemenL.setObjectName(_fromUtf8("dfr_DataMaster_DataDepartemen_FrameInfo_Left"))
 			FrameDepartemenL.setStyleSheet(_fromUtf8("QFrame{background:#FFFFFF;border-radius:0px;border-style: solid;border-width: 0px;border-color:#FFFFFF;}"))
 			ivl_FrameDepartemenL = QtGui.QVBoxLayout(FrameDepartemenL)
@@ -2208,13 +2245,13 @@ class DataMaster(object):
 		else:
 			FrameDepartemenL = FrameDepartemenL[0]
 			#~ ivl_FrameDepartemenL = ivl_FrameDepartemenL[0]
-		self.igr_DataMaster_DataCommon_Fbody_FR_Ftop.addWidget(FrameDepartemenL, 0, 0, 1, 1)
+		self.igr_DataMaster_DataDepartemen_Fbody_FR_Ftop.addWidget(FrameDepartemenL, 0, 0, 1, 1)
 		FrameDepartemenL.setMaximumSize(QtCore.QSize(150,15000))
 		
 		#------------------ Draw Form Layout Right
 		FrameDepartemenR = self.findChildren(QtGui.QFrame,"dfr_DataMaster_DataDepartemen_FrameInfo_Right")
 		if (len(FrameDepartemenR)<1):
-			FrameDepartemenR = QtGui.QFrame(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
+			FrameDepartemenR = QtGui.QFrame(self.fr_DataMaster_DataDepartemen_Fbody_FR_Ftop)
 			FrameDepartemenR.setObjectName(_fromUtf8("dfr_DataMaster_DataDepartemen_FrameInfo_Right"))
 			FrameDepartemenR.setStyleSheet(_fromUtf8("QFrame{background:#FFFFFF;border-radius:0px;border-style: solid;border-width: 0px;border-color:#FFFFFF;}"))
 			ivl_FrameDepartemenR = QtGui.QVBoxLayout(FrameDepartemenR)
@@ -2222,7 +2259,7 @@ class DataMaster(object):
 		else:
 			FrameDepartemenR = FrameDepartemenR[0]
 			#~ ivl_FrameDepartemenR = ivl_FrameDepartemenR[0]
-		self.igr_DataMaster_DataCommon_Fbody_FR_Ftop.addWidget(FrameDepartemenR, 0, 1, 1, 1)
+		self.igr_DataMaster_DataDepartemen_Fbody_FR_Ftop.addWidget(FrameDepartemenR, 0, 1, 1, 1)
 		
 		self.clearLayout(FrameDepartemenL.findChild(QtGui.QVBoxLayout))
 		self.clearLayout(FrameDepartemenR.findChild(QtGui.QVBoxLayout))
@@ -2232,12 +2269,12 @@ class DataMaster(object):
 		
 		FrameGrafik = self.findChildren(QtGui.QFrame,_fromUtf8("dfr_DataMaster_DataDepartemen_FrameGrafik"))
 		if len(FrameGrafik)<1:
-			FrameGrafik = QtGui.QFrame(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
+			FrameGrafik = QtGui.QFrame(self.fr_DataMaster_DataDepartemen_Fbody_FR_Ftop)
 			FrameGrafik.setObjectName(_fromUtf8("dfr_DataMaster_DataDepartemen_FrameGrafik"))
 			FrameGrafik.setStyleSheet(_fromUtf8("QFrame{background:#FFFFFF;border-radius:0px;border-style: solid;border-width: 1px;border-color:#E1E1E1;}"))
 		else:
 			FrameGrafik = FrameGrafik[0]
-		self.igr_DataMaster_DataCommon_Fbody_FR_Ftop.addWidget(FrameGrafik, 1, 0, 1, 2)
+		self.igr_DataMaster_DataDepartemen_Fbody_FR_Ftop.addWidget(FrameGrafik, 1, 0, 1, 2)
 		
 		
 		#-------------------Draw labels
@@ -2323,3 +2360,80 @@ class DataMaster(object):
 			
 			
 		#---end of def DataMaster_DataDepartemen_DrawInfo
+	
+	def DataMaster_DataDepartemen_Popup_Pilih(self,dipilih,fcb_ok=False, fcb_cancel=False, hideSurrounding=False):
+		"""Buka popup untuk pilih datadepartemen, carane hack dewe yoh neng fcb_ok
+		"""
+		self.GarvinDisconnect(self.le_DataMaster_DataDepartemen_Search.textChanged)
+		self.le_DataMaster_DataDepartemen_Search.textChanged.connect(self.DataMaster_DataDepartemen_RefreshList)
+		
+		WinW = self.centralwidget.geometry().width()
+		WinH = self.centralwidget.geometry().height()
+		#--- fungsi exit:kembalikan
+		def revertDataDepartemen():
+			self.fr_DataMaster_DataDepartemen_Fbody_Slist_Container.setParent(self.fr_DataMaster_DataDepartemen_Fbody)
+			self.ihl_DataMaster_DataDepartemen_Fbody.insertWidget(0,self.fr_DataMaster_DataDepartemen_Fbody_Slist_Container,1)
+			self.fr_DataMaster_DataDepartemen_Fbody_Slist_Container.show()
+		
+		#------ Is it weak reference? when will python's garbage collector delete this revertDataDepartemen()?
+		#--- set to none
+		if (fcb_ok==False):
+			fcb_ok = self.DataMaster_None
+		if (fcb_cancel==False):
+			fcb_cancel = self.DataMaster_None
+		
+		#--- bila arraykosong
+		if len(dipilih)<1:
+			dipilih.append("-")
+		
+		def ubahDipilih(data):
+			""" karena threading, bisa ngubah pakai fungsi: nunggu fungsi dipanggil"""
+			dipilih[0] = data
+			revertDataDepartemen()
+		
+		
+		#--- Popup dipanggil dulu, baru dimanipulasi isinya
+		#thanks to function_exit
+		self.DataMaster_Popup("",fcb_ok,360,WinH-250,revertDataDepartemen,False,True)
+		
+		
+		FrameWindow = self.findChild(QtGui.QFrame,"DataMaster_Popup_FrameWindow")
+		PopupW = FrameWindow.geometry().width()
+		PopupH = FrameWindow.geometry().height()
+		self.fr_DataMaster_DataDepartemen_Fbody_Slist_Container.setParent(FrameWindow)
+		self.fr_DataMaster_DataDepartemen_Fbody_Slist_Container.show()
+		self.fr_DataMaster_DataDepartemen_Fbody_Slist_Container.setGeometry(QtCore.QRect(5,5,PopupW-5,PopupH-50))
+		
+		#Hapus layout list, buat baru
+		self.clearLayout(self.scontent_DataMaster_DataDepartemen_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
+		
+		result = self.DatabaseFetchResult(self.dbDatabase,"gd_data_departemen")
+		tinggi = len(result)*80
+		#~ self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMinimumSize(QtCore.QSize(330, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMinimumSize(QtCore.QSize(330, 600))
+		#~ self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMaximumSize(QtCore.QSize(330, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMaximumSize(QtCore.QSize(330, 600))
+		for x in range(0,len(result)):
+			Tb_ListDepartemen = self.findChildren(QtGui.QPushButton,"dtb_DataMaster_DataDepartemen_List"+str(result[x][self.DataMaster_DataDepartemen_Field.index("kodeDepartemen")]))
+			if (len(Tb_ListDepartemen)<1):
+				Tb_Departemen = QtGui.QPushButton(self.scontent_DataMaster_DataDepartemen_Fbody_Slist)
+				Tb_Departemen.setObjectName(_fromUtf8("dtb_DataMaster_DataDepartemen_ListDepartemen"+str(result[x][self.DataMaster_DataDepartemen_Field.index("kodeDepartemen")])))
+			else:
+				Tb_Departemen = Tb_ListDepartemen[0]
+
+			local_name = str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")])
+			Tb_Departemen.setText(local_name)
+			Tb_Departemen.show()
+			self.ivl_DataMaster_DataDepartemen_Fbody_Slist.addWidget(Tb_Departemen)
+			self.GarvinDisconnect(Tb_Departemen.clicked)
+			Tb_Departemen.clicked.connect(functools.partial(ubahDipilih,str(result[x][self.DataMaster_DataDepartemen_Field.index("kodeDepartemen")])))
+			Tb_Departemen.clicked.connect(self.DataMaster_Popup_Tutup)
+			Tb_Departemen.clicked.connect(fcb_ok)
+        
+		#~ Tb_ListDepartemen = self.findChildren(QtGui.QPushButton,QRegExp("dynamic_tb_DataMaster_DataDepartemen_List\w+"))
+		
+		pass
+	
+
+#---- wong males
+if __name__=="__main__":
+	import os
+	os.system("python ../Garvin.py")

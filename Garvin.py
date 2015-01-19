@@ -99,6 +99,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		self.DataMaster_init()
 		self.BukuBesar_init()
 		
+		#--- kalau pindah tab, set semua stackedWidget ke index 0 (suppose to be _Menu index)
+		self.tabWidget.currentChanged.connect(self.ResetRooms)
+		
 	def initDatabase(self):
 		try:
 			self.db = MySQLdb.connect(self.dbHost,self.dbUser,self.dbPass,self.dbDatabase)
@@ -119,7 +122,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 					
 		return
 	
-	
+	def ResetRooms(self):
+		#--- search pakai regexp, karena ternyata tab widget pakai stackedwidget juga!
+		for st in self.findChildren(QtGui.QStackedWidget,QRegExp("st_\w+")):
+			st.setCurrentIndex(0)
 	#-------------------------------------------------------------------Penjualan
 	#-------------------------------------------------------------------Penjualan
 	
@@ -391,8 +397,24 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		try:
 			cursor.execute(query)
 		except Exception, e:
+			#------                      Untuk Select *, return list dgn elemen2 kosong untuk menghindari error
+			if (query.find("SELECT")!=-1):
+				self.db.close()
+				tables = (re.findall("`(\w+)`",query))
+				for table in tables:
+					#--------------------pastikan bukan database, tapi nama table
+					if (table!=self.dbDatabase):
+						sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='"+str(table)+"';"
+						hasil = self.DatabaseRunQuery(sql) #-- scary recursive
+						result = []
+						for x in range(0,len(hasil)):
+							result.append("-")
+						#~ self.db.close()
+						return result
 			print repr(e)
 			self.statusbar.showMessage(repr(e),120000)
+			#~ sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_satuan_pengukuran';"
+			return
 		result = cursor.fetchall()
 		self.db.commit()
 		self.db.close()
@@ -436,9 +458,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		"nyimpel2ke disconnect signal, cara manggil koyo self.GarvinDisconnect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked)"
 		try:
 			stuff.disconnect()
-			return 1
+			return True
 		except:
-			return 0
+			return False
 	def DatabaseInsertReplace(self,db,table,keyfield,keyvalue,fields,values):
 		"""masukkan (list) values pada (list) fields ke table dengan keyfield dan value tertentu, bila sudah ada update, bila belum insert
 		note that keyfield must be rewritten on fields too, due too incase keyfields keyvalue is just in-purpose-False escaper that is not used
@@ -512,6 +534,15 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 			sql = sql + ");"
 		self.DatabaseRunQuery(sql)
 		return True
+	def DatabaseFetchResult(self,db,table,keyfield=False,keyvalue=False):
+		""" biasa fetch result wae result in array, 
+		misal data = self.DatabaseFetchResult(self.dbDatabase,"gd_nama_alamat","kodePelanggan","%MAKIN%")"""
+		if keyfield==False:
+			return self.DatabaseRunQuery("SELECT * FROM `"+db+"`.`"+table+"`; ")
+		elif (type(keyvalue)==str):
+			return self.DatabaseRunQuery("SELECT * FROM `"+db+"`.`"+table+"` WHERE `"+keyfield+"` LIKE '"+keyvalue+"';")
+		else:
+			return self.DatabaseRunQuery("SELECT * FROM `"+db+"`.`"+table+"` WHERE `"+keyfield+"` = "+keyvalue+";")
 if __name__=="__main__":
 	app = QtGui.QApplication(sys.argv)
 	dmw = MainGUI()

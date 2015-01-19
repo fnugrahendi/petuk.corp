@@ -345,6 +345,7 @@ class BukuBesar(object):
 		self.GarvinDisconnect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked)
 		self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellClicked.connect(_SetActiveIndex)
 		self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked.connect(self.BukuBesar_DaftarTransaksiJurnal_PilihRekening)
+		self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked.connect(self.BukuBesar_DaftarTransaksiJurnal_PilihDepartemen)
 		
 		
 		hitungulang()
@@ -424,6 +425,14 @@ class BukuBesar(object):
 			self.DatabaseRunQuery(sql)
 		self.BukuBesar_DaftarTransaksiJurnal()
 		return
+		
+	def BukuBesar_DaftarTransaksiJurnal_PilihDepartemen(self,row,column):
+		if column!=2:
+			return
+		ok = ["-"]
+		def ubah():
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,column).setText(str(ok[0]))
+		self.DataMaster_DataDepartemen_Popup_Pilih(ok,ubah)
 	
 	def BukuBesar_DaftarTransaksiJurnal_PilihRekening(self,row,column):
 		"pilih rekening untuk data transaksi jurnal pada baris $row"
