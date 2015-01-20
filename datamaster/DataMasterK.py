@@ -170,7 +170,8 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 		self.clearLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
 		self.clearGrid(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop.findChildren(QtGui.QGridLayout)[0])
 		
-		self.GarvinDisconnect(self.le_DataCommon_Search.textChanged.connect)
+		self.le_DataMaster_DataCommon_Search.setText("")
+		self.GarvinDisconnect(self.le_DataMaster_DataCommon_Search.textChanged.connect)
 		#---------------------------------------------------------------Disconnect sinyal bila sudah di hubungkan
 		try:
 			self.tb_DataMaster_DataCommon_Tambah.clicked.disconnect()
@@ -194,8 +195,8 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 			self.tb_DataMaster_DataCommon_Tambah.clicked.connect(functools.partial(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_DATANAMAALAMAT_TAMBAH))
 			self.tb_DataMaster_DataCommon_Edit.clicked.connect(self.DataMaster_DataNamaAlamat_Edit)
 			self.le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan.setReadOnly(False)
-			self.le_DataCommon_Search.setText("")
-			self.le_DataCommon_Search.textChanged.connect(self.DataMaster_DataNamaAlamat_RefreshList)
+			
+			self.le_DataMaster_DataCommon_Search.textChanged.connect(self.DataMaster_DataNamaAlamat_RefreshList)
 			
 			self.clearLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
 			if (not keep):
@@ -216,13 +217,13 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 			
 			sql = "SELECT * FROM `gd_nama_alamat` "
 			result = self.DatabaseRunQuery(sql)
-			tinggi = len(result)*65
+			tinggi = len(result)*80
 			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 			for x in range(0,len(result)):
-				obj_Tb_ListPelanggan = self.findChildren(QtGui.QPushButton,"dtb_DataMaster_DataNamaAlamat_ListNamaAlamat"+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")]))
+				obj_Tb_ListPelanggan = self.findChildren(QtGui.QPushButton,"dtb_DataMaster_DataNamaAlamat_List"+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("kodePelanggan")]))
 				if (len(obj_Tb_ListPelanggan)<1):
 					obj_Tb_Pelanggan = QtGui.QPushButton(self.scontent_DataMaster_DataCommon_Fbody_Slist)
-					obj_Tb_Pelanggan.setObjectName(_fromUtf8("dtb_DataMaster_DataNamaAlamat_ListNamaAlamat"+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")])))
+					obj_Tb_Pelanggan.setObjectName("dtb_DataMaster_DataNamaAlamat_List"+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("kodePelanggan")]))
 					local_name = str(result[x][self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")])
 					obj_Tb_Pelanggan.setText(local_name)
 					self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0].addWidget(obj_Tb_Pelanggan,QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
@@ -255,13 +256,13 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 			
 			sql = "SELECT * FROM `gd_data_produk` "
 			result = self.DatabaseRunQuery(sql)
-			tinggi = len(result)*65
+			tinggi = len(result)*80
 			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 			for x in range(0,len(result)):
-				obj_Tb_ListProduk = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataProduk_List"+str(result[x][self.DataMaster_DataProduk_Field.index("namaBarang")]))
+				obj_Tb_ListProduk = self.findChildren(QtGui.QPushButton,"dtb_DataMaster_DataProduk_List"+str(result[x][self.DataMaster_DataProduk_Field.index("kodeBarang")]))
 				if (len(obj_Tb_ListProduk)<1):
 					obj_Tb_Produk = QtGui.QPushButton(self.scontent_DataMaster_DataCommon_Fbody_Slist)
-					obj_Tb_Produk.setObjectName(_fromUtf8("dynamic_tb_DataMaster_DataProduk_ListProduk"+str(result[x][self.DataMaster_DataProduk_Field.index("namaBarang")])))
+					obj_Tb_Produk.setObjectName(_fromUtf8("dtb_DataMaster_DataProduk_List"+str(result[x][self.DataMaster_DataProduk_Field.index("kodeBarang")])))
 					local_name = str(result[x][self.DataMaster_DataProduk_Field.index("namaBarang")])
 					obj_Tb_Produk.setText(local_name)
 					self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0].addWidget(obj_Tb_Produk,QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
@@ -295,13 +296,13 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 			
 			sql = "SELECT * FROM `gd_data_pajak` "
 			result = self.DatabaseRunQuery(sql)
-			tinggi = len(result)*65
+			tinggi = len(result)*80
 			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 			for x in range(0,len(result)):
-				obj_Tb_ListPajak = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataPajak_List"+str(result[x][self.DataMaster_DataPajak_Field.index("namaPajak")]))
+				obj_Tb_ListPajak = self.findChildren(QtGui.QPushButton,"dtb_DataMaster_DataPajak_List"+str(result[x][self.DataMaster_DataPajak_Field.index("kodePajak")]))
 				if (len(obj_Tb_ListPajak)<1):
 					obj_Tb_Pajak = QtGui.QPushButton(self.scontent_DataMaster_DataCommon_Fbody_Slist)
-					obj_Tb_Pajak.setObjectName(_fromUtf8("dynamic_tb_DataMaster_DataPajak_ListPajak"+str(result[x][self.DataMaster_DataPajak_Field.index("namaPajak")])))
+					obj_Tb_Pajak.setObjectName(_fromUtf8("dtb_DataMaster_DataPajak_List"+str(result[x][self.DataMaster_DataPajak_Field.index("kodePajak")])))
 					local_name = str(result[x][self.DataMaster_DataPajak_Field.index("namaPajak")])
 					obj_Tb_Pajak.setText(local_name)
 					self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0].addWidget(obj_Tb_Pajak,QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
@@ -328,6 +329,9 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 			self.tb_DataMaster_DataCommon_Edit.clicked.connect(self.DataMaster_DataProyek_Edit)
 			self.clearLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
 			self.le_DataMaster_DataProyek_Tambah_KodeProyek.setReadOnly(False)
+			
+			self.le_DataMaster_DataCommon_Search.textChanged.connect(self.DataMaster_DataProyek_RefreshList)
+			
 			if (not keep):
 				"""Kosongkan isi line edit"""
 				lels = self.fr_DataMaster_DataProyek_Tambah_Fcontent.findChildren(QtGui.QLineEdit)
@@ -338,13 +342,13 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 			
 			sql = "SELECT * FROM `gd_proyek` "
 			result = self.DatabaseRunQuery(sql)
-			tinggi = len(result)*65
+			tinggi = len(result)*80
 			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 			for x in range(0,len(result)):
-				Tb_ListProyek = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataProyek_List"+str(result[x][self.DataMaster_DataProyek_Field.index("namaProyek")]))
+				Tb_ListProyek = self.findChildren(QtGui.QPushButton,"dtb_DataMaster_DataProyek_List"+str(result[x][self.DataMaster_DataProyek_Field.index("kodeProyek")]))
 				if (len(Tb_ListProyek)<1):
 					Tb_Proyek = QtGui.QPushButton(self.scontent_DataMaster_DataCommon_Fbody_Slist)
-					Tb_Proyek.setObjectName(_fromUtf8("dynamic_tb_DataMaster_DataProyek_ListProyek"+str(result[x][self.DataMaster_DataProyek_Field.index("namaProyek")])))
+					Tb_Proyek.setObjectName(_fromUtf8("dtb_DataMaster_DataProyek_List"+str(result[x][self.DataMaster_DataProyek_Field.index("kodeProyek")])))
 					local_name = str(result[x][self.DataMaster_DataProyek_Field.index("namaProyek")])
 					Tb_Proyek.setText(local_name)
 					self.ivl_DataMaster_DataCommon_Fbody_Slist.addWidget(Tb_Proyek,QtCore.Qt.AlignLeading|QtCore.Qt.AlignTop)
@@ -377,13 +381,13 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 			
 			sql = "SELECT * FROM `gd_satuan_pengukuran` "
 			result = self.DatabaseRunQuery(sql)
-			tinggi = len(result)*65
+			tinggi = len(result)*80
 			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 			for x in range(0,len(result)):
-				Tb_ListSatuan = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataSatuan_List"+str(result[x][self.DataMaster_DataSatuanPengukuran_Field.index("namaSatuan")]))
+				Tb_ListSatuan = self.findChildren(QtGui.QPushButton,"dtb_DataMaster_DataSatuan_List"+str(result[x][self.DataMaster_DataSatuanPengukuran_Field.index("kodeSatuan")]))
 				if (len(Tb_ListSatuan)<1):
 					Tb_Satuan = QtGui.QPushButton(self.scontent_DataMaster_DataCommon_Fbody_Slist)
-					Tb_Satuan.setObjectName(_fromUtf8("dynamic_tb_DataMaster_DataSatuan_ListSatuan"+str(result[x][self.DataMaster_DataSatuanPengukuran_Field.index("namaSatuan")])))
+					Tb_Satuan.setObjectName(_fromUtf8("dtb_DataMaster_DataSatuan_List"+str(result[x][self.DataMaster_DataSatuanPengukuran_Field.index("kodeSatuan")])))
 					local_name = str(result[x][self.DataMaster_DataSatuanPengukuran_Field.index("namaSatuan")])
 					Tb_Satuan.setText(local_name)
 					self.ivl_DataMaster_DataCommon_Fbody_Slist.addWidget(Tb_Satuan,QtCore.Qt.AlignLeading|QtCore.Qt.AlignTop)
@@ -415,13 +419,13 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 			
 			sql = "SELECT * FROM `gd_data_departemen` "
 			result = self.DatabaseRunQuery(sql)
-			tinggi = len(result)*65
+			tinggi = len(result)*80
 			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 			for x in range(0,len(result)):
-				Tb_ListDepartemen = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataDepartemen_List"+str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")]))
+				Tb_ListDepartemen = self.findChildren(QtGui.QPushButton,"dtb_DataMaster_DataDepartemen_List"+str(result[x][self.DataMaster_DataDepartemen_Field.index("kodeDepartemen")]))
 				if (len(Tb_ListDepartemen)<1):
 					Tb_Departemen = QtGui.QPushButton(self.scontent_DataMaster_DataCommon_Fbody_Slist)
-					Tb_Departemen.setObjectName(_fromUtf8("dynamic_tb_DataMaster_DataDepartemen_ListDepartemen"+str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")])))
+					Tb_Departemen.setObjectName(_fromUtf8("dtb_DataMaster_DataDepartemen_List"+str(result[x][self.DataMaster_DataDepartemen_Field.index("kodeDepartemen")])))
 					local_name = str(result[x][self.DataMaster_DataDepartemen_Field.index("namaDepartemen")])
 					Tb_Departemen.setText(local_name)
 					self.ivl_DataMaster_DataCommon_Fbody_Slist.addWidget(Tb_Departemen,QtCore.Qt.AlignLeading|QtCore.Qt.AlignTop)
