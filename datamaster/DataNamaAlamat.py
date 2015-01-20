@@ -344,7 +344,10 @@ class DataNamaAlamat(object):
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATANAMAALAMAT_TAMBAH)
 	
 	def DataMaster_DataNamaAlamat_Delete(self):
-		kode = str(self.lb_DataMaster_DataNamaAlamat_kode.text()).replace("\n","")
+		try:
+			kode = str(self.lb_DataMaster_DataNamaAlamat_kode.text()).replace("\n","")
+		except:
+			return
 		sql = "DELETE FROM `"+self.dbDatabase+"`.`gd_nama_alamat` WHERE `gd_nama_alamat`.`kodePelanggan` = '"+kode+"'"
 		self.DatabaseRunQuery(sql)
 		self.DataMaster_Goto_Common(self.INDEX_ST_DATAMASTER_DATANAMAALAMAT)
