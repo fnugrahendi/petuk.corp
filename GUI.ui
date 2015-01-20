@@ -3507,8 +3507,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>250</width>
-                          <height>30</height>
+                          <width>332</width>
+                          <height>330</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -3866,7 +3866,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>24</height>
+                         <height>27</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3874,6 +3874,9 @@ QPushButton::hover{
                          <width>200</width>
                          <height>16777215</height>
                         </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;</string>
                        </property>
                       </widget>
                      </item>
@@ -3889,7 +3892,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>24</height>
+                         <height>27</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3897,6 +3900,9 @@ QPushButton::hover{
                          <width>400</width>
                          <height>16777215</height>
                         </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;</string>
                        </property>
                       </widget>
                      </item>
@@ -3929,6 +3935,9 @@ QPushButton::hover{
                          <height>16777215</height>
                         </size>
                        </property>
+                       <property name="styleSheet">
+                        <string notr="true">border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;</string>
+                       </property>
                       </widget>
                      </item>
                      <item row="2" column="1">
@@ -3938,6 +3947,9 @@ QPushButton::hover{
                          <width>200</width>
                          <height>16777215</height>
                         </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}</string>
                        </property>
                        <property name="text">
                         <string>-</string>
@@ -3951,6 +3963,9 @@ QPushButton::hover{
                          <width>200</width>
                          <height>16777215</height>
                         </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;</string>
                        </property>
                        <property name="text">
                         <string>-</string>
