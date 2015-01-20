@@ -170,6 +170,7 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 		self.clearLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
 		self.clearGrid(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop.findChildren(QtGui.QGridLayout)[0])
 		
+		self.GarvinDisconnect(self.le_DataCommon_Search.textChanged.connect)
 		#---------------------------------------------------------------Disconnect sinyal bila sudah di hubungkan
 		try:
 			self.tb_DataMaster_DataCommon_Tambah.clicked.disconnect()
@@ -193,6 +194,9 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 			self.tb_DataMaster_DataCommon_Tambah.clicked.connect(functools.partial(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_DATANAMAALAMAT_TAMBAH))
 			self.tb_DataMaster_DataCommon_Edit.clicked.connect(self.DataMaster_DataNamaAlamat_Edit)
 			self.le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan.setReadOnly(False)
+			self.le_DataCommon_Search.setText("")
+			self.le_DataCommon_Search.textChanged.connect(self.DataMaster_DataNamaAlamat_RefreshList)
+			
 			self.clearLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
 			if (not keep):
 				"""Kosongkan isi line edit"""
@@ -215,10 +219,10 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 			tinggi = len(result)*65
 			self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
 			for x in range(0,len(result)):
-				obj_Tb_ListPelanggan = self.findChildren(QtGui.QPushButton,"dynamic_tb_DataMaster_DataNamaAlamat_ListPelanggan"+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")]))
+				obj_Tb_ListPelanggan = self.findChildren(QtGui.QPushButton,"dtb_DataMaster_DataNamaAlamat_ListNamaAlamat"+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")]))
 				if (len(obj_Tb_ListPelanggan)<1):
 					obj_Tb_Pelanggan = QtGui.QPushButton(self.scontent_DataMaster_DataCommon_Fbody_Slist)
-					obj_Tb_Pelanggan.setObjectName(_fromUtf8("dynamic_tb_DataMaster_DataNamaAlamat_ListPelanggan"+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")])))
+					obj_Tb_Pelanggan.setObjectName(_fromUtf8("dtb_DataMaster_DataNamaAlamat_ListNamaAlamat"+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")])))
 					local_name = str(result[x][self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")])
 					obj_Tb_Pelanggan.setText(local_name)
 					self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0].addWidget(obj_Tb_Pelanggan,QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
@@ -396,7 +400,6 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 			def DataDepartemen():
 				""""Bookmark baris, delete this later"""
 				None
-				
 			self.lb_DataMaster_DataCommon_Judul.setText("Data Departemen ")
 			self.tb_DataMaster_DataCommon_Tambah.clicked.connect(functools.partial(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_DATADEPARTEMEN_TAMBAH))
 			self.tb_DataMaster_DataCommon_Edit.clicked.connect(self.DataMaster_DataDepartemen_Edit)
