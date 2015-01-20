@@ -67,7 +67,7 @@
 	}</string>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>10</number>
              </property>
              <widget class="QWidget" name="st_DataMaster_Menu">
               <property name="styleSheet">
@@ -334,8 +334,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>332</width>
-                          <height>18</height>
+                          <width>250</width>
+                          <height>30</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -2269,8 +2269,8 @@ QPushButton::hover{
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>69</width>
-                       <height>394</height>
+                       <width>100</width>
+                       <height>200</height>
                       </rect>
                      </property>
                      <property name="styleSheet">
@@ -3514,8 +3514,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>332</width>
-                          <height>18</height>
+                          <width>250</width>
+                          <height>30</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -3836,7 +3836,7 @@ QPushButton::hover{
                    </widget>
                   </item>
                   <item>
-                   <widget class="QFrame" name="fr_DataMaster_DataDepartemen_Tambah_Fconent">
+                   <widget class="QFrame" name="fr_DataMaster_DataDepartemen_Tambah_Fcontent">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                       <horstretch>0</horstretch>
