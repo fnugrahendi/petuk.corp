@@ -1901,250 +1901,220 @@ QPushButton::hover{
                       <height>16777215</height>
                      </size>
                     </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}
+QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}</string>
+                    </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
                     <property name="frameShadow">
                      <enum>QFrame::Raised</enum>
                     </property>
-                    <widget class="QLineEdit" name="le_DataMaster_DataProyek_Tambah_KodeProyek">
-                     <property name="geometry">
-                      <rect>
-                       <x>140</x>
-                       <y>10</y>
-                       <width>261</width>
-                       <height>22</height>
-                      </rect>
-                     </property>
-                    </widget>
-                    <widget class="QDateTimeEdit" name="dte_DataMaster_DataProyek_Tambah_TanggalSelesai">
-                     <property name="geometry">
-                      <rect>
-                       <x>140</x>
-                       <y>190</y>
-                       <width>194</width>
-                       <height>22</height>
-                      </rect>
-                     </property>
-                     <property name="minimumDateTime">
-                      <datetime>
-                       <hour>0</hour>
-                       <minute>0</minute>
-                       <second>0</second>
-                       <year>1752</year>
-                       <month>10</month>
-                       <day>1</day>
-                      </datetime>
-                     </property>
-                     <property name="minimumDate">
-                      <date>
-                       <year>1752</year>
-                       <month>10</month>
-                       <day>1</day>
-                      </date>
-                     </property>
-                     <property name="displayFormat">
-                      <string>dd/MM/yyyy HH.mm</string>
-                     </property>
-                     <property name="calendarPopup">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                    <widget class="QLineEdit" name="le_DataMaster_DataProyek_Tambah_NamaProyek">
-                     <property name="geometry">
-                      <rect>
-                       <x>140</x>
-                       <y>40</y>
-                       <width>431</width>
-                       <height>22</height>
-                      </rect>
-                     </property>
-                    </widget>
-                    <widget class="QLineEdit" name="le_DataMaster_DataProyek_Tambah_AnggaranTotal">
-                     <property name="geometry">
-                      <rect>
-                       <x>140</x>
-                       <y>220</y>
-                       <width>261</width>
-                       <height>22</height>
-                      </rect>
-                     </property>
-                    </widget>
-                    <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_PenanggungJawab">
-                     <property name="geometry">
-                      <rect>
-                       <x>10</x>
-                       <y>70</y>
-                       <width>131</width>
-                       <height>20</height>
-                      </rect>
-                     </property>
-                     <property name="text">
-                      <string>Penanggung Jawab :</string>
-                     </property>
-                    </widget>
-                    <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_TanggalMulai">
-                     <property name="geometry">
-                      <rect>
-                       <x>10</x>
-                       <y>160</y>
-                       <width>131</width>
-                       <height>20</height>
-                      </rect>
-                     </property>
-                     <property name="text">
-                      <string>Tanggal Mulai :</string>
-                     </property>
-                    </widget>
-                    <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_AnggaranTotal">
-                     <property name="geometry">
-                      <rect>
-                       <x>10</x>
-                       <y>220</y>
-                       <width>131</width>
-                       <height>20</height>
-                      </rect>
-                     </property>
-                     <property name="text">
-                      <string>Anggaran Total :</string>
-                     </property>
-                    </widget>
-                    <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_KodeProyek">
-                     <property name="geometry">
-                      <rect>
-                       <x>10</x>
-                       <y>10</y>
-                       <width>91</width>
-                       <height>20</height>
-                      </rect>
-                     </property>
-                     <property name="text">
-                      <string>Kode Proyek :</string>
-                     </property>
-                    </widget>
-                    <widget class="QCheckBox" name="chk_DataMaster_DataProyek_Tambah_PakaiFase">
-                     <property name="geometry">
-                      <rect>
-                       <x>10</x>
-                       <y>280</y>
-                       <width>111</width>
-                       <height>20</height>
-                      </rect>
-                     </property>
-                     <property name="text">
-                      <string>Gunakan Fase</string>
-                     </property>
-                    </widget>
-                    <widget class="QDoubleSpinBox" name="dsb_DataMaster_DataProyek_Tambah_Progress">
-                     <property name="geometry">
-                      <rect>
-                       <x>140</x>
-                       <y>130</y>
-                       <width>62</width>
-                       <height>22</height>
-                      </rect>
-                     </property>
-                     <property name="maximum">
-                      <double>100.000000000000000</double>
-                     </property>
-                     <property name="singleStep">
-                      <double>0.500000000000000</double>
-                     </property>
-                    </widget>
-                    <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_Progress">
-                     <property name="geometry">
-                      <rect>
-                       <x>10</x>
-                       <y>130</y>
-                       <width>131</width>
-                       <height>20</height>
-                      </rect>
-                     </property>
-                     <property name="text">
-                      <string>Progress :</string>
-                     </property>
-                    </widget>
-                    <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_TanggalSelesai">
-                     <property name="geometry">
-                      <rect>
-                       <x>10</x>
-                       <y>190</y>
-                       <width>131</width>
-                       <height>20</height>
-                      </rect>
-                     </property>
-                     <property name="text">
-                      <string>Tanggal Selesai :</string>
-                     </property>
-                    </widget>
-                    <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_NamaProyek">
-                     <property name="geometry">
-                      <rect>
-                       <x>10</x>
-                       <y>40</y>
-                       <width>91</width>
-                       <height>20</height>
-                      </rect>
-                     </property>
-                     <property name="text">
-                      <string>Nama Proyek :</string>
-                     </property>
-                    </widget>
-                    <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_RealisasiTotal">
-                     <property name="geometry">
-                      <rect>
-                       <x>10</x>
-                       <y>250</y>
-                       <width>131</width>
-                       <height>20</height>
-                      </rect>
-                     </property>
-                     <property name="text">
-                      <string>Realisasi Total :</string>
-                     </property>
-                    </widget>
-                    <widget class="QLineEdit" name="le_DataMaster_DataProyek_Tambah_RealisasiTotal">
-                     <property name="geometry">
-                      <rect>
-                       <x>140</x>
-                       <y>250</y>
-                       <width>261</width>
-                       <height>22</height>
-                      </rect>
-                     </property>
-                    </widget>
-                    <widget class="QDateTimeEdit" name="dte_DataMaster_DataProyek_Tambah_TanggalMulai">
-                     <property name="geometry">
-                      <rect>
-                       <x>140</x>
-                       <y>160</y>
-                       <width>194</width>
-                       <height>22</height>
-                      </rect>
-                     </property>
-                     <property name="displayFormat">
-                      <string>dd/MM/yyyy HH.mm</string>
-                     </property>
-                     <property name="calendarPopup">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                    <widget class="QPushButton" name="tb_DataMaster_DataProyek_Tambah_KodePenjab">
-                     <property name="geometry">
-                      <rect>
-                       <x>140</x>
-                       <y>70</y>
-                       <width>181</width>
-                       <height>27</height>
-                      </rect>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}</string>
-                     </property>
-                     <property name="text">
-                      <string>-</string>
-                     </property>
-                    </widget>
+                    <layout class="QFormLayout" name="formLayout_2">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_KodeProyek">
+                       <property name="text">
+                        <string>Kode Proyek :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QLineEdit" name="le_DataMaster_DataProyek_Tambah_KodeProyek">
+                       <property name="minimumSize">
+                        <size>
+                         <width>200</width>
+                         <height>27</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_NamaProyek">
+                       <property name="text">
+                        <string>Nama Proyek :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QLineEdit" name="le_DataMaster_DataProyek_Tambah_NamaProyek">
+                       <property name="maximumSize">
+                        <size>
+                         <width>400</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_PenanggungJawab">
+                       <property name="text">
+                        <string>Penanggung Jawab :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QPushButton" name="tb_DataMaster_DataProyek_Tambah_KodePenjab">
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="3" column="0">
+                      <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_Progress">
+                       <property name="text">
+                        <string>Progress :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="3" column="1">
+                      <widget class="QDoubleSpinBox" name="dsb_DataMaster_DataProyek_Tambah_Progress">
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="maximum">
+                        <double>100.000000000000000</double>
+                       </property>
+                       <property name="singleStep">
+                        <double>0.500000000000000</double>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="4" column="0">
+                      <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_TanggalMulai">
+                       <property name="text">
+                        <string>Tanggal Mulai :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="4" column="1">
+                      <widget class="QDateTimeEdit" name="dte_DataMaster_DataProyek_Tambah_TanggalMulai">
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="displayFormat">
+                        <string>dd/MM/yyyy HH.mm</string>
+                       </property>
+                       <property name="calendarPopup">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="5" column="0">
+                      <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_TanggalSelesai">
+                       <property name="text">
+                        <string>Tanggal Selesai :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="5" column="1">
+                      <widget class="QDateTimeEdit" name="dte_DataMaster_DataProyek_Tambah_TanggalSelesai">
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="minimumDateTime">
+                        <datetime>
+                         <hour>0</hour>
+                         <minute>0</minute>
+                         <second>0</second>
+                         <year>1752</year>
+                         <month>10</month>
+                         <day>1</day>
+                        </datetime>
+                       </property>
+                       <property name="minimumDate">
+                        <date>
+                         <year>1752</year>
+                         <month>10</month>
+                         <day>1</day>
+                        </date>
+                       </property>
+                       <property name="displayFormat">
+                        <string>dd/MM/yyyy HH.mm</string>
+                       </property>
+                       <property name="calendarPopup">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="6" column="0">
+                      <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_AnggaranTotal">
+                       <property name="text">
+                        <string>Anggaran Total :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="6" column="1">
+                      <widget class="QLineEdit" name="le_DataMaster_DataProyek_Tambah_AnggaranTotal">
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="inputMethodHints">
+                        <set>Qt::ImhDigitsOnly</set>
+                       </property>
+                       <property name="text">
+                        <string>0</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="7" column="0">
+                      <widget class="QLabel" name="lb_DataMaster_DataProyek_Tambah_RealisasiTotal">
+                       <property name="text">
+                        <string>Realisasi Total :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="7" column="1">
+                      <widget class="QLineEdit" name="le_DataMaster_DataProyek_Tambah_RealisasiTotal">
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="inputMethodHints">
+                        <set>Qt::ImhDigitsOnly</set>
+                       </property>
+                       <property name="text">
+                        <string>0</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="8" column="0">
+                      <widget class="QCheckBox" name="chk_DataMaster_DataProyek_Tambah_PakaiFase">
+                       <property name="text">
+                        <string>Gunakan Fase</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </widget>
                   </item>
                  </layout>
