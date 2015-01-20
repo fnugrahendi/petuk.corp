@@ -168,7 +168,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian):
 			for a in range (0,jumlahRow):
 				self.tbl_Penjualan_OrderPenjualan.removeRow(a)
 		kodePenjualan = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
-		print kodePenjualan
+		#print kodePenjualan
 		query = "SELECT * FROM gd_nama_alamat"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
 			self.cb_Penjualan_OrderPenjualan_Nama.addItem(self.DatabaseRunQuery(query)[a][2])
