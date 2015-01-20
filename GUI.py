@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Tue Jan 20 15:09:06 2015
+# Created: Tue Jan 20 16:21:53 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -160,9 +160,9 @@ class Ui_MainWindow(object):
         self.fr_DataMaster_DataCommon_Fbody_Slist_Container.setObjectName(_fromUtf8("fr_DataMaster_DataCommon_Fbody_Slist_Container"))
         self.ivl_fr_DataMaster_DataCommon_Fbody_Slist_Container = QtGui.QVBoxLayout(self.fr_DataMaster_DataCommon_Fbody_Slist_Container)
         self.ivl_fr_DataMaster_DataCommon_Fbody_Slist_Container.setObjectName(_fromUtf8("ivl_fr_DataMaster_DataCommon_Fbody_Slist_Container"))
-        self.le_DataCommon_Search = QtGui.QLineEdit(self.fr_DataMaster_DataCommon_Fbody_Slist_Container)
-        self.le_DataCommon_Search.setObjectName(_fromUtf8("le_DataCommon_Search"))
-        self.ivl_fr_DataMaster_DataCommon_Fbody_Slist_Container.addWidget(self.le_DataCommon_Search)
+        self.le_DataMaster_DataCommon_Search = QtGui.QLineEdit(self.fr_DataMaster_DataCommon_Fbody_Slist_Container)
+        self.le_DataMaster_DataCommon_Search.setObjectName(_fromUtf8("le_DataMaster_DataCommon_Search"))
+        self.ivl_fr_DataMaster_DataCommon_Fbody_Slist_Container.addWidget(self.le_DataMaster_DataCommon_Search)
         self.sc_DataMaster_DataCommon_Fbody_Slist = QtGui.QScrollArea(self.fr_DataMaster_DataCommon_Fbody_Slist_Container)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(1)
@@ -1476,7 +1476,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("sc_DataMaster_DataDepartemen_Fbody_Slist"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QWidget()
-        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 332, 330))
+        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 250, 30))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("scontent_DataMaster_DataDepartemen_Fbody_Slist"))
         self.ivl_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QVBoxLayout(self.scontent_DataMaster_DataDepartemen_Fbody_Slist)
@@ -3927,7 +3927,7 @@ class Ui_MainWindow(object):
         self.tb_DataMaster_DataRekening.setText(_translate("MainWindow", "Data Rekening", None))
         self.tb_DataMaster_DataDepartemen.setText(_translate("MainWindow", "Data Departemen", None))
         self.lb_DataMaster_DataCommon_Judul.setText(_translate("MainWindow", "Judul", None))
-        self.le_DataCommon_Search.setPlaceholderText(_translate("MainWindow", "Type to search...", None))
+        self.le_DataMaster_DataCommon_Search.setPlaceholderText(_translate("MainWindow", "Type to search...", None))
         self.tb_DataMaster_DataCommon_Tambah.setText(_translate("MainWindow", "+", None))
         self.tb_DataMaster_DataCommon_Tutup.setText(_translate("MainWindow", "Tutup", None))
         self.lb_DataMaster_DataNamaAlamat_Tambah_Ftop_Judul.setText(_translate("MainWindow", "+ Data Nama & Alamat", None))
