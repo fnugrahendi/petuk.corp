@@ -873,7 +873,10 @@ class DataMaster(DataDepartemen,DataNamaAlamat):
 		self.db.close()
 	
 	def DataMaster_DataProduk_Delete(self):
-		kode = str(self.lb_DataMaster_DataProduk_Kode.text()).replace("\n","")
+		try:
+			kode = str(self.lb_DataMaster_DataProduk_Kode.text()).replace("\n","")
+		except:
+			return
 		sql = "DELETE FROM `"+self.dbDatabase+"`.`gd_data_produk` WHERE `gd_data_produk`.`kodeBarang` = '"+kode+"'"
 		self.DatabaseRunQuery(sql)
 		self.DataMaster_Goto_Common(self.INDEX_ST_DATAMASTER_DATAPRODUK)
@@ -910,7 +913,10 @@ class DataMaster(DataDepartemen,DataNamaAlamat):
 	
 	def DataMaster_DataProduk_Edit(self):
 		field = self.DataMaster_DataProduk_Field.index
-		kode = str(self.lb_DataMaster_DataProduk_Kode.text()).replace("\n","")
+		try:
+			kode = str(self.lb_DataMaster_DataProduk_Kode.text()).replace("\n","")
+		except:
+			return
 		sql = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` = '"+kode+"' LIMIT 0 , 1"
 		barang = self.DatabaseRunQuery(sql)
 		
@@ -972,14 +978,20 @@ class DataMaster(DataDepartemen,DataNamaAlamat):
 		self.le_DataMaster_DataPajak_Tambah_KodePajak.setText(kode_default)
 		
 	def DataMaster_DataPajak_Delete(self):
-		kode = str(self.lb_DataMaster_DataPajak_Kode.text()).replace("\n","")
+		try:
+			kode = str(self.lb_DataMaster_DataPajak_Kode.text()).replace("\n","")
+		except:
+			return
 		sql = "DELETE FROM `"+self.dbDatabase+"`.`gd_data_pajak` WHERE `gd_data_pajak`.`kodePajak` = '"+kode+"'"
 		self.DatabaseRunQuery(sql)
 		self.DataMaster_Goto_Common(self.INDEX_ST_DATAMASTER_DATAPAJAK)
 	
 	def DataMaster_DataPajak_Edit(self):
 		field = self.DataMaster_DataPajak_Field.index
-		kode = str(self.lb_DataMaster_DataPajak_Kode.text()).replace("\n","")
+		try:
+			kode = str(self.lb_DataMaster_DataPajak_Kode.text()).replace("\n","")
+		except:
+			return
 		sql = "SELECT * FROM `gd_data_pajak` WHERE `kodePajak` = '"+kode+"' LIMIT 0 , 1"
 		pajak = self.DatabaseRunQuery(sql)[0]
 		self.le_DataMaster_DataPajak_Tambah_KodePajak.setText(kode)
@@ -1359,7 +1371,10 @@ class DataMaster(DataDepartemen,DataNamaAlamat):
 	
 	def DataMaster_DataProyek_Edit(self):
 		field = self.DataMaster_DataProyek_Field.index
-		kode = str(self.lb_DataMaster_DataProyek_Kode.text()).replace("\n","")
+		try:
+			kode = str(self.lb_DataMaster_DataProyek_Kode.text()).replace("\n","")
+		except:
+			return
 		sql = "SELECT * FROM `gd_proyek` WHERE `kodeProyek` = '"+kode+"' LIMIT 0 , 1"
 		proyek = self.DatabaseRunQuery(sql)[0]
 		
@@ -1384,7 +1399,10 @@ class DataMaster(DataDepartemen,DataNamaAlamat):
 		
 		
 	def DataMaster_DataProyek_Delete(self):
-		kode = str(self.lb_DataMaster_DataProyek_Kode.text()).replace("\n","")
+		try:
+			kode = str(self.lb_DataMaster_DataProyek_Kode.text()).replace("\n","")
+		except:
+			return
 		sql = "DELETE FROM `"+self.dbDatabase+"`.`gd_proyek` WHERE `gd_proyek`.`kodeProyek` = '"+kode+"'"
 		self.DatabaseRunQuery(sql)
 		self.DataMaster_Goto_Common(self.INDEX_ST_DATAMASTER_DATAPROYEK)
@@ -1446,14 +1464,20 @@ class DataMaster(DataDepartemen,DataNamaAlamat):
 		self.le_DataMaster_DataSatuanPengukuran_Tambah_KodeSatuan.setText(kode_default)
 		
 	def DataMaster_DataSatuanPengukuran_Delete(self):
-		kode = str(self.lb_DataMaster_DataSatuanPengukuran_Kode.text()).replace("\n","")
+		try:
+			kode = str(self.lb_DataMaster_DataSatuanPengukuran_Kode.text()).replace("\n","")
+		except:
+			return
 		sql = "DELETE FROM `"+self.dbDatabase+"`.`gd_satuan_pengukuran` WHERE `gd_satuan_pengukuran`.`kodeSatuan` = '"+kode+"'"
 		self.DatabaseRunQuery(sql)
 		self.DataMaster_Goto_Common(self.INDEX_ST_DATAMASTER_DATASATUANPENGUKURAN)
 	
 	def DataMaster_DataSatuanPengukuran_Edit(self):
 		field = self.DataMaster_DataSatuanPengukuran_Field.index
-		kode = str(self.lb_DataMaster_DataSatuanPengukuran_Kode.text()).replace("\n","")
+		try:
+			kode = str(self.lb_DataMaster_DataSatuanPengukuran_Kode.text()).replace("\n","")
+		except:
+			return
 		sql = "SELECT * FROM `gd_satuan_pengukuran` WHERE `kodeSatuan` = '"+kode+"' LIMIT 0 , 1"
 		satuan = self.DatabaseRunQuery(sql)[0]
 		self.le_DataMaster_DataSatuanPengukuran_Tambah_KodeSatuan.setText(str(kode))
