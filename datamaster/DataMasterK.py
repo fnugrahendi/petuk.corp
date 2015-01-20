@@ -68,14 +68,6 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 		#---------------------------------------------------------------DataProyek
 		#~ self.ile_DataMaster_DataProyek_Tambah_PenanggungJawab.hide()
 		
-		#Tombol biru: Buka popup tambah
-		def ____DataMaster_DataProyek_Tambah_Penjab_Ok():
-			self.le_DataMaster_DataProyek_Tambah_PenanggungJawab.setText(self.le_DataMaster_DataNamaAlamat_Tambah_Nama.text())
-			self.le_DataMaster_DataProyek_Tambah_KodePenanggungJawab.setText(self.le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan.text())
-			
-		self.tb_DataMaster_DataProyek_Tambah_PenanggungJawab.clicked.connect(functools.partial(self.DataMaster_DataNamaAlamat_Popup_Tambah,____DataMaster_DataProyek_Tambah_Penjab_Ok,self.DataMaster_None,self.DataMaster_None,self.DataMaster_None))
-		self.le_DataMaster_DataProyek_Tambah_PenanggungJawab.textEdited.connect(self.DataMaster_DataProyek_Tambah_Showlist_Change)
-		#~ QtCore.QObject.connect(self.le_DataMaster_DataProyek_Tambah_PenanggungJawab, QtCore.SIGNAL(_fromUtf8("editingFinished()")), MainWindow.showFullScreen)
 		self.DataMaster_DataProyek_Edit_idEDIT = -1
 		
 		
