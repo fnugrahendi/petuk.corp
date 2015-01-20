@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Tue Jan 20 10:26:48 2015
+# Created: Tue Jan 20 13:39:13 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -1521,7 +1521,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("sc_DataMaster_DataDepartemen_Fbody_Slist"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QWidget()
-        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 250, 30))
+        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 332, 330))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("scontent_DataMaster_DataDepartemen_Fbody_Slist"))
         self.ivl_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QVBoxLayout(self.scontent_DataMaster_DataDepartemen_Fbody_Slist)
@@ -1688,16 +1688,18 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataDepartemen_KodeDepartemen.setObjectName(_fromUtf8("lb_DataMaster_DataDepartemen_KodeDepartemen"))
         self.formLayout_5.setWidget(0, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataDepartemen_KodeDepartemen)
         self.le_DataMaster_DataDepartemen_KodeDepartemen = QtGui.QLineEdit(self.fr_DataMaster_DataDepartemen_Tambah_Fcontent)
-        self.le_DataMaster_DataDepartemen_KodeDepartemen.setMinimumSize(QtCore.QSize(200, 24))
+        self.le_DataMaster_DataDepartemen_KodeDepartemen.setMinimumSize(QtCore.QSize(200, 27))
         self.le_DataMaster_DataDepartemen_KodeDepartemen.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.le_DataMaster_DataDepartemen_KodeDepartemen.setStyleSheet(_fromUtf8("border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;"))
         self.le_DataMaster_DataDepartemen_KodeDepartemen.setObjectName(_fromUtf8("le_DataMaster_DataDepartemen_KodeDepartemen"))
         self.formLayout_5.setWidget(0, QtGui.QFormLayout.FieldRole, self.le_DataMaster_DataDepartemen_KodeDepartemen)
         self.lb_DataMaster_DataDepartemen_NamaDepartemen = QtGui.QLabel(self.fr_DataMaster_DataDepartemen_Tambah_Fcontent)
         self.lb_DataMaster_DataDepartemen_NamaDepartemen.setObjectName(_fromUtf8("lb_DataMaster_DataDepartemen_NamaDepartemen"))
         self.formLayout_5.setWidget(1, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataDepartemen_NamaDepartemen)
         self.le_DataMaster_DataDepartemen_NamaDepartemen = QtGui.QLineEdit(self.fr_DataMaster_DataDepartemen_Tambah_Fcontent)
-        self.le_DataMaster_DataDepartemen_NamaDepartemen.setMinimumSize(QtCore.QSize(400, 24))
+        self.le_DataMaster_DataDepartemen_NamaDepartemen.setMinimumSize(QtCore.QSize(400, 27))
         self.le_DataMaster_DataDepartemen_NamaDepartemen.setMaximumSize(QtCore.QSize(400, 16777215))
+        self.le_DataMaster_DataDepartemen_NamaDepartemen.setStyleSheet(_fromUtf8("border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;"))
         self.le_DataMaster_DataDepartemen_NamaDepartemen.setObjectName(_fromUtf8("le_DataMaster_DataDepartemen_NamaDepartemen"))
         self.formLayout_5.setWidget(1, QtGui.QFormLayout.FieldRole, self.le_DataMaster_DataDepartemen_NamaDepartemen)
         self.lb_DataMaster_DataDepartemen_ParentDepartemen = QtGui.QLabel(self.fr_DataMaster_DataDepartemen_Tambah_Fcontent)
@@ -1711,14 +1713,17 @@ class Ui_MainWindow(object):
         self.formLayout_5.setWidget(4, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataDepartemen_Catatan)
         self.le_DataMaster_DataDepartemen_Catatan = QtGui.QLineEdit(self.fr_DataMaster_DataDepartemen_Tambah_Fcontent)
         self.le_DataMaster_DataDepartemen_Catatan.setMaximumSize(QtCore.QSize(800, 16777215))
+        self.le_DataMaster_DataDepartemen_Catatan.setStyleSheet(_fromUtf8("border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;"))
         self.le_DataMaster_DataDepartemen_Catatan.setObjectName(_fromUtf8("le_DataMaster_DataDepartemen_Catatan"))
         self.formLayout_5.setWidget(4, QtGui.QFormLayout.FieldRole, self.le_DataMaster_DataDepartemen_Catatan)
         self.tb_DataMaster_DataDepartemen_ParentDepartemen = QtGui.QPushButton(self.fr_DataMaster_DataDepartemen_Tambah_Fcontent)
         self.tb_DataMaster_DataDepartemen_ParentDepartemen.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.tb_DataMaster_DataDepartemen_ParentDepartemen.setStyleSheet(_fromUtf8("QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}"))
         self.tb_DataMaster_DataDepartemen_ParentDepartemen.setObjectName(_fromUtf8("tb_DataMaster_DataDepartemen_ParentDepartemen"))
         self.formLayout_5.setWidget(2, QtGui.QFormLayout.FieldRole, self.tb_DataMaster_DataDepartemen_ParentDepartemen)
         self.tb_DataMaster_DataDepartemen_KodePenjab = QtGui.QPushButton(self.fr_DataMaster_DataDepartemen_Tambah_Fcontent)
         self.tb_DataMaster_DataDepartemen_KodePenjab.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.tb_DataMaster_DataDepartemen_KodePenjab.setStyleSheet(_fromUtf8("border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;"))
         self.tb_DataMaster_DataDepartemen_KodePenjab.setObjectName(_fromUtf8("tb_DataMaster_DataDepartemen_KodePenjab"))
         self.formLayout_5.setWidget(3, QtGui.QFormLayout.FieldRole, self.tb_DataMaster_DataDepartemen_KodePenjab)
         self.ivl_DataMaster_DataDepartemen_Tambah_Dalam.addWidget(self.fr_DataMaster_DataDepartemen_Tambah_Fcontent)
