@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Tue Jan 20 17:25:34 2015
-#      by: PyQt4 UI code generator 4.10.4
+# Created: Tue Jan 20 17:33:27 2015
+#      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -1521,7 +1521,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("sc_DataMaster_DataDepartemen_Fbody_Slist"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QWidget()
-        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 250, 30))
+        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 332, 330))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("scontent_DataMaster_DataDepartemen_Fbody_Slist"))
         self.ivl_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QVBoxLayout(self.scontent_DataMaster_DataDepartemen_Fbody_Slist)
@@ -4086,9 +4086,9 @@ class Ui_MainWindow(object):
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
-        self.st_DataMaster.setCurrentIndex(1)
-        self.st_Penjualan.setCurrentIndex(10)
+        self.tabWidget.setCurrentIndex(0)
+        self.st_DataMaster.setCurrentIndex(0)
+        self.st_Penjualan.setCurrentIndex(0)
         self.st_Pembelian.setCurrentIndex(0)
         self.st_BukuBesar.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)

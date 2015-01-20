@@ -110,7 +110,7 @@ class Pembelian(object):
 		return
 	
 	def Pembelian_OrderPembelian_TambahProduk(self):
-		pass
+		
 		pass
 	
 	def Pembelian_GoTo_PenerimaanBarang(self):
