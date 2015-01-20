@@ -325,7 +325,10 @@ class DataNamaAlamat(object):
 	
 	def DataMaster_DataNamaAlamat_Edit(self):
 		field = self.DataMaster_DataNamaAlamat_Field.index
-		kode = str(self.lb_DataMaster_DataNamaAlamat_kode.text()).replace("\n","")
+		try:
+			kode = str(self.lb_DataMaster_DataNamaAlamat_kode.text()).replace("\n","")
+		except:
+			return
 		sql = "SELECT * FROM `gd_nama_alamat` WHERE `kodePelanggan` = '"+kode+"' LIMIT 0 , 1"
 		barang = self.DatabaseRunQuery(sql)
 		self.le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan.setText(_fromUtf8(barang[0][field("kodePelanggan")]))
