@@ -262,13 +262,13 @@ class DataProyek(object):
 		self.le_DataMaster_DataProyek_Tambah_KodeProyek.setText(_fromUtf8(kode))
 		self.le_DataMaster_DataProyek_Tambah_KodeProyek.setReadOnly(True)
 		self.le_DataMaster_DataProyek_Tambah_NamaProyek.setText(proyek[field("namaProyek")])
-		self.le_DataMaster_DataProyek_Tambah_KodePenanggungJawab.setText(proyek[field("kodePenjab")])
-		sql = "SELECT * FROM `gd_nama_alamat` WHERE `kodePelanggan` = '"+proyek[field("kodePenjab")]+"'"
-		try:
-			penjab = self.DatabaseRunQuery(sql)[0][self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")]
-		except:
-			penjab = "Mohon perbarui data"
-		self.le_DataMaster_DataProyek_Tambah_PenanggungJawab.setText(penjab)
+		self.tb_DataMaster_DataProyek_Tambah_KodePenjab.setText(proyek[field("kodePenjab")])
+		#~ sql = "SELECT * FROM `gd_nama_alamat` WHERE `kodePelanggan` = '"+proyek[field("kodePenjab")]+"'"
+		#~ try:
+			#~ penjab = self.DatabaseRunQuery(sql)[0][self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")]
+		#~ except:
+			#~ penjab = "Mohon perbarui data"
+		#~ self.le_DataMaster_DataProyek_Tambah_PenanggungJawab.setText(penjab)
 		self.dsb_DataMaster_DataProyek_Tambah_Progress.setValue(float(proyek[field("progress")]))
 		self.dte_DataMaster_DataProyek_Tambah_TanggalMulai.setDateTime(QDateTime.fromString(str(proyek[field("tanggalMulai")]),"yyyy-MM-dd hh:mm:ss"))
 		self.dte_DataMaster_DataProyek_Tambah_TanggalSelesai.setDateTime(QDateTime.fromString(str(proyek[field("tanggalSelesai")]),"yyyy-MM-dd hh:mm:ss"))
@@ -276,13 +276,27 @@ class DataProyek(object):
 		self.le_DataMaster_DataProyek_Tambah_RealisasiTotal.setText(str(proyek[field("realisasiTotal")]))
 		self.chk_DataMaster_DataProyek_Tambah_PakaiFase.setCheckState(	int(proyek[field("isFase")])*2	)
 		self.DataMaster_DataProyek_Edit_idEDIT = proyek[field("id")]
-		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAPROYEK_TAMBAH)
+		self.DataMaster_DataProyek_Tambah()
 		
 	
+	def DataMaster_DataProyek_Tambah(self):
+		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAPROYEK_TAMBAH)
+		self.GarvinDisconnect(self.tb_DataMaster_DataProyek_Tambah_KodePenjab.clicked)
+		self.tb_DataMaster_DataProyek_Tambah_KodePenjab.clicked.connect(self.DataMaster_DataProyek_Tambah_PilihPenjab)
+		pass
+	
+	def DataMaster_DataProyek_Tambah_PilihPenjab(self):
+		data = []
+		def isi():
+			self.tb_DataMaster_DataProyek_Tambah_KodePenjab.setText(str(data[0]))
+		def batal():
+			self.tb_DataMaster_DataProyek_Tambah_KodePenjab.setText("-")
+		self.DataMaster_DataNamaAlamat_Popup_Pilih(data,isi,batal)
+		
 	def DataMaster_DataProyek_Tambah_Act_Simpan(self):
 		kode = str(self.le_DataMaster_DataProyek_Tambah_KodeProyek.text())
 		nama = str(self.le_DataMaster_DataProyek_Tambah_NamaProyek.text())
-		penjab = str(self.le_DataMaster_DataProyek_Tambah_KodePenanggungJawab.text())
+		penjab = str(self.tb_DataMaster_DataProyek_Tambah_KodePenjab.text())
 		progress = str(self.dsb_DataMaster_DataProyek_Tambah_Progress.value())
 		tmulai = str(self.dte_DataMaster_DataProyek_Tambah_TanggalMulai.dateTime().toString("yyyy-MM-dd hh:mm:ss"))
 		tslsai = str(self.dte_DataMaster_DataProyek_Tambah_TanggalSelesai.dateTime().toString("yyyy-MM-dd hh:mm:ss"))

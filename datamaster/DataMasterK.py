@@ -25,6 +25,7 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 	def DataMaster_init(self, parent=None):
 		
 		super(DataMaster,self).__init__(parent)
+		
 		self.DataMaster_Focus = QtGui.QFocusEvent(QEvent.FocusIn)
 		#---------------------------------------------------------------Data Master init
 		#init konstanta index
@@ -65,20 +66,8 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 		self.DataMaster_DataPajak_Edit_idEDIT = -1
 		
 		#---------------------------------------------------------------DataProyek
-		#List pilihan di Data Proyek
-		self.sc_DataMaster_DataProyek_Tambah_Penjab.hide()
-		self.lb_DataMaster_DataProyek_Tambah_PilihPenjab.hide()
 		#~ self.ile_DataMaster_DataProyek_Tambah_PenanggungJawab.hide()
-		self.le_DataMaster_DataProyek_Tambah_KodePenanggungJawab.setReadOnly(True)
 		
-		#Tombol biru: Buka popup tambah
-		def ____DataMaster_DataProyek_Tambah_Penjab_Ok():
-			self.le_DataMaster_DataProyek_Tambah_PenanggungJawab.setText(self.le_DataMaster_DataNamaAlamat_Tambah_Nama.text())
-			self.le_DataMaster_DataProyek_Tambah_KodePenanggungJawab.setText(self.le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan.text())
-			
-		self.tb_DataMaster_DataProyek_Tambah_PenanggungJawab.clicked.connect(functools.partial(self.DataMaster_DataNamaAlamat_Popup_Tambah,____DataMaster_DataProyek_Tambah_Penjab_Ok,self.DataMaster_None,self.DataMaster_None,self.DataMaster_None))
-		self.le_DataMaster_DataProyek_Tambah_PenanggungJawab.textEdited.connect(self.DataMaster_DataProyek_Tambah_Showlist_Change)
-		#~ QtCore.QObject.connect(self.le_DataMaster_DataProyek_Tambah_PenanggungJawab, QtCore.SIGNAL(_fromUtf8("editingFinished()")), MainWindow.showFullScreen)
 		self.DataMaster_DataProyek_Edit_idEDIT = -1
 		
 		
@@ -331,7 +320,7 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 				"""Bookmark baris, delete this later"""
 				None
 			self.lb_DataMaster_DataCommon_Judul.setText("Data Proyek")
-			self.tb_DataMaster_DataCommon_Tambah.clicked.connect(functools.partial(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_DATAPROYEK_TAMBAH))
+			self.tb_DataMaster_DataCommon_Tambah.clicked.connect(self.DataMaster_DataProyek_Tambah)
 			self.tb_DataMaster_DataCommon_Edit.clicked.connect(self.DataMaster_DataProyek_Edit)
 			self.clearLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
 			self.le_DataMaster_DataProyek_Tambah_KodeProyek.setReadOnly(False)
