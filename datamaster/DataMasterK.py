@@ -67,7 +67,6 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 		
 		#---------------------------------------------------------------DataProyek
 		#~ self.ile_DataMaster_DataProyek_Tambah_PenanggungJawab.hide()
-		self.le_DataMaster_DataProyek_Tambah_KodePenanggungJawab.setReadOnly(True)
 		
 		#Tombol biru: Buka popup tambah
 		def ____DataMaster_DataProyek_Tambah_Penjab_Ok():
