@@ -25,6 +25,7 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 	def DataMaster_init(self, parent=None):
 		
 		super(DataMaster,self).__init__(parent)
+		
 		self.DataMaster_Focus = QtGui.QFocusEvent(QEvent.FocusIn)
 		#---------------------------------------------------------------Data Master init
 		#init konstanta index
@@ -65,9 +66,6 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 		self.DataMaster_DataPajak_Edit_idEDIT = -1
 		
 		#---------------------------------------------------------------DataProyek
-		#List pilihan di Data Proyek
-		self.sc_DataMaster_DataProyek_Tambah_Penjab.hide()
-		self.lb_DataMaster_DataProyek_Tambah_PilihPenjab.hide()
 		#~ self.ile_DataMaster_DataProyek_Tambah_PenanggungJawab.hide()
 		self.le_DataMaster_DataProyek_Tambah_KodePenanggungJawab.setReadOnly(True)
 		
