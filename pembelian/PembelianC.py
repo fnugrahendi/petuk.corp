@@ -30,23 +30,45 @@ class Pembelian(object):
 		self.tb_Pembelian_PembayaranHutang.clicked.connect(self.Pembelian_GoTo_PembayaranHutang)
 		self.tb_Pembelian_ReturPembelian.clicked.connect(self.Pembelian_GoTo_ReturPembelian)
 		
-		#Tombol pada Order Pembelian
+		#Tombol pada Permintaan Barang
+		self.tb_Pembelian_PermintaanBarang_Tutup.clicked.connect(self.Pembelian_GoTo_Menu)
 		
+		#Tombol pada Order Pembelian
+		self.tb_Pembelian_OrderPembelian_Tutup.clicked.connect(self.Pembelian_GoTo_Menu)
+		
+		#Tombol pada Penerimaan Barang
+		
+		#Tombol pada Hutang Usaha
+		self.tb_Pembelian_HutangUsaha_Tutup.clicked.connect(self.Pembelian_GoTo_Menu)
+		
+		#Tombol pada Pembayaran Hutang
+		
+		#Tombol pada Retur Pembelian
+	
+	def Pembelian_GoTo_Menu(self):
+		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_MENU)
+		return	
 		
 	def Pembelian_GoTo_PermintaanBarang(self):
+		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_PERMINTAANBARANG)
 		return
 	
 	def Pembelian_GoTo_OrderPembelian(self):
+		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_ORDERPEMBELIAN)
 		return
 	
 	def Pembelian_GoTo_PenerimaanBarang(self):
+		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_PENERIMAAN)
 		return
 	
 	def Pembelian_GoTo_HutangUsaha(self):
+		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_HUTANG)
 		return
 	
 	def Pembelian_GoTo_PembayaranHutang(self):
+		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_PEMBAYARANHUTANG)
 		return
 	
 	def Pembelian_GoTo_ReturPembelian(self):
+		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_RETURPEMBELIAN)
 		return
