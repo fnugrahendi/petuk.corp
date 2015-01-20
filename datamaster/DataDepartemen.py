@@ -26,7 +26,7 @@ class DataDepartemen(object):
 		"""sql karena sinyal je, threading bro, most updated value comes by sql"""
 		self.clearLayout(self.scontent_DataMaster_DataDepartemen_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
 		
-		result = self.DatabaseFetchResult(self.dbDatabase,"gd_data_departemen","namaDepartemen","%"+str(self.le_DataMaster_DataDepartemen_Search.text()+"%"))
+		result = self.DatabaseFetchResult(self.dbDatabase,"gd_data_departemen","namaDepartemen","%"+str(self.le_DataMaster_DataDepartemen_Search.text())+"%")
 		#~ result = self.DatabaseRunQuery(sql)
 		tinggi = len(result)*80
 		self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataDepartemen_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
