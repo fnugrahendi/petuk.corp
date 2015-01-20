@@ -331,7 +331,7 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek):
 				"""Bookmark baris, delete this later"""
 				None
 			self.lb_DataMaster_DataCommon_Judul.setText("Data Proyek")
-			self.tb_DataMaster_DataCommon_Tambah.clicked.connect(functools.partial(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_DATAPROYEK_TAMBAH))
+			self.tb_DataMaster_DataCommon_Tambah.clicked.connect(self.DataMaster_DataProyek_Tambah)
 			self.tb_DataMaster_DataCommon_Edit.clicked.connect(self.DataMaster_DataProyek_Edit)
 			self.clearLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
 			self.le_DataMaster_DataProyek_Tambah_KodeProyek.setReadOnly(False)

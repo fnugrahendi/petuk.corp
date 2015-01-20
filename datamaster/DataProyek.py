@@ -279,6 +279,12 @@ class DataProyek(object):
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAPROYEK_TAMBAH)
 		
 	
+	def DataMaster_DataProyek_Tambah(self):
+		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAPROYEK_TAMBAH)
+		#~ self.GarvinDisconnect(self.tb_DataMaster_DataProyek_Tambah_KodePenjab.clicked)
+		
+		pass
+	
 	def DataMaster_DataProyek_Tambah_Act_Simpan(self):
 		kode = str(self.le_DataMaster_DataProyek_Tambah_KodeProyek.text())
 		nama = str(self.le_DataMaster_DataProyek_Tambah_NamaProyek.text())
