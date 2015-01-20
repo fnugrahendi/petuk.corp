@@ -91,12 +91,10 @@ class DataDepartemen(object):
 		self.GarvinDisconnect(self.tb_DataMaster_DataDepartemen_Delete.clicked)
 		self.tb_DataMaster_DataDepartemen_Tutup.clicked.connect(self.DataMaster_Menu)
 		self.tb_DataMaster_DataDepartemen_Tambah.clicked.connect(self.DataMaster_DataDepartemen_Tambah)
+		self.tb_DataMaster_DataDepartemen_Edit.clicked.connect(self.DataMaster_DataDepartemen_Edit)
 		#~ self.tb_DataMaster_DataDepartemen_Tutup.clicked.connect(tulis)
 	#~ def DataMaster_DataDepartemen_DrawInfo(self,data):
 		
-	
-	def DataMaster_DataDepartemen_Edit(self):
-		pass
 	def DataMaster_DataDepartemen_DrawInfo(self,data):
 		fdepartemen = self.DataMaster_DataDepartemen_Field.index
 		#------------------ Draw Form Layout Left
@@ -223,7 +221,7 @@ class DataDepartemen(object):
 			FrameDepartemenR.findChild(QtGui.QVBoxLayout).addWidget(vlabel)
 			vlabel.show()
 		#~ FrameDepartemenR.findChild(QtGui.QVBoxLayout).addItem(QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding))
-			
+		
 			
 		#---end of def DataMaster_DataDepartemen_DrawInfo
 	
@@ -295,16 +293,42 @@ class DataDepartemen(object):
 			Tb_Departemen.clicked.connect(fcb_ok)
         
 		#~ Tb_ListDepartemen = self.findChildren(QtGui.QPushButton,QRegExp("dynamic_tb_DataMaster_DataDepartemen_List\w+"))
+	
+	
+	def DataMaster_DataDepartemen_Edit(self):
+		field  = self.DataMaster_DataDepartemen_Field.index
 		
-	def DataMaster_DataDepartemen_Tambah(self, clear=False):
+		kode = str(self.findChild(QtGui.QLabel,"dlb_DataMaster_DataDepartemen_V_2kodeDepartemen").text()).replace(": ","")
+		self.le_DataMaster_DataDepartemen_KodeDepartemen.setText(kode)
+		self.le_DataMaster_DataDepartemen_KodeDepartemen.setReadOnly(True)
+		data = self.DatabaseFetchResult(self.dbDatabase,"gd_data_departemen","kodeDepartemen",kode)
+		if len(data)>0:
+			self.le_DataMaster_DataDepartemen_NamaDepartemen.setText(data[0][field("namaDepartemen")])
+			self.tb_DataMaster_DataDepartemen_ParentDepartemen.setText(data[0][field("parentDepartemen")])
+			self.tb_DataMaster_DataDepartemen_KodePenjab.setText(data[0][field("kodePenjab")])
+			self.le_DataMaster_DataDepartemen_Catatan.setText(data[0][field("catatan")])
+			self.DataMaster_DataDepartemen_Tambah(True)
+			return
+		else:
+			return
+		
+	def DataMaster_DataDepartemen_Tambah(self, keep=False):
 		self.st_DataMaster.setCurrentIndex(self.INDEX_ST_DATAMASTER_DATADEPARTEMEN_TAMBAH)
 		
-		if (not clear):
+		if (keep):
+			self.GarvinDisconnect(self.tb_DataMaster_DataDepartemen_Tambah_Simpan.clicked)
+			self.tb_DataMaster_DataDepartemen_Tambah_Simpan.clicked.connect(functools.partial(self.DataMaster_DataDepartemen_Tambah_Act_Simpan,True))
+		else:
+			for lineedit in (self.fr_DataMaster_DataDepartemen_Tambah_Fcontent.findChildren(QtGui.QLineEdit)):
+				lineedit.setText("")
+			self.tb_DataMaster_DataDepartemen_KodePenjab.setText("-")
+			self.tb_DataMaster_DataDepartemen_ParentDepartemen.setText("-")
 			self.DataMaster_DataDepartemen_Tambah_GenerateKode()
-		
+			self.le_DataMaster_DataDepartemen_KodeDepartemen.setReadOnly(False)
+			self.GarvinDisconnect(self.tb_DataMaster_DataDepartemen_Tambah_Simpan.clicked)
+			self.tb_DataMaster_DataDepartemen_Tambah_Simpan.clicked.connect(self.DataMaster_DataDepartemen_Tambah_Act_Simpan)
+			
 		self.GarvinDisconnect(self.tb_DataMaster_DataDepartemen_Tambah_Batal.clicked)
-		self.GarvinDisconnect(self.tb_DataMaster_DataDepartemen_Tambah_Simpan.clicked)
-		self.tb_DataMaster_DataDepartemen_Tambah_Simpan.clicked.connect(self.DataMaster_DataDepartemen_Tambah_Act_Simpan)
 		self.tb_DataMaster_DataDepartemen_Tambah_Batal.clicked.connect(self.DataMaster_DataDepartemen)
 		#--- pilih induk departemen, dan pilih penjab
 		self.tb_DataMaster_DataDepartemen_ParentDepartemen.clicked.connect(self.DataMaster_DataDepartemen_Tambah_PilihParent)
@@ -340,16 +364,20 @@ class DataDepartemen(object):
 		self.le_DataMaster_DataDepartemen_KodeDepartemen.setText(kode_default)
 		return #--- end generate kode
 
-	def DataMaster_DataDepartemen_Tambah_Act_Simpan(self):
+	def DataMaster_DataDepartemen_Tambah_Act_Simpan(self,update=False):
 		kode = self.le_DataMaster_DataDepartemen_KodeDepartemen.text()
 		nama = self.le_DataMaster_DataDepartemen_NamaDepartemen.text()
 		induk = self.tb_DataMaster_DataDepartemen_ParentDepartemen.text()
 		penjab = self.tb_DataMaster_DataDepartemen_KodePenjab.text()
 		catatan = self.le_DataMaster_DataDepartemen_Catatan.text()
-		
-		sukses = self.DatabaseInsertAvoidreplace(self.dbDatabase,"gd_data_departemen","kodeDepartemen",kode,
-										["kodeDepartemen","namaDepartemen","parentDepartemen","kodePenjab","catatan"],
-										[kode,nama,induk,penjab,catatan], "Kode Departemen ini sudah digunakan! Gunakan nomor kode lain!")
+		if (not update):
+			sukses = self.DatabaseInsertAvoidreplace(self.dbDatabase,"gd_data_departemen","kodeDepartemen",kode,
+											["kodeDepartemen","namaDepartemen","parentDepartemen","kodePenjab","catatan"],
+											[kode,nama,induk,penjab,catatan], "Kode Departemen ini sudah digunakan! Gunakan nomor kode lain!")
+		else: #--- update
+			sukses = self.DatabaseInsertReplace(self.dbDatabase,"gd_data_departemen","kodeDepartemen",kode,
+											["kodeDepartemen","namaDepartemen","parentDepartemen","kodePenjab","catatan"],
+											[kode,nama,induk,penjab,catatan])
 		if (sukses):
 			self.DataMaster_DataDepartemen()
 		return #-- end simpan
