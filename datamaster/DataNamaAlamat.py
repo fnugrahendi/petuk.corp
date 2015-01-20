@@ -325,7 +325,10 @@ class DataNamaAlamat(object):
 	
 	def DataMaster_DataNamaAlamat_Edit(self):
 		field = self.DataMaster_DataNamaAlamat_Field.index
-		kode = str(self.lb_DataMaster_DataNamaAlamat_kode.text()).replace("\n","")
+		try:
+			kode = str(self.lb_DataMaster_DataNamaAlamat_kode.text()).replace("\n","")
+		except:
+			return
 		sql = "SELECT * FROM `gd_nama_alamat` WHERE `kodePelanggan` = '"+kode+"' LIMIT 0 , 1"
 		barang = self.DatabaseRunQuery(sql)
 		self.le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan.setText(_fromUtf8(barang[0][field("kodePelanggan")]))
@@ -344,7 +347,10 @@ class DataNamaAlamat(object):
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATANAMAALAMAT_TAMBAH)
 	
 	def DataMaster_DataNamaAlamat_Delete(self):
-		kode = str(self.lb_DataMaster_DataNamaAlamat_kode.text()).replace("\n","")
+		try:
+			kode = str(self.lb_DataMaster_DataNamaAlamat_kode.text()).replace("\n","")
+		except:
+			return
 		sql = "DELETE FROM `"+self.dbDatabase+"`.`gd_nama_alamat` WHERE `gd_nama_alamat`.`kodePelanggan` = '"+kode+"'"
 		self.DatabaseRunQuery(sql)
 		self.DataMaster_Goto_Common(self.INDEX_ST_DATAMASTER_DATANAMAALAMAT)
