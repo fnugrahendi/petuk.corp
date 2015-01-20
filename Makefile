@@ -1,3 +1,4 @@
+uis=GUI.ui 
 guiconvert:
 	pyuic4 GUI.ui -o GUI.py
 
