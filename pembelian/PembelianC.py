@@ -24,7 +24,13 @@ class Pembelian(object):
 		
 		#Tombol Pada Halaman Menu
 		self.tb_Pembelian_PermintaanBarang.clicked.connect(self.Pembelian_GoTo_PermintaanBarang)
-		self.tb_Pembelian_OrderPembelian.clicked.connect(self.)
+		self.tb_Pembelian_OrderPembelian.clicked.connect(self.Pembelian_GoTo_OrderPembelian)
+		self.tb_Pembelian_Penerimaan.clicked.connect(self.Pembelian_GoTo_PenerimaanBarang)
+		self.tb_Pembelian_HutangUsaha.clicked.connect(self.Pembelian_GoTo_HutangUsaha)
+		self.tb_Pembelian_PembayaranHutang.clicked.connect(self.Pembelian_GoTo_PembayaranHutang)
+		self.tb_Pembelian_ReturPembelian.clicked.connect(self.Pembelian_GoTo_ReturPembelian)
+		
+		#Tombol pada Order Pembelian
 		
 		
 	def Pembelian_GoTo_PermintaanBarang(self):
