@@ -16,6 +16,7 @@ from datetime import datetime #tanggal, a= datetime.now(); cobo dicheck dir(a); 
 #----Data tab
 from bukubesar import BukuBesar
 from datamaster import DataMaster
+from pembelian import Pembelian
 
 try:
 	_fromUtf8 = QtCore.QString.fromUtf8
@@ -24,7 +25,7 @@ except AttributeError:
 		return s
 
 
-class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
+class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian):
 	def __init__(self, parent= None):
 		super(MainGUI,self).__init__(parent)
 		self.setupUi(self)
@@ -98,6 +99,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 		
 		self.DataMaster_init()
 		self.BukuBesar_init()
+		self.Pembelian__init()
 		
 		#--- kalau pindah tab, set semua stackedWidget ke index 0 (suppose to be _Menu index)
 		self.tabWidget.currentChanged.connect(self.ResetRooms)
@@ -166,8 +168,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster):
 			for a in range (0,jumlahRow):
 				self.tbl_Penjualan_OrderPenjualan.removeRow(a)
 		kodePenjualan = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
-		print kodePenjualan
-		query = "SELECT * FROM gd_nama_alamat"
+		#print kodePenjualan
+		query = "SELECT * FROM gd_nama_alamat WHERE `tipe` LIKE 'customer'"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
 			self.cb_Penjualan_OrderPenjualan_Nama.addItem(self.DatabaseRunQuery(query)[a][2])
 		query = "SELECT * FROM gd_data_gudang"

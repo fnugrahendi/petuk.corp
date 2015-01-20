@@ -51,7 +51,7 @@
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="tab_DataMaster">
           <attribute name="title">
@@ -3289,13 +3289,6 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                     </property>
                     <layout class="QVBoxLayout" name="ivl_fr_DataMaster_DataDepartemen_Fbody_Slist_Container">
                      <item>
-                      <widget class="QLineEdit" name="le_DataMaster_DataDepartemen_Search">
-                       <property name="placeholderText">
-                        <string>Type to search...</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
                       <widget class="QScrollArea" name="sc_DataMaster_DataDepartemen_Fbody_Slist">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
@@ -3342,8 +3335,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>250</width>
-                          <height>30</height>
+                          <width>332</width>
+                          <height>330</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
