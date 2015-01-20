@@ -169,7 +169,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian):
 				self.tbl_Penjualan_OrderPenjualan.removeRow(a)
 		kodePenjualan = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
 		#print kodePenjualan
-		query = "SELECT * FROM gd_nama_alamat"
+		query = "SELECT * FROM gd_nama_alamat WHERE `tipe` LIKE 'customer'"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
 			self.cb_Penjualan_OrderPenjualan_Nama.addItem(self.DatabaseRunQuery(query)[a][2])
 		query = "SELECT * FROM gd_data_gudang"

@@ -63,7 +63,7 @@ class Pembelian(object):
 			for a in range (0,jumlahRow):
 				self.tbl_Pembelian_OrderPembelian.removeRow(a)
 		kodePembelian = str(self.le_Pembelian_OrderPembelian_NoPO.text())
-		query = "SELECT * FROM gd_nama_alamat"
+		query = "SELECT * FROM gd_nama_alamat WHERE `tipe` LIKE 'vendor'"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
 			self.cb_Pembelian_OrderPembelian_Nama.addItem(self.DatabaseRunQuery(query)[a][2])
 		query = "SELECT * FROM gd_data_gudang"
