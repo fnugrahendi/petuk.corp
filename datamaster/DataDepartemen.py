@@ -92,6 +92,7 @@ class DataDepartemen(object):
 		self.tb_DataMaster_DataDepartemen_Tutup.clicked.connect(self.DataMaster_Menu)
 		self.tb_DataMaster_DataDepartemen_Tambah.clicked.connect(self.DataMaster_DataDepartemen_Tambah)
 		self.tb_DataMaster_DataDepartemen_Edit.clicked.connect(self.DataMaster_DataDepartemen_Edit)
+		self.tb_DataMaster_DataDepartemen_Delete.clicked.connect(self.DataMaster_DataDepartemen_Delete)
 		#~ self.tb_DataMaster_DataDepartemen_Tutup.clicked.connect(tulis)
 	#~ def DataMaster_DataDepartemen_DrawInfo(self,data):
 		
@@ -294,11 +295,26 @@ class DataDepartemen(object):
         
 		#~ Tb_ListDepartemen = self.findChildren(QtGui.QPushButton,QRegExp("dynamic_tb_DataMaster_DataDepartemen_List\w+"))
 	
-	
+	def DataMaster_DataDepartemen_Delete(self):
+		try:
+			kode = str(self.findChild(QtGui.QLabel,"dlb_DataMaster_DataDepartemen_V_2kodeDepartemen").text()).replace(": ","")
+		except:
+			return
+		self.DataMaster_Popup("Anda yakin akan menghapus departemen "+kode+"?",functools.partial(self.DataMaster_DataDepartemen_Delete_Act,kode))
+		
+		
+	#--strong reference
+	def DataMaster_DataDepartemen_Delete_Act(self,kode):
+		sql = "DELETE FROM `"+self.dbDatabase+"`.`gd_data_departemen` WHERE `gd_data_departemen`.`kodeDepartemen` = '"+kode+"'"
+		self.DatabaseRunQuery(sql)
+		self.DataMaster_DataDepartemen()
+		pass
 	def DataMaster_DataDepartemen_Edit(self):
 		field  = self.DataMaster_DataDepartemen_Field.index
-		
-		kode = str(self.findChild(QtGui.QLabel,"dlb_DataMaster_DataDepartemen_V_2kodeDepartemen").text()).replace(": ","")
+		try:
+			kode = str(self.findChild(QtGui.QLabel,"dlb_DataMaster_DataDepartemen_V_2kodeDepartemen").text()).replace(": ","")
+		except:
+			return
 		self.le_DataMaster_DataDepartemen_KodeDepartemen.setText(kode)
 		self.le_DataMaster_DataDepartemen_KodeDepartemen.setReadOnly(True)
 		data = self.DatabaseFetchResult(self.dbDatabase,"gd_data_departemen","kodeDepartemen",kode)
