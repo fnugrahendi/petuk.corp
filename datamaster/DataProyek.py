@@ -21,6 +21,29 @@ class DataProyek(object):
 	def __init__(self, parent=None):
 		pass
 	
+	def DataMaster_DataProyek_RefreshList(self,searchtext):
+		self.clearLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
+		
+		result = self.DatabaseFetchResult(self.dbDatabase,"gd_proyek","namaProyek","%"+str(searchtext)+"%")
+		tinggi = len(result)*80
+		self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
+		for x in range(0,len(result)):
+			Tb_ListProyek = self.findChildren(QtGui.QPushButton,"dtb_DataMaster_DataProyek_List"+str(result[x][self.DataMaster_DataProyek_Field.index("kodeProyek")]))
+			if (len(Tb_ListProyek)<1):
+				Tb_Proyek = QtGui.QPushButton(self.scontent_DataMaster_DataCommon_Fbody_Slist)
+				Tb_Proyek.setObjectName(_fromUtf8("dtb_DataMaster_DataProyek_List"+str(result[x][self.DataMaster_DataProyek_Field.index("kodeProyek")])))
+				local_name = str(result[x][self.DataMaster_DataProyek_Field.index("namaProyek")])
+				Tb_Proyek.setText(local_name)
+				self.ivl_DataMaster_DataCommon_Fbody_Slist.addWidget(Tb_Proyek,QtCore.Qt.AlignLeading|QtCore.Qt.AlignTop)
+				Tb_Proyek.clicked.connect(functools.partial(self.DataMaster_DataProyek_DrawInfo,result[x]))
+			else:
+				for y in range(0, len(Tb_ListProyek)):
+					self.ivl_DataMaster_DataCommon_Fbody_Slist.addWidget(Tb_ListProyek[y],QtCore.Qt.AlignLeading|QtCore.Qt.AlignTop)
+					Tb_ListProyek[y].show()
+					Tb_ListProyek[y].setText(str(result[x][self.DataMaster_DataProyek_Field.index("namaProyek")]))
+					Tb_ListProyek[y].clicked.disconnect()
+					Tb_ListProyek[y].clicked.connect(functools.partial(self.DataMaster_DataProyek_DrawInfo,result[x]))
+	
 	def DataMaster_DataProyek_Delete(self):
 		try:
 			kode = str(self.lb_DataMaster_DataProyek_Kode.text()).replace("\n","")
@@ -276,13 +299,19 @@ class DataProyek(object):
 		self.le_DataMaster_DataProyek_Tambah_RealisasiTotal.setText(str(proyek[field("realisasiTotal")]))
 		self.chk_DataMaster_DataProyek_Tambah_PakaiFase.setCheckState(	int(proyek[field("isFase")])*2	)
 		self.DataMaster_DataProyek_Edit_idEDIT = proyek[field("id")]
-		self.DataMaster_DataProyek_Tambah()
+		self.DataMaster_DataProyek_Tambah(True)
 		
 	
-	def DataMaster_DataProyek_Tambah(self):
+	def DataMaster_DataProyek_Tambah(self,keep=False):
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAPROYEK_TAMBAH)
 		self.GarvinDisconnect(self.tb_DataMaster_DataProyek_Tambah_KodePenjab.clicked)
 		self.tb_DataMaster_DataProyek_Tambah_KodePenjab.clicked.connect(self.DataMaster_DataProyek_Tambah_PilihPenjab)
+		if (not keep):
+			for lineedit in (self.fr_DataMaster_DataProyek_Tambah_Fcontent.findChildren(QtGui.QLineEdit)):
+				lineedit.setText("")
+			for lineedit in (self.fr_DataMaster_DataProyek_Tambah_Fcontent.findChildren(QtGui.QPushButton)):
+				lineedit.setText("")
+			
 		pass
 	
 	def DataMaster_DataProyek_Tambah_PilihPenjab(self):

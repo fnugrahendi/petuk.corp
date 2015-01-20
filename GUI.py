@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Tue Jan 20 17:25:26 2015
-#      by: PyQt4 UI code generator 4.10.1
+# Created: Tue Jan 20 17:25:34 2015
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -160,6 +160,9 @@ class Ui_MainWindow(object):
         self.fr_DataMaster_DataCommon_Fbody_Slist_Container.setObjectName(_fromUtf8("fr_DataMaster_DataCommon_Fbody_Slist_Container"))
         self.ivl_fr_DataMaster_DataCommon_Fbody_Slist_Container = QtGui.QVBoxLayout(self.fr_DataMaster_DataCommon_Fbody_Slist_Container)
         self.ivl_fr_DataMaster_DataCommon_Fbody_Slist_Container.setObjectName(_fromUtf8("ivl_fr_DataMaster_DataCommon_Fbody_Slist_Container"))
+        self.le_DataMaster_DataCommon_Search = QtGui.QLineEdit(self.fr_DataMaster_DataCommon_Fbody_Slist_Container)
+        self.le_DataMaster_DataCommon_Search.setObjectName(_fromUtf8("le_DataMaster_DataCommon_Search"))
+        self.ivl_fr_DataMaster_DataCommon_Fbody_Slist_Container.addWidget(self.le_DataMaster_DataCommon_Search)
         self.sc_DataMaster_DataCommon_Fbody_Slist = QtGui.QScrollArea(self.fr_DataMaster_DataCommon_Fbody_Slist_Container)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(1)
@@ -4083,9 +4086,9 @@ class Ui_MainWindow(object):
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
-        self.st_DataMaster.setCurrentIndex(0)
-        self.st_Penjualan.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
+        self.st_DataMaster.setCurrentIndex(1)
+        self.st_Penjualan.setCurrentIndex(10)
         self.st_Pembelian.setCurrentIndex(0)
         self.st_BukuBesar.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -4100,6 +4103,7 @@ class Ui_MainWindow(object):
         self.tb_DataMaster_DataRekening.setText(_translate("MainWindow", "Data Rekening", None))
         self.tb_DataMaster_DataDepartemen.setText(_translate("MainWindow", "Data Departemen", None))
         self.lb_DataMaster_DataCommon_Judul.setText(_translate("MainWindow", "Judul", None))
+        self.le_DataMaster_DataCommon_Search.setPlaceholderText(_translate("MainWindow", "Type to search...", None))
         self.tb_DataMaster_DataCommon_Tambah.setText(_translate("MainWindow", "+", None))
         self.tb_DataMaster_DataCommon_Tutup.setText(_translate("MainWindow", "Tutup", None))
         self.lb_DataMaster_DataNamaAlamat_Tambah_Ftop_Judul.setText(_translate("MainWindow", "+ Data Nama & Alamat", None))

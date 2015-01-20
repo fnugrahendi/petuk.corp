@@ -288,6 +288,13 @@
                     </property>
                     <layout class="QVBoxLayout" name="ivl_fr_DataMaster_DataCommon_Fbody_Slist_Container">
                      <item>
+                      <widget class="QLineEdit" name="le_DataMaster_DataCommon_Search">
+                       <property name="placeholderText">
+                        <string>Type to search...</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
                       <widget class="QScrollArea" name="sc_DataMaster_DataCommon_Fbody_Slist">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
@@ -368,6 +375,7 @@ QPushButton::hover{
                     </layout>
                     <zorder>sc_DataMaster_DataCommon_Fbody_Slist</zorder>
                     <zorder>vs_DataMaster_DataCommon_Fbody_Slist_Spaser</zorder>
+                    <zorder>le_DataMaster_DataCommon_Search</zorder>
                    </widget>
                   </item>
                   <item>
@@ -3507,8 +3515,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>250</width>
-                          <height>30</height>
+                          <width>332</width>
+                          <height>330</height>
                          </rect>
                         </property>
                         <property name="styleSheet">

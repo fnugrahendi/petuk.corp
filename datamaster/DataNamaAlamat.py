@@ -21,6 +21,32 @@ class DataNamaAlamat(object):
 	def __init__(self, parent=None):
 		pass
 	
+	def DataMaster_DataNamaAlamat_RefreshList(self,searchtext):
+		self.clearLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0])
+		
+		result = self.DatabaseFetchResult(self.dbDatabase,"gd_nama_alamat","namaPelanggan","%"+str(searchtext)+"%")
+		tinggi = len(result)*80
+		self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, tinggi)) if (tinggi < 600) else self.sc_DataMaster_DataCommon_Fbody_Slist.setMaximumSize(QtCore.QSize(350, 600))
+		for x in range(0,len(result)):
+			obj_Tb_ListPelanggan = self.findChildren(QtGui.QPushButton,"dtb_DataMaster_DataNamaAlamat_List"+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("kodePelanggan")]))
+			if (len(obj_Tb_ListPelanggan)<1):
+				print "bikin baru"
+				obj_Tb_Pelanggan = QtGui.QPushButton(self.scontent_DataMaster_DataCommon_Fbody_Slist)
+				obj_Tb_Pelanggan.setObjectName("dtb_DataMaster_DataNamaAlamat_List"+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("kodePelanggan")]))
+				local_name = str(result[x][self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")])
+				obj_Tb_Pelanggan.setText(local_name)
+				self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0].addWidget(obj_Tb_Pelanggan,QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+				#~ obj_Tb_Pelanggan.clicked.connect(functools.partial(self.DataMaster_DataNamaAlamat_DrawInfo,result[x]))
+			else:
+				print "pakai yang ada"
+				for y in range(0,len(obj_Tb_ListPelanggan)):
+					self.scontent_DataMaster_DataCommon_Fbody_Slist.findChildren(QtGui.QVBoxLayout)[0].addWidget(obj_Tb_ListPelanggan[y],QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+					obj_Tb_ListPelanggan[y].show()
+					obj_Tb_ListPelanggan[y].setText(str(result[x][self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")]))
+					#~ obj_Tb_ListPelanggan[y].clicked.disconnect()
+					#~ obj_Tb_ListPelanggan[y].clicked.connect(functools.partial(self.DataMaster_DataNamaAlamat_DrawInfo,result[x]))
+			
+	
 	def DataMaster_DataNamaAlamat_DrawInfo(self,data): #nama,perusahaan,tipe,npwp,diskon,jatuhtempo,diskonawal,dendaketerlambatan,alamat,kodepelanggan
 		field = self.DataMaster_DataNamaAlamat_Field.index
 		f14 = QtGui.QFont()
@@ -441,8 +467,9 @@ class DataNamaAlamat(object):
 	def DataMaster_DataNamaAlamat_Popup_Pilih(self,dipilih,fcb_ok=False, fcb_cancel=False, hideSurrounding=False):
 		"""Buka popup untuk pilih dataNamaAlamat, carane hack dewe yoh neng fcb_ok
 		"""
-		#~ self.GarvinDisconnect(self.le_DataMaster_DataNamaAlamat_Search.textChanged)
-		#~ self.le_DataMaster_DataNamaAlamat_Search.textChanged.connect(self.DataMaster_DataNamaAlamat_RefreshList)
+		self.GarvinDisconnect(self.le_DataMaster_DataCommon_Search.textChanged)
+		self.le_DataMaster_DataCommon_Search.setText("")
+		self.le_DataMaster_DataCommon_Search.textChanged.connect(self.DataMaster_DataNamaAlamat_RefreshList)
 		
 		WinW = self.centralwidget.geometry().width()
 		WinH = self.centralwidget.geometry().height()
@@ -492,7 +519,7 @@ class DataNamaAlamat(object):
 			Tb_ListNamaAlamat = self.findChildren(QtGui.QPushButton,"dtb_DataMaster_DataNamaAlamat_List"+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("kodePelanggan")]))
 			if (len(Tb_ListNamaAlamat)<1):
 				Tb_NamaAlamat = QtGui.QPushButton(self.scontent_DataMaster_DataCommon_Fbody_Slist)
-				Tb_NamaAlamat.setObjectName(_fromUtf8("dtb_DataMaster_DataNamaAlamat_ListNamaAlamat"+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("kodePelanggan")])))
+				Tb_NamaAlamat.setObjectName("dtb_DataMaster_DataNamaAlamat_List"+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("kodePelanggan")]))
 			else:
 				Tb_NamaAlamat = Tb_ListNamaAlamat[0]
 
