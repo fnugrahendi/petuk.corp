@@ -87,6 +87,32 @@ class Pembelian(object):
 				self.tbl_Pembelian_OrderPembelian	.setItem(a,7,QtGui.QTableWidgetItem(result[a][7]))
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_ORDERPEMBELIAN)
 	
+	def Pembelian_GoTo_OrderPembelian_TambahProduk(self):
+		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP_TAMBAHPRODUK)
+		self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Satuan.clear()
+		self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama.clear()
+		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Jumlah.clear()
+		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Harga.clear()
+		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Diskon.clear()
+		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Pajak.clear()
+		
+		#Autocomplete diilangi karena produk belum tentu ada di database
+		""" query = "SELECT * FROM gd_data_produk"
+		for a in range(0,len(self.DatabaseRunQuery(query))):
+			self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.addItem(self.DatabaseRunQuery(query)[a][5])
+		query = "SELECT * FROM gd_satuan_pengukuran"
+		for a in range(0,len(self.DatabaseRunQuery(query))):
+			self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan.addItem(self.DatabaseRunQuery(query)[a][1])
+		nama = str(self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.currentText())
+		query = "SELECT * FROM `gd_data_produk` WHERE `namaBarang` LIKE '"+nama+"'"
+		kodeBarang = self.DatabaseRunQuery(query)[0][1]
+		self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Kode.setText(kodeBarang)"""
+		return
+	
+	def Pembelian_OrderPembelian_TambahProduk(self):
+		pass
+		pass
+	
 	def Pembelian_GoTo_PenerimaanBarang(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_PENERIMAAN)
 		return
