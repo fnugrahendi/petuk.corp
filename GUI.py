@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Wed Jan 21 07:02:26 2015
-#      by: PyQt4 UI code generator 4.10.4
+# Created: Wed Jan 21 09:16:47 2015
+#      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
