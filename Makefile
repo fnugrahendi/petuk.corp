@@ -1,7 +1,7 @@
 uis=GUI.ui 
 guiconvert:
 	pyuic4 GUI.ui -o GUI.py
-
+	pyuic4 kasbank/ui_kasbank.ui -o kasbank/ui_kasbank.py
 all: rcconvert guiconvert 
 
 rcconvert:
