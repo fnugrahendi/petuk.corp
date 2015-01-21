@@ -14,7 +14,7 @@ from datetime import datetime #tanggal, a= datetime.now(); cobo dicheck dir(a); 
 
 class KasMasuk(object):
 	def __init__(self,parent=None):
-		self.tb_KasMasuk_Tutup.clicked.connect()
+		self.KasBankUI.tb_KasMasuk_Tutup.clicked.connect(functools.partial(self.KasBank_Goto,"MENU"))
 		pass
 	
 	

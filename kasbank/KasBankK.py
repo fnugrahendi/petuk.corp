@@ -18,7 +18,6 @@ from KasMasuk import KasMasuk
 
 class KasBank(KasMasuk):
 	def KasBank_init(self,parent=None):
-		super(KasBank,self).__init__(parent)
 		
 		self.INDEX_ST_KASBANK_MENU = 0
 		self.INDEX_ST_KASBANK_KASMASUK = 1
@@ -32,6 +31,10 @@ class KasBank(KasMasuk):
 		self.KasBankUI = Ui_st_KasBank()
 		self.KasBankUI.setupUi(self.st_kasbank)
 		self.tab_KasBank.findChild(QtGui.QVBoxLayout).addWidget(self.st_kasbank)
+		
+		#--- after KasBankUI this is the line where init should be invoked
+		super(KasBank,self).__init__(parent)
+		
 		
 		result = self.DatabaseRunQuery("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_kas_masuk';")
 		self.KasBank_KasMasuk_Field = list(itertools.chain.from_iterable(result))
