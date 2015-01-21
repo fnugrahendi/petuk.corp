@@ -137,7 +137,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 	def Penjualan_OrderPenjualan_TambahProduk_UpdateKode(self,index):
 		namaProduk = str(self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.currentText())
 		query = "SELECT * FROM `gd_data_produk` WHERE `namaBarang` LIKE '"+namaProduk+"'"
-		self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Kode.setText
+		#self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Kode.setText
 		kodeBarang = self.DatabaseRunQuery(query)[0][1]
 		self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Kode.setText(kodeBarang)
 		
