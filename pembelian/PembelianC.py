@@ -17,10 +17,11 @@ class Pembelian(object):
 		self.INDEX_ST_PEMBELIAN_MENU = 0
 		self.INDEX_ST_PEMBELIAN_PERMINTAANBARANG = 1
 		self.INDEX_ST_PEMBELIAN_ORDERPEMBELIAN = 2
-		self.INDEX_ST_PEMBELIAN_PENERIMAAN = 3
-		self.INDEX_ST_PEMBELIAN_HUTANG = 4
-		self.INDEX_ST_PEMBELIAN_PEMBAYARANHUTANG = 5
-		self.INDEX_ST_PEMBELIAN_RETURPEMBELIAN = 6
+		self.INDEX_ST_PEMBELIAN_OP_TAMBAHPRODUK = 3
+		self.INDEX_ST_PEMBELIAN_PENERIMAAN = 4
+		self.INDEX_ST_PEMBELIAN_HUTANG = 5
+		self.INDEX_ST_PEMBELIAN_PEMBAYARANHUTANG = 6
+		self.INDEX_ST_PEMBELIAN_RETURPEMBELIAN = 7
 		
 		#Tombol Pada Halaman Menu
 		self.tb_Pembelian_PermintaanBarang.clicked.connect(self.Pembelian_GoTo_PermintaanBarang)
@@ -35,10 +36,13 @@ class Pembelian(object):
 		
 		#Tombol pada Order Pembelian
 		self.tb_Pembelian_OrderPembelian_Tutup.clicked.connect(self.Pembelian_GoTo_Menu)
-		self.tb_Pembelian_OrderPembelian_Baru.clicked.connect(self.Pembelian_OrderPembelian_TambahProduk)
+		self.tb_Pembelian_OrderPembelian_Baru.clicked.connect(self.Pembelian_GoTo_OrderPembelian_TambahProduk)
 		self.tb_Pembelian_OrderPembelian_Batal.clicked.connect(self.Pembelian_OrderPembelian_Batal)
-		self.tb_Pembelian_OrderPembelian_HapusBaris.clicked.connect()
-		self.tb_Pembelian_OrderPembelian_Rekam.clicked.connect()
+		self.tb_Pembelian_OrderPembelian_HapusBaris.clicked.connect(self.Pembelian_OrderPembelian_HapusBaris)
+		#self.tb_Pembelian_OrderPembelian_Rekam.clicked.connect()
+		self.tb_Pembelian_OrderPembelian_TambahProduk_Simpan.clicked.connect(self.Pembelian_OrderPembelian_TambahProduk)
+		self.tb_Pembelian_OrderPembelian_TambahProduk_Batal.clicked.connect(self.Pembelian_GoTo_OrderPembelian)
+		self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama.currentIndexChanged.connect(self.Pembelian_OrderPembelian_TambahProduk_UpdateKode)
 		
 		#Tombol pada Penerimaan Barang
 		
@@ -58,7 +62,7 @@ class Pembelian(object):
 		return
 	
 	def Pembelian_GoTo_OrderPembelian(self):
-		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PEMBELIAN_ORDERPEMBELIAN)
+		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_ORDERPEMBELIAN)
 		self.cb_Pembelian_OrderPembelian_Nama.clear()
 		self.cb_Pembelian_OrderPembelian_Gudang.clear()
 		jumlahRow = self.tbl_Pembelian_OrderPembelian.rowCount()
@@ -92,26 +96,26 @@ class Pembelian(object):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_ORDERPEMBELIAN)
 	
 	def Pembelian_GoTo_OrderPembelian_TambahProduk(self):
-		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP_TAMBAHPRODUK)
-		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Satuan.clear()
-		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Nama.clear()
+		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_OP_TAMBAHPRODUK)
+		self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Satuan.clear()
+		self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama.clear()
 		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Jumlah.clear()
 		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Harga.clear()
 		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Diskon.clear()
 		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Pajak.clear()
 		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Kode.clear()
 		
-		#Autocomplete diilangi karena produk belum tentu ada di database
-		""" query = "SELECT * FROM gd_data_produk"
+		#Autocomplete dianu meneh
+		query = "SELECT * FROM gd_data_produk"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
-			self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.addItem(self.DatabaseRunQuery(query)[a][5])
+			self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama.addItem(self.DatabaseRunQuery(query)[a][5])
 		query = "SELECT * FROM gd_satuan_pengukuran"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
-			self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan.addItem(self.DatabaseRunQuery(query)[a][1])
-		nama = str(self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.currentText())
+			self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Satuan.addItem(self.DatabaseRunQuery(query)[a][1])
+		nama = str(self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama.currentText())
 		query = "SELECT * FROM `gd_data_produk` WHERE `namaBarang` LIKE '"+nama+"'"
 		kodeBarang = self.DatabaseRunQuery(query)[0][1]
-		self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Kode.setText(kodeBarang)"""
+		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Kode.setText(kodeBarang)
 		return
 	
 	def Pembelian_OrderPembelian_TambahProduk(self):
@@ -138,7 +142,7 @@ class Pembelian(object):
 		if jumlahRow != 0:
 			for a in range (0,jumlahRow):
 				self.tbl_Pembelian_OrderPembelian.removeRow(a)
-		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PEMBELIAN_ORDERPEMBELIAN)
+		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_ORDERPEMBELIAN)
 		query = "SELECT * FROM `gd_order_pembelian` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"'"
 		result = self.DatabaseRunQuery(query) 
 		if len(result) != 0:
@@ -155,8 +159,15 @@ class Pembelian(object):
 				total = result[a][4]*result[a][5]
 				self.tbl_Pembelian_OrderPembelian.setItem(a,6,QtGui.QTableWidgetItem(str(total))) #total harga
 				self.tbl_Pembelian_OrderPembelian.setItem(a,7,QtGui.QTableWidgetItem(result[a][7]))
-		pass
 		
+	def Pembelian_OrderPembelian_TambahProduk_UpdateKode(self):
+		namaProduk = str(self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama.currentText())
+		query = "SELECT * FROM `gd_data_produk` WHERE `namaBarang` LIKE '"+namaProduk+"'"
+		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Kode.setText
+		kodeBarang = self.DatabaseRunQuery(query)[0][1]
+		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Kode.setText(kodeBarang)
+		pass
+	
 	def Pembelian_OrderPembelian_Batal(self):
 		jumlahRow = self.tbl_Pembelian_OrderPembelian.rowCount()
 		if jumlahRow != 0:

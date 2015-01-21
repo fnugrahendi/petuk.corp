@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Wed Jan 21 09:16:47 2015
+# Created: Wed Jan 21 22:10:17 2015
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -189,7 +189,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataCommon_Fbody_Slist.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataCommon_Fbody_Slist.setObjectName(_fromUtf8("sc_DataMaster_DataCommon_Fbody_Slist"))
         self.scontent_DataMaster_DataCommon_Fbody_Slist = QtGui.QWidget()
-        self.scontent_DataMaster_DataCommon_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 315, 18))
+        self.scontent_DataMaster_DataCommon_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 250, 30))
         self.scontent_DataMaster_DataCommon_Fbody_Slist.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataCommon_Fbody_Slist.setObjectName(_fromUtf8("scontent_DataMaster_DataCommon_Fbody_Slist"))
         self.ivl_DataMaster_DataCommon_Fbody_Slist = QtGui.QVBoxLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist)
@@ -3567,10 +3567,10 @@ class Ui_MainWindow(object):
         self.gridLayout_6.addItem(spacerItem36, 0, 3, 1, 1)
         spacerItem37 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.gridLayout_6.addItem(spacerItem37, 0, 2, 1, 1)
-        self.le_Pembelian_OrderPembelian_TambahProduk_Input_Nama = QtGui.QLineEdit(self.fr_Pembelian_OrderPembelian_TambahProduk_Input)
-        self.le_Pembelian_OrderPembelian_TambahProduk_Input_Nama.setObjectName(_fromUtf8("le_Pembelian_OrderPembelian_TambahProduk_Input_Nama"))
-        self.gridLayout_6.addWidget(self.le_Pembelian_OrderPembelian_TambahProduk_Input_Nama, 1, 1, 1, 1)
-        self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Satuan = QtGui.QLineEdit(self.fr_Pembelian_OrderPembelian_TambahProduk_Input)
+        self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama = QtGui.QComboBox(self.fr_Pembelian_OrderPembelian_TambahProduk_Input)
+        self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama.setObjectName(_fromUtf8("cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama"))
+        self.gridLayout_6.addWidget(self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama, 1, 1, 1, 1)
+        self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Satuan = QtGui.QComboBox(self.fr_Pembelian_OrderPembelian_TambahProduk_Input)
         self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Satuan.setObjectName(_fromUtf8("cb_Pembelian_OrderPembelian_TambahProduk_Input_Satuan"))
         self.gridLayout_6.addWidget(self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Satuan, 3, 1, 1, 1)
         self.verticalLayout_19.addWidget(self.fr_Pembelian_OrderPembelian_TambahProduk_Input)
@@ -4051,7 +4051,7 @@ class Ui_MainWindow(object):
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(4)
+        self.tabWidget.setCurrentIndex(2)
         self.st_DataMaster.setCurrentIndex(9)
         self.st_Penjualan.setCurrentIndex(0)
         self.st_Pembelian.setCurrentIndex(0)
