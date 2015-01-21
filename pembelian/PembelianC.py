@@ -216,6 +216,22 @@ class Pembelian(object):
 	
 	def Pembelian_GoTo_HutangUsaha(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_HUTANG)
+		jumlahRow = self.tbl_Pembelian_HutangUsaha.rowCount()
+		if jumlahRow != 0:
+			for x in range (0,jumlahRow+1):
+				self.tbl_Pembelian_HutangUsaha.removeRow(x)
+		query = "SELECT `kodePelanggan`, SUM(`hargaTotal`) FROM `gd_hutang` GROUP BY `kodePelanggan`"
+		result = self.DatabaseRunQuery(query)
+		for a in range (0,len(result)):
+			kodePelanggan = str(result[a][0])
+			query = "SELECT * FROM `gd_nama_alamat` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"'"
+			nama = str(self.DatabaseRunQuery(query)[0][2])
+			totalHutang = str(int(result[a][1]))
+			self.tbl_Pembelian_HutangUsaha.insertRow(a)
+			self.tbl_Pembelian_HutangUsaha.setItem(a,0,QtGui.QTableWidgetItem(nama)) #nama
+			self.tbl_Pembelian_HutangUsaha.setItem(a,4,QtGui.QTableWidgetItem(totalHutang)) #hutang
+		query = "SELECT SUM(`hargaTotal`) FROM `gd_hutang`"
+		self.lb_Pembelian_HutangUsaha_TotalNilai.setText("Rp "+str(int(self.DatabaseRunQuery(query)[0][0])))
 		return
 	
 	def Pembelian_GoTo_PembayaranHutang(self):
