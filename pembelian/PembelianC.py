@@ -35,6 +35,10 @@ class Pembelian(object):
 		
 		#Tombol pada Order Pembelian
 		self.tb_Pembelian_OrderPembelian_Tutup.clicked.connect(self.Pembelian_GoTo_Menu)
+		self.tb_Pembelian_OrderPembelian_Baru.clicked.connect(self.Pembelian_OrderPembelian_TambahProduk)
+		self.tb_Pembelian_OrderPembelian_Batal.clicked.connect(self.Pembelian_OrderPembelian_Batal)
+		self.tb_Pembelian_OrderPembelian_HapusBaris.clicked.connect()
+		self.tb_Pembelian_OrderPembelian_Rekam.clicked.connect()
 		
 		#Tombol pada Penerimaan Barang
 		
@@ -152,6 +156,23 @@ class Pembelian(object):
 				self.tbl_Pembelian_OrderPembelian.setItem(a,6,QtGui.QTableWidgetItem(str(total))) #total harga
 				self.tbl_Pembelian_OrderPembelian.setItem(a,7,QtGui.QTableWidgetItem(result[a][7]))
 		pass
+		
+	def Pembelian_OrderPembelian_Batal(self):
+		jumlahRow = self.tbl_Pembelian_OrderPembelian.rowCount()
+		if jumlahRow != 0:
+			for a in range (0,jumlahRow):
+				self.tbl_Pembelian_OrderPembelian.removeRow(a)
+		kodeTransaksi = str(self.le_Pembelian_OrderPembelian_NoPO.text())
+		del_query = "DELETE FROM `gd_order_pembelian` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"'"
+		self.DatabaseRunQuery(del_query)
+		
+	def Pembelian_OrderPembelian_HapusBaris(self):
+		kodeTransaksi = str(self.le_Pembelian_OrderPembelian_NoPO.text())
+		currentRow = self.tbl_Pembelian_OrderPembelian.currentRow()
+		kodeBarang = str(self.tbl_Pembelian_OrderPembelian.item(currentRow,0).text())
+		query = "DELETE FROM `gd_order_pembelian` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"' AND `kodeBarang` LIKE '"+kodeBarang+"';"
+		self.DatabaseRunQuery(query)
+		self.tbl_Pembelian_OrderPembelian.removeRow(currentRow)
 	
 	def Pembelian_GoTo_PenerimaanBarang(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_PENERIMAAN)
