@@ -39,7 +39,7 @@ class Pembelian(object):
 		self.tb_Pembelian_OrderPembelian_Baru.clicked.connect(self.Pembelian_GoTo_OrderPembelian_TambahProduk)
 		self.tb_Pembelian_OrderPembelian_Batal.clicked.connect(self.Pembelian_OrderPembelian_Batal)
 		self.tb_Pembelian_OrderPembelian_HapusBaris.clicked.connect(self.Pembelian_OrderPembelian_HapusBaris)
-		#self.tb_Pembelian_OrderPembelian_Rekam.clicked.connect()
+		self.tb_Pembelian_OrderPembelian_Rekam.clicked.connect(self.Pembelian_OrderPembelian_Rekam)
 		self.tb_Pembelian_OrderPembelian_TambahProduk_Simpan.clicked.connect(self.Pembelian_OrderPembelian_TambahProduk)
 		self.tb_Pembelian_OrderPembelian_TambahProduk_Batal.clicked.connect(self.Pembelian_GoTo_OrderPembelian)
 		self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama.currentIndexChanged.connect(self.Pembelian_OrderPembelian_TambahProduk_UpdateKode)
@@ -184,6 +184,31 @@ class Pembelian(object):
 		query = "DELETE FROM `gd_order_pembelian` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"' AND `kodeBarang` LIKE '"+kodeBarang+"';"
 		self.DatabaseRunQuery(query)
 		self.tbl_Pembelian_OrderPembelian.removeRow(currentRow)
+		
+	def Pembelian_OrderPembelian_Rekam(self):
+		nama = str(self.cb_Pembelian_OrderPembelian_Nama.currentText())
+		query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
+		kodePelanggan = self.DatabaseRunQuery(query)[0][1]
+		kodeTransaksi = str(self.le_Pembelian_OrderPembelian_NoPO.text())
+		jumlahRow = self.tbl_Pembelian_OrderPembelian.rowCount()
+		if jumlahRow != 0:
+			for a in range (0,jumlahRow):
+				kodeBarang = str(self.tbl_Pembelian_OrderPembelian.item(a,0).text())
+				jumlahDibeli =  str(self.tbl_Pembelian_OrderPembelian.item(a,2).text())
+				query = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` LIKE '"+kodeBarang+"'"
+				stok = self.DatabaseRunQuery(query)[0][7]
+				stok = int(stok + long(jumlahDibeli))
+				self.DatabaseInsertReplace(self.dbDatabase,"gd_data_produk",
+															"kodeBarang", kodeBarang,
+															["stok"],
+															[stok])
+		query = "SELECT SUM(`harga`*`jumlah`) FROM `gd_order_pembelian` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"'"
+		totalSaldoHutang = str(self.DatabaseRunQuery(query)[0][0])
+		print totalSaldoHutang
+		query = "INSERT INTO `"+self.dbDatabase+"`.`gd_hutang`"+\
+				"(`kodePelanggan`, `kodeTransaksi`, `hargaTotal`) "+\
+				"VALUES ('"+kodePelanggan+"', '"+kodeTransaksi+"', '"+totalSaldoHutang+"');"
+		self.DatabaseRunQuery(query)
 	
 	def Pembelian_GoTo_PenerimaanBarang(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_PENERIMAAN)

@@ -2,11 +2,7 @@
 
 # Form implementation generated from reading ui file 'kasbank/ui_kasbank.ui'
 #
-<<<<<<< HEAD
-# Created: Wed Jan 21 22:10:20 2015
-=======
 # Created: Wed Jan 21 22:05:22 2015
->>>>>>> ddea1768e51d429bcd76781ab4f5da7e58d275cf
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
