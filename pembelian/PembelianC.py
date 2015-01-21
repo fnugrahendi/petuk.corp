@@ -54,7 +54,7 @@ class Pembelian(object):
 		return
 	
 	def Pembelian_GoTo_OrderPembelian(self):
-		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PEMBELIAN_ORDERPEMBELIAN)
 		self.cb_Pembelian_OrderPembelian_Nama.clear()
 		self.cb_Pembelian_OrderPembelian_Gudang.clear()
 		jumlahRow = self.tbl_Pembelian_OrderPembelian.rowCount()
@@ -89,12 +89,13 @@ class Pembelian(object):
 	
 	def Pembelian_GoTo_OrderPembelian_TambahProduk(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP_TAMBAHPRODUK)
-		self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Satuan.clear()
-		self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama.clear()
+		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Satuan.clear()
+		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Nama.clear()
 		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Jumlah.clear()
 		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Harga.clear()
 		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Diskon.clear()
 		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Pajak.clear()
+		self.le_Pembelian_OrderPembelian_TambahProduk_Input_Kode.clear()
 		
 		#Autocomplete diilangi karena produk belum tentu ada di database
 		""" query = "SELECT * FROM gd_data_produk"
@@ -110,7 +111,46 @@ class Pembelian(object):
 		return
 	
 	def Pembelian_OrderPembelian_TambahProduk(self):
-		
+		nama = str(self.cb_Pembelian_OrderPembelian_Nama.currentText())
+		query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
+		kodePelanggan = self.DatabaseRunQuery(query)[0][1]
+		kodeTransaksi = str(self.le_Pembelian_OrderPembelian_NoPO.text())
+		kodeBarang = str(self.le_Pembelian_OrderPembelian_TambahProduk_Input_Kode.text())
+		jumlah = str(self.le_Pembelian_OrderPembelian_TambahProduk_Input_Jumlah.text())
+		harga = str(self.le_Pembelian_OrderPembelian_TambahProduk_Input_Harga.text())
+		diskon = str(self.le_Pembelian_OrderPembelian_TambahProduk_Input_Diskon.text())
+		pajak = str(self.le_Pembelian_OrderPembelian_TambahProduk_Input_Pajak.text())
+		query = "SELECT * FROM `gd_data_pajak` WHERE `namaPajak` LIKE '"+pajak+"'"
+		try:
+			kodePajak = str(self.DatabaseRunQuery(query)[0][1])
+		except:
+			kodePajak = ""
+		kodeMatauang = str(self.cb_Pembelian_OrderPembelian_Kurs.currentText())
+		query = "INSERT INTO `gd_order_pembelian` (`kodeTransaksi`,`kodeMatauang`,`kodePelanggan`,`kodeBarang`"+\
+			",`jumlah`,`harga`,`diskon`,`kodePajak`) VALUES"+\
+			"('"+kodeTransaksi+"','"+kodeMatauang+"','"+kodePelanggan+"','"+kodeBarang+"','"+jumlah+"','"+harga+"','"+diskon+"','"+kodePajak+"')"
+		self.DatabaseRunQuery(query)
+		jumlahRow = self.tbl_Pembelian_OrderPembelian.rowCount()
+		if jumlahRow != 0:
+			for a in range (0,jumlahRow):
+				self.tbl_Pembelian_OrderPembelian.removeRow(a)
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PEMBELIAN_ORDERPEMBELIAN)
+		query = "SELECT * FROM `gd_order_pembelian` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"'"
+		result = self.DatabaseRunQuery(query) 
+		if len(result) != 0:
+			for a in range(0,len(result)):
+				print "tambah row"
+				self.tbl_Pembelian_OrderPembelian.insertRow(a)
+				self.tbl_Pembelian_OrderPembelian.setItem(a,0,QtGui.QTableWidgetItem(result[a][3])) #kode
+				sql = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` = '"+result[a][3]+"'"
+				self.tbl_Pembelian_OrderPembelian.setItem(a,1,QtGui.QTableWidgetItem(str(self.DatabaseRunQuery(sql)[0][5]))) #nama produk
+				self.tbl_Pembelian_OrderPembelian.setItem(a,3,QtGui.QTableWidgetItem(str(self.DatabaseRunQuery(sql)[0][3]))) #jumlah
+				self.tbl_Pembelian_OrderPembelian.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][4]))) #satuan
+				self.tbl_Pembelian_OrderPembelian.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][5]))) #harga
+				self.tbl_Pembelian_OrderPembelian.setItem(a,5,QtGui.QTableWidgetItem(result[a][6])) #diskon
+				total = result[a][4]*result[a][5]
+				self.tbl_Pembelian_OrderPembelian.setItem(a,6,QtGui.QTableWidgetItem(str(total))) #total harga
+				self.tbl_Pembelian_OrderPembelian.setItem(a,7,QtGui.QTableWidgetItem(result[a][7]))
 		pass
 	
 	def Pembelian_GoTo_PenerimaanBarang(self):
