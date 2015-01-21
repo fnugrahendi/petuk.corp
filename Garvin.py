@@ -112,7 +112,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		except:
 			try:
 				self.db = MySQLdb.Connect(host=self.dbHost, port=self.dbPort, user=self.dbUser, passwd=self.dbPass, db=self.dbDatabase)
-				print ("connected database to default port")
+				print ("connected database to Garvin port")
 			except:
 				print ("This software should be ran with correct procedure. Contact customer service for help.")
 				print ("run mysql? only works on makin's platform (y/n)")
