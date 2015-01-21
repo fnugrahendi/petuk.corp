@@ -305,6 +305,42 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QPushButton" name="tb_KasMasuk_Buka">
+         <property name="text">
+          <string>Buka</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_KasMasuk_Delete">
+         <property name="text">
+          <string>Hapus</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="somespaces_pyuic_will_just_ignore">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>495</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_KasMasuk_Tutup">
+         <property name="text">
+          <string>Tutup</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
    </layout>

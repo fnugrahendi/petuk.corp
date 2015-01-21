@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_kasbank.ui'
 #
-# Created: Wed Jan 21 15:32:17 2015
+# Created: Wed Jan 21 18:34:47 2015
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -143,6 +143,19 @@ class Ui_st_KasBank(object):
         self.fr_KasMasuk_b.setFrameShape(QtGui.QFrame.StyledPanel)
         self.fr_KasMasuk_b.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_KasMasuk_b.setObjectName(_fromUtf8("fr_KasMasuk_b"))
+        self.horizontalLayout_2 = QtGui.QHBoxLayout(self.fr_KasMasuk_b)
+        self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
+        self.tb_KasMasuk_Buka = QtGui.QPushButton(self.fr_KasMasuk_b)
+        self.tb_KasMasuk_Buka.setObjectName(_fromUtf8("tb_KasMasuk_Buka"))
+        self.horizontalLayout_2.addWidget(self.tb_KasMasuk_Buka)
+        self.tb_KasMasuk_Delete = QtGui.QPushButton(self.fr_KasMasuk_b)
+        self.tb_KasMasuk_Delete.setObjectName(_fromUtf8("tb_KasMasuk_Delete"))
+        self.horizontalLayout_2.addWidget(self.tb_KasMasuk_Delete)
+        spacerItem5 = QtGui.QSpacerItem(495, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem5)
+        self.tb_KasMasuk_Tutup = QtGui.QPushButton(self.fr_KasMasuk_b)
+        self.tb_KasMasuk_Tutup.setObjectName(_fromUtf8("tb_KasMasuk_Tutup"))
+        self.horizontalLayout_2.addWidget(self.tb_KasMasuk_Tutup)
         self.verticalLayout.addWidget(self.fr_KasMasuk_b)
         st_KasBank.addWidget(self.st_KasMasuk)
 
@@ -166,4 +179,7 @@ class Ui_st_KasBank(object):
         item.setText(_translate("st_KasBank", "Keterangan", None))
         item = self.tbl_KasMasuk.horizontalHeaderItem(4)
         item.setText(_translate("st_KasBank", "Nilai", None))
+        self.tb_KasMasuk_Buka.setText(_translate("st_KasBank", "Buka", None))
+        self.tb_KasMasuk_Delete.setText(_translate("st_KasBank", "Hapus", None))
+        self.tb_KasMasuk_Tutup.setText(_translate("st_KasBank", "Tutup", None))
 
