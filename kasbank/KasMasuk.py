@@ -12,17 +12,10 @@ import itertools #ubah tuple ke array
 import re #regular expression
 from datetime import datetime #tanggal, a= datetime.now(); cobo dicheck dir(a); a.year,
 
-from ui_kasbank import Ui_st_KasBank
-from KasMasuk import KasMasuk
+class KasMasuk(object):
+	def __init__(self,parent=None):
+		pass
+			
+	def KasBank_KasMasuk(self):
+		self.st_kasbank.setCurrentIndex(1)
 
-class KasBank(KasMasuk):
-	def KasBank_init(self,parent=None):
-		super(KasBank,self).__init__(parent)
-		self.st_kasbank = QtGui.QStackedWidget(self.tab_KasBank)
-		self.ui_kasbank = Ui_st_KasBank()
-		self.ui_kasbank.setupUi(self.st_kasbank)
-		self.tab_KasBank.findChild(QtGui.QVBoxLayout).addWidget(self.st_kasbank)
-		
-		#--- menu signal
-		self.ui_kasbank.tb_Menu_KasMasuk.clicked.connect(self.KasBank_KasMasuk)
-	
