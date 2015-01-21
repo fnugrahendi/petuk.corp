@@ -17,7 +17,7 @@
    <string notr="true">QFrame{border:0px;}</string>
   </property>
   <property name="currentIndex">
-   <number>2</number>
+   <number>1</number>
   </property>
   <widget class="QWidget" name="st_Menu">
    <layout class="QGridLayout" name="igr_KasBank_Menu">
