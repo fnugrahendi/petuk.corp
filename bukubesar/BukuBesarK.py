@@ -364,7 +364,11 @@ class BukuBesar(object):
 		return
 	
 	#-------------------------------------------------------------------- TAMBAH ACT SIMPAN
-	def BukuBesar_DaftarTransaksiJurnal_Tambah_Act_Simpan(self,idies=[],sqltorun=[]):
+	def BukuBesar_DaftarTransaksiJurnal_Tambah_Act_Simpan(self,idies=None,sqltorun=None):
+		if idies==None: #-- avoid call by reference default value, as it will just append more 
+			idies = []
+		if sqltorun==None:
+			sqltorun = []
 		CKODE_AKUN = 0
 		CNAMA_AKUN = 1
 		CDEPARTEMEN = 2
