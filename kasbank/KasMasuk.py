@@ -71,7 +71,37 @@ class KasMasuk(object):
 		self.KasBankUI.tb_KasMasuk_Buka.clicked.connect(functools.partial(self.KasBank_KasMasuk_Edit,row,col))
 		#~ print "active "+str(row)+","+str(col)
 		
-		#-- this function
 	def KasBank_KasMasuk_Edit(self,row,col):
+		CKODE = 1
+		data = self.DatabaseFetchResult(self.dbDatabase,
+										"gd_kas_masuk",
+										"kodeTransaksi",
+										str(self.KasBankUI.tbl_KasMasuk.item(row,CKODE).text())
+										)
+		print len(data)
+		print data[0]
+		self.KasBank_KasMasuk_Tambah()
 		print "jalankan edit untuk "
 		print row,col
+	
+	def KasBank_KasMasuk_Tambah(self,dataKasMasuk=False):
+		self.KasBank_Goto("KASMASUK_TAMBAH")
+		
+		if (dataKasMasuk==False):
+			self.KasBank_KasMasuk_IDedit = -1
+		
+		self.GarvinDisconnect(self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.clicked)
+		self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.clicked.connect(self.KasBank_KasMasuk_Tambah_Pilih_Penyetor)
+		
+	def KasBank_KasMasuk_Tambah_Pilih_AkunKas(self):
+		pass
+		
+	def KasBank_KasMasuk_Tambah_Pilih_Penyetor(self):
+		data = []
+		def isi():
+			self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.setText(str(data[0]))
+		def batal():
+			self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.setText("-")
+		self.DataMaster_DataNamaAlamat_Popup_Pilih(data,isi,batal)
+		pass
+	
