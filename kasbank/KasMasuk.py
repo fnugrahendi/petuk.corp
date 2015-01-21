@@ -17,5 +17,19 @@ class KasMasuk(object):
 		pass
 			
 	def KasBank_KasMasuk(self):
-		self.st_kasbank.setCurrentIndex(1)
+		self.st_kasbank.setCurrentIndex(self.INDEX_ST_KASBANK_KASMASUK)
+		
+		CTANGGAL = 0
+		CKODE = 1
+		CPENYETOR = 2
+		CKETERANGAN = 3
+		CNILAI = 4
+		
+		
+		#at first we clear the rows
+		for r in range(0,self.st_kasbank.tbl_KasMasuk.rowCount()+1):
+			self.st_kasbank.tbl_KasMasuk.removeRow(r)
+		self.st_kasbank.tbl_KasMasuk.setRowCount(0)
+		
+		result = self.DatabaseFetchResult(self.dbDatabase,"gd_kas_masuk")
 

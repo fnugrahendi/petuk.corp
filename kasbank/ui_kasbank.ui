@@ -17,7 +17,7 @@
    <string notr="true">QFrame{border:0px;}</string>
   </property>
   <property name="currentIndex">
-   <number>0</number>
+   <number>1</number>
   </property>
   <widget class="QWidget" name="st_Menu">
    <layout class="QGridLayout" name="igr_KasBank_Menu">
@@ -246,6 +246,37 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QTableWidget" name="tbl_KasMasuk">
+         <column>
+          <property name="text">
+           <string>Tanggal</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nomor Referensi</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Penerima</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Keterangan</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nilai</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
     <item>

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_kasbank.ui'
 #
-# Created: Wed Jan 21 09:22:37 2015
+# Created: Wed Jan 21 15:32:17 2015
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -114,6 +114,23 @@ class Ui_st_KasBank(object):
         self.fr_KasMasuk_Content.setFrameShape(QtGui.QFrame.StyledPanel)
         self.fr_KasMasuk_Content.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_KasMasuk_Content.setObjectName(_fromUtf8("fr_KasMasuk_Content"))
+        self.verticalLayout_2 = QtGui.QVBoxLayout(self.fr_KasMasuk_Content)
+        self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
+        self.tbl_KasMasuk = QtGui.QTableWidget(self.fr_KasMasuk_Content)
+        self.tbl_KasMasuk.setObjectName(_fromUtf8("tbl_KasMasuk"))
+        self.tbl_KasMasuk.setColumnCount(5)
+        self.tbl_KasMasuk.setRowCount(0)
+        item = QtGui.QTableWidgetItem()
+        self.tbl_KasMasuk.setHorizontalHeaderItem(0, item)
+        item = QtGui.QTableWidgetItem()
+        self.tbl_KasMasuk.setHorizontalHeaderItem(1, item)
+        item = QtGui.QTableWidgetItem()
+        self.tbl_KasMasuk.setHorizontalHeaderItem(2, item)
+        item = QtGui.QTableWidgetItem()
+        self.tbl_KasMasuk.setHorizontalHeaderItem(3, item)
+        item = QtGui.QTableWidgetItem()
+        self.tbl_KasMasuk.setHorizontalHeaderItem(4, item)
+        self.verticalLayout_2.addWidget(self.tbl_KasMasuk)
         self.verticalLayout.addWidget(self.fr_KasMasuk_Content)
         self.fr_KasMasuk_b = QtGui.QFrame(self.st_KasMasuk)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
@@ -130,7 +147,7 @@ class Ui_st_KasBank(object):
         st_KasBank.addWidget(self.st_KasMasuk)
 
         self.retranslateUi(st_KasBank)
-        st_KasBank.setCurrentIndex(0)
+        st_KasBank.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(st_KasBank)
 
     def retranslateUi(self, st_KasBank):
@@ -139,4 +156,14 @@ class Ui_st_KasBank(object):
         self.tb_Menu_KasKeluar.setText(_translate("st_KasBank", "Kas Keluar", None))
         self.lb_KasMasuk_Judul.setText(_translate("st_KasBank", "Kas Masuk", None))
         self.le_KasMasuk_Search.setPlaceholderText(_translate("st_KasBank", "Type to search...", None))
+        item = self.tbl_KasMasuk.horizontalHeaderItem(0)
+        item.setText(_translate("st_KasBank", "Tanggal", None))
+        item = self.tbl_KasMasuk.horizontalHeaderItem(1)
+        item.setText(_translate("st_KasBank", "Nomor Referensi", None))
+        item = self.tbl_KasMasuk.horizontalHeaderItem(2)
+        item.setText(_translate("st_KasBank", "Penerima", None))
+        item = self.tbl_KasMasuk.horizontalHeaderItem(3)
+        item.setText(_translate("st_KasBank", "Keterangan", None))
+        item = self.tbl_KasMasuk.horizontalHeaderItem(4)
+        item.setText(_translate("st_KasBank", "Nilai", None))
 

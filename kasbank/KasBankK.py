@@ -18,6 +18,13 @@ from KasMasuk import KasMasuk
 class KasBank(KasMasuk):
 	def KasBank_init(self,parent=None):
 		super(KasBank,self).__init__(parent)
+		
+		self.INDEX_ST_KASBANK_MENU = 0
+		self.INDEX_ST_KASBANK_KASMASUK = 1
+		self.INDEX_ST_KASBANK_KASMASUK_TAMBAH = 2
+		self.INDEX_ST_KASBANK_KASKELUAR = 3
+		self.INDEX_ST_KASBANK_KASKELUAR_TAMBAH = 4
+		
 		self.st_kasbank = QtGui.QStackedWidget(self.tab_KasBank)
 		self.ui_kasbank = Ui_st_KasBank()
 		self.ui_kasbank.setupUi(self.st_kasbank)
