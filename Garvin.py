@@ -104,6 +104,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.KasBank_init()
 		#--- kalau pindah tab, set semua stackedWidget ke index 0 (suppose to be _Menu index)
 		self.tabWidget.currentChanged.connect(self.ResetRooms)
+		#--- startup program aswell, stackedwidget room should be on Menu Index 
+		self.ResetRooms()
 		
 	def initDatabase(self):
 		try:
