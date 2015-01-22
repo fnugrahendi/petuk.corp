@@ -77,7 +77,7 @@ class DataProduk(object):
 		else:
 			sql = "INSERT INTO `"+self.dbDatabase+"`.`gd_data_produk`"+\
 					" (`id`, `kodeBarang`, `deskripsi`, `kodeSatuan`, `hpp`, `namaBarang`, `sifat`, `stok`) "+\
-					"VALUES (NULL, '"+kode+"', '"+deskripsi+"', '"+satuan+"', '"+hpp+"', '"+deskripsi+"', '"+sifat+"', '"+stok+"');"
+					"VALUES (NULL, '"+kode+"', '"+deskripsi+"', '"+satuan+"', '"+hpp+"', '"+nama+"', '"+sifat+"', '"+stok+"');"
 		self.DatabaseRunQuery(sql)
 		self.le_DataMaster_DataProduk_Tambah_KodeBarang.setReadOnly(False)
 		#----------------------------------------------------------------------------------------------------------back to where it should be
