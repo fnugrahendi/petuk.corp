@@ -117,7 +117,6 @@ class KasMasuk(object):
 		self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.setText(kode_default)
 	
 	def KasBank_KasMasuk_Tambah_KodeCek(self,stuf=None):
-		print "masuk lho"
 		kodebaru = ""
 		kodeterlarang = str(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.text())
 		result = self.DatabaseFetchResult(self.dbDatabase,"gd_kas_masuk","kodeTransaksi",kodeterlarang	)
@@ -132,7 +131,6 @@ class KasMasuk(object):
 				kodebaru = "CR"+kodebaru
 				kodeterlarang = kodebaru
 				result = self.DatabaseFetchResult(self.dbDatabase,"gd_kas_masuk","kodeTransaksi",kodeterlarang	)
-				print kodebaru
 			self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.setText(kodebaru)
 			
 	def KasBank_KasMasuk_Tambah(self,dataKasMasuk=False):
