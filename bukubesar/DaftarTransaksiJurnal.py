@@ -254,6 +254,7 @@ class DaftarTransaksiJurnal(object):
 			a = self.BukuBesar_DaftarTransaksiJurnal_Tambah_RowColumnTerpilih[0]
 			if (a<0):
 				return
+			#----- a<len(idies) secure wether the data is already on database or not, if it hasn't then it just do plain delete from table, else it will delete it from database
 			if (a<len(idies)):
 				sqltorun.append( "DELETE FROM `gd_detail_transaksi_jurnal` WHERE `gd_detail_transaksi_jurnal`.`id` = "+str(idies[a])+" ;")
 				idies.pop(a)
@@ -355,6 +356,8 @@ class DaftarTransaksiJurnal(object):
 		return
 		
 	def BukuBesar_DaftarTransaksiJurnal_PilihDepartemen(self,row,column):
+		self.BukuBesar_DaftarTransaksiJurnal_Tambah_RowColumnTerpilih = [row,column]
+		
 		if column!=2:
 			return
 		ok = ["-"]
