@@ -259,6 +259,7 @@ class DaftarTransaksiJurnal(object):
 				sqltorun.append( "DELETE FROM `gd_detail_transaksi_jurnal` WHERE `gd_detail_transaksi_jurnal`.`id` = "+str(idies[a])+" ;")
 				idies.pop(a)
 			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.removeRow(a)
+			hitungulang()
 			
 		def _ConfirmDeleteCertainCell():
 			a = self.BukuBesar_DaftarTransaksiJurnal_Tambah_RowColumnTerpilih[0]
