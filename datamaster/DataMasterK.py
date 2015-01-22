@@ -400,7 +400,7 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk):
 					for y in range(0, len(Tb_ListSatuan)):
 						self.ivl_DataMaster_DataCommon_Fbody_Slist.addWidget(Tb_ListSatuan[y],QtCore.Qt.AlignLeading|QtCore.Qt.AlignTop)
 						Tb_ListSatuan[y].show()
-						Tb_ListSatuan[y].setText(str(result[x][self.DataMaster_DataSatuan_Field.index("namaSatuan")]))
+						Tb_ListSatuan[y].setText(str(result[x][self.DataMaster_DataSatuanPengukuran_Field.index("namaSatuan")]))
 						Tb_ListSatuan[y].clicked.disconnect()
 						Tb_ListSatuan[y].clicked.connect(functools.partial(self.DataMaster_DataSatuanPengukuran_DrawInfo,result[x]))
 		
