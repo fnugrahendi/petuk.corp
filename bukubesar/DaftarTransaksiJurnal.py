@@ -141,6 +141,8 @@ class DaftarTransaksiJurnal(object):
 			if self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()>0:
 				for row in range(0,self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()):
 					#----check kalau diisi selain angka
+					nilaiKredit = 0.0
+					nilaiDebit = 0.0
 					try:
 						nilaiKredit = float(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKREDIT).text())
 					except ValueError:
