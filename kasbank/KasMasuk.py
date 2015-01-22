@@ -21,8 +21,24 @@ class KasMasuk(object):
 	def KasBank_KasMasuk(self):
 		""" The room control itself """
 		self.KasBank_Goto("KASMASUK")
-		
+		CNOMOR_REFERENSI = 1
 		self.KasBank_KasMasuk_RefreshList()
+		self.KasBank_KasMasuk_RowColumnTerpilih = [-1,-1]
+		
+		def deletecertainrow():
+			row = self.KasBank_KasMasuk_RowColumnTerpilih[0]
+			nomorreferensi = str(self.KasBankUI.tbl_KasMasuk.item(row,CNOMOR_REFERENSI).text())
+			sql = "DELETE FROM `gd_kas_masuk` WHERE `gd_kas_masuk`.`kodeTransaksi` LIKE '"+nomorreferensi+"' ;"
+			self.DatabaseRunQuery(sql)
+			sql = "DELETE FROM `gd_detail_kas_masuk` WHERE `gd_detail_kas_masuk`.`kodeTransaksi` LIKE '"+nomorreferensi+"' ;"
+			self.DatabaseRunQuery(sql)
+			self.KasBankUI.tbl_KasMasuk.removeRow(row)
+			
+		def confirmdeletecertainrow():
+			row = self.KasBank_KasMasuk_RowColumnTerpilih[0]
+			if row>=0:
+				nomorreferensi = str(self.KasBankUI.tbl_KasMasuk.item(row,CNOMOR_REFERENSI).text())
+				self.DataMaster_Popup("Anda yakin akan menghapus data "+nomorreferensi+"?",deletecertainrow)
 		
 		self.GarvinDisconnect(self.KasBankUI.tbl_KasMasuk.cellClicked)
 		self.GarvinDisconnect(self.KasBankUI.tbl_KasMasuk.cellDoubleClicked)
@@ -33,11 +49,16 @@ class KasMasuk(object):
 		self.KasBankUI.tb_KasMasuk_Tambah.clicked.connect(self.KasBank_KasMasuk_Tambah)
 		self.GarvinDisconnect(self.KasBankUI.tb_KasMasuk_Tutup.clicked)
 		self.KasBankUI.tb_KasMasuk_Tutup.clicked.connect(self.KasBank_Menu)
+		self.GarvinDisconnect(self.KasBankUI.tb_KasMasuk_Delete.clicked)
+		self.KasBankUI.tb_KasMasuk_Delete.clicked.connect(confirmdeletecertainrow)
+		
+		self.GarvinDisconnect(self.KasBankUI.le_KasMasuk_Search.textChanged)
+		self.KasBankUI.le_KasMasuk_Search.textChanged.connect(self.KasBank_KasMasuk_RefreshList)
 
 	def KasBank_KasMasuk_RefreshList(self,searchtext=""):
 		""" Refresh list of the table """
 		field = self.KasBank_KasMasuk_Field.index
-		
+		searchtext=str(searchtext)
 		CTANGGAL = 0
 		CKODE = 1
 		CPENYETOR = 2
@@ -70,8 +91,9 @@ class KasMasuk(object):
 	
 	def KasBank_KasMasuk_SetActiveIndex(self,row,col):
 		""" This function reconnect the signal of button Buka """
+		self.GarvinDisconnect(self.KasBankUI.tb_KasMasuk_Buka.clicked)
 		self.KasBankUI.tb_KasMasuk_Buka.clicked.connect(functools.partial(self.KasBank_KasMasuk_Edit,row,col))
-		#~ print "active "+str(row)+","+str(col)
+		self.KasBank_KasMasuk_RowColumnTerpilih = [row,col]
 		
 	def KasBank_KasMasuk_Edit(self,row,col):
 		CKODE = 1
@@ -130,7 +152,25 @@ class KasMasuk(object):
 		sqltorun = []
 		
 		def hitungulang():
-			pass
+			total = 0
+			for row in range(0,self.KasBankUI.tbl_KasMasuk_Tambah.rowCount()):
+			#----check kalau diisi selain angka
+				nilai_row = 0.0
+				try:
+					nilai_row = float(self.KasBankUI.tbl_KasMasuk_Tambah.item(row,2).text())
+				except ValueError:
+				#------ambil bilangan disitu dgn regex bila sukses, bila tidak beri nilai 0
+					try:
+						t = self.KasBankUI.tbl_KasMasuk_Tambah.item(row,2).text()
+						self.KasBankUI.tbl_KasMasuk_Tambah.item(row,2).setText(str(re.search('\d+', t).group()))
+					except AttributeError:
+						self.KasBankUI.tbl_KasMasuk_Tambah.item(row,2).setText("0")
+					except:pass
+					nilai_row = float(self.KasBankUI.tbl_KasMasuk_Tambah.item(row,2).text())
+				except:pass
+				total = total + nilai_row
+				self.KasBankUI.lb_KasMasuk_Tambah_Form_Nilai.setText(str(total))
+			#----- end def hitung ulang
 		
 		def setactiveindex(a,b):
 			self.KasBank_KasMasuk_Tambah_RowColumnTerpilih = [a,b]
@@ -151,6 +191,7 @@ class KasMasuk(object):
 				sqltorun.append( "DELETE FROM `gd_detail_kas_masuk` WHERE `gd_detail_kas_masuk`.`id` = "+str(idies[baris])+" ;")
 				idies.pop(baris)
 			self.KasBankUI.tbl_KasMasuk_Tambah.removeRow(baris)
+			hitungulang()
 			
 		def confirmdeletecertainrow():
 			""" show popup to delete certain row, if user make sure, commit the delete with deletecertainrow"""
@@ -166,8 +207,10 @@ class KasMasuk(object):
 		
 		self.GarvinDisconnect(self.KasBankUI.tbl_KasMasuk_Tambah.cellDoubleClicked)
 		self.GarvinDisconnect(self.KasBankUI.tbl_KasMasuk_Tambah.cellClicked)
+		self.GarvinDisconnect(self.KasBankUI.tbl_KasMasuk_Tambah.cellChanged)
 		self.KasBankUI.tbl_KasMasuk_Tambah.cellDoubleClicked.connect(self.KasBank_KasMasuk_Tambah_EditTable)
 		self.KasBankUI.tbl_KasMasuk_Tambah.cellClicked.connect(setactiveindex)
+		self.KasBankUI.tbl_KasMasuk_Tambah.cellChanged.connect(hitungulang)
 		
 		self.GarvinDisconnect(self.KasBankUI.tb_KasMasuk_Tambah_TambahBaris.clicked)
 		self.KasBankUI.tb_KasMasuk_Tambah_TambahBaris.clicked.connect(tambahbaris)
