@@ -145,7 +145,10 @@ class KasMasuk(object):
 						self.KasBankUI.tbl_KasMasuk_Tambah.setItem(row, kolom, item)
 				self.KasBankUI.tbl_KasMasuk_Tambah.item(row,0).setText(str(result[row][fkmdetail(TABLECOLUMNS[1][0])]))
 				self.KasBankUI.tbl_KasMasuk_Tambah.item(row,2).setText(str(result[row][fkmdetail(TABLECOLUMNS[1][2])]))
-				namaakun = self.DatabaseFetchResult(self.dbDatabase,"gd_rekening_jurnal","noAkun",(result[row][fkmdetail(TABLECOLUMNS[1][0])])	)[0][self.DataMaster_DataRekening_Field.index("namaAkun")]
+				try:
+					namaakun = self.DatabaseFetchResult(self.dbDatabase,"gd_rekening_jurnal","noAkun",(result[row][fkmdetail(TABLECOLUMNS[1][0])])	)[0][self.DataMaster_DataRekening_Field.index("namaAkun")]
+				except:
+					namaakun = ""
 				self.KasBankUI.tbl_KasMasuk_Tambah.item(row,1).setText(str(namaakun))
 		
 		#----Hapus baris hanya terjadi bila sudah di Act_Simpan, sql query diantrikan
