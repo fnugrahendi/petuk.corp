@@ -554,7 +554,25 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		for r in range(0,tableobject.rowCount()+1):
 			tableobject.removeRow(r)
 		tableobject.setRowCount(0)
-		
+	
+	def GarvinValidate(self,lineedit,regexp=None):
+		"""validate line edit input based on regexp if yielded, or just around alphanumeric
+			default : alphanumeric
+			"angka" : digit
+			"huruf" : huruf
+		"""
+		if (regexp==None):
+			regexp = QRegExp("[a-zA-Z0-9]+")
+			lineedit.setValidator(QRegExpValidator(regexp))
+		elif (regexp.lower()=="angka"):
+			regexp = QRegExp("[0-9]+")
+			lineedit.setValidator(QRegExpValidator(regexp))
+		elif (regexp.lower()=="huruf"):
+			regexp = QRegExp("[a-zA-Z]+")
+			lineedit.setValidator(QRegExpValidator(regexp))
+		else:
+			regexp = QRegExp(regexp)
+			lineedit.setValidator(QRegExpValidator(regexp))
 if __name__=="__main__":
 	app = QtGui.QApplication(sys.argv)
 	dmw = MainGUI()
