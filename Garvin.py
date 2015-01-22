@@ -469,19 +469,26 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 	def DatabaseInsertReplace(self,db,table,keyfield,keyvalue,fields,values):
 		"""masukkan (list) values pada (list) fields ke table dengan keyfield dan value tertentu, bila sudah ada update, bila belum insert
 		note that keyfield must be rewritten on fields too, due too incase keyfields keyvalue is just in-purpose-False escaper that is not used
+		if keyfield == None, then it's plain insert
 		15 Jan 2015 06:37
 		"""
-		if (type(keyvalue) == str):
+		ada_data = False
+		if keyfield==None:
+			sql =""
+			ada_data = False
+		elif (type(keyvalue) == str):
 			sql = "SELECT * FROM `"+table+"` WHERE `"+str(keyfield)+"` LIKE '"+str(keyvalue)+"' ;"
+			data = self.DatabaseRunQuery(sql)
+			if len(data)>0:
+				ada_data = True
 		else:
 			sql = "SELECT * FROM `"+table+"` WHERE `"+str(keyfield)+"` = "+str(keyvalue)+" ;"
-		data = self.DatabaseRunQuery(sql)
-		ada_data = False
-		if len(data)>0:
-			ada_data = True
+			data = self.DatabaseRunQuery(sql)
+			if len(data)>0:
+				ada_data = True
 		if len(fields)!=len(values):
 			#salah
-			return False			
+			return False
 		if (ada_data):
 			sql = "UPDATE `"+db+"`.`"+table+"` SET "
 			for x in range(0,len(fields)):
