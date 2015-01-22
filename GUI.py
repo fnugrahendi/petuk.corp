@@ -4,7 +4,6 @@
 #
 # Created: Thu Jan 22 13:02:33 2015
 #      by: PyQt4 UI code generator 4.10.4
->>>>>>> 66bab7b072cdd6edd91b0763cccacfd0b066d32b
 #
 # WARNING! All changes made in this file will be lost!
 
