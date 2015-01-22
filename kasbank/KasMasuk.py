@@ -124,7 +124,7 @@ class KasMasuk(object):
 		if (len(result)>0):
 			self.statusbar.showMessage("Kode "+kodeterlarang+" sudah terpakai, diberikan kode lain",10000)
 			while len(result)>0:
-				nilai = int(kodeterlarang.replace("CR",""))
+				nilai = int(re.findall("\d+",kodeterlarang)[0])
 				nilai+=1
 				kodebaru = str(nilai)
 				while (len(kodebaru)<8):
