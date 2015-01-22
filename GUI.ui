@@ -7778,7 +7778,7 @@ QPushButton::hover{
              <widget class="QWidget" name="st_Pembelian_HutangUsaha">
               <layout class="QVBoxLayout" name="verticalLayout_18">
                <item>
-                <widget class="QFrame" name="fr_Pembelian_HutangUsaha_title">
+                <widget class="QFrame" name="fr_Pembelian_HutangUsaha_Title">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
                    <horstretch>0</horstretch>
@@ -7799,7 +7799,7 @@ QPushButton::hover{
                  </property>
                  <layout class="QGridLayout" name="gl_Penjualan_Piutang_title_2">
                   <item row="0" column="0">
-                   <widget class="QLabel" name="lb_Pembelian_HutangUsaha_title">
+                   <widget class="QLabel" name="lb_Pembelian_HutangUsaha_Title">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
                       <horstretch>0</horstretch>
@@ -7965,7 +7965,7 @@ QPushButton::hover{
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="tb_Pembelian_HutangUsaha_Perincian_2">
+                   <widget class="QPushButton" name="tb_Pembelian_HutangUsaha_Perincian">
                     <property name="text">
                      <string>Perincian</string>
                     </property>
@@ -7973,6 +7973,257 @@ QPushButton::hover{
                   </item>
                   <item>
                    <widget class="QPushButton" name="tb_Pembelian_HutangUsaha_Tutup">
+                    <property name="text">
+                     <string>Tutup</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="page">
+              <layout class="QVBoxLayout" name="verticalLayout_20">
+               <item>
+                <widget class="QFrame" name="fr_Pembelian_RincianHutang_Title">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>45</height>
+                  </size>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QGridLayout" name="gl_Penjualan_RincianPiutang_title_2">
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="lb_Pembelian_RincianHutang_Title">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Segoe UI Semilight</family>
+                      <pointsize>18</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Rincian Hutang Usaha - </string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLabel" name="lb_Pembelian_RincianHutang_Title_Nama">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Segoe UI Semilight</family>
+                      <pointsize>18</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Nama</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <widget class="QLabel" name="lb_Pembelian_RincianHutang_Title_Kurs">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Segoe UI Semilight</family>
+                      <pointsize>18</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>(kurs)</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="3">
+                   <spacer name="hs_Pembelian_RincianHutang_Title">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="fr_Pembelian_RincianHutang_Tabel">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="vl_Penjualan_RincianPiutang_tabel_2">
+                  <item>
+                   <widget class="QTableWidget" name="tbl_Pembelian_RincianHutang">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Maximum" vsizetype="MinimumExpanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>270</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>1366</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <property name="showGrid">
+                     <bool>false</bool>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
+                    <property name="cornerButtonEnabled">
+                     <bool>true</bool>
+                    </property>
+                    <property name="rowCount">
+                     <number>8</number>
+                    </property>
+                    <property name="columnCount">
+                     <number>6</number>
+                    </property>
+                    <attribute name="verticalHeaderVisible">
+                     <bool>false</bool>
+                    </attribute>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <column>
+                     <property name="text">
+                      <string>Tanggal</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>No. Invoice</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>0 - 30 Hari</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>30 - 60 Hari</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>60 - 90 Hari</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>&gt; 90 Hari</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="fr_Pembelian_RincianHutang_Tombol">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="hl_Penjualan_RincianPiutang_tombol_2">
+                  <item>
+                   <spacer name="hs_Pembelian_RincianHutang_Tombol">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>523</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="tb_Pembelian_RincianHutang_Perincian">
+                    <property name="text">
+                     <string>Perincian</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="tb_Pembelian_RincianHutang_Tutup">
                     <property name="text">
                      <string>Tutup</string>
                     </property>
