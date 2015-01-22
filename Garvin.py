@@ -548,6 +548,13 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 			return self.DatabaseRunQuery("SELECT * FROM `"+db+"`.`"+table+"` WHERE `"+keyfield+"` LIKE '"+keyvalue+"';")
 		else:
 			return self.DatabaseRunQuery("SELECT * FROM `"+db+"`.`"+table+"` WHERE `"+keyfield+"` = "+keyvalue+";")
+	
+	def clearTable(self,tableobject):
+		#at first we clear the rows
+		for r in range(0,tableobject.rowCount()+1):
+			tableobject.removeRow(r)
+		tableobject.setRowCount(0)
+		
 if __name__=="__main__":
 	app = QtGui.QApplication(sys.argv)
 	dmw = MainGUI()

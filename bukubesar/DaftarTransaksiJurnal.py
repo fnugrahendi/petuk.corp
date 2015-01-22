@@ -194,9 +194,7 @@ class DaftarTransaksiJurnal(object):
 				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(newrow, CKREDIT, item)
 		
 		#at first we clear the rows
-		for r in range(0,self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()+1):
-			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.removeRow(r)
-		self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setRowCount(0)
+		self.clearTable(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List)
 		
 		idies = []
 		if (self.BukuBesar_DaftarTransaksiJurnal_idEDIT > -1):
@@ -207,7 +205,6 @@ class DaftarTransaksiJurnal(object):
 			
 			sql = "SELECT * FROM `gd_detail_transaksi_jurnal` WHERE `kodeTransaksi` LIKE '"+str(self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.text())+"' ;"
 			result = self.DatabaseRunQuery(sql)
-			#~ self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setRowCount(len(result))
 			for r in range(0,len(result)):
 				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.insertRow(r)
 				if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CKODE_AKUN)==None):
@@ -286,7 +283,7 @@ class DaftarTransaksiJurnal(object):
 		self.GarvinDisconnect(self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Delete.clicked)
 		self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Delete.clicked.connect(_ConfirmDeleteCertainCell)
 		self.GarvinDisconnect(self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Simpan.clicked)
-		#-----kalau len idies 0, langsung masuk ke for row in range(len(idies),self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()): tanpa masalah
+		#-----kalau len idies 0, langsung masuk ke for tambahan baru: tanpa masalah
 		self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Simpan.clicked.connect(functools.partial(self.BukuBesar_DaftarTransaksiJurnal_Tambah_Act_Simpan,idies,sqltorun))
 		return
 	
@@ -369,6 +366,7 @@ class DaftarTransaksiJurnal(object):
 		"pilih rekening untuk data transaksi jurnal pada baris $row"
 		CNOMOR_REKENING = 0
 		CNAMA_REKENING = 1
+		data = ["",""]
 		if (column>1):
 			"bukan pilih data rekening"
 			return
@@ -379,11 +377,11 @@ class DaftarTransaksiJurnal(object):
 			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CNAMA_REKENING)==None):
 				item = QtGui.QTableWidgetItem()
 				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(row, CNAMA_REKENING, item)
-			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CNOMOR_REKENING).setText(self.DataMaster_DataRekening_RekeningTerpilih[0])
-			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CNAMA_REKENING).setText(self.DataMaster_DataRekening_RekeningTerpilih[1])
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CNOMOR_REKENING).setText(str(data[0]))
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CNAMA_REKENING).setText(str(data[1]))
 			self.GarvinDisconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellClicked)
 			self.GarvinDisconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellDoubleClicked)
-		self.DataMaster_DataRekening_Popup_Pilih(UbahCell)
+		self.DataMaster_DataRekening_Popup_Pilih(data,UbahCell)
 	
 	def BukuBesar_DaftarTransaksiJurnal_Tambah_GenerateKode(self):
 		sql = "SELECT `id` FROM `"+self.dbDatabase+"`.`gd_transaksi_jurnal` ORDER BY `gd_transaksi_jurnal`.`id` DESC LIMIT 0 , 1"
