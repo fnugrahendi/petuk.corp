@@ -46,7 +46,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.dbUser = "gd_user_akunting"
         #---------------------------------------------------------------Penjualan Init Itut
 		#Tombol pada Halaman Menu
-		self.tb_Penjualan_PenawaranHarga.clicked.connect(self.Penjualan_GoTo_PenawaranHarga)
+		#self.tb_Penjualan_PenawaranHarga.clicked.connect(self.Penjualan_GoTo_PenawaranHarga)
 		self.tb_Penjualan_OrderPenjualan.clicked.connect(self.Penjualan_GoTo_OrderPenjualan)
 		self.tb_Penjualan_Pengiriman.clicked.connect(self.Penjualan_GoTo_Pengiriman)
 		self.tb_Penjualan_Piutang.clicked.connect(self.Penjualan_GoTo_PiutangUsaha)
@@ -69,6 +69,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.tb_Penjualan_OrderPenjualan_Batal.clicked.connect(self.Penjualan_OrderPenjualan_Batal)
 		self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.currentIndexChanged.connect(self.Penjualan_OrderPenjualan_TambahProduk_UpdateKode)
 		self.tb_Penjualan_OrderPenjualan_Rekam.clicked.connect(self.Penjualan_OrderPenjualan_Rekam)
+		self.tb_Penjualan_OrderPenjualan_Nama.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.tb_Penjualan_OrderPenjualan_Nama))
 		
 		#Tombol pada Halaman Pengiriman
 		self.tb_Penjualan_Pengiriman_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -163,7 +164,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		
 	def Penjualan_GoTo_OrderPenjualan(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
-		self.cb_Penjualan_OrderPenjualan_Nama.clear()
+		self.tb_Penjualan_OrderPenjualan_Nama.setText("")
 		self.cb_Penjualan_OrderPenjualan_Gudang.clear()
 		jumlahRow = self.tbl_Penjualan_OrderPenjualan.rowCount()
 		#print jumlahRow
@@ -172,9 +173,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 				self.tbl_Penjualan_OrderPenjualan.removeRow(a)
 		kodePenjualan = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
 		#print kodePenjualan
+		"""
 		query = "SELECT * FROM gd_nama_alamat WHERE `tipe` LIKE 'customer'"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
-			self.cb_Penjualan_OrderPenjualan_Nama.addItem(self.DatabaseRunQuery(query)[a][2])
+			self.cb_Penjualan_OrderPenjualan_Nama.addItem(self.DatabaseRunQuery(query)[a][2])"""
 		query = "SELECT * FROM gd_data_gudang"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
 			self.cb_Penjualan_OrderPenjualan_Gudang.addItem(self.DatabaseRunQuery(query)[a][2])
@@ -184,16 +186,19 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 			for a in range(0,len(result)):
 				print "tambah row"
 				self.tbl_Penjualan_OrderPenjualan.insertRow(a)
-				self.tbl_Penjualan_OrderPenjualan.setItem(a,0,QtGui.QTableWidgetItem(result[a][3])) #kode
-				sql = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` = '"+result[a][3]+"'"
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,0,QtGui.QTableWidgetItem(result[a][4])) #kode
+				sql = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` = '"+result[a][4]+"'"
 				self.tbl_Penjualan_OrderPenjualan.setItem(a,1,QtGui.QTableWidgetItem(str(self.DatabaseRunQuery(sql)[0][5]))) #nama produk
-				self.tbl_Penjualan_OrderPenjualan.setItem(a,3,QtGui.QTableWidgetItem(str(self.DatabaseRunQuery(sql)[0][3]))) #jumlah
-				self.tbl_Penjualan_OrderPenjualan.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][4]))) #satuan
-				self.tbl_Penjualan_OrderPenjualan.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][5]))) #harga
-				self.tbl_Penjualan_OrderPenjualan.setItem(a,5,QtGui.QTableWidgetItem(result[a][6])) #diskon
-				total = result[a][4]*result[a][5]
+				kodeSatuan = str(self.DatabaseRunQuery(sql)[0][3])
+				satuan_query =  "SELECT * FROM `gd_satuan_pengukuran` WHERE `kodeSatuan` = '"+kodeSatuan+"'"
+				satuan = str(self.DatabaseRunQuery(satuan_query)[0][2])
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,3,QtGui.QTableWidgetItem(satuan)) #satuan
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][5]))) #jumlah
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][6]))) #harga
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,5,QtGui.QTableWidgetItem(result[a][7])) #diskon
+				total = result[a][6]*result[a][5]
 				self.tbl_Penjualan_OrderPenjualan.setItem(a,6,QtGui.QTableWidgetItem(str(total))) #total harga
-				self.tbl_Penjualan_OrderPenjualan.setItem(a,7,QtGui.QTableWidgetItem(result[a][7]))
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,7,QtGui.QTableWidgetItem(result[a][8])) #pajak
 		
 	
 	def Penjualan_GoTo_OP_TambahProduk(self):
@@ -216,9 +221,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Kode.setText(kodeBarang)
 			
 	def Penjualan_OrderPenjualan_TambahProduk(self):
-		nama = str(self.cb_Penjualan_OrderPenjualan_Nama.currentText())
-		query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
-		kodePelanggan = self.DatabaseRunQuery(query)[0][1]
+		kodePelanggan = str(self.tb_Penjualan_OrderPenjualan_Nama.text())
 		kodeTransaksi = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
 		kodeBarang = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Kode.text())
 		jumlah = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Jumlah.text())
@@ -246,21 +249,22 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 			for a in range(0,len(result)):
 				print "tambah row"
 				self.tbl_Penjualan_OrderPenjualan.insertRow(a)
-				self.tbl_Penjualan_OrderPenjualan.setItem(a,0,QtGui.QTableWidgetItem(result[a][3])) #kode
-				sql = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` = '"+result[a][3]+"'"
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,0,QtGui.QTableWidgetItem(result[a][4])) #kode
+				sql = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` = '"+result[a][4]+"'"
 				self.tbl_Penjualan_OrderPenjualan.setItem(a,1,QtGui.QTableWidgetItem(str(self.DatabaseRunQuery(sql)[0][5]))) #nama produk
-				self.tbl_Penjualan_OrderPenjualan.setItem(a,3,QtGui.QTableWidgetItem(str(self.DatabaseRunQuery(sql)[0][3]))) #jumlah
-				self.tbl_Penjualan_OrderPenjualan.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][4]))) #satuan
-				self.tbl_Penjualan_OrderPenjualan.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][5]))) #harga
-				self.tbl_Penjualan_OrderPenjualan.setItem(a,5,QtGui.QTableWidgetItem(result[a][6])) #diskon
-				total = result[a][4]*result[a][5]
+				kodeSatuan = str(self.DatabaseRunQuery(sql)[0][3])
+				satuan_query =  "SELECT * FROM `gd_satuan_pengukuran` WHERE `kodeSatuan` = '"+kodeSatuan+"'"
+				satuan = str(self.DatabaseRunQuery(satuan_query)[0][2])
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,3,QtGui.QTableWidgetItem(satuan)) #satuan
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][5]))) #jumlah
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][6]))) #harga
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,5,QtGui.QTableWidgetItem(result[a][7])) #diskon
+				total = result[a][6]*result[a][5]
 				self.tbl_Penjualan_OrderPenjualan.setItem(a,6,QtGui.QTableWidgetItem(str(total))) #total harga
-				self.tbl_Penjualan_OrderPenjualan.setItem(a,7,QtGui.QTableWidgetItem(result[a][7]))
+				self.tbl_Penjualan_OrderPenjualan.setItem(a,7,QtGui.QTableWidgetItem(result[a][8])) #pajak
 	
 	def Penjualan_OrderPenjualan_Rekam(self):
-		nama = str(self.cb_Penjualan_OrderPenjualan_Nama.currentText())
-		query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
-		kodePelanggan = self.DatabaseRunQuery(query)[0][1]
+		kodePelanggan = str(self.tb_Penjualan_OrderPenjualan_Nama.text())
 		kodeTransaksi = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
 		jumlahRow = self.tbl_Penjualan_OrderPenjualan.rowCount()
 		if jumlahRow != 0:
@@ -278,7 +282,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		totalSaldoPiutang = str(self.DatabaseRunQuery(query)[0][0])
 		print totalSaldoPiutang
 		query = "INSERT INTO `"+self.dbDatabase+"`.`gd_piutang`"+\
-				"(`kodePelanggan`, `kodeTransaksi`, `totalSaldo`) "+\
+				"(`kodePelanggan`, `kodeTransaksi`, `hargaTotal`) "+\
 				"VALUES ('"+kodePelanggan+"', '"+kodeTransaksi+"', '"+totalSaldoPiutang+"');"
 		self.DatabaseRunQuery(query)
 

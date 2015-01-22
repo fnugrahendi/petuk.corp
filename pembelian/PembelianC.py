@@ -83,7 +83,7 @@ class Pembelian(object):
 				self.tbl_Pembelian_OrderPembelian.removeRow(a)
 		kodePembelian = str(self.le_Pembelian_OrderPembelian_NoPO.text())
 		#Lawas cah. saiki jamane popup
-		"""query = "SELECT * FROM gd_nama_alamat WHERE `tipe` LIKE 'vendor'"
+		"""query = "SELECT * FROM gd_nama_alamat"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
 			self.cb_Pembelian_OrderPembelian_Nama.addItem(self.DatabaseRunQuery(query)[a][2])"""
 		query = "SELECT * FROM gd_data_gudang"
@@ -91,20 +91,24 @@ class Pembelian(object):
 			self.cb_Pembelian_OrderPembelian_Gudang.addItem(self.DatabaseRunQuery(query)[a][2])
 		query = "SELECT * FROM `gd_order_pembelian` WHERE `kodeTransaksi` LIKE '"+kodePembelian+"'"
 		result = self.DatabaseRunQuery(query) 
+		#print result
 		if len(result) != 0:
 			for a in range(0,len(result)):
 				print "tambah row"
 				self.tbl_Pembelian_OrderPembelian.insertRow(a)
-				self.tbl_Pembelian_OrderPembelian.setItem(a,0,QtGui.QTableWidgetItem(result[a][3])) #kode
-				sql = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` = '"+result[a][3]+"'"
+				self.tbl_Pembelian_OrderPembelian.setItem(a,0,QtGui.QTableWidgetItem(result[a][4])) #kode
+				sql = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` = '"+result[a][4]+"'"
 				self.tbl_Pembelian_OrderPembelian.setItem(a,1,QtGui.QTableWidgetItem(str(self.DatabaseRunQuery(sql)[0][5]))) #nama produk
-				self.tbl_Pembelian_OrderPembelian.setItem(a,3,QtGui.QTableWidgetItem(str(self.DatabaseRunQuery(sql)[0][3]))) #jumlah
-				self.tbl_Pembelian_OrderPembelian.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][4]))) #satuan
-				self.tbl_Pembelian_OrderPembelian.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][5]))) #harga
-				self.tbl_Pembelian_OrderPembelian.setItem(a,5,QtGui.QTableWidgetItem(result[a][6])) #diskon
-				total = result[a][4]*result[a][5]
+				kodeSatuan = str(self.DatabaseRunQuery(sql)[0][3])
+				satuan_query =  "SELECT * FROM `gd_satuan_pengukuran` WHERE `kodeSatuan` = '"+kodeSatuan+"'"
+				satuan = str(self.DatabaseRunQuery(satuan_query)[0][2])
+				self.tbl_Pembelian_OrderPembelian.setItem(a,3,QtGui.QTableWidgetItem(satuan)) #satuan
+				self.tbl_Pembelian_OrderPembelian.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][5]))) #jumlah
+				self.tbl_Pembelian_OrderPembelian.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][6]))) #harga
+				self.tbl_Pembelian_OrderPembelian.setItem(a,5,QtGui.QTableWidgetItem(result[a][7])) #diskon
+				total = result[a][6]*result[a][5]
 				self.tbl_Pembelian_OrderPembelian.setItem(a,6,QtGui.QTableWidgetItem(str(total))) #total harga
-				self.tbl_Pembelian_OrderPembelian	.setItem(a,7,QtGui.QTableWidgetItem(result[a][7]))
+				self.tbl_Pembelian_OrderPembelian.setItem(a,7,QtGui.QTableWidgetItem(result[a][8])) #pajak
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_ORDERPEMBELIAN)
 	
 	def Pembelian_GoTo_OrderPembelian_TambahProduk(self):
@@ -131,9 +135,9 @@ class Pembelian(object):
 		return
 	
 	def Pembelian_OrderPembelian_TambahProduk(self):
-		nama = str(self.tb_Pembelian_OrderPembelian_Nama.text())
-		query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
-		kodePelanggan = self.DatabaseRunQuery(query)[0][1]
+		#nama = str(self.tb_Pembelian_OrderPembelian_Nama.text())
+		#query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
+		kodePelanggan = str(self.tb_Pembelian_OrderPembelian_Nama.text())
 		kodeTransaksi = str(self.le_Pembelian_OrderPembelian_NoPO.text())
 		kodeBarang = str(self.le_Pembelian_OrderPembelian_TambahProduk_Input_Kode.text())
 		jumlah = str(self.le_Pembelian_OrderPembelian_TambahProduk_Input_Jumlah.text())
@@ -156,21 +160,24 @@ class Pembelian(object):
 				self.tbl_Pembelian_OrderPembelian.removeRow(a)
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_ORDERPEMBELIAN)
 		query = "SELECT * FROM `gd_order_pembelian` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"'"
-		result = self.DatabaseRunQuery(query) 
+		result = self.DatabaseRunQuery(query)
 		if len(result) != 0:
 			for a in range(0,len(result)):
 				print "tambah row"
 				self.tbl_Pembelian_OrderPembelian.insertRow(a)
-				self.tbl_Pembelian_OrderPembelian.setItem(a,0,QtGui.QTableWidgetItem(result[a][3])) #kode
-				sql = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` = '"+result[a][3]+"'"
+				self.tbl_Pembelian_OrderPembelian.setItem(a,0,QtGui.QTableWidgetItem(result[a][4])) #kode
+				sql = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` = '"+result[a][4]+"'"
 				self.tbl_Pembelian_OrderPembelian.setItem(a,1,QtGui.QTableWidgetItem(str(self.DatabaseRunQuery(sql)[0][5]))) #nama produk
-				self.tbl_Pembelian_OrderPembelian.setItem(a,3,QtGui.QTableWidgetItem(str(self.DatabaseRunQuery(sql)[0][3]))) #jumlah
-				self.tbl_Pembelian_OrderPembelian.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][4]))) #satuan
-				self.tbl_Pembelian_OrderPembelian.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][5]))) #harga
-				self.tbl_Pembelian_OrderPembelian.setItem(a,5,QtGui.QTableWidgetItem(result[a][6])) #diskon
-				total = result[a][4]*result[a][5]
+				kodeSatuan = str(self.DatabaseRunQuery(sql)[0][3])
+				satuan_query =  "SELECT * FROM `gd_satuan_pengukuran` WHERE `kodeSatuan` = '"+kodeSatuan+"'"
+				satuan = str(self.DatabaseRunQuery(satuan_query)[0][2])
+				self.tbl_Pembelian_OrderPembelian.setItem(a,3,QtGui.QTableWidgetItem(satuan)) #satuan
+				self.tbl_Pembelian_OrderPembelian.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][5]))) #jumlah
+				self.tbl_Pembelian_OrderPembelian.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][6]))) #harga
+				self.tbl_Pembelian_OrderPembelian.setItem(a,5,QtGui.QTableWidgetItem(result[a][7])) #diskon
+				total = result[a][6]*result[a][5]
 				self.tbl_Pembelian_OrderPembelian.setItem(a,6,QtGui.QTableWidgetItem(str(total))) #total harga
-				self.tbl_Pembelian_OrderPembelian.setItem(a,7,QtGui.QTableWidgetItem(result[a][7]))
+				self.tbl_Pembelian_OrderPembelian.setItem(a,7,QtGui.QTableWidgetItem(result[a][8])) #pajak
 		
 	def Pembelian_OrderPembelian_TambahProduk_UpdateKode(self):
 		namaProduk = str(self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama.currentText())
@@ -198,9 +205,9 @@ class Pembelian(object):
 		self.tbl_Pembelian_OrderPembelian.removeRow(currentRow)
 		
 	def Pembelian_OrderPembelian_Rekam(self):
-		nama = str(self.tb_Pembelian_OrderPembelian_Nama.text())
-		query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
-		kodePelanggan = self.DatabaseRunQuery(query)[0][1]
+		#nama = str(self.tb_Pembelian_OrderPembelian_Nama.text())
+		#query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
+		kodePelanggan = str(self.tb_Pembelian_OrderPembelian_Nama.text())
 		kodeTransaksi = str(self.le_Pembelian_OrderPembelian_NoPO.text())
 		jumlahRow = self.tbl_Pembelian_OrderPembelian.rowCount()
 		if jumlahRow != 0:
@@ -217,6 +224,7 @@ class Pembelian(object):
 		query = "SELECT SUM(`harga`*`jumlah`) FROM `gd_order_pembelian` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"'"
 		totalSaldoHutang = str(self.DatabaseRunQuery(query)[0][0])
 		print totalSaldoHutang
+		print kodePelanggan
 		query = "INSERT INTO `"+self.dbDatabase+"`.`gd_hutang`"+\
 				"(`kodePelanggan`, `kodeTransaksi`, `hargaTotal`) "+\
 				"VALUES ('"+kodePelanggan+"', '"+kodeTransaksi+"', '"+totalSaldoHutang+"');"
