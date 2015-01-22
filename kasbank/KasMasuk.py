@@ -130,7 +130,7 @@ class KasMasuk(object):
 		sqltorun = []
 		
 		def hitungulang():
-			
+			pass
 		
 		def setactiveindex(a,b):
 			self.KasBank_KasMasuk_Tambah_RowColumnTerpilih = [a,b]
