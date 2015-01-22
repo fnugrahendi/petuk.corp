@@ -83,12 +83,19 @@ class KasMasuk(object):
 		fkmdetail = self.KasBank_DetailKasMasuk_Field.index
 		self.KasBank_Goto("KASMASUK_TAMBAH")
 		
+		self.GarvinValidate(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor)
+		
 		TABLECOLUMNS = [
 							["Nomor Akun", "Nama Akun", "Nilai Detail"],
 							["noAkunDetail","gd_rekening_jurnal`.`namaAkun","nilaiDetail"]
 						]
 		if (dataKasMasuk==False):
-			self.KasBank_KasMasuk_IDedit = -1
+			#--- new mode
+			self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.setText("")
+			self.KasBankUI.tb_KasMasuk_Tambah_Form_NoAkun.setText("")
+			self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.setText("")
+			self.KasBankUI.le_KasMasuk_Tambah_Form_Catatan.setText("")
+			self.KasBankUI.lb_KasMasuk_Tambah_Form_Nilai.setText("")
 		else:
 			# --- edit mode
 			self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.setText(str(dataKasMasuk[fkm("kodePenyetor")]))
