@@ -43,6 +43,7 @@ class Pembelian(object):
 		self.tb_Pembelian_OrderPembelian_TambahProduk_Simpan.clicked.connect(self.Pembelian_OrderPembelian_TambahProduk)
 		self.tb_Pembelian_OrderPembelian_TambahProduk_Batal.clicked.connect(self.Pembelian_GoTo_OrderPembelian)
 		self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama.currentIndexChanged.connect(self.Pembelian_OrderPembelian_TambahProduk_UpdateKode)
+		self.tb_Pembelian_OrderPembelian_Nama.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.tb_Pembelian_OrderPembelian_Nama))
 		
 		#Tombol pada Penerimaan Barang
 		
@@ -61,9 +62,17 @@ class Pembelian(object):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_PERMINTAANBARANG)
 		return
 	
+	def Popup_NamaAlamat(self, namaTombol):
+		data = []
+		def isi():
+			namaTombol.setText(str(data[0]))
+		def batal():
+			namaTombol.setText("-")
+		self.DataMaster_DataNamaAlamat_Popup_Pilih(data,isi,batal)
+	
 	def Pembelian_GoTo_OrderPembelian(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_ORDERPEMBELIAN)
-		self.cb_Pembelian_OrderPembelian_Nama.clear()
+		self.tb_Pembelian_OrderPembelian_Nama.setText("")
 		self.cb_Pembelian_OrderPembelian_Gudang.clear()
 		jumlahRow = self.tbl_Pembelian_OrderPembelian.rowCount()
 		#print jumlahRow
@@ -71,9 +80,10 @@ class Pembelian(object):
 			for a in range (0,jumlahRow):
 				self.tbl_Pembelian_OrderPembelian.removeRow(a)
 		kodePembelian = str(self.le_Pembelian_OrderPembelian_NoPO.text())
-		query = "SELECT * FROM gd_nama_alamat WHERE `tipe` LIKE 'vendor'"
+		#Lawas cah. saiki jamane popup
+		"""query = "SELECT * FROM gd_nama_alamat WHERE `tipe` LIKE 'vendor'"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
-			self.cb_Pembelian_OrderPembelian_Nama.addItem(self.DatabaseRunQuery(query)[a][2])
+			self.cb_Pembelian_OrderPembelian_Nama.addItem(self.DatabaseRunQuery(query)[a][2])"""
 		query = "SELECT * FROM gd_data_gudang"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
 			self.cb_Pembelian_OrderPembelian_Gudang.addItem(self.DatabaseRunQuery(query)[a][2])
@@ -119,7 +129,7 @@ class Pembelian(object):
 		return
 	
 	def Pembelian_OrderPembelian_TambahProduk(self):
-		nama = str(self.cb_Pembelian_OrderPembelian_Nama.currentText())
+		nama = str(self.tb_Pembelian_OrderPembelian_Nama.text())
 		query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
 		kodePelanggan = self.DatabaseRunQuery(query)[0][1]
 		kodeTransaksi = str(self.le_Pembelian_OrderPembelian_NoPO.text())
@@ -186,7 +196,7 @@ class Pembelian(object):
 		self.tbl_Pembelian_OrderPembelian.removeRow(currentRow)
 		
 	def Pembelian_OrderPembelian_Rekam(self):
-		nama = str(self.cb_Pembelian_OrderPembelian_Nama.currentText())
+		nama = str(self.tb_Pembelian_OrderPembelian_Nama.text())
 		query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
 		kodePelanggan = self.DatabaseRunQuery(query)[0][1]
 		kodeTransaksi = str(self.le_Pembelian_OrderPembelian_NoPO.text())
