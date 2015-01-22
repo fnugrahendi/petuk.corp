@@ -194,9 +194,10 @@ class DaftarTransaksiJurnal(object):
 				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(newrow, CKREDIT, item)
 		
 		#at first we clear the rows
-		for r in range(0,self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()+1):
-			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.removeRow(r)
-		self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setRowCount(0)
+		#~ for r in range(0,self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()+1):
+			#~ self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.removeRow(r)
+		#~ self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setRowCount(0)
+		self.clearTable(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List)
 		
 		idies = []
 		if (self.BukuBesar_DaftarTransaksiJurnal_idEDIT > -1):
