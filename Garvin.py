@@ -474,7 +474,6 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		"""
 		ada_data = False
 		if keyfield==None:
-			sql =""
 			ada_data = False
 		elif (type(keyvalue) == str):
 			sql = "SELECT * FROM `"+table+"` WHERE `"+str(keyfield)+"` LIKE '"+str(keyvalue)+"' ;"
