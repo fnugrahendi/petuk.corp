@@ -283,7 +283,7 @@ class DaftarTransaksiJurnal(object):
 		self.GarvinDisconnect(self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Delete.clicked)
 		self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Delete.clicked.connect(_ConfirmDeleteCertainCell)
 		self.GarvinDisconnect(self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Simpan.clicked)
-		#-----kalau len idies 0, langsung masuk ke for row in range(len(idies),self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()): tanpa masalah
+		#-----kalau len idies 0, langsung masuk ke for tambahan baru: tanpa masalah
 		self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Simpan.clicked.connect(functools.partial(self.BukuBesar_DaftarTransaksiJurnal_Tambah_Act_Simpan,idies,sqltorun))
 		return
 	
