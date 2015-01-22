@@ -194,9 +194,6 @@ class DaftarTransaksiJurnal(object):
 				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(newrow, CKREDIT, item)
 		
 		#at first we clear the rows
-		#~ for r in range(0,self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()+1):
-			#~ self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.removeRow(r)
-		#~ self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setRowCount(0)
 		self.clearTable(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List)
 		
 		idies = []
@@ -208,7 +205,6 @@ class DaftarTransaksiJurnal(object):
 			
 			sql = "SELECT * FROM `gd_detail_transaksi_jurnal` WHERE `kodeTransaksi` LIKE '"+str(self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.text())+"' ;"
 			result = self.DatabaseRunQuery(sql)
-			#~ self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setRowCount(len(result))
 			for r in range(0,len(result)):
 				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.insertRow(r)
 				if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(r,CKODE_AKUN)==None):
