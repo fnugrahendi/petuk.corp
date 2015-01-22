@@ -142,7 +142,7 @@ class DaftarTransaksiJurnal(object):
 				for row in range(0,self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.rowCount()):
 					#----check kalau diisi selain angka
 					try:
-						jmlKredit = jmlKredit+ float(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKREDIT).text())
+						nilaiKredit = float(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKREDIT).text())
 					except ValueError:
 					#------ambil bilangan disitu dgn regex bila sukses, bila tidak beri nilai 0
 						try:
@@ -150,19 +150,24 @@ class DaftarTransaksiJurnal(object):
 							self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKREDIT).setText(str(re.search('\d+', t).group()))
 						except AttributeError:
 							self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKREDIT).setText("0")
+						except:pass
+						nilaiKredit = float(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CKREDIT).text())
 					except:
 						pass
+					jmlKredit = jmlKredit + nilaiKredit
 					try:
-						jmlDebit = jmlDebit + float(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEBIT).text())
+						nilaiDebit =  float(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEBIT).text())
 					except ValueError:
 						try:
 							t = self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEBIT).text()
 							self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEBIT).setText(str(re.search('\d+', t).group()))
 						except AttributeError:
 							self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEBIT).setText("0")
+						except:pass
+						nilaiDebit =  float(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CDEBIT).text())
 					except:
 						pass
-							
+					jmlDebit = jmlDebit+nilaiDebit
 			self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VtDebit.setText(str(jmlDebit))
 			self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VtKredit.setText(str(jmlKredit))
 			self.lb_BukuBesar_DaftarTransaksiJurnal_Tambah_Fsum_VBalance.setText(str(jmlDebit - jmlKredit))
