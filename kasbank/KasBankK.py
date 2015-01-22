@@ -14,9 +14,10 @@ from datetime import datetime #tanggal, a= datetime.now(); cobo dicheck dir(a); 
 
 from ui_kasbank import Ui_st_KasBank
 from KasMasuk import KasMasuk
+from KasKeluar import KasKeluar
 
 
-class KasBank(KasMasuk):
+class KasBank(KasMasuk,KasKeluar):
 	def KasBank_init(self,parent=None):
 		
 		self.INDEX_ST_KASBANK_MENU = 0
@@ -42,8 +43,15 @@ class KasBank(KasMasuk):
 		result = self.DatabaseRunQuery("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_detail_kas_masuk';")
 		self.KasBank_DetailKasMasuk_Field = list(itertools.chain.from_iterable(result))
 		
+		result = self.DatabaseRunQuery("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_kas_keluar';")
+		self.KasBank_KasKeluar_Field = list(itertools.chain.from_iterable(result))
+		
+		result = self.DatabaseRunQuery("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_detail_kas_keluar';")
+		self.KasBank_DetailKasKeluar_Field = list(itertools.chain.from_iterable(result))
+		
 		#--- menu signal
 		self.KasBankUI.tb_Menu_KasMasuk.clicked.connect(self.KasBank_KasMasuk)
+		self.KasBankUI.tb_Menu_KasKeluar.clicked.connect(self.KasBank_KasKeluar)
 	
 	def KasBank_Goto(self,roomindex):
 		if (type(roomindex)==str):
@@ -52,7 +60,6 @@ class KasBank(KasMasuk):
 			if roomindex<0:
 				return False
 			self.st_kasbank.setCurrentIndex(idx)
-			print "masuk ke "+roomindex
 		else:
 			self.st_kasbank.setCurrentIndex(roomindex)
 		return True
