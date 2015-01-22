@@ -366,6 +366,7 @@ class DaftarTransaksiJurnal(object):
 		"pilih rekening untuk data transaksi jurnal pada baris $row"
 		CNOMOR_REKENING = 0
 		CNAMA_REKENING = 1
+		data = ["",""]
 		if (column>1):
 			"bukan pilih data rekening"
 			return
@@ -376,11 +377,11 @@ class DaftarTransaksiJurnal(object):
 			if (self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CNAMA_REKENING)==None):
 				item = QtGui.QTableWidgetItem()
 				self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.setItem(row, CNAMA_REKENING, item)
-			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CNOMOR_REKENING).setText(self.DataMaster_DataRekening_RekeningTerpilih[0])
-			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CNAMA_REKENING).setText(self.DataMaster_DataRekening_RekeningTerpilih[1])
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CNOMOR_REKENING).setText(str(data[0]))
+			self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.item(row,CNAMA_REKENING).setText(str(data[1]))
 			self.GarvinDisconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellClicked)
 			self.GarvinDisconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellDoubleClicked)
-		self.DataMaster_DataRekening_Popup_Pilih(UbahCell)
+		self.DataMaster_DataRekening_Popup_Pilih(data,UbahCell)
 	
 	def BukuBesar_DaftarTransaksiJurnal_Tambah_GenerateKode(self):
 		sql = "SELECT `id` FROM `"+self.dbDatabase+"`.`gd_transaksi_jurnal` ORDER BY `gd_transaksi_jurnal`.`id` DESC LIMIT 0 , 1"
