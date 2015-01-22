@@ -17,7 +17,7 @@
    <string notr="true">QFrame{border:0px;}</string>
   </property>
   <property name="currentIndex">
-   <number>1</number>
+   <number>4</number>
   </property>
   <widget class="QWidget" name="st_Menu">
    <layout class="QGridLayout" name="igr_KasBank_Menu">
@@ -261,7 +261,7 @@
          </column>
          <column>
           <property name="text">
-           <string>Penerima</string>
+           <string>Penyetor</string>
           </property>
          </column>
          <column>
@@ -839,7 +839,23 @@
         </spacer>
        </item>
        <item>
-        <widget class="QLineEdit" name="le_KasKeluar_Search"/>
+        <widget class="QLineEdit" name="le_KasKeluar_Search">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="placeholderText">
+          <string>Type to search...</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -926,6 +942,29 @@
         </widget>
        </item>
        <item>
+        <spacer name="sp_KasKeluar_b_">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_KasKeluar_Tambah">
+         <property name="text">
+          <string>Baru</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="tb_KasKeluar_Delete">
          <property name="text">
           <string>Hapus</string>
@@ -949,6 +988,401 @@
         <widget class="QPushButton" name="tb_KasKeluar_Tutup">
          <property name="text">
           <string>Tutup</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="st_KasKeluar_Tambah">
+   <layout class="QVBoxLayout" name="ivl_KasKeluar_Tambah">
+    <item>
+     <widget class="QFrame" name="fr_KasKeluar_Tambah_T">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="lb_KasKeluar_Judul_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>300</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>+Kas Keluar</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="hs_KasKeluar">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>432</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="fr_KasKeluar_Tambah_Form">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>1</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:23px;}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="3" column="0">
+        <widget class="QLabel" name="lb_KasKeluar_Tambah_Form_Tanggal">
+         <property name="text">
+          <string>Tanggal :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QPushButton" name="tb_KasKeluar_Tambah_Form_Penerima">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>-</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="6">
+        <spacer name="hs_KasKeluar_Tambah_Form_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="6">
+        <spacer name="hs_KasKeluar_Tambah_Form_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="2">
+        <widget class="QPushButton" name="tb_KasKeluar_Tambah_Form_NoAkun">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>-</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="5" colspan="2">
+        <widget class="QLineEdit" name="le_KasKeluar_Tambah_Form_Catatan">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>500</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="lb_KasKeluar_Tambah_Form_NoAkun">
+         <property name="text">
+          <string>Akun Kas :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="lb_KasKeluar_Tambah_Form_Penerima">
+         <property name="text">
+          <string>Penerima :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5">
+        <widget class="QLabel" name="lb_KasKeluar_Tambah_Form_Nilai">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Rp 0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="4">
+        <widget class="QLabel" name="lb_KasKeluar_Tambah_Form_LabelNilai">
+         <property name="text">
+          <string>Besar Total :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="4">
+        <widget class="QLabel" name="lb_KasKeluar_Tambah_Form_Catatan">
+         <property name="text">
+          <string>Catatan :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="5">
+        <widget class="QLineEdit" name="le_KasKeluar_Tambah_Form_Nomor">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QLabel" name="lb_KasKeluar_Tambah_Form_Nomor">
+         <property name="text">
+          <string>Nomor Referensi :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <spacer name="hs_KasKeluar_Tambah_Form_6">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Maximum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="2">
+        <widget class="QDateTimeEdit" name="dte_KasKeluar_Tambah_Form_Tanggal">
+         <property name="calendarPopup">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="fr_KasKeluar_Tambah_Content">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="ivl_KasKeluar_Tambah_Content">
+       <item>
+        <widget class="QTableWidget" name="tbl_KasKeluar_Tambah">
+         <column>
+          <property name="text">
+           <string>Nomor Akun</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nama Akun</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nilai</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="fr_KasKeluar_Tambah_B">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="ihl_KasKeluar_Tambah_B">
+       <item>
+        <widget class="QPushButton" name="tb_KasKeluar_Tambah_TambahBaris">
+         <property name="text">
+          <string>Tambah Baris</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_KasKeluar_Tambah_HapusBaris">
+         <property name="text">
+          <string>Hapus Baris</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="hs_KasKeluar_Tambah_B_HSraceto">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>374</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_KasKeluar_Tambah_Simpan">
+         <property name="text">
+          <string>Simpan</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_KasKeluar_Tambah_Batal">
+         <property name="text">
+          <string>Batal</string>
          </property>
         </widget>
        </item>
