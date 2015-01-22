@@ -52,6 +52,9 @@ class KasBank(KasMasuk):
 			if roomindex<0:
 				return False
 			self.st_kasbank.setCurrentIndex(idx)
+			print "masuk ke "+roomindex
 		else:
 			self.st_kasbank.setCurrentIndex(roomindex)
 		return True
+	def KasBank_Menu(self):
+		self.KasBank_Goto("MENU")

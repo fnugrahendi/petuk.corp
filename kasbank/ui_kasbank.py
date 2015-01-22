@@ -2,13 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui_kasbank.ui'
 #
-<<<<<<< HEAD
-# Created: Thu Jan 22 14:12:20 2015
-#      by: PyQt4 UI code generator 4.10.1
-=======
-# Created: Thu Jan 22 14:26:38 2015
+# Created: Thu Jan 22 17:06:32 2015
 #      by: PyQt4 UI code generator 4.10.4
->>>>>>> 66bab7b072cdd6edd91b0763cccacfd0b066d32b
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -153,11 +148,16 @@ class Ui_st_KasBank(object):
         self.tb_KasMasuk_Buka = QtGui.QPushButton(self.fr_KasMasuk_b)
         self.tb_KasMasuk_Buka.setObjectName(_fromUtf8("tb_KasMasuk_Buka"))
         self.ihl_KasMasuk_b.addWidget(self.tb_KasMasuk_Buka)
+        spacerItem5 = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
+        self.ihl_KasMasuk_b.addItem(spacerItem5)
+        self.tb_KasMasuk_Tambah = QtGui.QPushButton(self.fr_KasMasuk_b)
+        self.tb_KasMasuk_Tambah.setObjectName(_fromUtf8("tb_KasMasuk_Tambah"))
+        self.ihl_KasMasuk_b.addWidget(self.tb_KasMasuk_Tambah)
         self.tb_KasMasuk_Delete = QtGui.QPushButton(self.fr_KasMasuk_b)
         self.tb_KasMasuk_Delete.setObjectName(_fromUtf8("tb_KasMasuk_Delete"))
         self.ihl_KasMasuk_b.addWidget(self.tb_KasMasuk_Delete)
-        spacerItem5 = QtGui.QSpacerItem(495, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.ihl_KasMasuk_b.addItem(spacerItem5)
+        spacerItem6 = QtGui.QSpacerItem(495, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.ihl_KasMasuk_b.addItem(spacerItem6)
         self.tb_KasMasuk_Tutup = QtGui.QPushButton(self.fr_KasMasuk_b)
         self.tb_KasMasuk_Tutup.setObjectName(_fromUtf8("tb_KasMasuk_Tutup"))
         self.ihl_KasMasuk_b.addWidget(self.tb_KasMasuk_Tutup)
@@ -196,8 +196,8 @@ class Ui_st_KasBank(object):
         self.lb_KasMasuk_Judul_2.setFont(font)
         self.lb_KasMasuk_Judul_2.setObjectName(_fromUtf8("lb_KasMasuk_Judul_2"))
         self.horizontalLayout.addWidget(self.lb_KasMasuk_Judul_2)
-        spacerItem6 = QtGui.QSpacerItem(432, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem6)
+        spacerItem7 = QtGui.QSpacerItem(432, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem7)
         self.ivl_KasMasuk_Tambah.addWidget(self.fr_KasMasuk_Tambah_T)
         self.fr_KasMasuk_Tambah_Form = QtGui.QFrame(self.st_KasMasuk_Tambah)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
@@ -220,10 +220,10 @@ class Ui_st_KasBank(object):
         self.tb_KasMasuk_Tambah_Form_Penyetor.setMaximumSize(QtCore.QSize(150, 16777215))
         self.tb_KasMasuk_Tambah_Form_Penyetor.setObjectName(_fromUtf8("tb_KasMasuk_Tambah_Form_Penyetor"))
         self.gridLayout.addWidget(self.tb_KasMasuk_Tambah_Form_Penyetor, 2, 2, 1, 1)
-        spacerItem7 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem7, 2, 6, 1, 1)
         spacerItem8 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem8, 1, 6, 1, 1)
+        self.gridLayout.addItem(spacerItem8, 2, 6, 1, 1)
+        spacerItem9 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem9, 1, 6, 1, 1)
         self.tb_KasMasuk_Tambah_Form_NoAkun = QtGui.QPushButton(self.fr_KasMasuk_Tambah_Form)
         self.tb_KasMasuk_Tambah_Form_NoAkun.setMinimumSize(QtCore.QSize(150, 25))
         self.tb_KasMasuk_Tambah_Form_NoAkun.setMaximumSize(QtCore.QSize(150, 16777215))
@@ -263,8 +263,8 @@ class Ui_st_KasBank(object):
         self.lb_KasMasuk_Tambah_Form_Nomor = QtGui.QLabel(self.fr_KasMasuk_Tambah_Form)
         self.lb_KasMasuk_Tambah_Form_Nomor.setObjectName(_fromUtf8("lb_KasMasuk_Tambah_Form_Nomor"))
         self.gridLayout.addWidget(self.lb_KasMasuk_Tambah_Form_Nomor, 1, 4, 1, 1)
-        spacerItem9 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem9, 2, 3, 1, 1)
+        spacerItem10 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Minimum)
+        self.gridLayout.addItem(spacerItem10, 2, 3, 1, 1)
         self.dte_KasMasuk_Tambah_Form_Tanggal = QtGui.QDateTimeEdit(self.fr_KasMasuk_Tambah_Form)
         self.dte_KasMasuk_Tambah_Form_Tanggal.setCalendarPopup(True)
         self.dte_KasMasuk_Tambah_Form_Tanggal.setObjectName(_fromUtf8("dte_KasMasuk_Tambah_Form_Tanggal"))
@@ -312,8 +312,8 @@ class Ui_st_KasBank(object):
         self.tb_KasMasuk_Tambah_HapusBaris = QtGui.QPushButton(self.fr_KasMasuk_Tambah_B)
         self.tb_KasMasuk_Tambah_HapusBaris.setObjectName(_fromUtf8("tb_KasMasuk_Tambah_HapusBaris"))
         self.ihl_KasMasuk_Tambah_B.addWidget(self.tb_KasMasuk_Tambah_HapusBaris)
-        spacerItem10 = QtGui.QSpacerItem(374, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.ihl_KasMasuk_Tambah_B.addItem(spacerItem10)
+        spacerItem11 = QtGui.QSpacerItem(374, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.ihl_KasMasuk_Tambah_B.addItem(spacerItem11)
         self.tb_KasMasuk_Tambah_Simpan = QtGui.QPushButton(self.fr_KasMasuk_Tambah_B)
         self.tb_KasMasuk_Tambah_Simpan.setObjectName(_fromUtf8("tb_KasMasuk_Tambah_Simpan"))
         self.ihl_KasMasuk_Tambah_B.addWidget(self.tb_KasMasuk_Tambah_Simpan)
@@ -355,8 +355,8 @@ class Ui_st_KasBank(object):
         self.lb_KasKeluar_Judul.setFont(font)
         self.lb_KasKeluar_Judul.setObjectName(_fromUtf8("lb_KasKeluar_Judul"))
         self.ihl_KasKeluar_t.addWidget(self.lb_KasKeluar_Judul)
-        spacerItem11 = QtGui.QSpacerItem(226, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.ihl_KasKeluar_t.addItem(spacerItem11)
+        spacerItem12 = QtGui.QSpacerItem(226, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.ihl_KasKeluar_t.addItem(spacerItem12)
         self.le_KasKeluar_Search = QtGui.QLineEdit(self.fr_KasKeluar_t)
         self.le_KasKeluar_Search.setObjectName(_fromUtf8("le_KasKeluar_Search"))
         self.ihl_KasKeluar_t.addWidget(self.le_KasKeluar_Search)
@@ -407,8 +407,8 @@ class Ui_st_KasBank(object):
         self.tb_KasKeluar_Delete = QtGui.QPushButton(self.fr_KasKeluar_b)
         self.tb_KasKeluar_Delete.setObjectName(_fromUtf8("tb_KasKeluar_Delete"))
         self.ihl_KasKeluar_b.addWidget(self.tb_KasKeluar_Delete)
-        spacerItem12 = QtGui.QSpacerItem(495, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.ihl_KasKeluar_b.addItem(spacerItem12)
+        spacerItem13 = QtGui.QSpacerItem(495, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.ihl_KasKeluar_b.addItem(spacerItem13)
         self.tb_KasKeluar_Tutup = QtGui.QPushButton(self.fr_KasKeluar_b)
         self.tb_KasKeluar_Tutup.setObjectName(_fromUtf8("tb_KasKeluar_Tutup"))
         self.ihl_KasKeluar_b.addWidget(self.tb_KasKeluar_Tutup)
@@ -416,7 +416,7 @@ class Ui_st_KasBank(object):
         st_KasBank.addWidget(self.st_KasKeluar)
 
         self.retranslateUi(st_KasBank)
-        st_KasBank.setCurrentIndex(2)
+        st_KasBank.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(st_KasBank)
 
     def retranslateUi(self, st_KasBank):
@@ -436,6 +436,7 @@ class Ui_st_KasBank(object):
         item = self.tbl_KasMasuk.horizontalHeaderItem(4)
         item.setText(_translate("st_KasBank", "Nilai", None))
         self.tb_KasMasuk_Buka.setText(_translate("st_KasBank", "Buka", None))
+        self.tb_KasMasuk_Tambah.setText(_translate("st_KasBank", "Tambah", None))
         self.tb_KasMasuk_Delete.setText(_translate("st_KasBank", "Hapus", None))
         self.tb_KasMasuk_Tutup.setText(_translate("st_KasBank", "Tutup", None))
         self.lb_KasMasuk_Judul_2.setText(_translate("st_KasBank", "+Kas Masuk", None))

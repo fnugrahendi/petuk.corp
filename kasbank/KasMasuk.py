@@ -28,7 +28,11 @@ class KasMasuk(object):
 		self.GarvinDisconnect(self.KasBankUI.tbl_KasMasuk.cellDoubleClicked)
 		self.KasBankUI.tbl_KasMasuk.cellClicked.connect(self.KasBank_KasMasuk_SetActiveIndex)
 		self.KasBankUI.tbl_KasMasuk.cellDoubleClicked.connect(self.KasBank_KasMasuk_Edit)
-
+		
+		self.GarvinDisconnect(self.KasBankUI.tb_KasMasuk_Tambah.clicked)
+		self.KasBankUI.tb_KasMasuk_Tambah.clicked.connect(self.KasBank_KasMasuk_Tambah)
+		self.GarvinDisconnect(self.KasBankUI.tb_KasMasuk_Tutup.clicked)
+		self.KasBankUI.tb_KasMasuk_Tutup.clicked.connect(self.KasBank_Menu)
 
 	def KasBank_KasMasuk_RefreshList(self,searchtext=""):
 		""" Refresh list of the table """
@@ -83,12 +87,16 @@ class KasMasuk(object):
 		fkmdetail = self.KasBank_DetailKasMasuk_Field.index
 		self.KasBank_Goto("KASMASUK_TAMBAH")
 		
+		#-- we all need clear table
+		self.clearTable(self.KasBankUI.tbl_KasMasuk_Tambah)
+		
 		self.GarvinValidate(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor)
 		
 		TABLECOLUMNS = [
 							["Nomor Akun", "Nama Akun", "Nilai Detail"],
 							["noAkunDetail","gd_rekening_jurnal`.`namaAkun","nilaiDetail"]
 						]
+		idies = []
 		if (dataKasMasuk==False):
 			#--- new mode
 			self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.setText("")
@@ -105,8 +113,7 @@ class KasMasuk(object):
 			self.KasBankUI.lb_KasMasuk_Tambah_Form_Nilai.setText(str(dataKasMasuk[fkm("nilaiTotal")]))
 			self.KasBankUI.dte_KasMasuk_Tambah_Form_Tanggal.setDateTime(QDateTime.fromString(str(dataKasMasuk[fkm("tanggal")]),"yyyy-MM-dd hh:mm:ss"))
 			result = self.DatabaseFetchResult(self.dbDatabase,"gd_detail_kas_masuk","kodeTransaksi",str(dataKasMasuk[fkm("kodeTransaksi")]))
-			self.clearTable(self.KasBankUI.tbl_KasMasuk_Tambah)
-			idies = []
+			
 			for row in range(0,len(result)):
 				self.KasBankUI.tbl_KasMasuk_Tambah.insertRow(row)
 				idies.append(result[row][0]) #--- field id dari result ada di nomor kolom [0]
@@ -118,11 +125,102 @@ class KasMasuk(object):
 				self.KasBankUI.tbl_KasMasuk_Tambah.item(row,2).setText(str(result[row][fkmdetail(TABLECOLUMNS[1][2])]))
 				namaakun = self.DatabaseFetchResult(self.dbDatabase,"gd_rekening_jurnal","noAkun",(result[row][fkmdetail(TABLECOLUMNS[1][0])])	)[0][self.DataMaster_DataRekening_Field.index("namaAkun")]
 				self.KasBankUI.tbl_KasMasuk_Tambah.item(row,1).setText(str(namaakun))
+		
+		#----Hapus baris hanya terjadi bila sudah di Act_Simpan, sql query diantrikan
+		sqltorun = []
+		
+		def hitungulang():
+			
+		
+		def setactiveindex(a,b):
+			self.KasBank_KasMasuk_Tambah_RowColumnTerpilih = [a,b]
+		
+		def tambahbaris():
+			newrow = self.KasBankUI.tbl_KasMasuk_Tambah.rowCount()
+			self.KasBankUI.tbl_KasMasuk_Tambah.insertRow(newrow)
+			for x in range(len(TABLECOLUMNS[1])):
+				if (self.KasBankUI.tbl_KasMasuk_Tambah.item(newrow,x)==None):
+					item = QtGui.QTableWidgetItem()
+					self.KasBankUI.tbl_KasMasuk_Tambah.setItem(newrow, x, item)
+			
+		def deletecertainrow():
+			baris = self.KasBank_KasMasuk_Tambah_RowColumnTerpilih[0]
+			if baris<0:
+				return
+			if (baris<len(idies)):
+				sqltorun.append( "DELETE FROM `gd_detail_kas_masuk` WHERE `gd_detail_kas_masuk`.`id` = "+str(idies[baris])+" ;")
+				idies.pop(baris)
+			self.KasBankUI.tbl_KasMasuk_Tambah.removeRow(baris)
+			
+		def confirmdeletecertainrow():
+			""" show popup to delete certain row, if user make sure, commit the delete with deletecertainrow"""
+			baris = self.KasBank_KasMasuk_Tambah_RowColumnTerpilih[0]
+			if (baris<0):
+				return
+			self.DataMaster_Popup("Anda yakin akan menghapus data baris "+str(baris+1)+"?",deletecertainrow)
+		
 		self.GarvinDisconnect(self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.clicked)
 		self.GarvinDisconnect(self.KasBankUI.tb_KasMasuk_Tambah_Form_NoAkun.clicked)
 		self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.clicked.connect	(self.KasBank_KasMasuk_Tambah_Pilih_Penyetor)
 		self.KasBankUI.tb_KasMasuk_Tambah_Form_NoAkun.clicked.connect	(self.KasBank_KasMasuk_Tambah_Pilih_AkunKas)
+		
+		self.GarvinDisconnect(self.KasBankUI.tbl_KasMasuk_Tambah.cellDoubleClicked)
+		self.GarvinDisconnect(self.KasBankUI.tbl_KasMasuk_Tambah.cellClicked)
 		self.KasBankUI.tbl_KasMasuk_Tambah.cellDoubleClicked.connect(self.KasBank_KasMasuk_Tambah_EditTable)
+		self.KasBankUI.tbl_KasMasuk_Tambah.cellClicked.connect(setactiveindex)
+		
+		self.GarvinDisconnect(self.KasBankUI.tb_KasMasuk_Tambah_TambahBaris.clicked)
+		self.KasBankUI.tb_KasMasuk_Tambah_TambahBaris.clicked.connect(tambahbaris)
+		self.GarvinDisconnect(self.KasBankUI.tb_KasMasuk_Tambah_HapusBaris.clicked)
+		self.KasBankUI.tb_KasMasuk_Tambah_HapusBaris.clicked.connect(confirmdeletecertainrow)
+		
+		self.GarvinDisconnect(self.KasBankUI.tb_KasMasuk_Tambah_Simpan.clicked)
+		self.GarvinDisconnect(self.KasBankUI.tb_KasMasuk_Tambah_Batal.clicked)
+		self.KasBankUI.tb_KasMasuk_Tambah_Simpan.clicked.connect(functools.partial(self.KasBank_KasMasuk_Tambah_Act_Simpan,idies,sqltorun))
+		self.KasBankUI.tb_KasMasuk_Tambah_Batal.clicked.connect(self.KasBank_KasMasuk)
+	
+	def KasBank_KasMasuk_Tambah_Act_Simpan(self,idies,sqltorun):
+		if idies==None: #-- avoid call by reference default value, as it will just append more 
+			idies = []
+		if sqltorun==None:
+			sqltorun = []
+		CNOAKUN = 0
+		CNILAI = 2
+		#--- edit (simpen replace)
+		#--- update dan tambah detail transaksi jurnal
+		tablerow = 0
+		for tablerowid in idies:
+			self.DatabaseInsertReplace(self.dbDatabase,"gd_detail_kas_masuk","id",tablerowid,
+										["kodeTransaksi","noAkunDetail","nilaiDetail"],
+										[str(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.text()),
+										str(self.KasBankUI.tbl_KasMasuk_Tambah.item(tablerow,CNOAKUN).text()),
+										str(self.KasBankUI.tbl_KasMasuk_Tambah.item(tablerow,CNILAI	).text())
+										]
+									)
+			tablerow+=1
+		if self.KasBankUI.tbl_KasMasuk_Tambah.rowCount()>len(idies):
+			#"ada tambahan baru"
+			for tablerow in range(len(idies),self.KasBankUI.tbl_KasMasuk_Tambah.rowCount()):
+				self.DatabaseInsertReplace(self.dbDatabase,"gd_detail_kas_masuk",	None,None,
+											["kodeTransaksi","noAkunDetail","nilaiDetail"],
+											[str(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.text()),
+											str(self.KasBankUI.tbl_KasMasuk_Tambah.item(tablerow,CNOAKUN).text()),
+											str(self.KasBankUI.tbl_KasMasuk_Tambah.item(tablerow,CNILAI	).text())
+											]	)
+		self.DatabaseInsertReplace(self.dbDatabase,"gd_kas_masuk","kodeTransaksi",str(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.text()),
+											["kodeTransaksi", "noAkunKas", "kodePenyetor", "catatan", "tanggal", "nilaiTotal"],
+											[
+												str(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.text()),
+												str(self.KasBankUI.tb_KasMasuk_Tambah_Form_NoAkun.text()),
+												str(self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.text()),
+												str(self.KasBankUI.le_KasMasuk_Tambah_Form_Catatan.text()),
+												str(self.KasBankUI.dte_KasMasuk_Tambah_Form_Tanggal.dateTime().toString("yyyy-MM-dd hh:mm:ss")),
+												str(self.KasBankUI.lb_KasMasuk_Tambah_Form_Nilai.text())
+											]	)
+		#---------at last, we execute sqltorun queries
+		for sql in sqltorun:
+			self.DatabaseRunQuery(sql)
+		self.KasBank_KasMasuk()
 		
 	def KasBank_KasMasuk_Tambah_Pilih_AkunKas(self):
 		data = ["",""]
@@ -137,6 +235,7 @@ class KasMasuk(object):
 		self.DataMaster_DataNamaAlamat_Popup_Pilih(data,isi)
 		
 	def KasBank_KasMasuk_Tambah_EditTable(self,row,column):
+		self.KasBank_KasMasuk_Tambah_RowColumnTerpilih = [row,column]
 		if (column<2):
 			data = ["",""]
 			def isi():
