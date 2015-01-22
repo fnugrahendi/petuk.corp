@@ -104,12 +104,24 @@ class KasMasuk(object):
 										)
 		self.KasBank_KasMasuk_Tambah(data[0])
 	
+	def KasBank_KasMasuk_Tambah_GenerateKode(self):
+		sql = "SELECT `id` FROM `"+self.dbDatabase+"`.`gd_kas_masuk` ORDER BY `gd_kas_masuk`.`id` DESC LIMIT 0 , 1"
+		result = self.DatabaseRunQuery(sql)
+		if len(result)<1:
+			kode_default = "00000000"
+		else:
+			kode_default = str(int(result[0][0])+1)
+			while (len(kode_default)<8):
+				kode_default = "0"+kode_default
+		kode_default = "CR" + kode_default
+		self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.setText(kode_default)
+	
 	def KasBank_KasMasuk_Tambah(self,dataKasMasuk=False):
 		fkm = self.KasBank_KasMasuk_Field.index
 		fkmdetail = self.KasBank_DetailKasMasuk_Field.index
 		self.KasBank_Goto("KASMASUK_TAMBAH")
 		
-		#-- we all need clear table
+		#-- we all need to clear table
 		self.clearTable(self.KasBankUI.tbl_KasMasuk_Tambah)
 		
 		self.GarvinValidate(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor)
@@ -126,6 +138,7 @@ class KasMasuk(object):
 			self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.setText("")
 			self.KasBankUI.le_KasMasuk_Tambah_Form_Catatan.setText("")
 			self.KasBankUI.lb_KasMasuk_Tambah_Form_Nilai.setText("")
+			self.KasBank_KasMasuk_Tambah_GenerateKode()
 		else:
 			# --- edit mode
 			self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.setText(str(dataKasMasuk[fkm("kodePenyetor")]))
