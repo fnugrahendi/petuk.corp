@@ -102,7 +102,7 @@ class KasMasuk(object):
 			idies = []
 			for row in range(0,len(result)):
 				self.KasBankUI.tbl_KasMasuk_Tambah.insertRow(row)
-				idies.append(row)
+				idies.append(result[row][0]) #--- field id dari result ada di nomor kolom [0]
 				for kolom in range(0,len(TABLECOLUMNS[1])):
 					if (self.KasBankUI.tbl_KasMasuk_Tambah.item(row,kolom)==None):
 						item = QtGui.QTableWidgetItem()
@@ -115,7 +115,7 @@ class KasMasuk(object):
 		self.GarvinDisconnect(self.KasBankUI.tb_KasMasuk_Tambah_Form_NoAkun.clicked)
 		self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.clicked.connect	(self.KasBank_KasMasuk_Tambah_Pilih_Penyetor)
 		self.KasBankUI.tb_KasMasuk_Tambah_Form_NoAkun.clicked.connect	(self.KasBank_KasMasuk_Tambah_Pilih_AkunKas)
-		
+		self.KasBankUI.tbl_KasMasuk_Tambah.cellDoubleClicked.connect(self.KasBank_KasMasuk_Tambah_EditTable)
 		
 	def KasBank_KasMasuk_Tambah_Pilih_AkunKas(self):
 		data = ["",""]
@@ -128,5 +128,11 @@ class KasMasuk(object):
 		def isi():
 			self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.setText(str(data[0]))
 		self.DataMaster_DataNamaAlamat_Popup_Pilih(data,isi)
-		pass
-	
+		
+	def KasBank_KasMasuk_Tambah_EditTable(self,row,column):
+		if (column<2):
+			data = ["",""]
+			def isi():
+				self.KasBankUI.tbl_KasMasuk_Tambah.item(row,0).setText(str(data[0]))
+				self.KasBankUI.tbl_KasMasuk_Tambah.item(row,1).setText(str(data[1]))
+			self.DataMaster_DataRekening_Popup_Pilih(data,isi)

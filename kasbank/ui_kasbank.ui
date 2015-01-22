@@ -693,6 +693,49 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
+      <layout class="QHBoxLayout" name="ihl_KasMasuk_Tambah_B">
+       <item>
+        <widget class="QPushButton" name="tb_KasMasuk_Tambah_TambahBaris">
+         <property name="text">
+          <string>Tambah Baris</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_KasMasuk_Tambah_HapusBaris">
+         <property name="text">
+          <string>Hapus Baris</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="hs_KasMasuk_Tambah_B_HSraceto">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>374</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_KasMasuk_Tambah_Simpan">
+         <property name="text">
+          <string>Simpan</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_KasMasuk_Tambah_Batal">
+         <property name="text">
+          <string>Batal</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
    </layout>
