@@ -576,8 +576,12 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk):
 								"Lanjutkan hapus hanya bila anda mengerti apa yang anda lakukan!",
 								_CommitDelete)
 		
-	def DataMaster_DataRekening_Popup_Pilih(self,fcb_ok=False,fcb_cancel=False):
-		"Tunjukkan Popup untuk memilih data rekening, hasil disimpen ke variabel public self.DataMaster_DataRekening_RekeningTerpilih"
+	def DataMaster_DataRekening_Popup_Pilih(self,data=None,fcb_ok=False,fcb_cancel=False):
+		"Tunjukkan Popup untuk memilih data rekening, hasil disimpen ke variabel data[0] (nomor rekening) dan data[1] (nama rekening)"
+		if (data==None):
+			data = ["",""]
+		if len(data)<2:
+			data = ["",""]
 		if fcb_ok==False:
 			fcb_ok = self.DataMaster_None
 		if fcb_cancel==False:
@@ -627,14 +631,13 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk):
 		self.fr_DataMaster_DataRekening.show()
 		self.fr_DataMaster_DataRekening.setGeometry(QtCore.QRect(5,5,640,WinH-250))
 		self.fr_DataMaster_DataRekening_Fb.hide()
-		self.DataMaster_DataRekening_RekeningTerpilih = ["",""]
 		
 		self.GarvinDisconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellDoubleClicked)
 		self.GarvinDisconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellClicked)
 		
 		def setDatarekeningTerpilih(row,column):
-			self.DataMaster_DataRekening_RekeningTerpilih[0] = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,CNOMOR_REKENING).text())
-			self.DataMaster_DataRekening_RekeningTerpilih[1] = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,CNAMA_REKENING).text())
+			data[0] = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,CNOMOR_REKENING).text())
+			data[1] = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,CNAMA_REKENING).text())
 			#----Kembalikan, jangan disconnect sinyal krna ini sinyal itu sendiri, dilakukan di BukuBesar_DaftarTransaksiJurnal_PilihRekening.ubahcell instead
 			self.fr_DataMaster_DataRekening.setParent(self.st_DataMaster_DataRekening)
 			self.ivl_DataMaster_DataRekening_Luar.addWidget(self.fr_DataMaster_DataRekening)
@@ -642,8 +645,8 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk):
 			self.DataMaster_Popup_Tutup()
 			
 		def setDatarekeningTerpilihNC(row,column):
-			self.DataMaster_DataRekening_RekeningTerpilih[0] = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,CNOMOR_REKENING).text())
-			self.DataMaster_DataRekening_RekeningTerpilih[1] = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,CNAMA_REKENING).text())
+			data[0] = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,CNOMOR_REKENING).text())
+			data[1] = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,CNAMA_REKENING).text())
 		
 		self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellDoubleClicked.connect(setDatarekeningTerpilih)
 		self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellDoubleClicked.connect(fcb_ok)
