@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Wed Jan 21 22:10:17 2015
+# Created: Thu Jan 22 12:41:09 2015
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -3354,9 +3354,6 @@ class Ui_MainWindow(object):
         self.cb_Pembelian_OrderPembelian_Gudang = QtGui.QComboBox(self.fr_Pembelian_OrderPembelian_Input_Line)
         self.cb_Pembelian_OrderPembelian_Gudang.setObjectName(_fromUtf8("cb_Pembelian_OrderPembelian_Gudang"))
         self.gl_Penjualan_OrderPenjualan_input_2.addWidget(self.cb_Pembelian_OrderPembelian_Gudang, 3, 0, 1, 1)
-        self.cb_Pembelian_OrderPembelian_Nama = QtGui.QComboBox(self.fr_Pembelian_OrderPembelian_Input_Line)
-        self.cb_Pembelian_OrderPembelian_Nama.setObjectName(_fromUtf8("cb_Pembelian_OrderPembelian_Nama"))
-        self.gl_Penjualan_OrderPenjualan_input_2.addWidget(self.cb_Pembelian_OrderPembelian_Nama, 1, 0, 1, 1)
         self.lb_Pembelian_OrderPembelian_Keterangan = QtGui.QLabel(self.fr_Pembelian_OrderPembelian_Input_Line)
         self.lb_Pembelian_OrderPembelian_Keterangan.setObjectName(_fromUtf8("lb_Pembelian_OrderPembelian_Keterangan"))
         self.gl_Penjualan_OrderPenjualan_input_2.addWidget(self.lb_Pembelian_OrderPembelian_Keterangan, 2, 1, 1, 1)
@@ -3391,6 +3388,10 @@ class Ui_MainWindow(object):
         self.le_Pembelian_OrderPembelian_Keterangan = QtGui.QLineEdit(self.fr_Pembelian_OrderPembelian_Input_Line)
         self.le_Pembelian_OrderPembelian_Keterangan.setObjectName(_fromUtf8("le_Pembelian_OrderPembelian_Keterangan"))
         self.gl_Penjualan_OrderPenjualan_input_2.addWidget(self.le_Pembelian_OrderPembelian_Keterangan, 3, 1, 1, 4)
+        self.tb_Pembelian_OrderPembelian_Nama = QtGui.QPushButton(self.fr_Pembelian_OrderPembelian_Input_Line)
+        self.tb_Pembelian_OrderPembelian_Nama.setText(_fromUtf8(""))
+        self.tb_Pembelian_OrderPembelian_Nama.setObjectName(_fromUtf8("tb_Pembelian_OrderPembelian_Nama"))
+        self.gl_Penjualan_OrderPenjualan_input_2.addWidget(self.tb_Pembelian_OrderPembelian_Nama, 1, 0, 1, 1)
         self.verticalLayout_16.addWidget(self.fr_Pembelian_OrderPembelian_Input_Line)
         self.fr_Pembelian_OrderPembelian_Tabel = QtGui.QFrame(self.st_Pembelian_OrderPembelian)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.MinimumExpanding)
@@ -3551,9 +3552,6 @@ class Ui_MainWindow(object):
         self.gridLayout_6.addItem(spacerItem34, 10, 0, 1, 1)
         spacerItem35 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.gridLayout_6.addItem(spacerItem35, 0, 4, 1, 1)
-        self.le_Pembelian_OrderPembelian_TambahProduk_Input_Kode = QtGui.QLineEdit(self.fr_Pembelian_OrderPembelian_TambahProduk_Input)
-        self.le_Pembelian_OrderPembelian_TambahProduk_Input_Kode.setObjectName(_fromUtf8("le_Pembelian_OrderPembelian_TambahProduk_Input_Kode"))
-        self.gridLayout_6.addWidget(self.le_Pembelian_OrderPembelian_TambahProduk_Input_Kode, 0, 1, 1, 1)
         self.le_Pembelian_OrderPembelian_TambahProduk_Input_Harga = QtGui.QLineEdit(self.fr_Pembelian_OrderPembelian_TambahProduk_Input)
         self.le_Pembelian_OrderPembelian_TambahProduk_Input_Harga.setObjectName(_fromUtf8("le_Pembelian_OrderPembelian_TambahProduk_Input_Harga"))
         self.gridLayout_6.addWidget(self.le_Pembelian_OrderPembelian_TambahProduk_Input_Harga, 4, 1, 1, 1)
@@ -3567,12 +3565,16 @@ class Ui_MainWindow(object):
         self.gridLayout_6.addItem(spacerItem36, 0, 3, 1, 1)
         spacerItem37 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.gridLayout_6.addItem(spacerItem37, 0, 2, 1, 1)
-        self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama = QtGui.QComboBox(self.fr_Pembelian_OrderPembelian_TambahProduk_Input)
-        self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama.setObjectName(_fromUtf8("cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama"))
-        self.gridLayout_6.addWidget(self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama, 1, 1, 1, 1)
         self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Satuan = QtGui.QComboBox(self.fr_Pembelian_OrderPembelian_TambahProduk_Input)
         self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Satuan.setObjectName(_fromUtf8("cb_Pembelian_OrderPembelian_TambahProduk_Input_Satuan"))
         self.gridLayout_6.addWidget(self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Satuan, 3, 1, 1, 1)
+        self.le_Pembelian_OrderPembelian_TambahProduk_Input_Kode = QtGui.QLineEdit(self.fr_Pembelian_OrderPembelian_TambahProduk_Input)
+        self.le_Pembelian_OrderPembelian_TambahProduk_Input_Kode.setReadOnly(True)
+        self.le_Pembelian_OrderPembelian_TambahProduk_Input_Kode.setObjectName(_fromUtf8("le_Pembelian_OrderPembelian_TambahProduk_Input_Kode"))
+        self.gridLayout_6.addWidget(self.le_Pembelian_OrderPembelian_TambahProduk_Input_Kode, 0, 1, 1, 1)
+        self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama = QtGui.QComboBox(self.fr_Pembelian_OrderPembelian_TambahProduk_Input)
+        self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama.setObjectName(_fromUtf8("cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama"))
+        self.gridLayout_6.addWidget(self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama, 1, 1, 1, 1)
         self.verticalLayout_19.addWidget(self.fr_Pembelian_OrderPembelian_TambahProduk_Input)
         self.fr_Pembelian_OrderPembelian_TambahProduk_Tombol = QtGui.QFrame(self.st_Pembelian_OrderPembelian_TambahProduk)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Maximum)

@@ -7255,9 +7255,6 @@ QPushButton::hover{
                   <item row="3" column="0">
                    <widget class="QComboBox" name="cb_Pembelian_OrderPembelian_Gudang"/>
                   </item>
-                  <item row="1" column="0">
-                   <widget class="QComboBox" name="cb_Pembelian_OrderPembelian_Nama"/>
-                  </item>
                   <item row="2" column="1">
                    <widget class="QLabel" name="lb_Pembelian_OrderPembelian_Keterangan">
                     <property name="text">
@@ -7330,6 +7327,13 @@ QPushButton::hover{
                   </item>
                   <item row="3" column="1" colspan="4">
                    <widget class="QLineEdit" name="le_Pembelian_OrderPembelian_Keterangan"/>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QPushButton" name="tb_Pembelian_OrderPembelian_Nama">
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </widget>
@@ -7665,9 +7669,6 @@ QPushButton::hover{
                     </property>
                    </spacer>
                   </item>
-                  <item row="0" column="1">
-                   <widget class="QLineEdit" name="le_Pembelian_OrderPembelian_TambahProduk_Input_Kode"/>
-                  </item>
                   <item row="4" column="1">
                    <widget class="QLineEdit" name="le_Pembelian_OrderPembelian_TambahProduk_Input_Harga"/>
                   </item>
@@ -7703,11 +7704,18 @@ QPushButton::hover{
                     </property>
                    </spacer>
                   </item>
-                  <item row="1" column="1">
-                   <widget class="QComboBox" name="cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama"/>
-                  </item>
                   <item row="3" column="1">
                    <widget class="QComboBox" name="cb_Pembelian_OrderPembelian_TambahProduk_Input_Satuan"/>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLineEdit" name="le_Pembelian_OrderPembelian_TambahProduk_Input_Kode">
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QComboBox" name="cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama"/>
                   </item>
                  </layout>
                 </widget>

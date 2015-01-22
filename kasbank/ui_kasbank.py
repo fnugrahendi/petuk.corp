@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'kasbank/ui_kasbank.ui'
 #
-# Created: Wed Jan 21 22:05:22 2015
+# Created: Thu Jan 22 12:41:11 2015
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -385,7 +385,7 @@ class Ui_st_KasBank(object):
         st_KasBank.addWidget(self.st_KasKeluar)
 
         self.retranslateUi(st_KasBank)
-        st_KasBank.setCurrentIndex(2)
+        st_KasBank.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(st_KasBank)
 
     def retranslateUi(self, st_KasBank):
