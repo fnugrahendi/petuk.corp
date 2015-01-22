@@ -135,9 +135,6 @@ class KasMasuk(object):
 				print kodebaru
 			self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.setText(kodebaru)
 			
-			
-			
-	
 	def KasBank_KasMasuk_Tambah(self,dataKasMasuk=False):
 		fkm = self.KasBank_KasMasuk_Field.index
 		fkmdetail = self.KasBank_DetailKasMasuk_Field.index
