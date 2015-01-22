@@ -172,7 +172,7 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk):
 		self.clearGrid(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop.findChildren(QtGui.QGridLayout)[0])
 		
 		self.le_DataMaster_DataCommon_Search.setText("")
-		self.GarvinDisconnect(self.le_DataMaster_DataCommon_Search.textChanged.connect)
+		self.GarvinDisconnect(self.le_DataMaster_DataCommon_Search.textChanged)
 		#---------------------------------------------------------------Disconnect sinyal bila sudah di hubungkan
 		try:
 			self.tb_DataMaster_DataCommon_Tambah.clicked.disconnect()
