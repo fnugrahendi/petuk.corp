@@ -112,18 +112,21 @@ class KasMasuk(object):
 				namaakun = self.DatabaseFetchResult(self.dbDatabase,"gd_rekening_jurnal","noAkun",(result[row][fkmdetail(TABLECOLUMNS[1][0])])	)[0][self.DataMaster_DataRekening_Field.index("namaAkun")]
 				self.KasBankUI.tbl_KasMasuk_Tambah.item(row,1).setText(str(namaakun))
 		self.GarvinDisconnect(self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.clicked)
-		self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.clicked.connect(self.KasBank_KasMasuk_Tambah_Pilih_Penyetor)
+		self.GarvinDisconnect(self.KasBankUI.tb_KasMasuk_Tambah_Form_NoAkun.clicked)
+		self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.clicked.connect	(self.KasBank_KasMasuk_Tambah_Pilih_Penyetor)
+		self.KasBankUI.tb_KasMasuk_Tambah_Form_NoAkun.clicked.connect	(self.KasBank_KasMasuk_Tambah_Pilih_AkunKas)
+		
 		
 	def KasBank_KasMasuk_Tambah_Pilih_AkunKas(self):
-		
-		pass
+		data = ["",""]
+		def isi():
+			self.KasBankUI.tb_KasMasuk_Tambah_Form_NoAkun.setText(str(data[0]))
+		self.DataMaster_DataRekening_Popup_Pilih(data,isi)
 		
 	def KasBank_KasMasuk_Tambah_Pilih_Penyetor(self):
 		data = []
 		def isi():
 			self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.setText(str(data[0]))
-		def batal():
-			self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.setText("-")
-		self.DataMaster_DataNamaAlamat_Popup_Pilih(data,isi,batal)
+		self.DataMaster_DataNamaAlamat_Popup_Pilih(data,isi)
 		pass
 	
