@@ -116,6 +116,28 @@ class KasMasuk(object):
 		kode_default = "CR" + kode_default
 		self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.setText(kode_default)
 	
+	def KasBank_KasMasuk_Tambah_KodeCek(self,stuf=None):
+		print "masuk lho"
+		kodebaru = ""
+		kodeterlarang = str(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.text())
+		result = self.DatabaseFetchResult(self.dbDatabase,"gd_kas_masuk","kodeTransaksi",kodeterlarang	)
+		if (len(result)>0):
+			self.statusbar.showMessage("Kode "+kodeterlarang+" sudah terpakai, diberikan kode lain",10000)
+			while len(result)>0:
+				nilai = int(kodeterlarang.replace("CR",""))
+				nilai+=1
+				kodebaru = str(nilai)
+				while (len(kodebaru)<8):
+					kodebaru = "0"+kodebaru
+				kodebaru = "CR"+kodebaru
+				kodeterlarang = kodebaru
+				result = self.DatabaseFetchResult(self.dbDatabase,"gd_kas_masuk","kodeTransaksi",kodeterlarang	)
+				print kodebaru
+			self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.setText(kodebaru)
+			
+			
+			
+	
 	def KasBank_KasMasuk_Tambah(self,dataKasMasuk=False):
 		fkm = self.KasBank_KasMasuk_Field.index
 		fkmdetail = self.KasBank_DetailKasMasuk_Field.index
@@ -125,6 +147,9 @@ class KasMasuk(object):
 		self.clearTable(self.KasBankUI.tbl_KasMasuk_Tambah)
 		
 		self.GarvinValidate(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor)
+		
+		#--- disconnect kode cek (khusus tambah baru)
+		self.GarvinDisconnect(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.textChanged)
 		
 		TABLECOLUMNS = [
 							["Nomor Akun", "Nama Akun", "Nilai Detail"],
@@ -139,6 +164,7 @@ class KasMasuk(object):
 			self.KasBankUI.le_KasMasuk_Tambah_Form_Catatan.setText("")
 			self.KasBankUI.lb_KasMasuk_Tambah_Form_Nilai.setText("")
 			self.KasBank_KasMasuk_Tambah_GenerateKode()
+			self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.textChanged.connect(self.KasBank_KasMasuk_Tambah_KodeCek)
 		else:
 			# --- edit mode
 			self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.setText(str(dataKasMasuk[fkm("kodePenyetor")]))
