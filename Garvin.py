@@ -107,6 +107,11 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.tabWidget.currentChanged.connect(self.ResetRooms)
 		#--- startup program aswell, stackedwidget room should be on Menu Index 
 		self.ResetRooms()
+		#--- startup program, set semua datetimeedit ke waktu skrg		
+		tanggal = datetime.now()
+		dtedte = self.findChildren(QtGui.QDateTimeEdit)
+		for dte in dtedte:
+			dte.setDateTime(QDateTime.fromString(tanggal.strftime("%Y-%m-%d %H:%M:%S"),"yyyy-MM-dd hh:mm:ss"))
 		
 	def initDatabase(self):
 		try:
