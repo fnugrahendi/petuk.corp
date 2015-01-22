@@ -17,7 +17,7 @@
    <string notr="true">QFrame{border:0px;}</string>
   </property>
   <property name="currentIndex">
-   <number>1</number>
+   <number>2</number>
   </property>
   <widget class="QWidget" name="st_Menu">
    <layout class="QGridLayout" name="igr_KasBank_Menu">
@@ -486,32 +486,6 @@
          </property>
         </spacer>
        </item>
-       <item row="3" column="2">
-        <widget class="QDateEdit" name="dte_KasMasuk_Tambah_Form_Tanggal">
-         <property name="minimumSize">
-          <size>
-           <width>150</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>150</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="date">
-          <date>
-           <year>2015</year>
-           <month>1</month>
-           <day>1</day>
-          </date>
-         </property>
-         <property name="calendarPopup">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="6">
         <spacer name="hs_KasMasuk_Tambah_Form">
          <property name="orientation">
@@ -646,6 +620,13 @@
          </property>
         </spacer>
        </item>
+       <item row="3" column="2">
+        <widget class="QDateTimeEdit" name="dte_KasMasuk_Tambah_Form_Tanggal">
+         <property name="calendarPopup">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>
@@ -663,7 +644,27 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <zorder>fr_KasMasuk_Tambah_Form</zorder>
+      <layout class="QVBoxLayout" name="ivl_KasMasuk_Tambah_Content">
+       <item>
+        <widget class="QTableWidget" name="tbl_KasMasuk_Tambah">
+         <column>
+          <property name="text">
+           <string>Nomor Akun</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nama Akun</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nilai</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
     <item>

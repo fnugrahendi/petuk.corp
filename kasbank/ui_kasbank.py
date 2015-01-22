@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'kasbank/ui_kasbank.ui'
+# Form implementation generated from reading ui file 'ui_kasbank.ui'
 #
-# Created: Wed Jan 21 22:05:22 2015
-#      by: PyQt4 UI code generator 4.10.1
+# Created: Thu Jan 22 12:45:58 2015
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -217,13 +217,6 @@ class Ui_st_KasBank(object):
         self.gridLayout.addWidget(self.tb_KasMasuk_Tambah_Form_Penyetor, 2, 2, 1, 1)
         spacerItem7 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem7, 2, 6, 1, 1)
-        self.dte_KasMasuk_Tambah_Form_Tanggal = QtGui.QDateEdit(self.fr_KasMasuk_Tambah_Form)
-        self.dte_KasMasuk_Tambah_Form_Tanggal.setMinimumSize(QtCore.QSize(150, 0))
-        self.dte_KasMasuk_Tambah_Form_Tanggal.setMaximumSize(QtCore.QSize(150, 16777215))
-        self.dte_KasMasuk_Tambah_Form_Tanggal.setDate(QtCore.QDate(2015, 1, 1))
-        self.dte_KasMasuk_Tambah_Form_Tanggal.setCalendarPopup(True)
-        self.dte_KasMasuk_Tambah_Form_Tanggal.setObjectName(_fromUtf8("dte_KasMasuk_Tambah_Form_Tanggal"))
-        self.gridLayout.addWidget(self.dte_KasMasuk_Tambah_Form_Tanggal, 3, 2, 1, 1)
         spacerItem8 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem8, 1, 6, 1, 1)
         self.tb_KasMasuk_Tambah_Form_NoAkun = QtGui.QPushButton(self.fr_KasMasuk_Tambah_Form)
@@ -267,6 +260,10 @@ class Ui_st_KasBank(object):
         self.gridLayout.addWidget(self.lb_KasMasuk_Tambah_Form_Nomor, 1, 4, 1, 1)
         spacerItem9 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem9, 2, 3, 1, 1)
+        self.dte_KasMasuk_Tambah_Form_Tanggal = QtGui.QDateTimeEdit(self.fr_KasMasuk_Tambah_Form)
+        self.dte_KasMasuk_Tambah_Form_Tanggal.setCalendarPopup(True)
+        self.dte_KasMasuk_Tambah_Form_Tanggal.setObjectName(_fromUtf8("dte_KasMasuk_Tambah_Form_Tanggal"))
+        self.gridLayout.addWidget(self.dte_KasMasuk_Tambah_Form_Tanggal, 3, 2, 1, 1)
         self.ivl_KasMasuk_Tambah.addWidget(self.fr_KasMasuk_Tambah_Form)
         self.fr_KasMasuk_Tambah_Content = QtGui.QFrame(self.st_KasMasuk_Tambah)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
@@ -277,6 +274,19 @@ class Ui_st_KasBank(object):
         self.fr_KasMasuk_Tambah_Content.setFrameShape(QtGui.QFrame.StyledPanel)
         self.fr_KasMasuk_Tambah_Content.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_KasMasuk_Tambah_Content.setObjectName(_fromUtf8("fr_KasMasuk_Tambah_Content"))
+        self.ivl_KasMasuk_Tambah_Content = QtGui.QVBoxLayout(self.fr_KasMasuk_Tambah_Content)
+        self.ivl_KasMasuk_Tambah_Content.setObjectName(_fromUtf8("ivl_KasMasuk_Tambah_Content"))
+        self.tbl_KasMasuk_Tambah = QtGui.QTableWidget(self.fr_KasMasuk_Tambah_Content)
+        self.tbl_KasMasuk_Tambah.setObjectName(_fromUtf8("tbl_KasMasuk_Tambah"))
+        self.tbl_KasMasuk_Tambah.setColumnCount(3)
+        self.tbl_KasMasuk_Tambah.setRowCount(0)
+        item = QtGui.QTableWidgetItem()
+        self.tbl_KasMasuk_Tambah.setHorizontalHeaderItem(0, item)
+        item = QtGui.QTableWidgetItem()
+        self.tbl_KasMasuk_Tambah.setHorizontalHeaderItem(1, item)
+        item = QtGui.QTableWidgetItem()
+        self.tbl_KasMasuk_Tambah.setHorizontalHeaderItem(2, item)
+        self.ivl_KasMasuk_Tambah_Content.addWidget(self.tbl_KasMasuk_Tambah)
         self.ivl_KasMasuk_Tambah.addWidget(self.fr_KasMasuk_Tambah_Content)
         self.fr_KasMasuk_Tambah_B = QtGui.QFrame(self.st_KasMasuk_Tambah)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
@@ -417,6 +427,12 @@ class Ui_st_KasBank(object):
         self.lb_KasMasuk_Tambah_Form_LabelNilai.setText(_translate("st_KasBank", "Besar Total :", None))
         self.lb_KasMasuk_Tambah_Form_Catatan.setText(_translate("st_KasBank", "Catatan :", None))
         self.lb_KasMasuk_Tambah_Form_Nomor.setText(_translate("st_KasBank", "Nomor Referensi :", None))
+        item = self.tbl_KasMasuk_Tambah.horizontalHeaderItem(0)
+        item.setText(_translate("st_KasBank", "Nomor Akun", None))
+        item = self.tbl_KasMasuk_Tambah.horizontalHeaderItem(1)
+        item.setText(_translate("st_KasBank", "Nama Akun", None))
+        item = self.tbl_KasMasuk_Tambah.horizontalHeaderItem(2)
+        item.setText(_translate("st_KasBank", "Nilai", None))
         self.lb_KasKeluar_Judul.setText(_translate("st_KasBank", "Kas Keluar", None))
         item = self.tbl_KasKeluar.horizontalHeaderItem(0)
         item.setText(_translate("st_KasBank", "Tanggal", None))

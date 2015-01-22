@@ -46,9 +46,7 @@ class KasMasuk(object):
 						]
 		
 		#at first we clear the rows
-		for r in range(0,self.KasBankUI.tbl_KasMasuk.rowCount()+1):
-			self.KasBankUI.tbl_KasMasuk.removeRow(r)
-		self.KasBankUI.tbl_KasMasuk.setRowCount(0)
+		self.clearTable(self.KasBankUI.tbl_KasMasuk)
 		
 		#--- record if such row has displayed
 		idies = []
@@ -78,22 +76,46 @@ class KasMasuk(object):
 										"kodeTransaksi",
 										str(self.KasBankUI.tbl_KasMasuk.item(row,CKODE).text())
 										)
-		print len(data)
-		print data[0]
-		self.KasBank_KasMasuk_Tambah()
-		print "jalankan edit untuk "
-		print row,col
+		self.KasBank_KasMasuk_Tambah(data[0])
 	
 	def KasBank_KasMasuk_Tambah(self,dataKasMasuk=False):
+		fkm = self.KasBank_KasMasuk_Field.index
+		fkmdetail = self.KasBank_DetailKasMasuk_Field.index
 		self.KasBank_Goto("KASMASUK_TAMBAH")
 		
+		TABLECOLUMNS = [
+							["Nomor Akun", "Nama Akun", "Nilai Detail"],
+							["noAkunDetail","gd_rekening_jurnal`.`namaAkun","nilaiDetail"]
+						]
 		if (dataKasMasuk==False):
 			self.KasBank_KasMasuk_IDedit = -1
-		
+		else:
+			# --- edit mode
+			self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.setText(str(dataKasMasuk[fkm("kodePenyetor")]))
+			self.KasBankUI.tb_KasMasuk_Tambah_Form_NoAkun.setText(str(dataKasMasuk[fkm("noAkunKas")]))
+			self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.setText(str(dataKasMasuk[fkm("kodeTransaksi")]))
+			self.KasBankUI.le_KasMasuk_Tambah_Form_Catatan.setText(str(dataKasMasuk[fkm("catatan")]))
+			self.KasBankUI.lb_KasMasuk_Tambah_Form_Nilai.setText(str(dataKasMasuk[fkm("nilaiTotal")]))
+			self.KasBankUI.dte_KasMasuk_Tambah_Form_Tanggal.setDateTime(QDateTime.fromString(str(dataKasMasuk[fkm("tanggal")]),"yyyy-MM-dd hh:mm:ss"))
+			result = self.DatabaseFetchResult(self.dbDatabase,"gd_detail_kas_masuk","kodeTransaksi",str(dataKasMasuk[fkm("kodeTransaksi")]))
+			self.clearTable(self.KasBankUI.tbl_KasMasuk_Tambah)
+			idies = []
+			for row in range(0,len(result)):
+				self.KasBankUI.tbl_KasMasuk_Tambah.insertRow(row)
+				idies.append(row)
+				for kolom in range(0,len(TABLECOLUMNS[1])):
+					if (self.KasBankUI.tbl_KasMasuk_Tambah.item(row,kolom)==None):
+						item = QtGui.QTableWidgetItem()
+						self.KasBankUI.tbl_KasMasuk_Tambah.setItem(row, kolom, item)
+				self.KasBankUI.tbl_KasMasuk_Tambah.item(row,0).setText(str(result[row][fkmdetail(TABLECOLUMNS[1][0])]))
+				self.KasBankUI.tbl_KasMasuk_Tambah.item(row,2).setText(str(result[row][fkmdetail(TABLECOLUMNS[1][2])]))
+				namaakun = self.DatabaseFetchResult(self.dbDatabase,"gd_rekening_jurnal","noAkun",(result[row][fkmdetail(TABLECOLUMNS[1][0])])	)[0][self.DataMaster_DataRekening_Field.index("namaAkun")]
+				self.KasBankUI.tbl_KasMasuk_Tambah.item(row,1).setText(str(namaakun))
 		self.GarvinDisconnect(self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.clicked)
 		self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.clicked.connect(self.KasBank_KasMasuk_Tambah_Pilih_Penyetor)
 		
 	def KasBank_KasMasuk_Tambah_Pilih_AkunKas(self):
+		
 		pass
 		
 	def KasBank_KasMasuk_Tambah_Pilih_Penyetor(self):
