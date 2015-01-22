@@ -20,8 +20,9 @@ class Pembelian(object):
 		self.INDEX_ST_PEMBELIAN_OP_TAMBAHPRODUK = 3
 		self.INDEX_ST_PEMBELIAN_PENERIMAAN = 4
 		self.INDEX_ST_PEMBELIAN_HUTANG = 5
-		self.INDEX_ST_PEMBELIAN_PEMBAYARANHUTANG = 6
-		self.INDEX_ST_PEMBELIAN_RETURPEMBELIAN = 7
+		self.INDEX_ST_PEMBELIAN_HUTANG_RINCIAN = 6
+		self.INDEX_ST_PEMBELIAN_PEMBAYARANHUTANG = 7
+		self.INDEX_ST_PEMBELIAN_RETURPEMBELIAN = 8	
 		
 		#Tombol Pada Halaman Menu
 		self.tb_Pembelian_PermintaanBarang.clicked.connect(self.Pembelian_GoTo_PermintaanBarang)
@@ -49,6 +50,7 @@ class Pembelian(object):
 		
 		#Tombol pada Hutang Usaha
 		self.tb_Pembelian_HutangUsaha_Tutup.clicked.connect(self.Pembelian_GoTo_Menu)
+		self.tb_Pembelian_HutangUsaha_Perincian.clicked.connect(self.Pembelian_GoTo_HutangUsaha_Rincian)
 		
 		#Tombol pada Pembayaran Hutang
 		
@@ -243,6 +245,26 @@ class Pembelian(object):
 		query = "SELECT SUM(`hargaTotal`) FROM `gd_hutang`"
 		self.lb_Pembelian_HutangUsaha_TotalNilai.setText("Rp "+str(int(self.DatabaseRunQuery(query)[0][0])))
 		return
+	
+	def Pembelian_GoTo_HutangUsaha_Rincian(self):
+		currentRow = self.tbl_Pembelian_HutangUsaha.currentRow()
+		nama = str(self.tbl_Pembelian_HutangUsaha.item(currentRow,0).text())
+		query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
+		kodePelanggan = str(self.DatabaseRunQuery(query)[0][1])
+		jumlahRow = self.tbl_Pembelian_RincianHutang.rowCount()
+		if jumlahRow != 0:
+			for x in range (0,jumlahRow):
+				self.tbl_Pembelian_RincianHutang.removeRow(x)
+		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_HUTANG_RINCIAN)
+		self.lb_Pembelian_RincianHutang_Title_Nama.setText(nama)
+		query = "SELECT * FROM `gd_piutang` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"'"
+		result = self.DatabaseRunQuery(query)
+		print result
+		for a in range (0,len(result)):
+			self.tbl_Pembelian_RincianHutang.insertRow(a)
+			self.tbl_Pembelian_RincianHutang.setItem(a,0,QtGui.QTableWidgetItem(str(result[a][5])))
+			self.tbl_Pembelian_RincianHutang.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][2])))
+		pass
 	
 	def Pembelian_GoTo_PembayaranHutang(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_PEMBAYARANHUTANG)
