@@ -69,6 +69,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.tb_Penjualan_OrderPenjualan_Batal.clicked.connect(self.Penjualan_OrderPenjualan_Batal)
 		self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.currentIndexChanged.connect(self.Penjualan_OrderPenjualan_TambahProduk_UpdateKode)
 		self.tb_Penjualan_OrderPenjualan_Rekam.clicked.connect(self.Penjualan_OrderPenjualan_Rekam)
+		self.tb_Penjualan_OrderPenjualan_Nama.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.tb_Penjualan_OrderPenjualan_Nama))
 		
 		#Tombol pada Halaman Pengiriman
 		self.tb_Penjualan_Pengiriman_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -163,7 +164,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		
 	def Penjualan_GoTo_OrderPenjualan(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
-		self.cb_Penjualan_OrderPenjualan_Nama.clear()
+		self.tb_Penjualan_OrderPenjualan_Nama.setText("")
 		self.cb_Penjualan_OrderPenjualan_Gudang.clear()
 		jumlahRow = self.tbl_Penjualan_OrderPenjualan.rowCount()
 		#print jumlahRow
@@ -172,9 +173,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 				self.tbl_Penjualan_OrderPenjualan.removeRow(a)
 		kodePenjualan = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
 		#print kodePenjualan
+		"""
 		query = "SELECT * FROM gd_nama_alamat WHERE `tipe` LIKE 'customer'"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
-			self.cb_Penjualan_OrderPenjualan_Nama.addItem(self.DatabaseRunQuery(query)[a][2])
+			self.cb_Penjualan_OrderPenjualan_Nama.addItem(self.DatabaseRunQuery(query)[a][2])"""
 		query = "SELECT * FROM gd_data_gudang"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
 			self.cb_Penjualan_OrderPenjualan_Gudang.addItem(self.DatabaseRunQuery(query)[a][2])
@@ -216,9 +218,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Kode.setText(kodeBarang)
 			
 	def Penjualan_OrderPenjualan_TambahProduk(self):
-		nama = str(self.cb_Penjualan_OrderPenjualan_Nama.currentText())
-		query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
-		kodePelanggan = self.DatabaseRunQuery(query)[0][1]
+		#nama = str(self.cb_Penjualan_OrderPenjualan_Nama.currentText())
+		#query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
+		kodePelanggan = str(self.tb_Penjualan_OrderPenjualan_Nama.text())
 		kodeTransaksi = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
 		kodeBarang = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Kode.text())
 		jumlah = str(self.le_Penjualan_OrderPenjualan_TambahProduk_Input_Jumlah.text())
