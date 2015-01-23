@@ -55,8 +55,14 @@ class KasBank(KasMasuk,KasKeluar):
 		
 		#--- validators
 		
+		#--- set certain validator
+		lineedits = self.tab_KasBank.findChildren(QtGui.QLineEdit)
+		for lineedit in lineedits:
+			self.GarvinValidate(lineedit) #-- default : huruf, angka, spasi, titik, dash
 		self.GarvinValidate(self.KasBankUI.le_KasKeluar_Tambah_Form_Nomor,"[cdCD0-9]+")
 		self.GarvinValidate(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor,"[crCR0-9]+")
+		self.GarvinValidate(self.KasBankUI.le_KasMasuk_Search,"search")
+		self.GarvinValidate(self.KasBankUI.le_KasKeluar_Search,"search")
 	
 	def KasBank_Goto(self,roomindex):
 		if (type(roomindex)==str):

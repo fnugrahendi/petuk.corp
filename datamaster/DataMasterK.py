@@ -159,9 +159,9 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk):
 		lineedits = self.tab_DataMaster.findChildren(QtGui.QLineEdit)
 		for lineedit in lineedits:
 			self.GarvinValidate(lineedit) #-- default : huruf, angka, spasi, titik
-		self.GarvinValidate(self.le_DataMaster_DataCommon_Search,"[a-zA-Z0-9\s.:]*")
-		self.GarvinValidate(self.le_DataMaster_DataDepartemen_Search,"[a-zA-Z0-9\s.:]*")
-		self.GarvinValidate(self.le_DataMaster_DataNamaAlamat_Tambah_DendaKeterlambatan,"[0-9.]*")
+		self.GarvinValidate(self.le_DataMaster_DataCommon_Search,"search")
+		self.GarvinValidate(self.le_DataMaster_DataDepartemen_Search,"search")
+		self.GarvinValidate(self.le_DataMaster_DataNamaAlamat_Tambah_DendaKeterlambatan,"angka")
 		self.GarvinValidate(self.le_DataMaster_DataProduk_Tambah_HPP,"angka")
 		self.GarvinValidate(self.le_DataMaster_DataProduk_Tambah_Stok,"angka")
 		self.GarvinValidate(self.le_DataMaster_DataProyek_Tambah_AnggaranTotal,"angka")

@@ -33,6 +33,12 @@ class BukuBesar(DaftarTransaksiJurnal):
 		result = self.DatabaseRunQuery("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_detail_transaksi_jurnal';")
 		self.BukuBesar_DetailTransaksiJurnal_Field = list(itertools.chain.from_iterable(result))
 		
+		#--- set certain validator
+		lineedits = self.tab_BukuBesar.findChildren(QtGui.QLineEdit)
+		for lineedit in lineedits:
+			self.GarvinValidate(lineedit) #-- default : huruf, angka, spasi, titik
+		self.GarvinValidate(self.le_BukuBesar_Search,"search")
+			
 	def BukuBesar_Goto(self,st_index):
 		self.st_BukuBesar.setCurrentIndex(st_index)
 		return
