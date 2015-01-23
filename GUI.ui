@@ -4851,7 +4851,11 @@ QPushButton::hover{
                    </widget>
                   </item>
                   <item row="1" column="3">
-                   <widget class="QDateTimeEdit" name="dte_Penjualan_OrderPenjualan_Tanggal"/>
+                   <widget class="QDateTimeEdit" name="dte_Penjualan_OrderPenjualan_Tanggal">
+                    <property name="calendarPopup">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </widget>

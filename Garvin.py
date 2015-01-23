@@ -274,8 +274,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		kodePelanggan = str(self.tb_Penjualan_OrderPenjualan_Nama.text())
 		kodeTransaksi = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
 		jumlahRow = self.tbl_Penjualan_OrderPenjualan.rowCount()
-		tanggal = self.de_Pembelian_OrderPembelian_Tanggal.date()
-		tanggal = tanggal.toString()
+		tanggal = self.dte_Pembelian_OrderPembelian_Tanggal.dateTime()
+		tanggal = tanggal.toString("yyyy-MM-dd hh:mm:ss")
 		print tanggal
 		if jumlahRow != 0:
 			for a in range (0,jumlahRow):
