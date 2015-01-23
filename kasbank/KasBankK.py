@@ -55,8 +55,8 @@ class KasBank(KasMasuk,KasKeluar):
 		
 		#--- validators
 		
-		self.GarvinValidate(self.KasBankUI.le_KasKeluar_Tambah_Form_Nomor,"[CD0-9]+")
-		self.GarvinValidate(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor,"[CR0-9]+")
+		self.GarvinValidate(self.KasBankUI.le_KasKeluar_Tambah_Form_Nomor,"[cdCD0-9]+")
+		self.GarvinValidate(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor,"[crCR0-9]+")
 	
 	def KasBank_Goto(self,roomindex):
 		if (type(roomindex)==str):
