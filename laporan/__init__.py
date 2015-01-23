@@ -1,0 +1,1 @@
+from LaporanK import Laporan
