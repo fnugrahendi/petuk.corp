@@ -27,7 +27,7 @@ except AttributeError:
 		return s
 
 
-class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,KasBank):
+class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,KasBank,Laporan):
 	def __init__(self, parent= None):
 		super(MainGUI,self).__init__(parent)
 		self.setupUi(self)
