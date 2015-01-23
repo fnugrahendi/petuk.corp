@@ -187,6 +187,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 			self.cb_Penjualan_OrderPenjualan_Gudang.addItem(self.DatabaseRunQuery(query)[a][2])
 		query = "SELECT * FROM `gd_order_penjualan` WHERE `kodeTransaksi` LIKE '"+kodePenjualan+"'"
 		result = self.DatabaseRunQuery(query) 
+		print result
 		if len(result) != 0:
 			for a in range(0,len(result)):
 				print "tambah row"
@@ -250,6 +251,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
 		query = "SELECT * FROM `gd_order_penjualan` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"'"
 		result = self.DatabaseRunQuery(query) 
+		print result
 		if len(result) != 0:
 			for a in range(0,len(result)):
 				print "tambah row"
@@ -272,6 +274,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		kodePelanggan = str(self.tb_Penjualan_OrderPenjualan_Nama.text())
 		kodeTransaksi = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
 		jumlahRow = self.tbl_Penjualan_OrderPenjualan.rowCount()
+		tanggal = self.de_Pembelian_OrderPembelian_Tanggal.date()
+		tanggal = tanggal.toString()
+		print tanggal
 		if jumlahRow != 0:
 			for a in range (0,jumlahRow):
 				kodeBarang = str(self.tbl_Penjualan_OrderPenjualan.item(a,0).text())
