@@ -220,7 +220,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 			self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.addItem(self.DatabaseRunQuery(query)[a][5])
 		query = "SELECT * FROM gd_satuan_pengukuran"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
-			self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan.addItem(self.DatabaseRunQuery(query)[a][1])
+			self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Satuan.addItem(self.DatabaseRunQuery(query)[a][2])
 		nama = str(self.cb_Penjualan_OrderPenjualan_TambahProduk_Input_Nama.currentText())
 		query = "SELECT * FROM `gd_data_produk` WHERE `namaBarang` LIKE '"+nama+"'"
 		kodeBarang = self.DatabaseRunQuery(query)[0][1]
@@ -273,10 +273,11 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 	def Penjualan_OrderPenjualan_Rekam(self):
 		kodePelanggan = str(self.tb_Penjualan_OrderPenjualan_Nama.text())
 		kodeTransaksi = str(self.le_Penjualan_OrderPenjualan_NoSO.text())
+		kodeMatauang = str(self.cb_Penjualan_OrderPenjualan_Kurs.currentText())
 		jumlahRow = self.tbl_Penjualan_OrderPenjualan.rowCount()
 		tanggal = self.dte_Pembelian_OrderPembelian_Tanggal.dateTime()
 		tanggal = tanggal.toString("yyyy-MM-dd hh:mm:ss")
-		print tanggal
+		#print tanggal
 		if jumlahRow != 0:
 			for a in range (0,jumlahRow):
 				kodeBarang = str(self.tbl_Penjualan_OrderPenjualan.item(a,0).text())
@@ -289,12 +290,17 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 															["stok"],
 															[stok])
 		query = "SELECT SUM(`harga`*`jumlah`) FROM `gd_order_penjualan` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"'"
-		totalSaldoPiutang = str(self.DatabaseRunQuery(query)[0][0])
+		totalHarga = str(self.DatabaseRunQuery(query)[0][0])
 		print totalSaldoPiutang
 		query = "INSERT INTO `"+self.dbDatabase+"`.`gd_piutang`"+\
 				"(`kodePelanggan`, `kodeTransaksi`, `hargaTotal`) "+\
-				"VALUES ('"+kodePelanggan+"', '"+kodeTransaksi+"', '"+totalSaldoPiutang+"');"
+				"VALUES ('"+kodePelanggan+"', '"+kodeTransaksi+"', '"+totalHarga+"');"
 		self.DatabaseRunQuery(query)
+		
+		query2 = "INSERT INTO `"+self.dbDatabase+"`.`gd_invoice_penjualan`"+\
+				"(`kodeTransaksi`, `kodePelanggan`, `totalHarga`, `tanggal`, `kodeMatauang`) "+\
+				"VALUES ('"+kodeTransaksi+"', '"+kodePelanggan+"', '"+totalHarga+"', '"+tanggal+"', '"+kodeMatauang+"');"
+		self.DatabaseRunQuery(query2)
 
 	def Penjualan_OrderPenjualan_Batal(self):
 		jumlahRow = self.tbl_Penjualan_OrderPenjualan.rowCount()
