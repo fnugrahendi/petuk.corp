@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Fri Jan 23 23:16:05 2015
+# Created: Sat Jan 24 06:40:18 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -50,7 +50,53 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
         self.tabWidget.setSizePolicy(sizePolicy)
-        self.tabWidget.setStyleSheet(_fromUtf8(""))
+        self.tabWidget.setStyleSheet(_fromUtf8("\n"
+"QTabWidget::tab-bar {\n"
+"left: 15px;\n"
+"}\n"
+"QTabBar::tab \n"
+"{\n"
+"    background: #F6F4F2;\n"
+"    color: #000000;   \n"
+"    padding:15px 40px;\n"
+"    border-width:1px;\n"
+"    border-style:solid;\n"
+"    border-color:#F6F4F2;\n"
+"\n"
+"    border-radius:0px;\n"
+"/*    border-top-left-radius: 10px;\n"
+"    border-top-right-radius: 10px;*/\n"
+"    font: 11pt \"Arial\";\n"
+"    text-decoration:none;\n"
+"}\n"
+"\n"
+"QTabBar::tab:selected, \n"
+"QTabBar::tab:hover \n"
+"{\n"
+"    font: 11pt \"Arial\";\n"
+"    color: black;\n"
+"    text-decoration:none;\n"
+"\n"
+"    background-color: qlineargradient(spread:pad, x1:0.505556, y1:0, x2:0.517, y2:1, stop:0 rgba(246, 244, 242, 0), stop:1 rgba(255, 255, 255, 255));\n"
+"    border-right-color:qlineargradient(spread:pad, x1:0.511111, y1:1, x2:0.545, y2:0.443182, stop:0 rgba(207, 169, 30, 255), stop:1 rgba(246, 244, 242, 10));\n"
+"    border-left-color: qlineargradient(spread:pad, x1:0.511111, y1:1, x2:0.545, y2:0.443182, stop:0 rgba(207, 169, 30, 255), stop:1 rgba(246, 244, 242, 10));\n"
+"}\n"
+"\n"
+"\n"
+"QTabBar::tab:selected {\n"
+"/* expand/overlap to the left and right by 4px */\n"
+"margin-left: -4px;\n"
+"margin-right: -4px;\n"
+"}\n"
+"QTabBar::tab:first:selected {\n"
+"margin-left: 0; /* the first selected tab has nothing to overlap with on the left */\n"
+"}\n"
+"QTabBar::tab:last:selected {\n"
+"margin-right: 0; /* the last selected tab has nothing to overlap with on the right */\n"
+"}\n"
+"QTabBar::tab:!selected {\n"
+"margin-top: 2px; /* make non-selected tabs look smaller */\n"
+"}"))
         self.tabWidget.setObjectName(_fromUtf8("tabWidget"))
         self.tab_DataMaster = QtGui.QWidget()
         self.tab_DataMaster.setObjectName(_fromUtf8("tab_DataMaster"))
@@ -189,7 +235,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataCommon_Fbody_Slist.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataCommon_Fbody_Slist.setObjectName(_fromUtf8("sc_DataMaster_DataCommon_Fbody_Slist"))
         self.scontent_DataMaster_DataCommon_Fbody_Slist = QtGui.QWidget()
-        self.scontent_DataMaster_DataCommon_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 315, 18))
+        self.scontent_DataMaster_DataCommon_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 250, 30))
         self.scontent_DataMaster_DataCommon_Fbody_Slist.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataCommon_Fbody_Slist.setObjectName(_fromUtf8("scontent_DataMaster_DataCommon_Fbody_Slist"))
         self.ivl_DataMaster_DataCommon_Fbody_Slist = QtGui.QVBoxLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist)
@@ -1476,7 +1522,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("sc_DataMaster_DataDepartemen_Fbody_Slist"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QWidget()
-        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 332, 330))
+        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 332, 323))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("scontent_DataMaster_DataDepartemen_Fbody_Slist"))
         self.ivl_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QVBoxLayout(self.scontent_DataMaster_DataDepartemen_Fbody_Slist)
@@ -4182,8 +4228,8 @@ class Ui_MainWindow(object):
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
-        self.st_DataMaster.setCurrentIndex(9)
+        self.tabWidget.setCurrentIndex(0)
+        self.st_DataMaster.setCurrentIndex(0)
         self.st_Penjualan.setCurrentIndex(0)
         self.st_Pembelian.setCurrentIndex(0)
         self.st_BukuBesar.setCurrentIndex(0)
