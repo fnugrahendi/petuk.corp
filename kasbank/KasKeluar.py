@@ -141,8 +141,6 @@ class KasKeluar(object):
 		#-- we all need to clear table
 		self.clearTable(self.KasBankUI.tbl_KasKeluar_Tambah)
 		
-		self.GarvinValidate(self.KasBankUI.le_KasKeluar_Tambah_Form_Nomor)
-		
 		#--- disconnect kode cek (khusus tambah baru)
 		self.GarvinDisconnect(self.KasBankUI.le_KasKeluar_Tambah_Form_Nomor.textChanged)
 		

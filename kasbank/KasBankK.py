@@ -52,6 +52,11 @@ class KasBank(KasMasuk,KasKeluar):
 		#--- menu signal
 		self.KasBankUI.tb_Menu_KasMasuk.clicked.connect(self.KasBank_KasMasuk)
 		self.KasBankUI.tb_Menu_KasKeluar.clicked.connect(self.KasBank_KasKeluar)
+		
+		#--- validators
+		
+		self.GarvinValidate(self.KasBankUI.le_KasKeluar_Tambah_Form_Nomor,"[CD0-9]+")
+		self.GarvinValidate(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor,"[CR0-9]+")
 	
 	def KasBank_Goto(self,roomindex):
 		if (type(roomindex)==str):
