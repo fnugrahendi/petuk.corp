@@ -280,6 +280,9 @@ class DaftarTransaksiJurnal(object):
 		self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked.connect(self.BukuBesar_DaftarTransaksiJurnal_PilihRekening)
 		self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked.connect(self.BukuBesar_DaftarTransaksiJurnal_PilihDepartemen)
 		
+		self.GarvinDisconnect(self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.textChanged)
+		self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.textChanged.connect(self.BukuBesar_DaftarTransaksiJurnal_Tambah_KodeCek)
+		
 		
 		hitungulang()
 		self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellChanged.connect(hitungulang)
@@ -394,16 +397,44 @@ class DaftarTransaksiJurnal(object):
 			self.GarvinDisconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellDoubleClicked)
 		self.DataMaster_DataRekening_Popup_Pilih(data,UbahCell)
 	
+	#~ def BukuBesar_DaftarTransaksiJurnal_Tambah_GenerateKode(self):
+		#~ sql = "SELECT `id` FROM `"+self.dbDatabase+"`.`gd_transaksi_jurnal` ORDER BY `gd_transaksi_jurnal`.`id` DESC LIMIT 0 , 1"
+		#~ result = self.DatabaseRunQuery(sql)
+		#~ kode_default = str(int(result[0][0])+1)
+		#~ while (len(kode_default)<8):
+			#~ kode_default = "0"+kode_default
+		#~ kode_default = "GJ" +kode_default
+		#~ self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.setText(kode_default)
+
 	def BukuBesar_DaftarTransaksiJurnal_Tambah_GenerateKode(self):
 		sql = "SELECT `id` FROM `"+self.dbDatabase+"`.`gd_transaksi_jurnal` ORDER BY `gd_transaksi_jurnal`.`id` DESC LIMIT 0 , 1"
 		result = self.DatabaseRunQuery(sql)
-		kode_default = str(int(result[0][0])+1)
-		while (len(kode_default)<8):
-			kode_default = "0"+kode_default
-		kode_default = "GJ" +kode_default
+		if len(result)<1:
+			kode_default = "00000000"
+		else:
+			kode_default = str(int(result[0][0])+1)
+			while (len(kode_default)<8):
+				kode_default = "0"+kode_default
+		kode_default = "GJ" + kode_default
 		self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.setText(kode_default)
-
-
+	
+	def BukuBesar_DaftarTransaksiJurnal_Tambah_KodeCek(self,stuf=None):
+		kodebaru = ""
+		kodeterlarang = str(self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.text())
+		result = self.DatabaseFetchResult(self.dbDatabase,"gd_transaksi_jurnal","kodeTransaksi",kodeterlarang	)
+		if (len(result)>0):
+			self.statusbar.showMessage("Kode "+kodeterlarang+" sudah terpakai, diberikan kode lain",10000)
+			while len(result)>0:
+				nilai = int(re.findall("\d+",kodeterlarang)[0])
+				nilai+=1
+				kodebaru = str(nilai)
+				while (len(kodebaru)<8):
+					kodebaru = "0"+kodebaru
+				kodebaru = "GJ"+kodebaru
+				kodeterlarang = kodebaru
+				result = self.DatabaseFetchResult(self.dbDatabase,"gd_transaksi_jurnal","kodeTransaksi",kodeterlarang	)
+			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.setText(kodebaru)
+			
 		
 	def BukuBesar_DaftarTransaksiJurnal_RedrawInfo(self,searchtext):
 		searchtext = str(searchtext)
