@@ -155,8 +155,19 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk):
 		
 		self.DataMaster_CommonRoom_cleared = 0
 		
-	#-------------------------------------------------------------------DataMaster
-	#-------------------------------------------------------------------DataMaster
+		#--- set certain validator
+		lineedits = self.tab_DataMaster.findChildren(QtGui.QLineEdit)
+		for lineedit in lineedits:
+			self.GarvinValidate(lineedit) #-- default : huruf, angka, spasi, titik
+		self.GarvinValidate(self.le_DataMaster_DataCommon_Search,"search")
+		self.GarvinValidate(self.le_DataMaster_DataDepartemen_Search,"search")
+		self.GarvinValidate(self.le_DataMaster_DataNamaAlamat_Tambah_DendaKeterlambatan,"angka")
+		self.GarvinValidate(self.le_DataMaster_DataProduk_Tambah_HPP,"angka")
+		self.GarvinValidate(self.le_DataMaster_DataProduk_Tambah_Stok,"angka")
+		self.GarvinValidate(self.le_DataMaster_DataProyek_Tambah_AnggaranTotal,"angka")
+		self.GarvinValidate(self.le_DataMaster_DataProyek_Tambah_RealisasiTotal,"angka")
+		
+		
 	def DataMaster_None(self):
 		pass
 	
