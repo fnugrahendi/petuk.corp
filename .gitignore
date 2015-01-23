@@ -5,3 +5,4 @@ build/
 Garvin.spec
 geany_run_script*
 kasbank/img/
+*.html
