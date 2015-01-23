@@ -585,6 +585,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		elif (regexp.lower()=="huruf"):
 			regexp = QRegExp("[-a-zA-Z\s\.]*")
 			lineedit.setValidator(QRegExpValidator(regexp))
+		elif (regexp.lower()=="search"):
+			regexp = QRegExp("[-a-zA-Z0-9\s.:]*")
+			lineedit.setValidator(QRegExpValidator(regexp))
 		else:
 			regexp = QRegExp(regexp)
 			lineedit.setValidator(QRegExpValidator(regexp))
