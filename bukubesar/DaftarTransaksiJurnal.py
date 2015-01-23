@@ -114,6 +114,9 @@ class DaftarTransaksiJurnal(object):
 		self.tb_BukuBesar_DaftarTransaksiJurnal_Delete.clicked.connect(_ConfirmDeleteCertainCell)
 		self.GarvinDisconnect(self.tb_BukuBesar_DaftarTransaksiJurnal_Tutup.clicked)
 		self.tb_BukuBesar_DaftarTransaksiJurnal_Tutup.clicked.connect(self.BukuBesar_Menu)
+		
+		self.GarvinDisconnect(self.tb_BukuBesar_DaftarTransaksiJurnal_Cetak.clicked)
+		self.tb_BukuBesar_DaftarTransaksiJurnal_Cetak.clicked.connect(self.BukuBesar_DaftarTransaksiJurnal_Cetak)
 		#-----search bar
 		self.GarvinDisconnect(self.le_BukuBesar_Search.textEdited)
 		self.le_BukuBesar_Search.textEdited.connect(self.BukuBesar_DaftarTransaksiJurnal_RedrawInfo)
@@ -490,11 +493,12 @@ class DaftarTransaksiJurnal(object):
 		DrawIfExist(result)
 		
 	def BukuBesar_DaftarTransaksiJurnal_Cetak(self,start="2015-01-01 00:00:00",end="2015-02-20 23:59:59"):
-		data = []
+		data = [[],[]]
 		result = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal` WHERE `tanggal` >= '"+start+"' AND `tanggal` <= '"+end+"'")
-		data.append(result)
 		for x in range(0,len(result)):
+			data[0].append(result[x])
 			detail = self.DatabaseFetchResult(self.dbDatabase,"gd_detail_transaksi_jurnal","kodeTransaksi",result[x][self.BukuBesar_TransaksiJurnal_Field.index("kodeTransaksi")])
-			print detail
+			data[1].append(detail)
 		
+		self.L_BukuBesar_DTJ_Create("General Journal List",data)
 		
