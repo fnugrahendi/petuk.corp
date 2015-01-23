@@ -18,6 +18,7 @@ from bukubesar import BukuBesar
 from datamaster import DataMaster
 from pembelian import Pembelian
 from kasbank import KasBank
+from laporan import Laporan
 
 try:
 	_fromUtf8 = QtCore.QString.fromUtf8
