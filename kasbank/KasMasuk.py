@@ -151,6 +151,7 @@ class KasMasuk(object):
 		idies = []
 		if (dataKasMasuk==False):
 			#--- new mode
+			self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.setReadOnly(False)
 			self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.setText("")
 			self.KasBankUI.tb_KasMasuk_Tambah_Form_NoAkun.setText("")
 			self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.setText("")
@@ -160,6 +161,7 @@ class KasMasuk(object):
 			self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.textChanged.connect(self.KasBank_KasMasuk_Tambah_KodeCek)
 		else:
 			# --- edit mode
+			self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.setReadOnly(True)
 			self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.setText(str(dataKasMasuk[fkm("kodePenyetor")]))
 			self.KasBankUI.tb_KasMasuk_Tambah_Form_NoAkun.setText(str(dataKasMasuk[fkm("noAkunKas")]))
 			self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.setText(str(dataKasMasuk[fkm("kodeTransaksi")]))
