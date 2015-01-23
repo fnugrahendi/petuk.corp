@@ -116,7 +116,7 @@ class DaftarTransaksiJurnal(object):
 		self.tb_BukuBesar_DaftarTransaksiJurnal_Tutup.clicked.connect(self.BukuBesar_Menu)
 		
 		self.GarvinDisconnect(self.tb_BukuBesar_DaftarTransaksiJurnal_Cetak.clicked)
-		self.tb_BukuBesar_DaftarTransaksiJurnal_Cetak.clicked.connect(self.BukuBesar_DaftarTransaksiJurnal_Cetak)
+		self.tb_BukuBesar_DaftarTransaksiJurnal_Cetak.clicked.connect(functools.partial(self.BukuBesar_DaftarTransaksiJurnal_Cetak,"2015-01-01 00:00:00","2015-02-01 00:00:00"))
 		#-----search bar
 		self.GarvinDisconnect(self.le_BukuBesar_Search.textEdited)
 		self.le_BukuBesar_Search.textEdited.connect(self.BukuBesar_DaftarTransaksiJurnal_RedrawInfo)
@@ -132,7 +132,6 @@ class DaftarTransaksiJurnal(object):
 		CDEPARTEMEN = 2
 		CDEBIT = 3
 		CKREDIT = 4
-		self.BukuBesar_DaftarTransaksiJurnal_Cetak()
 		if dataTransaksiJurnal==False:
 			self.BukuBesar_DaftarTransaksiJurnal_idEDIT = -1
 		
@@ -494,7 +493,7 @@ class DaftarTransaksiJurnal(object):
 		
 	def BukuBesar_DaftarTransaksiJurnal_Cetak(self,start="2015-01-01 00:00:00",end="2015-02-20 23:59:59"):
 		data = [[],[]]
-		result = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal` WHERE `tanggal` >= '"+start+"' AND `tanggal` <= '"+end+"'")
+		result = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal` WHERE `tanggal` >= '"+str(start)+"' AND `tanggal` <= '"+str(end)+"'")
 		for x in range(0,len(result)):
 			data[0].append(result[x])
 			detail = self.DatabaseFetchResult(self.dbDatabase,"gd_detail_transaksi_jurnal","kodeTransaksi",result[x][self.BukuBesar_TransaksiJurnal_Field.index("kodeTransaksi")])
