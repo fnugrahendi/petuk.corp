@@ -576,14 +576,14 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 			"angka" : digit
 			"huruf" : huruf
 		"""
-		if (regexp==None):
-			regexp = QRegExp("[a-zA-Z0-9\s\.]*")
+		if (regexp==None): #-- default
+			regexp = QRegExp("[-a-zA-Z0-9\s\.]*")
 			lineedit.setValidator(QRegExpValidator(regexp))
 		elif (regexp.lower()=="angka"):
 			regexp = QRegExp("[0-9\.]*")
 			lineedit.setValidator(QRegExpValidator(regexp))
 		elif (regexp.lower()=="huruf"):
-			regexp = QRegExp("[a-zA-Z\s\.]*")
+			regexp = QRegExp("[-a-zA-Z\s\.]*")
 			lineedit.setValidator(QRegExpValidator(regexp))
 		else:
 			regexp = QRegExp(regexp)
