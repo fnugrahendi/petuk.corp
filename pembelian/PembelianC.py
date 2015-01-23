@@ -127,7 +127,7 @@ class Pembelian(object):
 			self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama.addItem(self.DatabaseRunQuery(query)[a][5])
 		query = "SELECT * FROM gd_satuan_pengukuran"
 		for a in range(0,len(self.DatabaseRunQuery(query))):
-			self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Satuan.addItem(self.DatabaseRunQuery(query)[a][1])
+			self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Satuan.addItem(self.DatabaseRunQuery(query)[a][2])
 		nama = str(self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama.currentText())
 		query = "SELECT * FROM `gd_data_produk` WHERE `namaBarang` LIKE '"+nama+"'"
 		kodeBarang = self.DatabaseRunQuery(query)[0][1]
@@ -145,6 +145,7 @@ class Pembelian(object):
 		diskon = str(self.le_Pembelian_OrderPembelian_TambahProduk_Input_Diskon.text())
 		pajak = str(self.le_Pembelian_OrderPembelian_TambahProduk_Input_Pajak.text())
 		query = "SELECT * FROM `gd_data_pajak` WHERE `namaPajak` LIKE '"+pajak+"'"
+		tanggalMasuk = str(self.dte_Pembelian_OrderPembelian_Tanggal.dateTime().toString("yyyy-MM-dd hh:mm:ss"))
 		try:
 			kodePajak = str(self.DatabaseRunQuery(query)[0][1])
 		except:
@@ -154,6 +155,10 @@ class Pembelian(object):
 			",`jumlah`,`harga`,`diskon`,`kodePajak`) VALUES"+\
 			"('"+kodeTransaksi+"','"+kodeMatauang+"','"+kodePelanggan+"','"+kodeBarang+"','"+jumlah+"','"+harga+"','"+diskon+"','"+kodePajak+"')"
 		self.DatabaseRunQuery(query)
+		
+		query2 = "INSERT INTO `gd_data_penyimpanan` (`kodeBarang`,`tanggalMasuk`,`hargaBeli`,`pemasok`,`stok`,`kurs`) VALUES ('"+kodeBarang+"','"+tanggalMasuk+"','"+harga+"','"+kodePelanggan+"','"+jumlah+"','"+kodeMatauang+"')"
+		self.DatabaseRunQuery(query2)
+		
 		jumlahRow = self.tbl_Pembelian_OrderPembelian.rowCount()
 		if jumlahRow != 0:
 			for a in range (0,jumlahRow):
@@ -210,6 +215,8 @@ class Pembelian(object):
 		kodePelanggan = str(self.tb_Pembelian_OrderPembelian_Nama.text())
 		kodeTransaksi = str(self.le_Pembelian_OrderPembelian_NoPO.text())
 		jumlahRow = self.tbl_Pembelian_OrderPembelian.rowCount()
+		tanggalMasuk = str(self.dte_Pembelian_OrderPembelian_Tanggal.dateTime().toString("yyyy-MM-dd hh:mm:ss"))
+		kodeMatauang = str(self.cb_Pembelian_OrderPembelian_Kurs.currentText())
 		if jumlahRow != 0:
 			for a in range (0,jumlahRow):
 				kodeBarang = str(self.tbl_Pembelian_OrderPembelian.item(a,0).text())
@@ -222,13 +229,18 @@ class Pembelian(object):
 															["stok"],
 															[stok])
 		query = "SELECT SUM(`harga`*`jumlah`) FROM `gd_order_pembelian` WHERE `kodeTransaksi` LIKE '"+kodeTransaksi+"'"
-		totalSaldoHutang = str(self.DatabaseRunQuery(query)[0][0])
+		totalHarga = str(self.DatabaseRunQuery(query)[0][0])
 		print totalSaldoHutang
 		print kodePelanggan
 		query = "INSERT INTO `"+self.dbDatabase+"`.`gd_hutang`"+\
 				"(`kodePelanggan`, `kodeTransaksi`, `hargaTotal`) "+\
-				"VALUES ('"+kodePelanggan+"', '"+kodeTransaksi+"', '"+totalSaldoHutang+"');"
+				"VALUES ('"+kodePelanggan+"', '"+kodeTransaksi+"', '"+totalHarga+"');"
 		self.DatabaseRunQuery(query)
+		
+		query2 = "INSERT INTO `"+self.dbDatabase+"`.`gd_invoice_pembelian`"+\
+				"(`kodeTransaksi`, `kodePelanggan`, `totalHarga`, `tanggal`, `kodeMatauang`) "+\
+				"VALUES ('"+kodeTransaksi+"', '"+kodePelanggan+"', '"+totalHarga+"', '"+tanggalMasuk+"', '"+kodeMatauang+"');"
+		self.DatabaseRunQuery(query2)
 	
 	def Pembelian_GoTo_PenerimaanBarang(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_PENERIMAAN)

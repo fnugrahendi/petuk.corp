@@ -341,8 +341,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>250</width>
-                          <height>30</height>
+                          <width>315</width>
+                          <height>18</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -4851,7 +4851,11 @@ QPushButton::hover{
                    </widget>
                   </item>
                   <item row="1" column="3">
-                   <widget class="QDateTimeEdit" name="dte_Penjualan_OrderPenjualan_Tanggal"/>
+                   <widget class="QDateTimeEdit" name="dte_Penjualan_OrderPenjualan_Tanggal">
+                    <property name="calendarPopup">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </widget>
@@ -6557,13 +6561,6 @@ QPushButton::hover{
                     </property>
                    </widget>
                   </item>
-                  <item row="2" column="7">
-                   <widget class="QCheckBox" name="chk_Penjualan_PembayaranPiutang_Baru_Giro">
-                    <property name="text">
-                     <string>Giro</string>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="0" column="0">
                    <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Akun">
                     <property name="text">
@@ -6575,7 +6572,11 @@ QPushButton::hover{
                    <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Dept"/>
                   </item>
                   <item row="4" column="3">
-                   <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Nominal"/>
+                   <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Nominal">
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
                   </item>
                   <item row="5" column="1" colspan="3">
                    <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Memo"/>
@@ -6624,7 +6625,14 @@ QPushButton::hover{
                     </property>
                    </widget>
                   </item>
-                  <item row="2" column="8">
+                  <item row="0" column="6">
+                   <widget class="QCheckBox" name="chk_Penjualan_PembayaranPiutang_Baru_Giro">
+                    <property name="text">
+                     <string>Giro</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="6">
                    <spacer name="hs_Penjualan_PembayaranPiutang_Baru_input">
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
@@ -6638,7 +6646,7 @@ QPushButton::hover{
                    </spacer>
                   </item>
                   <item row="3" column="3">
-                   <widget class="QDateEdit" name="de_Penjualan_PembayaranPiutang_Baru_Tanggal">
+                   <widget class="QDateTimeEdit" name="dte_Penjualan_PembayaranPiutang_Baru_Tanggal">
                     <property name="calendarPopup">
                      <bool>true</bool>
                     </property>
@@ -6662,7 +6670,7 @@ QPushButton::hover{
                  <zorder>le_Penjualan_PembayaranPiutang_Baru_Dept</zorder>
                  <zorder>chk_Penjualan_PembayaranPiutang_Baru_Giro</zorder>
                  <zorder>hs_Penjualan_PembayaranPiutang_Baru_input</zorder>
-                 <zorder>de_Penjualan_PembayaranPiutang_Baru_Tanggal</zorder>
+                 <zorder>dte_Penjualan_PembayaranPiutang_Baru_Tanggal</zorder>
                 </widget>
                </item>
                <item>
@@ -6794,6 +6802,13 @@ QPushButton::hover{
                   <enum>QFrame::Raised</enum>
                  </property>
                  <layout class="QHBoxLayout" name="hl_Penjualan_PembayaranPiutang_Baru_tombol">
+                  <item>
+                   <widget class="QPushButton" name="tb_Penjualan_PembayaranPiutang_Baru_Tambah">
+                    <property name="text">
+                     <string>Tambah Baris</string>
+                    </property>
+                   </widget>
+                  </item>
                   <item>
                    <widget class="QPushButton" name="tb_Penjualan_PembayaranPiutang_Baru_Hapus">
                     <property name="text">
