@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="Menu">
+    <file>img/KasKeluar0.png</file>
+    <file>img/KasKeluar1.png</file>
+    <file>img/KasMasuk0.png</file>
+    <file>img/KasMasuk1.png</file>
+  </qresource>
+</RCC>

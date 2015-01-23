@@ -17,10 +17,62 @@
    <string notr="true">QFrame{border:0px;}</string>
   </property>
   <property name="currentIndex">
-   <number>4</number>
+   <number>0</number>
   </property>
   <widget class="QWidget" name="st_Menu">
    <layout class="QGridLayout" name="igr_KasBank_Menu">
+    <item row="1" column="0">
+     <spacer name="hs_KasBank_Menu_l">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="1">
+     <spacer name="vs_KasBank_Menu_t">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="2" column="1">
+     <spacer name="vs_KasBank_Menu_b">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="2">
+     <spacer name="hs_KasBank_Menu_r">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
     <item row="1" column="1">
      <widget class="QFrame" name="fr_Menu_Content">
       <property name="sizePolicy">
@@ -50,82 +102,58 @@
       <widget class="QPushButton" name="tb_Menu_KasMasuk">
        <property name="geometry">
         <rect>
-         <x>150</x>
-         <y>160</y>
-         <width>151</width>
-         <height>161</height>
+         <x>0</x>
+         <y>10</y>
+         <width>311</width>
+         <height>321</height>
         </rect>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background-image: url(:/Menu/img/KasMasuk0.png);background-size: 100% 100%;
+border-width:1px;
+border-color:rgb(150, 137, 188);
+border-style:outset;border-radius:5px;
+}
+QPushButton:hover{
+background-image: url(:/Menu/img/KasMasuk1.png);
+ }</string>
+       </property>
        <property name="text">
-        <string>Kas Masuk</string>
+        <string/>
        </property>
       </widget>
       <widget class="QPushButton" name="tb_Menu_KasKeluar">
        <property name="geometry">
         <rect>
-         <x>330</x>
-         <y>160</y>
-         <width>151</width>
-         <height>161</height>
+         <x>320</x>
+         <y>10</y>
+         <width>311</width>
+         <height>321</height>
         </rect>
        </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background-image: url(:/Menu/img/KasKeluar0.png);background-size: 100% 100%;
+border-width:1px;
+border-color:rgb(150, 137, 188);
+border-style:outset;border-radius:5px;
+}
+QPushButton:hover{
+background-image: url(:/Menu/img/KasKeluar1.png);
+ }</string>
+       </property>
        <property name="text">
-        <string>Kas Keluar</string>
+        <string/>
        </property>
       </widget>
      </widget>
-    </item>
-    <item row="0" column="1">
-     <spacer name="vs_KasBank_Menu_t">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="2" column="1">
-     <spacer name="vs_KasBank_Menu_b">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="1" column="0">
-     <spacer name="hs_KasBank_Menu_l">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="1" column="2">
-     <spacer name="hs_KasBank_Menu_r">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
     </item>
    </layout>
   </widget>
@@ -1392,6 +1420,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="ui_kasbankrc.qrc"/>
+ </resources>
  <connections/>
 </ui>

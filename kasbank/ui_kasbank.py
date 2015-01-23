@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_kasbank.ui'
 #
-# Created: Thu Jan 22 23:41:20 2015
+# Created: Fri Jan 23 13:26:09 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -32,6 +32,14 @@ class Ui_st_KasBank(object):
         self.st_Menu.setObjectName(_fromUtf8("st_Menu"))
         self.igr_KasBank_Menu = QtGui.QGridLayout(self.st_Menu)
         self.igr_KasBank_Menu.setObjectName(_fromUtf8("igr_KasBank_Menu"))
+        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.igr_KasBank_Menu.addItem(spacerItem, 1, 0, 1, 1)
+        spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.igr_KasBank_Menu.addItem(spacerItem1, 0, 1, 1, 1)
+        spacerItem2 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.igr_KasBank_Menu.addItem(spacerItem2, 2, 1, 1, 1)
+        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.igr_KasBank_Menu.addItem(spacerItem3, 1, 2, 1, 1)
         self.fr_Menu_Content = QtGui.QFrame(self.st_Menu)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(1)
@@ -44,20 +52,34 @@ class Ui_st_KasBank(object):
         self.fr_Menu_Content.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_Menu_Content.setObjectName(_fromUtf8("fr_Menu_Content"))
         self.tb_Menu_KasMasuk = QtGui.QPushButton(self.fr_Menu_Content)
-        self.tb_Menu_KasMasuk.setGeometry(QtCore.QRect(150, 160, 151, 161))
+        self.tb_Menu_KasMasuk.setGeometry(QtCore.QRect(0, 10, 311, 321))
+        self.tb_Menu_KasMasuk.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.tb_Menu_KasMasuk.setStyleSheet(_fromUtf8("QPushButton{\n"
+"background-image: url(:/Menu/img/KasMasuk0.png);background-size: 100% 100%;\n"
+"border-width:1px;\n"
+"border-color:rgb(150, 137, 188);\n"
+"border-style:outset;border-radius:5px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-image: url(:/Menu/img/KasMasuk1.png);\n"
+" }"))
+        self.tb_Menu_KasMasuk.setText(_fromUtf8(""))
         self.tb_Menu_KasMasuk.setObjectName(_fromUtf8("tb_Menu_KasMasuk"))
         self.tb_Menu_KasKeluar = QtGui.QPushButton(self.fr_Menu_Content)
-        self.tb_Menu_KasKeluar.setGeometry(QtCore.QRect(330, 160, 151, 161))
+        self.tb_Menu_KasKeluar.setGeometry(QtCore.QRect(320, 10, 311, 321))
+        self.tb_Menu_KasKeluar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.tb_Menu_KasKeluar.setStyleSheet(_fromUtf8("QPushButton{\n"
+"background-image: url(:/Menu/img/KasKeluar0.png);background-size: 100% 100%;\n"
+"border-width:1px;\n"
+"border-color:rgb(150, 137, 188);\n"
+"border-style:outset;border-radius:5px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-image: url(:/Menu/img/KasKeluar1.png);\n"
+" }"))
+        self.tb_Menu_KasKeluar.setText(_fromUtf8(""))
         self.tb_Menu_KasKeluar.setObjectName(_fromUtf8("tb_Menu_KasKeluar"))
         self.igr_KasBank_Menu.addWidget(self.fr_Menu_Content, 1, 1, 1, 1)
-        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.igr_KasBank_Menu.addItem(spacerItem, 0, 1, 1, 1)
-        spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.igr_KasBank_Menu.addItem(spacerItem1, 2, 1, 1, 1)
-        spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.igr_KasBank_Menu.addItem(spacerItem2, 1, 0, 1, 1)
-        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.igr_KasBank_Menu.addItem(spacerItem3, 1, 2, 1, 1)
         st_KasBank.addWidget(self.st_Menu)
         self.st_KasMasuk = QtGui.QWidget()
         self.st_KasMasuk.setObjectName(_fromUtf8("st_KasMasuk"))
@@ -582,13 +604,11 @@ class Ui_st_KasBank(object):
         st_KasBank.addWidget(self.st_KasKeluar_Tambah)
 
         self.retranslateUi(st_KasBank)
-        st_KasBank.setCurrentIndex(4)
+        st_KasBank.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(st_KasBank)
 
     def retranslateUi(self, st_KasBank):
         st_KasBank.setWindowTitle(_translate("st_KasBank", "StackedWidget", None))
-        self.tb_Menu_KasMasuk.setText(_translate("st_KasBank", "Kas Masuk", None))
-        self.tb_Menu_KasKeluar.setText(_translate("st_KasBank", "Kas Keluar", None))
         self.lb_KasMasuk_Judul.setText(_translate("st_KasBank", "Kas Masuk", None))
         self.le_KasMasuk_Search.setPlaceholderText(_translate("st_KasBank", "Type to search...", None))
         item = self.tbl_KasMasuk.horizontalHeaderItem(0)
@@ -662,3 +682,4 @@ class Ui_st_KasBank(object):
         self.tb_KasKeluar_Tambah_Simpan.setText(_translate("st_KasBank", "Simpan", None))
         self.tb_KasKeluar_Tambah_Batal.setText(_translate("st_KasBank", "Batal", None))
 
+import ui_kasbankrc_rc
