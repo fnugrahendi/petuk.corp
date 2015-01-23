@@ -158,6 +158,7 @@ class KasMasuk(object):
 			self.KasBankUI.le_KasMasuk_Tambah_Form_Catatan.setText("")
 			self.KasBankUI.lb_KasMasuk_Tambah_Form_Nilai.setText("")
 			self.KasBank_KasMasuk_Tambah_GenerateKode()
+			self.GarvinDisconnect(self.KasBankUI.le_KasKeluar_Tambah_Form_Nomor.textChanged)
 			self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.textChanged.connect(self.KasBank_KasMasuk_Tambah_KodeCek)
 		else:
 			# --- edit mode
