@@ -29,7 +29,6 @@ class Login(Ui_fr_Main):
 		
 		aatime = QtCore.QTimer(self)
 		aatime.timeout.connect(self.Login_Redraw)
-		print(str(dir (aatime.timeout)))
 		aatime.start(500)
 		
 		
@@ -65,7 +64,6 @@ class Login(Ui_fr_Main):
 	def Login_Test(self):
 		WinW = self.centralwidget.geometry().width()
 		WinH = self.centralwidget.geometry().height()
-		print WinW,WinH
 
 	def Login_Connect_Act_OK(self):
 		self.dbHost = str(self.LoginUI.le_Connect_Alamat.text())
