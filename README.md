@@ -3,10 +3,4 @@
 
 Petuk
 ============
-consider contact goodel.akunting@gmail.com first before contributing for more info
-
-ndro kyne bakal butuh kie jg
-lpod-python
-setuptools
-lxml
-python-imaging
+GPL license. contact goodel.akunting@gmail.com
