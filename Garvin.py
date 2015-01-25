@@ -20,6 +20,7 @@ from pembelian import Pembelian
 from kasbank import KasBank
 from laporan import Laporan
 from login import Login
+from updater import Updater
 
 try:
 	_fromUtf8 = QtCore.QString.fromUtf8
@@ -28,7 +29,7 @@ except AttributeError:
 		return s
 
 
-class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,KasBank,Laporan,Login):
+class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,KasBank,Laporan,Login,Updater):
 	def __init__(self, parent= None):
 		super(MainGUI,self).__init__(parent)
 		self.setupUi(self)
