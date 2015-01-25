@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'login_ui.ui'
 #
-# Created: Sun Jan 25 19:28:29 2015
+# Created: Sun Jan 25 21:04:53 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -118,12 +118,12 @@ class Ui_fr_Main(object):
         self.sc_Database_List = QtGui.QScrollArea(self.fr_Database)
         self.sc_Database_List.setWidgetResizable(True)
         self.sc_Database_List.setObjectName(_fromUtf8("sc_Database_List"))
-        self.sc_Database_ListContent = QtGui.QWidget()
-        self.sc_Database_ListContent.setGeometry(QtCore.QRect(0, 0, 249, 199))
-        self.sc_Database_ListContent.setObjectName(_fromUtf8("sc_Database_ListContent"))
-        self.ivl_Database_ListContent = QtGui.QVBoxLayout(self.sc_Database_ListContent)
+        self.scontent_Database_List = QtGui.QWidget()
+        self.scontent_Database_List.setGeometry(QtCore.QRect(0, 0, 249, 199))
+        self.scontent_Database_List.setObjectName(_fromUtf8("scontent_Database_List"))
+        self.ivl_Database_ListContent = QtGui.QVBoxLayout(self.scontent_Database_List)
         self.ivl_Database_ListContent.setObjectName(_fromUtf8("ivl_Database_ListContent"))
-        self.sc_Database_List.setWidget(self.sc_Database_ListContent)
+        self.sc_Database_List.setWidget(self.scontent_Database_List)
         self.igr_Database.addWidget(self.sc_Database_List, 2, 0, 1, 1)
         self.le_Database_Search = QtGui.QLineEdit(self.fr_Database)
         self.le_Database_Search.setObjectName(_fromUtf8("le_Database_Search"))
@@ -138,7 +138,7 @@ class Ui_fr_Main(object):
         self.igr_Main.addWidget(self.st_Main, 1, 1, 1, 1)
 
         self.retranslateUi(fr_Main)
-        self.st_Main.setCurrentIndex(1)
+        self.st_Main.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(fr_Main)
 
     def retranslateUi(self, fr_Main):

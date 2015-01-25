@@ -69,10 +69,28 @@ class Login(Ui_fr_Main):
 
 	def Login_Connect_Act_OK(self):
 		self.dbHost = str(self.LoginUI.le_Connect_Alamat.text())
+		if (self.dbHost.lower().find("localhost") != -1):
+			self.dbHost = "127.0.0.1"
 		self.Login_Database()
 
 	def Login_Database(self):
 		self.Login_Goto("Database")
-		sql = "SHOW DATABASES"
+		self.dbUser = "gd_user_akunting"
+		self.dbPassword = "nyungsep"
+		databases = self.DatabaseRunQuery("SHOW DATABASES")
+		for x in range(len(databases)):
+			if (str(databases[x][0]).find("gd_db_") != -1):
+				tb_data = self.LoginUI.scontent_Database_List.findChild(QtGui.QPushButton,"dtb_Login_Database_List"+str(x))
+				if (tb_data == None):
+					tb_data = QtGui.QPushButton(self.LoginUI.scontent_Database_List)
+					tb_data.setObjectName("dtb_Login_Database_List"+str(x))
+					tb_data.setText(str(databases[x][0]))
+					self.LoginUI.ivl_Database_ListContent.addWidget(tb_data)
+					tb_data.clicked.connect(functools.partial(self.Login_Database_SetDatabase,databases[x][0]))
+	def Login_Database_SetDatabase(self,dbname):
+		self.dbDatabase = dbname
+		self.Login_Done()
 		
-		
+	def Login_Done(self):
+		""" done from login, exit the login frame"""
+		self.fr_Login_Frame.close()
