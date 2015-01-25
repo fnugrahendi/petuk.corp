@@ -24,4 +24,7 @@ class Laporan(L_BukuBesar_DTJ):
 		
 		return
 	
-	
+	def Laporan_Neraca(self, data):
+		
+		pass
+		

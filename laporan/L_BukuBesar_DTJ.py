@@ -22,6 +22,9 @@ class L_BukuBesar_DTJ(object):
 	def L_BukuBesar_DTJ_init(self):
 		pass
 	
+	#~ def L_BukuBesar_DTJ_Create(self,nama,data):
+		#~ 
+	
 	def L_BukuBesar_DTJ_Create(self,nama,data):
 		fjurnal = self.BukuBesar_TransaksiJurnal_Field.index
 		fdetail = self.BukuBesar_DetailTransaksiJurnal_Field.index
@@ -29,8 +32,9 @@ class L_BukuBesar_DTJ(object):
 		h.text("<!doctype html>",escape=False)
 		h_ = h.html()
 		h_html = h_.body(style="font-family:Arial; font-size:10pt;")
-		h_html_Judul = h_html.p("General Journal List")
+		h_html_Judul = h_html.p("General Journal List", style="text-align:center;width:100%;")
 		h_html_table = h_html.table(style="border:solid 1px gray;")
+		h_html.center("tengah coba")
 		tr_judul = h_html_table.tr(style="font-weight:bold;")
 		tr_judul.td("Tanggal")
 		tr_judul.td("Keterangan")
@@ -49,9 +53,9 @@ class L_BukuBesar_DTJ(object):
 			tr.td("")
 			tr.td("")
 			for baris_detail in range(0,len(detail)):
-				tr_detail = h_html_table.tr
+				tr_detail = h_html_table.tr(style="font-size:0.7em")
 				data_detail = detail[baris_detail]
-				tr_detail.td(" "+str(data_detail[fdetail("kodeTransaksi")]),escape=False)
+				tr_detail.td(str(data_detail[fdetail("kodeTransaksi")]),escape=False)
 				
 				nomorakun = str(data_detail[fdetail("noAkunJurnal")])
 				try:namaakun = str(self.DatabaseFetchResult(self.dbDatabase,"gd_rekening_jurnal","noAkun",nomorakun)[0][self.DataMaster_DataRekening_Field.index("namaAkun")])

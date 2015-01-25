@@ -19,6 +19,7 @@ from datamaster import DataMaster
 from pembelian import Pembelian
 from kasbank import KasBank
 from laporan import Laporan
+from login import Login
 
 try:
 	_fromUtf8 = QtCore.QString.fromUtf8
@@ -27,12 +28,12 @@ except AttributeError:
 		return s
 
 
-class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,KasBank,Laporan):
+class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,KasBank,Laporan,Login):
 	def __init__(self, parent= None):
 		super(MainGUI,self).__init__(parent)
 		self.setupUi(self)
 		self.st_Penjualan.setCurrentIndex(0)
-		
+		self.showFullScreen()
 		def ___metu():
 			exit(0)
 			return True
@@ -104,6 +105,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.BukuBesar_init()
 		self.Pembelian__init()
 		self.KasBank_init()
+		self.Login_init()
+		
 		#--- kalau pindah tab, set semua stackedWidget ke index 0 (suppose to be _Menu index)
 		self.tabWidget.currentChanged.connect(self.ResetRooms)
 		#--- startup program aswell, stackedwidget room should be on Menu Index 
@@ -113,6 +116,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		dtedte = self.findChildren(QtGui.QDateTimeEdit)
 		for dte in dtedte:
 			dte.setDateTime(QDateTime.fromString(tanggal.strftime("%Y-%m-%d %H:%M:%S"),"yyyy-MM-dd hh:mm:ss"))
+		
+		
 		
 	def initDatabase(self):
 		try:
@@ -133,6 +138,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 					self.db = MySQLdb.Connect(host=self.dbHost, port=self.dbPort, user=self.dbUser, passwd=self.dbPass, db=self.dbDatabase)
 					
 		return
+	
+	
 	
 	def ResetRooms(self):
 		#--- search pakai regexp, karena ternyata tab widget pakai stackedwidget juga!
@@ -606,5 +613,5 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 if __name__=="__main__":
 	app = QtGui.QApplication(sys.argv)
 	dmw = MainGUI()
-	dmw.showFullScreen()
+	#~ dmw.showFullScreen()
 	sys.exit(app.exec_())
