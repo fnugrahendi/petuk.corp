@@ -5,3 +5,8 @@ build/
 Garvin.spec
 geany_run_script*
 kasbank/img/
+*.html
+*.odt
+*.pdf
+*.docx
+*.ods

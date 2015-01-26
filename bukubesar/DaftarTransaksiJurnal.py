@@ -114,6 +114,9 @@ class DaftarTransaksiJurnal(object):
 		self.tb_BukuBesar_DaftarTransaksiJurnal_Delete.clicked.connect(_ConfirmDeleteCertainCell)
 		self.GarvinDisconnect(self.tb_BukuBesar_DaftarTransaksiJurnal_Tutup.clicked)
 		self.tb_BukuBesar_DaftarTransaksiJurnal_Tutup.clicked.connect(self.BukuBesar_Menu)
+		
+		self.GarvinDisconnect(self.tb_BukuBesar_DaftarTransaksiJurnal_Cetak.clicked)
+		self.tb_BukuBesar_DaftarTransaksiJurnal_Cetak.clicked.connect(functools.partial(self.BukuBesar_DaftarTransaksiJurnal_Cetak,"2015-01-01 00:00:00","2015-02-01 00:00:00"))
 		#-----search bar
 		self.GarvinDisconnect(self.le_BukuBesar_Search.textEdited)
 		self.le_BukuBesar_Search.textEdited.connect(self.BukuBesar_DaftarTransaksiJurnal_RedrawInfo)
@@ -129,7 +132,6 @@ class DaftarTransaksiJurnal(object):
 		CDEPARTEMEN = 2
 		CDEBIT = 3
 		CKREDIT = 4
-		
 		if dataTransaksiJurnal==False:
 			self.BukuBesar_DaftarTransaksiJurnal_idEDIT = -1
 		
@@ -203,6 +205,9 @@ class DaftarTransaksiJurnal(object):
 		#at first we clear the rows
 		self.clearTable(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List)
 		
+		#-- transaksi jurnal kode cek hanya untuk baru
+		self.GarvinDisconnect(self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.textChanged)
+		
 		idies = []
 		if (self.BukuBesar_DaftarTransaksiJurnal_idEDIT > -1):
 			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.setText(dataTransaksiJurnal[self.BukuBesar_TransaksiJurnal_Field.index("kodeTransaksi")])
@@ -246,6 +251,7 @@ class DaftarTransaksiJurnal(object):
 			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.setText("")
 			#Generate code Untuk tambah baru
 			self.BukuBesar_DaftarTransaksiJurnal_Tambah_GenerateKode()
+			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.textChanged.connect(self.BukuBesar_DaftarTransaksiJurnal_Tambah_KodeCek)
 			tanggal = datetime.now()
 			self.dte_BukuBesar_DaftarTransaksiJurnal_Tambah_Tanggal.setDateTime(QDateTime.fromString(tanggal.strftime("%Y-%m-%d %H:%M:%S"),"yyyy-MM-dd hh:mm:ss"))
 			self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_Keterangan.setText("")
@@ -280,8 +286,6 @@ class DaftarTransaksiJurnal(object):
 		self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked.connect(self.BukuBesar_DaftarTransaksiJurnal_PilihRekening)
 		self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked.connect(self.BukuBesar_DaftarTransaksiJurnal_PilihDepartemen)
 		
-		self.GarvinDisconnect(self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.textChanged)
-		self.le_BukuBesar_DaftarTransaksiJurnal_Tambah_NomorReferensi.textChanged.connect(self.BukuBesar_DaftarTransaksiJurnal_Tambah_KodeCek)
 		
 		
 		hitungulang()
@@ -486,3 +490,14 @@ class DaftarTransaksiJurnal(object):
 		DrawIfExist(result)
 		result = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal` WHERE `gd_transaksi_jurnal`.`tanggal` LIKE '%"+searchtext+"%'")
 		DrawIfExist(result)
+		
+	def BukuBesar_DaftarTransaksiJurnal_Cetak(self,start="2015-01-01 00:00:00",end="2015-02-20 23:59:59"):
+		data = [[],[]]
+		result = self.DatabaseRunQuery("SELECT * FROM `gd_transaksi_jurnal` WHERE `tanggal` >= '"+str(start)+"' AND `tanggal` <= '"+str(end)+"'")
+		for x in range(0,len(result)):
+			data[0].append(result[x])
+			detail = self.DatabaseFetchResult(self.dbDatabase,"gd_detail_transaksi_jurnal","kodeTransaksi",result[x][self.BukuBesar_TransaksiJurnal_Field.index("kodeTransaksi")])
+			data[1].append(detail)
+		
+		self.L_BukuBesar_DTJ_Create("General Journal List",data)
+		
