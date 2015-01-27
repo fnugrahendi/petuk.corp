@@ -16,14 +16,14 @@ guiconvert:
 kasbank:
 	pyuic4 kasbank/ui_kasbank.ui -o kasbank/ui_kasbank.py
 all: $(SOURCES)
-	# Mbuh piye dadine kui mau wkwk
-	# Nek kosong berarti ora ono perubahan
+	# Mbuh piye dadine kui mau wkwk                                                                                                  Nek kosong berarti ora ono perubahan
 	
 rcconvert:
 	pyrcc4 DataMaster.qrc -o DataMaster_rc.py
 
-build:
-	pyinstaller UGM_Akunting.py --icon p.ico
+binary:
+	$(PYC) $(EXE).py 
+	cp data --recursive dist/Garvin/ #test sampai sini
 
 commit:
 	git commit -a
