@@ -38,7 +38,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		def ___metu():
 			exit(0)
 			return True
-		self.tb_Penjualan_Keluar.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan keluar dari aplikasi?",___metu))
+		#self.tb_Penjualan_Keluar.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan keluar dari aplikasi?",___metu))
         
         
         
@@ -56,12 +56,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.tb_Penjualan_PembayaranPiutang.clicked.connect(self.Penjualan_GoTo_PembayaranPiutang)
 		self.tb_Penjualan_Retur.clicked.connect(self.Penjualan_GoTo_ReturPenjualan)
 		
-		#Tombol pada Halaman PenawaranHarga
-		self.tb_PenawaranHarga_tutup.clicked.connect(self.Penjualan_GoTo_Menu)
-		self.tb_PenawaranHarga_baru.clicked.connect(self.Penjualan_GoTo_PenawaranHarga_baru)
-		
-		self.tb_Penjualan_PenawaranHarga_baru_rekam.clicked.connect(self.Penjualan_PenawaranHarga_Baru_Rekam)
-		self.tb_Penjualan_PenawaranHarga_baru_tutup.clicked.connect(self.Penjualan_GoTo_PenawaranHarga)
+		#
 		
 		#Tombol&Sinyal pada Halaman OrderPenjualan
 		self.tb_Penjualan_OrderPenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
