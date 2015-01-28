@@ -387,8 +387,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>315</width>
-                          <height>18</height>
+                          <width>250</width>
+                          <height>30</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -3388,8 +3388,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>315</width>
-                          <height>18</height>
+                          <width>250</width>
+                          <height>30</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -3987,7 +3987,7 @@ QPushButton::hover{
               <enum>QFrame::NoFrame</enum>
              </property>
              <property name="currentIndex">
-              <number>2</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="st_Penjualan_Menu">
               <layout class="QGridLayout" name="gridLayout_7">
@@ -4189,13 +4189,8 @@ QPushButton::hover{
                      <number>0</number>
                     </property>
                     <property name="columnCount">
-                     <number>6</number>
+                     <number>5</number>
                     </property>
-                    <column>
-                     <property name="text">
-                      <string>No. Referensi</string>
-                     </property>
-                    </column>
                     <column>
                      <property name="text">
                       <string>No. Invoice</string>
@@ -4362,6 +4357,18 @@ QPushButton::hover{
                       <horstretch>0</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
+                    </property>
+                    <property name="inputMask">
+                     <string/>
+                    </property>
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                    <property name="placeholderText">
+                     <string/>
+                    </property>
+                    <property name="cursorMoveStyle">
+                     <enum>Qt::LogicalMoveStyle</enum>
                     </property>
                    </widget>
                   </item>
@@ -4769,17 +4776,12 @@ min-height:23px;</string>
                     </property>
                     <column>
                      <property name="text">
+                      <string>Supplier</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
                       <string>Barang</string>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>Harga</string>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>Jumlah</string>
                      </property>
                     </column>
                     <column>
@@ -4789,7 +4791,17 @@ min-height:23px;</string>
                     </column>
                     <column>
                      <property name="text">
-                      <string>Supplier</string>
+                      <string>Jumlah</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Harga</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Total Harga</string>
                      </property>
                     </column>
                    </widget>
@@ -4861,9 +4873,7 @@ min-height:23px;</string>
                    </spacer>
                   </item>
                  </layout>
-                 <zorder>fr_Penjualan_Invoice_TambahBarang_Tabel</zorder>
                  <zorder>tb_Penjualan_Invoice_TambahBarang_Simpan</zorder>
-                 <zorder>lineEdit_5</zorder>
                  <zorder>Penjualan_Invoice_TambahBarang_Batal</zorder>
                  <zorder>hs_Penjualan_Invoice_TambahBarang_Tombol</zorder>
                 </widget>

@@ -49,13 +49,13 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.dbUser = "gd_user_akunting"
         #---------------------------------------------------------------Penjualan Init Itut
 		#Tombol pada Halaman Menu
-		#self.tb_Penjualan_PenawaranHarga.clicked.connect(self.Penjualan_GoTo_PenawaranHarga)
+		self.tb_Penjualan_Invoice.clicked.connect(self.Penjualan_GoTo_Invoice)
 		self.tb_Penjualan_OrderPenjualan.clicked.connect(self.Penjualan_GoTo_OrderPenjualan)
-		#self.tb_Penjualan_Pengiriman.clicked.connect(self.Penjualan_GoTo_Pengiriman)
 		self.tb_Penjualan_Piutang.clicked.connect(self.Penjualan_GoTo_PiutangUsaha)
 		self.tb_Penjualan_PembayaranPiutang.clicked.connect(self.Penjualan_GoTo_PembayaranPiutang)
-		#self.tb_Penjualan_Retur.clicked.connect(self.Penjualan_GoTo_ReturPenjualan)
 		
+		#Tombol pada invoice
+		self.tb_Penjualan_DaftarInvoice_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
 		
 		#Tombol&Sinyal pada Halaman OrderPenjualan
 		self.tb_Penjualan_OrderPenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -84,17 +84,16 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.tb_Penjualan_PembayaranPiutang_Baru_Batal.clicked.connect(self.Penjualan_GoTo_PembayaranPiutang)
 		
 		self.INDEX_ST_PENJUALAN_MENU = 0
-		self.INDEX_ST_PENJUALAN_PH = 1
-		self.INDEX_ST_PENJUALAN_PHB = 2
-		self.INDEX_ST_PENJUALAN_OP = 3
-		self.INDEX_ST_PENJUALAN_OP_TAMBAHPRODUK = 4
+		self.INDEX_ST_PENJUALAN_DI = 1
+		self.INDEX_ST_PENJUALAN_IP = 2
+		self.INDEX_ST_PENJUALAN_I_TB = 3
+		self.INDEX_ST_PENJUALAN_OP = 4
 		self.INDEX_ST_PENJUALAN_PENGIRIMAN = 5
 		self.INDEX_ST_PENJUALAN_PENGIRIMANB = 6
 		self.INDEX_ST_PENJUALAN_PU = 7
 		self.INDEX_ST_PENJUALAN_RPU = 8
 		self.INDEX_ST_PENJUALAN_PP = 9
 		self.INDEX_ST_PENJUALAN_PPB = 10
-		self.INDEX_ST_PENJUALAN_RP = 11
 		
 		self.DataMaster_init()
 		self.BukuBesar_init()
@@ -153,22 +152,20 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 	def Penjualan_GoTo_Menu(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_MENU)
 		
-	def Penjualan_GoTo_PenawaranHarga(self):
-		rownum = self.tbl_Penjualan_PenawaranHarga.rowCount()
+	def Penjualan_GoTo_Invoice(self):
+		rownum = self.tbl_Penjualan_DaftarInvoice.rowCount()
 		for b in range (0, rownum):
-			self.tbl_Penjualan_PenawaranHarga.removeRow(b)
-		self.tbl_Penjualan_PenawaranHarga.setRowCount(0)
-		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PH)
-		self.initDatabase()
-		cursor = self.db.cursor()
-		query = "SELECT * FROM gd_order_penjualan"
-		cursor.execute(query)
-		result = cursor.fetchall()
+			self.tbl_Penjualan_DaftarInvoice.removeRow(b)
+		self.tbl_Penjualan_DaftarInvoice.setRowCount(0)
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_DI)
+		query = "SELECT * FROM gd_invoice_penjualan"
+		result = self.DatabaseRunQuery(query)
 		for a in range(0, len(result)):
-			self.tbl_Penjualan_PenawaranHarga.insertRow(a)
-			self.tbl_Penjualan_PenawaranHarga.setItem(a,0,QtGui.QTableWidgetItem(str(result[a][2])))
-			self.tbl_Penjualan_PenawaranHarga.setItem(a,2,QtGui.QTableWidgetItem(result[a][1]))
-		self.db.close()
+			self.tbl_Penjualan_DaftarInvoice.insertRow(a)
+			self.tbl_Penjualan_DaftarInvoice.setItem(a,0,QtGui.QTableWidgetItem(str(result[a][1]))) #No Invoice
+			self.tbl_Penjualan_DaftarInvoice.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][4]))) #Tanggal
+			self.tbl_Penjualan_DaftarInvoice.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][3]))) #Pelanggan
+			self.tbl_Penjualan_DaftarInvoice.setItem(a,4,QtGui.QTableWidgetItem(str(int(result[a][6])))) #Nilai
 		
 	def Penjualan_GoTo_OrderPenjualan(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
