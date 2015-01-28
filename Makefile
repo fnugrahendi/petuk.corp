@@ -22,7 +22,7 @@ rcconvert:
 
 binary:
 	$(PYC) $(EXE).py 
-	cp data --recursive dist/Garvin/ #test sampai sini
+	cp data --recursive dist/Garvin/
 
 commit:
 	git commit -a
