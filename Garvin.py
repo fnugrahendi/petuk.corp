@@ -111,7 +111,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		dtedte = self.findChildren(QtGui.QDateTimeEdit)
 		for dte in dtedte:
 			dte.setDateTime(QDateTime.fromString(tanggal.strftime("%Y-%m-%d %H:%M:%S"),"yyyy-MM-dd hh:mm:ss"))
-		
+		#~ self.GarvinCheckIsUpdated()
 		
 		
 	def initDatabase(self):
