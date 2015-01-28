@@ -8,7 +8,6 @@ SOURCES = $(UIFILES:.ui=.py)
 
 %.py: %.ui
 	$(UIC)  $< -o $@
-	# siki nek nyeluk all, nganti sing kene2 di compile juga, tapi hanya nek ono perubahan
 
 guiconvert:
 	pyuic4 GUI.ui -o GUI.py
@@ -16,7 +15,7 @@ guiconvert:
 kasbank:
 	pyuic4 kasbank/ui_kasbank.ui -o kasbank/ui_kasbank.py
 all: $(SOURCES)
-	# Mbuh piye dadine kui mau wkwk                                                                                                  Nek kosong berarti ora ono perubahan
+	# Mbuh piye dadine kui mau wkwk
 	
 rcconvert:
 	pyrcc4 DataMaster.qrc -o DataMaster_rc.py
