@@ -99,7 +99,7 @@
       <string notr="true">QPushButton{border-style:outset;border-width:1px;border-radius:4px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}</string>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="st_Connect">
       <widget class="QFrame" name="fr_Connect">
@@ -175,7 +175,7 @@
          <x>80</x>
          <y>80</y>
          <width>321</width>
-         <height>121</height>
+         <height>181</height>
         </rect>
        </property>
        <property name="frameShape">
@@ -188,16 +188,6 @@
         <property name="fieldGrowthPolicy">
          <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
         </property>
-        <item row="4" column="0">
-         <widget class="QLabel" name="lb_Login_Password">
-          <property name="text">
-           <string>Password</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QLineEdit" name="le_Login_Password"/>
-        </item>
         <item row="0" column="1">
          <widget class="QLabel" name="lb_Login_Judul">
           <property name="font">
@@ -224,7 +214,44 @@
           </property>
          </widget>
         </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="lb_Login_Password">
+          <property name="text">
+           <string>Password</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLineEdit" name="le_Login_Password">
+          <property name="inputMethodHints">
+           <set>Qt::ImhHiddenText</set>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLineEdit" name="le_Login_Password_Confirm"/>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="lb_Login_Password_Confirm">
+          <property name="text">
+           <string>Confirm :</string>
+          </property>
+         </widget>
+        </item>
        </layout>
+      </widget>
+      <widget class="QPushButton" name="tb_Login_Ok">
+       <property name="geometry">
+        <rect>
+         <x>200</x>
+         <y>220</y>
+         <width>85</width>
+         <height>27</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>OK</string>
+       </property>
       </widget>
      </widget>
      <widget class="QWidget" name="st_Database">

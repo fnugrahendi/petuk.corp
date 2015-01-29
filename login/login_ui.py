@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'login/login_ui.ui'
 #
-# Created: Mon Jan 26 23:03:19 2015
+# Created: Thu Jan 29 20:18:25 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -80,19 +80,13 @@ class Ui_fr_Main(object):
         self.st_Login = QtGui.QWidget()
         self.st_Login.setObjectName(_fromUtf8("st_Login"))
         self.fr_Login = QtGui.QFrame(self.st_Login)
-        self.fr_Login.setGeometry(QtCore.QRect(80, 80, 321, 121))
+        self.fr_Login.setGeometry(QtCore.QRect(80, 80, 321, 181))
         self.fr_Login.setFrameShape(QtGui.QFrame.StyledPanel)
         self.fr_Login.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_Login.setObjectName(_fromUtf8("fr_Login"))
         self.ifl_Login = QtGui.QFormLayout(self.fr_Login)
         self.ifl_Login.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
         self.ifl_Login.setObjectName(_fromUtf8("ifl_Login"))
-        self.lb_Login_Password = QtGui.QLabel(self.fr_Login)
-        self.lb_Login_Password.setObjectName(_fromUtf8("lb_Login_Password"))
-        self.ifl_Login.setWidget(4, QtGui.QFormLayout.LabelRole, self.lb_Login_Password)
-        self.le_Login_Password = QtGui.QLineEdit(self.fr_Login)
-        self.le_Login_Password.setObjectName(_fromUtf8("le_Login_Password"))
-        self.ifl_Login.setWidget(4, QtGui.QFormLayout.FieldRole, self.le_Login_Password)
         self.lb_Login_Judul = QtGui.QLabel(self.fr_Login)
         font = QtGui.QFont()
         font.setPointSize(15)
@@ -105,6 +99,22 @@ class Ui_fr_Main(object):
         self.le_Login_User = QtGui.QLineEdit(self.fr_Login)
         self.le_Login_User.setObjectName(_fromUtf8("le_Login_User"))
         self.ifl_Login.setWidget(3, QtGui.QFormLayout.FieldRole, self.le_Login_User)
+        self.lb_Login_Password = QtGui.QLabel(self.fr_Login)
+        self.lb_Login_Password.setObjectName(_fromUtf8("lb_Login_Password"))
+        self.ifl_Login.setWidget(4, QtGui.QFormLayout.LabelRole, self.lb_Login_Password)
+        self.le_Login_Password = QtGui.QLineEdit(self.fr_Login)
+        self.le_Login_Password.setInputMethodHints(QtCore.Qt.ImhHiddenText)
+        self.le_Login_Password.setObjectName(_fromUtf8("le_Login_Password"))
+        self.ifl_Login.setWidget(4, QtGui.QFormLayout.FieldRole, self.le_Login_Password)
+        self.le_Login_Password_Confirm = QtGui.QLineEdit(self.fr_Login)
+        self.le_Login_Password_Confirm.setObjectName(_fromUtf8("le_Login_Password_Confirm"))
+        self.ifl_Login.setWidget(5, QtGui.QFormLayout.FieldRole, self.le_Login_Password_Confirm)
+        self.lb_Login_Password_Confirm = QtGui.QLabel(self.fr_Login)
+        self.lb_Login_Password_Confirm.setObjectName(_fromUtf8("lb_Login_Password_Confirm"))
+        self.ifl_Login.setWidget(5, QtGui.QFormLayout.LabelRole, self.lb_Login_Password_Confirm)
+        self.tb_Login_Ok = QtGui.QPushButton(self.st_Login)
+        self.tb_Login_Ok.setGeometry(QtCore.QRect(200, 220, 85, 27))
+        self.tb_Login_Ok.setObjectName(_fromUtf8("tb_Login_Ok"))
         self.st_Main.addWidget(self.st_Login)
         self.st_Database = QtGui.QWidget()
         self.st_Database.setObjectName(_fromUtf8("st_Database"))
@@ -138,7 +148,7 @@ class Ui_fr_Main(object):
         self.igr_Main.addWidget(self.st_Main, 1, 1, 1, 1)
 
         self.retranslateUi(fr_Main)
-        self.st_Main.setCurrentIndex(2)
+        self.st_Main.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(fr_Main)
 
     def retranslateUi(self, fr_Main):
@@ -148,10 +158,12 @@ class Ui_fr_Main(object):
         self.le_Connect_Alamat.setText(_translate("fr_Main", "localhost", None))
         self.chk_Connect_Lokal.setText(_translate("fr_Main", "Lokal komputer ini", None))
         self.tb_Connect_Ok.setText(_translate("fr_Main", "OK", None))
-        self.lb_Login_Password.setText(_translate("fr_Main", "Password", None))
         self.lb_Login_Judul.setText(_translate("fr_Main", "Login ", None))
         self.lb_Login_User.setText(_translate("fr_Main", "User", None))
         self.le_Login_User.setText(_translate("fr_Main", "admin", None))
+        self.lb_Login_Password.setText(_translate("fr_Main", "Password", None))
+        self.lb_Login_Password_Confirm.setText(_translate("fr_Main", "Confirm :", None))
+        self.tb_Login_Ok.setText(_translate("fr_Main", "OK", None))
         self.lb_Database_Judul.setText(_translate("fr_Main", "Pilih Database Perusahaan", None))
         self.tb_Database_Create.setText(_translate("fr_Main", "Buat Database Baru", None))
 
