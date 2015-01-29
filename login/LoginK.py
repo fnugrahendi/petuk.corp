@@ -25,7 +25,10 @@ class Login(Ui_fr_Main):
 		self.fr_Login_Frame.show()
 		self.fr_Login_Frame.setGeometry(QtCore.QRect(0,0,WinW,WinH))
 		self.fr_Login_Frame.setStyleSheet("background:white;")
-		
+		self.Login_Login_Password_Inputed = ""
+		#-- confirm dihapus
+		self.LoginUI.lb_Login_Password_Confirm.hide()
+		self.LoginUI.le_Login_Password_Confirm.hide()
 		
 		aatime = QtCore.QTimer(self)
 		aatime.timeout.connect(self.Login_Redraw)
@@ -35,9 +38,13 @@ class Login(Ui_fr_Main):
 		self.LoginUI.chk_Connect_Lokal.stateChanged.connect(self.Login_Connect_SetLokal)
 		
 		self.LoginUI.tb_Connect_Ok.clicked.connect(self.Login_Connect_Act_OK)
+		self.LoginUI.tb_Login_Ok.clicked.connect(self.Login_Login_Auth)
+		
+		#-- password login, 
+		self.LoginUI.le_Login_Password.textChanged.connect(self.Login_Login_PasswordChanged)
 		
 		self.INDEX_ST_LOGIN = ["CONNECT","LOGIN","DATABASE"]
-	#--- end Login_init
+		#--- end Login_init
 	
 	def Login_Goto(self,room):
 		if (type(room)==str):
@@ -87,8 +94,34 @@ class Login(Ui_fr_Main):
 					tb_data.clicked.connect(functools.partial(self.Login_Database_SetDatabase,databases[x][0]))
 	def Login_Database_SetDatabase(self,dbname):
 		self.dbDatabase = dbname
-		self.Login_Done()
-		
+		self.Login_Login()
+	
+	def Login_Login(self):
+		self.Login_Goto("Login")
+		self.LoginUI.le_Login_Password.clear()
+		self.Login_Login_Password_Inputed = ""
+		users = self.DatabaseFetchResult(self.dbDatabase,"gd_user","level",0)
+		if len(users)<1:
+			self.DataMaster_Popup("User admin belum ada! silahkan beri user dan password untuk admin!",functools.partial(self.DataMaster_Popup,"Note for Developer (Andrew & E-Qraw) : \nCheck ulang apakah field password di table gd_user bertipe varchar(64)!",self.DataMaster_None))
+			self.LoginUI.lb_Login_Password_Confirm.show()
+			self.LoginUI.le_Login_Password_Confirm.show()
+		else:
+			self.LoginUI.lb_Login_Password_Confirm.hide()
+			self.LoginUI.le_Login_Password_Confirm.hide()
+		#signal tombol sudah di sambungkan di init
+	
+	def Login_Login_Auth(self):
+		print self.Login_Login_Password_Inputed
+		pass
+
+	def Login_Login_PasswordChanged(self,textnya):
+		self.Login_Login_Password_Inputed = (self.Login_Login_Password_Inputed+str(textnya)).replace("*","")
+		text = ""
+		for x in xrange(0,len(textnya)):
+			try:text=text+"*"
+			except:text="*"
+		self.LoginUI.le_Login_Password.setText(text)
+	
 	def Login_Done(self):
 		""" done from login, exit the login frame"""
 		self.fr_Login_Frame.close()
