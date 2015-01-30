@@ -13,6 +13,7 @@ from datetime import datetime
 import md5 #-- hashing buat password
 
 from login_ui import  Ui_fr_Main
+from Admin import Admin
 
 class Login(Ui_fr_Main):
 	def __init__(self, parent=None):
@@ -169,6 +170,9 @@ class Login(Ui_fr_Main):
 		password = self.Login_Login_HashPassword(username,str(self.LoginUI.le_Login_Password.text()))
 		cucok = self.DatabaseFetchResult(self.dbDatabase,"gd_user",["username","password"],[username,password])
 		if (len(cucok)>0):
+			LEVELFIELD = 3
+			if (int(cucok[0][LEVELFIELD])==0):
+				self.Login_Admin()
 			self.Login_Done()
 		else:
 			self.DataMaster_Popup("Username atau password salah",self.DataMaster_None)
@@ -186,3 +190,11 @@ class Login(Ui_fr_Main):
 	def Login_Done(self):
 		""" done from login, exit the login frame"""
 		self.fr_Login_Frame.close()
+	
+	def Login_Admin(self):
+		#--- construct an admin 
+		self.Admin = Admin(self)
+		
+		pass
+	
+	
