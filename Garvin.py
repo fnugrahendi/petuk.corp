@@ -580,7 +580,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		misal data = self.DatabaseFetchResult(self.dbDatabase,"gd_nama_alamat","kodePelanggan","%MAKIN%")"""
 		if keyfield==False:
 			return self.DatabaseRunQuery("SELECT * FROM `"+str(db)+"`.`"+str(table)+"`; ")
-		elif (type(keyvalue)=list):
+		elif (type(keyvalue)==list):
 			sql = "SELECT * FROM `"+str(db)+"`.`"+str(table)+"` WHERE "
 			for x in xrange(0,len(keyvalue)):
 				sql = sql + "`"+str(keyfield[x])+"` LIKE '"+str(keyvalue[x])+"' AND "
