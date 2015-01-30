@@ -10,6 +10,7 @@ import functools
 import itertools
 import re
 from datetime import datetime
+import md5 #-- hashing buat password
 
 from login_ui import  Ui_fr_Main
 
@@ -45,6 +46,8 @@ class Login(Ui_fr_Main):
 		
 		self.INDEX_ST_LOGIN = ["CONNECT","LOGIN","DATABASE"]
 		#--- end Login_init
+		
+		#-- password hashing, ditambahi text nama usernya itu sendiri di awal lowercase, di akhir uppercase
 	
 	def Login_Goto(self,room):
 		if (type(room)==str):
@@ -89,32 +92,90 @@ class Login(Ui_fr_Main):
 				if (tb_data == None):
 					tb_data = QtGui.QPushButton(self.LoginUI.scontent_Database_List)
 					tb_data.setObjectName("dtb_Login_Database_List"+str(x))
-					tb_data.setText(str(databases[x][0]))
+					tb_data.setText(str(databases[x][0]).replace("gd_db_",""))
 					self.LoginUI.ivl_Database_ListContent.addWidget(tb_data)
 					tb_data.clicked.connect(functools.partial(self.Login_Database_SetDatabase,databases[x][0]))
+			else:
+				#--- create database baru 
+				pass
 	def Login_Database_SetDatabase(self,dbname):
 		self.dbDatabase = dbname
 		self.Login_Login()
 	
 	def Login_Login(self):
 		self.Login_Goto("Login")
+		self.LoginUI.le_Login_User.clear()
 		self.LoginUI.le_Login_Password.clear()
+		self.LoginUI.le_Login_Password_Confirm.clear()
 		self.Login_Login_Password_Inputed = ""
 		users = self.DatabaseFetchResult(self.dbDatabase,"gd_user","level",0)
+		#~ print ("\n\n")
+		#~ print repr(dir(self.LoginUI.le_Login_Password_Confirm))
+		#~ print ("\n\n")
+		#~ print repr(dir(self.LoginUI.le_Login_Password_Confirm.Password))
+		#~ print repr((self.LoginUI.le_Login_Password_Confirm.Password))
+		#~ print ("\n\n")
+		#~ print repr(dir(self.LoginUI.le_Login_Password_Confirm.PasswordEchoOnEdit))
+		#~ print repr((self.LoginUI.le_Login_Password_Confirm.PasswordEchoOnEdit))
+		#~ print ("\n\n")
 		if len(users)<1:
-			self.DataMaster_Popup("User admin belum ada! silahkan beri user dan password untuk admin!",functools.partial(self.DataMaster_Popup,"Note for Developer (Andrew & E-Qraw) : \nCheck ulang apakah field password di table gd_user bertipe varchar(64)!",self.DataMaster_None))
+			#--- Create user and password for admin!
+			self.LoginUI.le_Login_User.setText("admin")
+			developernote = functools.partial(self.DataMaster_Popup,"Note for Developer (Andrew & E-Qraw) : \nCheck ulang apakah field password di table gd_user bertipe varchar(64)!",self.DataMaster_None)
+			self.DataMaster_Popup("User admin belum ada! silahkan beri user dan password untuk admin!",self.DataMaster_None,500,300,developernote)
 			self.LoginUI.lb_Login_Password_Confirm.show()
 			self.LoginUI.le_Login_Password_Confirm.show()
+			self.GarvinDisconnect(self.LoginUI.tb_Login_Ok.clicked)
+			self.LoginUI.tb_Login_Ok.clicked.connect(self.Login_Login_CreateAdmin)
 		else:
 			self.LoginUI.lb_Login_Password_Confirm.hide()
 			self.LoginUI.le_Login_Password_Confirm.hide()
+			self.GarvinDisconnect(self.LoginUI.tb_Login_Ok.clicked)
+			self.LoginUI.tb_Login_Ok.clicked.connect(self.Login_Login_Auth)
 		#signal tombol sudah di sambungkan di init
 	
+	def Login_Login_CreateAdmin(self):
+		user = str(self.LoginUI.le_Login_User.text())
+		password = str(self.LoginUI.le_Login_Password_Confirm.text())
+		self.Login_Login_CreateUser(user,password,"0") #-- "0" = level admin
+		
+		
+	def Login_Login_HashPassword(self,username,password):
+		""" hash password, it uses username for word twisting so it will take that for parameter too 
+			Note : hashing format shouldn't be changed in the future (as if users have made with previous format)
+		"""
+		kode = md5.md5
+		#-- the format
+		return kode(str(username).lower()+kode(str(password)).hexdigest()+str(username).upper()).hexdigest()
+		
+	def Login_Login_CreateUser(self,username,password,level):
+		""" Create user, with parameters: unique username, (unhashed/plain) password, and level """
+		hashedpassword = self.Login_Login_HashPassword(username,password)
+		sukses = self.DatabaseInsertAvoidreplace(self.dbDatabase,"gd_user","username",username,
+										["id","username","password","level","lastActivity"],
+										["NULL",username,hashedpassword,str(level),"CURRENT_TIMESTAMP"]
+										,"User dengan nama "+username+" sudah digunakan, gunakan nama user lain!")
+		if (sukses):
+			self.DataMaster_Popup("User "+username+" berhasil dibuat.",self.DataMaster_None)
+			#--- succeed. then we hide the confirm, and get the room to login
+			self.LoginUI.lb_Login_Password_Confirm.hide()
+			self.LoginUI.le_Login_Password_Confirm.hide()
+			self.Login_Login()
+	
 	def Login_Login_Auth(self):
-		print self.Login_Login_Password_Inputed
+		#~ print self.Login_Login_Password_Inputed
+		#~ sql = "SELECT * FROM `gd_user` WHERE `username` LIKE 'askljn' AND `password` LIKE 'sakjn'"
+		username = str(self.LoginUI.le_Login_User.text())
+		password = self.Login_Login_HashPassword(username,str(self.LoginUI.le_Login_Password.text()))
+		cucok = self.DatabaseFetchResult(self.dbDatabase,"gd_user",["username","password"],[username,password])
+		if (len(cucok)>0):
+			self.Login_Done()
+		else:
+			self.DataMaster_Popup("Username atau password salah",self.DataMaster_None)
 		pass
 
 	def Login_Login_PasswordChanged(self,textnya):
+		return #--- BECAUSE THIS IS A TODO LIST (to use password input hints)
 		self.Login_Login_Password_Inputed = (self.Login_Login_Password_Inputed+str(textnya)).replace("*","")
 		text = ""
 		for x in xrange(0,len(textnya)):
