@@ -513,7 +513,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		if (ada_data):
 			sql = "UPDATE `"+db+"`.`"+table+"` SET "
 			for x in range(0,len(fields)):
-				sql = sql + " `"+str(fields[x])+"` = '"+str(values[x])+"', "
+				#-- kalau null, atau current timestamp (sql contant/reserved word) tidak pakai petik
+				if (str(values[x])=="NULL" or str(values[x])=="CURRENT_TIMESTAMP"):sql = sql + " `"+str(fields[x])+"` = "+str(values[x])+", "
+				else:sql = sql + " `"+str(fields[x])+"` = '"+str(values[x])+"', "
+				#~ sql = sql + " `"+str(fields[x])+"` = '"+str(values[x])+"', "
 			#remove last koma , (-2karakter: dengan spasi setelahnya)
 			sql = sql[:-2]
 			if (type(keyvalue) == str):
@@ -527,7 +530,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 			sql = sql[:-2]
 			sql = sql + ") VALUES ("
 			for x in range(0,len(values)):
-				sql = sql + " '"+str(values[x])+"', "
+				#-- kalau null, atau current timestamp (sql contant/reserved word) tidak pakai petik
+				if (str(values[x])=="NULL" or str(values[x])=="CURRENT_TIMESTAMP"):sql = sql + " "+str(values[x])+", "
+				else:sql = sql + " '"+str(values[x])+"', "
+				#~ sql = sql + " '"+str(values[x])+"', "
 			sql = sql[:-2]
 			sql = sql + ");"
 		self.DatabaseRunQuery(sql)
@@ -562,7 +568,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 			sql = sql[:-2]
 			sql = sql + ") VALUES ("
 			for x in range(0,len(values)):
-				sql = sql + " '"+str(values[x])+"', "
+				#-- kalau null, atau current timestamp (sql contant/reserved word) tidak pakai petik
+				if (str(values[x])=="NULL" or str(values[x])=="CURRENT_TIMESTAMP"):sql = sql + " "+str(values[x])+", "
+				else:sql = sql + " '"+str(values[x])+"', "
 			sql = sql[:-2]
 			sql = sql + ");"
 		self.DatabaseRunQuery(sql)
