@@ -571,7 +571,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 				#-- kalau null, atau current timestamp (sql contant/reserved word) tidak pakai petik
 				if (str(values[x])=="NULL" or str(values[x])=="CURRENT_TIMESTAMP"):sql = sql + " "+str(values[x])+", "
 				else:sql = sql + " '"+str(values[x])+"', "
-			sql = sql[:-2]
+			sql = sql[:-2] #-- remove last ", "
 			sql = sql + ");"
 		self.DatabaseRunQuery(sql)
 		return True
@@ -580,6 +580,12 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		misal data = self.DatabaseFetchResult(self.dbDatabase,"gd_nama_alamat","kodePelanggan","%MAKIN%")"""
 		if keyfield==False:
 			return self.DatabaseRunQuery("SELECT * FROM `"+str(db)+"`.`"+str(table)+"`; ")
+		elif (type(keyvalue)=list):
+			sql = "SELECT * FROM `"+str(db)+"`.`"+str(table)+"` WHERE "
+			for x in xrange(0,len(keyvalue)):
+				sql = sql + "`"+str(keyfield[x])+"` LIKE '"+str(keyvalue[x])+"' AND "
+			sql = sql[:-4] #-- remove last "AND "
+			return self.DatabaseRunQuery(sql)
 		elif (type(keyvalue)==str):
 			return self.DatabaseRunQuery("SELECT * FROM `"+str(db)+"`.`"+str(table)+"` WHERE `"+str(keyfield)+"` LIKE '"+str(keyvalue)+"';")
 		else:
