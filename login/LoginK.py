@@ -172,7 +172,7 @@ class Login(Ui_fr_Main):
 			self.Login_Done()
 		else:
 			self.DataMaster_Popup("Username atau password salah",self.DataMaster_None)
-		pass
+		
 
 	def Login_Login_PasswordChanged(self,textnya):
 		return #--- BECAUSE THIS IS A TODO LIST (to use password input hints)
