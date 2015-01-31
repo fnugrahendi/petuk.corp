@@ -623,3 +623,4 @@ if __name__=="__main__":
 	dmw = MainGUI()
 	#~ dmw.showFullScreen()
 	sys.exit(app.exec_())
+#bismillah
