@@ -56,6 +56,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		
 		#Tombol pada invoice
 		self.tb_Penjualan_DaftarInvoice_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
+		self.tb_Penjualan_DaftarInvoice_Baru.clicked.connect(self.Penjualan_GoTo_Invoice_Baru)
+		
+		#Tombol pada Invoice baru
+		self.tb_Penjualan_InvoicePenjualan_Baru_Nama.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.tb_Penjualan_InvoicePenjualan_Baru_Nama))
 		
 		#Tombol&Sinyal pada Halaman OrderPenjualan
 		self.tb_Penjualan_OrderPenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -166,6 +170,24 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 			self.tbl_Penjualan_DaftarInvoice.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][4]))) #Tanggal
 			self.tbl_Penjualan_DaftarInvoice.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][3]))) #Pelanggan
 			self.tbl_Penjualan_DaftarInvoice.setItem(a,4,QtGui.QTableWidgetItem(str(int(result[a][6])))) #Nilai
+		
+	def Generate_NoInvoice(self):
+		query = "SELECT * FROM `gd_invoice_penjualan`"
+		dataInvoice = self.DatabaseRunQuery(query)
+		kodePreset = 0
+		for a in range (0, len(dataInvoice)):
+			kode = dataInvoice[a][1]
+			kode = int(kode[3:7])
+			if (kode == kodePreset):
+				kodePreset = kodePreset+1
+				continue
+			else:
+				break
+		kodePreset = str(kodePreset)
+		
+	
+	def Penjualan_GoTo_Invoice_Baru(self):
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_IP)
 		
 	def Penjualan_GoTo_OrderPenjualan(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
