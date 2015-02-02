@@ -25,7 +25,7 @@ class Updater(object):
 		f= open("data/garvin.dat","r")
 		data = f.read()
 		f.close()
-		versi = re.findall(":1011A200534D414C4C2050495A5A4100484153201A\n:1011B20053454C4543544544004249472050495AFF\n:1011C2005A4100424947204B4542414200534D415A\n:1011D2004C4C204B4542414200434F43412D434F2B\n:1011E2004C4100504550534900466F6F64202(\d+E\d+)F\d+[.\n]+",data)
+		versi = re.findall("1011E2004C4100504550534900466F6F64202(\d+E\d+)F\d+",data)
 		if (len(versi)<1):
 			print "Garvin korup, instal ulang!"
 		else:
