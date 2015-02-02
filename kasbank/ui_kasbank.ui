@@ -113,7 +113,7 @@
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
-background-image: url(:/Menu/img/KasMasuk0.png);background-size: 100% 100%;
+background-image: url(:/Menu/img/KasMasuk0.png);
 border-width:1px;
 border-color:rgb(150, 137, 188);
 border-style:outset;border-radius:5px;
@@ -140,7 +140,7 @@ background-image: url(:/Menu/img/KasMasuk1.png);
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
-background-image: url(:/Menu/img/KasKeluar0.png);background-size: 100% 100%;
+background-image: url(:/Menu/img/KasKeluar0.png);
 border-width:1px;
 border-color:rgb(150, 137, 188);
 border-style:outset;border-radius:5px;

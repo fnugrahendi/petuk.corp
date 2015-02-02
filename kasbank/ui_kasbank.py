@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'kasbank/ui_kasbank.ui'
 #
-# Created: Mon Jan 26 23:05:34 2015
+# Created: Sat Jan 31 17:58:20 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -55,7 +55,7 @@ class Ui_st_KasBank(object):
         self.tb_Menu_KasMasuk.setGeometry(QtCore.QRect(0, 10, 311, 321))
         self.tb_Menu_KasMasuk.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.tb_Menu_KasMasuk.setStyleSheet(_fromUtf8("QPushButton{\n"
-"background-image: url(:/Menu/img/KasMasuk0.png);background-size: 100% 100%;\n"
+"background-image: url(:/Menu/img/KasMasuk0.png);\n"
 "border-width:1px;\n"
 "border-color:rgb(150, 137, 188);\n"
 "border-style:outset;border-radius:5px;\n"
@@ -69,7 +69,7 @@ class Ui_st_KasBank(object):
         self.tb_Menu_KasKeluar.setGeometry(QtCore.QRect(320, 10, 311, 321))
         self.tb_Menu_KasKeluar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.tb_Menu_KasKeluar.setStyleSheet(_fromUtf8("QPushButton{\n"
-"background-image: url(:/Menu/img/KasKeluar0.png);background-size: 100% 100%;\n"
+"background-image: url(:/Menu/img/KasKeluar0.png);\n"
 "border-width:1px;\n"
 "border-color:rgb(150, 137, 188);\n"
 "border-style:outset;border-radius:5px;\n"
