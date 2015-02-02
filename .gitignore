@@ -13,3 +13,4 @@ kasbank/img/
 *.so
 *.o
 *.dll
+*.fuse*
