@@ -106,10 +106,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		#--- startup program aswell, stackedwidget room should be on Menu Index 
 		self.ResetRooms()
 		#--- startup program, set semua datetimeedit ke waktu skrg		
-		tanggal = datetime.now()
-		dtedte = self.findChildren(QtGui.QDateTimeEdit)
-		for dte in dtedte:
-			dte.setDateTime(QDateTime.fromString(tanggal.strftime("%Y-%m-%d %H:%M:%S"),"yyyy-MM-dd hh:mm:ss"))
+		self.GarvinSetDate(self)
+		
+		#--- check if garvin is recent version
 		#~ self.GarvinCheckIsUpdated()
 		
 		
@@ -618,6 +617,15 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		else:
 			regexp = QRegExp(regexp)
 			lineedit.setValidator(QRegExpValidator(regexp))
+	
+	def GarvinSetDate(self,parentobject):
+		""" set all QDateTimeEdit children of parameter <parentobject> to current timestamp """
+		#--- startup program, set semua datetimeedit ke waktu skrg		
+		tanggal = datetime.now()
+		dtedte = parentobject.findChildren(QtGui.QDateTimeEdit)
+		for dte in dtedte:
+			dte.setDateTime(QDateTime.fromString(tanggal.strftime("%Y-%m-%d %H:%M:%S"),"yyyy-MM-dd hh:mm:ss"))
+	
 if __name__=="__main__":
 	app = QtGui.QApplication(sys.argv)
 	dmw = MainGUI()
