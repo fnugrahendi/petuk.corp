@@ -105,20 +105,19 @@ class Login(Ui_fr_Main):
 	
 	def Login_Login(self):
 		self.Login_Goto("Login")
+		
+		#~ self.GarvinSetConfig("Last Login","sukimin ingin login namun dia kesusahan karena belum punya userid")
+		#~ LastLogin = self.userdata.
+		
 		self.LoginUI.le_Login_User.clear()
 		self.LoginUI.le_Login_Password.clear()
 		self.LoginUI.le_Login_Password_Confirm.clear()
 		self.Login_Login_Password_Inputed = ""
 		users = self.DatabaseFetchResult(self.dbDatabase,"gd_user","level",0)
-		#~ print ("\n\n")
-		#~ print repr(dir(self.LoginUI.le_Login_Password_Confirm))
-		#~ print ("\n\n")
-		#~ print repr(dir(self.LoginUI.le_Login_Password_Confirm.Password))
-		#~ print repr((self.LoginUI.le_Login_Password_Confirm.Password))
-		#~ print ("\n\n")
-		#~ print repr(dir(self.LoginUI.le_Login_Password_Confirm.PasswordEchoOnEdit))
-		#~ print repr((self.LoginUI.le_Login_Password_Confirm.PasswordEchoOnEdit))
-		#~ print ("\n\n")
+				
+		lastlogin = self.GarvinGetConfig("Last Login")
+		self.LoginUI.le_Login_User.setText(lastlogin)
+		
 		if len(users)<1:
 			#--- Create user and password for admin!
 			self.LoginUI.le_Login_User.setText("admin")
