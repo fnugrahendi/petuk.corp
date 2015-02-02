@@ -10,3 +10,6 @@ kasbank/img/
 *.pdf
 *.docx
 *.ods
+*.so
+*.o
+*.dll
