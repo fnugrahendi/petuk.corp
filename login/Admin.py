@@ -24,11 +24,39 @@ class Admin(object):
 		
 		self.si_om = parent
 		
+		self.INDEX_ST = ["MENU","LIST USER"]
+		
 		self.UI = Ui_fr_Admin()
 		self.UI.setupUi(parent.fr_Admin) #-- widih mantab banget broh
-		self.UI.pushButton.clicked.connect(self.__exit__) #-- test exit
+		self.UI.tb_TutupAdmin.clicked.connect(self.__exit__) #-- test exit
+		self.UI.tb_ListUser.clicked.connect(self.ListUser) #-- test exit
+		
+		
+	def Goto(self,room):
+		if (type(room)==str):
+			if (room.upper() in self.INDEX_ST):
+				self.UI.st_Admin.setCurrentIndex(self.INDEX_ST.index(room.upper()))
+		elif (type(room)==int):
+			self.UI.st_Admin.setCurrentIndex(room)
 	
 	def __exit__(self):
 		self.si_om.tab_Admin.close()
 		self.si_om.tabWidget.removeTab(5) #-- soft code this parameter so that it will make sure which tab is removed??
 
+	
+	def ListUser(self):
+		self.Goto("List User")
+		self.si_om.clearTable(self.UI.tbl_ListUser_List)
+		for row in xrange(30):
+			self.UI.tbl_ListUser_List.insertRow(row)
+			#~ 
+		#~ for row in range(0,len(result)):
+				#~ if (row in idies):
+					#~ continue
+				#~ self.KasBankUI.tbl_KasMasuk.insertRow(row)
+				#~ idies.append(row)
+				#~ for kolom in range(0,len(TABLECOLUMNS[1])):
+					#~ if (self.KasBankUI.tbl_KasMasuk.item(row,kolom)==None):
+						#~ item = QtGui.QTableWidgetItem()
+						#~ self.KasBankUI.tbl_KasMasuk.setItem(row, kolom, item)
+					#~ self.KasBankUI.tbl_KasMasuk.item(row,kolom).setText(str(result[row][	field(TABLECOLUMNS[1][kolom])	]))
