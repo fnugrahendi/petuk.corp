@@ -56,6 +56,12 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		
 		#Tombol pada invoice
 		self.tb_Penjualan_DaftarInvoice_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
+		self.tb_Penjualan_DaftarInvoice_Baru.clicked.connect(self.Penjualan_GoTo_Invoice_Baru)
+		
+		#Tombol pada Invoice baru
+		self.tb_Penjualan_InvoicePenjualan_Baru_Nama.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.tb_Penjualan_InvoicePenjualan_Baru_Nama))
+		self.tb_Penjualan_InvoicePenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Invoice)
+		self.tb_Penjualan_InvoicePenjualan_Input_KodeProduk.clicked.connect(functools.partial(self.Popup_Produk,self.tb_Penjualan_InvoicePenjualan_Input_KodeProduk))
 		
 		#Tombol&Sinyal pada Halaman OrderPenjualan
 		self.tb_Penjualan_OrderPenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -111,6 +117,20 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		#--- check if garvin is recent version
 		#~ self.GarvinCheckIsUpdated()
 		
+	def Popup_Produk(self, namaTombol):
+		data = []
+		def isi():
+			namaTombol.setText(str(data[0]))
+			kodeProduk = namaTombol.text()
+			query = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` LIKE '"+kodeProduk+"'"
+			#print query
+			nama = self.DatabaseRunQuery(str(query))
+			#print nama
+			self.le_Penjualan_InvoicePenjualan_Input_NamaProduk.setText(nama[0][5])
+		def batal():
+			namaTombol.setText("-")
+		self.DataMaster_DataProduk_Popup_Pilih(data,isi,batal)
+		print namaTombol.text()
 		
 	def initDatabase(self):
 		try:
@@ -165,6 +185,26 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 			self.tbl_Penjualan_DaftarInvoice.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][4]))) #Tanggal
 			self.tbl_Penjualan_DaftarInvoice.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][3]))) #Pelanggan
 			self.tbl_Penjualan_DaftarInvoice.setItem(a,4,QtGui.QTableWidgetItem(str(int(result[a][6])))) #Nilai
+		
+	def Generate_NoInvoice(self):
+		query = "SELECT * FROM `gd_invoice_penjualan`"
+		dataInvoice = self.DatabaseRunQuery(query)
+		kodePreset = 0
+		for a in range (0, len(dataInvoice)):
+			kode = dataInvoice[a][1]
+			kodeNum = int(kode[3:7])
+			if (kodeNum == kodePreset):
+				kodePreset = kodePreset+1
+				continue
+			else:
+				break
+		kodeInvoice = str(kodePreset)
+		kodeInvoice = "INV000"+kodeInvoice
+		self.le_Penjualan_InvoicePenjualan_SOPenawaran.setText(kodeInvoice)
+	
+	def Penjualan_GoTo_Invoice_Baru(self):
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_IP)
+		self.Generate_NoInvoice()
 		
 	def Penjualan_GoTo_OrderPenjualan(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
