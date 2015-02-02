@@ -62,6 +62,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.tb_Penjualan_InvoicePenjualan_Baru_Nama.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.tb_Penjualan_InvoicePenjualan_Baru_Nama))
 		self.tb_Penjualan_InvoicePenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Invoice)
 		self.tb_Penjualan_InvoicePenjualan_Input_KodeProduk.clicked.connect(functools.partial(self.Popup_Produk,self.tb_Penjualan_InvoicePenjualan_Input_KodeProduk))
+		self.tb_Penjualan_InvoicePenjualan_Input_HargaPokok.clicked.connect(self.Penjualan_GoTo_Invoice_TambahBarang)
+		self.tb_Penjualan_Invoice_TambahBarang_Tabel_Tambah.clicked.connect()
 		
 		#Tombol&Sinyal pada Halaman OrderPenjualan
 		self.tb_Penjualan_OrderPenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -205,7 +207,14 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 	def Penjualan_GoTo_Invoice_Baru(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_IP)
 		self.Generate_NoInvoice()
+	
+	def Penjualan_GoTo_Invoice_TambahBarang(self):
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_I_TB)
 		
+	def Penjualan_Invoice_TambahBarang_TambahBaris(self):
+		jumlahRow = self.tbl_Penjualan_OrderPenjualan.rowCount()
+		#self.tbl_Penjualan_Invoice_TambahBarang
+	
 	def Penjualan_GoTo_OrderPenjualan(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
 		self.tb_Penjualan_OrderPenjualan_Nama.setText("")

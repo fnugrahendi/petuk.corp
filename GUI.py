@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Fri Jan 30 16:29:52 2015
-#      by: PyQt4 UI code generator 4.10.1
+# Created: Mon Feb  2 19:11:28 2015
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -2189,14 +2189,14 @@ class Ui_MainWindow(object):
         item = QtGui.QTableWidgetItem()
         self.tbl_Penjualan_Invoice_TambahBarang.setHorizontalHeaderItem(5, item)
         self.gridLayout_8.addWidget(self.tbl_Penjualan_Invoice_TambahBarang, 0, 0, 4, 1)
-        self.tb_Penjualan_Invoice_TambahBarang_Tabel_Hapus = QtGui.QPushButton(self.fr_Penjualan_Invoice_TambahBarang_Tabel)
-        self.tb_Penjualan_Invoice_TambahBarang_Tabel_Hapus.setObjectName(_fromUtf8("tb_Penjualan_Invoice_TambahBarang_Tabel_Hapus"))
-        self.gridLayout_8.addWidget(self.tb_Penjualan_Invoice_TambahBarang_Tabel_Hapus, 1, 1, 1, 1)
-        spacerItem11 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.gridLayout_8.addItem(spacerItem11, 3, 1, 1, 1)
         self.tb_Penjualan_Invoice_TambahBarang_Tabel_Tambah = QtGui.QPushButton(self.fr_Penjualan_Invoice_TambahBarang_Tabel)
         self.tb_Penjualan_Invoice_TambahBarang_Tabel_Tambah.setObjectName(_fromUtf8("tb_Penjualan_Invoice_TambahBarang_Tabel_Tambah"))
-        self.gridLayout_8.addWidget(self.tb_Penjualan_Invoice_TambahBarang_Tabel_Tambah, 2, 1, 1, 1)
+        self.gridLayout_8.addWidget(self.tb_Penjualan_Invoice_TambahBarang_Tabel_Tambah, 1, 1, 1, 1)
+        spacerItem11 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.gridLayout_8.addItem(spacerItem11, 3, 1, 1, 1)
+        self.tb_Penjualan_Invoice_TambahBarang_Tabel_Hapus = QtGui.QPushButton(self.fr_Penjualan_Invoice_TambahBarang_Tabel)
+        self.tb_Penjualan_Invoice_TambahBarang_Tabel_Hapus.setObjectName(_fromUtf8("tb_Penjualan_Invoice_TambahBarang_Tabel_Hapus"))
+        self.gridLayout_8.addWidget(self.tb_Penjualan_Invoice_TambahBarang_Tabel_Hapus, 2, 1, 1, 1)
         self.verticalLayout_22.addWidget(self.fr_Penjualan_Invoice_TambahBarang_Tabel)
         self.fr_Penjualan_Invoice_TambahBarang_Tombol = QtGui.QFrame(self.st_Penjualan_Invoice_TambahBarang)
         self.fr_Penjualan_Invoice_TambahBarang_Tombol.setFrameShape(QtGui.QFrame.NoFrame)
@@ -4523,8 +4523,8 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Harga", None))
         item = self.tbl_Penjualan_Invoice_TambahBarang.horizontalHeaderItem(5)
         item.setText(_translate("MainWindow", "Total Harga", None))
-        self.tb_Penjualan_Invoice_TambahBarang_Tabel_Hapus.setText(_translate("MainWindow", "Tambah Baris", None))
-        self.tb_Penjualan_Invoice_TambahBarang_Tabel_Tambah.setText(_translate("MainWindow", "Hapus Baris", None))
+        self.tb_Penjualan_Invoice_TambahBarang_Tabel_Tambah.setText(_translate("MainWindow", "Tambah Baris", None))
+        self.tb_Penjualan_Invoice_TambahBarang_Tabel_Hapus.setText(_translate("MainWindow", "Hapus Baris", None))
         self.tb_Penjualan_Invoice_TambahBarang_Simpan.setText(_translate("MainWindow", "Simpan", None))
         self.Penjualan_Invoice_TambahBarang_Batal.setText(_translate("MainWindow", "Batal", None))
         self.lb_Penjualan_OrderPenjualan_title.setText(_translate("MainWindow", "Order Penjualan", None))

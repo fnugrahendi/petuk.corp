@@ -4807,7 +4807,7 @@ min-height:23px;</string>
                    </widget>
                   </item>
                   <item row="1" column="1">
-                   <widget class="QPushButton" name="tb_Penjualan_Invoice_TambahBarang_Tabel_Hapus">
+                   <widget class="QPushButton" name="tb_Penjualan_Invoice_TambahBarang_Tabel_Tambah">
                     <property name="text">
                      <string>Tambah Baris</string>
                     </property>
@@ -4827,7 +4827,7 @@ min-height:23px;</string>
                    </spacer>
                   </item>
                   <item row="2" column="1">
-                   <widget class="QPushButton" name="tb_Penjualan_Invoice_TambahBarang_Tabel_Tambah">
+                   <widget class="QPushButton" name="tb_Penjualan_Invoice_TambahBarang_Tabel_Hapus">
                     <property name="text">
                      <string>Hapus Baris</string>
                     </property>
