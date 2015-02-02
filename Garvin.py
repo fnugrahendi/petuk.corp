@@ -61,6 +61,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		#Tombol pada Invoice baru
 		self.tb_Penjualan_InvoicePenjualan_Baru_Nama.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.tb_Penjualan_InvoicePenjualan_Baru_Nama))
 		self.tb_Penjualan_InvoicePenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Invoice)
+		self.tb_Penjualan_InvoicePenjualan_Input_KodeProduk.clicked.connect(functools.partial(self.Popup_Produk,self.tb_Penjualan_InvoicePenjualan_Input_KodeProduk))
 		
 		#Tombol&Sinyal pada Halaman OrderPenjualan
 		self.tb_Penjualan_OrderPenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -117,6 +118,20 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 			dte.setDateTime(QDateTime.fromString(tanggal.strftime("%Y-%m-%d %H:%M:%S"),"yyyy-MM-dd hh:mm:ss"))
 		#~ self.GarvinCheckIsUpdated()
 		
+	def Popup_Produk(self, namaTombol):
+		data = []
+		def isi():
+			namaTombol.setText(str(data[0]))
+			kodeProduk = namaTombol.text()
+			query = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` LIKE '"+kodeProduk+"'"
+			#print query
+			nama = self.DatabaseRunQuery(str(query))
+			#print nama
+			self.le_Penjualan_InvoicePenjualan_Input_NamaProduk.setText(nama[0][5])
+		def batal():
+			namaTombol.setText("-")
+		self.DataMaster_DataProduk_Popup_Pilih(data,isi,batal)
+		print namaTombol.text()
 		
 	def initDatabase(self):
 		try:
