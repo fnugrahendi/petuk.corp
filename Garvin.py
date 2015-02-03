@@ -115,7 +115,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.GarvinSetDate(self)
 		
 		#-- data
-		self.dataPath = "./data/"
+		self.Path = os.getcwd()
+		self.DataPath = "./data/"
 		#--- check if garvin is recent version
 		#~ self.GarvinCheckIsUpdated()
 		
@@ -681,7 +682,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 							] 
 						]
 		
-		f = open(self.dataPath+"garvin.dat",'r')
+		f = open(self.DataPath+"garvin.dat",'r')
 		self.UserData = f.read()
 		f.close()
 	
@@ -751,7 +752,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 				encodeddata = encodeddata +key+"\n:" + lbaris +"\n" #-- tambah newline juga di akhir
 				self.UserData = encodeddata + self.UserData
 				pass
-			f = open(self.dataPath+"garvin.dat",'w')
+			f = open(self.DataPath+"garvin.dat",'w')
 			f.write(self.UserData)
 			f.close()
 		else:
