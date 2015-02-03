@@ -28,9 +28,14 @@ class Login(Ui_fr_Main):
 		self.fr_Login_Frame.setGeometry(QtCore.QRect(0,0,WinW,WinH))
 		self.fr_Login_Frame.setStyleSheet("background:white;")
 		self.Login_Login_Password_Inputed = ""
+		#-- password echo
+		self.LoginUI.le_Login_Password.setEchoMode(QtGui.QLineEdit.Password)
+		self.LoginUI.le_Login_Password_Confirm.setEchoMode(QtGui.QLineEdit.Password)
 		#-- confirm dihapus
 		self.LoginUI.lb_Login_Password_Confirm.hide()
 		self.LoginUI.le_Login_Password_Confirm.hide()
+		
+		
 		
 		aatime = QtCore.QTimer(self)
 		aatime.timeout.connect(self.Login_Redraw)
