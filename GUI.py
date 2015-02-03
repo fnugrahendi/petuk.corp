@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Fri Jan 30 16:29:52 2015
-#      by: PyQt4 UI code generator 4.10.1
+# Created: Tue Feb  3 16:35:43 2015
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -35,6 +35,7 @@ class Ui_MainWindow(object):
         MainWindow.setMinimumSize(QtCore.QSize(0, 45))
         MainWindow.setStyleSheet(_fromUtf8(""))
         self.centralwidget = QtGui.QWidget(MainWindow)
+        self.centralwidget.setStyleSheet(_fromUtf8("QTableWidget{border-width:1px;border-color:rgb(0, 0, 0);border-style:solid;border-radius:0px;}"))
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.gridLayout = QtGui.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
@@ -62,18 +63,18 @@ class Ui_MainWindow(object):
 "    border-width:1px;\n"
 "    border-style:solid;\n"
 "    border-color:#F6F4F2;\n"
-"\n"
+"    min-width:90px;\n"
 "    border-radius:0px;\n"
 "/*    border-top-left-radius: 10px;\n"
 "    border-top-right-radius: 10px;*/\n"
-"    font: 11pt \"Arial\";\n"
+"    font: 10pt \"Arial\";\n"
 "    text-decoration:none;\n"
 "}\n"
 "\n"
 "QTabBar::tab:selected, \n"
 "QTabBar::tab:hover \n"
 "{\n"
-"    font: 11pt \"Arial\";\n"
+"    font: 10pt \"Arial\";\n"
 "    color: black;\n"
 "    text-decoration:none;\n"
 "\n"
@@ -4328,7 +4329,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.fr_MainWindow, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 870, 25))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 870, 19))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
@@ -4339,7 +4340,7 @@ class Ui_MainWindow(object):
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         self.st_DataMaster.setCurrentIndex(10)
         self.st_Penjualan.setCurrentIndex(0)
         self.st_Pembelian.setCurrentIndex(0)
