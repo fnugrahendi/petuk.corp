@@ -1,4 +1,5 @@
 img/DataMaster_svg.svg
+data/
 *.pyc
 dist/
 build/

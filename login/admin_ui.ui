@@ -147,10 +147,10 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="st_Gaul">
-      <layout class="QVBoxLayout" name="verticalLayout">
+     <widget class="QWidget" name="st_Users">
+      <layout class="QVBoxLayout" name="ivl_Users">
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="lb_Users_Judul">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -181,6 +181,9 @@
            <horstretch>0</horstretch>
            <verstretch>1</verstretch>
           </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QTableWidget{border-width:1px;border-color:rgb(150, 137, 188);border-style:outset;border-radius:0px;}</string>
          </property>
          <column>
           <property name="text">
@@ -225,6 +228,49 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QPushButton" name="tb_Users_Tambah">
+            <property name="text">
+             <string>Tambah</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="tb_Users_Ubah">
+            <property name="text">
+             <string>Ubah</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="tb_Users_Hapus">
+            <property name="text">
+             <string>Hapus</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>258</width>
+              <height>19</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="tb_Users_Tutup">
+            <property name="text">
+             <string>Tutup</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>

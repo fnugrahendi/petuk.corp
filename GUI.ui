@@ -29,6 +29,9 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QTableWidget{border-width:1px;border-color:rgb(0, 0, 0);border-style:solid;border-radius:0px;}</string>
+   </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QFrame" name="fr_MainWindow">
@@ -60,18 +63,18 @@ QTabBar::tab
 	border-width:1px;
 	border-style:solid;
 	border-color:#F6F4F2;
-
+	min-width:90px;
 	border-radius:0px;
 /*	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;*/
-	font: 11pt &quot;Arial&quot;;
+	font: 10pt &quot;Arial&quot;;
 	text-decoration:none;
 }
 
 QTabBar::tab:selected, 
 QTabBar::tab:hover 
 {
-	font: 11pt &quot;Arial&quot;;
+	font: 10pt &quot;Arial&quot;;
     color: black;
 	text-decoration:none;
 
@@ -97,7 +100,7 @@ margin-top: 2px; /* make non-selected tabs look smaller */
 }</string>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="tab_DataMaster">
           <attribute name="title">
@@ -9341,7 +9344,7 @@ min-height:23px;</string>
      <x>0</x>
      <y>0</y>
      <width>870</width>
-     <height>25</height>
+     <height>19</height>
     </rect>
    </property>
   </widget>

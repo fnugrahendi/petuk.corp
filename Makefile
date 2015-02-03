@@ -17,6 +17,9 @@ kasbank:
 all: $(SOURCES)
 	# Mbuh piye dadine kui mau wkwk
 	
+clean: 
+	rm -f $(SOURCES)
+
 rcconvert:
 	pyrcc4 DataMaster.qrc -o DataMaster_rc.py
 
