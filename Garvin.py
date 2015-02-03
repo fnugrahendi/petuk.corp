@@ -122,6 +122,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		#--- startup program, set semua datetimeedit ke waktu skrg		
 		self.GarvinSetDate(self)
 		
+		#-- data
+		self.Path = os.getcwd()
+		self.DataPath = "./data/"
 		#--- check if garvin is recent version
 		#~ self.GarvinCheckIsUpdated()
 	
@@ -710,6 +713,95 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		dtedte = parentobject.findChildren(QtGui.QDateTimeEdit)
 		for dte in dtedte:
 			dte.setDateTime(QDateTime.fromString(tanggal.strftime("%Y-%m-%d %H:%M:%S"),"yyyy-MM-dd hh:mm:ss"))
+
+	def GarvinLoadConfig(self):
+		#-- maksude diantara baris kunci, config tersimpan dalam bentuk hex ascii number
+		#-- misal 	101262004472696E6B202020202020202020202024
+		#-- 		DATADISINI00000000000000000000000000000000
+		#--			101262004472696E6B202020202020202020202024 <-- lanjutannya
+		#-- 		DATADISINI00000000000000000000000000000000 <-- lanjut lagi kalau butuh lebih dari sebaris
+		self.ConfigKey = [
+							["FILE VERSION","LAST LOGIN"],
+							[	"1011D2004C4C204B4542414200434F43412D434F2B",
+								"101262004472696E6B202020202020202020202024"
+							] 
+						]
+		
+		f = open(self.DataPath+"garvin.dat",'r')
+		self.UserData = f.read()
+		f.close()
+	
+	def GarvinGetConfig(self,configname):
+		self.GarvinLoadConfig()
+		configname = configname.upper()
+		if (configname in self.ConfigKey[0]):
+			key = self.ConfigKey[1][self.ConfigKey[0].index(configname)]
+			
+			configdata = ""
+			datas = re.findall(key+"\n(.*)",self.UserData)
+			#-- ambil semua data untuk config ini (bisa lebih dari satu baris)
+			if len(datas)<1:
+				return ""
+			for data in datas:
+				teks = re.findall("([0-9a-fA-F]{2})",data)
+				#-- ubah masing2 hex ke karakter
+				for tek in teks:
+					if tek!="00":
+						configdata = configdata+chr(int(tek,16))
+			return configdata
+		else:
+			return ""
+	
+	def GarvinSetConfig(self,configname,configvalue):
+		self.GarvinLoadConfig()
+		configname = configname.upper()
+		if (configname in self.ConfigKey[0]):
+			key = self.ConfigKey[1][self.ConfigKey[0].index(configname)]
+			posisi = self.UserData.find(key)
+			if (posisi>=0):
+				#-- edit
+				pass
+				bagianatas = self.UserData[0:posisi-1] #-- dikurangi satu untuk karakter titikdua ":"
+				bagianbawah = self.UserData[posisi:]
+				while (bagianbawah.find(key)>=0):
+					bagianbawah = bagianbawah[bagianbawah.find("\n")+1:]
+				#-- setelah perulangan sekali lagi
+				bagianbawah = bagianbawah[bagianbawah.find("\n")+1:]
+				encodeddata = ""
+				for i in xrange(len(configvalue)):
+					encodeddata = encodeddata + (	ord(configvalue[i]).__hex__().replace("0x","")	)
+				encodeddata = encodeddata.upper()
+				lbaris = encodeddata 
+				encodeddata = ":"
+				while (len(lbaris)>42): #-- selama baris terakhir masih lebih besar dari 42 karakter (intel ihex) maka dibagi dalam n baris
+					encodeddata = encodeddata +key+"\n:" + lbaris[:42] + "\n:"
+					lbaris = lbaris[42:]
+				while (len(lbaris)<42):
+					lbaris=lbaris+"0"
+				encodeddata = encodeddata +key+"\n:" + lbaris +"\n" #-- tambah newline juga di akhir
+				self.UserData = bagianatas+encodeddata+bagianbawah
+				
+			else:
+				#-- buat baru
+				encodeddata = ""
+				for i in xrange(len(configvalue)):
+					encodeddata = encodeddata + (	ord(configvalue[i]).__hex__().replace("0x","")	)
+				encodeddata = encodeddata.upper()
+				lbaris = encodeddata 
+				encodeddata = ":"
+				while (len(lbaris)>42): #-- selama baris terakhir masih lebih besar dari 42 karakter (intel ihex) maka dibagi dalam n baris
+					encodeddata = encodeddata +key+"\n:" + lbaris[:42] + "\n:"
+					lbaris = lbaris[42:]
+				while (len(lbaris)<42):
+					lbaris=lbaris+"0"
+				encodeddata = encodeddata +key+"\n:" + lbaris +"\n" #-- tambah newline juga di akhir
+				self.UserData = encodeddata + self.UserData
+				pass
+			f = open(self.DataPath+"garvin.dat",'w')
+			f.write(self.UserData)
+			f.close()
+		else:
+			return False
 	
 if __name__=="__main__":
 	app = QtGui.QApplication(sys.argv)

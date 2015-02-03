@@ -15,8 +15,6 @@ guiconvert:
 kasbank:
 	pyuic4 kasbank/ui_kasbank.ui -o kasbank/ui_kasbank.py
 all: $(SOURCES)
-	# kompile library yg diprogram pakai cpp di folder garvinlibrary
-	make -C garvinlibrary/src all
 	# Mbuh piye dadine kui mau wkwk
 	
 rcconvert:

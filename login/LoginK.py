@@ -28,16 +28,23 @@ class Login(Ui_fr_Main):
 		self.fr_Login_Frame.setGeometry(QtCore.QRect(0,0,WinW,WinH))
 		self.fr_Login_Frame.setStyleSheet("background:white;")
 		self.Login_Login_Password_Inputed = ""
+		#-- password echo
+		self.LoginUI.le_Login_Password.setEchoMode(QtGui.QLineEdit.Password)
+		self.LoginUI.le_Login_Password_Confirm.setEchoMode(QtGui.QLineEdit.Password)
 		#-- confirm dihapus
 		self.LoginUI.lb_Login_Password_Confirm.hide()
 		self.LoginUI.le_Login_Password_Confirm.hide()
+		
+		
 		
 		aatime = QtCore.QTimer(self)
 		aatime.timeout.connect(self.Login_Redraw)
 		aatime.start(500)
 		
 		
+		#-- signal
 		self.LoginUI.chk_Connect_Lokal.stateChanged.connect(self.Login_Connect_SetLokal)
+		self.LoginUI.le_Login_User.editingFinished.connect(self.Login_SaveLastLogin)
 		
 		self.LoginUI.tb_Connect_Ok.clicked.connect(self.Login_Connect_Act_OK)
 		self.LoginUI.tb_Login_Ok.clicked.connect(self.Login_Login_Auth)
@@ -48,7 +55,9 @@ class Login(Ui_fr_Main):
 		self.INDEX_ST_LOGIN = ["CONNECT","LOGIN","DATABASE"]
 		#--- end Login_init
 		
-		#-- password hashing, ditambahi text nama usernya itu sendiri di awal lowercase, di akhir uppercase
+		result = self.DatabaseRunQuery("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_user';")
+		self.Login_User_Field = list(itertools.chain.from_iterable(result))
+		
 	
 	def Login_Goto(self,room):
 		if (type(room)==str):
@@ -103,22 +112,26 @@ class Login(Ui_fr_Main):
 		self.dbDatabase = dbname
 		self.Login_Login()
 	
+	def Login_SaveLastLogin(self):
+		lastlogin = str(self.LoginUI.le_Login_User.text())
+		self.GarvinSetConfig("Last Login",lastlogin)
+	
 	def Login_Login(self):
 		self.Login_Goto("Login")
+		
+		#~ self.GarvinSetConfig("Last Login","sukimin ingin login namun dia kesusahan karena belum punya userid")
+		#~ LastLogin = self.userdata.
+		
 		self.LoginUI.le_Login_User.clear()
 		self.LoginUI.le_Login_Password.clear()
 		self.LoginUI.le_Login_Password_Confirm.clear()
 		self.Login_Login_Password_Inputed = ""
 		users = self.DatabaseFetchResult(self.dbDatabase,"gd_user","level",0)
-		#~ print ("\n\n")
-		#~ print repr(dir(self.LoginUI.le_Login_Password_Confirm))
-		#~ print ("\n\n")
-		#~ print repr(dir(self.LoginUI.le_Login_Password_Confirm.Password))
-		#~ print repr((self.LoginUI.le_Login_Password_Confirm.Password))
-		#~ print ("\n\n")
-		#~ print repr(dir(self.LoginUI.le_Login_Password_Confirm.PasswordEchoOnEdit))
-		#~ print repr((self.LoginUI.le_Login_Password_Confirm.PasswordEchoOnEdit))
-		#~ print ("\n\n")
+				
+		lastlogin = self.GarvinGetConfig("Last Login")
+		self.LoginUI.le_Login_User.setText(lastlogin)
+		
+		
 		if len(users)<1:
 			#--- Create user and password for admin!
 			self.LoginUI.le_Login_User.setText("admin")

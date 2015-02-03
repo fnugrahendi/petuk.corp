@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'login/admin_ui.ui'
 #
-# Created: Mon Feb  2 14:22:47 2015
-#      by: PyQt4 UI code generator 4.10.4
+# Created: Tue Feb 03 12:20:55 2015
+#      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -87,12 +87,14 @@ class Ui_fr_Admin(object):
         sizePolicy.setHeightForWidth(self.tbl_ListUser_List.sizePolicy().hasHeightForWidth())
         self.tbl_ListUser_List.setSizePolicy(sizePolicy)
         self.tbl_ListUser_List.setObjectName(_fromUtf8("tbl_ListUser_List"))
-        self.tbl_ListUser_List.setColumnCount(2)
+        self.tbl_ListUser_List.setColumnCount(3)
         self.tbl_ListUser_List.setRowCount(0)
         item = QtGui.QTableWidgetItem()
         self.tbl_ListUser_List.setHorizontalHeaderItem(0, item)
         item = QtGui.QTableWidgetItem()
         self.tbl_ListUser_List.setHorizontalHeaderItem(1, item)
+        item = QtGui.QTableWidgetItem()
+        self.tbl_ListUser_List.setHorizontalHeaderItem(2, item)
         self.verticalLayout.addWidget(self.tbl_ListUser_List)
         self.frame = QtGui.QFrame(self.st_Gaul)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
@@ -122,5 +124,7 @@ class Ui_fr_Admin(object):
         item = self.tbl_ListUser_List.horizontalHeaderItem(0)
         item.setText(_translate("fr_Admin", "Username", None))
         item = self.tbl_ListUser_List.horizontalHeaderItem(1)
+        item.setText(_translate("fr_Admin", "Password", None))
+        item = self.tbl_ListUser_List.horizontalHeaderItem(2)
         item.setText(_translate("fr_Admin", "Kewenangan", None))
 
