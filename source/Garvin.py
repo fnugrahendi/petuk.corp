@@ -124,7 +124,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		
 		#-- data
 		self.Path = os.getcwd()
-		self.DataPath = "./data/"
+		self.DataPath = "../data/"
 		#--- check if garvin is recent version
 		#~ self.GarvinCheckIsUpdated()
 	
@@ -246,7 +246,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.tbl_Penjualan_Invoice_TambahBarang.insertRow(a)
 	
 	def Penjualan_Invoice_TambahBarang_TotalHarga(self,row,col):
-		
+		pass
 	
 	def Penjualan_Invoice_TambahBarang_PilihVendor(self, row, col):
 		if (col==0):

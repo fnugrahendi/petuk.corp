@@ -59,14 +59,7 @@ class Admin(object):
 		self.UI.tbl_ListUser_List.setColumnWidth(0,300)
 		self.UI.tbl_ListUser_List.setColumnWidth(1,400)
 		self.UI.tbl_ListUser_List.setColumnWidth(2,100)
-			#~ 
-		#~ for row in range(0,len(result)):
-				#~ if (row in idies):
-					#~ continue
-				#~ self.KasBankUI.tbl_KasMasuk.insertRow(row)
-				#~ idies.append(row)
-				#~ for kolom in range(0,len(TABLECOLUMNS[1])):
-					#~ if (self.KasBankUI.tbl_KasMasuk.item(row,kolom)==None):
-						#~ item = QtGui.QTableWidgetItem()
-						#~ self.KasBankUI.tbl_KasMasuk.setItem(row, kolom, item)
-					#~ self.KasBankUI.tbl_KasMasuk.item(row,kolom).setText(str(result[row][	field(TABLECOLUMNS[1][kolom])	]))
+		
+		
+		def setActive(row,column):
+			pass
