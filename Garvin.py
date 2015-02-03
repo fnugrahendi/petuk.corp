@@ -62,6 +62,14 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.tb_Penjualan_InvoicePenjualan_Baru_Nama.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.tb_Penjualan_InvoicePenjualan_Baru_Nama))
 		self.tb_Penjualan_InvoicePenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Invoice)
 		self.tb_Penjualan_InvoicePenjualan_Input_KodeProduk.clicked.connect(functools.partial(self.Popup_Produk,self.tb_Penjualan_InvoicePenjualan_Input_KodeProduk))
+		self.tb_Penjualan_InvoicePenjualan_Input_HargaPokok.clicked.connect(self.Penjualan_GoTo_Invoice_TambahBarang)
+		self.tb_Penjualan_Invoice_TambahBarang_Tabel_Tambah.clicked.connect(self.Penjualan_Invoice_TambahBarang_TambahBaris)
+		self.Penjualan_Invoice_TambahBarang_Batal.clicked.connect(self.Penjualan_GoTo_Invoice_Baru)
+		
+		#selain tombol
+		self.tbl_Penjualan_Invoice_TambahBarang.cellDoubleClicked.connect(self.Penjualan_Invoice_TambahBarang_PilihVendor)
+		self.le_Penjualan_InvoicePenjualan_Input_HargaJual.textChanged.connect(self.Penjualan_Invoice_TotalHarga)
+		self.le_Penjualan_InvoicePenjualan_Input_Jumlah.textChanged.connect(self.Penjualan_Invoice_TotalHarga)
 		
 		#Tombol&Sinyal pada Halaman OrderPenjualan
 		self.tb_Penjualan_OrderPenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -119,6 +127,14 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.DataPath = "./data/"
 		#--- check if garvin is recent version
 		#~ self.GarvinCheckIsUpdated()
+	
+	def Popup_NamaAlamat_Tabel(self,namaTabel,row):
+		data = []
+		def isi():
+			namaTabel.setItem(row,0,QtGui.QTableWidgetItem(str(data[0])))
+		def batal():
+			namaTabel.setItem(row,0,QtGui.QTableWidgetItem("-"))
+		self.DataMaster_DataNamaAlamat_Popup_Pilih(data,isi,batal)	
 		
 	def Popup_Produk(self, namaTombol):
 		data = []
@@ -208,7 +224,36 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 	def Penjualan_GoTo_Invoice_Baru(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_IP)
 		self.Generate_NoInvoice()
+		self.le_Penjualan_InvoicePenjualan_Input_Jumlah.setText("0")
+		self.le_Penjualan_InvoicePenjualan_Input_HargaJual.setText("0")
+		self.le_Penjualan_InvoicePenjualan_Input_TotalHarga.setText("0")
 		
+	def Penjualan_Invoice_TotalHarga(self):
+		jumlah = str(self.le_Penjualan_InvoicePenjualan_Input_Jumlah.text())
+		harga = str(self.le_Penjualan_InvoicePenjualan_Input_HargaJual.text())
+		try:
+			totalHarga = int(jumlah)*int(harga)
+			self.le_Penjualan_InvoicePenjualan_Input_TotalHarga.setText(str(totalHarga))
+		except:
+			pass
+		
+	def Penjualan_GoTo_Invoice_TambahBarang(self):
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_I_TB)
+		
+	def Penjualan_Invoice_TambahBarang_TambahBaris(self):
+		jumlahRow = self.tbl_Penjualan_Invoice_TambahBarang.rowCount()
+		a = jumlahRow
+		self.tbl_Penjualan_Invoice_TambahBarang.insertRow(a)
+	
+	def Penjualan_Invoice_TambahBarang_TotalHarga(self,row,col):
+		
+	
+	def Penjualan_Invoice_TambahBarang_PilihVendor(self, row, col):
+		if (col==0):
+			self.Popup_NamaAlamat_Tabel(self.tbl_Penjualan_Invoice_TambahBarang,row)
+		pass
+			
+	
 	def Penjualan_GoTo_OrderPenjualan(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_OP)
 		self.tb_Penjualan_OrderPenjualan_Nama.setText("")
