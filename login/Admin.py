@@ -47,8 +47,18 @@ class Admin(object):
 	def ListUser(self):
 		self.Goto("List User")
 		self.si_om.clearTable(self.UI.tbl_ListUser_List)
-		for row in xrange(30):
+		KOLOMTABLE = ["username", "password", "level"]
+		users = self.si_om.DatabaseFetchResult(self.si_om.dbDatabase,"gd_user")
+		for row in xrange(len(users)):
 			self.UI.tbl_ListUser_List.insertRow(row)
+			for kolom in xrange(len(KOLOMTABLE)):
+				if (self.UI.tbl_ListUser_List.item(row,kolom)==None):
+					item = QtGui.QTableWidgetItem()
+					self.UI.tbl_ListUser_List.setItem(row,kolom,item)
+					item.setText(str(users[row][self.si_om.Login_User_Field.index(KOLOMTABLE[kolom])]))
+		self.UI.tbl_ListUser_List.setColumnWidth(0,300)
+		self.UI.tbl_ListUser_List.setColumnWidth(1,400)
+		self.UI.tbl_ListUser_List.setColumnWidth(2,100)
 			#~ 
 		#~ for row in range(0,len(result)):
 				#~ if (row in idies):
