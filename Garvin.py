@@ -242,6 +242,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		a = jumlahRow
 		self.tbl_Penjualan_Invoice_TambahBarang.insertRow(a)
 	
+	def Penjualan_Invoice_TambahBarang_TotalHarga(self,row,col):
+		
+	
 	def Penjualan_Invoice_TambahBarang_PilihVendor(self, row, col):
 		if (col==0):
 			self.Popup_NamaAlamat_Tabel(self.tbl_Penjualan_Invoice_TambahBarang,row)
