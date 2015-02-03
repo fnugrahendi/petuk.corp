@@ -70,6 +70,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.tbl_Penjualan_Invoice_TambahBarang.cellDoubleClicked.connect(self.Penjualan_Invoice_TambahBarang_PilihVendor)
 		self.le_Penjualan_InvoicePenjualan_Input_HargaJual.textChanged.connect(self.Penjualan_Invoice_TotalHarga)
 		self.le_Penjualan_InvoicePenjualan_Input_Jumlah.textChanged.connect(self.Penjualan_Invoice_TotalHarga)
+		self.tbl_Penjualan_Invoice_TambahBarang.cellChanged.connect(self.Penjualan_Invoice_TambahBarang_TotalHarga)
 		
 		#Tombol&Sinyal pada Halaman OrderPenjualan
 		self.tb_Penjualan_OrderPenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -244,9 +245,18 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		jumlahRow = self.tbl_Penjualan_Invoice_TambahBarang.rowCount()
 		a = jumlahRow
 		self.tbl_Penjualan_Invoice_TambahBarang.insertRow(a)
+		self.tbl_Penjualan_Invoice_TambahBarang.setItem(a,3,QtGui.QTableWidgetItem("0"))
+		self.tbl_Penjualan_Invoice_TambahBarang.setItem(a,4,QtGui.QTableWidgetItem("0"))
 	
 	def Penjualan_Invoice_TambahBarang_TotalHarga(self,row,col):
-		pass
+		try:
+			jumlah = str(self.tbl_Penjualan_Invoice_TambahBarang.item(row,3).text())
+			harga = str(self.tbl_Penjualan_Invoice_TambahBarang.item(row,4).text())
+			totalHarga = int(jumlah)*int(harga)
+			self.tbl_Penjualan_Invoice_TambahBarang.setItem(row,5,QtGui.QTableWidgetItem(str(totalHarga)))
+		except:
+			pass
+		return
 	
 	def Penjualan_Invoice_TambahBarang_PilihVendor(self, row, col):
 		if (col==0):
