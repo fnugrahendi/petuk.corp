@@ -64,6 +64,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.tb_Penjualan_InvoicePenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Invoice)
 		self.tb_Penjualan_InvoicePenjualan_Input_KodeProduk.clicked.connect(functools.partial(self.Popup_Produk,self.tb_Penjualan_InvoicePenjualan_Input_KodeProduk))
 		self.tb_Penjualan_InvoicePenjualan_Input_HargaPokok.clicked.connect(self.Penjualan_GoTo_Invoice_TambahBarang)
+		self.tb_Penjualan_InvoicePenjualan_Rekam.clicked.connect(self.Penjualan_Invoice_Rekam)
 		self.tb_Penjualan_Invoice_TambahBarang_Tabel_Tambah.clicked.connect(self.Penjualan_Invoice_TambahBarang_TambahBaris)
 		self.Penjualan_Invoice_TambahBarang_Batal.clicked.connect(self.Penjualan_GoTo_Invoice_Batal)
 		self.tb_Penjualan_Invoice_TambahBarang_Simpan.clicked.connect(self.Penjualan_Invoice_TambahBarang_Simpan)
@@ -261,7 +262,21 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 			self.le_Penjualan_InvoicePenjualan_Input_TotalHarga.setText(str(totalHarga))
 		except:
 			pass
-		
+	
+	def Penjualan_Invoice_Rekam(self):
+		kodeTransaksi = str(self.le_Penjualan_InvoicePenjualan_SOPenawaran.text())
+		kodePelanggan = str(self.tb_Penjualan_InvoicePenjualan_Baru_Nama.text())
+		tanggal = str(self.dte_Penjualan_InvoicePenjualan_Input_Tanggal.dateTime().toString("yyyy-MM-dd hh:mm:ss"))
+		catatan = str(self.le_Penjualan_InvoicePenjualan_Keterangan.text())
+		nilai = str(self.le_Penjualan_InvoicePenjualan_Input_TotalHarga.text())
+		hargaPokok = str(self.tb_Penjualan_InvoicePenjualan_Input_HargaPokok.text())
+		query = "INSERT INTO `gd_invoice_penjualan` "+\
+			"(`kodeTransaksi`,`kodePelanggan`,`tanggal`,`catatan`,`nilai`,`hargaPokok`) "+\
+			"VALUES ('"+kodeTransaksi+"','"+kodePelanggan+"','"+tanggal+"','"+catatan+"','"+nilai+"','"+hargaPokok+"')"
+		self.DatabaseRunQuery(str(query))
+		self.Penjualan_GoTo_Invoice
+		pass
+	
 	def Penjualan_GoTo_Invoice_TambahBarang(self):
 		rownum = self.tbl_Penjualan_Invoice_TambahBarang.rowCount()
 		for b in range (0, rownum):
