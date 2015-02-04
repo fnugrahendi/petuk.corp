@@ -151,7 +151,10 @@ class Login(Ui_fr_Main):
 	def Login_Login_CreateAdmin(self):
 		user = str(self.LoginUI.le_Login_User.text())
 		password = str(self.LoginUI.le_Login_Password_Confirm.text())
-		self.Login_Login_CreateUser(user,password,"0") #-- "0" = level admin
+		if (password==str(self.LoginUI.le_Login_Password.text())):
+			self.Login_Login_CreateUser(user,password,"0") #-- "0" = level admin
+		else:
+			self.DataMaster_Popup("Password yang anda masukkan tidak sama",self.DataMaster_None)
 		
 		
 	def Login_Login_HashPassword(self,username,password):
