@@ -32,6 +32,10 @@ class Admin(object):
 		self.UI.tb_ListUser.clicked.connect(self.ListUser) #-- test exit
 		
 		
+		self.UI.fr_Users_Tambah_Content.setTabOrder(self.UI.le_Users_Tambah_Username,self.UI.le_Users_Tambah_Password)
+		self.UI.fr_Users_Tambah_Content.setTabOrder(self.UI.le_Users_Tambah_Password,self.UI.le_Users_Tambah_Password_Confirm)
+		
+		
 	def Goto(self,room):
 		if (type(room)==str):
 			if (room.upper() in self.INDEX_ST):
@@ -97,12 +101,18 @@ class Admin(object):
 	
 	def ListUser_Tambah(self):
 		self.Goto("TAMBAH USER")
+		self.si_om.GarvinDisconnect(self.UI.tb_Users_Tambah_Simpan.clicked)
+		self.UI.tb_Users_Tambah_Simpan.clicked.connect(self.ListUser_Tambah_Act_Simpan)
 		
 	def ListUser_Tambah_Act_Simpan(self):
 		username = str(self.UI.le_Users_Tambah_Username.text())
-		password = str(self.UI.le_Users_Tambah_Password.text())
 		priviledge = str(self.UI.cb_Users_Tambah_Priviledge.currentIndex())
-		pass
+		password = str(self.UI.le_Users_Tambah_Password.text())
+		if password==str(self.UI.le_Users_Tambah_Password_Confirm.text()):
+			password = self.si_om.Login_Login_HashPassword(username,password)
+			self.si_om.DatabaseInsertAvoidreplace(self.si_om.dbDatabase,"gd_user","username",username,["username","password","level"],[username,password,priviledge],"Username "+username+" telah dipakai")
+			self.ListUser()
+		else:pass
 	
 		
 		
