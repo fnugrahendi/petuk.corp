@@ -19,3 +19,4 @@ source/kasbank/img/
 *.o
 *.dll
 *.fuse*
+*.spec
