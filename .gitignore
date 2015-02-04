@@ -1,5 +1,8 @@
+bin/
 source/img/DataMaster_svg.svg
 data/garvin.dat
+data/
+data/*
 *.pyc
 source/dist/
 source/build/
@@ -17,3 +20,6 @@ source/kasbank/img/
 *.o
 *.dll
 *.fuse*
+*.spec
+*.7z
+*.grvz
