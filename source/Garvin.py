@@ -74,6 +74,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.le_Penjualan_InvoicePenjualan_Input_HargaJual.textChanged.connect(self.Penjualan_Invoice_TotalHarga)
 		self.le_Penjualan_InvoicePenjualan_Input_Jumlah.textChanged.connect(self.Penjualan_Invoice_TotalHarga)
 		self.tbl_Penjualan_Invoice_TambahBarang.cellChanged.connect(self.Penjualan_Invoice_TambahBarang_TotalHarga)
+		self.tbl_Penjualan_Piutang.cellDoubleClicked.connect(self.Penjualan_GoTo_PiutangUsaha_Rincian)
+		self.tbl_Penjualan_RincianPiutang.cellDoubleClicked.connect(self.Penjualan_GoTo_PembayaranPiutang)
 		
 		#Tombol&Sinyal pada Halaman OrderPenjualan
 		self.tb_Penjualan_OrderPenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -101,6 +103,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.tb_Penjualan_RincianPiutang_Perincian.clicked.connect(self.Penjualan_GoTo_PembayaranPiutang)
 		self.tb_Penjualan_PembayaranPiutang_Baru.clicked.connect(self.Penjualan_GoTo_PembayaranPiutang_Baru)
 		self.tb_Penjualan_PembayaranPiutang_Baru_Batal.clicked.connect(self.Penjualan_GoTo_PembayaranPiutang)
+		self.tb_Penjualan_PembayaranPiutang_Baru_Akun.clicked.connect(functools.partial(self.Popup_Rekening, self.tb_Penjualan_PembayaranPiutang_Baru_Akun))
 		
 		self.INDEX_ST_PENJUALAN_MENU = 0
 		self.INDEX_ST_PENJUALAN_DI = 1
@@ -140,7 +143,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		def batal():
 			namaTabel.setItem(row,0,QtGui.QTableWidgetItem("-"))
 		self.DataMaster_DataNamaAlamat_Popup_Pilih(data,isi,batal)	
-		
+	
 	def Popup_Produk(self, namaTombol):
 		data = []
 		def isi():
@@ -154,6 +157,15 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		def batal():
 			namaTombol.setText("-")
 		self.DataMaster_DataProduk_Popup_Pilih(data,isi,batal)
+		print namaTombol.text()
+		
+	def Popup_Rekening(self, namaTombol):
+		data = ["",""]
+		def isi():
+			namaTombol.setText(str(data[0])+" "+str(data[1]))
+		def batal():
+			namaTombol.setText("-")
+		self.DataMaster_DataRekening_Popup_Pilih(data,isi,batal)
 		print namaTombol.text()
 		
 	def initDatabase(self):
@@ -551,6 +563,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		return
 	
 	def Penjualan_GoTo_PembayaranPiutang(self):
+		self.tbl_Penjualan_PembayaranPiutang.setColumnWidth(2,300)
 		curRow = self.tbl_Penjualan_RincianPiutang.currentRow()
 		noInvoice = str(self.tbl_Penjualan_RincianPiutang.item(curRow,1).text())
 		query = "SELECT * FROM `gd_piutang` WHERE `noInvoice` LIKE '"+noInvoice+"'"
@@ -565,7 +578,16 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		return
 		
 	def Penjualan_GoTo_PembayaranPiutang_Baru(self):
+		nama = str(self.lb_Penjualan_RincianPiutang_title_nama.text())
+		self.le_Penjualan_PembayaranPiutang_Baru_Nama.setText(nama)
+		curRow = self.tbl_Penjualan_RincianPiutang.currentRow()
+		noInvoice = str(self.tbl_Penjualan_RincianPiutang.item(curRow,1).text())
+		self.le_Penjualan_PembayaranPiutang_Baru_NoInvoice.setText(noInvoice)
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PPB)
+		return
+	
+	def Penjualan_PembayaranPiutang_Rekam(self):
+		pass
 	
 	def Penjualan_GoTo_ReturPenjualan(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_RP)
