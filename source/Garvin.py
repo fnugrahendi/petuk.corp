@@ -215,15 +215,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 	def Generate_NoInvoice(self):
 		query = "SELECT * FROM `gd_invoice_penjualan`"
 		dataInvoice = self.DatabaseRunQuery(query)
-		kodePreset = 0
-		for a in range (0, len(dataInvoice)):
-			kode = dataInvoice[a][1]
-			kodeNum = int(kode[3:7])
-			if (kodeNum == kodePreset):
-				kodePreset = kodePreset+1
-				continue
-			else:
-				break
+		lastRow = len(dataInvoice)-1
+		kode = dataInvoice[lastRow][1]
+		kodeNum = int(kode[3:7])
+		kodePreset = kodeNum+1
 		kodeInvoice = str(kodePreset)
 		kodeInvoice = "INV000"+kodeInvoice
 		self.le_Penjualan_InvoicePenjualan_SOPenawaran.setText(kodeInvoice)
@@ -304,6 +299,12 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.tbl_Penjualan_Invoice_TambahBarang.setItem(a,3,QtGui.QTableWidgetItem("0"))
 		self.tbl_Penjualan_Invoice_TambahBarang.setItem(a,4,QtGui.QTableWidgetItem("0"))
 		pass
+	
+	def Penjualan_Invoice_TambahBarang_HapusBaris(self):
+		currentRow = self.tbl_Penjualan_Invoice_TambahBarang.currentRow()
+		self.tbl_Penjualan_Invoice_TambahBarang.removeRow(currentRow)
+		pass
+		
 	
 	def Penjualan_Invoice_TambahBarang_Simpan(self):
 		hargaPokok = 0
