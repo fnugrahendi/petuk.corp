@@ -350,7 +350,7 @@
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
+          <item row="3" column="0">
            <widget class="QLabel" name="lb_Users_Tambah_Priviledge">
             <property name="text">
              <string>Priviledge :</string>
@@ -377,7 +377,7 @@
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
+          <item row="3" column="1">
            <widget class="QComboBox" name="cb_Users_Tambah_Priviledge">
             <property name="maximumSize">
              <size>
@@ -412,14 +412,30 @@
             </item>
            </widget>
           </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="lb_Users_Tambah_Password_Confirm">
+            <property name="text">
+             <string>Confirm Password: </string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="le_Users_Tambah_Password_Confirm">
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
          </layout>
-         <zorder>lb_Users_Tambah_Username</zorder>
-         <zorder>lb_Users_Tambah_Password</zorder>
-         <zorder>lb_Users_Tambah_Priviledge</zorder>
-         <zorder>fr_Users_Tambah_t</zorder>
-         <zorder>le_Users_Tambah_Username</zorder>
-         <zorder>le_Users_Tambah_Password</zorder>
-         <zorder>cb_Users_Tambah_Priviledge</zorder>
         </widget>
        </item>
        <item>

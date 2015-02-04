@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'login/admin_ui.ui'
 #
-# Created: Wed Feb  4 19:31:40 2015
+# Created: Wed Feb  4 22:27:22 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -171,7 +171,7 @@ class Ui_fr_Admin(object):
         self.ifl_Users_Tambah_Content.setWidget(1, QtGui.QFormLayout.LabelRole, self.lb_Users_Tambah_Password)
         self.lb_Users_Tambah_Priviledge = QtGui.QLabel(self.fr_Users_Tambah_Content)
         self.lb_Users_Tambah_Priviledge.setObjectName(_fromUtf8("lb_Users_Tambah_Priviledge"))
-        self.ifl_Users_Tambah_Content.setWidget(2, QtGui.QFormLayout.LabelRole, self.lb_Users_Tambah_Priviledge)
+        self.ifl_Users_Tambah_Content.setWidget(3, QtGui.QFormLayout.LabelRole, self.lb_Users_Tambah_Priviledge)
         self.le_Users_Tambah_Username = QtGui.QLineEdit(self.fr_Users_Tambah_Content)
         self.le_Users_Tambah_Username.setMaximumSize(QtCore.QSize(200, 16777215))
         self.le_Users_Tambah_Username.setObjectName(_fromUtf8("le_Users_Tambah_Username"))
@@ -188,7 +188,15 @@ class Ui_fr_Admin(object):
         self.cb_Users_Tambah_Priviledge.addItem(_fromUtf8(""))
         self.cb_Users_Tambah_Priviledge.addItem(_fromUtf8(""))
         self.cb_Users_Tambah_Priviledge.addItem(_fromUtf8(""))
-        self.ifl_Users_Tambah_Content.setWidget(2, QtGui.QFormLayout.FieldRole, self.cb_Users_Tambah_Priviledge)
+        self.ifl_Users_Tambah_Content.setWidget(3, QtGui.QFormLayout.FieldRole, self.cb_Users_Tambah_Priviledge)
+        self.lb_Users_Tambah_Password_Confirm = QtGui.QLabel(self.fr_Users_Tambah_Content)
+        self.lb_Users_Tambah_Password_Confirm.setObjectName(_fromUtf8("lb_Users_Tambah_Password_Confirm"))
+        self.ifl_Users_Tambah_Content.setWidget(2, QtGui.QFormLayout.LabelRole, self.lb_Users_Tambah_Password_Confirm)
+        self.le_Users_Tambah_Password_Confirm = QtGui.QLineEdit(self.fr_Users_Tambah_Content)
+        self.le_Users_Tambah_Password_Confirm.setMinimumSize(QtCore.QSize(200, 0))
+        self.le_Users_Tambah_Password_Confirm.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.le_Users_Tambah_Password_Confirm.setObjectName(_fromUtf8("le_Users_Tambah_Password_Confirm"))
+        self.ifl_Users_Tambah_Content.setWidget(2, QtGui.QFormLayout.FieldRole, self.le_Users_Tambah_Password_Confirm)
         self.ivl_Users_Tambah_Luar.addWidget(self.fr_Users_Tambah_Content)
         self.fr_Users_Tambah_b = QtGui.QFrame(self.st_Users_Tambah)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
@@ -244,6 +252,7 @@ class Ui_fr_Admin(object):
         self.cb_Users_Tambah_Priviledge.setItemText(2, _translate("fr_Admin", "Finance", None))
         self.cb_Users_Tambah_Priviledge.setItemText(3, _translate("fr_Admin", "Sales", None))
         self.cb_Users_Tambah_Priviledge.setItemText(4, _translate("fr_Admin", "Custom", None))
+        self.lb_Users_Tambah_Password_Confirm.setText(_translate("fr_Admin", "Confirm Password: ", None))
         self.tb_Users_Tambah_Simpan.setText(_translate("fr_Admin", "Simpan", None))
         self.tb_Users_Tambah_Tutup.setText(_translate("fr_Admin", "Tutup", None))
 
