@@ -171,7 +171,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 					time.sleep(3)
 					print "ok"
 					self.db = MySQLdb.Connect(host=self.dbHost, port=self.dbPort, user=self.dbUser, passwd=self.dbPass, db=self.dbDatabase)
-					
+		
+		#~ try:print "self.db is: "+repr(self.db) +" and its type is: "+str(type(self.db))
+		#~ except:pass
 		return
 	
 	
