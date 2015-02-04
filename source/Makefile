@@ -24,7 +24,7 @@ rcconvert:
 	pyrcc4 DataMaster.qrc -o DataMaster_rc.py
 
 binary:
-	$(PYC) $(EXE).py 
+	$(PYC) $(EXE).py  --distpath=../bin/
 	cp data --recursive dist/Garvin/
 
 commit:
