@@ -128,7 +128,6 @@ class Login(Ui_fr_Main):
 		self.Login_Login_Password_Inputed = ""
 		users = self.DatabaseFetchResult(self.dbDatabase,"gd_user","level",0)
 				
-		print len(users)
 		if len(users)<1:
 			#--- Create user and password for admin!
 			self.LoginUI.le_Login_User.setText("admin")
