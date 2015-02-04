@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Wed Feb  4 09:35:46 2015
+# Created: Wed Feb  4 10:24:29 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -1907,6 +1907,9 @@ class Ui_MainWindow(object):
         self.tb_Penjualan_DaftarInvoice_Baru = QtGui.QPushButton(self.fr_Penjualan_DaftarInvoice_tombol)
         self.tb_Penjualan_DaftarInvoice_Baru.setObjectName(_fromUtf8("tb_Penjualan_DaftarInvoice_Baru"))
         self.hl_Penjualan_PenawaranHarga_tombol.addWidget(self.tb_Penjualan_DaftarInvoice_Baru)
+        self.tb_Penjualan_DaftarInvoice_Rincian = QtGui.QPushButton(self.fr_Penjualan_DaftarInvoice_tombol)
+        self.tb_Penjualan_DaftarInvoice_Rincian.setObjectName(_fromUtf8("tb_Penjualan_DaftarInvoice_Rincian"))
+        self.hl_Penjualan_PenawaranHarga_tombol.addWidget(self.tb_Penjualan_DaftarInvoice_Rincian)
         spacerItem6 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.hl_Penjualan_PenawaranHarga_tombol.addItem(spacerItem6)
         self.tb_Penjualan_DaftarInvoice_Tutup = QtGui.QPushButton(self.fr_Penjualan_DaftarInvoice_tombol)
@@ -4341,7 +4344,7 @@ class Ui_MainWindow(object):
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         self.st_DataMaster.setCurrentIndex(0)
         self.st_Penjualan.setCurrentIndex(0)
         self.st_Pembelian.setCurrentIndex(0)
@@ -4488,6 +4491,7 @@ class Ui_MainWindow(object):
         item = self.tbl_Penjualan_DaftarInvoice.horizontalHeaderItem(4)
         item.setText(_translate("MainWindow", "Nilai", None))
         self.tb_Penjualan_DaftarInvoice_Baru.setText(_translate("MainWindow", "Baru", None))
+        self.tb_Penjualan_DaftarInvoice_Rincian.setText(_translate("MainWindow", "Rincian", None))
         self.tb_Penjualan_DaftarInvoice_Tutup.setText(_translate("MainWindow", "Tutup", None))
         self.lb_Penjualan_InvoicePenjualan_title.setText(_translate("MainWindow", "Invoice Penjualan", None))
         self.lb_Penjualan_InvoicePenjualan_Nama.setText(_translate("MainWindow", "Nama Pelanggan", None))

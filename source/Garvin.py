@@ -57,6 +57,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		#Tombol pada invoice
 		self.tb_Penjualan_DaftarInvoice_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
 		self.tb_Penjualan_DaftarInvoice_Baru.clicked.connect(self.Penjualan_GoTo_Invoice_Baru)
+		self.tb_Penjualan_DaftarInvoice_Rincian.clicked.connect(self.Penjualan_GoTo_Invoice_Rincian)
 		
 		#Tombol pada Invoice baru
 		self.tb_Penjualan_InvoicePenjualan_Baru_Nama.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.tb_Penjualan_InvoicePenjualan_Baru_Nama))
@@ -64,7 +65,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.tb_Penjualan_InvoicePenjualan_Input_KodeProduk.clicked.connect(functools.partial(self.Popup_Produk,self.tb_Penjualan_InvoicePenjualan_Input_KodeProduk))
 		self.tb_Penjualan_InvoicePenjualan_Input_HargaPokok.clicked.connect(self.Penjualan_GoTo_Invoice_TambahBarang)
 		self.tb_Penjualan_Invoice_TambahBarang_Tabel_Tambah.clicked.connect(self.Penjualan_Invoice_TambahBarang_TambahBaris)
-		self.Penjualan_Invoice_TambahBarang_Batal.clicked.connect(self.Penjualan_GoTo_Invoice_Baru)
+		self.Penjualan_Invoice_TambahBarang_Batal.clicked.connect(self.Penjualan_GoTo_Invoice_Batal)
 		self.tb_Penjualan_Invoice_TambahBarang_Simpan.clicked.connect(self.Penjualan_Invoice_TambahBarang_Simpan)
 		
 		#selain tombol
@@ -227,10 +228,29 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 	def Penjualan_GoTo_Invoice_Baru(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_IP)
 		self.Generate_NoInvoice()
+		self.le_Penjualan_InvoicePenjualan_Input_Jumlah.setReadOnly(False)
+		self.le_Penjualan_InvoicePenjualan_Input_HargaJual.setReadOnly(False)
+		self.le_Penjualan_InvoicePenjualan_Input_TotalHarga.setReadOnly(False)
+		self.le_Penjualan_InvoicePenjualan_Input_NamaProduk.setReadOnly(False)
 		self.le_Penjualan_InvoicePenjualan_Input_Jumlah.setText("0")
 		self.le_Penjualan_InvoicePenjualan_Input_HargaJual.setText("0")
 		self.le_Penjualan_InvoicePenjualan_Input_TotalHarga.setText("0")
 		
+	def Penjualan_GoTo_Invoice_Rincian(self):
+		currentRow = self.tbl_Penjualan_DaftarInvoice.currentRow()
+		self.tb_Penjualan_InvoicePenjualan_Baru_Nama.setText(str(self.tbl_Penjualan_DaftarInvoice.item(currentRow,2).text()))
+		self.le_Penjualan_InvoicePenjualan_SOPenawaran.setText(str(self.tbl_Penjualan_DaftarInvoice.item(currentRow,0).text()))
+		self.le_Penjualan_InvoicePenjualan_Input_TotalHarga.setText(str(self.tbl_Penjualan_DaftarInvoice.item(currentRow,4).text()))
+		query = str("SELECT * FROM")
+		self.le_Penjualan_InvoicePenjualan_Input_Jumlah.setReadOnly(True)
+		self.le_Penjualan_InvoicePenjualan_Input_HargaJual.setReadOnly(True)
+		self.le_Penjualan_InvoicePenjualan_Input_TotalHarga.setReadOnly(True)
+		self.le_Penjualan_InvoicePenjualan_Input_NamaProduk.setReadOnly(True)
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_IP)
+		
+	def Penjualan_GoTo_Invoice_Batal(self):
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_IP)
+	
 	def Penjualan_Invoice_TotalHarga(self):
 		jumlah = str(self.le_Penjualan_InvoicePenjualan_Input_Jumlah.text())
 		harga = str(self.le_Penjualan_InvoicePenjualan_Input_HargaJual.text())
@@ -241,8 +261,24 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 			pass
 		
 	def Penjualan_GoTo_Invoice_TambahBarang(self):
-		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_I_TB)
+		rownum = self.tbl_Penjualan_Invoice_TambahBarang.rowCount()
+		for b in range (0, rownum):
+			self.tbl_Penjualan_Invoice_TambahBarang.removeRow(b)
+		self.tbl_Penjualan_Invoice_TambahBarang.setRowCount(0)
 		self.tbl_Penjualan_Invoice_TambahBarang.setColumnWidth(0,300)
+		noInvoice = str(self.le_Penjualan_InvoicePenjualan_SOPenawaran.text())
+		query = "SELECT * FROM `gd_pembelian_barang` WHERE `noInvoice` LIKE '"+noInvoice+"'"
+		barang = self.DatabaseRunQuery(query)
+		if (len(barang) != 0):
+			for i in range(0,len(barang)):
+				self.tbl_Penjualan_Invoice_TambahBarang.insertRow(i)
+				self.tbl_Penjualan_Invoice_TambahBarang.setItem(i,0,QtGui.QTableWidgetItem(barang[i][4])) #vendor
+				self.tbl_Penjualan_Invoice_TambahBarang.setItem(i,1,QtGui.QTableWidgetItem(barang[i][3])) #barang
+				self.tbl_Penjualan_Invoice_TambahBarang.setItem(i,2,QtGui.QTableWidgetItem(barang[i][7])) #satuan
+				self.tbl_Penjualan_Invoice_TambahBarang.setItem(i,3,QtGui.QTableWidgetItem(barang[i][6])) #jumlah
+				self.tbl_Penjualan_Invoice_TambahBarang.setItem(i,4,QtGui.QTableWidgetItem(barang[i][5])) #harga
+				self.tbl_Penjualan_Invoice_TambahBarang.setItem(i,5,QtGui.QTableWidgetItem(barang[i][8])) #totalHarga
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_I_TB)
 		
 	def Penjualan_Invoice_TambahBarang_TambahBaris(self):
 		jumlahRow = self.tbl_Penjualan_Invoice_TambahBarang.rowCount()
@@ -250,26 +286,23 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.tbl_Penjualan_Invoice_TambahBarang.insertRow(a)
 		self.tbl_Penjualan_Invoice_TambahBarang.setItem(a,3,QtGui.QTableWidgetItem("0"))
 		self.tbl_Penjualan_Invoice_TambahBarang.setItem(a,4,QtGui.QTableWidgetItem("0"))
-		if (a>0):
-			noInvoice = str(self.le_Penjualan_InvoicePenjualan_SOPenawaran.text())
-			namaBarang = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a-1,1).text())
-			kodeVendor = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a-1,0).text())
-			hargaBarang = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a-1,4).text())
-			jumlahBarang = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a-1,3).text())
-			satuan = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a-1,2).text())
-			totalHarga = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a-1,5).text())
-			query = "INSERT INTO `"+self.dbDatabase+"`.`gd_pembelian_barang`"+\
-				"(`noInvoice`, `namaBarang`, `kodeVendor`, `hargaBarang`, `jumlahBarang`, `satuan`, `totalHarga`) "+\
-				"VALUES ('"+noInvoice+"', '"+namaBarang+"', '"+kodeVendor+"', '"+hargaBarang+"', '"+jumlahBarang+"', '"+satuan+"', '"+totalHarga+"');"
-			self.SQLtoRun.append(query)
 		pass
 	
 	def Penjualan_Invoice_TambahBarang_Simpan(self):
 		hargaPokok = 0
-		for sql in range(0, len(self.SQLtoRun)):
-			print self.SQLtoRun[sql]
-			self.DatabaseRunQuery(str(self.SQLtoRun[sql]))
 		jumlahRow = self.tbl_Penjualan_Invoice_TambahBarang.rowCount()
+		for a in range(0, jumlahRow):
+			noInvoice = str(self.le_Penjualan_InvoicePenjualan_SOPenawaran.text())
+			namaBarang = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a,1).text())
+			kodeVendor = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a,0).text())
+			hargaBarang = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a,4).text())
+			jumlahBarang = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a,3).text())
+			satuan = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a,2).text())
+			totalHarga = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a,5).text())
+			query = "INSERT INTO `"+self.dbDatabase+"`.`gd_pembelian_barang`"+\
+				"(`noInvoice`, `namaBarang`, `kodeVendor`, `hargaBarang`, `jumlahBarang`, `satuan`, `totalHarga`) "+\
+				"VALUES ('"+noInvoice+"', '"+namaBarang+"', '"+kodeVendor+"', '"+hargaBarang+"', '"+jumlahBarang+"', '"+satuan+"', '"+totalHarga+"');"
+			self.DatabaseRunQuery(query)
 		for a in range (0, jumlahRow):
 			hargaPokok = hargaPokok + int(str(self.tbl_Penjualan_Invoice_TambahBarang.item(a,5).text()))
 			self.tb_Penjualan_InvoicePenjualan_Input_HargaPokok.setText(str(hargaPokok))

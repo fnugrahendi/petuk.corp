@@ -100,7 +100,7 @@ margin-top: 2px; /* make non-selected tabs look smaller */
 }</string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="tab_DataMaster">
           <attribute name="title">
@@ -4255,6 +4255,13 @@ QPushButton::hover{
                    <widget class="QPushButton" name="tb_Penjualan_DaftarInvoice_Baru">
                     <property name="text">
                      <string>Baru</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="tb_Penjualan_DaftarInvoice_Rincian">
+                    <property name="text">
+                     <string>Rincian</string>
                     </property>
                    </widget>
                   </item>
