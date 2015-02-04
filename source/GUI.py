@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Tue Feb  3 16:42:45 2015
+# Created: Wed Feb  4 09:35:46 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -236,7 +236,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataCommon_Fbody_Slist.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataCommon_Fbody_Slist.setObjectName(_fromUtf8("sc_DataMaster_DataCommon_Fbody_Slist"))
         self.scontent_DataMaster_DataCommon_Fbody_Slist = QtGui.QWidget()
-        self.scontent_DataMaster_DataCommon_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 250, 30))
+        self.scontent_DataMaster_DataCommon_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 332, 313))
         self.scontent_DataMaster_DataCommon_Fbody_Slist.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataCommon_Fbody_Slist.setObjectName(_fromUtf8("scontent_DataMaster_DataCommon_Fbody_Slist"))
         self.ivl_DataMaster_DataCommon_Fbody_Slist = QtGui.QVBoxLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist)
@@ -1523,7 +1523,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("sc_DataMaster_DataDepartemen_Fbody_Slist"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QWidget()
-        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 250, 30))
+        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 332, 294))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("scontent_DataMaster_DataDepartemen_Fbody_Slist"))
         self.ivl_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QVBoxLayout(self.scontent_DataMaster_DataDepartemen_Fbody_Slist)
@@ -2066,12 +2066,12 @@ class Ui_MainWindow(object):
         self.lb_Penjualan_InvoicePenjualan_Input_Nama.setObjectName(_fromUtf8("lb_Penjualan_InvoicePenjualan_Input_Nama"))
         self.gl_Penjualan_PenawaranHarga_baru_tabel.addWidget(self.lb_Penjualan_InvoicePenjualan_Input_Nama, 0, 1, 1, 1)
         self.tb_Penjualan_InvoicePenjualan_Input_HargaPokok = QtGui.QPushButton(self.fr_Penjualan_InvoicePenjualan_Input)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Fixed)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.tb_Penjualan_InvoicePenjualan_Input_HargaPokok.sizePolicy().hasHeightForWidth())
         self.tb_Penjualan_InvoicePenjualan_Input_HargaPokok.setSizePolicy(sizePolicy)
-        self.tb_Penjualan_InvoicePenjualan_Input_HargaPokok.setMinimumSize(QtCore.QSize(85, 25))
+        self.tb_Penjualan_InvoicePenjualan_Input_HargaPokok.setMinimumSize(QtCore.QSize(135, 25))
         self.tb_Penjualan_InvoicePenjualan_Input_HargaPokok.setObjectName(_fromUtf8("tb_Penjualan_InvoicePenjualan_Input_HargaPokok"))
         self.gl_Penjualan_PenawaranHarga_baru_tabel.addWidget(self.tb_Penjualan_InvoicePenjualan_Input_HargaPokok, 1, 5, 1, 1)
         self.le_Penjualan_InvoicePenjualan_Input_TotalHarga = QtGui.QLineEdit(self.fr_Penjualan_InvoicePenjualan_Input)
@@ -2081,7 +2081,7 @@ class Ui_MainWindow(object):
         self.le_Penjualan_InvoicePenjualan_Input_HargaJual.setObjectName(_fromUtf8("le_Penjualan_InvoicePenjualan_Input_HargaJual"))
         self.gl_Penjualan_PenawaranHarga_baru_tabel.addWidget(self.le_Penjualan_InvoicePenjualan_Input_HargaJual, 1, 3, 1, 1)
         self.le_Penjualan_InvoicePenjualan_Input_Jumlah = QtGui.QLineEdit(self.fr_Penjualan_InvoicePenjualan_Input)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Fixed)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.le_Penjualan_InvoicePenjualan_Input_Jumlah.sizePolicy().hasHeightForWidth())
@@ -2178,6 +2178,7 @@ class Ui_MainWindow(object):
         self.tbl_Penjualan_Invoice_TambahBarang.setColumnCount(6)
         self.tbl_Penjualan_Invoice_TambahBarang.setRowCount(0)
         item = QtGui.QTableWidgetItem()
+        item.setTextAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter|QtCore.Qt.AlignCenter)
         self.tbl_Penjualan_Invoice_TambahBarang.setHorizontalHeaderItem(0, item)
         item = QtGui.QTableWidgetItem()
         self.tbl_Penjualan_Invoice_TambahBarang.setHorizontalHeaderItem(1, item)
@@ -4329,7 +4330,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.fr_MainWindow, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 870, 19))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 870, 25))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
@@ -4341,7 +4342,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
-        self.st_DataMaster.setCurrentIndex(10)
+        self.st_DataMaster.setCurrentIndex(0)
         self.st_Penjualan.setCurrentIndex(0)
         self.st_Pembelian.setCurrentIndex(0)
         self.st_BukuBesar.setCurrentIndex(1)

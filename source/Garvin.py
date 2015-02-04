@@ -65,6 +65,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.tb_Penjualan_InvoicePenjualan_Input_HargaPokok.clicked.connect(self.Penjualan_GoTo_Invoice_TambahBarang)
 		self.tb_Penjualan_Invoice_TambahBarang_Tabel_Tambah.clicked.connect(self.Penjualan_Invoice_TambahBarang_TambahBaris)
 		self.Penjualan_Invoice_TambahBarang_Batal.clicked.connect(self.Penjualan_GoTo_Invoice_Baru)
+		self.tb_Penjualan_Invoice_TambahBarang_Simpan.clicked.connect(self.Penjualan_Invoice_TambahBarang_Simpan)
 		
 		#selain tombol
 		self.tbl_Penjualan_Invoice_TambahBarang.cellDoubleClicked.connect(self.Penjualan_Invoice_TambahBarang_PilihVendor)
@@ -261,7 +262,19 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 				"(`noInvoice`, `namaBarang`, `kodeVendor`, `hargaBarang`, `jumlahBarang`, `satuan`, `totalHarga`) "+\
 				"VALUES ('"+noInvoice+"', '"+namaBarang+"', '"+kodeVendor+"', '"+hargaBarang+"', '"+jumlahBarang+"', '"+satuan+"', '"+totalHarga+"');"
 			self.SQLtoRun.append(query)
-			print self.SQLtoRun
+		pass
+	
+	def Penjualan_Invoice_TambahBarang_Simpan(self):
+		hargaPokok = 0
+		for sql in range(0, len(self.SQLtoRun)):
+			print self.SQLtoRun[sql]
+			self.DatabaseRunQuery(str(self.SQLtoRun[sql]))
+		jumlahRow = self.tbl_Penjualan_Invoice_TambahBarang.rowCount()
+		for a in range (0, jumlahRow):
+			hargaPokok = hargaPokok + int(str(self.tbl_Penjualan_Invoice_TambahBarang.item(a,5).text()))
+			self.tb_Penjualan_InvoicePenjualan_Input_HargaPokok.setText(str(hargaPokok))
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_IP)
+		pass
 	
 	def Penjualan_Invoice_TambahBarang_TotalHarga(self,row,col):
 		try:
