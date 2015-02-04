@@ -390,8 +390,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>250</width>
-                          <height>30</height>
+                          <width>332</width>
+                          <height>18</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -3391,8 +3391,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>250</width>
-                          <height>30</height>
+                          <width>332</width>
+                          <height>18</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -3990,7 +3990,7 @@ QPushButton::hover{
               <enum>QFrame::NoFrame</enum>
              </property>
              <property name="currentIndex">
-              <number>2</number>
+              <number>11</number>
              </property>
              <widget class="QWidget" name="st_Penjualan_Menu">
               <layout class="QGridLayout" name="gridLayout_7">
@@ -4513,6 +4513,20 @@ min-height:23px;</string>
                    <widget class="QLineEdit" name="le_Penjualan_InvoicePenjualan_Keterangan"/>
                   </item>
                  </layout>
+                 <zorder>lb_Penjualan_InvoicePenjualan_Nama</zorder>
+                 <zorder>le_Penjualan_InvoicePenjualan_SOPenawaran</zorder>
+                 <zorder>lb_Penjualan_InvoicePenjualan_NoInvoice</zorder>
+                 <zorder>lb_Penjualan_InvoicePenjualan_Tanggal</zorder>
+                 <zorder>lb_Penjualan_InvoicePenjualan_Keterangan</zorder>
+                 <zorder>cb_Penjualan_InvoicePenjualan_Input_Kurs</zorder>
+                 <zorder>lb_Penjualan_InvoicePenjualan_Kurs</zorder>
+                 <zorder>le_Penjualan_InvoicePenjualan_Proyek</zorder>
+                 <zorder>lb_Penjualan_InvoicePenjualan_Proyek</zorder>
+                 <zorder>chk_Penjualan_InvoicePenjualan_Input_Jasa</zorder>
+                 <zorder>dte_Penjualan_InvoicePenjualan_Input_Tanggal</zorder>
+                 <zorder>chk_Penjualan_InvoicePenjualan_Input_Selesai</zorder>
+                 <zorder>le_Penjualan_InvoicePenjualan_Keterangan</zorder>
+                 <zorder>tb_Penjualan_InvoicePenjualan_Baru_Nama</zorder>
                 </widget>
                </item>
                <item>
@@ -6695,13 +6709,6 @@ min-height:23px;</string>
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="tb_Penjualan_PembayaranPiutang_Perincian">
-                    <property name="text">
-                     <string>Perincian</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
                    <widget class="QPushButton" name="tb_Penjualan_PembayaranPiutang_Cetak">
                     <property name="text">
                      <string>Cetak</string>
@@ -6777,109 +6784,14 @@ min-height:23px;</string>
                   <enum>QFrame::Raised</enum>
                  </property>
                  <layout class="QGridLayout" name="gl_Penjualan_PembayaranPiutang_Baru_input">
-                  <item row="5" column="0">
-                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Memo">
-                    <property name="text">
-                     <string>Memo :</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="0">
-                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Dari">
-                    <property name="text">
-                     <string>Dari :</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="1" colspan="3">
-                   <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Akun">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="4">
-                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Dept">
-                    <property name="text">
-                     <string>Dept. :</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="0">
-                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Akun">
-                    <property name="text">
-                     <string>Akun Kas : </string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="5">
-                   <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Dept"/>
-                  </item>
-                  <item row="4" column="3">
-                   <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Nominal">
-                    <property name="readOnly">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="5" column="1" colspan="3">
-                   <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Memo"/>
-                  </item>
-                  <item row="4" column="2">
-                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Nominal">
-                    <property name="text">
-                     <string>Nominal :</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="2">
-                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Tanggal">
-                    <property name="text">
-                     <string>Tanggal :</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="5">
-                   <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Proyek"/>
-                  </item>
-                  <item row="2" column="4">
-                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Proyek">
-                    <property name="text">
-                     <string>Proyek :</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="3">
-                   <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_NoRef"/>
-                  </item>
-                  <item row="2" column="2">
-                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_NoRef">
-                    <property name="text">
-                     <string>Ref. No :</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="1">
-                   <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Dari">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="6">
+                  <item row="7" column="2">
                    <widget class="QCheckBox" name="chk_Penjualan_PembayaranPiutang_Baru_Giro">
                     <property name="text">
                      <string>Giro</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="2" column="6">
+                  <item row="3" column="2">
                    <spacer name="hs_Penjualan_PembayaranPiutang_Baru_input">
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
@@ -6892,147 +6804,138 @@ min-height:23px;</string>
                     </property>
                    </spacer>
                   </item>
-                  <item row="3" column="3">
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Dari">
+                    <property name="text">
+                     <string>Dari :</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Akun">
+                    <property name="text">
+                     <string>Akun Kas /Bank: </string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Nama">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="1">
+                   <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_NoRef"/>
+                  </item>
+                  <item row="7" column="1">
+                   <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Nominal">
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_NoInvoice">
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="1">
+                   <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Dept"/>
+                  </item>
+                  <item row="6" column="1">
                    <widget class="QDateTimeEdit" name="dte_Penjualan_PembayaranPiutang_Baru_Tanggal">
                     <property name="calendarPopup">
                      <bool>true</bool>
                     </property>
                    </widget>
                   </item>
+                  <item row="5" column="0">
+                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_NoRef">
+                    <property name="text">
+                     <string>Ref. No :</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="0">
+                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Dept">
+                    <property name="text">
+                     <string>Pembayaran ke:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="7" column="0">
+                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Nominal">
+                    <property name="text">
+                     <string>Nominal :</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0">
+                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Proyek">
+                    <property name="text">
+                     <string>No Invoice:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="0">
+                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Tanggal">
+                    <property name="text">
+                     <string>Tanggal :</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QPushButton" name="tb_Penjualan_PembayaranPiutang_Baru_Akun">
+                    <property name="styleSheet">
+                     <string notr="true">border-style:inset;
+border-width:1px;
+border-radius:2px;
+border-color:rgb(156, 156, 156);
+background-color:#ffffff;
+min-height:23px;</string>
+                    </property>
+                    <property name="text">
+                     <string>-</string>
+                    </property>
+                   </widget>
+                  </item>
                  </layout>
                  <zorder>lb_Penjualan_PembayaranPiutang_Baru_Akun</zorder>
                  <zorder>lb_Penjualan_PembayaranPiutang_Baru_Dari</zorder>
-                 <zorder>le_Penjualan_PembayaranPiutang_Baru_Akun</zorder>
-                 <zorder>le_Penjualan_PembayaranPiutang_Baru_Dari</zorder>
-                 <zorder>lb_Penjualan_PembayaranPiutang_Baru_NoRef</zorder>
-                 <zorder>le_Penjualan_PembayaranPiutang_Baru_NoRef</zorder>
+                 <zorder>le_Penjualan_PembayaranPiutang_Baru_Nama</zorder>
                  <zorder>lb_Penjualan_PembayaranPiutang_Baru_Proyek</zorder>
-                 <zorder>le_Penjualan_PembayaranPiutang_Baru_Proyek</zorder>
-                 <zorder>lb_Penjualan_PembayaranPiutang_Baru_Tanggal</zorder>
-                 <zorder>lb_Penjualan_PembayaranPiutang_Baru_Nominal</zorder>
-                 <zorder>lb_Penjualan_PembayaranPiutang_Baru_Memo</zorder>
-                 <zorder>le_Penjualan_PembayaranPiutang_Baru_Nominal</zorder>
-                 <zorder>le_Penjualan_PembayaranPiutang_Baru_Memo</zorder>
+                 <zorder>le_Penjualan_PembayaranPiutang_Baru_NoInvoice</zorder>
                  <zorder>lb_Penjualan_PembayaranPiutang_Baru_Dept</zorder>
                  <zorder>le_Penjualan_PembayaranPiutang_Baru_Dept</zorder>
-                 <zorder>chk_Penjualan_PembayaranPiutang_Baru_Giro</zorder>
-                 <zorder>hs_Penjualan_PembayaranPiutang_Baru_input</zorder>
+                 <zorder>lb_Penjualan_PembayaranPiutang_Baru_NoRef</zorder>
+                 <zorder>le_Penjualan_PembayaranPiutang_Baru_NoRef</zorder>
+                 <zorder>lb_Penjualan_PembayaranPiutang_Baru_Tanggal</zorder>
                  <zorder>dte_Penjualan_PembayaranPiutang_Baru_Tanggal</zorder>
+                 <zorder>lb_Penjualan_PembayaranPiutang_Baru_Nominal</zorder>
+                 <zorder>le_Penjualan_PembayaranPiutang_Baru_Nominal</zorder>
+                 <zorder>hs_Penjualan_PembayaranPiutang_Baru_input</zorder>
+                 <zorder>chk_Penjualan_PembayaranPiutang_Baru_Giro</zorder>
+                 <zorder>tb_Penjualan_PembayaranPiutang_Baru_Akun</zorder>
                 </widget>
                </item>
                <item>
-                <widget class="QFrame" name="fr_Penjualan_PembayaranPiutang_Baru_tabel">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
+                <spacer name="verticalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
                  </property>
-                 <property name="frameShape">
-                  <enum>QFrame::NoFrame</enum>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
                  </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                 <layout class="QGridLayout" name="gl_Penjualan_PembayaranPiutang_Baru_tabel">
-                  <item row="2" column="0">
-                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_NoDolumen">
-                    <property name="text">
-                     <string>No. Dokumen :</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="1">
-                   <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_NoDokumen">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="0" colspan="7">
-                   <widget class="QTableWidget" name="tbl_Penjualan_PembayaranPiutang_Baru">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <column>
-                     <property name="text">
-                      <string>No Invoice</string>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>Tanggal</string>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>Saldo</string>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>Discount</string>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>Jumlah Dibayar</string>
-                     </property>
-                    </column>
-                   </widget>
-                  </item>
-                  <item row="2" column="2">
-                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_TanggalDok">
-                    <property name="text">
-                     <string>Tanggal Dokumen :</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="5">
-                   <widget class="QLabel" name="lb_Penjualan_PembayaranPiutang_Baru_Denda">
-                    <property name="text">
-                     <string>Denda (Rp) :</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="4">
-                   <spacer name="hs_Penjualan_PembayaranPiutang_Baru_tengah">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="2" column="6">
-                   <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Denda">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="3">
-                   <widget class="QDateEdit" name="de_Penjualan_PembayaranPiutang_Baru_Dokumen">
-                    <property name="calendarPopup">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
+                </spacer>
                </item>
                <item>
                 <widget class="QFrame" name="fr_Penjualan_PembayaranPiutang_Baru_tombol">
@@ -7050,20 +6953,6 @@ min-height:23px;</string>
                  </property>
                  <layout class="QHBoxLayout" name="hl_Penjualan_PembayaranPiutang_Baru_tombol">
                   <item>
-                   <widget class="QPushButton" name="tb_Penjualan_PembayaranPiutang_Baru_Tambah">
-                    <property name="text">
-                     <string>Tambah Baris</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="tb_Penjualan_PembayaranPiutang_Baru_Hapus">
-                    <property name="text">
-                     <string>Hapus Baris</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
                    <spacer name="hs_Penjualan_PembayaranPiutang_Baru_bawah">
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
@@ -7077,7 +6966,7 @@ min-height:23px;</string>
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QCheckBox" name="chk_Penjualan_PembayaranPiutang_Baru_Cetak">
+                   <widget class="QPushButton" name="tb_Penjualan_PembayaranPiutang_Baru_Cetak">
                     <property name="text">
                      <string>Cetak</string>
                     </property>

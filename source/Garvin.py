@@ -98,6 +98,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		
 		#Tombol pada Halaman Pembayaran Piutang
 		self.tb_Penjualan_PembayaranPiutang_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
+		self.tb_Penjualan_RincianPiutang_Perincian.clicked.connect(self.Penjualan_GoTo_PembayaranPiutang)
 		self.tb_Penjualan_PembayaranPiutang_Baru.clicked.connect(self.Penjualan_GoTo_PembayaranPiutang_Baru)
 		self.tb_Penjualan_PembayaranPiutang_Baru_Batal.clicked.connect(self.Penjualan_GoTo_PembayaranPiutang)
 		
@@ -108,10 +109,10 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.INDEX_ST_PENJUALAN_OP = 4
 		self.INDEX_ST_PENJUALAN_PENGIRIMAN = 5
 		self.INDEX_ST_PENJUALAN_PENGIRIMANB = 6
-		self.INDEX_ST_PENJUALAN_PU = 7
-		self.INDEX_ST_PENJUALAN_RPU = 8
-		self.INDEX_ST_PENJUALAN_PP = 9
-		self.INDEX_ST_PENJUALAN_PPB = 10
+		self.INDEX_ST_PENJUALAN_PU = 8
+		self.INDEX_ST_PENJUALAN_RPU = 9
+		self.INDEX_ST_PENJUALAN_PP = 10
+		self.INDEX_ST_PENJUALAN_PPB = 11
 		
 		self.DataMaster_init()
 		self.BukuBesar_init()
@@ -505,22 +506,28 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PENGIRIMANB)
 	
 	def Penjualan_GoTo_PiutangUsaha(self):
+		self.tbl_Penjualan_Piutang.setColumnWidth(3,300) #perbesar kolom penerimaan
+		self.tbl_Penjualan_Piutang.setColumnWidth(0,300) #perbesar kolom nama pelanggan
 		jumlahRow = self.tbl_Penjualan_Piutang.rowCount()
 		if jumlahRow != 0:
 			for x in range (0,jumlahRow+1):
 				self.tbl_Penjualan_Piutang.removeRow(x)
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PU)
-		query = "SELECT `kodePelanggan`, SUM(`totalSaldo`) FROM `gd_piutang` GROUP BY `kodePelanggan`"
+		query = "SELECT `kodePelanggan`, SUM(`jumlahPenerimaan`) FROM `gd_piutang` GROUP BY `kodePelanggan`"
 		result = self.DatabaseRunQuery(query)
 		for a in range (0,len(result)):
 			kodePelanggan = str(result[a][0])
 			query = "SELECT * FROM `gd_nama_alamat` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"'"
 			nama = str(self.DatabaseRunQuery(query)[0][2])
-			saldoPiutang = str(int(result[a][1]))
+			query2 = "SELECT * FROM `gd_piutang` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"' GROUP BY `kodePelanggan`"
+			totalTagihan = self.DatabaseRunQuery(query2)[0][7]
+			piutangTerbayar = str(int(result[a][1]))
+			saldoPiutang = int(totalTagihan) - int(result[a][1])
 			self.tbl_Penjualan_Piutang.insertRow(a)
 			self.tbl_Penjualan_Piutang.setItem(a,0,QtGui.QTableWidgetItem(nama)) #nama
-			self.tbl_Penjualan_Piutang.setItem(a,4,QtGui.QTableWidgetItem(saldoPiutang)) #nama
-		query = "SELECT SUM(totalSaldo) FROM `gd_piutang`"
+			self.tbl_Penjualan_Piutang.setItem(a,4,QtGui.QTableWidgetItem(str(saldoPiutang))) #saldoPiutang
+			self.tbl_Penjualan_Piutang.setItem(a,3,QtGui.QTableWidgetItem(piutangTerbayar)) #jumlah diterima
+		query = "SELECT SUM(jumlahTagihan) FROM `gd_piutang` GROUP BY `kodePelanggan`"
 		self.lb_Penjualan_Piutang_TotalNilai.setText("Rp "+str(int(self.DatabaseRunQuery(query)[0][0])))
 		
 	def Penjualan_GoTo_PiutangUsaha_Rincian(self):
@@ -534,17 +541,31 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 				self.tbl_Penjualan_RincianPiutang.removeRow(x)
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_RPU)
 		self.lb_Penjualan_RincianPiutang_title_nama.setText(nama)
-		query = "SELECT * FROM `gd_piutang` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"'"
+		query = "SELECT * FROM `gd_piutang` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"' GROUP BY `noInvoice`"
 		result = self.DatabaseRunQuery(query)
 		print result
 		for a in range (0,len(result)):
 			self.tbl_Penjualan_RincianPiutang.insertRow(a)
-			self.tbl_Penjualan_RincianPiutang.setItem(a,0,QtGui.QTableWidgetItem(str(result[a][5])))
-			self.tbl_Penjualan_RincianPiutang.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][2])))
+			self.tbl_Penjualan_RincianPiutang.setItem(a,0,QtGui.QTableWidgetItem(str(result[a][3])))
+			self.tbl_Penjualan_RincianPiutang.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][1])))
 		return
 	
 	def Penjualan_GoTo_PembayaranPiutang(self):
+		curRow = self.tbl_Penjualan_RincianPiutang.currentRow()
+		noInvoice = str(self.tbl_Penjualan_RincianPiutang.item(curRow,1).text())
+		query = "SELECT * FROM `gd_piutang` WHERE `noInvoice` LIKE '"+noInvoice+"'"
+		result = self.DatabaseRunQuery(query)
+		for a in range (0,len(result)):
+			self.tbl_Penjualan_PembayaranPiutang.insertRow(a)
+			self.tbl_Penjualan_PembayaranPiutang.setItem(a,0,QtGui.QTableWidgetItem(str(result[a][2]))) #no ref
+			self.tbl_Penjualan_PembayaranPiutang.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][3]))) #tanggal
+			self.tbl_Penjualan_PembayaranPiutang.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][4]))) #pelanggan
+			self.tbl_Penjualan_PembayaranPiutang.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][6]))) #nilai
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PP)
+		return
+		
+	def Penjualan_GoTo_PembayaranPiutang_Baru(self):
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PPB)
 	
 	def Penjualan_GoTo_ReturPenjualan(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_RP)
@@ -591,9 +612,6 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.db.commit()
 		self.db.close()
 		
-	def Penjualan_GoTo_PembayaranPiutang_Baru(self):
-		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PPB)
-
 	def DatabaseRunQuery(self,query):
 		self.initDatabase()
 		cursor = self.db.cursor()
