@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Wed Feb  4 19:31:39 2015
+# Created: Wed Feb  4 22:19:11 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -3212,8 +3212,6 @@ class Ui_MainWindow(object):
 "min-height:23px;"))
         self.tb_Penjualan_PembayaranPiutang_Baru_Akun.setObjectName(_fromUtf8("tb_Penjualan_PembayaranPiutang_Baru_Akun"))
         self.gl_Penjualan_PembayaranPiutang_Baru_input.addWidget(self.tb_Penjualan_PembayaranPiutang_Baru_Akun, 0, 1, 1, 1)
-<<<<<<< HEAD
-=======
         self.le_Penjualan_PembayaranPiutang_Baru_Nama = QtGui.QLineEdit(self.fr_Penjualan_PembayaranPiutang_Baru_input)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -3223,7 +3221,6 @@ class Ui_MainWindow(object):
         self.le_Penjualan_PembayaranPiutang_Baru_Nama.setReadOnly(True)
         self.le_Penjualan_PembayaranPiutang_Baru_Nama.setObjectName(_fromUtf8("le_Penjualan_PembayaranPiutang_Baru_Nama"))
         self.gl_Penjualan_PembayaranPiutang_Baru_input.addWidget(self.le_Penjualan_PembayaranPiutang_Baru_Nama, 2, 1, 1, 1)
->>>>>>> ef4d89f61255067d09c343bae6ebdaf5cd67eb65
         self.verticalLayout_8.addWidget(self.fr_Penjualan_PembayaranPiutang_Baru_input)
         spacerItem29 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.verticalLayout_8.addItem(spacerItem29)
@@ -4276,7 +4273,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(1)
         self.st_DataMaster.setCurrentIndex(0)
-        self.st_Penjualan.setCurrentIndex(11)
+        self.st_Penjualan.setCurrentIndex(0)
         self.st_Pembelian.setCurrentIndex(0)
         self.st_BukuBesar.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
