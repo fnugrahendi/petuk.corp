@@ -61,5 +61,38 @@ class Admin(object):
 		self.UI.tbl_ListUser_List.setColumnWidth(2,100)
 		
 		
-		def setActive(row,column):
-			pass
+		def setactiveindex(row,column):
+			self.ListUser_RowColumnTerpilih = [row,column]
+		
+		def tambahbaris():
+			newrow = self.UI.tbl_ListUser_List.rowCount()
+			self.UI.tbl_ListUser_List.insertRow(newrow)
+			for x in range(len(KOLOMTABLE)):
+				if (self.UI.tbl_ListUser_List.item(newrow,x)==None):
+					item = QtGui.QTableWidgetItem()
+					self.UI.tbl_ListUser_List.setItem(newrow, x, item)
+			
+		def deletecertainrow():
+			baris = self.ListUser_RowColumnTerpilih[0]
+			if baris<0:
+				return
+			namauser = str(self.UI.tbl_ListUser_List.itemAt(baris,KOLOMTABLE.index("username")))
+			self.si_om.DatabaseRunQuery("DELETE FROM `gd_user` WHERE `gd_user`.`username` LIKE "+namauser+" ;")
+			self.UI.tbl_ListUser_List.removeRow(baris)
+			
+			
+		def confirmdeletecertainrow():
+			""" show popup to delete certain row, if user make sure, commit the delete with deletecertainrow"""
+			baris = self.ListUser_RowColumnTerpilih[0]
+			if (baris<0):
+				return
+			self.si_om.DataMaster_Popup("Anda yakin akan menghapus data baris "+str(baris+1)+"?",deletecertainrow)
+		
+		self.si_om.GarvinDisconnect(self.UI.tb_Users_Tambah.clicked)
+		self.si_om.GarvinDisconnect(self.UI.tbl_ListUser_List.cellClicked)
+		self.si_om.GarvinDisconnect(self.UI.tb_Users_Hapus.clicked)
+		self.UI.tb_Users_Tambah.clicked.connect(tambahbaris)
+		self.UI.tbl_ListUser_List.cellClicked.connect(setactiveindex)
+		self.UI.tb_Users_Hapus.clicked.connect(confirmdeletecertainrow)
+	
+		
