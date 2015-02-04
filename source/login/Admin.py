@@ -99,7 +99,9 @@ class Admin(object):
 		self.Goto("TAMBAH USER")
 		
 	def ListUser_Tambah_Act_Simpan(self):
-		
+		username = str(self.UI.le_Users_Tambah_Username.text())
+		password = str(self.UI.le_Users_Tambah_Password.text())
+		priviledge = str(self.UI.cb_Users_Tambah_Priviledge.currentIndex())
 		pass
 	
 		
