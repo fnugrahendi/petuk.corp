@@ -124,8 +124,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.GarvinSetDate(self)
 		
 		#-- data
-		self.Path = os.getcwd()
-		self.DataPath = "../data/"
+		self.Path = str(__file__).replace("Garvin.py","")
+		self.DataPath = self.Path+"../data/"
 		#--- check if garvin is recent version
 		#~ self.GarvinCheckIsUpdated()
 	
