@@ -76,8 +76,8 @@ class Admin(object):
 			baris = self.ListUser_RowColumnTerpilih[0]
 			if baris<0:
 				return
-			namauser = str(self.UI.tbl_ListUser_List.itemAt(baris,KOLOMTABLE.index("username")))
-			self.si_om.DatabaseRunQuery("DELETE FROM `gd_user` WHERE `gd_user`.`username` LIKE "+namauser+" ;")
+			namauser = str(self.UI.tbl_ListUser_List.itemAt(baris,KOLOMTABLE.index("username")).text())
+			self.si_om.DatabaseRunQuery("DELETE FROM `gd_user` WHERE `gd_user`.`username` LIKE '"+namauser+"' ;")
 			self.UI.tbl_ListUser_List.removeRow(baris)
 			
 			
