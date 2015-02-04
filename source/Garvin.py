@@ -41,7 +41,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		#self.tb_Penjualan_Keluar.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan keluar dari aplikasi?",___metu))
         
         
-        
+		self.SQLtoRun = []
 		self.dbHost = "127.0.0.1"
 		self.dbPort = 44559
 		self.dbDatabase = "gd_db_akunting"
@@ -195,6 +195,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		
 	def Penjualan_GoTo_Invoice(self):
 		rownum = self.tbl_Penjualan_DaftarInvoice.rowCount()
+		self.tbl_Penjualan_DaftarInvoice.setColumnWidth(2,300)
 		for b in range (0, rownum):
 			self.tbl_Penjualan_DaftarInvoice.removeRow(b)
 		self.tbl_Penjualan_DaftarInvoice.setRowCount(0)
@@ -242,6 +243,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		
 	def Penjualan_GoTo_Invoice_TambahBarang(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_I_TB)
+		self.tbl_Penjualan_Invoice_TambahBarang.setColumnWidth(0,300)
 		
 	def Penjualan_Invoice_TambahBarang_TambahBaris(self):
 		jumlahRow = self.tbl_Penjualan_Invoice_TambahBarang.rowCount()
@@ -249,6 +251,19 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		self.tbl_Penjualan_Invoice_TambahBarang.insertRow(a)
 		self.tbl_Penjualan_Invoice_TambahBarang.setItem(a,3,QtGui.QTableWidgetItem("0"))
 		self.tbl_Penjualan_Invoice_TambahBarang.setItem(a,4,QtGui.QTableWidgetItem("0"))
+		if (a>0):
+			noInvoice = str(self.le_Penjualan_InvoicePenjualan_SOPenawaran.text())
+			namaBarang = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a-1,1).text())
+			kodeVendor = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a-1,0).text())
+			hargaBarang = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a-1,4).text())
+			jumlahBarang = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a-1,3).text())
+			satuan = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a-1,2).text())
+			totalHarga = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a-1,5).text())
+			query = "INSERT INTO `"+self.dbDatabase+"`.`gd_pembelian_barang`"+\
+				"(`noInvoice`, `namaBarang`, `kodeVendor`, `hargaBarang`, `jumlahBarang`, `satuan`, `totalHarga`) "+\
+				"VALUES ('"+noInvoice+"', '"+namaBarang+"', '"+kodeVendor+"', '"+hargaBarang+"', '"+jumlahBarang+"', '"+satuan+"', '"+totalHarga+"');"
+			self.SQLtoRun.append(query)
+			print self.SQLtoRun
 	
 	def Penjualan_Invoice_TambahBarang_TotalHarga(self,row,col):
 		try:
