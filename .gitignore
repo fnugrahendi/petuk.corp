@@ -1,5 +1,7 @@
 source/img/DataMaster_svg.svg
 data/garvin.dat
+data/
+data/*
 *.pyc
 source/dist/
 source/build/
