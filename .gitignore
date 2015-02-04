@@ -21,3 +21,5 @@ source/kasbank/img/
 *.dll
 *.fuse*
 *.spec
+*.7z
+*.grvz
