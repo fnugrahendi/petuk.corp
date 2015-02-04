@@ -128,10 +128,7 @@ class Login(Ui_fr_Main):
 		self.Login_Login_Password_Inputed = ""
 		users = self.DatabaseFetchResult(self.dbDatabase,"gd_user","level",0)
 				
-		lastlogin = self.GarvinGetConfig("Last Login")
-		self.LoginUI.le_Login_User.setText(lastlogin)
-		
-		
+		print len(users)
 		if len(users)<1:
 			#--- Create user and password for admin!
 			self.LoginUI.le_Login_User.setText("admin")
@@ -146,6 +143,10 @@ class Login(Ui_fr_Main):
 			self.LoginUI.le_Login_Password_Confirm.hide()
 			self.GarvinDisconnect(self.LoginUI.tb_Login_Ok.clicked)
 			self.LoginUI.tb_Login_Ok.clicked.connect(self.Login_Login_Auth)
+		
+		lastlogin = self.GarvinGetConfig("Last Login")
+		self.LoginUI.le_Login_User.setText(lastlogin)
+		
 		#signal tombol sudah di sambungkan di init
 	
 	def Login_Login_CreateAdmin(self):
