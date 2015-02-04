@@ -1,11 +1,13 @@
-img/DataMaster_svg.svg
+source/img/DataMaster_svg.svg
 data/
 *.pyc
-dist/
-build/
+source/dist/
+source/build/
+source/Garvin.spec
 Garvin.spec
 geany_run_script*
-kasbank/img/
+source/geany_run_script*
+source/kasbank/img/
 *.html
 *.odt
 *.pdf
