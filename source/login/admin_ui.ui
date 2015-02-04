@@ -148,7 +148,7 @@
       </layout>
      </widget>
      <widget class="QWidget" name="st_Users">
-      <layout class="QVBoxLayout" name="ivl_Users">
+      <layout class="QVBoxLayout" name="ivl_Users_Luar">
        <item>
         <widget class="QLabel" name="lb_Users_Judul">
          <property name="sizePolicy">
@@ -203,7 +203,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="frame">
+        <widget class="QFrame" name="fr_Users">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -228,7 +228,7 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout">
+         <layout class="QHBoxLayout" name="ihl_Users_Dalam">
           <item>
            <widget class="QPushButton" name="tb_Users_Tambah">
             <property name="text">
@@ -276,9 +276,9 @@
       </layout>
      </widget>
      <widget class="QWidget" name="st_Users_Tambah">
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <layout class="QVBoxLayout" name="ivl_Users_Tambah_Luar">
        <item>
-        <widget class="QFrame" name="frame_2">
+        <widget class="QFrame" name="fr_Users_Tambah_t">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -303,9 +303,9 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <layout class="QHBoxLayout" name="ihl_Users_Tambah_t">
           <item>
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="lb_Users_Tambah_Judul">
             <property name="font">
              <font>
               <pointsize>16</pointsize>
@@ -322,7 +322,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="frame_3">
+        <widget class="QFrame" name="fr_Users_Tambah_Content">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -335,6 +335,91 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
+         <layout class="QFormLayout" name="ifl_Users_Tambah_Content">
+          <item row="0" column="0">
+           <widget class="QLabel" name="lb_Users_Tambah_Username">
+            <property name="text">
+             <string>Username :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="lb_Users_Tambah_Password">
+            <property name="text">
+             <string>Password :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="lb_Users_Tambah_Priviledge">
+            <property name="text">
+             <string>Priviledge :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="le_Users_Tambah_Username">
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="le_Users_Tambah_Password">
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QComboBox" name="cb_Users_Tambah_Priviledge">
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <item>
+             <property name="text">
+              <string>Administrator</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Accountant</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Finance</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Sales</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Custom</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+         <zorder>lb_Users_Tambah_Username</zorder>
+         <zorder>lb_Users_Tambah_Password</zorder>
+         <zorder>lb_Users_Tambah_Priviledge</zorder>
+         <zorder>fr_Users_Tambah_t</zorder>
+         <zorder>le_Users_Tambah_Username</zorder>
+         <zorder>le_Users_Tambah_Password</zorder>
+         <zorder>cb_Users_Tambah_Priviledge</zorder>
         </widget>
        </item>
        <item>
@@ -363,7 +448,7 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <layout class="QHBoxLayout" name="ihl_Users_Tambah_b">
           <item>
            <widget class="QPushButton" name="tb_Users_Tambah_Simpan">
             <property name="text">

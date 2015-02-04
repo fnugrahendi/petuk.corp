@@ -24,7 +24,7 @@ class Admin(object):
 		
 		self.si_om = parent
 		
-		self.INDEX_ST = ["MENU","LIST USER"]
+		self.INDEX_ST = ["MENU","LIST USER", "TAMBAH USER"]
 		
 		self.UI = Ui_fr_Admin()
 		self.UI.setupUi(parent.fr_Admin) #-- widih mantab banget broh
@@ -91,8 +91,16 @@ class Admin(object):
 		self.si_om.GarvinDisconnect(self.UI.tb_Users_Tambah.clicked)
 		self.si_om.GarvinDisconnect(self.UI.tbl_ListUser_List.cellClicked)
 		self.si_om.GarvinDisconnect(self.UI.tb_Users_Hapus.clicked)
-		self.UI.tb_Users_Tambah.clicked.connect(tambahbaris)
+		self.UI.tb_Users_Tambah.clicked.connect(self.ListUser_Tambah)
 		self.UI.tbl_ListUser_List.cellClicked.connect(setactiveindex)
 		self.UI.tb_Users_Hapus.clicked.connect(confirmdeletecertainrow)
 	
+	def ListUser_Tambah(self):
+		self.Goto("TAMBAH USER")
+		
+	def ListUser_Tambah_Act_Simpan(self):
+		
+		pass
+	
+		
 		
