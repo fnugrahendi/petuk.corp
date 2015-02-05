@@ -162,7 +162,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 	def Popup_Rekening(self, namaTombol):
 		data = ["",""]
 		def isi():
-			namaTombol.setText(str(data[0])+" "+str(data[1]))
+			namaTombol.setText(str(data[0]))
 		def batal():
 			namaTombol.setText("-")
 		self.DataMaster_DataRekening_Popup_Pilih(data,isi,batal)
@@ -587,52 +587,23 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Pembelian,Ka
 		return
 	
 	def Penjualan_PembayaranPiutang_Rekam(self):
+		noInvoice = str(self.le_Penjualan_PembayaranPiutang_Baru_NoInvoice.text())
+		noRef = str(self.le_Penjualan_PembayaranPiutang_Baru_NoRef.text())
+		tgl = str(self.dte_Penjualan_PembayaranPiutang_Baru_Tanggal.dateTime().toString("yyyy-MM-dd hh:mm:ss"))
+		nama = str(self.le_Penjualan_PembayaranPiutang_Baru_Nama.text())
+		query = "SELECT `kodePelanggan` FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
+		kodePelanggan = self.DatabaseRunQuery(query)[0]
+		catatan = str(self.le_Penjualan_PembayaranPiutang_Baru_Catatan.text())
+		jumlahPenerimaan = str(self.le_Penjualan_PembayaranPiutang_Baru_Nominal.text())
+		#jumlahPenerimaan = int(jumlahPenerimaan)
+		noAkunKas = str(self.tb_Penjualan_PembayaranPiutang_Baru_Akun.text())
+		noAkunPiutang = 13000002
+		query = "SELECT `jumlahTagihan` FROM `gd_piutang` WHERE `noInvoice` LIKE '"+noInvoice+"'"
+		jumlahTagihan = self.DatabaseRunQuery(query)[0]
+		query_insert = "INSERT INTO `gd_piutang` (`noInvoice`,`noReferensi`,`tanggal`,`kodePelanggan`,`catatan`,`jumlahPenerimaan`,`jumlahTagihan`,`noAkunKas`,`noAkunPiutang`)"+\
+			"VALUES ('"+noInvoice+"','"+noRef+"','"+tgl+"','"+kodePelanggan+"','"+catatan+"','"+jumlahPenerimaan+"','"+jumlahTagihan+"','"+noAkunKas+"','"+noAkunPiutang+"')"
+		self.DatabaseRunQuery(query_insert)
 		pass
-	
-	def Penjualan_GoTo_ReturPenjualan(self):
-		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_RP)
-
-	def Penjualan_GoTo_PenawaranHarga_baru(self):
-		self.cb_Penjualan_PenawaranHarga_Baru_Nama.clear()
-		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PHB)
-		query = "SELECT * FROM gd_nama_alamat"
-		for a in range(0,len(self.DatabaseRunQuery(query))):
-			self.cb_Penjualan_PenawaranHarga_Baru_Nama.addItem(self.DatabaseRunQuery(query)[a][2])
-		query = "SELECT * FROM gd_data_gudang"
-		for a in range(0,len(self.DatabaseRunQuery(query))):
-			self.cb_Penjualan_PenawaranHarga_Baru_Gudang.addItem(self.DatabaseRunQuery(query)[a][2])
-		
-	def Penjualan_PenawaranHarga_Baru_TabelComplete(self):
-		self.initDatabase()
-		cursorb = self.db.cursor()
-		query = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` LIKE '0001';"
-		cursorb.execute(query)
-		result = cursorb.fetchall()
-		print len(result)
-		kode = result[0][1]
-		nama = result[0][5]
-		deskripsi = result[0][2]
-		satuan = result[0][3]
-		self.tbl_Penjualan_PenawaranHarga_baru.setItem(0,0,QtGui.QTableWidgetItem(kode))
-		self.tbl_Penjualan_PenawaranHarga_baru.setItem(0,1,QtGui.QTableWidgetItem(nama))
-		self.tbl_Penjualan_PenawaranHarga_baru.setItem(0,3,QtGui.QTableWidgetItem(satuan))
-		self.db.commit()
-		self.db.close()
-	
-	def Penjualan_PenawaranHarga_Baru_Rekam(self):
-		nama = str(self.cb_Penjualan_PenawaranHarga_Baru_Nama.currentText())
-		kodeTransaksi = str(self.le_Penjualan_PenawaranHarga_baru_SOPenawaran.text())
-		#departemen = str(self.le_Penjualan_PenawaranHarga_baru_Departemen.text())
-		jumlahRow = self.tbl_Penjualan_PenawaranHarga_baru.rowCount()
-		
-		self.initDatabase()
-		cursor = self.db.cursor()
-		query = "INSERT INTO `"+self.dbDatabase+"`.`gd_order_penjualan`"+\
-			" (`nama`, `kodeTransaksi`, `departemen`) "+\
-			"VALUES ('"+nama+"', '"+SOPenawaran+"', '"+departemen+"');"
-		cursor.execute(query)
-		self.db.commit()
-		self.db.close()
 		
 	def DatabaseRunQuery(self,query):
 		self.initDatabase()
