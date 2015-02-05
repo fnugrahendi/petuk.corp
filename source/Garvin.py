@@ -28,7 +28,9 @@ try:
 except AttributeError:
 	def _fromUtf8(s):
 		return s
-
+except:
+	def _fromUtf8(s):
+		return s
 
 class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pembelian,KasBank,Laporan,Login,Updater):
 	def __init__(self, parent= None):

@@ -16,6 +16,9 @@ try:
 except AttributeError:
 	def _fromUtf8(s):
 		return s
+except:
+	def _fromUtf8(s):
+		return s
 
 class DataProduk(object):
 	def __init__(self, parent=None):
