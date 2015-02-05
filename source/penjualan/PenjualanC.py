@@ -19,6 +19,7 @@ class Penjualan(object):
 		self.tb_Penjualan_Invoice.clicked.connect(self.Penjualan_GoTo_Invoice)
 		self.tb_Penjualan_OrderPenjualan.clicked.connect(self.Penjualan_GoTo_OrderPenjualan)
 		self.tb_Penjualan_Piutang.clicked.connect(self.Penjualan_GoTo_PiutangUsaha)
+		self.tb_Penjualan_UangMuka.clicked.connect(self.Penjualan_GoTo_UangMuka)
 		
 		#Tombol pada invoice
 		self.tb_Penjualan_DaftarInvoice_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -71,6 +72,11 @@ class Penjualan(object):
 		self.tb_Penjualan_PembayaranPiutang_Baru_Batal.clicked.connect(self.Penjualan_GoTo_PembayaranPiutang)
 		self.tb_Penjualan_PembayaranPiutang_Baru_Akun.clicked.connect(functools.partial(self.Popup_Rekening, self.tb_Penjualan_PembayaranPiutang_Baru_Akun))
 		
+		#Tombol pada Halaman UangMuka
+		self.tb_Penjualan_UangMuka_Kembali.clicked.connect(self.Penjualan_GoTo_Menu)
+		self.tb_Penjualan_UangMuka_BuatBaru.clicked.connect(self.Penjualan_GoTo_UangMuka_Baru)
+		self.tb_Penjualan_UangMuka_Baru_Batal.clicked.connect(self.Penjualan_GoTo_UangMuka)
+		
 		self.INDEX_ST_PENJUALAN_MENU = 0
 		self.INDEX_ST_PENJUALAN_DI = 1
 		self.INDEX_ST_PENJUALAN_IP = 2
@@ -82,6 +88,8 @@ class Penjualan(object):
 		self.INDEX_ST_PENJUALAN_RPU = 9
 		self.INDEX_ST_PENJUALAN_PP = 10
 		self.INDEX_ST_PENJUALAN_PPB = 11
+		self.INDEX_ST_PENJUALAN_UM = 12
+		self.INDEX_ST_PENJUALAN_UMB = 13
 
 	def Popup_Produk(self, namaTombol):
 		data = []
@@ -509,4 +517,12 @@ class Penjualan(object):
 		query_insert = "INSERT INTO `gd_piutang` (`noInvoice`,`noReferensi`,`tanggal`,`kodePelanggan`,`catatan`,`jumlahPenerimaan`,`jumlahTagihan`,`noAkunKas`,`noAkunPiutang`)"+\
 			"VALUES ('"+noInvoice+"','"+noRef+"','"+tgl+"','"+kodePelanggan+"','"+catatan+"','"+jumlahPenerimaan+"','"+jumlahTagihan+"','"+noAkunKas+"','"+noAkunPiutang+"')"
 		self.DatabaseRunQuery(query_insert)
+		pass
+	
+	def Penjualan_GoTo_UangMuka(self):
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_UM)
+		pass
+		
+	def Penjualan_GoTo_UangMuka_Baru(self):
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_UMB)
 		pass
