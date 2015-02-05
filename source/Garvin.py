@@ -67,6 +67,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		#-- data
 		self.Path = str(__file__).replace("Garvin.py","")
 		self.DataPath = self.Path+"../data/"
+		if not os.path.exists(self.DataPath): os.makedirs(self.DataPath)
 		#--- check if garvin is recent version
 		#~ self.GarvinCheckIsUpdated()
 	
@@ -336,9 +337,12 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 							] 
 						]
 		
-		f = open(self.DataPath+"garvin.dat",'r')
-		self.UserData = f.read()
-		f.close()
+		try:
+			f = open(self.DataPath+"garvin.dat",'r')
+			self.UserData = f.read()
+			f.close()
+		except:
+			self.UserData = ""
 	
 	def GarvinGetConfig(self,configname):
 		self.GarvinLoadConfig()
