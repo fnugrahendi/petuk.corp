@@ -49,8 +49,6 @@ class Login(Ui_fr_Main):
 		self.LoginUI.tb_Connect_Ok.clicked.connect(self.Login_Connect_Act_OK)
 		self.LoginUI.tb_Login_Ok.clicked.connect(self.Login_Login_Auth)
 		
-		#-- password login, 
-		self.LoginUI.le_Login_Password.textChanged.connect(self.Login_Login_PasswordChanged)
 		
 		self.INDEX_ST_LOGIN = ["CONNECT","LOGIN","DATABASE"]
 		#--- end Login_init
@@ -197,15 +195,6 @@ class Login(Ui_fr_Main):
 		else:
 			self.DataMaster_Popup("Username atau password salah",self.DataMaster_None)
 		
-
-	def Login_Login_PasswordChanged(self,textnya):
-		return #--- BECAUSE THIS IS A TODO LIST (to use password input hints)
-		self.Login_Login_Password_Inputed = (self.Login_Login_Password_Inputed+str(textnya)).replace("*","")
-		text = ""
-		for x in xrange(0,len(textnya)):
-			try:text=text+"*"
-			except:text="*"
-		self.LoginUI.le_Login_Password.setText(text)
 	
 	def Login_Done(self):
 		""" done from login, exit the login frame"""
