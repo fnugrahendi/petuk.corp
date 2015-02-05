@@ -174,6 +174,7 @@ class Penjualan(object):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_IP)
 		
 	def Penjualan_GoTo_Invoice_Batal(self):
+		del self.SQLtoRun[:]
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_IP)
 	
 	def Penjualan_Invoice_TotalHarga(self):
@@ -196,6 +197,10 @@ class Penjualan(object):
 			"(`kodeTransaksi`,`kodePelanggan`,`tanggal`,`catatan`,`nilai`,`hargaPokok`) "+\
 			"VALUES ('"+kodeTransaksi+"','"+kodePelanggan+"','"+tanggal+"','"+catatan+"','"+nilai+"','"+hargaPokok+"')"
 		self.DatabaseRunQuery(str(query))
+		jumlahBarang = len(self.SQLtoRun)
+		for a in range(0,jumlahBarang):
+			self.DatabaseRunQuery(self.SQLtoRun[a])
+		del self.SQLtoRun[:]
 		self.Penjualan_GoTo_Invoice
 		pass
 	
@@ -234,6 +239,7 @@ class Penjualan(object):
 		
 	
 	def Penjualan_Invoice_TambahBarang_Simpan(self):
+		self.SQLtoRun = []
 		hargaPokok = 0
 		jumlahRow = self.tbl_Penjualan_Invoice_TambahBarang.rowCount()
 		for a in range(0, jumlahRow):
@@ -247,7 +253,8 @@ class Penjualan(object):
 			query = "INSERT INTO `"+self.dbDatabase+"`.`gd_pembelian_barang`"+\
 				"(`noInvoice`, `namaBarang`, `kodeVendor`, `hargaBarang`, `jumlahBarang`, `satuan`, `totalHarga`) "+\
 				"VALUES ('"+noInvoice+"', '"+namaBarang+"', '"+kodeVendor+"', '"+hargaBarang+"', '"+jumlahBarang+"', '"+satuan+"', '"+totalHarga+"');"
-			self.DatabaseRunQuery(query)
+			self.SQLtoRun.append(query)
+			#~ self.DatabaseRunQuery(query)
 		for a in range (0, jumlahRow):
 			hargaPokok = hargaPokok + int(str(self.tbl_Penjualan_Invoice_TambahBarang.item(a,5).text()))
 			self.tb_Penjualan_InvoicePenjualan_Input_HargaPokok.setText(str(hargaPokok))
