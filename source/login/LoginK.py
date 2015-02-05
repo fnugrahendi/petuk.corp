@@ -140,13 +140,17 @@ class Login(Ui_fr_Main):
 		else:
 			self.LoginUI.lb_Login_Password_Confirm.hide()
 			self.LoginUI.le_Login_Password_Confirm.hide()
+			#--- signal tombol sudah di sambungkan di init
 			self.GarvinDisconnect(self.LoginUI.tb_Login_Ok.clicked)
+			self.GarvinDisconnect(self.LoginUI.le_Login_Password.returnPressed)
+			self.GarvinDisconnect(self.LoginUI.le_Login_User.returnPressed)
 			self.LoginUI.tb_Login_Ok.clicked.connect(self.Login_Login_Auth)
+			self.LoginUI.le_Login_Password.returnPressed.connect(self.Login_Login_Auth)
+			self.LoginUI.le_Login_User.returnPressed.connect(self.Login_Login_Auth)
 		
 		lastlogin = self.GarvinGetConfig("Last Login")
 		self.LoginUI.le_Login_User.setText(lastlogin)
 		
-		#signal tombol sudah di sambungkan di init
 	
 	def Login_Login_CreateAdmin(self):
 		user = str(self.LoginUI.le_Login_User.text())
