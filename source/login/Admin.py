@@ -35,6 +35,12 @@ class Admin(object):
 		self.UI.fr_Users_Tambah_Content.setTabOrder(self.UI.le_Users_Tambah_Username,self.UI.le_Users_Tambah_Password)
 		self.UI.fr_Users_Tambah_Content.setTabOrder(self.UI.le_Users_Tambah_Password,self.UI.le_Users_Tambah_Password_Confirm)
 		
+		self.UI.le_Users_Tambah_Password.setEchoMode(QtGui.QLineEdit.Password)
+		self.UI.le_Users_Tambah_Password_Confirm.setEchoMode(QtGui.QLineEdit.Password)
+		self.UI.le_Users_Tambah_Password.setEchoMode(QtGui.QLineEdit.Password)
+		self.UI.le_Users_Tambah_Password_Confirm.setEchoMode(QtGui.QLineEdit.Password)
+		
+		
 		
 	def Goto(self,room):
 		if (type(room)==str):
