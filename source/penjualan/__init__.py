@@ -1,0 +1,2 @@
+from .PenjualanC import Penjualan
+
