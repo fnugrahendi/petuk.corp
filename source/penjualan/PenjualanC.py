@@ -393,6 +393,9 @@ class Penjualan(object):
 		query2 = "INSERT INTO `"+self.dbDatabase+"`.`gd_invoice_penjualan`"+\
 				"(`kodeTransaksi`, `kodePelanggan`, `totalHarga`, `tanggal`, `kodeMatauang`) "+\
 				"VALUES ('"+kodeTransaksi+"', '"+kodePelanggan+"', '"+totalHarga+"', '"+tanggal+"', '"+kodeMatauang+"');"
+		#~ self.DatabaseInsertAvoidreplace(self.dbDatabase, "gd_invoice_penjualan","kodeTransaksi",kodeTransaksi,
+										#~ ["kodeTransaksi", "kodePelanggan", "totalHarga", "tanggal", "kodeMatauang"],
+										#~ ["kodeTransaksi", "kodePelanggan", "totalHarga", "tanggal", "kodeMatauang"])
 		self.DatabaseRunQuery(query2)
 
 	def Penjualan_OrderPenjualan_Batal(self):
