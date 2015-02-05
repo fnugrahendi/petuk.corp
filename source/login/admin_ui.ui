@@ -28,7 +28,7 @@
    <item row="1" column="0">
     <widget class="QStackedWidget" name="st_Admin">
      <property name="currentIndex">
-      <number>2</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="st_Menu">
       <layout class="QGridLayout" name="igr_Menu">
@@ -184,6 +184,9 @@
          </property>
          <property name="styleSheet">
           <string notr="true">QTableWidget{border-width:1px;border-color:rgb(150, 137, 188);border-style:outset;border-radius:0px;}</string>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
          </property>
          <column>
           <property name="text">
