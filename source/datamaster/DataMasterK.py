@@ -21,6 +21,9 @@ try:
 except AttributeError:
 	def _fromUtf8(s):
 		return s
+except:
+	def _fromUtf8(s):
+		return s
 
 class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk):
 	def DataMaster_init(self, parent=None):
@@ -112,7 +115,7 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk):
 		
 		self.tb_DataMaster_DataDepartemen.clicked.connect				(self.DataMaster_DataDepartemen)
 		
-		self.tb_DataMaster_DataCommon_Tutup.clicked.connect(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_MENU)
+		self.tb_DataMaster_DataCommon_Tutup.clicked.connect(functools.partial(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_MENU))
 		
 		self.initDatabase()
 		cursor = self.db.cursor()
