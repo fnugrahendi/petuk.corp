@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'login/admin_ui.ui'
 #
-# Created: Thu Feb  5 15:07:55 2015
+# Created: Thu Feb  5 18:45:15 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -87,6 +87,7 @@ class Ui_fr_Admin(object):
         sizePolicy.setHeightForWidth(self.tbl_ListUser_List.sizePolicy().hasHeightForWidth())
         self.tbl_ListUser_List.setSizePolicy(sizePolicy)
         self.tbl_ListUser_List.setStyleSheet(_fromUtf8("QTableWidget{border-width:1px;border-color:rgb(150, 137, 188);border-style:outset;border-radius:0px;}"))
+        self.tbl_ListUser_List.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
         self.tbl_ListUser_List.setObjectName(_fromUtf8("tbl_ListUser_List"))
         self.tbl_ListUser_List.setColumnCount(3)
         self.tbl_ListUser_List.setRowCount(0)
@@ -224,7 +225,7 @@ class Ui_fr_Admin(object):
         self.igr_Admin.addWidget(self.st_Admin, 1, 0, 1, 1)
 
         self.retranslateUi(fr_Admin)
-        self.st_Admin.setCurrentIndex(2)
+        self.st_Admin.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(fr_Admin)
 
     def retranslateUi(self, fr_Admin):

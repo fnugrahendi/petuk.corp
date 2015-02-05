@@ -526,7 +526,8 @@ class DataNamaAlamat(object):
 			else:
 				Tb_NamaAlamat = Tb_ListNamaAlamat[0]
 
-			local_name = str(result[x][self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")])
+			local_name = str(result[x][self.DataMaster_DataNamaAlamat_Field.index("namaPelanggan")]) +\
+						"\n ("+str(result[x][self.DataMaster_DataNamaAlamat_Field.index("tipe")])+")"
 			Tb_NamaAlamat.setText(local_name)
 			Tb_NamaAlamat.show()
 			#--- disini nambahnya

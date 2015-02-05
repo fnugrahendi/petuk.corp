@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>st_KasBank</class>
  <widget class="QStackedWidget" name="st_KasBank">
@@ -17,7 +17,7 @@
    <string notr="true">QFrame{border:0px;}</string>
   </property>
   <property name="currentIndex">
-   <number>0</number>
+   <number>1</number>
   </property>
   <widget class="QWidget" name="st_Menu">
    <layout class="QGridLayout" name="igr_KasBank_Menu">
@@ -289,17 +289,22 @@ background-image: url(:/Menu/img/KasKeluar1.png);
          </column>
          <column>
           <property name="text">
-           <string>Penyetor</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Keterangan</string>
+           <string>Catatan</string>
           </property>
          </column>
          <column>
           <property name="text">
            <string>Nilai</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nomor Akun Kas/Bank</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nomor Akun Sumber</string>
           </property>
          </column>
         </widget>

@@ -199,6 +199,7 @@ class Login(Ui_fr_Main):
 	def Login_Done(self):
 		""" done from login, exit the login frame"""
 		self.fr_Login_Frame.close()
+		self.GarvinInit()
 	
 	def Login_Admin(self):
 		#--- construct an admin 

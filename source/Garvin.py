@@ -40,8 +40,6 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		def ___metu():
 			exit(0)
 			return True
-		#self.tb_Penjualan_Keluar.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan keluar dari aplikasi?",___metu))
-        
         
 		self.SQLtoRun = []
 		self.dbHost = "127.0.0.1"
@@ -49,12 +47,6 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		self.dbDatabase = "gd_db_akunting"
 		self.dbPass = "nyungsep"
 		self.dbUser = "gd_user_akunting"
-		
-		self.DataMaster_init()
-		self.BukuBesar_init()
-		self.Penjualan_init()
-		self.Pembelian__init()
-		self.KasBank_init()
 		self.Login_init()
 		
 		#--- kalau pindah tab, set semua stackedWidget ke index 0 (suppose to be _Menu index)
@@ -65,10 +57,21 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		self.GarvinSetDate(self)
 		
 		#-- data
-		self.Path = str(__file__).replace("Garvin.py","")
+		self.Path = str(__file__).replace("Garvin.py","").replace("\\","/")
 		self.DataPath = self.Path+"../data/"
+		print self.DataPath
+		if not os.path.exists(self.DataPath): os.makedirs(self.DataPath)
 		#--- check if garvin is recent version
 		#~ self.GarvinCheckIsUpdated()
+	
+	def GarvinInit(self):
+		#-- init dipindah disini, karena dipanggil setelah berhasil login (set database dsb) di fungsi self.Login_Done
+		self.DataMaster_init()
+		self.BukuBesar_init()
+		self.Penjualan_init()
+		self.Pembelian__init()
+		self.KasBank_init()
+		
 	
 	def Popup_NamaAlamat_Tabel(self,namaTabel,row):
 		data = []
@@ -336,9 +339,12 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 							] 
 						]
 		
-		f = open(self.DataPath+"garvin.dat",'r')
-		self.UserData = f.read()
-		f.close()
+		try:
+			f = open(self.DataPath+"garvin.dat",'r')
+			self.UserData = f.read()
+			f.close()
+		except:
+			self.UserData = ""
 	
 	def GarvinGetConfig(self,configname):
 		self.GarvinLoadConfig()
