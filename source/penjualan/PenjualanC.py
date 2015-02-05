@@ -120,6 +120,7 @@ class Penjualan(object):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_MENU)
 		
 	def Penjualan_GoTo_Invoice(self):
+		print "go to daftar invoice"
 		rownum = self.tbl_Penjualan_DaftarInvoice.rowCount()
 		self.tbl_Penjualan_DaftarInvoice.setColumnWidth(2,300)
 		for b in range (0, rownum):
@@ -189,7 +190,7 @@ class Penjualan(object):
 	def Penjualan_Invoice_Rekam(self):
 		kodeTransaksi = str(self.le_Penjualan_InvoicePenjualan_SOPenawaran.text())
 		kodePelanggan = str(self.tb_Penjualan_InvoicePenjualan_Baru_Nama.text())
-		tanggal = str(self.dte_Penjualan_InvoicePenjualan_Input_Tanggal.dateTime().toString("yyyy-MM-dd hh:mm:ss"))
+		tanggal = str(self.dte_Penjualan_InvoicePenjualan_Input_Tanggal.dateTime().toString("yyyy-MM-dd"))
 		catatan = str(self.le_Penjualan_InvoicePenjualan_Keterangan.text())
 		nilai = str(self.le_Penjualan_InvoicePenjualan_Input_TotalHarga.text())
 		hargaPokok = str(self.tb_Penjualan_InvoicePenjualan_Input_HargaPokok.text())
@@ -201,7 +202,7 @@ class Penjualan(object):
 		for a in range(0,jumlahBarang):
 			self.DatabaseRunQuery(self.SQLtoRun[a])
 		del self.SQLtoRun[:]
-		self.Penjualan_GoTo_Invoice
+		self.Penjualan_GoTo_Invoice()
 		pass
 	
 	def Penjualan_GoTo_Invoice_TambahBarang(self):
