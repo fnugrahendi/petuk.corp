@@ -66,8 +66,8 @@ class KasMasuk(object):
 		CNILAI = 4
 		
 		TABLECOLUMNS = [
-						["Tanggal", "Kode Referensi", "Penyetor", "Keterangan", "Nilai"],
-						["tanggal", "kodeTransaksi", "kodePenyetor","catatan","nilaiTotal"]
+						["Tanggal", "Kode Referensi",	"Catatan",	"Nilai",		"Nomor Akun Kas/Bank",	"Nomor Akun Sumber"],
+						["tanggal", "kodeTransaksi", 	"catatan",	"jumlahUang",	"noAkunKas",			"noAkunLain"]
 						]
 		
 		#at first we clear the rows

@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'kasbank/ui_kasbank.ui'
 #
-# Created: Thu Feb  5 15:07:55 2015
-#      by: PyQt4 UI code generator 4.10.4
+# Created: Thu Feb 05 18:11:51 2015
+#      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -140,7 +140,7 @@ class Ui_st_KasBank(object):
         self.ivl_KasMasuk_Content.setObjectName(_fromUtf8("ivl_KasMasuk_Content"))
         self.tbl_KasMasuk = QtGui.QTableWidget(self.fr_KasMasuk_Content)
         self.tbl_KasMasuk.setObjectName(_fromUtf8("tbl_KasMasuk"))
-        self.tbl_KasMasuk.setColumnCount(5)
+        self.tbl_KasMasuk.setColumnCount(6)
         self.tbl_KasMasuk.setRowCount(0)
         item = QtGui.QTableWidgetItem()
         self.tbl_KasMasuk.setHorizontalHeaderItem(0, item)
@@ -152,6 +152,8 @@ class Ui_st_KasBank(object):
         self.tbl_KasMasuk.setHorizontalHeaderItem(3, item)
         item = QtGui.QTableWidgetItem()
         self.tbl_KasMasuk.setHorizontalHeaderItem(4, item)
+        item = QtGui.QTableWidgetItem()
+        self.tbl_KasMasuk.setHorizontalHeaderItem(5, item)
         self.ivl_KasMasuk_Content.addWidget(self.tbl_KasMasuk)
         self.ivl_KasMasuk.addWidget(self.fr_KasMasuk_Content)
         self.fr_KasMasuk_b = QtGui.QFrame(self.st_KasMasuk)
@@ -604,7 +606,7 @@ class Ui_st_KasBank(object):
         st_KasBank.addWidget(self.st_KasKeluar_Tambah)
 
         self.retranslateUi(st_KasBank)
-        st_KasBank.setCurrentIndex(0)
+        st_KasBank.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(st_KasBank)
 
     def retranslateUi(self, st_KasBank):
@@ -616,11 +618,13 @@ class Ui_st_KasBank(object):
         item = self.tbl_KasMasuk.horizontalHeaderItem(1)
         item.setText(_translate("st_KasBank", "Nomor Referensi", None))
         item = self.tbl_KasMasuk.horizontalHeaderItem(2)
-        item.setText(_translate("st_KasBank", "Penyetor", None))
+        item.setText(_translate("st_KasBank", "Catatan", None))
         item = self.tbl_KasMasuk.horizontalHeaderItem(3)
-        item.setText(_translate("st_KasBank", "Keterangan", None))
-        item = self.tbl_KasMasuk.horizontalHeaderItem(4)
         item.setText(_translate("st_KasBank", "Nilai", None))
+        item = self.tbl_KasMasuk.horizontalHeaderItem(4)
+        item.setText(_translate("st_KasBank", "Nomor Akun Kas/Bank", None))
+        item = self.tbl_KasMasuk.horizontalHeaderItem(5)
+        item.setText(_translate("st_KasBank", "Nomor Akun Sumber", None))
         self.tb_KasMasuk_Buka.setText(_translate("st_KasBank", "Buka", None))
         self.tb_KasMasuk_Tambah.setText(_translate("st_KasBank", "Baru", None))
         self.tb_KasMasuk_Delete.setText(_translate("st_KasBank", "Hapus", None))
