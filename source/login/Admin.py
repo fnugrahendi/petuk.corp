@@ -67,7 +67,7 @@ class Admin(object):
 		
 		def setactiveindex(row,column):
 			self.ListUser_RowColumnTerpilih = [row,column]
-		
+			
 		def tambahbaris():
 			newrow = self.UI.tbl_ListUser_List.rowCount()
 			self.UI.tbl_ListUser_List.insertRow(newrow)
@@ -80,7 +80,7 @@ class Admin(object):
 			baris = self.ListUser_RowColumnTerpilih[0]
 			if baris<0:
 				return
-			namauser = str(self.UI.tbl_ListUser_List.itemAt(baris,KOLOMTABLE.index("username")).text())
+			namauser = str(self.UI.tbl_ListUser_List.item(baris,KOLOMTABLE.index("username")).text())
 			self.si_om.DatabaseRunQuery("DELETE FROM `gd_user` WHERE `gd_user`.`username` LIKE '"+namauser+"' ;")
 			self.UI.tbl_ListUser_List.removeRow(baris)
 			
@@ -101,6 +101,8 @@ class Admin(object):
 	
 	def ListUser_Tambah(self):
 		self.Goto("TAMBAH USER")
+		
+		
 		self.si_om.GarvinDisconnect(self.UI.tb_Users_Tambah_Simpan.clicked)
 		self.UI.tb_Users_Tambah_Simpan.clicked.connect(self.ListUser_Tambah_Act_Simpan)
 		
