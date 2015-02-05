@@ -147,7 +147,6 @@ class Penjualan(object):
 		self.le_Penjualan_InvoicePenjualan_SOPenawaran.setText(kodeInvoice)
 	
 	def Penjualan_GoTo_Invoice_Baru(self):
-		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_IP)
 		self.Penjualan_Generate_NoInvoice()
 		self.le_Penjualan_InvoicePenjualan_Input_Jumlah.setReadOnly(False)
 		self.le_Penjualan_InvoicePenjualan_Input_HargaJual.setReadOnly(False)
@@ -156,6 +155,11 @@ class Penjualan(object):
 		self.le_Penjualan_InvoicePenjualan_Input_Jumlah.setText("0")
 		self.le_Penjualan_InvoicePenjualan_Input_HargaJual.setText("0")
 		self.le_Penjualan_InvoicePenjualan_Input_TotalHarga.setText("0")
+		self.tb_Penjualan_InvoicePenjualan_Input_KodeProduk.setText("-")
+		self.tb_Penjualan_InvoicePenjualan_Baru_Nama.setText("-")
+		self.le_Penjualan_InvoicePenjualan_Input_NamaProduk.setText("")
+		self.le_Penjualan_InvoicePenjualan_Keterangan.setText("")
+		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_IP)
 		
 	def Penjualan_GoTo_Invoice_Rincian(self):
 		currentRow = self.tbl_Penjualan_DaftarInvoice.currentRow()
@@ -163,10 +167,10 @@ class Penjualan(object):
 		self.le_Penjualan_InvoicePenjualan_SOPenawaran.setText(str(self.tbl_Penjualan_DaftarInvoice.item(currentRow,0).text()))
 		self.le_Penjualan_InvoicePenjualan_Input_TotalHarga.setText(str(self.tbl_Penjualan_DaftarInvoice.item(currentRow,4).text()))
 		query = str("SELECT * FROM")
-		self.le_Penjualan_InvoicePenjualan_Input_Jumlah.setReadOnly(True)
-		self.le_Penjualan_InvoicePenjualan_Input_HargaJual.setReadOnly(True)
-		self.le_Penjualan_InvoicePenjualan_Input_TotalHarga.setReadOnly(True)
-		self.le_Penjualan_InvoicePenjualan_Input_NamaProduk.setReadOnly(True)
+		#self.le_Penjualan_InvoicePenjualan_Input_Jumlah.setReadOnly(True)
+		#self.le_Penjualan_InvoicePenjualan_Input_HargaJual.setReadOnly(True)
+		#self.le_Penjualan_InvoicePenjualan_Input_TotalHarga.setReadOnly(True)
+		#self.le_Penjualan_InvoicePenjualan_Input_NamaProduk.setReadOnly(True)
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_IP)
 		
 	def Penjualan_GoTo_Invoice_Batal(self):
@@ -431,48 +435,42 @@ class Penjualan(object):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PENGIRIMANB)
 	
 	def Penjualan_GoTo_PiutangUsaha(self):
-		self.tbl_Penjualan_Piutang.setColumnWidth(3,300) #perbesar kolom penerimaan
+		self.tbl_Penjualan_Piutang.setColumnWidth(1,250) #perbesar kolom penerimaan
 		self.tbl_Penjualan_Piutang.setColumnWidth(0,300) #perbesar kolom nama pelanggan
 		jumlahRow = self.tbl_Penjualan_Piutang.rowCount()
-		if jumlahRow != 0:
-			for x in range (0,jumlahRow+1):
-				self.tbl_Penjualan_Piutang.removeRow(x)
+		for x in range (0,jumlahRow):
+			self.tbl_Penjualan_Piutang.removeRow(x)
+		self.tbl_Penjualan_Piutang.setRowCount(0)
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PU)
-		query = "SELECT `kodePelanggan`, SUM(`jumlahPenerimaan`) FROM `gd_piutang` GROUP BY `kodePelanggan`"
+		query = "SELECT `kodePelanggan` FROM `gd_invoice_penjualan` GROUP BY `kodePelanggan`"
 		result = self.DatabaseRunQuery(query)
 		for a in range (0,len(result)):
 			kodePelanggan = str(result[a][0])
 			query = "SELECT * FROM `gd_nama_alamat` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"'"
 			nama = str(self.DatabaseRunQuery(query)[0][2])
-			query2 = "SELECT * FROM `gd_piutang` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"' GROUP BY `kodePelanggan`"
-			totalTagihan = self.DatabaseRunQuery(query2)[0][7]
-			piutangTerbayar = str(int(result[a][1]))
-			saldoPiutang = int(totalTagihan) - int(result[a][1])
 			self.tbl_Penjualan_Piutang.insertRow(a)
-			self.tbl_Penjualan_Piutang.setItem(a,0,QtGui.QTableWidgetItem(nama)) #nama
-			self.tbl_Penjualan_Piutang.setItem(a,4,QtGui.QTableWidgetItem(str(saldoPiutang))) #saldoPiutang
-			self.tbl_Penjualan_Piutang.setItem(a,3,QtGui.QTableWidgetItem(piutangTerbayar)) #jumlah diterima
-		query = "SELECT SUM(jumlahTagihan) FROM `gd_piutang` GROUP BY `kodePelanggan`"
-		self.lb_Penjualan_Piutang_TotalNilai.setText("Rp "+str(int(self.DatabaseRunQuery(query)[0][0])))
+			self.tbl_Penjualan_Piutang.setItem(a,0,QtGui.QTableWidgetItem(kodePelanggan)) #kode
+			self.tbl_Penjualan_Piutang.setItem(a,1,QtGui.QTableWidgetItem(nama)) #nama
 		
 	def Penjualan_GoTo_PiutangUsaha_Rincian(self):
 		currentRow = self.tbl_Penjualan_Piutang.currentRow()
-		nama = str(self.tbl_Penjualan_Piutang.item(currentRow,0).text())
+		nama = str(self.tbl_Penjualan_Piutang.item(currentRow,1).text())
 		query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
 		kodePelanggan = str(self.DatabaseRunQuery(query)[0][1])
 		jumlahRow = self.tbl_Penjualan_RincianPiutang.rowCount()
 		if jumlahRow != 0:
 			for x in range (0,jumlahRow):
 				self.tbl_Penjualan_RincianPiutang.removeRow(x)
+		self.tbl_Penjualan_RincianPiutang.setRowCount(0)
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_RPU)
 		self.lb_Penjualan_RincianPiutang_title_nama.setText(nama)
-		query = "SELECT * FROM `gd_piutang` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"' GROUP BY `noInvoice`"
+		query = "SELECT * FROM `gd_invoice_penjualan` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"'"
 		result = self.DatabaseRunQuery(query)
 		print result
 		for a in range (0,len(result)):
 			self.tbl_Penjualan_RincianPiutang.insertRow(a)
-			self.tbl_Penjualan_RincianPiutang.setItem(a,0,QtGui.QTableWidgetItem(str(result[a][3])))
-			self.tbl_Penjualan_RincianPiutang.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][1])))
+			self.tbl_Penjualan_RincianPiutang.setItem(a,0,QtGui.QTableWidgetItem(str(result[a][4]))) #tanggal
+			self.tbl_Penjualan_RincianPiutang.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][1]))) #no invoice
 		return
 	
 	def Penjualan_GoTo_PembayaranPiutang(self):
@@ -523,6 +521,24 @@ class Penjualan(object):
 		pass
 	
 	def Penjualan_GoTo_UangMuka(self):
+		jumlahRow = self.tbl_Penjualan_UangMuka.rowCount()
+		if jumlahRow != 0:
+			for x in range (0,jumlahRow):
+				self.tbl_Penjualan_UangMuka.removeRow(x)
+		query = "SELECT * FROM `gd_uang_muka`"
+		result = self.DatabaseRunQuery(query)
+		jumData = len(result)
+		for a in range(0,jumData):
+			self.tbl_Penjualan_UangMuka.insertRow(a)
+			self.tbl_Penjualan_UangMuka.setItem(a,0,QtGui.QTableWidgetItem(str(a+1))) #no
+			self.tbl_Penjualan_UangMuka.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][1]))) #no ref
+			self.tbl_Penjualan_UangMuka.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][5]))) #pelanggan
+			self.tbl_Penjualan_UangMuka.setItem(a,3,QtGui.QTableWidgetItem(str(result[a][2]))) #tanggal
+			self.tbl_Penjualan_UangMuka.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][3]))) #catatan
+			self.tbl_Penjualan_UangMuka.setItem(a,5,QtGui.QTableWidgetItem(str(result[a][4]))) #jumlah
+			self.tbl_Penjualan_UangMuka.setItem(a,6,QtGui.QTableWidgetItem(str(result[a][6]))) #kas/bank
+		self.tbl_Penjualan_UangMuka.setColumnWidth(0,45)
+		self.tbl_Penjualan_UangMuka.setColumnWidth(2,250)
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_UM)
 		pass
 		
