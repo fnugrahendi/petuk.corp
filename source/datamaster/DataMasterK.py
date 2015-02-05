@@ -488,6 +488,10 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk):
 	def DataMaster_DataRekening(self):
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAREKENING)
 		
+		RekeningField = ["id", "noAkun", "namaAkun", "namaAliasAkun", "saldoAwal", "saldoSekarang", "isKas"]
+		def REK(flname):
+			return RekeningField.index(flname)
+		
 		#---got to clear table first
 		for r in range(0,self.tbl_DataMaster_DataRekening_Fcontent_LRekening.rowCount()+1):
 			self.tbl_DataMaster_DataRekening_Fcontent_LRekening.removeRow(r)
@@ -497,23 +501,25 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk):
 		result = self.DatabaseRunQuery(sql)
 		for row in range(0,len(result)):
 			self.tbl_DataMaster_DataRekening_Fcontent_LRekening.insertRow(row)
-			if (self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,0)==None):
-				item = QtGui.QTableWidgetItem()
-				#~ item.setColumnWidth(300)
-				self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 0, item)
-			if (self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,1)==None):
-				itema = QtGui.QTableWidgetItem()
-				self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 1, itema)
-			if (self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,2)==None):
-				itemb = QtGui.QTableWidgetItem()
-				self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, 2, itemb)
+			for xx in range(0,6):
+				if (self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,xx)==None):
+					item = QtGui.QTableWidgetItem()
+					self.tbl_DataMaster_DataRekening_Fcontent_LRekening.setItem(row, xx, item)
 			
 			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,0)
-			item.setText(result[row][1])
+			item.setText(str(result[row][REK("noAkun")]))
 			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,1)
-			item.setText(result[row][2])
+			item.setText(str(result[row][REK("namaAkun")]))
 			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,2)
-			item.setText(result[row][3])
+			item.setText(str(result[row][REK("namaAliasAkun")]))
+			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,3)
+			item.setText(str(result[row][REK("saldoAwal")]))
+			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,4)
+			item.setText(str(result[row][REK("saldoSekarang")]))
+			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,5)
+			if (result[row][REK("isKas")]>0):item.setText(str("v"))
+			else:item.setText(str(" "))
+			
 	
 		def _SetActiveIndex(a,b):
 			kode = str(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(a,0).text())
