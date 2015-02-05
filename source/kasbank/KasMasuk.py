@@ -67,7 +67,7 @@ class KasMasuk(object):
 		
 		TABLECOLUMNS = [
 						["Tanggal", "Kode Referensi",	"Catatan",	"Nilai",		"Nomor Akun Kas/Bank",	"Nomor Akun Sumber"],
-						["tanggal", "kodeTransaksi", 	"catatan",	"jumlahUang",	"noAkunKas",			"noAkunLain"]
+						["tanggal", "kodeTransaksi", 	"catatan",	"nilaiTotal",	"noAkunKas",			"noAkunLain"]
 						]
 		
 		#at first we clear the rows
@@ -111,9 +111,9 @@ class KasMasuk(object):
 			kode_default = "00000000"
 		else:
 			kode_default = str(int(result[0][0])+1)
-			while (len(kode_default)<8):
+			while (len(kode_default)<5):
 				kode_default = "0"+kode_default
-		kode_default = "CR" + kode_default
+		kode_default = "KM" + kode_default
 		self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.setText(kode_default)
 	
 	def KasBank_KasMasuk_Tambah_KodeCek(self,stuf=None):
@@ -126,9 +126,9 @@ class KasMasuk(object):
 				nilai = int(re.findall("\d+",kodeterlarang)[0])
 				nilai+=1
 				kodebaru = str(nilai)
-				while (len(kodebaru)<8):
+				while (len(kodebaru)<5):
 					kodebaru = "0"+kodebaru
-				kodebaru = "CR"+kodebaru
+				kodebaru = "KM"+kodebaru
 				kodeterlarang = kodebaru
 				result = self.DatabaseFetchResult(self.dbDatabase,"gd_kas_masuk","kodeTransaksi",kodeterlarang	)
 			self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.setText(kodebaru)
