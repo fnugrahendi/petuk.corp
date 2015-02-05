@@ -114,5 +114,7 @@ class Admin(object):
 			self.ListUser()
 		else:pass
 	
+	#~ def ListUser_Edit(self):
+		
 		
 		
