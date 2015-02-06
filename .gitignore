@@ -23,3 +23,4 @@ source/kasbank/img/
 *.spec
 *.7z
 *.grvz
+mysql/
