@@ -34,7 +34,7 @@ class Laporan(L_BukuBesar_DTJ):
 	def Laporan_BuktiBankMasuk(self,data):
 		
 		# Create an new Excel file and add a worksheet.
-		workbook = xlsxwriter.Workbook('merge_rich_string.xlsx')
+		workbook = xlsxwriter.Workbook(self.DataPath+"merge_rich_string.xlsx")
 		worksheet = workbook.add_worksheet()
 
 		# Set up some formats to use.
