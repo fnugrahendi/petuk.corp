@@ -1,17 +1,24 @@
 UIFILES = $(shell find * -maxdepth 2 -type f -name '*.ui')
+QRCFILES= $(shell find * -maxdepth 2 -type f -name '*.qrc')
 EXE = Garvin
 
 PYC = pyinstaller
 UIC = pyuic4
 RCC = pyrcc4
 SOURCES = $(UIFILES:.ui=.py)
+RESOURCES=$(QRCFILES:.qrc=._rc.py)
 
 %.py: %.ui
 	$(UIC)  $< -o $@
 
-all: $(SOURCES)
+%._rc.py: %.qrc
+	$(RCC) $< -o $(@:._rc.py=_rc.py)
+
+all: $(SOURCES) $(RESOURCES)
 	# Mbuh piye dadine kui mau wkwk
-	
+
+rcc: $(RESOURCES)
+
 clean: 
 	rm -f $(SOURCES)
 
