@@ -106,7 +106,8 @@ class Laporan(L_BukuBesar_DTJ):
 			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][2], formatBiasa)
 			worksheet.merge_range('D'+str(index)+':H'+str(index), result[x][6], formatBiasa)
 			worksheet.merge_range('I'+str(index)+':K'+str(index), result[x][3], formatBiasa)
-			
+		worksheet.merge_range('B'+str(index+1)+':H'+str(index+1), "TOTAL : ", formatBiasa)
+		worksheet.merge_range('I'+str(index+1)+':K'+str(index+1), "=SUM(I"+str(8)+":K"+str(index)+")", formatBiasa)
 		workbook.close()
 		return
 
