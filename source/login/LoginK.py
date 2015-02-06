@@ -31,7 +31,7 @@ class Login(Ui_fr_Main):
 		#-- password echo
 		self.LoginUI.le_Login_Password.setEchoMode(QtGui.QLineEdit.Password)
 		self.LoginUI.le_Login_Password_Confirm.setEchoMode(QtGui.QLineEdit.Password)
-		#-- confirm dihapus
+		#-- confirm password
 		self.LoginUI.lb_Login_Password_Confirm.hide()
 		self.LoginUI.le_Login_Password_Confirm.hide()
 		
@@ -53,9 +53,7 @@ class Login(Ui_fr_Main):
 		self.INDEX_ST_LOGIN = ["CONNECT","LOGIN","DATABASE"]
 		#--- end Login_init
 		
-		result = self.DatabaseRunQuery("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_user';")
-		self.Login_User_Field = list(itertools.chain.from_iterable(result))
-		
+		self.Login_Connect()
 	
 	def Login_Goto(self,room):
 		if (type(room)==str):
@@ -93,6 +91,7 @@ class Login(Ui_fr_Main):
 		self.Login_Goto("Database")
 		self.dbUser = "gd_user_akunting"
 		self.dbPassword = "nyungsep"
+		self.dbDatabase = "INFORMATION_SCHEMA" #-- mandatory, sql connect ask for database name, we open INFORMATION_SCHEMA database at first to escape the error
 		databases = self.DatabaseRunQuery("SHOW DATABASES")
 		for x in range(len(databases)):
 			if (str(databases[x][0]).find("gd_db_") != -1):
@@ -108,6 +107,11 @@ class Login(Ui_fr_Main):
 				pass
 	def Login_Database_SetDatabase(self,dbname):
 		self.dbDatabase = dbname
+		
+		#--- recalculate users, super Mandatory!
+		result = self.DatabaseRunQuery("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_user';")
+		self.Login_User_Field = list(itertools.chain.from_iterable(result))
+		
 		self.Login_Login()
 	
 	def Login_SaveLastLogin(self):

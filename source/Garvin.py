@@ -41,6 +41,13 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			exit(0)
 			return True
         
+		#-- data
+		self.Path = str(__file__).replace("Garvin.py","").replace("\\","/")
+		self.DataPath = self.Path+"../data/"
+		print self.DataPath
+		if not os.path.exists(self.DataPath): os.makedirs(self.DataPath)
+		
+		
 		self.SQLtoRun = []
 		self.dbHost = "127.0.0.1"
 		self.dbPort = 44559
@@ -49,18 +56,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		self.dbUser = "gd_user_akunting"
 		self.Login_init()
 		
-		#--- kalau pindah tab, set semua stackedWidget ke index 0 (suppose to be _Menu index)
-		self.tabWidget.currentChanged.connect(self.ResetRooms)
-		#--- startup program aswell, stackedwidget room should be on Menu Index 
-		self.ResetRooms()
-		#--- startup program, set semua datetimeedit ke waktu skrg		
-		self.GarvinSetDate(self)
 		
-		#-- data
-		self.Path = str(__file__).replace("Garvin.py","").replace("\\","/")
-		self.DataPath = self.Path+"../data/"
-		print self.DataPath
-		if not os.path.exists(self.DataPath): os.makedirs(self.DataPath)
 		#--- check if garvin is recent version
 		#~ self.GarvinCheckIsUpdated()
 	
@@ -72,6 +68,13 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		self.Pembelian__init()
 		self.KasBank_init()
 		
+		#--- kalau pindah tab, set semua stackedWidget ke index 0 (suppose to be _Menu index)
+		self.tabWidget.setCurrentIndex(0)
+		self.tabWidget.currentChanged.connect(self.ResetRooms)
+		#--- startup program aswell, stackedwidget room should be on Menu Index 
+		self.ResetRooms()
+		#--- startup program, set semua datetimeedit ke waktu skrg		
+		self.GarvinSetDate(self)
 	
 	def Popup_NamaAlamat_Tabel(self,namaTabel,row):
 		data = []
