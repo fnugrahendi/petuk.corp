@@ -14,7 +14,7 @@ RESOURCES=$(QRCFILES:.qrc=._rc.py)
 %._rc.py: %.qrc
 	$(RCC) $< -o $(@:._rc.py=_rc.py)
 
-all: $(SOURCES) $(RESOURCES)
+all: $(SOURCES)
 	# Mbuh piye dadine kui mau wkwk
 
 rcc: $(RESOURCES)
