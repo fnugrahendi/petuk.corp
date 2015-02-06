@@ -100,7 +100,7 @@ margin-top: 2px; /* make non-selected tabs look smaller */
 }</string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>4</number>
          </property>
          <widget class="QWidget" name="tab_DataMaster">
           <attribute name="title">
@@ -584,7 +584,7 @@ QPushButton::hover{
                            <string/>
                           </property>
                           <property name="icon">
-                           <iconset resource="DataMaster.qrc">
+                           <iconset>
                             <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                           </property>
                          </widget>
@@ -2917,7 +2917,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                         <string/>
                        </property>
                        <property name="icon">
-                        <iconset resource="DataMaster.qrc">
+                        <iconset>
                          <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                        </property>
                       </widget>
@@ -3597,7 +3597,7 @@ QPushButton::hover{
                            <string/>
                           </property>
                           <property name="icon">
-                           <iconset resource="DataMaster.qrc">
+                           <iconset>
                             <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                           </property>
                          </widget>
@@ -6174,7 +6174,34 @@ min-height:23px;</string>
                   <enum>QFrame::Raised</enum>
                  </property>
                  <layout class="QGridLayout" name="gl_Penjualan_Piutang_tabel">
-                  <item row="1" column="0" colspan="2">
+                  <item row="2" column="1">
+                   <widget class="QLabel" name="lb_Penjualan_Piutang_Total">
+                    <property name="text">
+                     <string>Total :</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="2">
+                   <widget class="QLabel" name="lb_Penjualan_Piutang_TotalNilai">
+                    <property name="text">
+                     <string>Rp 000.000.000.000,00</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <spacer name="hs_Penjualan_Piutang_atas">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item row="1" column="0" colspan="3">
                    <widget class="QTableWidget" name="tbl_Penjualan_Piutang">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Maximum" vsizetype="MinimumExpanding">
@@ -6213,16 +6240,31 @@ min-height:23px;</string>
                      <number>0</number>
                     </property>
                     <property name="columnCount">
-                     <number>2</number>
+                     <number>5</number>
                     </property>
                     <column>
                      <property name="text">
-                      <string>Kode Pelanggan</string>
+                      <string>Pelanggan</string>
                      </property>
                     </column>
                     <column>
                      <property name="text">
-                      <string>Nama</string>
+                      <string>Kurs</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Debet</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Piutang Terbayar</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Saldo Piutang</string>
                      </property>
                     </column>
                    </widget>
@@ -7046,12 +7088,6 @@ min-height:23px;</string>
                     <property name="cornerButtonEnabled">
                      <bool>true</bool>
                     </property>
-                    <attribute name="horizontalHeaderVisible">
-                     <bool>false</bool>
-                    </attribute>
-                    <attribute name="verticalHeaderVisible">
-                     <bool>false</bool>
-                    </attribute>
                     <column>
                      <property name="text">
                       <string>No</string>

@@ -14,10 +14,11 @@
    <string>StackedWidget</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QFrame{border:0px;}</string>
+   <string notr="true">QFrame{border:0px;}
+QTableWidget{border-width:1px;border-color:rgb(180, 200, 220);border-style:solid;border-radius:0px;}</string>
   </property>
   <property name="currentIndex">
-   <number>1</number>
+   <number>3</number>
   </property>
   <widget class="QWidget" name="st_Menu">
    <layout class="QGridLayout" name="igr_KasBank_Menu">
@@ -299,12 +300,12 @@ background-image: url(:/Menu/img/KasKeluar1.png);
          </column>
          <column>
           <property name="text">
-           <string>Nomor Akun Kas/Bank</string>
+           <string>Nomor Akun Kas</string>
           </property>
          </column>
          <column>
           <property name="text">
-           <string>Nomor Akun Sumber</string>
+           <string>Penyetor</string>
           </property>
          </column>
         </widget>
@@ -922,17 +923,22 @@ background-image: url(:/Menu/img/KasKeluar1.png);
          </column>
          <column>
           <property name="text">
-           <string>Penerima</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Keterangan</string>
+           <string>Catatan</string>
           </property>
          </column>
          <column>
           <property name="text">
            <string>Nilai</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nomor Akun Kas</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Penerima</string>
           </property>
          </column>
         </widget>

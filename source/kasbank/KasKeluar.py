@@ -66,8 +66,8 @@ class KasKeluar(object):
 		CNILAI = 4
 		
 		TABLECOLUMNS = [
-						["Tanggal", "Kode Referensi", "Penerima", "Keterangan", "Nilai"],
-						["tanggal", "kodeTransaksi", "kodePenerima","catatan","nilaiTotal"]
+						["Tanggal", "Kode Referensi",	"Catatan",	"Nilai",		"Nomor Akun Kas/Bank",	"Penerima"],
+						["tanggal", "kodeTransaksi", 	"catatan",	"nilaiTotal",	"noAkunKas",			"kodePelanggan"]
 						]
 		
 		#at first we clear the rows
@@ -163,7 +163,7 @@ class KasKeluar(object):
 		else:
 			# --- edit mode
 			self.KasBankUI.le_KasKeluar_Tambah_Form_Nomor.setReadOnly(True)
-			self.KasBankUI.tb_KasKeluar_Tambah_Form_Penerima.setText(str(dataKasKeluar[fkm("kodePenerima")]))
+			self.KasBankUI.tb_KasKeluar_Tambah_Form_Penerima.setText(str(dataKasKeluar[fkm("kodePelanggan")]))
 			self.KasBankUI.tb_KasKeluar_Tambah_Form_NoAkun.setText(str(dataKasKeluar[fkm("noAkunKas")]))
 			self.KasBankUI.le_KasKeluar_Tambah_Form_Nomor.setText(str(dataKasKeluar[fkm("kodeTransaksi")]))
 			self.KasBankUI.le_KasKeluar_Tambah_Form_Catatan.setText(str(dataKasKeluar[fkm("catatan")]))
@@ -289,7 +289,7 @@ class KasKeluar(object):
 											str(self.KasBankUI.tbl_KasKeluar_Tambah.item(tablerow,CNILAI	).text())
 											]	)
 		self.DatabaseInsertReplace(self.dbDatabase,"gd_kas_keluar","kodeTransaksi",str(self.KasBankUI.le_KasKeluar_Tambah_Form_Nomor.text()),
-											["kodeTransaksi", "noAkunKas", "kodePenerima", "catatan", "tanggal", "nilaiTotal"],
+											["kodeTransaksi", "noAkunKas", "kodePelanggan", "catatan", "tanggal", "nilaiTotal"],
 											[
 												str(self.KasBankUI.le_KasKeluar_Tambah_Form_Nomor.text()),
 												str(self.KasBankUI.tb_KasKeluar_Tambah_Form_NoAkun.text()),

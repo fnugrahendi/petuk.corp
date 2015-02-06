@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'kasbank/ui_kasbank.ui'
 #
-# Created: Thu Feb  5 18:45:15 2015
+# Created: Fri Feb  6 10:48:54 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,7 +27,8 @@ class Ui_st_KasBank(object):
     def setupUi(self, st_KasBank):
         st_KasBank.setObjectName(_fromUtf8("st_KasBank"))
         st_KasBank.resize(777, 584)
-        st_KasBank.setStyleSheet(_fromUtf8("QFrame{border:0px;}"))
+        st_KasBank.setStyleSheet(_fromUtf8("QFrame{border:0px;}\n"
+"QTableWidget{border-width:1px;border-color:rgb(180, 200, 220);border-style:solid;border-radius:0px;}"))
         self.st_Menu = QtGui.QWidget()
         self.st_Menu.setObjectName(_fromUtf8("st_Menu"))
         self.igr_KasBank_Menu = QtGui.QGridLayout(self.st_Menu)
@@ -400,7 +401,7 @@ class Ui_st_KasBank(object):
         self.ivl_KasKeluar_Content.setObjectName(_fromUtf8("ivl_KasKeluar_Content"))
         self.tbl_KasKeluar = QtGui.QTableWidget(self.fr_KasKeluar_Content)
         self.tbl_KasKeluar.setObjectName(_fromUtf8("tbl_KasKeluar"))
-        self.tbl_KasKeluar.setColumnCount(5)
+        self.tbl_KasKeluar.setColumnCount(6)
         self.tbl_KasKeluar.setRowCount(0)
         item = QtGui.QTableWidgetItem()
         self.tbl_KasKeluar.setHorizontalHeaderItem(0, item)
@@ -412,6 +413,8 @@ class Ui_st_KasBank(object):
         self.tbl_KasKeluar.setHorizontalHeaderItem(3, item)
         item = QtGui.QTableWidgetItem()
         self.tbl_KasKeluar.setHorizontalHeaderItem(4, item)
+        item = QtGui.QTableWidgetItem()
+        self.tbl_KasKeluar.setHorizontalHeaderItem(5, item)
         self.ivl_KasKeluar_Content.addWidget(self.tbl_KasKeluar)
         self.ivl_KasKeluar.addWidget(self.fr_KasKeluar_Content)
         self.fr_KasKeluar_b = QtGui.QFrame(self.st_KasKeluar)
@@ -606,7 +609,7 @@ class Ui_st_KasBank(object):
         st_KasBank.addWidget(self.st_KasKeluar_Tambah)
 
         self.retranslateUi(st_KasBank)
-        st_KasBank.setCurrentIndex(1)
+        st_KasBank.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(st_KasBank)
 
     def retranslateUi(self, st_KasBank):
@@ -622,9 +625,9 @@ class Ui_st_KasBank(object):
         item = self.tbl_KasMasuk.horizontalHeaderItem(3)
         item.setText(_translate("st_KasBank", "Nilai", None))
         item = self.tbl_KasMasuk.horizontalHeaderItem(4)
-        item.setText(_translate("st_KasBank", "Nomor Akun Kas/Bank", None))
+        item.setText(_translate("st_KasBank", "Nomor Akun Kas", None))
         item = self.tbl_KasMasuk.horizontalHeaderItem(5)
-        item.setText(_translate("st_KasBank", "Nomor Akun Sumber", None))
+        item.setText(_translate("st_KasBank", "Penyetor", None))
         self.tb_KasMasuk_Buka.setText(_translate("st_KasBank", "Buka", None))
         self.tb_KasMasuk_Tambah.setText(_translate("st_KasBank", "Baru", None))
         self.tb_KasMasuk_Delete.setText(_translate("st_KasBank", "Hapus", None))
@@ -656,11 +659,13 @@ class Ui_st_KasBank(object):
         item = self.tbl_KasKeluar.horizontalHeaderItem(1)
         item.setText(_translate("st_KasBank", "Nomor Referensi", None))
         item = self.tbl_KasKeluar.horizontalHeaderItem(2)
-        item.setText(_translate("st_KasBank", "Penerima", None))
+        item.setText(_translate("st_KasBank", "Catatan", None))
         item = self.tbl_KasKeluar.horizontalHeaderItem(3)
-        item.setText(_translate("st_KasBank", "Keterangan", None))
-        item = self.tbl_KasKeluar.horizontalHeaderItem(4)
         item.setText(_translate("st_KasBank", "Nilai", None))
+        item = self.tbl_KasKeluar.horizontalHeaderItem(4)
+        item.setText(_translate("st_KasBank", "Nomor Akun Kas", None))
+        item = self.tbl_KasKeluar.horizontalHeaderItem(5)
+        item.setText(_translate("st_KasBank", "Penerima", None))
         self.tb_KasKeluar_Buka.setText(_translate("st_KasBank", "Buka", None))
         self.tb_KasKeluar_Tambah.setText(_translate("st_KasBank", "Baru", None))
         self.tb_KasKeluar_Delete.setText(_translate("st_KasBank", "Hapus", None))
