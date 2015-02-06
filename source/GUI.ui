@@ -100,7 +100,7 @@ margin-top: 2px; /* make non-selected tabs look smaller */
 }</string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="tab_DataMaster">
           <attribute name="title">
@@ -116,7 +116,7 @@ margin-top: 2px; /* make non-selected tabs look smaller */
 	}</string>
              </property>
              <property name="currentIndex">
-              <number>8</number>
+              <number>9</number>
              </property>
              <widget class="QWidget" name="st_DataMaster_Menu">
               <property name="styleSheet">
@@ -761,7 +761,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -790,7 +790,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -813,7 +813,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -856,7 +856,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -879,7 +879,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -902,7 +902,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>22</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -934,7 +934,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>22</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -966,7 +966,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -989,7 +989,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1012,7 +1012,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>22</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1273,7 +1273,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1296,7 +1296,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1319,7 +1319,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1342,7 +1342,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1365,7 +1365,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>100</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1403,7 +1403,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1426,7 +1426,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -2398,7 +2398,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                     <property name="minimumSize">
                      <size>
                       <width>200</width>
-                      <height>22</height>
+                      <height>24</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -2433,7 +2433,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                     <property name="minimumSize">
                      <size>
                       <width>500</width>
-                      <height>22</height>
+                      <height>24</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -2462,7 +2462,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                     <property name="minimumSize">
                      <size>
                       <width>500</width>
-                      <height>22</height>
+                      <height>24</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -2478,7 +2478,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                     <property name="minimumSize">
                      <size>
                       <width>200</width>
-                      <height>22</height>
+                      <height>24</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -2513,7 +2513,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                     <property name="minimumSize">
                      <size>
                       <width>200</width>
-                      <height>22</height>
+                      <height>26</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -3082,7 +3082,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3105,7 +3105,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3128,7 +3128,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3151,7 +3151,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3174,7 +3174,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3197,7 +3197,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>100</width>
-                         <height>22</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3485,8 +3485,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>250</width>
-                          <height>30</height>
+                          <width>332</width>
+                          <height>294</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -6898,7 +6898,10 @@ min-height:23px;</string>
                   <item row="7" column="1">
                    <widget class="QLineEdit" name="le_Penjualan_PembayaranPiutang_Baru_Nominal">
                     <property name="readOnly">
-                     <bool>true</bool>
+                     <bool>false</bool>
+                    </property>
+                    <property name="placeholderText">
+                     <string>Nominal yang dibayarkan</string>
                     </property>
                    </widget>
                   </item>
@@ -7286,7 +7289,7 @@ min-height:23px;</string>
                      </font>
                     </property>
                     <property name="text">
-                     <string>Pembayaran Piutang Usaha</string>
+                     <string>Pembayaran Uang Muka</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -7367,14 +7370,7 @@ min-height:23px;</string>
                   <item row="4" column="1">
                    <widget class="QLineEdit" name="le_Penjualan_UangMuka_Baru_JumlahUang">
                     <property name="placeholderText">
-                     <string>Nominal uang muka</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="6" column="1">
-                   <widget class="QLineEdit" name="le_Penjualan_UangMuka_Baru_AkunUangMuka">
-                    <property name="text">
-                     <string>21000040</string>
+                     <string>Nominal uang dibayarkan</string>
                     </property>
                    </widget>
                   </item>
@@ -7409,6 +7405,13 @@ min-height:23px;</string>
                    <widget class="QDateTimeEdit" name="dte_Penjualan_UangMuka_Baru_Tanggal">
                     <property name="calendarPopup">
                      <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="1">
+                   <widget class="QPushButton" name="tb_Penjualan_UangMuka_Baru_AkunUangMuka">
+                    <property name="text">
+                     <string>21000040</string>
                     </property>
                    </widget>
                   </item>
@@ -7479,6 +7482,227 @@ min-height:23px;</string>
                   </item>
                  </layout>
                 </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="st_Penjualan_JurnalMemorial">
+              <layout class="QVBoxLayout" name="verticalLayout_26">
+               <item>
+                <widget class="QFrame" name="fr_Penjualan_JurnalMemorial_Title">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_10">
+                  <item>
+                   <widget class="QLabel" name="lb_Penjualan_JurnalMemorial_Title">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Segoe UI Semilight</family>
+                      <pointsize>18</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Jurnal Memorial</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="lb_Penjualan_JurnalMemorial_keterangan">
+                 <property name="text">
+                  <string>pembayaran piutang melebihi total tagihan</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="fr_Penjualan_JurnalMemorial_Input">
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_10">
+                  <item row="4" column="1">
+                   <widget class="QLabel" name="lb_Penjualan_JurnalMemorial_Jumlah">
+                    <property name="text">
+                     <string>Jumlah</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="1">
+                   <widget class="QLabel" name="lb_Penjualan_JurnalMemorial_Realisasi">
+                    <property name="text">
+                     <string>Realisasi</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QLineEdit" name="le_Penjualan_JurnalMemorial_NoRef"/>
+                  </item>
+                  <item row="3" column="0">
+                   <spacer name="hs_Penjualan_JurnalMemorial_2">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLabel" name="lb_Penjualan_JurnalMemorial_NoRef">
+                    <property name="text">
+                     <string>No Ref/Bukti Memorial</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QLabel" name="lb_Penjualan_JurnalMemorial_Tanggal">
+                    <property name="text">
+                     <string>Tanggal</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="2">
+                   <widget class="QLineEdit" name="le_Penjualan_JurnalMemorial_Jumlah">
+                    <property name="readOnly">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="2">
+                   <widget class="QLineEdit" name="le_Penjualan_JurnalMemorial_Deskripsi"/>
+                  </item>
+                  <item row="5" column="2">
+                   <widget class="QLineEdit" name="le_Penjualan_JurnalMemorial_Realisasi"/>
+                  </item>
+                  <item row="3" column="3">
+                   <spacer name="hs_Penjualan_JurnalMemorial_1">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QLabel" name="lb_Penjualan_JurnalMemorial_Deskripsi">
+                    <property name="text">
+                     <string>Deskripsi</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="2">
+                   <widget class="QDateTimeEdit" name="dte_Penjualan_JurnalMemorial_Tanggal">
+                    <property name="calendarPopup">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="fr_Penjualan_JurnalMemorial_Tombol">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_11">
+                  <item>
+                   <spacer name="hs_Penjualan_JurnalMemorial_4">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="tb_Penjualan_JurnalMemorial_Simpan">
+                    <property name="text">
+                     <string>Simpan</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="tb_Penjualan_JurnalMemorial_Cetak">
+                    <property name="text">
+                     <string>Cetak</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="hs_Penjualan_JurnalMemorial_3">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <spacer name="verticalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </widget>
@@ -9734,7 +9958,7 @@ min-height:23px;</string>
      <x>0</x>
      <y>0</y>
      <width>870</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
