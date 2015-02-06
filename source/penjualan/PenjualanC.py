@@ -81,7 +81,7 @@ class Penjualan(object):
 		self.tb_Penjualan_UangMuka_Baru_Nama.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.tb_Penjualan_UangMuka_Baru_Nama))
 		self.tb_Penjualan_UangMuka_Baru_Akun.clicked.connect(functools.partial(self.Popup_Rekening,self.tb_Penjualan_UangMuka_Baru_Akun))
 		self.tb_Penjualan_UangMuka_Baru_AkunUangMuka.clicked.connect(functools.partial(self.Popup_Rekening, self.tb_Penjualan_UangMuka_Baru_AkunUangMuka))
-		self.tb_Penjualan_UangMuka_Baru_Simpan.clicked.connect()
+		self.tb_Penjualan_UangMuka_Baru_Simpan.clicked.connect(self.Penjualan_UangMuka_Simpan)
 		
 		self.INDEX_ST_PENJUALAN_MENU = 0
 		self.INDEX_ST_PENJUALAN_DI = 1
@@ -579,6 +579,7 @@ class Penjualan(object):
 		return
 		
 	def Penjualan_JurnalMemorial_Simpan(self):
+		#~ Baca input fields
 		
 		return
 	
@@ -587,7 +588,7 @@ class Penjualan(object):
 		if jumlahRow != 0:
 			for x in range (0,jumlahRow):
 				self.tbl_Penjualan_UangMuka.removeRow(x)
-		jumlahRow = self.tbl_Penjualan_UangMuka.rowCount()
+		self.tbl_Penjualan_UangMuka.setRowCount(0)
 		query = "SELECT * FROM `gd_uang_muka`"
 		result = self.DatabaseRunQuery(query)
 		jumData = len(result)
@@ -612,12 +613,13 @@ class Penjualan(object):
 	def Penjualan_UangMuka_Simpan(self):
 		#~ Baca input
 		noref = str(self.le_Penjualan_UangMuka_Baru_NoRef.text())	
-		kodePelanggan = str(tb_Penjualan_UangMuka_Baru_Nama.text())
+		kodePelanggan = str(self.tb_Penjualan_UangMuka_Baru_Nama.text())
 		tgl = str(self.dte_Penjualan_UangMuka_Baru_Tanggal.dateTime().toString("yyyy-MM-dd"))
 		catatan = str(self.le_Penjualan_UangMuka_Baru_Catatan.text())
 		nominal = str(self.le_Penjualan_UangMuka_Baru_JumlahUang.text())
 		noAkunUM = str(self.tb_Penjualan_UangMuka_Baru_AkunUangMuka.text())
 		noAkunKas = str(self.tb_Penjualan_UangMuka_Baru_Akun.text())
+		#~ Simpann
 		query = "INSERT INTO `gd_uang_muka` "+\
 			"(`noReferensi`, `tanggal`, `catatan`, `jumlahUang`, `kodePelanggan`, `noAkunKas`, `noAkunUangMuka`) "+\
 			"VALUES ('"+noref+"', '"+tgl+"','"+catatan+"', '"+nominal+"', '"+kodePelanggan+"', '"+noAkunKas+"', '"+noAkunUM+"')"
