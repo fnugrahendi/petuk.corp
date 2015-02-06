@@ -11,6 +11,7 @@ import itertools
 import re
 from datetime import datetime
 import md5 #-- hashing buat password
+from subprocess import Popen #-- bila server adalah komputer ini sendiri, diimport disini supaya diikutkan pada binary compilation
 
 from login_ui import  Ui_fr_Main
 from Admin import Admin
@@ -93,6 +94,18 @@ class Login(Ui_fr_Main):
 		self.dbPassword = "nyungsep"
 		self.dbDatabase = "INFORMATION_SCHEMA" #-- mandatory, sql connect ask for database name, we open INFORMATION_SCHEMA database at first to escape the error
 		databases = self.DatabaseRunQuery("SHOW DATABASES")
+		if (databases==None) or (databases==[]):
+			self.DataMaster_Popup("Server belum menjalankan mesin database",self.DataMaster_None)
+			
+#---=============================================================-------
+			#--- kalau server adalah komputer ini sendiri!
+			if (self.dbHost=="127.0.0.1"):
+				print "dbHost is local, Should run the mysql at this state"
+				mysqlpath = self.Path+"../mysql/mysql5.6.12/bin/mysqld --port="+str(self.dbPort)
+				Popen(mysqlpath)
+			return
+			
+			
 		for x in range(len(databases)):
 			if (str(databases[x][0]).find("gd_db_") != -1):
 				tb_data = self.LoginUI.scontent_Database_List.findChild(QtGui.QPushButton,"dtb_Login_Database_List"+str(x))
@@ -104,6 +117,7 @@ class Login(Ui_fr_Main):
 					tb_data.clicked.connect(functools.partial(self.Login_Database_SetDatabase,databases[x][0]))
 			else:
 				#--- create database baru 
+				#~ self.DataMaster_Popup("Belum ada data pada server ini.",self.DataMaster_None)
 				pass
 	def Login_Database_SetDatabase(self,dbname):
 		self.dbDatabase = dbname
@@ -203,6 +217,7 @@ class Login(Ui_fr_Main):
 	def Login_Done(self):
 		""" done from login, exit the login frame"""
 		self.fr_Login_Frame.close()
+		self.db.close() #--- Mandatory! select information schema ditutup
 		self.GarvinInit()
 	
 	def Login_Admin(self):
