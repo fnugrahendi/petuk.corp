@@ -43,6 +43,7 @@ class Penjualan(object):
 		self.tbl_Penjualan_Invoice_TambahBarang.cellChanged.connect(self.Penjualan_Invoice_TambahBarang_TotalHarga)
 		self.tbl_Penjualan_Piutang.cellDoubleClicked.connect(self.Penjualan_GoTo_PiutangUsaha_Rincian)
 		self.tbl_Penjualan_RincianPiutang.cellDoubleClicked.connect(self.Penjualan_GoTo_PembayaranPiutang)
+		self.tbl_Penjualan_DaftarInvoice.cellDoubleClicked.connect(self.Penjualan_GoTo_Invoice_Rincian)
 		
 		#Tombol&Sinyal pada Halaman OrderPenjualan
 		self.tb_Penjualan_OrderPenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -491,6 +492,7 @@ class Penjualan(object):
 		if jumlahRow != 0:
 			for x in range (0,jumlahRow):
 				self.tbl_Penjualan_PembayaranPiutang.removeRow(x)
+		self.tbl_Penjualan_PembayaranPiutang.setRowCount(0)
 		for a in range (0,len(result)):
 			self.tbl_Penjualan_PembayaranPiutang.insertRow(a)
 			self.tbl_Penjualan_PembayaranPiutang.setItem(a,0,QtGui.QTableWidgetItem(str(result[a][2]))) #no ref
@@ -533,6 +535,7 @@ class Penjualan(object):
 		if jumlahRow != 0:
 			for x in range (0,jumlahRow):
 				self.tbl_Penjualan_UangMuka.removeRow(x)
+		jumlahRow = self.tbl_Penjualan_UangMuka.rowCount()
 		query = "SELECT * FROM `gd_uang_muka`"
 		result = self.DatabaseRunQuery(query)
 		jumData = len(result)
