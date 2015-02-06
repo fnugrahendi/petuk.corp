@@ -535,12 +535,12 @@ class Penjualan(object):
 		tgl = str(self.dte_Penjualan_PembayaranPiutang_Baru_Tanggal.dateTime().toString("yyyy-MM-dd"))
 		nama = str(self.le_Penjualan_PembayaranPiutang_Baru_Nama.text())
 		query = "SELECT `kodePelanggan` FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
-		kodePelanggan = self.DatabaseRunQuery(query)[0]
+		kodePelanggan = str(self.DatabaseRunQuery(query)[0][0])
 		catatan = str(self.le_Penjualan_PembayaranPiutang_Baru_Catatan.text())
 		jumlahPenerimaan = str(self.le_Penjualan_PembayaranPiutang_Baru_Nominal.text())
 		jumlahPenerimaan = int(jumlahPenerimaan)
 		noAkunKas = str(self.tb_Penjualan_PembayaranPiutang_Baru_Akun.text())
-		noAkunPiutang = 13000002
+		noAkunPiutang = "13000002"
 		query = "SELECT `jumlahTagihan` FROM `gd_piutang` WHERE `noInvoice` LIKE '"+noInvoice+"'"
 		jumlahTagihan = self.DatabaseRunQuery(query)[0][0]
 		query = "SELECT SUM(`jumlahPenerimaan`) FROM `gd_piutang` WHERE `noInvoice` LIKE '"+noInvoice+"'"
@@ -548,27 +548,31 @@ class Penjualan(object):
 		#saldoPembayaran = int(saldoPembayaran)
 		saldoPembayaran = saldoPembayaran + jumlahPenerimaan
 		print saldoPembayaran
-		print type(kodePelanggan)
 		#~ Cek lebih atau nggak
 		if (saldoPembayaran>jumlahTagihan):
 			sisa = saldoPembayaran - jumlahTagihan
 			dipakai = jumlahPenerimaan - sisa
 			#~ Simpan yang dipakai
 			query_insert = "INSERT INTO `gd_piutang` (`noInvoice`,`noReferensi`,`tanggal`,`kodePelanggan`,`catatan`,`jumlahPenerimaan`,`jumlahTagihan`,`noAkunKas`,`noAkunPiutang`)"+\
-				"VALUES ('"+noInvoice+"','"+noRef+"','"+tgl+"','"+kodePelanggan+"','"+catatan+"','"+dipakai+"','"+jumlahTagihan+"','"+noAkunKas+"','"+noAkunPiutang+"')"
-			self.DatabaseRunQuery(query_insert)
+				"VALUES ('"+noInvoice+"','"+noRef+"','"+tgl+"','"+kodePelanggan+"','"+catatan+"','"+str(dipakai)+"','"+str(jumlahTagihan)+"','"+noAkunKas+"','"+noAkunPiutang+"')"
+			print query_insert
+			print "\ngoto jurnal"
+			#self.DatabaseRunQuery(query_insert)
 			self.Penjualan_GoTo_JurnalMemorial(sisa)
 		else:
 			query_insert = "INSERT INTO `gd_piutang` (`noInvoice`,`noReferensi`,`tanggal`,`kodePelanggan`,`catatan`,`jumlahPenerimaan`,`jumlahTagihan`,`noAkunKas`,`noAkunPiutang`)"+\
-				"VALUES ('"+noInvoice+"','"+noRef+"','"+tgl+"','"+kodePelanggan+"','"+catatan+"','"+jumlahPenerimaan+"','"+jumlahTagihan+"','"+noAkunKas+"','"+noAkunPiutang+"')"
-			self.DatabaseRunQuery(query_insert)
-		self.Penjualan_GoTo_PembayaranPiutang()
+				"VALUES ('"+noInvoice+"','"+noRef+"','"+tgl+"','"+kodePelanggan+"','"+catatan+"','"+str(jumlahPenerimaan)+"','"+str(jumlahTagihan)+"','"+noAkunKas+"','"+noAkunPiutang+"')"
+			print query_insert
+			print "nothing happened"
+			self.Penjualan_GoTo_PembayaranPiutang()
+			#self.DatabaseRunQuery(query_insert)
 		pass
 	
 	def Penjualan_GoTo_JurnalMemorial(self,sisa):
 		self.le_Penjualan_JurnalMemorial_Jumlah.setText(str(sisa))
+		print "this is jurnal"
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_JM)
-		pass
+		return
 	
 	def Penjualan_GoTo_UangMuka(self):
 		jumlahRow = self.tbl_Penjualan_UangMuka.rowCount()
