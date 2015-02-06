@@ -34,7 +34,7 @@ class Laporan(L_BukuBesar_DTJ):
 	def Laporan_BuktiBankMasuk(self,data):
 		
 		# Create an new Excel file and add a worksheet.
-		workbook = xlsxwriter.Workbook('merge_rich_string.xlsx')
+		workbook = xlsxwriter.Workbook(self.DataPath+"merge_rich_string.xlsx")
 		worksheet = workbook.add_worksheet()
 
 		# Set up some formats to use.
@@ -71,6 +71,29 @@ class Laporan(L_BukuBesar_DTJ):
 										   'border': 1,
 										   'font_size':'12'})
 
+		formatTotal = workbook.add_format({'align': 'right',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'font_size':'12'})
+
+		formatTerbilang = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'right':0,
+										   'font_size':'12'})
+
+		formatAngkaTerbilang = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'left':0,
+										   'font_size':'12'})
+
+		formatJudulTandaTangan = workbook.add_format({'align': 'center',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'bold':'true',
+										   'font_size':'12'})
+
 		# We can only write simple types to merged ranges so we write a blank string.
 		worksheet.merge_range('D2:H2', "BUKTI BANK", formatJudul)
 		worksheet.write(1,8, 'Nomor', formatNoTgl)
@@ -81,10 +104,11 @@ class Laporan(L_BukuBesar_DTJ):
 
 		sql = "SELECT * FROM `"+self.dbDatabase+"`.`gd_bank_masuk` "
 		result = self.DatabaseRunQuery(sql)
+		#durung digawe ben bisa pilihan
 		kodeTransaksi = result[0][1];
 		
-		worksheet.write(1,9, ':'+kodeTransaksi, formatNoTgl)
-		worksheet.write(2,9, ':', formatNoTgl)
+		worksheet.write(1,9, ': '+kodeTransaksi, formatNoTgl)
+		worksheet.write(2,9, ': '+(result[0][2].strftime("%d-%m-%Y")), formatNoTgl)
 
 		worksheet.merge_range('D3:H3', "BANK MASUK", formatSubJudul)
 		worksheet.merge_range('B5:K6', "Diberikan Kepada : ", formatBeriTerima)
@@ -99,14 +123,38 @@ class Laporan(L_BukuBesar_DTJ):
 		#~ worksheet.write_formula('A'+str(ax+1),'=SUM('+'A'+str(awal)+':'+'A'+str(ax)+')')
 		
 		sql = "SELECT * FROM `"+self.dbDatabase+"`.`gd_detail_bank_masuk` JOIN `gd_rekening_jurnal` ON `gd_rekening_jurnal`.`noAkun` LIKE `gd_detail_bank_masuk`.`noAkunDetail` WHERE kodeTransaksi LIKE '"+kodeTransaksi+"'"
-		print sql
+		
 		result = self.DatabaseRunQuery(sql)
+		total = 0;
+		
 		for x in range(0,len(result)):
 			index = x+1+7
 			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][2], formatBiasa)
 			worksheet.merge_range('D'+str(index)+':H'+str(index), result[x][6], formatBiasa)
 			worksheet.merge_range('I'+str(index)+':K'+str(index), result[x][3], formatBiasa)
-			
+			total = total +  int(result[x][3])
+		worksheet.merge_range('B'+str(index+1)+':H'+str(index+1), "TOTAL : ", formatTotal)
+		worksheet.merge_range('I'+str(index+1)+':K'+str(index+1), "=SUM(I"+str(8)+":K"+str(index)+")", formatBiasa)
+		
+		worksheet.merge_range('B'+str(index+2)+':C'+str(index+2), "Terbilang", formatTerbilang)
+		worksheet.merge_range('D'+str(index+2)+':K'+str(index+2), ": "+self.Terbilang(total), formatAngkaTerbilang)
+		
+		worksheet.merge_range('B'+str(index+3)+':C'+str(index+3), "Cheque/Giro", formatTerbilang)
+		worksheet.merge_range('D'+str(index+3)+':K'+str(index+3), ":", formatAngkaTerbilang)
+				
+		worksheet.merge_range('B'+str(index+4)+':C'+str(index+4), "Pembukuan", formatJudulTandaTangan)
+		worksheet.merge_range('D'+str(index+4)+':E'+str(index+4), "Keuangan", formatJudulTandaTangan)
+		worksheet.merge_range('F'+str(index+4)+':G'+str(index+4), "Diketahui", formatJudulTandaTangan)
+		worksheet.merge_range('H'+str(index+4)+':I'+str(index+4), "Disetujui", formatJudulTandaTangan)
+		worksheet.merge_range('J'+str(index+4)+':K'+str(index+4), "Penerima", formatJudulTandaTangan)
+				
+		worksheet.merge_range('B'+str(index+5)+':C'+str(index+9), "", formatJudulTandaTangan)
+		worksheet.merge_range('D'+str(index+5)+':E'+str(index+9), "", formatJudulTandaTangan)
+		worksheet.merge_range('F'+str(index+5)+':G'+str(index+9), "", formatJudulTandaTangan)
+		worksheet.merge_range('H'+str(index+5)+':I'+str(index+9), "", formatJudulTandaTangan)
+		worksheet.merge_range('J'+str(index+5)+':K'+str(index+9), "", formatJudulTandaTangan)
+		
+		
 		workbook.close()
 		return
 
