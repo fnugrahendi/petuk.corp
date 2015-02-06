@@ -117,44 +117,35 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk):
 		
 		self.tb_DataMaster_DataCommon_Tutup.clicked.connect(functools.partial(self.DataMaster_Goto,self.INDEX_ST_DATAMASTER_MENU))
 		
-		self.initDatabase()
-		cursor = self.db.cursor()
 		#Get Field gd_nama_alamat
 		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_nama_alamat';"
-		cursor.execute(sql)
-		result = cursor.fetchall()
+		result = self.DatabaseRunQuery(sql)
 		self.DataMaster_DataNamaAlamat_Field = list(itertools.chain.from_iterable(result))
 		#Get Field gd_data_produk
 		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_data_produk';"
-		cursor.execute(sql)
-		result = cursor.fetchall()
+		result = self.DatabaseRunQuery(sql)
 		self.DataMaster_DataProduk_Field = list(itertools.chain.from_iterable(result))
 		#Get Field gd_data_pajak
 		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_data_pajak';"
-		cursor.execute(sql)
-		result = cursor.fetchall()
+		result = self.DatabaseRunQuery(sql)
 		self.DataMaster_DataPajak_Field = list(itertools.chain.from_iterable(result))
 		#Get Field gd_proyek
 		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_proyek';"
-		cursor.execute(sql)
-		result = cursor.fetchall()
+		result = self.DatabaseRunQuery(sql)
 		self.DataMaster_DataProyek_Field = list(itertools.chain.from_iterable(result))
 		#Get Field gd_satuan_pengukuran
 		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_satuan_pengukuran';"
-		cursor.execute(sql)
-		result = cursor.fetchall()
+		result = self.DatabaseRunQuery(sql)
 		self.DataMaster_DataSatuanPengukuran_Field = list(itertools.chain.from_iterable(result))
 		#Get Field gd_rekening_jurnal
 		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_rekening_jurnal';"
-		cursor.execute(sql)
-		result = cursor.fetchall()
+		result = self.DatabaseRunQuery(sql)
 		self.DataMaster_DataRekening_Field = list(itertools.chain.from_iterable(result))
 		#Get Field gd_rekening_jurnal
 		sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_data_departemen';"
-		cursor.execute(sql)
-		result = cursor.fetchall()
+		result = self.DatabaseRunQuery(sql)
 		self.DataMaster_DataDepartemen_Field = list(itertools.chain.from_iterable(result))
-		self.db.close()
+		
 		
 		self.DataMaster_CommonRoom_cleared = 0
 		
