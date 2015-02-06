@@ -114,17 +114,22 @@ QTableWidget{border-width:1px;border-color:rgb(180, 200, 220);border-style:solid
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
-background-image: url(:/Menu/img/KasMasuk0.png);
+	background-color: rgb(248, 241, 243);
 border-width:1px;
 border-color:rgb(150, 137, 188);
-border-style:outset;border-radius:5px;
+border-style:outset;border-radius:8px;
+font-family:Helvetica;
+font-size:16pt;
+font-weight:bold;
+color:rgb(80,80,80);
 }
 QPushButton:hover{
-background-image: url(:/Menu/img/KasMasuk1.png);
+	background-color: rgb(237, 244, 236);
+color:rgb(0,0,0);
  }</string>
        </property>
        <property name="text">
-        <string/>
+        <string>Kas Masuk</string>
        </property>
       </widget>
       <widget class="QPushButton" name="tb_Menu_KasKeluar">
@@ -141,17 +146,86 @@ background-image: url(:/Menu/img/KasMasuk1.png);
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
-background-image: url(:/Menu/img/KasKeluar0.png);
+	background-color: rgb(248, 241, 243);
 border-width:1px;
 border-color:rgb(150, 137, 188);
-border-style:outset;border-radius:5px;
+border-style:outset;border-radius:8px;
+font-family:Helvetica;
+font-size:16pt;
+font-weight:bold;
+color:rgb(80,80,80);
 }
 QPushButton:hover{
-background-image: url(:/Menu/img/KasKeluar1.png);
+	background-color: rgb(237, 244, 236);
+color:rgb(0,0,0);
  }</string>
        </property>
        <property name="text">
-        <string/>
+        <string>Kas Keluar</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="tb_Menu_BankMasuk">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>140</y>
+         <width>101</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	background-color: rgb(248, 241, 243);
+border-width:1px;
+border-color:rgb(150, 137, 188);
+border-style:outset;border-radius:8px;
+font-family:Helvetica;
+font-size:16pt;
+font-weight:bold;
+color:rgb(80,80,80);
+}
+QPushButton:hover{
+	background-color: rgb(237, 244, 236);
+color:rgb(0,0,0);
+ }</string>
+       </property>
+       <property name="text">
+        <string>Bank Masuk</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="tb_Menu_BankKeluar">
+       <property name="geometry">
+        <rect>
+         <x>330</x>
+         <y>140</y>
+         <width>101</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+	background-color: rgb(248, 241, 243);
+border-width:1px;
+border-color:rgb(150, 137, 188);
+border-style:outset;border-radius:8px;
+font-family:Helvetica;
+font-size:16pt;
+font-weight:bold;
+color:rgb(80,80,80);
+}
+QPushButton:hover{
+	background-color: rgb(237, 244, 236);
+color:rgb(0,0,0);
+ }</string>
+       </property>
+       <property name="text">
+        <string>Bank Keluar</string>
        </property>
       </widget>
      </widget>
@@ -1430,6 +1504,1279 @@ background-image: url(:/Menu/img/KasKeluar1.png);
     </item>
    </layout>
   </widget>
+  <widget class="QWidget" name="st_BankMasuk">
+   <layout class="QVBoxLayout" name="ivl_BankMasuk">
+    <item>
+     <widget class="QFrame" name="fr_BankMasuk_t">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="ihl_BankMasuk_t">
+       <item>
+        <widget class="QLabel" name="lb_BankMasuk_Judul">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>300</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Bank Masuk</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="hs_BankMasuk_t_s">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>226</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="le_BankMasuk_Search">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="placeholderText">
+          <string>Type to search...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="fr_BankMasuk_Content">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="ivl_BankMasuk_Content">
+       <item>
+        <widget class="QTableWidget" name="tbl_BankMasuk">
+         <column>
+          <property name="text">
+           <string>Tanggal</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nomor Referensi</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Catatan</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nilai</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nomor Akun Bank</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Penyetor</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="fr_BankMasuk_b">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="ihl_BankMasuk_b">
+       <item>
+        <widget class="QPushButton" name="tb_BankMasuk_Buka">
+         <property name="text">
+          <string>Buka</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="sp_BankMasuk_b_">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_BankMasuk_Tambah">
+         <property name="text">
+          <string>Baru</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_BankMasuk_Delete">
+         <property name="text">
+          <string>Hapus</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="somespaces_pyuic_will_just_ignore">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>495</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_BankMasuk_Tutup">
+         <property name="text">
+          <string>Tutup</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="st_BankMasuk_Tambah">
+   <layout class="QVBoxLayout" name="ivl_BankMasuk_Tambah">
+    <item>
+     <widget class="QFrame" name="fr_BankMasuk_Tambah_T">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="lb_BankMasuk_Judul_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>300</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>+Bank Masuk</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="hs_BankMasuk">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>432</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="fr_BankMasuk_Tambah_Form">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>1</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:23px;}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="3" column="0">
+        <widget class="QLabel" name="lb_BankMasuk_Tambah_Form_Tanggal">
+         <property name="text">
+          <string>Tanggal :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QPushButton" name="tb_BankMasuk_Tambah_Form_Penyetor">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>-</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="6">
+        <spacer name="hs_BankMasuk_Tambah_Form_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="6">
+        <spacer name="hs_BankMasuk_Tambah_Form">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="2">
+        <widget class="QPushButton" name="tb_BankMasuk_Tambah_Form_NoAkun">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>-</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="5" colspan="2">
+        <widget class="QLineEdit" name="le_BankMasuk_Tambah_Form_Catatan">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>500</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="lb_BankMasuk_Tambah_Form_NoAkun">
+         <property name="text">
+          <string>Akun Bank :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="lb_BankMasuk_Tambah_Form_Penyetor">
+         <property name="text">
+          <string>Dari :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5">
+        <widget class="QLabel" name="lb_BankMasuk_Tambah_Form_Nilai">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Rp 0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="4">
+        <widget class="QLabel" name="lb_BankMasuk_Tambah_Form_LabelNilai">
+         <property name="text">
+          <string>Besar Total :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="4">
+        <widget class="QLabel" name="lb_BankMasuk_Tambah_Form_Catatan">
+         <property name="text">
+          <string>Catatan :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="5">
+        <widget class="QLineEdit" name="le_BankMasuk_Tambah_Form_Nomor">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QLabel" name="lb_BankMasuk_Tambah_Form_Nomor">
+         <property name="text">
+          <string>Nomor Referensi :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <spacer name="hs_BankMasuk_Tambah_Form_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Maximum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="2">
+        <widget class="QDateTimeEdit" name="dte_BankMasuk_Tambah_Form_Tanggal">
+         <property name="calendarPopup">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="fr_BankMasuk_Tambah_Content">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="ivl_BankMasuk_Tambah_Content">
+       <item>
+        <widget class="QTableWidget" name="tbl_BankMasuk_Tambah">
+         <column>
+          <property name="text">
+           <string>Nomor Akun</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nama Akun</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nilai</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="fr_BankMasuk_Tambah_B">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="ihl_BankMasuk_Tambah_B">
+       <item>
+        <widget class="QPushButton" name="tb_BankMasuk_Tambah_TambahBaris">
+         <property name="text">
+          <string>Tambah Baris</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_BankMasuk_Tambah_HapusBaris">
+         <property name="text">
+          <string>Hapus Baris</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="hs_BankMasuk_Tambah_B_HSraceto">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>374</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_BankMasuk_Tambah_Simpan">
+         <property name="text">
+          <string>Simpan</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_BankMasuk_Tambah_Batal">
+         <property name="text">
+          <string>Batal</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="st_BankKeluar">
+   <layout class="QVBoxLayout" name="ivl_BankKeluar">
+    <item>
+     <widget class="QFrame" name="fr_BankKeluar_t">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="ihl_BankKeluar_t">
+       <item>
+        <widget class="QLabel" name="lb_BankKeluar_Judul">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>300</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Bank Keluar</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="hs_BankKeluar_t_s">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>226</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="le_BankKeluar_Search">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="placeholderText">
+          <string>Type to search...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="fr_BankKeluar_Content">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="ivl_BankKeluar_Content">
+       <item>
+        <widget class="QTableWidget" name="tbl_BankKeluar">
+         <column>
+          <property name="text">
+           <string>Tanggal</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nomor Referensi</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Catatan</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nilai</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nomor Akun Bank</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Penerima</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="fr_BankKeluar_b">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="ihl_BankKeluar_b">
+       <item>
+        <widget class="QPushButton" name="tb_BankKeluar_Buka">
+         <property name="text">
+          <string>Buka</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="sp_BankKeluar_b_">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_BankKeluar_Tambah">
+         <property name="text">
+          <string>Baru</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_BankKeluar_Delete">
+         <property name="text">
+          <string>Hapus</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="somespaces_pyuic_will_just_ignore2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>495</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_BankKeluar_Tutup">
+         <property name="text">
+          <string>Tutup</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="st_BankKeluar_Tambah">
+   <layout class="QVBoxLayout" name="ivl_BankKeluar_Tambah">
+    <item>
+     <widget class="QFrame" name="fr_BankKeluar_Tambah_T">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="lb_BankKeluar_Judul_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>300</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>+Bank Keluar</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="hs_BankKeluar">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>432</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="fr_BankKeluar_Tambah_Form">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>1</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:23px;}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="3" column="0">
+        <widget class="QLabel" name="lb_BankKeluar_Tambah_Form_Tanggal">
+         <property name="text">
+          <string>Tanggal :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QPushButton" name="tb_BankKeluar_Tambah_Form_Penerima">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>-</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="6">
+        <spacer name="hs_BankKeluar_Tambah_Form_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="6">
+        <spacer name="hs_BankKeluar_Tambah_Form_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="2">
+        <widget class="QPushButton" name="tb_BankKeluar_Tambah_Form_NoAkun">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>-</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="5" colspan="2">
+        <widget class="QLineEdit" name="le_BankKeluar_Tambah_Form_Catatan">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>500</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="lb_BankKeluar_Tambah_Form_NoAkun">
+         <property name="text">
+          <string>Akun Bank :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="lb_BankKeluar_Tambah_Form_Penerima">
+         <property name="text">
+          <string>Penerima :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5">
+        <widget class="QLabel" name="lb_BankKeluar_Tambah_Form_Nilai">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Rp 0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="4">
+        <widget class="QLabel" name="lb_BankKeluar_Tambah_Form_LabelNilai">
+         <property name="text">
+          <string>Besar Total :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="4">
+        <widget class="QLabel" name="lb_BankKeluar_Tambah_Form_Catatan">
+         <property name="text">
+          <string>Catatan :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="5">
+        <widget class="QLineEdit" name="le_BankKeluar_Tambah_Form_Nomor">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>150</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QLabel" name="lb_BankKeluar_Tambah_Form_Nomor">
+         <property name="text">
+          <string>Nomor Referensi :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <spacer name="hs_BankKeluar_Tambah_Form_6">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Maximum</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="2">
+        <widget class="QDateTimeEdit" name="dte_BankKeluar_Tambah_Form_Tanggal">
+         <property name="calendarPopup">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="fr_BankKeluar_Tambah_Content">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="ivl_BankKeluar_Tambah_Content">
+       <item>
+        <widget class="QTableWidget" name="tbl_BankKeluar_Tambah">
+         <column>
+          <property name="text">
+           <string>Nomor Akun</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nama Akun</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Nilai</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="fr_BankKeluar_Tambah_B">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="ihl_BankKeluar_Tambah_B">
+       <item>
+        <widget class="QPushButton" name="tb_BankKeluar_Tambah_TambahBaris">
+         <property name="text">
+          <string>Tambah Baris</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_BankKeluar_Tambah_HapusBaris">
+         <property name="text">
+          <string>Hapus Baris</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="hs_BankKeluar_Tambah_B_HSraceto">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>374</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_BankKeluar_Tambah_Simpan">
+         <property name="text">
+          <string>Simpan</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_BankKeluar_Tambah_Batal">
+         <property name="text">
+          <string>Batal</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  
  </widget>
  <resources>
   <include location="ui_kasbankrc.qrc"/>

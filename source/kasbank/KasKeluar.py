@@ -111,9 +111,9 @@ class KasKeluar(object):
 			kode_default = "00000000"
 		else:
 			kode_default = str(int(result[0][0])+1)
-			while (len(kode_default)<8):
+			while (len(kode_default)<5):
 				kode_default = "0"+kode_default
-		kode_default = "CD" + kode_default
+		kode_default = "KK" + kode_default
 		self.KasBankUI.le_KasKeluar_Tambah_Form_Nomor.setText(kode_default)
 	
 	def KasBank_KasKeluar_Tambah_KodeCek(self,stuf=None):
@@ -126,9 +126,9 @@ class KasKeluar(object):
 				nilai = int(re.findall("\d+",kodeterlarang)[0])
 				nilai+=1
 				kodebaru = str(nilai)
-				while (len(kodebaru)<8):
+				while (len(kodebaru)<5):
 					kodebaru = "0"+kodebaru
-				kodebaru = "CD"+kodebaru
+				kodebaru = "KK"+kodebaru
 				kodeterlarang = kodebaru
 				result = self.DatabaseFetchResult(self.dbDatabase,"gd_kas_keluar","kodeTransaksi",kodeterlarang	)
 			self.KasBankUI.le_KasKeluar_Tambah_Form_Nomor.setText(kodebaru)
