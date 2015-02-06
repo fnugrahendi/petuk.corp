@@ -100,7 +100,7 @@ margin-top: 2px; /* make non-selected tabs look smaller */
 }</string>
          </property>
          <property name="currentIndex">
-          <number>4</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="tab_DataMaster">
           <attribute name="title">
@@ -116,7 +116,7 @@ margin-top: 2px; /* make non-selected tabs look smaller */
 	}</string>
              </property>
              <property name="currentIndex">
-              <number>7</number>
+              <number>8</number>
              </property>
              <widget class="QWidget" name="st_DataMaster_Menu">
               <property name="styleSheet">
@@ -390,8 +390,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>250</width>
-                          <height>30</height>
+                          <width>315</width>
+                          <height>18</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -584,7 +584,7 @@ QPushButton::hover{
                            <string/>
                           </property>
                           <property name="icon">
-                           <iconset>
+                           <iconset resource="DataMaster.qrc">
                             <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                           </property>
                          </widget>
@@ -2917,7 +2917,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                         <string/>
                        </property>
                        <property name="icon">
-                        <iconset>
+                        <iconset resource="DataMaster.qrc">
                          <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                        </property>
                       </widget>
@@ -3070,20 +3070,6 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                      <property name="fieldGrowthPolicy">
                       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
                      </property>
-                     <item row="1" column="0">
-                      <widget class="QLabel" name="lb_DataMaster_DataRekening_NamaAkun">
-                       <property name="text">
-                        <string>Nama Akun :</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="2" column="0">
-                      <widget class="QLabel" name="lb_DataMaster_DataRekening_NamaAliasAkun">
-                       <property name="text">
-                        <string>Nama Alias Akun</string>
-                       </property>
-                      </widget>
-                     </item>
                      <item row="0" column="0">
                       <widget class="QLabel" name="lb_DataMaster_DataRekening_NomorAkun">
                        <property name="text">
@@ -3107,6 +3093,13 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        </property>
                       </widget>
                      </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="lb_DataMaster_DataRekening_NamaAkun">
+                       <property name="text">
+                        <string>Nama Akun :</string>
+                       </property>
+                      </widget>
+                     </item>
                      <item row="1" column="1">
                       <widget class="QLineEdit" name="le_DataMaster_DataRekening_NamaAkun">
                        <property name="minimumSize">
@@ -3120,6 +3113,13 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                          <width>400</width>
                          <height>16777215</height>
                         </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="lb_DataMaster_DataRekening_NamaAliasAkun">
+                       <property name="text">
+                        <string>Nama Alias Akun</string>
                        </property>
                       </widget>
                      </item>
@@ -3137,6 +3137,85 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                          <height>16777215</height>
                         </size>
                        </property>
+                      </widget>
+                     </item>
+                     <item row="3" column="0">
+                      <widget class="QLabel" name="lb_DataMaster_DataRekening_SaldoAwal">
+                       <property name="text">
+                        <string>Saldo Awal :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="3" column="1">
+                      <widget class="QLineEdit" name="le_DataMaster_DataRekening_SaldoAwal">
+                       <property name="minimumSize">
+                        <size>
+                         <width>200</width>
+                         <height>22</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="4" column="0">
+                      <widget class="QLabel" name="lb_DataMaster_DataRekening_SaldoSekarang">
+                       <property name="text">
+                        <string>Saldo Sekarang :</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="4" column="1">
+                      <widget class="QLineEdit" name="le_DataMaster_DataRekening_SaldoSekarang">
+                       <property name="minimumSize">
+                        <size>
+                         <width>200</width>
+                         <height>22</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="5" column="0">
+                      <widget class="QCheckBox" name="chk_DataMaster_DataRekenign_KasBank">
+                       <property name="text">
+                        <string>Kas/Bank</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="5" column="1">
+                      <widget class="QComboBox" name="cb_DataMaster_DataRekenign_KasBank">
+                       <property name="minimumSize">
+                        <size>
+                         <width>100</width>
+                         <height>22</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <item>
+                        <property name="text">
+                         <string>Kas</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>Bank</string>
+                        </property>
+                       </item>
                       </widget>
                      </item>
                     </layout>
@@ -3406,8 +3485,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>332</width>
-                          <height>310</height>
+                          <width>315</width>
+                          <height>18</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -3597,7 +3676,7 @@ QPushButton::hover{
                            <string/>
                           </property>
                           <property name="icon">
-                           <iconset>
+                           <iconset resource="DataMaster.qrc">
                             <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                           </property>
                          </widget>
