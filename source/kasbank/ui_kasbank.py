@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'kasbank/ui_kasbank.ui'
 #
-# Created: Fri Feb  6 10:48:54 2015
+# Created: Fri Feb  6 13:24:54 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -53,7 +53,7 @@ class Ui_st_KasBank(object):
         self.fr_Menu_Content.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_Menu_Content.setObjectName(_fromUtf8("fr_Menu_Content"))
         self.tb_Menu_KasMasuk = QtGui.QPushButton(self.fr_Menu_Content)
-        self.tb_Menu_KasMasuk.setGeometry(QtCore.QRect(0, 10, 311, 321))
+        self.tb_Menu_KasMasuk.setGeometry(QtCore.QRect(220, 30, 101, 101))
         self.tb_Menu_KasMasuk.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.tb_Menu_KasMasuk.setStyleSheet(_fromUtf8("QPushButton{\n"
 "background-image: url(:/Menu/img/KasMasuk0.png);\n"
@@ -67,7 +67,7 @@ class Ui_st_KasBank(object):
         self.tb_Menu_KasMasuk.setText(_fromUtf8(""))
         self.tb_Menu_KasMasuk.setObjectName(_fromUtf8("tb_Menu_KasMasuk"))
         self.tb_Menu_KasKeluar = QtGui.QPushButton(self.fr_Menu_Content)
-        self.tb_Menu_KasKeluar.setGeometry(QtCore.QRect(320, 10, 311, 321))
+        self.tb_Menu_KasKeluar.setGeometry(QtCore.QRect(330, 30, 101, 101))
         self.tb_Menu_KasKeluar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.tb_Menu_KasKeluar.setStyleSheet(_fromUtf8("QPushButton{\n"
 "background-image: url(:/Menu/img/KasKeluar0.png);\n"
@@ -609,7 +609,7 @@ class Ui_st_KasBank(object):
         st_KasBank.addWidget(self.st_KasKeluar_Tambah)
 
         self.retranslateUi(st_KasBank)
-        st_KasBank.setCurrentIndex(3)
+        st_KasBank.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(st_KasBank)
 
     def retranslateUi(self, st_KasBank):

@@ -18,7 +18,7 @@
 QTableWidget{border-width:1px;border-color:rgb(180, 200, 220);border-style:solid;border-radius:0px;}</string>
   </property>
   <property name="currentIndex">
-   <number>3</number>
+   <number>0</number>
   </property>
   <widget class="QWidget" name="st_Menu">
    <layout class="QGridLayout" name="igr_KasBank_Menu">
@@ -103,10 +103,10 @@ QTableWidget{border-width:1px;border-color:rgb(180, 200, 220);border-style:solid
       <widget class="QPushButton" name="tb_Menu_KasMasuk">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>10</y>
-         <width>311</width>
-         <height>321</height>
+         <x>220</x>
+         <y>30</y>
+         <width>101</width>
+         <height>101</height>
         </rect>
        </property>
        <property name="cursor">
@@ -130,10 +130,10 @@ background-image: url(:/Menu/img/KasMasuk1.png);
       <widget class="QPushButton" name="tb_Menu_KasKeluar">
        <property name="geometry">
         <rect>
-         <x>320</x>
-         <y>10</y>
-         <width>311</width>
-         <height>321</height>
+         <x>330</x>
+         <y>30</y>
+         <width>101</width>
+         <height>101</height>
         </rect>
        </property>
        <property name="cursor">
