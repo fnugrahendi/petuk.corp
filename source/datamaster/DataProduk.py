@@ -321,11 +321,8 @@ class DataProduk(object):
 	def DataMaster_DataProduk_Tambah_GenerateKode(self):
 		"""	Generate kode otomatis untuk lineEdit le_DataMaster_DataProduk_Tambah_KodeBarang, 
 		"""
-		self.initDatabase()
-		cursor = self.db.cursor()
 		sql = "SELECT `id` FROM `"+self.dbDatabase+"`.`gd_data_produk` ORDER BY `gd_data_produk`.`id` DESC LIMIT 0 , 1"
-		cursor.execute(sql)
-		result = cursor.fetchall()
+		result = self.DatabaseRunQuery(sql)
 		if len(result)<1:
 			kode_default = "00000000"
 		else:
@@ -334,7 +331,6 @@ class DataProduk(object):
 				kode_default = "0"+kode_default
 		kode_default = "PRD" + "."+kode_default
 		self.le_DataMaster_DataProduk_Tambah_KodeBarang.setText(kode_default)
-		self.db.close()
 	
 	
 	def DataMaster_DataProduk_Popup_Pilih(self,dipilih,fcb_ok=False, fcb_cancel=False, hideSurrounding=False):

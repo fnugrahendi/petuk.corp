@@ -95,22 +95,24 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		
 	def initDatabase(self):
 		try:
-			self.db = MySQLdb.connect(self.dbHost,self.dbUser,self.dbPass,self.dbDatabase)
-			print ("connected database to generic mysql port")
+			if str(self.db).find("open")!= (-1):
+				return #-- sudah terkoneksi
+			else:
+				jumpmetoexeptweakprogramming
 		except:
+			#-- Belum terkoneksi, koneksikan
 			try:
-				self.db = MySQLdb.Connect(host=self.dbHost, port=self.dbPort, user=self.dbUser, passwd=self.dbPass, db=self.dbDatabase)
-				print ("connected database to Garvin port")
+				self.db = MySQLdb.connect(self.dbHost,self.dbUser,self.dbPass,self.dbDatabase)
+				print ("connected database to generic mysql port")
 			except:
-				print ("This software should be ran with correct procedure. Contact customer service for help.")
-				print ("run mysql? only works on makin's platform (y/n)")
-				if (raw_input()=="y"):
-					os.system("start mysql/mysql5.6.12/bin/mysqld --port="+str(self.dbPort))
-					import time
-					time.sleep(3)
-					print "ok"
+				try:
+					print "gagal"
 					self.db = MySQLdb.Connect(host=self.dbHost, port=self.dbPort, user=self.dbUser, passwd=self.dbPass, db=self.dbDatabase)
-		
+					print ("connected database to Garvin port")
+				except:
+					print "gagal"
+					#~ exit (1)
+
 		#~ try:print "self.db is: "+repr(self.db) +" and its type is: "+str(type(self.db))
 		#~ except:pass
 		return
@@ -122,7 +124,12 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		
 	def DatabaseRunQuery(self,query):
 		self.initDatabase()
-		cursor = self.db.cursor()
+		try:
+			cursor = self.db.cursor()
+		except AttributeError:
+			return None
+		except:
+			return ([])
 		try:
 			cursor.execute(query)
 		except Exception, e:
@@ -146,7 +153,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			return
 		result = cursor.fetchall()
 		self.db.commit()
-		self.db.close()
+		#~ self.db.close() #-- test, to no reconnect!
 		return result
 	
 		

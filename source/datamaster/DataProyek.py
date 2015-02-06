@@ -369,15 +369,12 @@ class DataProyek(object):
 		
 		if self.sc_DataMaster_DataProyek_Tambah_Penjab.isVisible():
 			self.clearLayout(self.scontent_DataMaster_DataProyek_Tambah_Penjab.findChildren(QtGui.QVBoxLayout)[0])
-			self.initDatabase()
-			cursor = self.db.cursor()
 			if str(self.le_DataMaster_DataProyek_Tambah_PenanggungJawab.text()) != "":
 				self.clearLayout(self.scontent_DataMaster_DataProyek_Tambah_Penjab.findChildren(QtGui.QVBoxLayout)[0])
 				sql = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '%"+str(self.le_DataMaster_DataProyek_Tambah_PenanggungJawab.text())+"%' "
 			else:
 				sql = "SELECT * FROM `gd_nama_alamat` "
-			cursor.execute(sql)
-			result = cursor.fetchall()
+			result = self.DatabaseRunQuery(sql)
 			for x in range(0,len(result)):
 				Button = self.findChildren(QtGui.QPushButton,"tb_DataMaster_DataProyek_Penjab_Find"+str(x))
 				if len(Button)<1:
@@ -395,7 +392,6 @@ class DataProyek(object):
 					Button.clicked.disconnect()
 					Button.clicked.connect(functools.partial(self.DataMaster_DataProyek_Tambah_Showlist_Selected,result[x]))
 					Button.show()
-			self.db.close()
 		#~ self.le_DataMaster_DataProyek_Tambah_PenanggungJawab.
 	
 	def DataMaster_DataProyek_Tambah_Showlist_Selected(self,data):
