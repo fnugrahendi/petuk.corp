@@ -104,10 +104,11 @@ class Laporan(L_BukuBesar_DTJ):
 
 		sql = "SELECT * FROM `"+self.dbDatabase+"`.`gd_bank_masuk` "
 		result = self.DatabaseRunQuery(sql)
+		#durung digawe ben bisa pilihan
 		kodeTransaksi = result[0][1];
 		
-		worksheet.write(1,9, ':'+kodeTransaksi, formatNoTgl)
-		worksheet.write(2,9, ':', formatNoTgl)
+		worksheet.write(1,9, ': '+kodeTransaksi, formatNoTgl)
+		worksheet.write(2,9, ': '+(result[0][2].strftime("%d-%m-%Y")), formatNoTgl)
 
 		worksheet.merge_range('D3:H3', "BANK MASUK", formatSubJudul)
 		worksheet.merge_range('B5:K6', "Diberikan Kepada : ", formatBeriTerima)
@@ -122,7 +123,7 @@ class Laporan(L_BukuBesar_DTJ):
 		#~ worksheet.write_formula('A'+str(ax+1),'=SUM('+'A'+str(awal)+':'+'A'+str(ax)+')')
 		
 		sql = "SELECT * FROM `"+self.dbDatabase+"`.`gd_detail_bank_masuk` JOIN `gd_rekening_jurnal` ON `gd_rekening_jurnal`.`noAkun` LIKE `gd_detail_bank_masuk`.`noAkunDetail` WHERE kodeTransaksi LIKE '"+kodeTransaksi+"'"
-		print sql
+		
 		result = self.DatabaseRunQuery(sql)
 		total = 0;
 		
