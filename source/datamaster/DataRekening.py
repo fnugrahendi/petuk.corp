@@ -49,7 +49,10 @@ class DataRekening(object):
 			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,4)
 			item.setText(str(result[row][REK("saldoSekarang")]))
 			item = self.tbl_DataMaster_DataRekening_Fcontent_LRekening.item(row,5)
-			if (result[row][REK("isKas")]>0):item.setText(str("v"))
+			if (result[row][REK("isKas")]==1):
+				item.setText(str("Akun Kas"))
+			elif (result[row][REK("isKas")]==2):
+				item.setText(str("Akun Bank"))
 			else:item.setText(str(" "))
 			
 	
@@ -73,29 +76,50 @@ class DataRekening(object):
 		#--- confirmasi edit
 		self.tb_DataMaster_DataRekening_Edit.clicked.connect(functools.partial(self.DataMaster_Popup,"Edit nomor rekening jurnal ini? Hanya lanjutkan bila anda faham apa yang anda lakukan!",self.DataMaster_DataRekening_Edit))
 	
-	def DataMaster_DataRekening_Tambah(self):
+	def __DataMaster_DataRekening_Tambah_KasBankState(self,state):
+		if (state!=0):
+			self.cb_DataMaster_DataRekening_KasBank.show()
+		else:
+			self.cb_DataMaster_DataRekening_KasBank.hide()
+		
+	
+	def DataMaster_DataRekening_Tambah(self,keep=False):
+		if (not keep):
+			les = self.fr_DataMaster_DataRekening_Tambah_Fcontent.findChildren(QtGui.QLineEdit)
+			for le in les:
+				le.clear()
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAREKENING_TAMBAH)
 		self.GarvinDisconnect(self.tb_DataMaster_DataRekening_Tambah_Batal.clicked)
 		self.tb_DataMaster_DataRekening_Tambah_Batal.clicked.connect(self.DataMaster_DataRekening)
 		self.GarvinDisconnect(self.tb_DataMaster_DataRekening_Tambah_Simpan.clicked)
 		self.tb_DataMaster_DataRekening_Tambah_Simpan.clicked.connect(self.DataMaster_DataRekening_Tambah_Act_Simpan)
+		
+		#-- checkbox
+		self.GarvinDisconnect(self.chk_DataMaster_DataRekening_KasBank.stateChanged)
+		self.chk_DataMaster_DataRekening_KasBank.stateChanged.connect(self.__DataMaster_DataRekening_Tambah_KasBankState)
+		
 		pass
 		
 	def DataMaster_DataRekening_Tambah_Act_Simpan(self):
 		nomor = str(self.le_DataMaster_DataRekening_NomorAkun.text())
 		nama = str(self.le_DataMaster_DataRekening_NamaAkun.text())
 		namaalias = str(self.le_DataMaster_DataRekening_NamaAliasAkun.text())
+		saldoawal = str(self.le_DataMaster_DataRekening_SaldoAwal.text())
+		saldosekarang = str(self.le_DataMaster_DataRekening_SaldoSekarang.text())
+		if (self.chk_DataMaster_DataRekening_KasBank.checkState()==0):iskasbank=0
+		else:iskasbank=self.cb_DataMaster_DataRekening_KasBank.currentIndex()+1
+		print iskasbank
 		jadi = False
 		if (self.DataMaster_DataRekening_Edit_idEDIT<0):
 			jadi = self.DatabaseInsertAvoidreplace(self.dbDatabase,"gd_rekening_jurnal","noAkun",nomor,
-											["noAkun","namaAkun","namaAliasAkun"],
-											[nomor,nama,namaalias],
+											["noAkun","namaAkun","namaAliasAkun","saldoAwal","saldoSekarang","isKas"],
+											[nomor,nama,namaalias,saldoawal,saldosekarang,iskasbank],
 											"Penyimpanan tidak dapat dilakukan karena telah terdapat nomor akun yang sama!",
 											self.DataMaster_DataRekening_Tambah)
 		else:
 			jadi = self.DatabaseInsertReplace(self.dbDatabase,"gd_rekening_jurnal","id",self.DataMaster_DataRekening_Edit_idEDIT,
-											["noAkun","namaAkun","namaAliasAkun"],
-											[nomor,nama,namaalias])
+											["noAkun","namaAkun","namaAliasAkun","saldoAwal","saldoSekarang","isKas"],
+											[nomor,nama,namaalias,saldoawal,saldosekarang,iskasbank])
 		if (jadi):
 			#---sukses Kembali ke room DataRekening
 			self.DataMaster_DataRekening()
@@ -113,7 +137,12 @@ class DataRekening(object):
 		self.le_DataMaster_DataRekening_NomorAkun.setText(str(data[0][self.DataMaster_DataRekening_Field.index("noAkun")]))
 		self.le_DataMaster_DataRekening_NamaAkun.setText(str(data[0][self.DataMaster_DataRekening_Field.index("namaAkun")]))
 		self.le_DataMaster_DataRekening_NamaAliasAkun.setText(str(data[0][self.DataMaster_DataRekening_Field.index("namaAliasAkun")]))
-		self.DataMaster_DataRekening_Tambah()
+		self.le_DataMaster_DataRekening_SaldoAwal.setText(str(data[0][self.DataMaster_DataRekening_Field.index("saldoAwal")]))
+		self.le_DataMaster_DataRekening_SaldoSekarang.setText(str(data[0][self.DataMaster_DataRekening_Field.index("saldoSekarang")]))
+		iskas= (data[0][self.DataMaster_DataRekening_Field.index("isKas")])
+		if iskas>0: iskas=2
+		self.chk_DataMaster_DataRekening_KasBank.setCheckState(iskas)
+		self.DataMaster_DataRekening_Tambah(keep=True)
 	
 	def DataMaster_DataRekening_Delete(self):
 		if (self.DataMaster_DataRekening_Edit_idEDIT<0):

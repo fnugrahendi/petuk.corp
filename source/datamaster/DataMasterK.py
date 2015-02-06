@@ -161,6 +161,8 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk,DataRekenin
 		self.GarvinValidate(self.le_DataMaster_DataProduk_Tambah_Stok,"angka")
 		self.GarvinValidate(self.le_DataMaster_DataProyek_Tambah_AnggaranTotal,"angka")
 		self.GarvinValidate(self.le_DataMaster_DataProyek_Tambah_RealisasiTotal,"angka")
+		self.GarvinValidate(self.le_DataMaster_DataRekening_SaldoAwal,"angka")
+		self.GarvinValidate(self.le_DataMaster_DataRekening_SaldoSekarang,"angka")
 		
 		
 	def DataMaster_None(self):
