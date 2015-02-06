@@ -101,13 +101,17 @@ class Laporan(L_BukuBesar_DTJ):
 		sql = "SELECT * FROM `"+self.dbDatabase+"`.`gd_detail_bank_masuk` JOIN `gd_rekening_jurnal` ON `gd_rekening_jurnal`.`noAkun` LIKE `gd_detail_bank_masuk`.`noAkunDetail` WHERE kodeTransaksi LIKE '"+kodeTransaksi+"'"
 		print sql
 		result = self.DatabaseRunQuery(sql)
+		total = 0;
+		
 		for x in range(0,len(result)):
 			index = x+1+7
 			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][2], formatBiasa)
 			worksheet.merge_range('D'+str(index)+':H'+str(index), result[x][6], formatBiasa)
 			worksheet.merge_range('I'+str(index)+':K'+str(index), result[x][3], formatBiasa)
+			total = total +  int(result[x][3])
 		worksheet.merge_range('B'+str(index+1)+':H'+str(index+1), "TOTAL : ", formatBiasa)
 		worksheet.merge_range('I'+str(index+1)+':K'+str(index+1), "=SUM(I"+str(8)+":K"+str(index)+")", formatBiasa)
+		worksheet.merge_range('B'+str(index+2)+':K'+str(index+2), self.Terbilang(total), formatBiasa)
 		workbook.close()
 		return
 
