@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Fri Feb  6 23:45:19 2015
+# Created: Sat Feb  7 01:29:51 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -236,7 +236,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataCommon_Fbody_Slist.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataCommon_Fbody_Slist.setObjectName(_fromUtf8("sc_DataMaster_DataCommon_Fbody_Slist"))
         self.scontent_DataMaster_DataCommon_Fbody_Slist = QtGui.QWidget()
-        self.scontent_DataMaster_DataCommon_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 332, 18))
+        self.scontent_DataMaster_DataCommon_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 250, 30))
         self.scontent_DataMaster_DataCommon_Fbody_Slist.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataCommon_Fbody_Slist.setObjectName(_fromUtf8("scontent_DataMaster_DataCommon_Fbody_Slist"))
         self.ivl_DataMaster_DataCommon_Fbody_Slist = QtGui.QVBoxLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist)
@@ -3434,9 +3434,6 @@ class Ui_MainWindow(object):
         self.le_Penjualan_UangMuka_Baru_JumlahUang = QtGui.QLineEdit(self.fr_Penjualan_UangMuka_Baru_Input)
         self.le_Penjualan_UangMuka_Baru_JumlahUang.setObjectName(_fromUtf8("le_Penjualan_UangMuka_Baru_JumlahUang"))
         self.gridLayout_9.addWidget(self.le_Penjualan_UangMuka_Baru_JumlahUang, 4, 1, 1, 1)
-        self.le_Penjualan_UangMuka_Baru_AkunUangMuka = QtGui.QLineEdit(self.fr_Penjualan_UangMuka_Baru_Input)
-        self.le_Penjualan_UangMuka_Baru_AkunUangMuka.setObjectName(_fromUtf8("le_Penjualan_UangMuka_Baru_AkunUangMuka"))
-        self.gridLayout_9.addWidget(self.le_Penjualan_UangMuka_Baru_AkunUangMuka, 6, 1, 1, 1)
         spacerItem32 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.gridLayout_9.addItem(spacerItem32, 0, 2, 1, 1)
         self.tb_Penjualan_UangMuka_Baru_Nama = QtGui.QPushButton(self.fr_Penjualan_UangMuka_Baru_Input)
@@ -3449,6 +3446,9 @@ class Ui_MainWindow(object):
         self.dte_Penjualan_UangMuka_Baru_Tanggal.setCalendarPopup(True)
         self.dte_Penjualan_UangMuka_Baru_Tanggal.setObjectName(_fromUtf8("dte_Penjualan_UangMuka_Baru_Tanggal"))
         self.gridLayout_9.addWidget(self.dte_Penjualan_UangMuka_Baru_Tanggal, 2, 1, 1, 1)
+        self.tb_Penjualan_UangMuka_Baru_AkunUangMuka = QtGui.QPushButton(self.fr_Penjualan_UangMuka_Baru_Input)
+        self.tb_Penjualan_UangMuka_Baru_AkunUangMuka.setObjectName(_fromUtf8("tb_Penjualan_UangMuka_Baru_AkunUangMuka"))
+        self.gridLayout_9.addWidget(self.tb_Penjualan_UangMuka_Baru_AkunUangMuka, 6, 1, 1, 1)
         self.verticalLayout_25.addWidget(self.fr_Penjualan_UangMuka_Baru_Input)
         spacerItem33 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.verticalLayout_25.addItem(spacerItem33)
@@ -4984,9 +4984,9 @@ class Ui_MainWindow(object):
         self.lb_Penjualan_UangMuka_Baru_AkunUangMuka.setText(_translate("MainWindow", "No. Akun Uang Muka :", None))
         self.le_Penjualan_UangMuka_Baru_Catatan.setPlaceholderText(_translate("MainWindow", "Deskripsi Pembayaran", None))
         self.le_Penjualan_UangMuka_Baru_JumlahUang.setPlaceholderText(_translate("MainWindow", "Nominal uang dibayarkan", None))
-        self.le_Penjualan_UangMuka_Baru_AkunUangMuka.setText(_translate("MainWindow", "21000040", None))
         self.tb_Penjualan_UangMuka_Baru_Nama.setText(_translate("MainWindow", "-", None))
         self.tb_Penjualan_UangMuka_Baru_Akun.setText(_translate("MainWindow", "-", None))
+        self.tb_Penjualan_UangMuka_Baru_AkunUangMuka.setText(_translate("MainWindow", "21000040", None))
         self.tb_Penjualan_UangMuka_Baru_Simpan.setText(_translate("MainWindow", "Simpan", None))
         self.tb_Penjualan_UangMuka_Baru_Cetak.setText(_translate("MainWindow", "Cetak", None))
         self.tb_Penjualan_UangMuka_Baru_Batal.setText(_translate("MainWindow", "Batal", None))

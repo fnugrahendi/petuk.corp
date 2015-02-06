@@ -78,6 +78,9 @@ class Penjualan(object):
 		self.tb_Penjualan_UangMuka_Kembali.clicked.connect(self.Penjualan_GoTo_Menu)
 		self.tb_Penjualan_UangMuka_BuatBaru.clicked.connect(self.Penjualan_GoTo_UangMuka_Baru)
 		self.tb_Penjualan_UangMuka_Baru_Batal.clicked.connect(self.Penjualan_GoTo_UangMuka)
+		self.tb_Penjualan_UangMuka_Baru_Nama.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.tb_Penjualan_UangMuka_Baru_Nama))
+		self.tb_Penjualan_UangMuka_Baru_Akun.clicked.connect(functools.partial(self.Popup_Rekening,self.tb_Penjualan_UangMuka_Baru_Akun))
+		self.tb_Penjualan_UangMuka_Baru_AkunUangMuka.clicked.connect(functools.partial(self.Popup_Rekening, self.tb_Penjualan_UangMuka_Baru_AkunUangMuka))
 		
 		self.INDEX_ST_PENJUALAN_MENU = 0
 		self.INDEX_ST_PENJUALAN_DI = 1
@@ -572,6 +575,10 @@ class Penjualan(object):
 		self.le_Penjualan_JurnalMemorial_Jumlah.setText(str(sisa))
 		print "this is jurnal"
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_JM)
+		return
+		
+	def Penjualan_JurnalMemorial_Simpan(self):
+		
 		return
 	
 	def Penjualan_GoTo_UangMuka(self):
