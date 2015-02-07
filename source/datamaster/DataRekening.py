@@ -212,6 +212,15 @@ class DataRekening(object):
 		self.fr_DataMaster_DataRekening.show()
 		self.fr_DataMaster_DataRekening.setGeometry(QtCore.QRect(5,5,640,WinH-250))
 		self.fr_DataMaster_DataRekening_Fb.hide()
+		#------ bila suatu rekening yang dicari belum ada, tampilkan buat baru
+		#~ fr_DataMaster_DataRekening_Tambah
+		dtb_DataRekening_Tambah = self.GarvinGetObject(self.fr_DataMaster_DataRekening,QtGui.QPushButton,"dtb_DataMaster_DataRekening_Popup_Tambah",self.ivl_DataMaster_DataRekening_Dalam.addWidget)
+		dtb_DataRekening_Tambah.setStyleSheet("QPushButton{padding:10px;}")
+		dtb_DataRekening_Tambah.setText("Tambah baru")
+		
+		
+		
+		
 		
 		self.GarvinDisconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellDoubleClicked)
 		self.GarvinDisconnect(self.tbl_DataMaster_DataRekening_Fcontent_LRekening.cellClicked)

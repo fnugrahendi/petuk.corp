@@ -428,6 +428,23 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			f.close()
 		else:
 			return False
+
+	def GarvinGetObject(self,induk,tipe,nama,creation_cb=False):
+		""" one of those DRY, 
+			Kembalikan object dengan objectname nama bila object belum ada, buat instance baru dengan objectname tersebut 
+			contoh dtb_DataMaster_DataRekening_Tambah_Baru = GarvinGetObject(self.fr_DataMaster_DataRekening_Tambah, QtGui.QPushButton, "dtb_DataMaster_DataRekening_Tambah_Baru", self.ivl_DataMaster_DataRekening_Dalam.addWidget)
+			creation_cb diisi fungsi callback yang diexecusi dengan parameter instance kembalian
+		"""
+		objectlama = induk.findChild(tipe,nama)
+		if objectlama==None:
+			objectbaru = tipe()
+			objectbaru.setObjectName(nama)
+			if creation_cb != False: creation_cb(objectbaru)
+			return objectbaru
+		else:
+			return objectlama
+			
+
 	def Terbilang(self,x):   
 		angka = {1:'satu ',2:'dua ',3:'tiga ',4:'empat ',5:'lima ',6:'enam ',7:'tujuh ',\
 			 8:'delapan ',9:'sembilan '}
