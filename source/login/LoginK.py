@@ -117,13 +117,15 @@ class Login(Ui_fr_Main):
 					self.aatime.start(1500)
 					self.MakeSureTodoItOnce_HasIt = True
 				else:
-					self.aatime.stop()
+					#~ self.aatime.stop()
+					pass
 			else:
 				self.DataMaster_Popup("Server belum menjalankan mesin database",self.Login_Connect)
 				
 				
 			return
-			
+		else:
+			self.aatime.stop()
 			
 		for x in range(len(databases)):
 			if (str(databases[x][0]).find("gd_db_") != -1):
@@ -142,12 +144,13 @@ class Login(Ui_fr_Main):
 	
 	def Login_Database_CreateDatabase(self):
 		self.Login_Goto("DATABASE CREATE")
-		self.GarvinDisconnect(self.LoginUI.tb_Database_Create_Tambah.clicked)
-		self.LoginUI.tb_Database_Create_Tambah.clicked.connect(self.Login_Database_CreateDatabase_Act_Create)
+		self.GarvinDisconnect(self.LoginUI.tb_Database_Create_Buat.clicked)
+		self.LoginUI.tb_Database_Create_Buat.clicked.connect(self.Login_Database_CreateDatabase_Act_Create)
 	
 	def Login_Database_CreateDatabase_Act_Create(self):
 		namadb = str(self.LoginUI.le_Database_Create_Nama.text())
-		pembuat = DatabaseCreator(namadb,self)
+		namadb = "gd_db_"+namadb
+		pembuat = DatabaseCreator.DatabaseCreator(namadb,self)
 		pembuat.Execute()
 		
 		#-- destroy
