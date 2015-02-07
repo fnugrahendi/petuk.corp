@@ -34,7 +34,11 @@ class Laporan(L_BukuBesar_DTJ):
 	def Laporan_BuktiBankMasuk(self,data):
 		
 		# Create an new Excel file and add a worksheet.
+<<<<<<< HEAD
 		workbook = xlsxwriter.Workbook('Bukti Bank Masuk.xlsx')
+=======
+		workbook = xlsxwriter.Workbook(self.DataPath+"merge_rich_string.xlsx")
+>>>>>>> 4aa27c074f66a3104fd75f4c00f4b87f8b43dab4
 		worksheet = workbook.add_worksheet()
 
 		# Set up some formats to use.
