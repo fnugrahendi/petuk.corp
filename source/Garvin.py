@@ -75,7 +75,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		self.ResetRooms()
 		#--- startup program, set semua datetimeedit ke waktu skrg		
 		self.GarvinSetDate(self)
-		self.Laporan_BuktiBankMasuk(None)
+		self.Laporan_BuktiMemorial(None)
 	
 	def Popup_NamaAlamat_Tabel(self,namaTabel,row):
 		data = []
@@ -429,14 +429,14 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		else:
 			return False
 	def Terbilang(self,x):   
-		angka = {1:'satu',2:'dua',3:'tiga',4:'empat',5:'lima',6:'enam',7:'tujuh',\
-			 8:'delapan',9:'sembilan'}
-		b = ' puluh '
-		c = ' ratus '
-		d = ' ribu '
-		e = ' juta '
-		f = ' miliyar '
-		g = ' triliun '
+		angka = {1:'satu ',2:'dua ',3:'tiga ',4:'empat ',5:'lima ',6:'enam ',7:'tujuh ',\
+			 8:'delapan ',9:'sembilan '}
+		b = 'puluh '
+		c = 'ratus '
+		d = 'ribu '
+		e = 'juta '
+		f = 'miliyar '
+		g = 'triliun '
 		y = str(x)         
 		n = len(y)        
 		if n <= 3 :        
@@ -481,6 +481,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		elif 6 < n <= 9 :
 			r = y[-6:]
 			s = y[:-6]
+			if r == '000000':
+				return self.Terbilang(s) + e
 			return self.Terbilang(s) + e + self.Terbilang(r)
 		elif 9 < n <= 12 :
 			t = y[-9:]
