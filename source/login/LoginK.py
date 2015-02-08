@@ -108,10 +108,10 @@ class Login(Ui_fr_Main):
 #---=============================================================-------
 			#--- kalau server adalah komputer ini sendiri!
 			if (self.dbHost=="127.0.0.1"):
-				self.statusbar.showMessage("Menjalankan server database pada komputer local",20000)
-				mysqlpath = self.Path+"../mysql/mysql5.6.12/bin/mysqld --port="+str(self.dbPort)
-				Popen(mysqlpath)
 				if (self.MakeSureTodoItOnce_HasIt==False):
+					self.statusbar.showMessage("Menjalankan server database pada komputer local",20000)
+					mysqlpath = self.Path+"../mysql/mysql5.6.12/bin/mysqld --port="+str(self.dbPort)
+					Popen(mysqlpath)
 					print "triggered again"
 					self.aatime.timeout.connect(self.Login_Database)
 					self.aatime.start(1500)
