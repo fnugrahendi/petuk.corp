@@ -97,9 +97,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 	def initDatabase(self):
 		try:
 			if str(self.db).find("open")!= (-1):
-				return #-- sudah terkoneksi
+				return #-- sudah terkoneksi dan open, skip semua termasuk self.cursor creation
 			else:
-				jumpmetoexeptweakprogramming
+				jumpmetoexeptweakprogrammingbutDRY
 		except:
 			#-- Belum terkoneksi, koneksikan
 			try:
@@ -113,7 +113,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 				except:
 					print "gagal"
 					#~ exit (1)
-
+		#-- sudah terkoneksi, bentuk cursor
+		self.cursor = self.db.cursor()
+		
 		#~ try:print "self.db is: "+repr(self.db) +" and its type is: "+str(type(self.db))
 		#~ except:pass
 		return
@@ -125,14 +127,14 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		
 	def DatabaseRunQuery(self,query):
 		self.initDatabase()
+		#~ try:
+			#~ cursor = self.db.cursor()
+		#~ except AttributeError:
+			#~ return None
+		#~ except:
+			#~ return ([])
 		try:
-			cursor = self.db.cursor()
-		except AttributeError:
-			return None
-		except:
-			return ([])
-		try:
-			cursor.execute(query)
+			self.cursor.execute(query)
 		except Exception, e:
 			#------                      Untuk Select *, return list dgn elemen2 kosong untuk menghindari error
 			if (query.find("SELECT")!=-1):
@@ -152,7 +154,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			self.statusbar.showMessage(repr(e),120000)
 			#~ sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_satuan_pengukuran';"
 			return
-		result = cursor.fetchall()
+		result = self.cursor.fetchall()
 		self.db.commit()
 		#~ self.db.close() #-- test, to no reconnect!
 		return result
