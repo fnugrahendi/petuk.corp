@@ -113,16 +113,16 @@ class Login(Ui_fr_Main):
 					mysqlpath = self.Path+"../mysql/mysql5.6.12/bin/mysqld --port="+str(self.dbPort)
 					Popen(mysqlpath)
 					print "triggered again"
-					self.aatime.timeout.connect(self.Login_Database)
-					self.aatime.start(1500)
 					self.MakeSureTodoItOnce_HasIt = True
 				else:
 					#~ self.aatime.stop()
 					pass
 			else:
 				self.DataMaster_Popup("Server belum menjalankan mesin database",self.Login_Connect)
-				
-				
+			#-- reload tiap 1.5 detik
+			self.aatime.timeout.connect(self.Login_Database)
+			self.aatime.start(1500)
+
 			return
 		else:
 			self.aatime.stop()
