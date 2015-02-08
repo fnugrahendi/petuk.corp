@@ -293,6 +293,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		if keyfield==False:
 			sql = "SELECT * FROM `"+str(db)+"`.`"+str(table)+"` "
 			if OrderBy!=False: sql = sql+ " ORDER BY `"+OrderBy[0]+"` "+OrderBy[1]+ " ;"
+			else: sql = sql+";"
 			return self.DatabaseRunQuery(sql)
 		elif (type(keyvalue)==list):
 			sql = "SELECT * FROM `"+str(db)+"`.`"+str(table)+"` WHERE "
@@ -300,14 +301,17 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 				sql = sql + "`"+str(keyfield[x])+"` LIKE '"+str(keyvalue[x])+"' AND "
 			sql = sql[:-4] #-- remove last "AND "
 			if OrderBy!=False: sql = sql+ " ORDER BY `"+OrderBy[0]+"` "+OrderBy[1]+ " ;"
+			else: sql = sql+";"
 			return self.DatabaseRunQuery(sql)
 		elif (type(keyvalue)==str):
 			sql ="SELECT * FROM `"+str(db)+"`.`"+str(table)+"` WHERE `"+str(keyfield)+"` LIKE '"+str(keyvalue)+"' "
 			if OrderBy!=False: sql = sql+ " ORDER BY `"+OrderBy[0]+"` "+OrderBy[1]+ " ;"
+			else: sql = sql+";"
 			return self.DatabaseRunQuery(sql)
 		else:
-			"SELECT * FROM `"+str(db)+"`.`"+str(table)+"` WHERE `"+str(keyfield)+"` = "+str(keyvalue)+";"
+			sql = "SELECT * FROM `"+str(db)+"`.`"+str(table)+"` WHERE `"+str(keyfield)+"` = "+str(keyvalue)+";"
 			if OrderBy!=False: sql = sql+ " ORDER BY `"+OrderBy[0]+"` "+OrderBy[1]+ " ;"
+			else: sql = sql+";"
 			return self.DatabaseRunQuery(sql)
 	
 	def clearTable(self,tableobject):
