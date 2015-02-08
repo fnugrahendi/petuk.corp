@@ -37,7 +37,8 @@ class Pembelian(object):
 		self.tbl_Pembelian_InvoicePembelian.cellDoubleClicked.connect(self.Pembelian_GoTo_InvoicePembelian_Rincian)
 		
 		#Tombol pada Invoice Pembelian Baru
-		#~ self.tb_Pembelian_InvoicePembelian_Baru_HapusBaris.clicked.connect()
+		self.tb_Pembelian_InvoicePembelian_Baru_TambahBaris.clicked.connect(self.Pembelian_GoTo_InvoicePembelian_Baru_TambahBaris)
+		self.tb_Pembelian_InvoicePembelian_Baru_HapusBaris.clicked.connect(self.Pembelian_GoTo_InvoicePembelian_Baru_HapusBaris)
 		#~ self.tb_Pembelian_InvoicePembelian_Baru_Rekam.clicked.connect()
 		self.tb_Pembelian_InvoicePembelian_Baru_Tutup.clicked.connect(self.Pembelian_GoTo_InvoicePembelian)
 		#~ self.tb_Pembelian_InvoicePembelian_Baru_Batal.clicked.connect()
@@ -90,6 +91,11 @@ class Pembelian(object):
 		self.le_Pembelian_InvoicePembelian_Baru_NoPO.setText(noInvoice)
 		query = "SELECT * FROM `gd_pembelian_barang` WHERE `noInvoice` LIKE '"+noInvoice+"'"
 		result = self.DatabaseRunQuery(query)
+		jumlahRow = self.tbl_Pembelian_InvoicePembelian_Baru.rowCount()
+		if jumlahRow != 0:
+			for x in range (0,jumlahRow):
+				self.tbl_Pembelian_InvoicePembelian_Baru.removeRow(x)
+		self.tbl_Pembelian_InvoicePembelian_Baru.setRowCount(0)
 		for a in range (0,len(result)):
 			self.tbl_Pembelian_InvoicePembelian_Baru.insertRow(a)
 			self.tbl_Pembelian_InvoicePembelian_Baru.setItem(a,0,QtGui.QTableWidgetItem(str(result[a][4]))) #supplier
@@ -112,6 +118,11 @@ class Pembelian(object):
 		self.tbl_Pembelian_InvoicePembelian_Baru.setItem(a,2,QtGui.QTableWidgetItem("0"))
 		self.tbl_Pembelian_InvoicePembelian_Baru.setItem(a,4,QtGui.QTableWidgetItem("0"))
 		return
+	
+	def Pembelian_GoTo_InvoicePembelian_Baru_HapusBaris(self):
+		currentRow = self.tbl_Pembelian_InvoicePembelian_Baru.currentRow()
+		self.tbl_Pembelian_InvoicePembelian_Baru.removeRow(currentRow)
+		pass
 	
 	def Pembelian_GoTo_OrderPembelian_TambahProduk(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_OP_TAMBAHPRODUK)

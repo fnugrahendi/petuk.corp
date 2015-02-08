@@ -7724,7 +7724,7 @@ min-height:23px;</string>
 	}</string>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>1</number>
              </property>
              <widget class="QWidget" name="st_Pembelian_Menu">
               <layout class="QGridLayout" name="igr_Pembelian_Menu">
@@ -8211,7 +8211,7 @@ min-height:23px;</string>
                      <enum>QFrame::NoFrame</enum>
                     </property>
                     <property name="editTriggers">
-                     <set>QAbstractItemView::NoEditTriggers</set>
+                     <set>QAbstractItemView::DoubleClicked</set>
                     </property>
                     <property name="showGrid">
                      <bool>false</bool>
