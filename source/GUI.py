@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Sun Feb  8 23:34:33 2015
+# Created: Sun Feb  8 23:56:01 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -3821,7 +3821,7 @@ class Ui_MainWindow(object):
         self.tbl_Pembelian_InvoicePembelian_Baru.setMinimumSize(QtCore.QSize(0, 250))
         self.tbl_Pembelian_InvoicePembelian_Baru.setMaximumSize(QtCore.QSize(1366, 16777215))
         self.tbl_Pembelian_InvoicePembelian_Baru.setFrameShape(QtGui.QFrame.NoFrame)
-        self.tbl_Pembelian_InvoicePembelian_Baru.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
+        self.tbl_Pembelian_InvoicePembelian_Baru.setEditTriggers(QtGui.QAbstractItemView.DoubleClicked)
         self.tbl_Pembelian_InvoicePembelian_Baru.setShowGrid(False)
         self.tbl_Pembelian_InvoicePembelian_Baru.setWordWrap(True)
         self.tbl_Pembelian_InvoicePembelian_Baru.setCornerButtonEnabled(True)
@@ -4591,7 +4591,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setCurrentIndex(2)
         self.st_DataMaster.setCurrentIndex(9)
         self.st_Penjualan.setCurrentIndex(0)
-        self.st_Pembelian.setCurrentIndex(0)
+        self.st_Pembelian.setCurrentIndex(1)
         self.st_BukuBesar.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 

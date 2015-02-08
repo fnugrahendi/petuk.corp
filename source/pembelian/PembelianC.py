@@ -108,6 +108,12 @@ class Pembelian(object):
 		return
 	
 	def Pembelian_GoTo_InvoicePembelian_Baru(self):
+		self.le_Pembelian_InvoicePembelian_Baru_NoPO.setText()
+		jumlahRow = self.tbl_Pembelian_InvoicePembelian_Baru.rowCount()
+		if jumlahRow != 0:
+			for x in range (0,jumlahRow):
+				self.tbl_Pembelian_InvoicePembelian_Baru.removeRow(x)
+		self.tbl_Pembelian_InvoicePembelian_Baru.setRowCount(0)
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_INVOICEPEMBELIAN_BARU)
 		return
 
@@ -122,6 +128,16 @@ class Pembelian(object):
 	def Pembelian_GoTo_InvoicePembelian_Baru_HapusBaris(self):
 		currentRow = self.tbl_Pembelian_InvoicePembelian_Baru.currentRow()
 		self.tbl_Pembelian_InvoicePembelian_Baru.removeRow(currentRow)
+		pass
+	
+	def Pembelian_GoTo_InvoicePembelian_Batal(self):
+		jumlahRow = self.tbl_Pembelian_InvoicePembelian_Baru.rowCount()
+		if jumlahRow != 0:
+			for x in range (0,jumlahRow):
+				self.tbl_Pembelian_InvoicePembelian_Baru.removeRow(x)
+		self.tbl_Pembelian_InvoicePembelian_Baru.setRowCount(0)
+		self.le_Pembelian_InvoicePembelian_Baru_NoPO.setText()
+		self.Pembelian_GoTo_InvoicePembelian()
 		pass
 	
 	def Pembelian_GoTo_OrderPembelian_TambahProduk(self):
