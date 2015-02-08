@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Sat Feb 07 02:15:21 2015
-#      by: PyQt4 UI code generator 4.10.1
+# Created: Sun Feb  8 11:36:00 2015
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -3604,15 +3604,9 @@ class Ui_MainWindow(object):
         self.ivl_Pembelian_Menu_FMenu.setSpacing(1)
         self.ivl_Pembelian_Menu_FMenu.setMargin(3)
         self.ivl_Pembelian_Menu_FMenu.setObjectName(_fromUtf8("ivl_Pembelian_Menu_FMenu"))
-        self.tb_Pembelian_PermintaanBarang = QtGui.QPushButton(self.fr_Pembelian_Menu_Fmenu)
-        self.tb_Pembelian_PermintaanBarang.setObjectName(_fromUtf8("tb_Pembelian_PermintaanBarang"))
-        self.ivl_Pembelian_Menu_FMenu.addWidget(self.tb_Pembelian_PermintaanBarang)
-        self.tb_Pembelian_OrderPembelian = QtGui.QPushButton(self.fr_Pembelian_Menu_Fmenu)
-        self.tb_Pembelian_OrderPembelian.setObjectName(_fromUtf8("tb_Pembelian_OrderPembelian"))
-        self.ivl_Pembelian_Menu_FMenu.addWidget(self.tb_Pembelian_OrderPembelian)
-        self.tb_Pembelian_Penerimaan = QtGui.QPushButton(self.fr_Pembelian_Menu_Fmenu)
-        self.tb_Pembelian_Penerimaan.setObjectName(_fromUtf8("tb_Pembelian_Penerimaan"))
-        self.ivl_Pembelian_Menu_FMenu.addWidget(self.tb_Pembelian_Penerimaan)
+        self.tb_Pembelian_InvoicePembelian = QtGui.QPushButton(self.fr_Pembelian_Menu_Fmenu)
+        self.tb_Pembelian_InvoicePembelian.setObjectName(_fromUtf8("tb_Pembelian_InvoicePembelian"))
+        self.ivl_Pembelian_Menu_FMenu.addWidget(self.tb_Pembelian_InvoicePembelian)
         self.tb_Pembelian_HutangUsaha = QtGui.QPushButton(self.fr_Pembelian_Menu_Fmenu)
         self.tb_Pembelian_HutangUsaha.setObjectName(_fromUtf8("tb_Pembelian_HutangUsaha"))
         self.ivl_Pembelian_Menu_FMenu.addWidget(self.tb_Pembelian_HutangUsaha)
@@ -4600,10 +4594,10 @@ class Ui_MainWindow(object):
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(2)
         self.st_DataMaster.setCurrentIndex(9)
-        self.st_Penjualan.setCurrentIndex(0)
-        self.st_Pembelian.setCurrentIndex(0)
+        self.st_Penjualan.setCurrentIndex(14)
+        self.st_Pembelian.setCurrentIndex(1)
         self.st_BukuBesar.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -5000,26 +4994,24 @@ class Ui_MainWindow(object):
         self.tb_Penjualan_JurnalMemorial_Simpan.setText(_translate("MainWindow", "Simpan", None))
         self.tb_Penjualan_JurnalMemorial_Cetak.setText(_translate("MainWindow", "Cetak", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_Penjualan), _translate("MainWindow", "Penjualan", None))
-        self.tb_Pembelian_PermintaanBarang.setText(_translate("MainWindow", "Permintaan Barang", None))
-        self.tb_Pembelian_OrderPembelian.setText(_translate("MainWindow", "Order Pembelian", None))
-        self.tb_Pembelian_Penerimaan.setText(_translate("MainWindow", "Penerimaan Barang", None))
+        self.tb_Pembelian_InvoicePembelian.setText(_translate("MainWindow", "Invoice Pembelian", None))
         self.tb_Pembelian_HutangUsaha.setText(_translate("MainWindow", "Hutang Usaha", None))
         self.tb_Pembelian_PembayaranHutang.setText(_translate("MainWindow", "Pembayaran Hutang", None))
         self.tb_Pembelian_ReturPembelian.setText(_translate("MainWindow", "Retur Pembelian", None))
-        self.lb_Pembelian_PermintaanBarang_Title.setText(_translate("MainWindow", "Permintaan Barang", None))
+        self.lb_Pembelian_PermintaanBarang_Title.setText(_translate("MainWindow", "Invoice Pembelian", None))
         item = self.tbl_Pembelian_PermintaanBarang.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "No Referensi", None))
-        item = self.tbl_Pembelian_PermintaanBarang.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "Tanggal", None))
-        item = self.tbl_Pembelian_PermintaanBarang.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Pelanggan", None))
+        item = self.tbl_Pembelian_PermintaanBarang.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "No. Invoice", None))
+        item = self.tbl_Pembelian_PermintaanBarang.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "Tanggal", None))
         item = self.tbl_Pembelian_PermintaanBarang.horizontalHeaderItem(3)
         item.setText(_translate("MainWindow", "Kurs", None))
         item = self.tbl_Pembelian_PermintaanBarang.horizontalHeaderItem(4)
         item.setText(_translate("MainWindow", "Nilai", None))
         self.tb_Pembelian_PermintaanBarang_Baru.setText(_translate("MainWindow", "Baru", None))
         self.tb_Pembelian_PermintaanBarang_Tutup.setText(_translate("MainWindow", "Tutup", None))
-        self.lb_Pembelian_OrderPembelian_Title.setText(_translate("MainWindow", "Order Pembelian", None))
+        self.lb_Pembelian_OrderPembelian_Title.setText(_translate("MainWindow", "Pembelian Barang", None))
         self.lb_Pembelian_OrderPembelian_Nama.setText(_translate("MainWindow", "Nama Pemasok", None))
         self.lb_Pembelian_OrderPembelian_NoPO.setText(_translate("MainWindow", "No. PO", None))
         self.lb_Pembelian_OrderPembelian_Penawaran.setText(_translate("MainWindow", "Penawaran No.", None))

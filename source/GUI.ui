@@ -100,7 +100,7 @@ margin-top: 2px; /* make non-selected tabs look smaller */
 }</string>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="tab_DataMaster">
           <attribute name="title">
@@ -390,8 +390,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>250</width>
-                          <height>30</height>
+                          <width>332</width>
+                          <height>18</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -7724,7 +7724,7 @@ min-height:23px;</string>
 	}</string>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>2</number>
              </property>
              <widget class="QWidget" name="st_Pembelian_Menu">
               <layout class="QGridLayout" name="igr_Pembelian_Menu">
@@ -7759,23 +7759,9 @@ min-height:23px;</string>
                    <number>3</number>
                   </property>
                   <item>
-                   <widget class="QPushButton" name="tb_Pembelian_PermintaanBarang">
+                   <widget class="QPushButton" name="tb_Pembelian_InvoicePembelian">
                     <property name="text">
-                     <string>Permintaan Barang</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="tb_Pembelian_OrderPembelian">
-                    <property name="text">
-                     <string>Order Pembelian</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="tb_Pembelian_Penerimaan">
-                    <property name="text">
-                     <string>Penerimaan Barang</string>
+                     <string>Invoice Pembelian</string>
                     </property>
                    </widget>
                   </item>
@@ -7869,7 +7855,7 @@ min-height:23px;</string>
                      </font>
                     </property>
                     <property name="text">
-                     <string>Permintaan Barang</string>
+                     <string>Invoice Pembelian</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -7934,17 +7920,17 @@ min-height:23px;</string>
                     </property>
                     <column>
                      <property name="text">
-                      <string>No Referensi</string>
+                      <string>Supplier</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>No. Invoice</string>
                      </property>
                     </column>
                     <column>
                      <property name="text">
                       <string>Tanggal</string>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>Pelanggan</string>
                      </property>
                     </column>
                     <column>
@@ -8034,7 +8020,7 @@ min-height:23px;</string>
                  <property name="minimumSize">
                   <size>
                    <width>0</width>
-                   <height>30</height>
+                   <height>0</height>
                   </size>
                  </property>
                  <property name="frameShape">
@@ -8055,7 +8041,7 @@ min-height:23px;</string>
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
-                      <height>40</height>
+                      <height>0</height>
                      </size>
                     </property>
                     <property name="font">
@@ -8065,7 +8051,7 @@ min-height:23px;</string>
                      </font>
                     </property>
                     <property name="text">
-                     <string>Order Pembelian</string>
+                     <string>Pembelian Barang</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -8090,6 +8076,13 @@ min-height:23px;</string>
                   <enum>QFrame::Raised</enum>
                  </property>
                  <layout class="QGridLayout" name="gl_Penjualan_OrderPenjualan_input_2">
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="lb_Pembelian_OrderPembelian_Keterangan">
+                    <property name="text">
+                     <string>Keterangan</string>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="0" column="0">
                    <widget class="QLabel" name="lb_Pembelian_OrderPembelian_Nama">
                     <property name="text">
@@ -8097,41 +8090,10 @@ min-height:23px;</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="0" column="1">
-                   <widget class="QLabel" name="lb_Pembelian_OrderPembelian_NoPO">
-                    <property name="text">
-                     <string>No. PO</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="2">
-                   <widget class="QLabel" name="lb_Pembelian_OrderPembelian_Penawaran">
-                    <property name="text">
-                     <string>Penawaran No.</string>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="0" column="3">
                    <widget class="QLabel" name="lb_Pembelian_OrderPembelian_Tanggal">
                     <property name="text">
                      <string>Tanggal</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="0">
-                   <widget class="QComboBox" name="cb_Pembelian_OrderPembelian_Gudang"/>
-                  </item>
-                  <item row="2" column="1">
-                   <widget class="QLabel" name="lb_Pembelian_OrderPembelian_Keterangan">
-                    <property name="text">
-                     <string>Keterangan</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="0">
-                   <widget class="QLabel" name="lb_Pembelian_OrderPembelian_Gudang">
-                    <property name="text">
-                     <string>Masuk ke Gudang</string>
                     </property>
                    </widget>
                   </item>
@@ -8143,9 +8105,6 @@ min-height:23px;</string>
                      </property>
                     </item>
                    </widget>
-                  </item>
-                  <item row="1" column="2">
-                   <widget class="QLineEdit" name="le_Pembelian_OrderPembelian_Penawaran"/>
                   </item>
                   <item row="1" column="1">
                    <widget class="QLineEdit" name="le_Pembelian_OrderPembelian_NoPO"/>
@@ -8184,9 +8143,6 @@ min-height:23px;</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="3" column="1" colspan="4">
-                   <widget class="QLineEdit" name="le_Pembelian_OrderPembelian_Keterangan"/>
-                  </item>
                   <item row="1" column="0">
                    <widget class="QPushButton" name="tb_Pembelian_OrderPembelian_Nama">
                     <property name="text">
@@ -8198,6 +8154,23 @@ min-height:23px;</string>
                    <widget class="QDateTimeEdit" name="dte_Pembelian_OrderPembelian_Tanggal">
                     <property name="calendarPopup">
                      <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLabel" name="lb_Pembelian_OrderPembelian_NoPO">
+                    <property name="text">
+                     <string>No. Invoice</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="0" colspan="8">
+                   <widget class="QLineEdit" name="le_Pembelian_OrderPembelian_Keterangan">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
                     </property>
                    </widget>
                   </item>
@@ -8320,13 +8293,6 @@ min-height:23px;</string>
                   <enum>QFrame::Raised</enum>
                  </property>
                  <layout class="QHBoxLayout" name="hl_Penjualan_OrderPenjualan_tombol_2">
-                  <item>
-                   <widget class="QPushButton" name="tb_Pembelian_OrderPembelian_Baru">
-                    <property name="text">
-                     <string>Baru</string>
-                    </property>
-                   </widget>
-                  </item>
                   <item>
                    <widget class="QPushButton" name="tb_Pembelian_OrderPembelian_Batal">
                     <property name="text">

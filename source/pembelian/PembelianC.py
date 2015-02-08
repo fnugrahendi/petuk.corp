@@ -37,7 +37,6 @@ class Pembelian(object):
 		
 		#Tombol pada Order Pembelian
 		self.tb_Pembelian_OrderPembelian_Tutup.clicked.connect(self.Pembelian_GoTo_Menu)
-		self.tb_Pembelian_OrderPembelian_Baru.clicked.connect(self.Pembelian_GoTo_OrderPembelian_TambahProduk)
 		self.tb_Pembelian_OrderPembelian_Batal.clicked.connect(self.Pembelian_OrderPembelian_Batal)
 		self.tb_Pembelian_OrderPembelian_HapusBaris.clicked.connect(self.Pembelian_OrderPembelian_HapusBaris)
 		self.tb_Pembelian_OrderPembelian_Rekam.clicked.connect(self.Pembelian_OrderPembelian_Rekam)
@@ -45,8 +44,6 @@ class Pembelian(object):
 		self.tb_Pembelian_OrderPembelian_TambahProduk_Batal.clicked.connect(self.Pembelian_GoTo_OrderPembelian)
 		self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama.currentIndexChanged.connect(self.Pembelian_OrderPembelian_TambahProduk_UpdateKode)
 		self.tb_Pembelian_OrderPembelian_Nama.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.tb_Pembelian_OrderPembelian_Nama))
-		
-		#Tombol pada Penerimaan Barang
 		
 		#Tombol pada Hutang Usaha
 		self.tb_Pembelian_HutangUsaha_Tutup.clicked.connect(self.Pembelian_GoTo_Menu)
@@ -241,10 +238,6 @@ class Pembelian(object):
 				"(`kodeTransaksi`, `kodePelanggan`, `totalHarga`, `tanggal`, `kodeMatauang`) "+\
 				"VALUES ('"+kodeTransaksi+"', '"+kodePelanggan+"', '"+totalHarga+"', '"+tanggalMasuk+"', '"+kodeMatauang+"');"
 		self.DatabaseRunQuery(query2)
-	
-	def Pembelian_GoTo_PenerimaanBarang(self):
-		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_PENERIMAAN)
-		return
 	
 	def Pembelian_GoTo_HutangUsaha(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_HUTANG)
