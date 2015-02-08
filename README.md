@@ -3,4 +3,4 @@
 
 Njemput
 ============
-GPL license. contact goodel.akunting@gmail.com
+Contact goodel.akunting@gmail.com
