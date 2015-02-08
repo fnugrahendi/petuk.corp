@@ -458,7 +458,45 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			objectlama.show()
 			return objectlama
 			
-
+	def GarvinGenerateKode(self,table,LineEdit,prefix,panjang):
+		""" melakukan generate kode untuk diisikan pada LineEdit berdasar data2 yang sudah ada di table dengan prefix dan panjang digit bilangan kode 
+		"""
+		sql = "SELECT `id` FROM `"+self.dbDatabase+"`.`"+table+"` ORDER BY `"+table+"`.`id` DESC LIMIT 0 , 1"
+		result = self.DatabaseRunQuery(sql)
+		if len(result)<1:
+			kode_default = "0"
+		else:
+			kode_default = str(int(result[0][0])+1)
+			while (len(kode_default)<panjang):
+				kode_default = "0"+kode_default
+		kode_default = prefix + kode_default
+		LineEdit.setText(kode_default)
+	
+	def GarvinGenerateKode_Cek(self,table,fieldmatch,LineEdit,prefix=False,panjang=False):
+		"""
+			Melakukan checking apakah untuk nama yang telah ditulis pada LineEdit.text belum ada di fieldmatch pada table
+		"""
+		kodebaru = ""
+		kodeterlarang = str(LineEdit.text())
+		result = self.DatabaseFetchResult(self.dbDatabase,table,fieldmatch,kodeterlarang	)
+		if (len(result)>0):
+			if (prefix==False):
+				#--- hanya tampilkan pesan
+				self.statusbar.showMessage("Kode "+kodeterlarang+" sudah terpakai",10000)
+			else:
+				#-- bantu generate
+				self.statusbar.showMessage("Kode "+kodeterlarang+" sudah terpakai, diberikan kode lain",10000)
+				while len(result)>0:
+					nilai = int(re.findall("\d+",kodeterlarang)[0])
+					nilai+=1
+					kodebaru = str(nilai)
+					while (len(kodebaru)<panjang):
+						kodebaru = "0"+kodebaru
+					kodebaru = prefix+kodebaru
+					kodeterlarang = kodebaru
+					result = self.DatabaseFetchResult(self.dbDatabase,table,fieldmatch,kodeterlarang	)
+				LineEdit.setText(kodebaru)
+	
 	def Terbilang(self,x):   
 		angka = {1:'satu ',2:'dua ',3:'tiga ',4:'empat ',5:'lima ',6:'enam ',7:'tujuh ',\
 			 8:'delapan ',9:'sembilan '}
