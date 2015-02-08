@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Sun Feb 08 21:22:41 2015
+# Created: Mon Feb 09 00:37:38 2015
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -236,7 +236,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataCommon_Fbody_Slist.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataCommon_Fbody_Slist.setObjectName(_fromUtf8("sc_DataMaster_DataCommon_Fbody_Slist"))
         self.scontent_DataMaster_DataCommon_Fbody_Slist = QtGui.QWidget()
-        self.scontent_DataMaster_DataCommon_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 315, 18))
+        self.scontent_DataMaster_DataCommon_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 250, 30))
         self.scontent_DataMaster_DataCommon_Fbody_Slist.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataCommon_Fbody_Slist.setObjectName(_fromUtf8("scontent_DataMaster_DataCommon_Fbody_Slist"))
         self.ivl_DataMaster_DataCommon_Fbody_Slist = QtGui.QVBoxLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist)
@@ -626,7 +626,8 @@ class Ui_MainWindow(object):
 "}\n"
 "*{\n"
 "    min-height:20px;\n"
-"}"))
+"}\n"
+"QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:23px;}"))
         self.fr_DataMaster_DataProduk_Tambah_Fcontent.setFrameShape(QtGui.QFrame.StyledPanel)
         self.fr_DataMaster_DataProduk_Tambah_Fcontent.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_DataMaster_DataProduk_Tambah_Fcontent.setObjectName(_fromUtf8("fr_DataMaster_DataProduk_Tambah_Fcontent"))
@@ -636,7 +637,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataProduk_Tambah_KodeBarang.setObjectName(_fromUtf8("lb_DataMaster_DataProduk_Tambah_KodeBarang"))
         self.formLayout_3.setWidget(0, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataProduk_Tambah_KodeBarang)
         self.le_DataMaster_DataProduk_Tambah_KodeBarang = QtGui.QLineEdit(self.fr_DataMaster_DataProduk_Tambah_Fcontent)
-        self.le_DataMaster_DataProduk_Tambah_KodeBarang.setMinimumSize(QtCore.QSize(200, 22))
+        self.le_DataMaster_DataProduk_Tambah_KodeBarang.setMinimumSize(QtCore.QSize(200, 25))
         self.le_DataMaster_DataProduk_Tambah_KodeBarang.setMaximumSize(QtCore.QSize(200, 16777215))
         self.le_DataMaster_DataProduk_Tambah_KodeBarang.setObjectName(_fromUtf8("le_DataMaster_DataProduk_Tambah_KodeBarang"))
         self.formLayout_3.setWidget(0, QtGui.QFormLayout.FieldRole, self.le_DataMaster_DataProduk_Tambah_KodeBarang)
@@ -644,7 +645,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataProduk_Tambah_NamaBarang.setObjectName(_fromUtf8("lb_DataMaster_DataProduk_Tambah_NamaBarang"))
         self.formLayout_3.setWidget(1, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataProduk_Tambah_NamaBarang)
         self.le_DataMaster_DataProduk_Tambah_NamaBarang = QtGui.QLineEdit(self.fr_DataMaster_DataProduk_Tambah_Fcontent)
-        self.le_DataMaster_DataProduk_Tambah_NamaBarang.setMinimumSize(QtCore.QSize(400, 22))
+        self.le_DataMaster_DataProduk_Tambah_NamaBarang.setMinimumSize(QtCore.QSize(400, 25))
         self.le_DataMaster_DataProduk_Tambah_NamaBarang.setMaximumSize(QtCore.QSize(400, 16777215))
         self.le_DataMaster_DataProduk_Tambah_NamaBarang.setObjectName(_fromUtf8("le_DataMaster_DataProduk_Tambah_NamaBarang"))
         self.formLayout_3.setWidget(1, QtGui.QFormLayout.FieldRole, self.le_DataMaster_DataProduk_Tambah_NamaBarang)
@@ -652,7 +653,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataProduk_Tambah_Deskripsi.setObjectName(_fromUtf8("lb_DataMaster_DataProduk_Tambah_Deskripsi"))
         self.formLayout_3.setWidget(2, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataProduk_Tambah_Deskripsi)
         self.le_DataMaster_DataProduk_Tambah_Deskripsi = QtGui.QLineEdit(self.fr_DataMaster_DataProduk_Tambah_Fcontent)
-        self.le_DataMaster_DataProduk_Tambah_Deskripsi.setMinimumSize(QtCore.QSize(400, 22))
+        self.le_DataMaster_DataProduk_Tambah_Deskripsi.setMinimumSize(QtCore.QSize(400, 25))
         self.le_DataMaster_DataProduk_Tambah_Deskripsi.setMaximumSize(QtCore.QSize(400, 16777215))
         self.le_DataMaster_DataProduk_Tambah_Deskripsi.setObjectName(_fromUtf8("le_DataMaster_DataProduk_Tambah_Deskripsi"))
         self.formLayout_3.setWidget(2, QtGui.QFormLayout.FieldRole, self.le_DataMaster_DataProduk_Tambah_Deskripsi)
@@ -660,7 +661,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataProduk_Tambah_HPP.setObjectName(_fromUtf8("lb_DataMaster_DataProduk_Tambah_HPP"))
         self.formLayout_3.setWidget(3, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataProduk_Tambah_HPP)
         self.le_DataMaster_DataProduk_Tambah_HPP = QtGui.QLineEdit(self.fr_DataMaster_DataProduk_Tambah_Fcontent)
-        self.le_DataMaster_DataProduk_Tambah_HPP.setMinimumSize(QtCore.QSize(200, 22))
+        self.le_DataMaster_DataProduk_Tambah_HPP.setMinimumSize(QtCore.QSize(200, 25))
         self.le_DataMaster_DataProduk_Tambah_HPP.setMaximumSize(QtCore.QSize(200, 16777215))
         self.le_DataMaster_DataProduk_Tambah_HPP.setObjectName(_fromUtf8("le_DataMaster_DataProduk_Tambah_HPP"))
         self.formLayout_3.setWidget(3, QtGui.QFormLayout.FieldRole, self.le_DataMaster_DataProduk_Tambah_HPP)
@@ -679,7 +680,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataProduk_Tambah_Stok.setObjectName(_fromUtf8("lb_DataMaster_DataProduk_Tambah_Stok"))
         self.formLayout_3.setWidget(5, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataProduk_Tambah_Stok)
         self.le_DataMaster_DataProduk_Tambah_Stok = QtGui.QLineEdit(self.fr_DataMaster_DataProduk_Tambah_Fcontent)
-        self.le_DataMaster_DataProduk_Tambah_Stok.setMinimumSize(QtCore.QSize(200, 22))
+        self.le_DataMaster_DataProduk_Tambah_Stok.setMinimumSize(QtCore.QSize(200, 25))
         self.le_DataMaster_DataProduk_Tambah_Stok.setMaximumSize(QtCore.QSize(200, 16777215))
         self.le_DataMaster_DataProduk_Tambah_Stok.setObjectName(_fromUtf8("le_DataMaster_DataProduk_Tambah_Stok"))
         self.formLayout_3.setWidget(5, QtGui.QFormLayout.FieldRole, self.le_DataMaster_DataProduk_Tambah_Stok)
@@ -691,6 +692,13 @@ class Ui_MainWindow(object):
         self.cb_DataMaster_DataProduk_Tambah_Satuan.setMaximumSize(QtCore.QSize(200, 16777215))
         self.cb_DataMaster_DataProduk_Tambah_Satuan.setObjectName(_fromUtf8("cb_DataMaster_DataProduk_Tambah_Satuan"))
         self.formLayout_3.setWidget(6, QtGui.QFormLayout.FieldRole, self.cb_DataMaster_DataProduk_Tambah_Satuan)
+        self.tb_DataMaster_DataProduk_Tambah_NoAkunPenjualan = QtGui.QPushButton(self.fr_DataMaster_DataProduk_Tambah_Fcontent)
+        self.tb_DataMaster_DataProduk_Tambah_NoAkunPenjualan.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.tb_DataMaster_DataProduk_Tambah_NoAkunPenjualan.setObjectName(_fromUtf8("tb_DataMaster_DataProduk_Tambah_NoAkunPenjualan"))
+        self.formLayout_3.setWidget(7, QtGui.QFormLayout.FieldRole, self.tb_DataMaster_DataProduk_Tambah_NoAkunPenjualan)
+        self.lb_DataMaster_DataProduk_Tambah_NoAkunPenjualan = QtGui.QLabel(self.fr_DataMaster_DataProduk_Tambah_Fcontent)
+        self.lb_DataMaster_DataProduk_Tambah_NoAkunPenjualan.setObjectName(_fromUtf8("lb_DataMaster_DataProduk_Tambah_NoAkunPenjualan"))
+        self.formLayout_3.setWidget(7, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataProduk_Tambah_NoAkunPenjualan)
         self.ivl_DataMaster_DataProduk_Tambah_Dalam.addWidget(self.fr_DataMaster_DataProduk_Tambah_Fcontent)
         self.fr_DataMaster_DataProduk_Tambah_Fbot = QtGui.QFrame(self.fr_DataMaster_DataProduk_Tambah)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
@@ -1574,7 +1582,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("sc_DataMaster_DataDepartemen_Fbody_Slist"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QWidget()
-        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 315, 18))
+        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 250, 30))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("scontent_DataMaster_DataDepartemen_Fbody_Slist"))
         self.ivl_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QVBoxLayout(self.scontent_DataMaster_DataDepartemen_Fbody_Slist)
@@ -4620,7 +4628,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
-        self.st_DataMaster.setCurrentIndex(2)
+        self.st_DataMaster.setCurrentIndex(3)
         self.st_Penjualan.setCurrentIndex(0)
         self.st_Pembelian.setCurrentIndex(0)
         self.st_BukuBesar.setCurrentIndex(1)
@@ -4673,6 +4681,8 @@ class Ui_MainWindow(object):
         self.cb_DataMaster_DataProduk_Tambah_Sifat.setItemText(2, _translate("MainWindow", "Average", None))
         self.lb_DataMaster_DataProduk_Tambah_Stok.setText(_translate("MainWindow", "Stok :", None))
         self.lb_DataMaster_DataProduk_Tambah_Satuan.setText(_translate("MainWindow", "Satuan", None))
+        self.tb_DataMaster_DataProduk_Tambah_NoAkunPenjualan.setText(_translate("MainWindow", "-", None))
+        self.lb_DataMaster_DataProduk_Tambah_NoAkunPenjualan.setText(_translate("MainWindow", "Nomor Akun Penjualan :", None))
         self.tb_DataMaster_DataProduk_Tambah_Simpan.setText(_translate("MainWindow", "Simpan", None))
         self.tb_DataMaster_DataProduk_Tambah_Batal.setText(_translate("MainWindow", "Batal", None))
         self.lb_DataMaster_DataPajak_Tambah_Ftop_Judul.setText(_translate("MainWindow", "+ Data Pajak", None))

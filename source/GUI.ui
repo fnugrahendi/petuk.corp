@@ -116,7 +116,7 @@ margin-top: 2px; /* make non-selected tabs look smaller */
 	}</string>
              </property>
              <property name="currentIndex">
-              <number>2</number>
+              <number>3</number>
              </property>
              <widget class="QWidget" name="st_DataMaster_Menu">
               <property name="styleSheet">
@@ -390,8 +390,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>315</width>
-                          <height>18</height>
+                          <width>250</width>
+                          <height>30</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -1286,7 +1286,8 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
 }
 *{
 	min-height:20px;
-}</string>
+}
+QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:23px;}</string>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -1307,7 +1308,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>22</height>
+                         <height>25</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1330,7 +1331,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>22</height>
+                         <height>25</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1353,7 +1354,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>22</height>
+                         <height>25</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1376,7 +1377,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>22</height>
+                         <height>25</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1437,7 +1438,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>22</height>
+                         <height>25</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1468,6 +1469,26 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                          <width>200</width>
                          <height>16777215</height>
                         </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="7" column="1">
+                      <widget class="QPushButton" name="tb_DataMaster_DataProduk_Tambah_NoAkunPenjualan">
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>-</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="7" column="0">
+                      <widget class="QLabel" name="lb_DataMaster_DataProduk_Tambah_NoAkunPenjualan">
+                       <property name="text">
+                        <string>Nomor Akun Penjualan :</string>
                        </property>
                       </widget>
                      </item>
@@ -3551,8 +3572,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>315</width>
-                          <height>18</height>
+                          <width>250</width>
+                          <height>30</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
