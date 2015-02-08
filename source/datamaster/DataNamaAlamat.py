@@ -311,6 +311,8 @@ class DataNamaAlamat(object):
 		alamat = str(self.le_DataMaster_DataNamaAlamat_Tambah_Alamat.text())
 		kodepelanggan = str(self.le_DataMaster_DataNamaAlamat_Tambah_KodePelanggan.text())
 		kontak = str(self.le_DataMaster_DataNamaAlamat_Tambah_Kontak.text())
+		noakunpiutang= str(self.tb_DataMaster_DataNamaAlamat_Tambah_NoAkunPiutang.text())
+		noakunhutang = str(self.tb_DataMaster_DataNamaAlamat_Tambah_NoAkunHutang.text())
 		sql = ""
 		if (self.DataMaster_DataNamaAlamat_Edit_idEDIT >=0):
 			sql = "UPDATE `"+self.dbDatabase+"`.`gd_nama_alamat` "+\
@@ -323,14 +325,16 @@ class DataNamaAlamat(object):
 				"`diskonAwal` = '"+diskonawal+"',"+\
 				"`dendaKeterlambatan` = '"+dendaketerlambatan+"',"+\
 				"`alamat` = '"+alamat+"',"+\
-				"`kontak` = '"+kontak+"'"+\
+				"`kontak` = '"+kontak+"',"+\
+				"`noAkunPiutang` = '"+noakunpiutang+"',"+\
+				"`noAkunHutang` = '"+noakunhutang+"'"+\
 			"WHERE `gd_nama_alamat`.`id`='"+str(self.DataMaster_DataNamaAlamat_Edit_idEDIT)+"'"
 			self.DataMaster_DataNamaAlamat_Edit_idEDIT = -1
 		else:
 			sql = "INSERT INTO `"+self.dbDatabase+"`.`gd_nama_alamat` "+\
-				"(`id`, `kodePelanggan`, `namaPelanggan`, `tipe`, `npwp`, `diskon`, `jatuhTempo`, `diskonAwal`, `dendaKeterlambatan`, `alamat`, `kontak`)"+\
+				"(`id`, `kodePelanggan`, `namaPelanggan`, `tipe`, `npwp`, `diskon`, `jatuhTempo`, `diskonAwal`, `dendaKeterlambatan`, `alamat`, `kontak`, `noAkunPiutang`, `noAkunHutang`)"+\
 				"VALUES "+\
-				"(NULL, '"+kodepelanggan+"', '"+nama+"', '"+tipe+"', '"+npwp+"', '"+diskon+"', '"+jatuhtempo+"', '"+diskonawal+"', '"+dendaketerlambatan+"', '"+alamat+"', '"+kontak+"');"
+				"(NULL, '"+kodepelanggan+"', '"+nama+"', '"+tipe+"', '"+npwp+"', '"+diskon+"', '"+jatuhtempo+"', '"+diskonawal+"', '"+dendaketerlambatan+"', '"+alamat+"', '"+kontak+"' , '"+noakunpiutang+"', '"+noakunhutang+"');"
 		self.DatabaseRunQuery(sql)
 		#----------------------------------------------------------------------------------------------------------back to where it should be
 		self.DataMaster_Goto_Common(self.INDEX_ST_DATAMASTER_DATANAMAALAMAT)
@@ -372,6 +376,8 @@ class DataNamaAlamat(object):
 		self.le_DataMaster_DataNamaAlamat_Tambah_Alamat.setText(_fromUtf8(barang[0][field("alamat")]))
 		self.chk_DataMaster_DataNamaAlamat_Tambah_JatuhTempo.setCheckState((0 if (str(barang[0][field("jatuhtempo")])=="None") else 2))
 		self.dte_DataMaster_DataNamaAlamat_Tambah_JatuhTempo.setDateTime(QDateTime.fromString(str(barang[0][field("jatuhtempo")]),"yyyy-MM-dd hh:mm:ss"))
+		self.tb_DataMaster_DataNamaAlamat_Tambah_NoAkunPiutang.setText(str(barang[0][field("noAkunPiutang")]))
+		self.tb_DataMaster_DataNamaAlamat_Tambah_NoAkunHutang.setText(str(barang[0][field("noAkunHutang")]))
 		self.DataMaster_DataNamaAlamat_Edit_idEDIT = barang[0][field("id")]
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATANAMAALAMAT_TAMBAH)
 	
