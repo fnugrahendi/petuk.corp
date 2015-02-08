@@ -86,6 +86,12 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk,DataRekenin
 		self.GarvinDisconnect(self.le_DataMaster_DataRekening_Search.textChanged)
 		self.le_DataMaster_DataRekening_Search.textChanged.connect(self.DataMaster_DataRekening_RefreshInfo)
 		
+		#-- checkbox
+		self.GarvinDisconnect(self.chk_DataMaster_DataRekening_KasBank.stateChanged)
+		self.chk_DataMaster_DataRekening_KasBank.stateChanged.connect(self.DataMaster_DataRekening_Tambah_KasBankState)
+		#-- check duplikasi nomorAkun yang diinputkan
+		self.GarvinDisconnect(self.le_DataMaster_DataRekening_NomorAkun.textChanged)
+		self.le_DataMaster_DataRekening_NomorAkun.textChanged.connect(self.DataMaster_DataRekening_Tambah_KodeCek)
 		
 		#----------------------------------------------------------------Set index and window size
 		self.st_DataMaster.setCurrentIndex(self.INDEX_ST_DATAMASTER_MENU)

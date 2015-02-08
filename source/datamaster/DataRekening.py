@@ -17,6 +17,7 @@ class DataRekening(object):
 	def __init__(self,parent=None):
 		pass
 		
+		
 	def DataMaster_DataRekening(self):
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAREKENING)
 		
@@ -46,13 +47,15 @@ class DataRekening(object):
 		#--- confirmasi edit
 		self.tb_DataMaster_DataRekening_Edit.clicked.connect(functools.partial(self.DataMaster_Popup,"Edit nomor rekening jurnal ini? Hanya lanjutkan bila anda faham apa yang anda lakukan!",self.DataMaster_DataRekening_Edit))
 	
-	def __DataMaster_DataRekening_Tambah_KasBankState(self,state):
+	def DataMaster_DataRekening_Tambah_KasBankState(self,state):
 		if (state!=0):
 			self.cb_DataMaster_DataRekening_KasBank.show()
 		else:
 			self.cb_DataMaster_DataRekening_KasBank.hide()
 		
-	
+	def DataMaster_DataRekening_Tambah_KodeCek(self,kode):
+		self.GarvinGenerateKode_Cek("gd_rekening_jurnal","noAkun",self.le_DataMaster_DataRekening_NomorAkun,"",8)
+		
 	def DataMaster_DataRekening_Tambah(self,keep=False):
 		if (not keep):
 			les = self.fr_DataMaster_DataRekening_Tambah_Fcontent.findChildren(QtGui.QLineEdit)
@@ -63,10 +66,6 @@ class DataRekening(object):
 		self.tb_DataMaster_DataRekening_Tambah_Batal.clicked.connect(self.DataMaster_DataRekening)
 		self.GarvinDisconnect(self.tb_DataMaster_DataRekening_Tambah_Simpan.clicked)
 		self.tb_DataMaster_DataRekening_Tambah_Simpan.clicked.connect(self.DataMaster_DataRekening_Tambah_Act_Simpan)
-		
-		#-- checkbox
-		self.GarvinDisconnect(self.chk_DataMaster_DataRekening_KasBank.stateChanged)
-		self.chk_DataMaster_DataRekening_KasBank.stateChanged.connect(self.__DataMaster_DataRekening_Tambah_KasBankState)
 		
 		pass
 		
