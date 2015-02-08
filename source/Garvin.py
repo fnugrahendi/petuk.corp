@@ -97,7 +97,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 	def initDatabase(self):
 		try:
 			if str(self.db).find("open")!= (-1):
-				return #-- sudah terkoneksi dan open, skip semua termasuk self.cursor creation
+				return True #-- sudah terkoneksi dan open, skip semua termasuk self.cursor creation
 			else:
 				jumpmetoexeptweakprogrammingbutDRY
 		except:
@@ -114,11 +114,15 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 					print "gagal"
 					#~ exit (1)
 		#-- sudah terkoneksi, bentuk cursor
-		self.cursor = self.db.cursor()
+		try:
+			self.cursor = self.db.cursor()
+			return True
+		except NameError:return False
+		except:return False
 		
 		#~ try:print "self.db is: "+repr(self.db) +" and its type is: "+str(type(self.db))
 		#~ except:pass
-		return
+		return True
 	
 	def ResetRooms(self):
 		#--- search pakai regexp, karena ternyata tab widget pakai stackedwidget juga!
@@ -126,7 +130,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			st.setCurrentIndex(0)
 		
 	def DatabaseRunQuery(self,query):
-		self.initDatabase()
+		if (not self.initDatabase()):
+			return None
 		#~ try:
 			#~ cursor = self.db.cursor()
 		#~ except AttributeError:
