@@ -42,8 +42,8 @@ class Pembelian(object):
 		#~ self.tb_Pembelian_InvoicePembelian_Baru_Rekam.clicked.connect()
 		self.tb_Pembelian_InvoicePembelian_Baru_Tutup.clicked.connect(self.Pembelian_GoTo_InvoicePembelian)
 		#~ self.tb_Pembelian_InvoicePembelian_Baru_Batal.clicked.connect()
-		#~ self.cb_Pembelian_InvoicePembelian_Baru_Input_Nama.currentIndexChanged.connect()
-		
+		self.tbl_Pembelian_InvoicePembelian_Baru.cellDoubleClicked.connect(self.Pembelian_GoTo_InvoicePembelian_Baru_PilihVendor)
+		self.tbl_Pembelian_InvoicePembelian_Baru.cellChanged.connect(self.Pembelian_GoTo_InvoicePembelian_Baru_TotalHarga)
 		
 		#~ self.tb_Pembelian_InvoicePembelian_Baru_Nama.clicked.connect(functools.partial())
 		
@@ -108,7 +108,7 @@ class Pembelian(object):
 		return
 	
 	def Pembelian_GoTo_InvoicePembelian_Baru(self):
-		self.le_Pembelian_InvoicePembelian_Baru_NoPO.setText()
+		self.le_Pembelian_InvoicePembelian_Baru_NoPO.setText("")
 		jumlahRow = self.tbl_Pembelian_InvoicePembelian_Baru.rowCount()
 		if jumlahRow != 0:
 			for x in range (0,jumlahRow):
@@ -125,6 +125,21 @@ class Pembelian(object):
 		self.tbl_Pembelian_InvoicePembelian_Baru.setItem(a,4,QtGui.QTableWidgetItem("0"))
 		return
 	
+	def Pembelian_GoTo_InvoicePembelian_Baru_PilihVendor(self, row, col):
+		if (col==0):
+			self.Popup_NamaAlamat_Tabel(self.tbl_Pembelian_InvoicePembelian_Baru,row)
+		pass
+		
+	def Pembelian_GoTo_InvoicePembelian_Baru_TotalHarga(self,row,col):
+		try:
+			jumlah = str(self.tbl_Pembelian_InvoicePembelian_Baru.item(row,2).text())
+			harga = str(self.tbl_Pembelian_InvoicePembelian_Baru.item(row,4).text())
+			totalHarga = int(jumlah)*int(harga)
+			self.tbl_Pembelian_InvoicePembelian_Baru.setItem(row,6,QtGui.QTableWidgetItem(str(totalHarga)))
+		except:
+			pass
+		return
+	
 	def Pembelian_GoTo_InvoicePembelian_Baru_HapusBaris(self):
 		currentRow = self.tbl_Pembelian_InvoicePembelian_Baru.currentRow()
 		self.tbl_Pembelian_InvoicePembelian_Baru.removeRow(currentRow)
@@ -136,7 +151,7 @@ class Pembelian(object):
 			for x in range (0,jumlahRow):
 				self.tbl_Pembelian_InvoicePembelian_Baru.removeRow(x)
 		self.tbl_Pembelian_InvoicePembelian_Baru.setRowCount(0)
-		self.le_Pembelian_InvoicePembelian_Baru_NoPO.setText()
+		self.le_Pembelian_InvoicePembelian_Baru_NoPO.setText("")
 		self.Pembelian_GoTo_InvoicePembelian()
 		pass
 	
