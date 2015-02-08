@@ -82,6 +82,9 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk,DataRekenin
 		
 		#---------------------------------------------------------------DataRekening
 		self.DataMaster_DataRekening_Edit_idEDIT = -1
+		#--- search bar
+		self.GarvinDisconnect(self.le_DataMaster_DataRekening_Search.textChanged)
+		self.le_DataMaster_DataRekening_Search.textChanged.connect(self.DataMaster_DataRekening_RefreshInfo)
 		
 		
 		#----------------------------------------------------------------Set index and window size
