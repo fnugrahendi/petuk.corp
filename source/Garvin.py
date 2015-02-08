@@ -90,7 +90,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		def isi():
 			namaTombol.setText(str(data[0]))
 		def batal():
-			namaTombol.setText("-")
+			pass
+			#~ namaTombol.setText("-")
 		self.DataMaster_DataRekening_Popup_Pilih(data,isi,batal)
 		print namaTombol.text()
 		
