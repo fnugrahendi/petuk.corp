@@ -250,9 +250,9 @@ class Penjualan(object):
 	def Penjualan_Invoice_TambahBarang_Simpan(self):
 		self.SQLtoRun = []
 		hargaPokok = 0
+		noInvoice = str(self.le_Penjualan_InvoicePenjualan_SOPenawaran.text())
 		jumlahRow = self.tbl_Penjualan_Invoice_TambahBarang.rowCount()
 		for a in range(0, jumlahRow):
-			noInvoice = str(self.le_Penjualan_InvoicePenjualan_SOPenawaran.text())
 			namaBarang = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a,1).text())
 			kodeVendor = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a,0).text())
 			hargaBarang = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a,4).text())
