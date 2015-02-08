@@ -285,21 +285,30 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			sql = sql + ");"
 		self.DatabaseRunQuery(sql)
 		return True
-	def DatabaseFetchResult(self,db,table,keyfield=False,keyvalue=False):
+	def DatabaseFetchResult(self,db,table,keyfield=False,keyvalue=False,OrderBy=False):
 		""" biasa fetch result wae result in array, 
-		misal data = self.DatabaseFetchResult(self.dbDatabase,"gd_nama_alamat","kodePelanggan","%MAKIN%")"""
+		misal data = self.DatabaseFetchResult(self.dbDatabase,"gd_nama_alamat","kodePelanggan","%MAKIN%")
+		OrderBy berisi list 2 element ["nama field", "tipe"] misal ["kodeTransaksi", "ASC"]
+		"""
 		if keyfield==False:
-			return self.DatabaseRunQuery("SELECT * FROM `"+str(db)+"`.`"+str(table)+"`; ")
+			sql = "SELECT * FROM `"+str(db)+"`.`"+str(table)+"` "
+			if OrderBy!=False: sql = sql+ " ORDER BY `"+OrderBy[0]+"` "+OrderBy[1]+ " ;"
+			return self.DatabaseRunQuery(sql)
 		elif (type(keyvalue)==list):
 			sql = "SELECT * FROM `"+str(db)+"`.`"+str(table)+"` WHERE "
 			for x in xrange(0,len(keyvalue)):
 				sql = sql + "`"+str(keyfield[x])+"` LIKE '"+str(keyvalue[x])+"' AND "
 			sql = sql[:-4] #-- remove last "AND "
+			if OrderBy!=False: sql = sql+ " ORDER BY `"+OrderBy[0]+"` "+OrderBy[1]+ " ;"
 			return self.DatabaseRunQuery(sql)
 		elif (type(keyvalue)==str):
-			return self.DatabaseRunQuery("SELECT * FROM `"+str(db)+"`.`"+str(table)+"` WHERE `"+str(keyfield)+"` LIKE '"+str(keyvalue)+"';")
+			sql ="SELECT * FROM `"+str(db)+"`.`"+str(table)+"` WHERE `"+str(keyfield)+"` LIKE '"+str(keyvalue)+"' "
+			if OrderBy!=False: sql = sql+ " ORDER BY `"+OrderBy[0]+"` "+OrderBy[1]+ " ;"
+			return self.DatabaseRunQuery(sql)
 		else:
-			return self.DatabaseRunQuery("SELECT * FROM `"+str(db)+"`.`"+str(table)+"` WHERE `"+str(keyfield)+"` = "+str(keyvalue)+";")
+			"SELECT * FROM `"+str(db)+"`.`"+str(table)+"` WHERE `"+str(keyfield)+"` = "+str(keyvalue)+";"
+			if OrderBy!=False: sql = sql+ " ORDER BY `"+OrderBy[0]+"` "+OrderBy[1]+ " ;"
+			return self.DatabaseRunQuery(sql)
 	
 	def clearTable(self,tableobject):
 		#at first we clear the rows
@@ -442,6 +451,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			if creation_cb != False: creation_cb(objectbaru)
 			return objectbaru
 		else:
+			objectlama.show()
 			return objectlama
 			
 
