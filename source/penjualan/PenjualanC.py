@@ -73,6 +73,7 @@ class Penjualan(object):
 		self.tb_Penjualan_PembayaranPiutang_Baru_Batal.clicked.connect(self.Penjualan_GoTo_PembayaranPiutang)
 		self.tb_Penjualan_PembayaranPiutang_Baru_Akun.clicked.connect(functools.partial(self.Popup_Rekening, self.tb_Penjualan_PembayaranPiutang_Baru_Akun))
 		self.tb_Penjualan_PembayaranPiutang_Baru_Rekam.clicked.connect(self.Penjualan_PembayaranPiutang_Rekam)
+		self.tb_Penjualan_JurnalMemorial_Simpan.clicked.connect(self.Penjualan_JurnalMemorial_Simpan)
 		
 		#Tombol pada Halaman UangMuka
 		self.tb_Penjualan_UangMuka_Kembali.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -249,9 +250,9 @@ class Penjualan(object):
 	def Penjualan_Invoice_TambahBarang_Simpan(self):
 		self.SQLtoRun = []
 		hargaPokok = 0
+		noInvoice = str(self.le_Penjualan_InvoicePenjualan_SOPenawaran.text())
 		jumlahRow = self.tbl_Penjualan_Invoice_TambahBarang.rowCount()
 		for a in range(0, jumlahRow):
-			noInvoice = str(self.le_Penjualan_InvoicePenjualan_SOPenawaran.text())
 			namaBarang = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a,1).text())
 			kodeVendor = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a,0).text())
 			hargaBarang = str(self.tbl_Penjualan_Invoice_TambahBarang.item(a,4).text())
@@ -579,8 +580,19 @@ class Penjualan(object):
 		return
 		
 	def Penjualan_JurnalMemorial_Simpan(self):
-		#~ Baca input fields
 		
+		#~ Baca input fields
+		noRef = str(self.le_Penjualan_JurnalMemorial_NoRef.text())
+		tanggal = str(self.dte_Penjualan_JurnalMemorial_Tanggal.dateTime().toString("yyyy-MM-dd"))
+		catatan = str(self.le_Penjualan_JurnalMemorial_Deskripsi.text())
+		jumlah = str(self.le_Penjualan_JurnalMemorial_Jumlah.text())
+		
+		#~ Input database
+		query_insert = "INSERT INTO `gd_jurnal_memorial`"+\
+			"(`noReferensi`,`tanggal`,`catatan`,`jumlahUang`,`noAkunPiutang`,`noAkunMemorial`)"+\
+			"VALUES ('"+noRef+"','"+tanggal+"','"+catatan+"','"+jumlah+"','13000002','71000030')"
+		self.DatabaseRunQuery(query_insert)
+		self.Penjualan_GoTo_PembayaranPiutang()
 		return
 	
 	def Penjualan_GoTo_UangMuka(self):

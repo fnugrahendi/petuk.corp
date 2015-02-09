@@ -15,8 +15,8 @@ class Pembelian(object):
 	def Pembelian__init(self):
 		#inisialisasisiasi INDEX Halaman Pembelian
 		self.INDEX_ST_PEMBELIAN_MENU = 0
-		self.INDEX_ST_PEMBELIAN_PERMINTAANBARANG = 1
-		self.INDEX_ST_PEMBELIAN_ORDERPEMBELIAN = 2
+		self.INDEX_ST_PEMBELIAN_INVOICEPEMBELIAN = 1
+		self.INDEX_ST_PEMBELIAN_INVOICEPEMBELIAN_BARU = 2
 		self.INDEX_ST_PEMBELIAN_OP_TAMBAHPRODUK = 3
 		self.INDEX_ST_PEMBELIAN_PENERIMAAN = 4
 		self.INDEX_ST_PEMBELIAN_HUTANG = 5
@@ -25,28 +25,27 @@ class Pembelian(object):
 		self.INDEX_ST_PEMBELIAN_RETURPEMBELIAN = 8	
 		
 		#Tombol Pada Halaman Menu
-		self.tb_Pembelian_PermintaanBarang.clicked.connect(self.Pembelian_GoTo_PermintaanBarang)
-		self.tb_Pembelian_OrderPembelian.clicked.connect(self.Pembelian_GoTo_OrderPembelian)
-		self.tb_Pembelian_Penerimaan.clicked.connect(self.Pembelian_GoTo_PenerimaanBarang)
+		self.tb_Pembelian_InvoicePembelian.clicked.connect(self.Pembelian_GoTo_InvoicePembelian)
 		self.tb_Pembelian_HutangUsaha.clicked.connect(self.Pembelian_GoTo_HutangUsaha)
 		self.tb_Pembelian_PembayaranHutang.clicked.connect(self.Pembelian_GoTo_PembayaranHutang)
 		self.tb_Pembelian_ReturPembelian.clicked.connect(self.Pembelian_GoTo_ReturPembelian)
 		
-		#Tombol pada Permintaan Barang
-		self.tb_Pembelian_PermintaanBarang_Tutup.clicked.connect(self.Pembelian_GoTo_Menu)
+		#Tombol pada Invoice Pembelian
+		self.tb_Pembelian_InvoicePembelian_Tutup.clicked.connect(self.Pembelian_GoTo_Menu)
+		self.tb_Pembelian_InvoicePembelian_Baru.clicked.connect(self.Pembelian_GoTo_InvoicePembelian_Baru)
+		self.tb_Pembelian_InvoicePembelian_Rincian.clicked.connect(self.Pembelian_GoTo_InvoicePembelian_Rincian)
+		self.tbl_Pembelian_InvoicePembelian.cellDoubleClicked.connect(self.Pembelian_GoTo_InvoicePembelian_Rincian)
 		
-		#Tombol pada Order Pembelian
-		self.tb_Pembelian_OrderPembelian_Tutup.clicked.connect(self.Pembelian_GoTo_Menu)
-		self.tb_Pembelian_OrderPembelian_Baru.clicked.connect(self.Pembelian_GoTo_OrderPembelian_TambahProduk)
-		self.tb_Pembelian_OrderPembelian_Batal.clicked.connect(self.Pembelian_OrderPembelian_Batal)
-		self.tb_Pembelian_OrderPembelian_HapusBaris.clicked.connect(self.Pembelian_OrderPembelian_HapusBaris)
-		self.tb_Pembelian_OrderPembelian_Rekam.clicked.connect(self.Pembelian_OrderPembelian_Rekam)
-		self.tb_Pembelian_OrderPembelian_TambahProduk_Simpan.clicked.connect(self.Pembelian_OrderPembelian_TambahProduk)
-		self.tb_Pembelian_OrderPembelian_TambahProduk_Batal.clicked.connect(self.Pembelian_GoTo_OrderPembelian)
-		self.cb_Pembelian_OrderPembelian_TambahProduk_Input_Nama.currentIndexChanged.connect(self.Pembelian_OrderPembelian_TambahProduk_UpdateKode)
-		self.tb_Pembelian_OrderPembelian_Nama.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.tb_Pembelian_OrderPembelian_Nama))
+		#Tombol pada Invoice Pembelian Baru
+		self.tb_Pembelian_InvoicePembelian_Baru_TambahBaris.clicked.connect(self.Pembelian_GoTo_InvoicePembelian_Baru_TambahBaris)
+		self.tb_Pembelian_InvoicePembelian_Baru_HapusBaris.clicked.connect(self.Pembelian_GoTo_InvoicePembelian_Baru_HapusBaris)
+		self.tb_Pembelian_InvoicePembelian_Baru_Rekam.clicked.connect(self.Pembelian_GoTo_InvoicePembelian_Baru_Rekam)
+		self.tb_Pembelian_InvoicePembelian_Baru_Tutup.clicked.connect(self.Pembelian_GoTo_InvoicePembelian)
+		self.tb_Pembelian_InvoicePembelian_Baru_Batal.clicked.connect(self.Pembelian_GoTo_InvoicePembelian_Batal)
+		self.tbl_Pembelian_InvoicePembelian_Baru.cellDoubleClicked.connect(self.Pembelian_GoTo_InvoicePembelian_Baru_PilihVendor)
+		self.tbl_Pembelian_InvoicePembelian_Baru.cellChanged.connect(self.Pembelian_GoTo_InvoicePembelian_Baru_TotalHarga)
 		
-		#Tombol pada Penerimaan Barang
+		#~ self.tb_Pembelian_InvoicePembelian_Baru_Nama.clicked.connect(functools.partial())
 		
 		#Tombol pada Hutang Usaha
 		self.tb_Pembelian_HutangUsaha_Tutup.clicked.connect(self.Pembelian_GoTo_Menu)
@@ -59,10 +58,6 @@ class Pembelian(object):
 	def Pembelian_GoTo_Menu(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_MENU)
 		return	
-		
-	def Pembelian_GoTo_PermintaanBarang(self):
-		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_PERMINTAANBARANG)
-		return
 	
 	def Popup_NamaAlamat(self, namaTombol):
 		data = []
@@ -71,45 +66,114 @@ class Pembelian(object):
 		def batal():
 			namaTombol.setText("-")
 		self.DataMaster_DataNamaAlamat_Popup_Pilih(data,isi,batal)
-	
-	def Pembelian_GoTo_OrderPembelian(self):
-		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_ORDERPEMBELIAN)
-		self.tb_Pembelian_OrderPembelian_Nama.setText("")
-		self.cb_Pembelian_OrderPembelian_Gudang.clear()
-		jumlahRow = self.tbl_Pembelian_OrderPembelian.rowCount()
-		#print jumlahRow
+			
+	def Pembelian_GoTo_InvoicePembelian(self):
+		jumlahRow = self.tbl_Pembelian_InvoicePembelian.rowCount()
 		if jumlahRow != 0:
-			for a in range (0,jumlahRow):
-				self.tbl_Pembelian_OrderPembelian.removeRow(a)
-		kodePembelian = str(self.le_Pembelian_OrderPembelian_NoPO.text())
-		#Lawas cah. saiki jamane popup
-		"""query = "SELECT * FROM gd_nama_alamat"
-		for a in range(0,len(self.DatabaseRunQuery(query))):
-			self.cb_Pembelian_OrderPembelian_Nama.addItem(self.DatabaseRunQuery(query)[a][2])"""
-		query = "SELECT * FROM gd_data_gudang"
-		for a in range(0,len(self.DatabaseRunQuery(query))):
-			self.cb_Pembelian_OrderPembelian_Gudang.addItem(self.DatabaseRunQuery(query)[a][2])
-		query = "SELECT * FROM `gd_order_pembelian` WHERE `kodeTransaksi` LIKE '"+kodePembelian+"'"
-		result = self.DatabaseRunQuery(query) 
-		#print result
-		if len(result) != 0:
-			for a in range(0,len(result)):
-				print "tambah row"
-				self.tbl_Pembelian_OrderPembelian.insertRow(a)
-				self.tbl_Pembelian_OrderPembelian.setItem(a,0,QtGui.QTableWidgetItem(result[a][4])) #kode
-				sql = "SELECT * FROM `gd_data_produk` WHERE `kodeBarang` = '"+result[a][4]+"'"
-				self.tbl_Pembelian_OrderPembelian.setItem(a,1,QtGui.QTableWidgetItem(str(self.DatabaseRunQuery(sql)[0][5]))) #nama produk
-				kodeSatuan = str(self.DatabaseRunQuery(sql)[0][3])
-				satuan_query =  "SELECT * FROM `gd_satuan_pengukuran` WHERE `kodeSatuan` = '"+kodeSatuan+"'"
-				satuan = str(self.DatabaseRunQuery(satuan_query)[0][2])
-				self.tbl_Pembelian_OrderPembelian.setItem(a,3,QtGui.QTableWidgetItem(satuan)) #satuan
-				self.tbl_Pembelian_OrderPembelian.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][5]))) #jumlah
-				self.tbl_Pembelian_OrderPembelian.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][6]))) #harga
-				self.tbl_Pembelian_OrderPembelian.setItem(a,5,QtGui.QTableWidgetItem(result[a][7])) #diskon
-				total = result[a][6]*result[a][5]
-				self.tbl_Pembelian_OrderPembelian.setItem(a,6,QtGui.QTableWidgetItem(str(total))) #total harga
-				self.tbl_Pembelian_OrderPembelian.setItem(a,7,QtGui.QTableWidgetItem(result[a][8])) #pajak
-		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_ORDERPEMBELIAN)
+			for x in range (0,jumlahRow):
+				self.tbl_Pembelian_InvoicePembelian.removeRow(x)
+		self.tbl_Pembelian_InvoicePembelian.setRowCount(0)
+		query = "SELECT * FROM `gd_invoice_penjualan` GROUP BY `kodeTransaksi`"
+		result = self.DatabaseRunQuery(query)
+		for a in range (0,len(result)):
+			self.tbl_Pembelian_InvoicePembelian.insertRow(a)
+			self.tbl_Pembelian_InvoicePembelian.setItem(a,0,QtGui.QTableWidgetItem(str(result[a][1]))) #noinvoice
+			self.tbl_Pembelian_InvoicePembelian.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][4]))) #tanggal
+			self.tbl_Pembelian_InvoicePembelian.setItem(a,2,QtGui.QTableWidgetItem("IDR")) #kurs
+			self.tbl_Pembelian_InvoicePembelian.setItem(a,3,QtGui.QTableWidgetItem(str(result[a][6]))) #nilai
+		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_INVOICEPEMBELIAN)
+		return
+	
+	def Pembelian_GoTo_InvoicePembelian_Rincian(self):
+		self.tbl_Pembelian_InvoicePembelian_Baru.setColumnWidth(0,200)
+		self.tbl_Pembelian_InvoicePembelian_Baru.setColumnWidth(1,200)
+		curRow = self.tbl_Pembelian_InvoicePembelian.currentRow()
+		noInvoice = str(self.tbl_Pembelian_InvoicePembelian.item(curRow,0).text())
+		self.le_Pembelian_InvoicePembelian_Baru_NoPO.setText(noInvoice)
+		query = "SELECT * FROM `gd_pembelian_barang` WHERE `noInvoice` LIKE '"+noInvoice+"'"
+		result = self.DatabaseRunQuery(query)
+		jumlahRow = self.tbl_Pembelian_InvoicePembelian_Baru.rowCount()
+		if jumlahRow != 0:
+			for x in range (0,jumlahRow):
+				self.tbl_Pembelian_InvoicePembelian_Baru.removeRow(x)
+		self.tbl_Pembelian_InvoicePembelian_Baru.setRowCount(0)
+		for a in range (0,len(result)):
+			self.tbl_Pembelian_InvoicePembelian_Baru.insertRow(a)
+			self.tbl_Pembelian_InvoicePembelian_Baru.setItem(a,0,QtGui.QTableWidgetItem(str(result[a][4]))) #supplier
+			self.tbl_Pembelian_InvoicePembelian_Baru.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][3]))) #barang
+			self.tbl_Pembelian_InvoicePembelian_Baru.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][6]))) #jumlah
+			self.tbl_Pembelian_InvoicePembelian_Baru.setItem(a,3,QtGui.QTableWidgetItem(str(result[a][7]))) #satuan
+			self.tbl_Pembelian_InvoicePembelian_Baru.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][5]))) #harga
+			self.tbl_Pembelian_InvoicePembelian_Baru.setItem(a,6,QtGui.QTableWidgetItem(str(result[a][8]))) #total harga
+		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_INVOICEPEMBELIAN_BARU)
+		return
+	
+	def Pembelian_GoTo_InvoicePembelian_Baru(self):
+		self.le_Pembelian_InvoicePembelian_Baru_NoPO.setText("")
+		self.tbl_Pembelian_InvoicePembelian_Baru.setColumnWidth(0,200)
+		self.tbl_Pembelian_InvoicePembelian_Baru.setColumnWidth(1,200)
+		jumlahRow = self.tbl_Pembelian_InvoicePembelian_Baru.rowCount()
+		if jumlahRow != 0:
+			for x in range (0,jumlahRow):
+				self.tbl_Pembelian_InvoicePembelian_Baru.removeRow(x)
+		self.tbl_Pembelian_InvoicePembelian_Baru.setRowCount(0)
+		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_INVOICEPEMBELIAN_BARU)
+		return
+
+	def Pembelian_GoTo_InvoicePembelian_Baru_TambahBaris(self):
+		jumlahRow = self.tbl_Pembelian_InvoicePembelian_Baru.rowCount()
+		a = jumlahRow
+		self.tbl_Pembelian_InvoicePembelian_Baru.insertRow(a)
+		self.tbl_Pembelian_InvoicePembelian_Baru.setItem(a,2,QtGui.QTableWidgetItem("0"))
+		self.tbl_Pembelian_InvoicePembelian_Baru.setItem(a,4,QtGui.QTableWidgetItem("0"))
+		return
+	
+	def Pembelian_GoTo_InvoicePembelian_Baru_PilihVendor(self, row, col):
+		if (col==0):
+			self.Popup_NamaAlamat_Tabel(self.tbl_Pembelian_InvoicePembelian_Baru,row)
+		pass
+		
+	def Pembelian_GoTo_InvoicePembelian_Baru_TotalHarga(self,row,col):
+		try:
+			jumlah = str(self.tbl_Pembelian_InvoicePembelian_Baru.item(row,2).text())
+			harga = str(self.tbl_Pembelian_InvoicePembelian_Baru.item(row,4).text())
+			totalHarga = int(jumlah)*int(harga)
+			self.tbl_Pembelian_InvoicePembelian_Baru.setItem(row,6,QtGui.QTableWidgetItem(str(totalHarga)))
+		except:
+			pass
+		return
+	
+	def Pembelian_GoTo_InvoicePembelian_Baru_HapusBaris(self):
+		currentRow = self.tbl_Pembelian_InvoicePembelian_Baru.currentRow()
+		self.tbl_Pembelian_InvoicePembelian_Baru.removeRow(currentRow)
+		pass
+	
+	def Pembelian_GoTo_InvoicePembelian_Batal(self):
+		jumlahRow = self.tbl_Pembelian_InvoicePembelian_Baru.rowCount()
+		if jumlahRow != 0:
+			for x in range (0,jumlahRow):
+				self.tbl_Pembelian_InvoicePembelian_Baru.removeRow(x)
+		self.tbl_Pembelian_InvoicePembelian_Baru.setRowCount(0)
+		self.le_Pembelian_InvoicePembelian_Baru_NoPO.setText("")
+		self.Pembelian_GoTo_InvoicePembelian()
+		pass
+		
+	def Pembelian_GoTo_InvoicePembelian_Baru_Rekam(self):
+		noInvoice = str(self.le_Pembelian_InvoicePembelian_Baru_NoPO.text())
+		jumlahRow = self.tbl_Pembelian_InvoicePembelian_Baru.rowCount()
+		for a in range(0, jumlahRow):
+			namaBarang = str(self.tbl_Pembelian_InvoicePembelian_Baru.item(a,1).text())
+			kodeVendor = str(self.tbl_Pembelian_InvoicePembelian_Baru.item(a,0).text())
+			hargaBarang = str(self.tbl_Pembelian_InvoicePembelian_Baru.item(a,4).text())
+			jumlahBarang = str(self.tbl_Pembelian_InvoicePembelian_Baru.item(a,2).text())
+			satuan = str(self.tbl_Pembelian_InvoicePembelian_Baru.item(a,3).text())
+			totalHarga = str(self.tbl_Pembelian_InvoicePembelian_Baru.item(a,6).text())
+			query = "INSERT INTO `"+self.dbDatabase+"`.`gd_pembelian_barang`"+\
+				"(`noInvoice`, `namaBarang`, `kodeVendor`, `hargaBarang`, `jumlahBarang`, `satuan`, `totalHarga`) "+\
+				"VALUES ('"+noInvoice+"', '"+namaBarang+"', '"+kodeVendor+"', '"+hargaBarang+"', '"+jumlahBarang+"', '"+satuan+"', '"+totalHarga+"');"
+			self.DatabaseRunQuery(query)
+		self.Pembelian_GoTo_InvoicePembelian()
+		return
 	
 	def Pembelian_GoTo_OrderPembelian_TambahProduk(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_OP_TAMBAHPRODUK)
@@ -241,10 +305,6 @@ class Pembelian(object):
 				"(`kodeTransaksi`, `kodePelanggan`, `totalHarga`, `tanggal`, `kodeMatauang`) "+\
 				"VALUES ('"+kodeTransaksi+"', '"+kodePelanggan+"', '"+totalHarga+"', '"+tanggalMasuk+"', '"+kodeMatauang+"');"
 		self.DatabaseRunQuery(query2)
-	
-	def Pembelian_GoTo_PenerimaanBarang(self):
-		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_PENERIMAAN)
-		return
 	
 	def Pembelian_GoTo_HutangUsaha(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_HUTANG)
