@@ -69,6 +69,7 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk,DataRekenin
 		
 		#---------------------------------------------------------------DataProduk
 		self.DataMaster_DataProduk_Edit_idEDIT = -1
+		self.tb_DataMaster_DataProduk_Tambah_NoAkunPenjualan.clicked.connect(functools.partial(self.Popup_Rekening,self.tb_DataMaster_DataProduk_Tambah_NoAkunPenjualan))
 		#---------------------------------------------------------------DataPajak
 		self.DataMaster_DataPajak_Edit_idEDIT = -1
 		
@@ -276,6 +277,7 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk,DataRekenin
 				lels = self.fr_DataMaster_DataProduk_Tambah_Fcontent.findChildren(QtGui.QLineEdit)
 				for x in range(0,len(lels)):
 					lels[x].setText("")
+				self.tb_DataMaster_DataProduk_Tambah_NoAkunPenjualan.setText("")
 			
 			self.DataMaster_DataProduk_Tambah_GenerateKode()
 			

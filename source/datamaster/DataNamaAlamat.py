@@ -246,6 +246,45 @@ class DataNamaAlamat(object):
 			self.lb_DataMaster_DataNamaAlamat_Ljatuhtempo.setObjectName(_fromUtf8("lb_DataMaster_DataNamaAlamat_Ljatuhtempo"))
 			self.fr_DataMaster_DataCommon_Fbody_FR_Ftop.findChildren(QtGui.QGridLayout)[0].addWidget(self.lb_DataMaster_DataNamaAlamat_Ljatuhtempo, 4, 0, 1, 1,QtCore.Qt.AlignTop)
 			self.lb_DataMaster_DataNamaAlamat_Ljatuhtempo.setText("Jatuh Tempo :")
+			
+		#--------------------------------------------------------------------------------------------------------noAkunHutang
+		try:
+			if (self.DataMaster_CommonRoom_cleared==1):
+				self.fr_DataMaster_DataCommon_Fbody_FR_Ftop.findChildren(QtGui.QGridLayout)[0].addWidget(self.lb_DataMaster_DataNamaAlamat_noAkunHutang, 5, 1, 1, 1,QtCore.Qt.AlignTop)
+				self.lb_DataMaster_DataNamaAlamat_noAkunHutang.show()
+				self.fr_DataMaster_DataCommon_Fbody_FR_Ftop.findChildren(QtGui.QGridLayout)[0].addWidget(self.lb_DataMaster_DataNamaAlamat_LnoAkunHutang, 5, 0, 1, 1,QtCore.Qt.AlignTop)
+				self.lb_DataMaster_DataNamaAlamat_LnoAkunHutang.show()
+			self.lb_DataMaster_DataNamaAlamat_noAkunHutang.setText(str(data[field("noAkunHutang")]))
+			self.lb_DataMaster_DataNamaAlamat_LnoAkunHutang.setText("Nomor Akun Hutang :")
+		except:
+			self.lb_DataMaster_DataNamaAlamat_noAkunHutang = QtGui.QLabel(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
+			self.lb_DataMaster_DataNamaAlamat_noAkunHutang.setObjectName(_fromUtf8("lb_DataMaster_DataNamaAlamat_noAkunHutang"))
+			self.fr_DataMaster_DataCommon_Fbody_FR_Ftop.findChildren(QtGui.QGridLayout)[0].addWidget(self.lb_DataMaster_DataNamaAlamat_noAkunHutang, 5, 1, 1, 1,QtCore.Qt.AlignTop)
+			self.lb_DataMaster_DataNamaAlamat_noAkunHutang.setText(str(data[field("noAkunHutang")]))
+			
+			self.lb_DataMaster_DataNamaAlamat_LnoAkunHutang = QtGui.QLabel(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
+			self.lb_DataMaster_DataNamaAlamat_LnoAkunHutang.setObjectName(_fromUtf8("lb_DataMaster_DataNamaAlamat_LnoAkunHutang"))
+			self.fr_DataMaster_DataCommon_Fbody_FR_Ftop.findChildren(QtGui.QGridLayout)[0].addWidget(self.lb_DataMaster_DataNamaAlamat_LnoAkunHutang, 5, 0, 1, 1,QtCore.Qt.AlignTop)
+			self.lb_DataMaster_DataNamaAlamat_LnoAkunHutang.setText("Nomor Akun Hutang :")
+		#--------------------------------------------------------------------------------------------------------noAkunPiutang
+		try:
+			if (self.DataMaster_CommonRoom_cleared==1):
+				self.fr_DataMaster_DataCommon_Fbody_FR_Ftop.findChildren(QtGui.QGridLayout)[0].addWidget(self.lb_DataMaster_DataNamaAlamat_noAkunPiutang, 5, 7, 1, 1,QtCore.Qt.AlignTop)
+				self.lb_DataMaster_DataNamaAlamat_noAkunPiutang.show()
+				self.fr_DataMaster_DataCommon_Fbody_FR_Ftop.findChildren(QtGui.QGridLayout)[0].addWidget(self.lb_DataMaster_DataNamaAlamat_LnoAkunPiutang, 5, 6, 1, 1,QtCore.Qt.AlignTop)
+				self.lb_DataMaster_DataNamaAlamat_LnoAkunPiutang.show()
+			self.lb_DataMaster_DataNamaAlamat_noAkunPiutang.setText(str(data[field("noAkunPiutang")]))
+			self.lb_DataMaster_DataNamaAlamat_LnoAkunPiutang.setText("Nomor Akun Piutang :")
+		except:
+			self.lb_DataMaster_DataNamaAlamat_noAkunPiutang = QtGui.QLabel(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
+			self.lb_DataMaster_DataNamaAlamat_noAkunPiutang.setObjectName(_fromUtf8("lb_DataMaster_DataNamaAlamat_noAkunPiutang"))
+			self.fr_DataMaster_DataCommon_Fbody_FR_Ftop.findChildren(QtGui.QGridLayout)[0].addWidget(self.lb_DataMaster_DataNamaAlamat_noAkunPiutang, 5, 7, 1, 1,QtCore.Qt.AlignTop)
+			self.lb_DataMaster_DataNamaAlamat_noAkunPiutang.setText(str(data[field("noAkunPiutang")]))
+			
+			self.lb_DataMaster_DataNamaAlamat_LnoAkunPiutang = QtGui.QLabel(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
+			self.lb_DataMaster_DataNamaAlamat_LnoAkunPiutang.setObjectName(_fromUtf8("lb_DataMaster_DataNamaAlamat_LnoAkunPiutang"))
+			self.fr_DataMaster_DataCommon_Fbody_FR_Ftop.findChildren(QtGui.QGridLayout)[0].addWidget(self.lb_DataMaster_DataNamaAlamat_LnoAkunPiutang, 5, 6, 1, 1,QtCore.Qt.AlignTop)
+			self.lb_DataMaster_DataNamaAlamat_LnoAkunPiutang.setText("Nomor Akun Piutang :")
 		
 		
 		#--------------------------------------------------------------------------------------------------------Frame Bawah (graphic)
