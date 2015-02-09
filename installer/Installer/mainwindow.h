@@ -18,7 +18,7 @@ public:
     ~MainWindow();
     QMetaObject::Connection c_tb_Browse;
     void None() {return;}
-    void Popup(QString Text, void *FCB_Ok, void *FCB_Cancel);
+    void Popup(QString Text, function *FCB_Ok, function *FCB_Cancel);
     void Quit() {exit (0);}
 public slots:
     void Quit_Confirm();
