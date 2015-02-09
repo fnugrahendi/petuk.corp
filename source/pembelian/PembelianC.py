@@ -312,16 +312,18 @@ class Pembelian(object):
 		if jumlahRow != 0:
 			for x in range (0,jumlahRow+1):
 				self.tbl_Pembelian_HutangUsaha.removeRow(x)
-		query = "SELECT `kodePelanggan`, SUM(`hargaTotal`) FROM `gd_hutang` GROUP BY `kodePelanggan`"
+		query = "SELECT * FROM `gd_pembelian_barang` GROUP BY `kodeVendor`"
+		data = self.DatabaseRunQuery(query)
+		querytotal = "SELECT  SUM(`totalHarga`) FROM `gd_pembelian_barang` GROUP BY `kodeVendor`"
 		result = self.DatabaseRunQuery(query)
 		for a in range (0,len(result)):
-			kodePelanggan = str(result[a][0])
+			kodePelanggan = str(data[a][0])
 			query = "SELECT * FROM `gd_nama_alamat` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"'"
 			nama = str(self.DatabaseRunQuery(query)[0][2])
 			totalHutang = str(int(result[a][1]))
 			self.tbl_Pembelian_HutangUsaha.insertRow(a)
-			self.tbl_Pembelian_HutangUsaha.setItem(a,0,QtGui.QTableWidgetItem(nama)) #nama
-			self.tbl_Pembelian_HutangUsaha.setItem(a,4,QtGui.QTableWidgetItem(totalHutang)) #hutang
+			self.tbl_Pembelian_HutangUsaha.setItem(a,0,QtGui.QTableWidgetItem(kodePelanggan)) #nama
+			self.tbl_Pembelian_HutangUsaha.setItem(a,4,QtGui.QTableWidgetItem(totalHutang)) #hutang saldo	
 		query = "SELECT SUM(`hargaTotal`) FROM `gd_hutang`"
 		self.lb_Pembelian_HutangUsaha_TotalNilai.setText("Rp "+str(int(self.DatabaseRunQuery(query)[0][0])))
 		return

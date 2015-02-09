@@ -35,6 +35,7 @@ class Penjualan(object):
 		self.tb_Penjualan_Invoice_TambahBarang_Tabel_Tambah.clicked.connect(self.Penjualan_Invoice_TambahBarang_TambahBaris)
 		self.Penjualan_Invoice_TambahBarang_Batal.clicked.connect(self.Penjualan_GoTo_Invoice_Batal)
 		self.tb_Penjualan_Invoice_TambahBarang_Simpan.clicked.connect(self.Penjualan_Invoice_TambahBarang_Simpan)
+		self.tb_Penjualan_InvoicePenjualan_Cetak.clicked.connect(self.Penjualan_Invoice_Cetak)
 		
 		#selain tombol
 		self.tbl_Penjualan_Invoice_TambahBarang.cellDoubleClicked.connect(self.Penjualan_Invoice_TambahBarang_PilihVendor)
@@ -74,6 +75,7 @@ class Penjualan(object):
 		self.tb_Penjualan_PembayaranPiutang_Baru_Akun.clicked.connect(functools.partial(self.Popup_Rekening, self.tb_Penjualan_PembayaranPiutang_Baru_Akun))
 		self.tb_Penjualan_PembayaranPiutang_Baru_Rekam.clicked.connect(self.Penjualan_PembayaranPiutang_Rekam)
 		self.tb_Penjualan_JurnalMemorial_Simpan.clicked.connect(self.Penjualan_JurnalMemorial_Simpan)
+		self.tb_Penjualan_PembayaranPiutang_Baru_Cetak.clicked.connect()
 		
 		#Tombol pada Halaman UangMuka
 		self.tb_Penjualan_UangMuka_Kembali.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -211,6 +213,12 @@ class Penjualan(object):
 			self.DatabaseRunQuery(self.SQLtoRun[a])
 		del self.SQLtoRun[:]
 		self.Penjualan_GoTo_Invoice()
+		pass
+	
+	def Penjualan_Invoice_Cetak(self):
+		#~ noAkun sing invoice dijupuk seko gd data produk
+		#~ noAkun piutang dijupuk seko gd nama alamat
+		#~ piutang -> debit (kredit = 0), penjualan -> kredit (debit = 0)
 		pass
 	
 	def Penjualan_GoTo_Invoice_TambahBarang(self):
@@ -517,22 +525,6 @@ class Penjualan(object):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PPB)
 		return
 	
-	#def Penjualan_PembayaranPiutang_CekJumlah(self):
-	#	noInvoice = str(self.le_Penjualan_PembayaranPiutang_Baru_NoInvoice.text())
-	#	nominalDibayar = str(self.le_Penjualan_PembayaranPiutang_Baru_Nominal.text())
-	#	nominalDibayar = int(nominalDibayar)
-	#	saldoPembayaran = saldoPembayaran + nominalDibayar
-	#	query2 = "SELECT `jumlahTagihan` FROM `gd_piutang` WHERE `noInvoice` LIKE '"+noInvoice+"'"
-	#	totalTagihan = self.DatabaseRunQuery(query2)
-	#	if (saldoPembayaran>totalTagihan):
-			#~ sisa = saldoPembayaran - totalTagihan
-			#~ dipakai = nominalDibayar - sisa
-			#~ Simpan yang dipakai
-			#~ Go To Jurnal Memorial(sisa)
-	#	else:
-			#~ Simpan
-	#	pass
-	
 	def Penjualan_PembayaranPiutang_Rekam(self):
 		#~ Baca inputan
 		noInvoice = str(self.le_Penjualan_PembayaranPiutang_Baru_NoInvoice.text())
@@ -571,6 +563,12 @@ class Penjualan(object):
 			print "nothing happened"
 			self.Penjualan_GoTo_PembayaranPiutang()
 			#self.DatabaseRunQuery(query_insert)
+		pass
+	
+	def Penjualan_PembayaranPiutang_Cetak(self):
+		#~ noAkun sing kas dijupuk seko akun kas/bank terpilih
+		#~ noAkun piutang dijupuk seko gd nama alamat
+		#~ kas -> debit (kredit = 0), piutang -> kredit (debit = 0)
 		pass
 	
 	def Penjualan_GoTo_JurnalMemorial(self,sisa):
