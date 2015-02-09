@@ -75,7 +75,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		self.ResetRooms()
 		#--- startup program, set semua datetimeedit ke waktu skrg		
 		self.GarvinSetDate(self)
-		self.Laporan_BuktiBankMasuk(None)
+		self.Laporan_BuktiMemorial(None)
 	
 	def Popup_NamaAlamat_Tabel(self,namaTabel,row):
 		data = []
@@ -90,16 +90,17 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		def isi():
 			namaTombol.setText(str(data[0]))
 		def batal():
-			namaTombol.setText("-")
+			pass
+			#~ namaTombol.setText("-")
 		self.DataMaster_DataRekening_Popup_Pilih(data,isi,batal)
 		print namaTombol.text()
 		
 	def initDatabase(self):
 		try:
 			if str(self.db).find("open")!= (-1):
-				return #-- sudah terkoneksi
+				return True #-- sudah terkoneksi dan open, skip semua termasuk self.cursor creation
 			else:
-				jumpmetoexeptweakprogramming
+				jumpmetoexeptweakprogrammingbutDRY
 		except:
 			#-- Belum terkoneksi, koneksikan
 			try:
@@ -113,10 +114,16 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 				except:
 					print "gagal"
 					#~ exit (1)
-
+		#-- sudah terkoneksi, bentuk cursor
+		try:
+			self.cursor = self.db.cursor()
+			return True
+		except NameError:return False
+		except:return False
+		
 		#~ try:print "self.db is: "+repr(self.db) +" and its type is: "+str(type(self.db))
 		#~ except:pass
-		return
+		return True
 	
 	def ResetRooms(self):
 		#--- search pakai regexp, karena ternyata tab widget pakai stackedwidget juga!
@@ -124,15 +131,16 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			st.setCurrentIndex(0)
 		
 	def DatabaseRunQuery(self,query):
-		self.initDatabase()
-		try:
-			cursor = self.db.cursor()
-		except AttributeError:
+		if (not self.initDatabase()):
 			return None
-		except:
-			return ([])
+		#~ try:
+			#~ cursor = self.db.cursor()
+		#~ except AttributeError:
+			#~ return None
+		#~ except:
+			#~ return ([])
 		try:
-			cursor.execute(query)
+			self.cursor.execute(query)
 		except Exception, e:
 			#------                      Untuk Select *, return list dgn elemen2 kosong untuk menghindari error
 			if (query.find("SELECT")!=-1):
@@ -152,7 +160,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			self.statusbar.showMessage(repr(e),120000)
 			#~ sql = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='gd_satuan_pengukuran';"
 			return
-		result = cursor.fetchall()
+		result = self.cursor.fetchall()
 		self.db.commit()
 		#~ self.db.close() #-- test, to no reconnect!
 		return result
@@ -285,21 +293,34 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			sql = sql + ");"
 		self.DatabaseRunQuery(sql)
 		return True
-	def DatabaseFetchResult(self,db,table,keyfield=False,keyvalue=False):
+	def DatabaseFetchResult(self,db,table,keyfield=False,keyvalue=False,OrderBy=False):
 		""" biasa fetch result wae result in array, 
-		misal data = self.DatabaseFetchResult(self.dbDatabase,"gd_nama_alamat","kodePelanggan","%MAKIN%")"""
+		misal data = self.DatabaseFetchResult(self.dbDatabase,"gd_nama_alamat","kodePelanggan","%MAKIN%")
+		OrderBy berisi list 2 element ["nama field", "tipe"] misal ["kodeTransaksi", "ASC"]
+		"""
 		if keyfield==False:
-			return self.DatabaseRunQuery("SELECT * FROM `"+str(db)+"`.`"+str(table)+"`; ")
+			sql = "SELECT * FROM `"+str(db)+"`.`"+str(table)+"` "
+			if OrderBy!=False: sql = sql+ " ORDER BY `"+OrderBy[0]+"` "+OrderBy[1]+ " ;"
+			else: sql = sql+";"
+			return self.DatabaseRunQuery(sql)
 		elif (type(keyvalue)==list):
 			sql = "SELECT * FROM `"+str(db)+"`.`"+str(table)+"` WHERE "
 			for x in xrange(0,len(keyvalue)):
 				sql = sql + "`"+str(keyfield[x])+"` LIKE '"+str(keyvalue[x])+"' AND "
 			sql = sql[:-4] #-- remove last "AND "
+			if OrderBy!=False: sql = sql+ " ORDER BY `"+OrderBy[0]+"` "+OrderBy[1]+ " ;"
+			else: sql = sql+";"
 			return self.DatabaseRunQuery(sql)
 		elif (type(keyvalue)==str):
-			return self.DatabaseRunQuery("SELECT * FROM `"+str(db)+"`.`"+str(table)+"` WHERE `"+str(keyfield)+"` LIKE '"+str(keyvalue)+"';")
+			sql ="SELECT * FROM `"+str(db)+"`.`"+str(table)+"` WHERE `"+str(keyfield)+"` LIKE '"+str(keyvalue)+"' "
+			if OrderBy!=False: sql = sql+ " ORDER BY `"+OrderBy[0]+"` "+OrderBy[1]+ " ;"
+			else: sql = sql+";"
+			return self.DatabaseRunQuery(sql)
 		else:
-			return self.DatabaseRunQuery("SELECT * FROM `"+str(db)+"`.`"+str(table)+"` WHERE `"+str(keyfield)+"` = "+str(keyvalue)+";")
+			sql = "SELECT * FROM `"+str(db)+"`.`"+str(table)+"` WHERE `"+str(keyfield)+"` = "+str(keyvalue)+";"
+			if OrderBy!=False: sql = sql+ " ORDER BY `"+OrderBy[0]+"` "+OrderBy[1]+ " ;"
+			else: sql = sql+";"
+			return self.DatabaseRunQuery(sql)
 	
 	def clearTable(self,tableobject):
 		#at first we clear the rows
@@ -428,15 +449,71 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			f.close()
 		else:
 			return False
+
+	def GarvinGetObject(self,induk,tipe,nama,creation_cb=False):
+		""" one of those DRY, 
+			Kembalikan object dengan objectname nama bila object belum ada, buat instance baru dengan objectname tersebut 
+			contoh dtb_DataMaster_DataRekening_Tambah_Baru = GarvinGetObject(self.fr_DataMaster_DataRekening_Tambah, QtGui.QPushButton, "dtb_DataMaster_DataRekening_Tambah_Baru", self.ivl_DataMaster_DataRekening_Dalam.addWidget)
+			creation_cb diisi fungsi callback yang diexecusi dengan parameter instance kembalian
+		"""
+		objectlama = induk.findChild(tipe,nama)
+		if objectlama==None:
+			objectbaru = tipe()
+			objectbaru.setObjectName(nama)
+			if creation_cb != False: creation_cb(objectbaru)
+			return objectbaru
+		else:
+			objectlama.show()
+			return objectlama
+			
+	def GarvinGenerateKode(self,table,LineEdit,prefix,panjang):
+		""" melakukan generate kode untuk diisikan pada LineEdit berdasar data2 yang sudah ada di table dengan prefix dan panjang digit bilangan kode 
+		"""
+		sql = "SELECT `id` FROM `"+self.dbDatabase+"`.`"+table+"` ORDER BY `"+table+"`.`id` DESC LIMIT 0 , 1"
+		result = self.DatabaseRunQuery(sql)
+		if len(result)<1:
+			kode_default = "0"
+		else:
+			kode_default = str(int(result[0][0])+1)
+			while (len(kode_default)<panjang):
+				kode_default = "0"+kode_default
+		kode_default = prefix + kode_default
+		LineEdit.setText(kode_default)
+	
+	def GarvinGenerateKode_Cek(self,table,fieldmatch,LineEdit,prefix=False,panjang=False):
+		"""
+			Melakukan checking apakah untuk nama yang telah ditulis pada LineEdit.text belum ada di fieldmatch pada table
+		"""
+		kodebaru = ""
+		kodeterlarang = str(LineEdit.text())
+		result = self.DatabaseFetchResult(self.dbDatabase,table,fieldmatch,kodeterlarang	)
+		if (len(result)>0):
+			if (prefix==False):
+				#--- hanya tampilkan pesan
+				self.statusbar.showMessage("Kode "+kodeterlarang+" sudah terpakai",10000)
+			else:
+				#-- bantu generate
+				self.statusbar.showMessage("Kode "+kodeterlarang+" sudah terpakai, diberikan kode lain",10000)
+				while len(result)>0:
+					nilai = int(re.findall("\d+",kodeterlarang)[0])
+					nilai+=1
+					kodebaru = str(nilai)
+					while (len(kodebaru)<panjang):
+						kodebaru = "0"+kodebaru
+					kodebaru = prefix+kodebaru
+					kodeterlarang = kodebaru
+					result = self.DatabaseFetchResult(self.dbDatabase,table,fieldmatch,kodeterlarang	)
+				LineEdit.setText(kodebaru)
+	
 	def Terbilang(self,x):   
-		angka = {1:'satu',2:'dua',3:'tiga',4:'empat',5:'lima',6:'enam',7:'tujuh',\
-			 8:'delapan',9:'sembilan'}
-		b = ' puluh '
-		c = ' ratus '
-		d = ' ribu '
-		e = ' juta '
-		f = ' miliyar '
-		g = ' triliun '
+		angka = {1:'satu ',2:'dua ',3:'tiga ',4:'empat ',5:'lima ',6:'enam ',7:'tujuh ',\
+			 8:'delapan ',9:'sembilan '}
+		b = 'puluh '
+		c = 'ratus '
+		d = 'ribu '
+		e = 'juta '
+		f = 'miliyar '
+		g = 'triliun '
 		y = str(x)         
 		n = len(y)        
 		if n <= 3 :        
@@ -481,6 +558,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		elif 6 < n <= 9 :
 			r = y[-6:]
 			s = y[:-6]
+			if r == '000000':
+				return self.Terbilang(s) + e
 			return self.Terbilang(s) + e + self.Terbilang(r)
 		elif 9 < n <= 12 :
 			t = y[-9:]

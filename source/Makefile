@@ -23,6 +23,7 @@ clean:
 	rm -f $(SOURCES)
 
 binary:
+	rm -fr ../bin/*
 	$(PYC) $(EXE).py  --distpath=../bin/ -w
 	mv ../bin/Garvin/* ../bin/
 

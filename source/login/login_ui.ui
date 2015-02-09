@@ -96,10 +96,11 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">QPushButton{border-style:outset;border-width:1px;border-radius:4px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}</string>
+      <string notr="true">QPushButton{border-style:outset;border-width:1px;border-radius:4px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}
+QPushButton::hover{border-color:rgb(156, 156, 156);}</string>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="st_Connect">
       <widget class="QFrame" name="fr_Connect">
@@ -282,7 +283,7 @@
              <x>0</x>
              <y>0</y>
              <width>249</width>
-             <height>199</height>
+             <height>201</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="ivl_Database_ListContent"/>
@@ -305,6 +306,107 @@
            <string>Buat Database Baru</string>
           </property>
          </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="st_Database_Create">
+      <widget class="QFrame" name="fr_Database_Create">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>0</y>
+         <width>259</width>
+         <height>300</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>259</width>
+         <height>300</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>250</width>
+         <height>300</height>
+        </size>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QGridLayout" name="igr_Database_Create">
+        <item row="1" column="1">
+         <widget class="QLabel" name="lb_Database_Create_Judul">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Berikan nama data :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0" colspan="3">
+         <widget class="QLineEdit" name="le_Database_Create_Nama">
+          <property name="placeholderText">
+           <string>Nama Database</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QPushButton" name="tb_Database_Create_Buat">
+          <property name="text">
+           <string>Buat</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="5" column="1">
+         <spacer name="verticalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="3" column="1">
+         <spacer name="verticalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Fixed</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </widget>

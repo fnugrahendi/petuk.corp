@@ -64,6 +64,8 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk,DataRekenin
 		self.dte_DataMaster_DataNamaAlamat_Tambah_JatuhTempo.setReadOnly(True)
 		self.chk_DataMaster_DataNamaAlamat_Tambah_JatuhTempo.stateChanged.connect(self.DataMaster_DataNamaAlamat_Tambah_JatuhTempoSet)
 		self.DataMaster_DataNamaAlamat_Edit_idEDIT = -1 #untuk penanda apakah update atau insert pada tombol simpan
+		self.tb_DataMaster_DataNamaAlamat_Tambah_NoAkunPiutang.clicked.connect(functools.partial(self.Popup_Rekening,self.tb_DataMaster_DataNamaAlamat_Tambah_NoAkunPiutang))
+		self.tb_DataMaster_DataNamaAlamat_Tambah_NoAkunHutang.clicked.connect(functools.partial(self.Popup_Rekening,self.tb_DataMaster_DataNamaAlamat_Tambah_NoAkunHutang))
 		
 		#---------------------------------------------------------------DataProduk
 		self.DataMaster_DataProduk_Edit_idEDIT = -1
@@ -82,7 +84,16 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk,DataRekenin
 		
 		#---------------------------------------------------------------DataRekening
 		self.DataMaster_DataRekening_Edit_idEDIT = -1
+		#--- search bar
+		self.GarvinDisconnect(self.le_DataMaster_DataRekening_Search.textChanged)
+		self.le_DataMaster_DataRekening_Search.textChanged.connect(self.DataMaster_DataRekening_RefreshInfo)
 		
+		#-- checkbox
+		self.GarvinDisconnect(self.chk_DataMaster_DataRekening_KasBank.stateChanged)
+		self.chk_DataMaster_DataRekening_KasBank.stateChanged.connect(self.DataMaster_DataRekening_Tambah_KasBankState)
+		#-- check duplikasi nomorAkun yang diinputkan
+		self.GarvinDisconnect(self.le_DataMaster_DataRekening_NomorAkun.textChanged)
+		self.le_DataMaster_DataRekening_NomorAkun.textChanged.connect(self.DataMaster_DataRekening_Tambah_KodeCek)
 		
 		#----------------------------------------------------------------Set index and window size
 		self.st_DataMaster.setCurrentIndex(self.INDEX_ST_DATAMASTER_MENU)
@@ -213,6 +224,8 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk,DataRekenin
 				lels = self.fr_DataMaster_DataNamaAlamat_Tambah_Fcontent.findChildren(QtGui.QLineEdit)
 				for x in range(0,len(lels)):
 					lels[x].setText("")
+				self.tb_DataMaster_DataNamaAlamat_Tambah_NoAkunPiutang.setText("-")
+				self.tb_DataMaster_DataNamaAlamat_Tambah_NoAkunHutang.setText("-")
 			
 			self.DataMaster_DataNamaAlamat_Tambah_GenerateKode()
 			

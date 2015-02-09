@@ -1,2 +1,2 @@
-all:
-	make -C ./source/ all
+%:
+	make -C ./source/ $< $@

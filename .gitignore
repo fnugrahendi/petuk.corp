@@ -24,3 +24,5 @@ source/kasbank/img/
 *.7z
 *.grvz
 mysql/
+installer/
+*.xlsx

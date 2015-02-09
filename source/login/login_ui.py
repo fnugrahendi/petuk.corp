@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'login/login_ui.ui'
 #
-# Created: Thu Feb  5 15:07:55 2015
+# Created: Mon Feb  9 12:45:18 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -48,7 +48,8 @@ class Ui_fr_Main(object):
         self.st_Main.setSizePolicy(sizePolicy)
         self.st_Main.setMinimumSize(QtCore.QSize(480, 320))
         self.st_Main.setMaximumSize(QtCore.QSize(480, 320))
-        self.st_Main.setStyleSheet(_fromUtf8("QPushButton{border-style:outset;border-width:1px;border-radius:4px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}"))
+        self.st_Main.setStyleSheet(_fromUtf8("QPushButton{border-style:outset;border-width:1px;border-radius:4px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}\n"
+"QPushButton::hover{border-color:rgb(156, 156, 156);}"))
         self.st_Main.setObjectName(_fromUtf8("st_Main"))
         self.st_Connect = QtGui.QWidget()
         self.st_Connect.setObjectName(_fromUtf8("st_Connect"))
@@ -129,7 +130,7 @@ class Ui_fr_Main(object):
         self.sc_Database_List.setWidgetResizable(True)
         self.sc_Database_List.setObjectName(_fromUtf8("sc_Database_List"))
         self.scontent_Database_List = QtGui.QWidget()
-        self.scontent_Database_List.setGeometry(QtCore.QRect(0, 0, 249, 199))
+        self.scontent_Database_List.setGeometry(QtCore.QRect(0, 0, 249, 201))
         self.scontent_Database_List.setObjectName(_fromUtf8("scontent_Database_List"))
         self.ivl_Database_ListContent = QtGui.QVBoxLayout(self.scontent_Database_List)
         self.ivl_Database_ListContent.setObjectName(_fromUtf8("ivl_Database_ListContent"))
@@ -145,10 +146,42 @@ class Ui_fr_Main(object):
         self.tb_Database_Create.setObjectName(_fromUtf8("tb_Database_Create"))
         self.igr_Database.addWidget(self.tb_Database_Create, 3, 0, 1, 1)
         self.st_Main.addWidget(self.st_Database)
+        self.st_Database_Create = QtGui.QWidget()
+        self.st_Database_Create.setObjectName(_fromUtf8("st_Database_Create"))
+        self.fr_Database_Create = QtGui.QFrame(self.st_Database_Create)
+        self.fr_Database_Create.setGeometry(QtCore.QRect(110, 0, 259, 300))
+        self.fr_Database_Create.setMinimumSize(QtCore.QSize(259, 300))
+        self.fr_Database_Create.setMaximumSize(QtCore.QSize(250, 300))
+        self.fr_Database_Create.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.fr_Database_Create.setFrameShadow(QtGui.QFrame.Raised)
+        self.fr_Database_Create.setObjectName(_fromUtf8("fr_Database_Create"))
+        self.igr_Database_Create = QtGui.QGridLayout(self.fr_Database_Create)
+        self.igr_Database_Create.setObjectName(_fromUtf8("igr_Database_Create"))
+        self.lb_Database_Create_Judul = QtGui.QLabel(self.fr_Database_Create)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.lb_Database_Create_Judul.sizePolicy().hasHeightForWidth())
+        self.lb_Database_Create_Judul.setSizePolicy(sizePolicy)
+        self.lb_Database_Create_Judul.setObjectName(_fromUtf8("lb_Database_Create_Judul"))
+        self.igr_Database_Create.addWidget(self.lb_Database_Create_Judul, 1, 1, 1, 1)
+        self.le_Database_Create_Nama = QtGui.QLineEdit(self.fr_Database_Create)
+        self.le_Database_Create_Nama.setObjectName(_fromUtf8("le_Database_Create_Nama"))
+        self.igr_Database_Create.addWidget(self.le_Database_Create_Nama, 2, 0, 1, 3)
+        self.tb_Database_Create_Buat = QtGui.QPushButton(self.fr_Database_Create)
+        self.tb_Database_Create_Buat.setObjectName(_fromUtf8("tb_Database_Create_Buat"))
+        self.igr_Database_Create.addWidget(self.tb_Database_Create_Buat, 4, 1, 1, 1)
+        spacerItem4 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.igr_Database_Create.addItem(spacerItem4, 0, 1, 1, 1)
+        spacerItem5 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.igr_Database_Create.addItem(spacerItem5, 5, 1, 1, 1)
+        spacerItem6 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        self.igr_Database_Create.addItem(spacerItem6, 3, 1, 1, 1)
+        self.st_Main.addWidget(self.st_Database_Create)
         self.igr_Main.addWidget(self.st_Main, 1, 1, 1, 1)
 
         self.retranslateUi(fr_Main)
-        self.st_Main.setCurrentIndex(1)
+        self.st_Main.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(fr_Main)
 
     def retranslateUi(self, fr_Main):
@@ -166,4 +199,7 @@ class Ui_fr_Main(object):
         self.tb_Login_Ok.setText(_translate("fr_Main", "OK", None))
         self.lb_Database_Judul.setText(_translate("fr_Main", "Pilih Database Perusahaan", None))
         self.tb_Database_Create.setText(_translate("fr_Main", "Buat Database Baru", None))
+        self.lb_Database_Create_Judul.setText(_translate("fr_Main", "Berikan nama data :", None))
+        self.le_Database_Create_Nama.setPlaceholderText(_translate("fr_Main", "Nama Database", None))
+        self.tb_Database_Create_Buat.setText(_translate("fr_Main", "Buat", None))
 

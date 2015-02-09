@@ -15,6 +15,7 @@ from subprocess import Popen #-- bila server adalah komputer ini sendiri, diimpo
 
 from login_ui import  Ui_fr_Main
 from Admin import Admin
+import DatabaseCreator
 
 class Login(Ui_fr_Main):
 	def __init__(self, parent=None):
@@ -38,9 +39,9 @@ class Login(Ui_fr_Main):
 		
 		
 		
-		aatime = QtCore.QTimer(self)
-		aatime.timeout.connect(self.Login_Redraw)
-		aatime.start(500)
+		self.aatime = QtCore.QTimer(self)
+		self.aatime.timeout.connect(self.Login_Redraw)
+		self.aatime.start(500)
 		
 		
 		#-- signal
@@ -50,9 +51,17 @@ class Login(Ui_fr_Main):
 		self.LoginUI.tb_Connect_Ok.clicked.connect(self.Login_Connect_Act_OK)
 		self.LoginUI.tb_Login_Ok.clicked.connect(self.Login_Login_Auth)
 		
+		self.LoginUI.tb_Database_Create.clicked.connect(self.Login_Database_CreateDatabase)
 		
-		self.INDEX_ST_LOGIN = ["CONNECT","LOGIN","DATABASE"]
+		self.INDEX_ST_LOGIN = ["CONNECT","LOGIN","DATABASE", "DATABASE CREATE"]
 		#--- end Login_init
+		
+		#-- semua tombol di LoginUI pakai cursor point
+		tbs = self.fr_Login_Frame.findChildren(QtGui.QPushButton)
+		for tb in tbs:
+			tb.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+		
+		self.MakeSureTodoItOnce_HasIt = False #-- penanda untuk refresh connect bila program baru menjalankan server mysqld
 		
 		self.Login_Connect()
 	
@@ -76,7 +85,7 @@ class Login(Ui_fr_Main):
 		WinW = self.centralwidget.geometry().width()
 		WinH = self.centralwidget.geometry().height()
 		self.fr_Login_Frame.setGeometry(QtCore.QRect(0,0,WinW,WinH))
-		
+		self.aatime.stop()
 	
 	def Login_Test(self):
 		WinW = self.centralwidget.geometry().width()
@@ -95,16 +104,28 @@ class Login(Ui_fr_Main):
 		self.dbDatabase = "INFORMATION_SCHEMA" #-- mandatory, sql connect ask for database name, we open INFORMATION_SCHEMA database at first to escape the error
 		databases = self.DatabaseRunQuery("SHOW DATABASES")
 		if (databases==None) or (databases==[]):
-			self.DataMaster_Popup("Server belum menjalankan mesin database",self.DataMaster_None)
 			
 #---=============================================================-------
 			#--- kalau server adalah komputer ini sendiri!
 			if (self.dbHost=="127.0.0.1"):
-				print "dbHost is local, Should run the mysql at this state"
-				mysqlpath = self.Path+"../mysql/mysql5.6.12/bin/mysqld --port="+str(self.dbPort)
-				Popen(mysqlpath)
+				if (self.MakeSureTodoItOnce_HasIt==False):
+					self.statusbar.showMessage("Menjalankan server database pada komputer local",20000)
+					mysqlpath = self.Path+"../mysql/mysql5.6.12/bin/mysqld --port="+str(self.dbPort)
+					Popen(mysqlpath)
+					print "triggered again"
+					self.MakeSureTodoItOnce_HasIt = True
+				else:
+					#~ self.aatime.stop()
+					pass
+			else:
+				self.DataMaster_Popup("Server belum menjalankan mesin database",self.Login_Connect)
+			#-- reload tiap 1.5 detik
+			self.aatime.timeout.connect(self.Login_Database)
+			self.aatime.start(1500)
+
 			return
-			
+		else:
+			self.aatime.stop()
 			
 		for x in range(len(databases)):
 			if (str(databases[x][0]).find("gd_db_") != -1):
@@ -119,6 +140,24 @@ class Login(Ui_fr_Main):
 				#--- create database baru 
 				#~ self.DataMaster_Popup("Belum ada data pada server ini.",self.DataMaster_None)
 				pass
+				
+	
+	def Login_Database_CreateDatabase(self):
+		self.Login_Goto("DATABASE CREATE")
+		self.GarvinDisconnect(self.LoginUI.tb_Database_Create_Buat.clicked)
+		self.LoginUI.tb_Database_Create_Buat.clicked.connect(self.Login_Database_CreateDatabase_Act_Create)
+	
+	def Login_Database_CreateDatabase_Act_Create(self):
+		namadb = str(self.LoginUI.le_Database_Create_Nama.text())
+		namadb = "gd_db_"+namadb
+		pembuat = DatabaseCreator.DatabaseCreator(namadb,self)
+		pembuat.Execute()
+		
+		#-- destroy
+		pembuat.close()
+		pembuat = None
+		self.Login_Connect()
+		
 	def Login_Database_SetDatabase(self,dbname):
 		self.dbDatabase = dbname
 		
