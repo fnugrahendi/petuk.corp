@@ -571,6 +571,19 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			return self.Terbilang(w) + g + self.Terbilang(v)
 			
 if __name__=="__main__":
+	#-- dynamic linking, ben nek dicompile dadi binary .exe ora marai kabotan startup/file e gedhe
+	Path = str(__file__).replace("Garvin.py","").replace("\\","/")
+	DataPath = Path+"../data/"
+
+	loginrcpath = Path+"../image/"+"Image_rc.py"
+	resfile = open(loginrcpath)
+	resource = resfile.read()
+	resfile.close()
+	resource = resource[:resource.find("def qInitResources")]
+	exec(resource)
+	QtCore.qRegisterResourceData(0x01, qt_resource_struct, qt_resource_name, qt_resource_data)
+
+	
 	app = QtGui.QApplication(sys.argv)
 	dmw = MainGUI()
 	#~ dmw.showFullScreen()

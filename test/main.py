@@ -52,7 +52,7 @@ if __name__=="__main__":
 	resource = resource[:resource.find("def qInitResources")]
 	exec(resource)
 	QtCore.qRegisterResourceData(0x01, qt_resource_struct, qt_resource_name, qt_resource_data)
-		
+
 	app = QtGui.QApplication(sys.argv)
 	w = MainGUI()
 	sys.exit(app.exec_())
