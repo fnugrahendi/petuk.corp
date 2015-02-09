@@ -5,6 +5,7 @@
 #include <QString>
 #include <QRect>
 #include <QSignalMapper>
+#include "Popup.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -13,12 +14,21 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     QObject::connect(ui->tb_Browse, SIGNAL(clicked()),this, SLOT(Browse()));
     QObject::connect(ui->tb_Quit, SIGNAL(clicked()),this, SLOT(Quit_Confirm()));
-
-
+    ui->stackedWidget->setCurrentIndex(0);
 }
 void MainWindow::Quit_Confirm()
 {
-    Popup(QString("Anda yakin akan keluar?"),&Quit,&None);
+    try
+    {
+        QObject::disconnect(ui->tb_Popup_Ok, SIGNAL(clicked()),0, 0);
+        QObject::disconnect(ui->tb_Popup_Cancel, SIGNAL(clicked()),0, 0);
+    }
+    catch (...){;}
+
+    QObject::connect(ui->tb_Popup_Ok, SIGNAL(clicked()),this, SLOT(Quit()));
+    QObject::connect(ui->tb_Popup_Cancel, SIGNAL(clicked()),this, SLOT(Popup_Close()));
+
+    Popup(QString("Anda yakin akan keluar?"));
 }
 
 
@@ -35,11 +45,16 @@ void MainWindow::Browse()
     ui->le_InstallDir->setText(namafolder);
 }
 
-void MainWindow::Popup(QString Text, function *FCB_Ok, function *FCB_Cancel)
+void MainWindow::Popup(QString Text)
 {
-    ui->fr_Popup->setParent(ui->centralWidget);
+    ui->fr_Popup->setParent(this);
     ui->fr_Popup->setGeometry(QRect(0,0,480,230));
     ui->fr_Popup->show();
+    ui->lb_Popup_Text->setText(Text);
+}
+void MainWindow::Popup_Close()
+{
+    ui->fr_Popup->hide();
 }
 
 MainWindow::~MainWindow()
