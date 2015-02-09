@@ -75,7 +75,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		self.ResetRooms()
 		#--- startup program, set semua datetimeedit ke waktu skrg		
 		self.GarvinSetDate(self)
-		self.Laporan_BuktiInvoice("INV0007")
+		#~ self.Laporan_BuktiInvoice("INV0007")
 	
 	def Popup_NamaAlamat_Tabel(self,namaTabel,row):
 		data = []
