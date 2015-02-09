@@ -569,7 +569,19 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			v = y[-12:]
 			w = y[:-12]
 			return self.Terbilang(w) + g + self.Terbilang(v)
-			
+	
+	def GarvinImage(self,NamaFrame,ResourceImage):
+		""" Jadikan ResourceImage sebagai background dari frame NamaFrame
+			misal 
+			self.GarvinImage(self.LoginUI.fr_Connect_Logo,":/Login/img/LogoMedium.png") (nek rc)
+			atau 
+			self.GarvinImage(self.LoginUI.fr_Connect_Logo,"../img/LogoMedium.png") (nek link biasa)
+		"""
+		originalSS = str(NamaFrame.styleSheet())
+		originalSS = originalSS + " QFrame{background-image: url("+ResourceImage+");}"
+		NamaFrame.setStyleSheet(originalSS)
+	
+	
 if __name__=="__main__":
 	#-- dynamic linking, ben nek dicompile dadi binary .exe ora marai kabotan startup/file e gedhe
 	Path = str(__file__).replace("Garvin.py","").replace("\\","/")
