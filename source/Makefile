@@ -24,7 +24,7 @@ clean:
 
 binary:
 	rm -fr ../bin/*
-	$(PYC) $(EXE).py  --distpath=../bin/ -w
+	$(PYC) $(EXE).py -i garvin.ico --distpath=../bin/ -w
 	mv ../bin/Garvin/* ../bin/
 
 commit:
