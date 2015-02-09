@@ -11,6 +11,7 @@ Garvin.spec
 geany_run_script*
 source/geany_run_script*
 source/kasbank/img/
+*.exe
 *.html
 *.odt
 *.pdf
