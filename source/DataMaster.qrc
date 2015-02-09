@@ -3,4 +3,7 @@
     <file>img/edit.png</file>
     <file>img/del.png</file>
   </qresource>
+  <qresource prefix="Icon">
+    <file>Icon.ico</file>
+  </qresource>
 </RCC>
