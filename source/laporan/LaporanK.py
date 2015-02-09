@@ -34,7 +34,7 @@ class Laporan(L_BukuBesar_DTJ):
 	def Laporan_BuktiBankMasuk(self,data):
 		
 		# Create an new Excel file and add a worksheet.
-		workbook = xlsxwriter.Workbook('Bukti Bank Masuk.xlsx')
+		workbook = xlsxwriter.Workbook('Bukti Bank Masuk '+data+'.xlsx')
 		#~ workbook = xlsxwriter.Workbook(self.DataPath+"merge_rich_string.xlsx") #-- apike neng folder data kro
 		
 		worksheet = workbook.add_worksheet()
@@ -104,10 +104,10 @@ class Laporan(L_BukuBesar_DTJ):
 		worksheet.set_column(1,9,8)
 		worksheet.set_column(2,9,8)
 
-		sql = "SELECT * FROM `"+self.dbDatabase+"`.`gd_bank_masuk` "
+		sql = "SELECT * FROM `"+self.dbDatabase+"`.`gd_bank_masuk` WHERE kodeTransaksi LIKE '"+data+"'"
 		result = self.DatabaseRunQuery(sql)
 		#durung digawe ben bisa pilihan
-		kodeTransaksi = result[0][1];
+		kodeTransaksi = data;
 		
 		worksheet.write(1,9, ': '+kodeTransaksi, formatNoTgl)
 		worksheet.write(2,9, ': '+(result[0][2].strftime("%d-%m-%Y")), formatNoTgl)
