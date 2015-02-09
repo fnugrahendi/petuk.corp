@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'login/login_ui.ui'
 #
-# Created: Mon Feb  9 12:45:18 2015
-#      by: PyQt4 UI code generator 4.10.4
+# Created: Tue Feb 10 00:14:46 2015
+#      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -46,37 +46,88 @@ class Ui_fr_Main(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.st_Main.sizePolicy().hasHeightForWidth())
         self.st_Main.setSizePolicy(sizePolicy)
-        self.st_Main.setMinimumSize(QtCore.QSize(480, 320))
-        self.st_Main.setMaximumSize(QtCore.QSize(480, 320))
-        self.st_Main.setStyleSheet(_fromUtf8("QPushButton{border-style:outset;border-width:1px;border-radius:4px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}\n"
-"QPushButton::hover{border-color:rgb(156, 156, 156);}"))
+        self.st_Main.setMinimumSize(QtCore.QSize(480, 450))
+        self.st_Main.setMaximumSize(QtCore.QSize(480, 450))
+        self.st_Main.setStyleSheet(_fromUtf8(""))
         self.st_Main.setObjectName(_fromUtf8("st_Main"))
         self.st_Connect = QtGui.QWidget()
         self.st_Connect.setObjectName(_fromUtf8("st_Connect"))
         self.fr_Connect = QtGui.QFrame(self.st_Connect)
-        self.fr_Connect.setGeometry(QtCore.QRect(90, 70, 301, 111))
+        self.fr_Connect.setGeometry(QtCore.QRect(60, 220, 360, 215))
+        self.fr_Connect.setMinimumSize(QtCore.QSize(360, 215))
+        self.fr_Connect.setMaximumSize(QtCore.QSize(360, 215))
+        self.fr_Connect.setStyleSheet(_fromUtf8("QFrame{background-color:rgb(189,215,204);}"))
         self.fr_Connect.setFrameShape(QtGui.QFrame.StyledPanel)
         self.fr_Connect.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_Connect.setObjectName(_fromUtf8("fr_Connect"))
-        self.formLayout = QtGui.QFormLayout(self.fr_Connect)
-        self.formLayout.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
-        self.formLayout.setObjectName(_fromUtf8("formLayout"))
-        self.lb_Connect_Judul = QtGui.QLabel(self.fr_Connect)
-        self.lb_Connect_Judul.setObjectName(_fromUtf8("lb_Connect_Judul"))
-        self.formLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.lb_Connect_Judul)
-        self.lb_Connect_Alamat = QtGui.QLabel(self.fr_Connect)
-        self.lb_Connect_Alamat.setObjectName(_fromUtf8("lb_Connect_Alamat"))
-        self.formLayout.setWidget(4, QtGui.QFormLayout.LabelRole, self.lb_Connect_Alamat)
-        self.le_Connect_Alamat = QtGui.QLineEdit(self.fr_Connect)
-        self.le_Connect_Alamat.setObjectName(_fromUtf8("le_Connect_Alamat"))
-        self.formLayout.setWidget(4, QtGui.QFormLayout.FieldRole, self.le_Connect_Alamat)
-        self.chk_Connect_Lokal = QtGui.QCheckBox(self.fr_Connect)
-        self.chk_Connect_Lokal.setObjectName(_fromUtf8("chk_Connect_Lokal"))
-        self.formLayout.setWidget(3, QtGui.QFormLayout.LabelRole, self.chk_Connect_Lokal)
-        self.tb_Connect_Ok = QtGui.QPushButton(self.st_Connect)
-        self.tb_Connect_Ok.setGeometry(QtCore.QRect(140, 190, 187, 27))
+        self.igr_Connect = QtGui.QGridLayout(self.fr_Connect)
+        self.igr_Connect.setMargin(30)
+        self.igr_Connect.setObjectName(_fromUtf8("igr_Connect"))
+        self.tb_Connect_Ok = QtGui.QPushButton(self.fr_Connect)
         self.tb_Connect_Ok.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.tb_Connect_Ok.setStyleSheet(_fromUtf8("QPushButton{\n"
+"    border-style:outset;\n"
+"    border-color:rgb(59,38,38);\n"
+"    border-width:1px;\n"
+"    border-radius:0px;\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(79, 48, 48, 255), stop:0.495 rgba(79, 48, 48, 255), stop:0.505 rgba(69, 42, 42, 255), stop:1 rgba(69, 42, 42, 255));\n"
+"    color:#ffffff;\n"
+"    height:38px;\n"
+"    font-weight:bold;\n"
+"    font-size:11pt;\n"
+"    font-family:Arial Black;\n"
+"}\n"
+"QPushButton::hover{\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(89, 58, 58, 255), stop:0.495 rgba(89, 58, 58, 255), stop:0.505 rgba(79, 52, 52, 255), stop:1 rgba(79, 52, 52, 255));\n"
+"}"))
         self.tb_Connect_Ok.setObjectName(_fromUtf8("tb_Connect_Ok"))
+        self.igr_Connect.addWidget(self.tb_Connect_Ok, 3, 0, 1, 2)
+        self.le_Connect_Alamat = QtGui.QLineEdit(self.fr_Connect)
+        self.le_Connect_Alamat.setStyleSheet(_fromUtf8("QLineEdit{\n"
+"    background-color:rgb(242,242,242);\n"
+"\n"
+"    border-style:outset;\n"
+"    border-color:rgb(255,255,255);\n"
+"    border-width:1px;\n"
+"    border-radius:0px;\n"
+"    color:rgb(76,76,76);\n"
+"    height:38px;\n"
+"    font-weight:light;\n"
+"    font-size:11pt;\n"
+"    font-family:Arial;\n"
+"}"))
+        self.le_Connect_Alamat.setAlignment(QtCore.Qt.AlignCenter)
+        self.le_Connect_Alamat.setObjectName(_fromUtf8("le_Connect_Alamat"))
+        self.igr_Connect.addWidget(self.le_Connect_Alamat, 2, 0, 1, 2)
+        self.lb_Connect_Judul = QtGui.QLabel(self.fr_Connect)
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Arial Black"))
+        font.setPointSize(15)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.lb_Connect_Judul.setFont(font)
+        self.lb_Connect_Judul.setStyleSheet(_fromUtf8("QLabel{\n"
+"color:white;\n"
+"font-family:Arial Black;\n"
+"font-size:15pt;\n"
+"}"))
+        self.lb_Connect_Judul.setObjectName(_fromUtf8("lb_Connect_Judul"))
+        self.igr_Connect.addWidget(self.lb_Connect_Judul, 0, 0, 1, 1)
+        self.chk_Connect_Lokal = QtGui.QCheckBox(self.fr_Connect)
+        self.chk_Connect_Lokal.setStyleSheet(_fromUtf8("QCheckBox{\n"
+"background-color:transparent;\n"
+"color:rgb(99,99,99);\n"
+"font-size:10pt;\n"
+"}\n"
+""))
+        self.chk_Connect_Lokal.setObjectName(_fromUtf8("chk_Connect_Lokal"))
+        self.igr_Connect.addWidget(self.chk_Connect_Lokal, 1, 0, 1, 1)
+        self.fr_Connect_Logo = QtGui.QFrame(self.st_Connect)
+        self.fr_Connect_Logo.setGeometry(QtCore.QRect(160, 10, 162, 169))
+        self.fr_Connect_Logo.setMinimumSize(QtCore.QSize(162, 169))
+        self.fr_Connect_Logo.setMaximumSize(QtCore.QSize(162, 169))
+        self.fr_Connect_Logo.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.fr_Connect_Logo.setFrameShadow(QtGui.QFrame.Raised)
+        self.fr_Connect_Logo.setObjectName(_fromUtf8("fr_Connect_Logo"))
         self.st_Main.addWidget(self.st_Connect)
         self.st_Login = QtGui.QWidget()
         self.st_Login.setObjectName(_fromUtf8("st_Login"))
@@ -181,16 +232,16 @@ class Ui_fr_Main(object):
         self.igr_Main.addWidget(self.st_Main, 1, 1, 1, 1)
 
         self.retranslateUi(fr_Main)
-        self.st_Main.setCurrentIndex(2)
+        self.st_Main.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(fr_Main)
 
     def retranslateUi(self, fr_Main):
         fr_Main.setWindowTitle(_translate("fr_Main", "Frame", None))
-        self.lb_Connect_Judul.setText(_translate("fr_Main", "Pilih Server", None))
-        self.lb_Connect_Alamat.setText(_translate("fr_Main", "Alamat Server :", None))
-        self.le_Connect_Alamat.setText(_translate("fr_Main", "localhost", None))
-        self.chk_Connect_Lokal.setText(_translate("fr_Main", "Lokal komputer ini", None))
         self.tb_Connect_Ok.setText(_translate("fr_Main", "OK", None))
+        self.le_Connect_Alamat.setText(_translate("fr_Main", "localhost", None))
+        self.le_Connect_Alamat.setPlaceholderText(_translate("fr_Main", "Alamat IP Server", None))
+        self.lb_Connect_Judul.setText(_translate("fr_Main", "HUBUNGKAN KE SERVER", None))
+        self.chk_Connect_Lokal.setText(_translate("fr_Main", "Lokal komputer ini", None))
         self.lb_Login_Judul.setText(_translate("fr_Main", "Login ", None))
         self.lb_Login_User.setText(_translate("fr_Main", "User", None))
         self.le_Login_User.setText(_translate("fr_Main", "admin", None))

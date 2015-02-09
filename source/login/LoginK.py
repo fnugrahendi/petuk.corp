@@ -64,6 +64,8 @@ class Login(Ui_fr_Main):
 		self.MakeSureTodoItOnce_HasIt = False #-- penanda untuk refresh connect bila program baru menjalankan server mysqld
 		
 		self.Login_Connect()
+		
+		self.GarvinImage(self.LoginUI.fr_Connect_Logo,":/Login/img/LogoMedium.png")
 	
 	def Login_Goto(self,room):
 		if (type(room)==str):
