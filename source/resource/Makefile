@@ -12,7 +12,7 @@ RESOURCES=$(QRCFILES:.qrc=._rc.py)
 	$(UIC)  $< -o $@
 
 %._rc.py: %.qrc
-	$(RCC) $< -o $(@:._rc.py=_rc.py)
+	$(RCC) $< -o ../../image/$(@:._rc.py=_rc.py)
 
 all: $(SOURCES) $(RESOURCES)
 
