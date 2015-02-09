@@ -4,6 +4,8 @@ from PyQt4 import QtGui
 import functools
 import itertools
 import re
+from subprocess import Popen 
+
 from installer_ui import Ui_MainWindow
 
 class MainGUI(QtGui.QMainWindow,Ui_MainWindow):
@@ -12,7 +14,7 @@ class MainGUI(QtGui.QMainWindow,Ui_MainWindow):
 		self.setupUi(self)
 		self.showFullScreen()
 		
-		self.PageL = ["INSTALL FOLDER","QUIT","INSTALL BIN"]
+		self.PageL = ["INSTALL FOLDER","INSTALL BIN","QUIT"]
 		
 		self.InstallDir()
 		
@@ -35,8 +37,24 @@ class MainGUI(QtGui.QMainWindow,Ui_MainWindow):
 		namafolder = dialog.getExistingDirectory(self, ("Pilih folder instalasi"),"",QtGui.QFileDialog.ShowDirsOnly| QtGui.QFileDialog.DontResolveSymlinks);
 		self.le_InstallDir.setText(namafolder)
 	
+	def InstallBin_Act(self):
+		self.aatime.stop()
+		archiveBin = "../archive/bin.grvz"
+		
+		installpath = str(self.le_InstallDir.text())
+		if not os.path.exists(installpath): os.makedirs(installpath)
+		os.system("..\\7z.exe -y x "+archiveBin+" -o"+installpath+" -pnyungsep")
+		self.tb_InstallBin_Next.show()
+		
+	
 	def InstallBin(self):
+		self.Goto("Install Bin")
 		self.tb_InstallBin_Next.hide()
+		self.aatime = QtCore.QTimer(self)
+		self.aatime.timeout.connect(self.InstallBin_Act)
+		self.aatime.start(100)
+		
+		
 	
 	def Quit(self):
 		exit (0)
