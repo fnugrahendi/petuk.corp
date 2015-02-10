@@ -231,10 +231,11 @@ class Penjualan(object):
 		noAkunPiutang = str(self.DatabaseRunQuery(query)[0][0])
 		queryPenjualan = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunPenjualan+"','"+nilai+"','0')"
-		s = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
+		queryPiutang = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunPiutang+"','0','"+nilai+"')"
-		self.DatabaseRunQuery(queryPenjualan)
-		self.DatabaseRunQuery(queryPiutang)
+		print queryPenjualan+"\n"+queryPiutang
+		#~ self.DatabaseRunQuery(queryPenjualan)
+		#~ self.DatabaseRunQuery(queryPiutang)
 		pass
 	
 	def Penjualan_GoTo_Invoice_TambahBarang(self):
@@ -586,25 +587,21 @@ class Penjualan(object):
 		#~ noAkun piutang dijupuk seko gd nama alamat
 		#~ kas -> debit (kredit = 0), piutang -> kredit (debit = 0)
 		#~ id, kodeTransaksi, tanggal, noAkun, debit, kredit
-		#~ noAkun sing invoice dijupuk seko gd data produk
-		#~ noAkun piutang dijupuk seko gd nama alamat
-		#~ piutang -> debit (kredit = 0), penjualan -> kredit (debit = 0)
-		#~ id, kodeTransaksi, tanggal, noAkun, debit, kredit
-		kodePelanggan = str(self.tb_Penjualan_InvoicePenjualan_Baru_Nama.text())
-		kodeTransaksi = str(self.le_Penjualan_InvoicePenjualan_SOPenawaran.text())
-		tanggal = str(self.dte_Penjualan_InvoicePenjualan_Input_Tanggal.dateTime().toString("yyyy-MM-dd"))
-		nilai = str(self.le_Penjualan_InvoicePenjualan_Input_TotalHarga.text())
+		namaPelanggan = str(self.le_Penjualan_PembayaranPiutang_Baru_Nama.text())
+		kodeTransaksi = str(self.le_Penjualan_PembayaranPiutang_Baru_NoRef.text())
+		tanggal = str(self.dte_Penjualan_PembayaranPiutang_Baru_Tanggal.dateTime().toString("yyyy-MM-dd"))
+		nilai = str(self.le_Penjualan_PembayaranPiutang_Baru_Nominal.text())
 		kodeBarang = str(self.tb_Penjualan_InvoicePenjualan_Input_KodeProduk.text())
-		query = "SELECT `noAkunPenjualan` FROM `gd_data_produk` WHERE `kodeBarang` LIKE '"+kodeBarang+"'"
-		noAkunPenjualan = str(self.DatabaseRunQuery(query)[0][0])
-		query = "SELECT `noAkunPiutang` FROM `gd_nama_alamat` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"'"
+		query = "SELECT `noAkunPiutang` FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+namaPelanggan+"'"
 		noAkunPiutang = str(self.DatabaseRunQuery(query)[0][0])
-		queryPenjualan = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
-					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunPenjualan+"','"+nilai+"','0')"
-		s = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
+		noAkunKasBank = str(self.tb_Penjualan_PembayaranPiutang_Baru_Akun.text())
+		queryPiutang = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunPiutang+"','0','"+nilai+"')"
-		self.DatabaseRunQuery(queryPenjualan)
-		self.DatabaseRunQuery(queryPiutang)
+		queryKasBank = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
+					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunKasBank+"','"+nilai+"','0')"
+		print queryPiutang+"\n"+queryKasBank
+		#~ self.DatabaseRunQuery(queryPiutang)
+		#~ self.DatabaseRunQuery(queryKasBank)
 		pass
 	
 	def Penjualan_GoTo_JurnalMemorial(self,sisa):
