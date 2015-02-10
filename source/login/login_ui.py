@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'login/login_ui.ui'
 #
-# Created: Tue Feb 10 12:07:56 2015
+# Created: Tue Feb 10 12:40:19 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -178,6 +178,12 @@ class Ui_fr_Main(object):
         self.st_Database.setObjectName(_fromUtf8("st_Database"))
         self.fr_Database = QtGui.QFrame(self.st_Database)
         self.fr_Database.setGeometry(QtCore.QRect(110, 10, 271, 301))
+        self.fr_Database.setStyleSheet(_fromUtf8("QLabel{\n"
+"    border:0px;\n"
+"}\n"
+"QFrame{\n"
+"    border:0px;\n"
+"}"))
         self.fr_Database.setFrameShape(QtGui.QFrame.StyledPanel)
         self.fr_Database.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_Database.setObjectName(_fromUtf8("fr_Database"))
@@ -194,11 +200,17 @@ class Ui_fr_Main(object):
 "QPushButton::hover{\n"
 "    background-color: qlineargradient(spread:pad, x1:0.511111, y1:1, x2:0.49, y2:0.420455, stop:0 rgba(16, 159, 255, 255), stop:1 rgba(98, 187, 255, 255));\n"
 "color:white;\n"
+"}\n"
+"QFrame{\n"
+"    border:0px;\n"
+"    border-top-width:1px;\n"
+"    border-top-style:solid;\n"
+"    border-top-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 0), stop:0.5 rgba(61, 104, 235, 255), stop:0.98 rgba(0, 0, 0, 0), stop:1 rgba(0, 0, 0, 0));\n"
 "}"))
         self.sc_Database_List.setWidgetResizable(True)
         self.sc_Database_List.setObjectName(_fromUtf8("sc_Database_List"))
         self.scontent_Database_List = QtGui.QWidget()
-        self.scontent_Database_List.setGeometry(QtCore.QRect(0, 0, 249, 184))
+        self.scontent_Database_List.setGeometry(QtCore.QRect(0, 0, 251, 186))
         self.scontent_Database_List.setObjectName(_fromUtf8("scontent_Database_List"))
         self.ivl_Database_ListContent = QtGui.QVBoxLayout(self.scontent_Database_List)
         self.ivl_Database_ListContent.setObjectName(_fromUtf8("ivl_Database_ListContent"))
@@ -208,6 +220,7 @@ class Ui_fr_Main(object):
         self.le_Database_Search.setObjectName(_fromUtf8("le_Database_Search"))
         self.igr_Database.addWidget(self.le_Database_Search, 1, 0, 1, 1)
         self.lb_Database_Judul = QtGui.QLabel(self.fr_Database)
+        self.lb_Database_Judul.setStyleSheet(_fromUtf8("border:0px;"))
         self.lb_Database_Judul.setObjectName(_fromUtf8("lb_Database_Judul"))
         self.igr_Database.addWidget(self.lb_Database_Judul, 0, 0, 1, 1)
         self.tb_Database_Create = QtGui.QPushButton(self.fr_Database)

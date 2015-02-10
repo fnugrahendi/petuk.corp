@@ -362,6 +362,14 @@ font-size:10pt;
          <height>301</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	border:0px;
+}
+QFrame{
+	border:0px;
+}</string>
+       </property>
        <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
        </property>
@@ -382,6 +390,12 @@ height:24px;
 QPushButton::hover{
 	background-color: qlineargradient(spread:pad, x1:0.511111, y1:1, x2:0.49, y2:0.420455, stop:0 rgba(16, 159, 255, 255), stop:1 rgba(98, 187, 255, 255));
 color:white;
+}
+QFrame{
+	border:0px;
+	border-top-width:1px;
+	border-top-style:solid;
+	border-top-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 0), stop:0.5 rgba(61, 104, 235, 255), stop:0.98 rgba(0, 0, 0, 0), stop:1 rgba(0, 0, 0, 0));
 }</string>
           </property>
           <property name="widgetResizable">
@@ -392,8 +406,8 @@ color:white;
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>249</width>
-             <height>184</height>
+             <width>251</width>
+             <height>186</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="ivl_Database_ListContent"/>
@@ -405,6 +419,9 @@ color:white;
         </item>
         <item row="0" column="0">
          <widget class="QLabel" name="lb_Database_Judul">
+          <property name="styleSheet">
+           <string notr="true">border:0px;</string>
+          </property>
           <property name="text">
            <string>Pilih Database Perusahaan</string>
           </property>
