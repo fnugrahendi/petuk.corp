@@ -581,8 +581,9 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		originalSS = originalSS + " QFrame{background-image: url("+ResourceImage+");}"
 		NamaFrame.setStyleSheet(originalSS)
 	
-	def GarvinOrderTab(self,widget,layout):
-		""" Otomatis urutkan tab order ke yang paling dekat
+	def GarvinAutoOrder(self,widget,layout):
+		""" Otomatis urutkan tab order ke yang paling dekat, penggunaan diisi widget nama widget, layout nama layoutwidgetnya, misal
+		self.GarvinAutoOrder(self.centralwidget,self.igr_centralwidget)
 			
 		"""
 		if type(layout)==QtGui.QGridLayout or type(layout)==QtGui.QFormLayout:
