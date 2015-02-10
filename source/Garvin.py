@@ -100,7 +100,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			if str(self.db).find("open")!= (-1):
 				return True #-- sudah terkoneksi dan open, skip semua termasuk self.cursor creation
 			else:
-				jumpmetoexeptweakprogrammingbutDRY
+				raise TypeError("embuh")
 		except:
 			#-- Belum terkoneksi, koneksikan
 			try:
