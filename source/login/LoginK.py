@@ -194,7 +194,6 @@ class Login(Ui_fr_Main):
 			self.GarvinDisconnect(self.LoginUI.tb_Login_Ok.clicked)
 			self.LoginUI.tb_Login_Ok.clicked.connect(self.Login_Login_CreateAdmin)
 		else:
-			self.LoginUI.lb_Login_Password_Confirm.hide()
 			self.LoginUI.le_Login_Password_Confirm.hide()
 			#--- signal tombol sudah di sambungkan di init
 			self.GarvinDisconnect(self.LoginUI.tb_Login_Ok.clicked)
@@ -235,7 +234,6 @@ class Login(Ui_fr_Main):
 		if (sukses):
 			self.DataMaster_Popup("User "+username+" berhasil dibuat.",self.DataMaster_None)
 			#--- succeed. then we hide the confirm, and get the room to login
-			self.LoginUI.lb_Login_Password_Confirm.hide()
 			self.LoginUI.le_Login_Password_Confirm.hide()
 			self.Login_Login()
 	
