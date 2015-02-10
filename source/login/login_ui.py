@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'login/login_ui.ui'
 #
-# Created: Tue Feb 10 10:03:50 2015
+# Created: Tue Feb 10 12:07:56 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -56,7 +56,12 @@ class Ui_fr_Main(object):
         self.fr_Connect.setGeometry(QtCore.QRect(60, 220, 360, 215))
         self.fr_Connect.setMinimumSize(QtCore.QSize(360, 215))
         self.fr_Connect.setMaximumSize(QtCore.QSize(360, 215))
-        self.fr_Connect.setStyleSheet(_fromUtf8("QFrame{background-color:rgb(189,215,204);}"))
+        self.fr_Connect.setStyleSheet(_fromUtf8("QFrame{background-color:rgb(189,215,204);\n"
+"border-style:outset;\n"
+"border-width:1px;\n"
+"    border-color: rgb(231, 231, 231);\n"
+"}\n"
+"QLabel{border-width:0px;}"))
         self.fr_Connect.setFrameShape(QtGui.QFrame.StyledPanel)
         self.fr_Connect.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_Connect.setObjectName(_fromUtf8("fr_Connect"))
@@ -179,10 +184,21 @@ class Ui_fr_Main(object):
         self.igr_Database = QtGui.QGridLayout(self.fr_Database)
         self.igr_Database.setObjectName(_fromUtf8("igr_Database"))
         self.sc_Database_List = QtGui.QScrollArea(self.fr_Database)
+        self.sc_Database_List.setStyleSheet(_fromUtf8("QPushButton{\n"
+"border-style:solid;\n"
+"border-width:1px;\n"
+"border-radius:1px;\n"
+"border-color: rgb(215, 219, 223);\n"
+"height:24px;\n"
+"}\n"
+"QPushButton::hover{\n"
+"    background-color: qlineargradient(spread:pad, x1:0.511111, y1:1, x2:0.49, y2:0.420455, stop:0 rgba(16, 159, 255, 255), stop:1 rgba(98, 187, 255, 255));\n"
+"color:white;\n"
+"}"))
         self.sc_Database_List.setWidgetResizable(True)
         self.sc_Database_List.setObjectName(_fromUtf8("sc_Database_List"))
         self.scontent_Database_List = QtGui.QWidget()
-        self.scontent_Database_List.setGeometry(QtCore.QRect(0, 0, 98, 28))
+        self.scontent_Database_List.setGeometry(QtCore.QRect(0, 0, 249, 184))
         self.scontent_Database_List.setObjectName(_fromUtf8("scontent_Database_List"))
         self.ivl_Database_ListContent = QtGui.QVBoxLayout(self.scontent_Database_List)
         self.ivl_Database_ListContent.setObjectName(_fromUtf8("ivl_Database_ListContent"))
@@ -195,6 +211,18 @@ class Ui_fr_Main(object):
         self.lb_Database_Judul.setObjectName(_fromUtf8("lb_Database_Judul"))
         self.igr_Database.addWidget(self.lb_Database_Judul, 0, 0, 1, 1)
         self.tb_Database_Create = QtGui.QPushButton(self.fr_Database)
+        self.tb_Database_Create.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.tb_Database_Create.setStyleSheet(_fromUtf8("QPushButton{\n"
+"border-style:solid;\n"
+"border-width:1px;\n"
+"border-radius:1px;\n"
+"border-color: rgb(215, 219, 223);\n"
+"height:40px;\n"
+"}\n"
+"QPushButton::hover{\n"
+"    background-color: qlineargradient(spread:pad, x1:0.511111, y1:1, x2:0.49, y2:0.420455, stop:0 rgba(16, 159, 255, 255), stop:1 rgba(98, 187, 255, 255));\n"
+"color:white;\n"
+"}"))
         self.tb_Database_Create.setObjectName(_fromUtf8("tb_Database_Create"))
         self.igr_Database.addWidget(self.tb_Database_Create, 3, 0, 1, 1)
         self.st_Main.addWidget(self.st_Database)
@@ -233,7 +261,7 @@ class Ui_fr_Main(object):
         self.igr_Main.addWidget(self.st_Main, 1, 1, 1, 1)
 
         self.retranslateUi(fr_Main)
-        self.st_Main.setCurrentIndex(0)
+        self.st_Main.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(fr_Main)
 
     def retranslateUi(self, fr_Main):

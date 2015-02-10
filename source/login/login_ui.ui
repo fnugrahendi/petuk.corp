@@ -99,7 +99,7 @@
       <string notr="true"/>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="st_Connect">
       <widget class="QFrame" name="fr_Connect">
@@ -124,7 +124,12 @@
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">QFrame{background-color:rgb(189,215,204);}</string>
+        <string notr="true">QFrame{background-color:rgb(189,215,204);
+border-style:outset;
+border-width:1px;
+	border-color: rgb(231, 231, 231);
+}
+QLabel{border-width:0px;}</string>
        </property>
        <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
@@ -366,6 +371,19 @@ font-size:10pt;
        <layout class="QGridLayout" name="igr_Database">
         <item row="2" column="0">
          <widget class="QScrollArea" name="sc_Database_List">
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+border-style:solid;
+border-width:1px;
+border-radius:1px;
+border-color: rgb(215, 219, 223);
+height:24px;
+}
+QPushButton::hover{
+	background-color: qlineargradient(spread:pad, x1:0.511111, y1:1, x2:0.49, y2:0.420455, stop:0 rgba(16, 159, 255, 255), stop:1 rgba(98, 187, 255, 255));
+color:white;
+}</string>
+          </property>
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
@@ -374,8 +392,8 @@ font-size:10pt;
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>98</width>
-             <height>28</height>
+             <width>249</width>
+             <height>184</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="ivl_Database_ListContent"/>
@@ -394,6 +412,22 @@ font-size:10pt;
         </item>
         <item row="3" column="0">
          <widget class="QPushButton" name="tb_Database_Create">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+border-style:solid;
+border-width:1px;
+border-radius:1px;
+border-color: rgb(215, 219, 223);
+height:40px;
+}
+QPushButton::hover{
+	background-color: qlineargradient(spread:pad, x1:0.511111, y1:1, x2:0.49, y2:0.420455, stop:0 rgba(16, 159, 255, 255), stop:1 rgba(98, 187, 255, 255));
+color:white;
+}</string>
+          </property>
           <property name="text">
            <string>Buat Database Baru</string>
           </property>
