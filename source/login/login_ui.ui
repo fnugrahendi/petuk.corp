@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>743</width>
-    <height>575</height>
+    <width>747</width>
+    <height>616</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,7 +23,7 @@
    <enum>QFrame::Raised</enum>
   </property>
   <layout class="QGridLayout" name="igr_Main">
-   <item row="0" column="1">
+   <item row="0" column="0">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -37,61 +37,22 @@
     </spacer>
    </item>
    <item row="1" column="0">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="1" column="2">
-    <spacer name="horizontalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="2" column="1">
-    <spacer name="verticalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="1" column="1">
     <widget class="QStackedWidget" name="st_Main">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
      <property name="minimumSize">
       <size>
-       <width>480</width>
+       <width>640</width>
        <height>450</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>480</width>
+       <width>1366</width>
        <height>450</height>
       </size>
      </property>
@@ -99,55 +60,157 @@
       <string notr="true"/>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="st_Connect">
-      <widget class="QFrame" name="fr_Connect">
-       <property name="geometry">
-        <rect>
-         <x>60</x>
-         <y>220</y>
-         <width>360</width>
-         <height>215</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>360</width>
-         <height>215</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>360</width>
-         <height>215</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QFrame{background-color:rgb(189,215,204);
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="1">
+        <widget class="QFrame" name="fr_Connect_Container">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>1</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>380</width>
+           <height>450</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>360</width>
+           <height>450</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QFrame{border:0px;}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="igr_fr_Connect_Container">
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <property name="spacing">
+           <number>1</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QFrame" name="fr_Connect_Top">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>1</horstretch>
+              <verstretch>1</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>200</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QGridLayout" name="igr_fr_Connect_Top">
+             <property name="margin">
+              <number>0</number>
+             </property>
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QFrame" name="fr_Connect_Logo">
+               <property name="minimumSize">
+                <size>
+                 <width>162</width>
+                 <height>169</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>162</width>
+                 <height>169</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QFrame{border:0px;}</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+            <zorder>fr_Connect_Logo</zorder>
+            <zorder>fr_Connect_Logo</zorder>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QFrame" name="fr_Connect">
+            <property name="minimumSize">
+             <size>
+              <width>360</width>
+              <height>215</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>360</width>
+              <height>215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QFrame{background-color:rgb(189,215,204);
 border-style:outset;
 border-width:1px;
 	border-color: rgb(231, 231, 231);
 }
 QLabel{border-width:0px;}</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="igr_Connect">
-        <property name="margin">
-         <number>30</number>
-        </property>
-        <item row="3" column="0" colspan="2">
-         <widget class="QPushButton" name="tb_Connect_Ok">
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QGridLayout" name="igr_Connect">
+             <property name="margin">
+              <number>30</number>
+             </property>
+             <item row="3" column="0" colspan="2">
+              <widget class="QPushButton" name="tb_Connect_Ok">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
 	border-style:outset;
 	border-color:rgb(59,38,38);
 	border-width:1px;
@@ -162,16 +225,16 @@ QLabel{border-width:0px;}</string>
 QPushButton::hover{
 	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(89, 58, 58, 255), stop:0.495 rgba(89, 58, 58, 255), stop:0.505 rgba(79, 52, 52, 255), stop:1 rgba(79, 52, 52, 255));
 }</string>
-          </property>
-          <property name="text">
-           <string>OK</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0" colspan="2">
-         <widget class="QLineEdit" name="le_Connect_Alamat">
-          <property name="styleSheet">
-           <string notr="true">QLineEdit{
+               </property>
+               <property name="text">
+                <string>OK</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0" colspan="2">
+              <widget class="QLineEdit" name="le_Connect_Alamat">
+               <property name="styleSheet">
+                <string notr="true">QLineEdit{
 	background-color:rgb(242,242,242);
 
 	border-style:outset;
@@ -184,377 +247,627 @@ QPushButton::hover{
 	font-size:11pt;
 	font-family:Arial;
 }</string>
-          </property>
-          <property name="text">
-           <string>localhost</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="placeholderText">
-           <string>Alamat IP Server</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="lb_Connect_Judul">
-          <property name="font">
-           <font>
-            <family>Arial Black</family>
-            <pointsize>15</pointsize>
-            <stylestrategy>PreferAntialias</stylestrategy>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
+               </property>
+               <property name="text">
+                <string>localhost</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="placeholderText">
+                <string>Alamat IP Server</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="lb_Connect_Judul">
+               <property name="font">
+                <font>
+                 <family>Arial Black</family>
+                 <pointsize>15</pointsize>
+                 <stylestrategy>PreferAntialias</stylestrategy>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLabel{
 color:white;
 font-family:Arial Black;
 font-size:15pt;
 }</string>
-          </property>
-          <property name="text">
-           <string>HUBUNGKAN KE SERVER</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QCheckBox" name="chk_Connect_Lokal">
-          <property name="styleSheet">
-           <string notr="true">QCheckBox{
+               </property>
+               <property name="text">
+                <string>HUBUNGKAN KE SERVER</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QCheckBox" name="chk_Connect_Lokal">
+               <property name="styleSheet">
+                <string notr="true">QCheckBox{
 background-color:transparent;
 color:rgb(99,99,99);
 font-size:10pt;
 }
 </string>
-          </property>
-          <property name="text">
-           <string>Lokal komputer ini</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QFrame" name="fr_Connect_Logo">
-       <property name="geometry">
-        <rect>
-         <x>160</x>
-         <y>10</y>
-         <width>162</width>
-         <height>169</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>162</width>
-         <height>169</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>162</width>
-         <height>169</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QFrame{border:0px;}</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-      </widget>
+               </property>
+               <property name="text">
+                <string>Lokal komputer ini</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="5">
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="0">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="st_Login">
-      <widget class="QFrame" name="fr_Login">
-       <property name="geometry">
-        <rect>
-         <x>80</x>
-         <y>80</y>
-         <width>321</width>
-         <height>181</height>
-        </rect>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QFormLayout" name="ifl_Login">
-        <property name="fieldGrowthPolicy">
-         <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-        </property>
-        <item row="0" column="1">
-         <widget class="QLabel" name="lb_Login_Judul">
-          <property name="font">
-           <font>
-            <pointsize>15</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Login </string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="lb_Login_User">
-          <property name="text">
-           <string>User</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="QLineEdit" name="le_Login_User">
-          <property name="text">
-           <string>admin</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <widget class="QLabel" name="lb_Login_Password">
-          <property name="text">
-           <string>Password</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QLineEdit" name="le_Login_Password">
-          <property name="inputMethodHints">
-           <set>Qt::ImhHiddenText</set>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="1">
-         <widget class="QLineEdit" name="le_Login_Password_Confirm"/>
-        </item>
-        <item row="5" column="0">
-         <widget class="QLabel" name="lb_Login_Password_Confirm">
-          <property name="text">
-           <string>Confirm :</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QPushButton" name="tb_Login_Ok">
-       <property name="geometry">
-        <rect>
-         <x>200</x>
-         <y>220</y>
-         <width>85</width>
-         <height>27</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>OK</string>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="st_Database">
-      <widget class="QFrame" name="fr_Database">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>10</y>
-         <width>271</width>
-         <height>301</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel{
-	border:0px;
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QFrame" name="fr_Login">
+         <property name="minimumSize">
+          <size>
+           <width>240</width>
+           <height>400</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>240</width>
+           <height>400</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit{
+	height:40px;
+	border-radius:0px;
+	background:rgb(242,242,242);
 }
-QFrame{
-	border:0px;
-}</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="igr_Database">
-        <item row="2" column="0">
-         <widget class="QScrollArea" name="sc_Database_List">
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-border-style:solid;
-border-width:1px;
-border-radius:1px;
-border-color: rgb(215, 219, 223);
-height:24px;
+QFrame{border:0px;}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <property name="verticalSpacing">
+           <number>1</number>
+          </property>
+          <item row="1" column="0">
+           <widget class="QLineEdit" name="le_Login_User">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>username</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLineEdit" name="le_Login_Password_Confirm">
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>confirm password</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QFrame" name="frame">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <widget class="QFrame" name="fr_Login_Logo">
+             <property name="geometry">
+              <rect>
+               <x>30</x>
+               <y>30</y>
+               <width>162</width>
+               <height>169</height>
+              </rect>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>162</width>
+               <height>169</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>162</width>
+               <height>169</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QFrame{border:0px;}</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+            </widget>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLineEdit" name="le_Login_Password">
+            <property name="inputMethodHints">
+             <set>Qt::ImhHiddenText</set>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>password</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QPushButton" name="tb_Login_Ok">
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+	border-style:outset;
+	border-color:rgb(0,41,96);
+	border-width:1px;
+	border-radius:0px;
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(12, 63, 125, 255), stop:0.495 rgba(12, 63, 125, 255),  stop:0.505 rgba(14, 55, 107, 255), stop:1 rgba(14, 55, 107, 255));
+	color:#ffffff;
+	height:38px;
+	font-weight:bold;
+	font-size:11pt;
+	font-family:Arial Black;
 }
 QPushButton::hover{
-	background-color: qlineargradient(spread:pad, x1:0.511111, y1:1, x2:0.49, y2:0.420455, stop:0 rgba(16, 159, 255, 255), stop:1 rgba(98, 187, 255, 255));
-color:white;
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(22, 73, 135, 255), stop:0.495 rgba(22, 73, 135, 255), stop:0.505 rgba(24, 65, 117, 255), stop:1 rgba(24, 65, 117, 255));
+}</string>
+            </property>
+            <property name="text">
+             <string>OK</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="st_Database">
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QFrame" name="fr_Database">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>500</width>
+           <height>350</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>800</width>
+           <height>350</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel{
+	border:0px;
 }
 QFrame{
 	border:0px;
-	border-top-width:1px;
-	border-top-style:solid;
-	border-top-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 0), stop:0.5 rgba(61, 104, 235, 255), stop:0.98 rgba(0, 0, 0, 0), stop:1 rgba(0, 0, 0, 0));
 }</string>
-          </property>
-          <property name="widgetResizable">
-           <bool>true</bool>
-          </property>
-          <widget class="QWidget" name="scontent_Database_List">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>251</width>
-             <height>186</height>
-            </rect>
-           </property>
-           <layout class="QVBoxLayout" name="ivl_Database_ListContent"/>
-          </widget>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLineEdit" name="le_Database_Search"/>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="lb_Database_Judul">
-          <property name="styleSheet">
-           <string notr="true">border:0px;</string>
-          </property>
-          <property name="text">
-           <string>Pilih Database Perusahaan</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QPushButton" name="tb_Database_Create">
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="igr_Database">
+          <item row="2" column="2">
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>180</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="2" column="1">
+           <widget class="QScrollArea" name="sc_Database_List">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>250</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>250</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
 border-style:solid;
 border-width:1px;
 border-radius:1px;
 border-color: rgb(215, 219, 223);
 height:40px;
+min-width:178px;
+}
+QPushButton::hover{
+	background-color: qlineargradient(spread:pad, x1:0.511111, y1:1, x2:0.49, y2:0.420455, stop:0 rgba(209, 209, 209, 255), stop:1 rgba(237, 237, 237, 255));
+color:black;
+}
+QFrame{
+	border-width:1px;
+	border-style:solid;
+	border-color: rgb(240, 240, 240);
+}</string>
+            </property>
+            <property name="widgetResizable">
+             <bool>true</bool>
+            </property>
+            <widget class="QWidget" name="scontent_Database_List">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>198</width>
+               <height>248</height>
+              </rect>
+             </property>
+             <layout class="QVBoxLayout" name="ivl_Database_ListContent"/>
+            </widget>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QPushButton" name="tb_Database_Create">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+border-style:solid;
+border-width:1px;
+border-radius:1px;
+border-color: rgb(215, 219, 223);
+height:40px;
+margin-left:10px;
+margin-right:10px;
+
 }
 QPushButton::hover{
 	background-color: qlineargradient(spread:pad, x1:0.511111, y1:1, x2:0.49, y2:0.420455, stop:0 rgba(16, 159, 255, 255), stop:1 rgba(98, 187, 255, 255));
 color:white;
 }</string>
-          </property>
-          <property name="text">
-           <string>Buat Database Baru</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
+            </property>
+            <property name="text">
+             <string>Buat Database Baru</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>180</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="0" colspan="3">
+           <widget class="QFrame" name="fr_Database_Top">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QFrame{
+	border:0px;
+	border-bottom-width:1px;
+	border-bottom-style:solid;
+	border-bottom-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 178, 102, 0), stop:0.5 rgba(240, 119, 70, 100), stop:0.98 rgba(0, 0, 0, 0), stop:1 rgba(0, 0, 0, 0));
+}</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QGridLayout" name="igr_Database_Top">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <item row="1" column="0">
+              <spacer name="horizontalSpacer_5">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Expanding</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>185</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="1" column="2">
+              <spacer name="horizontalSpacer_6">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Expanding</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>185</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLabel" name="lb_Database_Judul">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border:0px;</string>
+               </property>
+               <property name="text">
+                <string>Pilih Database Perusahaan :</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="st_Database_Create">
-      <widget class="QFrame" name="fr_Database_Create">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>0</y>
-         <width>259</width>
-         <height>300</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>259</width>
-         <height>300</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>250</width>
-         <height>300</height>
-        </size>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <layout class="QGridLayout" name="igr_Database_Create">
-        <item row="1" column="1">
-         <widget class="QLabel" name="lb_Database_Create_Judul">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Berikan nama data :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0" colspan="3">
-         <widget class="QLineEdit" name="le_Database_Create_Nama">
-          <property name="placeholderText">
-           <string>Nama Database</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QPushButton" name="tb_Database_Create_Buat">
-          <property name="text">
-           <string>Buat</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <spacer name="verticalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="5" column="1">
-         <spacer name="verticalSpacer_4">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="3" column="1">
-         <spacer name="verticalSpacer_5">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </widget>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QFrame" name="fr_Database_Create">
+         <property name="minimumSize">
+          <size>
+           <width>259</width>
+           <height>300</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>300</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="igr_Database_Create">
+          <item row="1" column="1">
+           <widget class="QLabel" name="lb_Database_Create_Judul">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Berikan nama data :</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="3">
+           <widget class="QLineEdit" name="le_Database_Create_Nama">
+            <property name="styleSheet">
+             <string notr="true">QLineEdit{
+	border-style:inset;
+	border-width:1px;
+	border-color:rgba(205,205,205,200);
+	height:20px;
+	padding:5px;
+	border-radius:3px;
+}</string>
+            </property>
+            <property name="placeholderText">
+             <string>Nama Database</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QPushButton" name="tb_Database_Create_Buat">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+border-style:solid;
+border-width:1px;
+border-radius:1px;
+border-color: rgb(215, 219, 223);
+height:40px;
+margin-left:10px;
+margin-right:10px;
+
+}
+QPushButton::hover{
+	background-color: qlineargradient(spread:pad, x1:0.511111, y1:1, x2:0.49, y2:0.420455, stop:0 rgba(16, 159, 255, 255), stop:1 rgba(98, 187, 255, 255));
+color:white;
+}</string>
+            </property>
+            <property name="text">
+             <string>Buat</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="5" column="1">
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="3" column="1">
+           <spacer name="verticalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
+   </item>
+   <item row="3" column="0">
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>
