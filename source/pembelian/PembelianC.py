@@ -355,3 +355,4 @@ class Pembelian(object):
 	def Pembelian_GoTo_ReturPembelian(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_RETURPEMBELIAN)
 		return
+		

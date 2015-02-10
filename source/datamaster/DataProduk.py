@@ -22,6 +22,7 @@ except:
 
 class DataProduk(object):
 	def __init__(self, parent=None):
+		print "data produk initialized"
 		pass
 	
 	def DataMaster_DataProduk_RefreshList(self,searchtext):
@@ -65,23 +66,20 @@ class DataProduk(object):
 		stok = str(self.le_DataMaster_DataProduk_Tambah_Stok.text())
 		satuan = str(self.cb_DataMaster_DataProduk_Tambah_Satuan.currentText())
 		satuan = str(satuan[satuan.find("(kode: ")+len("(kode: "):-1])
-		sql =""
+		akunpenjualan = str(self.tb_DataMaster_DataProduk_Tambah_NoAkunPenjualan.text())
+		
 		if (self.DataMaster_DataProduk_Edit_idEDIT>=0):
-			sql = "UPDATE `"+self.dbDatabase+"`.`gd_data_produk` "+\
-				"SET `kodeBarang` = '"+kode+"',"+\
-					"`deskripsi` = '"+deskripsi+"',"+\
-					"`kodeSatuan` = '"+satuan+"',"+\
-					"`hpp` = '"+hpp+"',"+\
-					"`namaBarang` = '"+nama+"',"+\
-					"`sifat` = '"+sifat+"',"+\
-					"`stok` = '"+stok+"' "+\
-				"WHERE `gd_data_produk`.`id`='"+str(self.DataMaster_DataProduk_Edit_idEDIT)+"'"
+			self.DatabaseInsertReplace(self.dbDatabase,"gd_data_produk","id",str(self.DataMaster_DataProduk_Edit_idEDIT),
+											["kodeBarang","deskripsi","kodeSatuan","hpp","namaBarang","sifat","stok","noAkunPenjualan"],
+											[kode,deskripsi,satuan,hpp,nama,sifat,stok,akunpenjualan]
+										)
 			self.DataMaster_DataProduk_Edit_idEDIT = -1
 		else:
-			sql = "INSERT INTO `"+self.dbDatabase+"`.`gd_data_produk`"+\
-					" (`id`, `kodeBarang`, `deskripsi`, `kodeSatuan`, `hpp`, `namaBarang`, `sifat`, `stok`) "+\
-					"VALUES (NULL, '"+kode+"', '"+deskripsi+"', '"+satuan+"', '"+hpp+"', '"+nama+"', '"+sifat+"', '"+stok+"');"
-		self.DatabaseRunQuery(sql)
+			self.DatabaseInsertAvoidreplace(self.dbDatabase,"gd_data_produk","id",str(self.DataMaster_DataProduk_Edit_idEDIT),
+											["kodeBarang","deskripsi","kodeSatuan","hpp","namaBarang","sifat","stok","noAkunPenjualan"],
+											[kode,deskripsi,satuan,hpp,nama,sifat,stok,akunpenjualan]
+										)
+		
 		self.le_DataMaster_DataProduk_Tambah_KodeBarang.setReadOnly(False)
 		#----------------------------------------------------------------------------------------------------------back to where it should be
 		self.DataMaster_Goto_Common(self.INDEX_ST_DATAMASTER_DATAPRODUK)
@@ -110,6 +108,7 @@ class DataProduk(object):
 		except:
 			satuan = ""
 		self.cb_DataMaster_DataProduk_Tambah_Satuan.setCurrentIndex(self.cb_DataMaster_DataProduk_Tambah_Satuan.findText(_fromUtf8(satuan)))
+		self.tb_DataMaster_DataProduk_Tambah_NoAkunPenjualan.setText(str(barang[0][field("noAkunPenjualan")]))
 		self.DataMaster_DataProduk_Edit_idEDIT = barang[0][field("id")]
 		self.DataMaster_Goto(self.INDEX_ST_DATAMASTER_DATAPRODUK_TAMBAH)
 	
@@ -211,6 +210,21 @@ class DataProduk(object):
 			self.lb_DataMaster_DataProduk_Sifat.setMinimumSize(QtCore.QSize(common_width, 22))
 			self.lb_DataMaster_DataProduk_Sifat.setMaximumSize(QtCore.QSize(common_width, 22))
 			#~ self.lb_DataMaster_DataProduk_Sifat.setFont(f12)
+			
+		#------------------------------------------------------------------------------------------------------NoAkunPenjualan
+		try:
+			self.lb_DataMaster_DataProduk_NoAkunPenjualan.setText("Nomor Akun Penjualan : "+str(data[field("noAkunPenjualan")]))
+			if (self.DataMaster_CommonRoom_cleared==1):
+				self.fr_DataMaster_DataCommon_Fbody_FR_Ftop.findChildren(QtGui.QGridLayout)[0].addWidget(self.lb_DataMaster_DataProduk_NoAkunPenjualan, 2, 0, 1, 1,QtCore.Qt.AlignTop)
+				self.lb_DataMaster_DataProduk_NoAkunPenjualan.show()
+		except:
+			self.lb_DataMaster_DataProduk_NoAkunPenjualan = QtGui.QLabel(self.fr_DataMaster_DataCommon_Fbody_FR_Ftop)
+			self.lb_DataMaster_DataProduk_NoAkunPenjualan.setObjectName(_fromUtf8("lb_DataMaster_DataProduk_NoAkunPenjualan"))
+			self.fr_DataMaster_DataCommon_Fbody_FR_Ftop.findChildren(QtGui.QGridLayout)[0].addWidget(self.lb_DataMaster_DataProduk_NoAkunPenjualan, 2, 0, 1, 1,QtCore.Qt.AlignTop)
+			self.lb_DataMaster_DataProduk_NoAkunPenjualan.setText("Nomor Akun Penjualan : "+str(data[field("noAkunPenjualan")]))
+			self.lb_DataMaster_DataProduk_NoAkunPenjualan.setMinimumSize(QtCore.QSize(common_width, 22))
+			self.lb_DataMaster_DataProduk_NoAkunPenjualan.setMaximumSize(QtCore.QSize(common_width, 22))
+			#~ self.lb_DataMaster_DataProduk_NoAkunPenjualan.setFont(f12)
 			
 		#------------------------------------------------------------------------------------------------------Stok
 		sql = "SELECT * FROM `gd_satuan_pengukuran` WHERE `gd_satuan_pengukuran`.`kodeSatuan` = '"+str(data[field("kodeSatuan")])+"' "

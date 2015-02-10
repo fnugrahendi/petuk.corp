@@ -28,9 +28,9 @@ pyqtc: $(PYQTCONVERT)
 pyqtr: $(PYQTREVERT)
 
 binary:
-	$(PYC) $(EXE).py  --distpath=../bin/ -w
-	#~ mv ../bin/$(EXE)/* ../bin/
-	#~ rm -rf ../bin/$(EXE)
+	$(PYC) $(EXE).py  --distpath=../bin/
+	mv ../bin/$(EXE)/* ../bin/
+	rm -rf ../bin/$(EXE)
 
 commit:
 	git commit -a

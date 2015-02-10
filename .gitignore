@@ -16,6 +16,7 @@ source/kasbank/img/
 *.odt
 *.pdf
 *.docx
+*.xlsx
 *.ods
 *.so
 *.o

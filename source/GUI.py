@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Mon Feb  9 16:49:36 2015
+# Created: Tue Feb 10 14:56:40 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,6 +33,9 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
         MainWindow.setMinimumSize(QtCore.QSize(0, 45))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icon/Icon.ico")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(_fromUtf8(""))
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setStyleSheet(_fromUtf8("QTableWidget{border-width:1px;border-color:rgb(0, 0, 0);border-style:solid;border-radius:0px;}"))
@@ -308,9 +311,9 @@ class Ui_MainWindow(object):
         self.tb_DataMaster_DataCommon_Edit.setMaximumSize(QtCore.QSize(30, 16777215))
         self.tb_DataMaster_DataCommon_Edit.setStyleSheet(_fromUtf8(""))
         self.tb_DataMaster_DataCommon_Edit.setText(_fromUtf8(""))
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/DataMaster/img/edit.png")), QtGui.QIcon.Normal, QtGui.QIcon.On)
-        self.tb_DataMaster_DataCommon_Edit.setIcon(icon)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/DataMaster/img/edit.png")), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.tb_DataMaster_DataCommon_Edit.setIcon(icon1)
         self.tb_DataMaster_DataCommon_Edit.setObjectName(_fromUtf8("tb_DataMaster_DataCommon_Edit"))
         self.ihl_DataMaster_DataCommon_Fbody_FR_Fbot.addWidget(self.tb_DataMaster_DataCommon_Edit)
         self.tb_DataMaster_DataCommon_Delete = QtGui.QPushButton(self.fr_DataMaster_DataCommon_Fbody_FR_Fbot)
@@ -318,9 +321,9 @@ class Ui_MainWindow(object):
         self.tb_DataMaster_DataCommon_Delete.setMaximumSize(QtCore.QSize(30, 16777215))
         self.tb_DataMaster_DataCommon_Delete.setStyleSheet(_fromUtf8(""))
         self.tb_DataMaster_DataCommon_Delete.setText(_fromUtf8(""))
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/DataMaster/img/del.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.tb_DataMaster_DataCommon_Delete.setIcon(icon1)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/DataMaster/img/del.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.tb_DataMaster_DataCommon_Delete.setIcon(icon2)
         self.tb_DataMaster_DataCommon_Delete.setObjectName(_fromUtf8("tb_DataMaster_DataCommon_Delete"))
         self.ihl_DataMaster_DataCommon_Fbody_FR_Fbot.addWidget(self.tb_DataMaster_DataCommon_Delete)
         self.fr_DataMaster_DataCommon_Fbody_FR_Fbot_Fspace = QtGui.QFrame(self.fr_DataMaster_DataCommon_Fbody_FR_Fbot)
@@ -1312,7 +1315,7 @@ class Ui_MainWindow(object):
         self.tb_DataMaster_DataRekening_Edit.setMaximumSize(QtCore.QSize(30, 16777215))
         self.tb_DataMaster_DataRekening_Edit.setStyleSheet(_fromUtf8(""))
         self.tb_DataMaster_DataRekening_Edit.setText(_fromUtf8(""))
-        self.tb_DataMaster_DataRekening_Edit.setIcon(icon)
+        self.tb_DataMaster_DataRekening_Edit.setIcon(icon1)
         self.tb_DataMaster_DataRekening_Edit.setObjectName(_fromUtf8("tb_DataMaster_DataRekening_Edit"))
         self.ihl_DataMaster_DataRekening_Fb.addWidget(self.tb_DataMaster_DataRekening_Edit)
         self.tb_DataMaster_DataRekening_Delete = QtGui.QPushButton(self.fr_DataMaster_DataRekening_Fb)
@@ -1320,7 +1323,7 @@ class Ui_MainWindow(object):
         self.tb_DataMaster_DataRekening_Delete.setMaximumSize(QtCore.QSize(30, 16777215))
         self.tb_DataMaster_DataRekening_Delete.setStyleSheet(_fromUtf8(""))
         self.tb_DataMaster_DataRekening_Delete.setText(_fromUtf8(""))
-        self.tb_DataMaster_DataRekening_Delete.setIcon(icon1)
+        self.tb_DataMaster_DataRekening_Delete.setIcon(icon2)
         self.tb_DataMaster_DataRekening_Delete.setObjectName(_fromUtf8("tb_DataMaster_DataRekening_Delete"))
         self.ihl_DataMaster_DataRekening_Fb.addWidget(self.tb_DataMaster_DataRekening_Delete)
         self.fr_DataMaster_DataRekening_Fb_Space = QtGui.QFrame(self.fr_DataMaster_DataRekening_Fb)
@@ -1654,7 +1657,7 @@ class Ui_MainWindow(object):
         self.tb_DataMaster_DataDepartemen_Edit.setMaximumSize(QtCore.QSize(30, 16777215))
         self.tb_DataMaster_DataDepartemen_Edit.setStyleSheet(_fromUtf8(""))
         self.tb_DataMaster_DataDepartemen_Edit.setText(_fromUtf8(""))
-        self.tb_DataMaster_DataDepartemen_Edit.setIcon(icon)
+        self.tb_DataMaster_DataDepartemen_Edit.setIcon(icon1)
         self.tb_DataMaster_DataDepartemen_Edit.setObjectName(_fromUtf8("tb_DataMaster_DataDepartemen_Edit"))
         self.ihl_DataMaster_DataDepartemen_Fbody_FR_Fbot.addWidget(self.tb_DataMaster_DataDepartemen_Edit)
         self.tb_DataMaster_DataDepartemen_Delete = QtGui.QPushButton(self.fr_DataMaster_DataDepartemen_Fbody_FR_Fbot)
@@ -1662,7 +1665,7 @@ class Ui_MainWindow(object):
         self.tb_DataMaster_DataDepartemen_Delete.setMaximumSize(QtCore.QSize(30, 16777215))
         self.tb_DataMaster_DataDepartemen_Delete.setStyleSheet(_fromUtf8(""))
         self.tb_DataMaster_DataDepartemen_Delete.setText(_fromUtf8(""))
-        self.tb_DataMaster_DataDepartemen_Delete.setIcon(icon1)
+        self.tb_DataMaster_DataDepartemen_Delete.setIcon(icon2)
         self.tb_DataMaster_DataDepartemen_Delete.setObjectName(_fromUtf8("tb_DataMaster_DataDepartemen_Delete"))
         self.ihl_DataMaster_DataDepartemen_Fbody_FR_Fbot.addWidget(self.tb_DataMaster_DataDepartemen_Delete)
         self.fr_DataMaster_DataDepartemen_Fbody_FR_Fbot_Fspace = QtGui.QFrame(self.fr_DataMaster_DataDepartemen_Fbody_FR_Fbot)
@@ -4621,7 +4624,7 @@ class Ui_MainWindow(object):
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         self.st_DataMaster.setCurrentIndex(3)
         self.st_Penjualan.setCurrentIndex(0)
         self.st_Pembelian.setCurrentIndex(5)
