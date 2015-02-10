@@ -581,6 +581,30 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		originalSS = originalSS + " QFrame{background-image: url("+ResourceImage+");}"
 		NamaFrame.setStyleSheet(originalSS)
 	
+	def GarvinOrderTab(self,widget,layout):
+		""" Otomatis urutkan tab order ke yang paling dekat
+			
+		"""
+		if type(layout)==QtGui.QGridLayout or type(layout)==QtGui.QFormLayout:
+			if type(layout)==QtGui.QGridLayout:
+				kolom = layout.columnCount()
+				baris = layout.rowCount()
+				pilih = layout.itemAtPosition
+			else:
+				kolom = 2
+				baris = layout.rowCount()
+				pilih = layout.itemAt
+				
+			InputEdits = []
+			for y in range(0,baris):
+				for x in range(0,kolom):
+					item = pilih(y,x)
+					if (item!=None):
+						if type(item.widget()) in [QtGui.QLineEdit, QtGui.QCheckBox, QtGui.QDateTimeEdit, QtGui.QDateEdit, QtGui.QComboBox, QtGui.QSpinBox,QtGui.QDoubleSpinBox,QtGui.QTimeEdit]:
+							#~ print item.widget().objectName()
+							InputEdits.append(item.widget())
+			for x in range(1,len(InputEdits)):
+				widget.setTabOrder(InputEdits[x-1],InputEdits[x])
 	
 if __name__=="__main__":
 	#-- dynamic linking, ben nek dicompile dadi binary .exe ora marai kabotan startup/file e gedhe

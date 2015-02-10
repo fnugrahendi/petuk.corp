@@ -41,16 +41,16 @@ class MainGUI(QtGui.QMainWindow,Ui_MainWindow):
 				baris = layout.rowCount()
 				pilih = layout.itemAt
 				
-			LineEdits = []
+			InputEdits = []
 			for y in range(0,baris):
 				for x in range(0,kolom):
 					item = pilih(y,x)
 					if (item!=None):
-						if type(item.widget())==QtGui.QLineEdit:
+						if type(item.widget()) in [QtGui.QLineEdit, QtGui.QCheckBox, QtGui.QDateTimeEdit, QtGui.QDateEdit, QtGui.QComboBox, QtGui.QSpinBox,QtGui.QDoubleSpinBox,QtGui.QTimeEdit]:
 							#~ print item.widget().objectName()
-							LineEdits.append(item.widget())
-			for x in range(1,len(LineEdits)):
-				widget.setTabOrder(LineEdits[x-1],LineEdits[x])
+							InputEdits.append(item.widget())
+			for x in range(1,len(InputEdits)):
+				widget.setTabOrder(InputEdits[x-1],InputEdits[x])
     
 	def Quit(self):
 		exit()
