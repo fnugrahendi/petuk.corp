@@ -88,6 +88,21 @@ class KasKeluar(object):
 						item = QtGui.QTableWidgetItem()
 						self.KasBankUI.tbl_KasKeluar.setItem(row, kolom, item)
 					self.KasBankUI.tbl_KasKeluar.item(row,kolom).setText(str(result[row][	field(TABLECOLUMNS[1][kolom])	]))
+				
+				#--- Right most tablecolumn shows that the details data has undone rekening
+				undone = False
+				kode = str(result[row][	field("kodeTransaksi")	])
+				details = self.DatabaseFetchResult(self.dbDatabase,"gd_detail_kas_keluar","kodeTransaksi",kode)
+				for detail in details:
+					if str(detail[self.KasBank_DetailKasKeluar_Field.index("noAkunDetail")])=="00000000":
+						undone = True
+						break
+				if (undone):
+					kolom = len(TABLECOLUMNS[1])
+					if (self.KasBankUI.tbl_KasKeluar.item(row,kolom)==None):
+						item = QtGui.QTableWidgetItem()
+						self.KasBankUI.tbl_KasKeluar.setItem(row, kolom, item)
+					self.KasBankUI.tbl_KasKeluar.item(row,kolom).setText("<<<")
 	
 	def KasBank_KasKeluar_SetActiveIndex(self,row,col):
 		""" This function reconnect the signal of button Buka """
