@@ -133,16 +133,7 @@
         <enum>QFrame::Raised</enum>
        </property>
        <layout class="QGridLayout" name="igr_Connect">
-        <property name="leftMargin">
-         <number>30</number>
-        </property>
-        <property name="topMargin">
-         <number>30</number>
-        </property>
-        <property name="rightMargin">
-         <number>30</number>
-        </property>
-        <property name="bottomMargin">
+        <property name="margin">
          <number>30</number>
         </property>
         <item row="3" column="0" colspan="2">
@@ -258,6 +249,9 @@ font-size:10pt;
          <width>162</width>
          <height>169</height>
         </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QFrame{border:0px;}</string>
        </property>
        <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
@@ -380,8 +374,8 @@ font-size:10pt;
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>249</width>
-             <height>201</height>
+             <width>98</width>
+             <height>28</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="ivl_Database_ListContent"/>

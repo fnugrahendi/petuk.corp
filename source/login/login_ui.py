@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'login/login_ui.ui'
 #
-# Created: Tue Feb 10 00:14:46 2015
-#      by: PyQt4 UI code generator 4.10.1
+# Created: Tue Feb 10 10:03:50 2015
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -125,6 +125,7 @@ class Ui_fr_Main(object):
         self.fr_Connect_Logo.setGeometry(QtCore.QRect(160, 10, 162, 169))
         self.fr_Connect_Logo.setMinimumSize(QtCore.QSize(162, 169))
         self.fr_Connect_Logo.setMaximumSize(QtCore.QSize(162, 169))
+        self.fr_Connect_Logo.setStyleSheet(_fromUtf8("QFrame{border:0px;}"))
         self.fr_Connect_Logo.setFrameShape(QtGui.QFrame.StyledPanel)
         self.fr_Connect_Logo.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_Connect_Logo.setObjectName(_fromUtf8("fr_Connect_Logo"))
@@ -181,7 +182,7 @@ class Ui_fr_Main(object):
         self.sc_Database_List.setWidgetResizable(True)
         self.sc_Database_List.setObjectName(_fromUtf8("sc_Database_List"))
         self.scontent_Database_List = QtGui.QWidget()
-        self.scontent_Database_List.setGeometry(QtCore.QRect(0, 0, 249, 201))
+        self.scontent_Database_List.setGeometry(QtCore.QRect(0, 0, 98, 28))
         self.scontent_Database_List.setObjectName(_fromUtf8("scontent_Database_List"))
         self.ivl_Database_ListContent = QtGui.QVBoxLayout(self.scontent_Database_List)
         self.ivl_Database_ListContent.setObjectName(_fromUtf8("ivl_Database_ListContent"))
