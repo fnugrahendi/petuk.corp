@@ -27,7 +27,31 @@ class MainGUI(QtGui.QMainWindow,Ui_MainWindow):
 		self.tb_DataMaster_DataCommon_Edit.setIcon(icon)
 		self.tb_DataMaster_DataCommon_Edit.setObjectName("tb_DataMaster_DataCommon_Edit")
 		self.igr_centralwidget.addWidget(self.tb_DataMaster_DataCommon_Edit)
-        
+		self.GarvinGridTab(self.centralwidget,self.igr_centralwidget)
+		self.GarvinGridTab(self.fr_Layouttest,self.ifl_Layouttest)
+
+	def GarvinGridTab(self,widget,layout):
+		if type(layout)==QtGui.QGridLayout or type(layout)==QtGui.QFormLayout:
+			if type(layout)==QtGui.QGridLayout:
+				kolom = layout.columnCount()
+				baris = layout.rowCount()
+				pilih = layout.itemAtPosition
+			else:
+				kolom = 2
+				baris = layout.rowCount()
+				pilih = layout.itemAt
+				
+			LineEdits = []
+			for y in range(0,baris):
+				for x in range(0,kolom):
+					item = pilih(y,x)
+					if (item!=None):
+						if type(item.widget())==QtGui.QLineEdit:
+							#~ print item.widget().objectName()
+							LineEdits.append(item.widget())
+			for x in range(1,len(LineEdits)):
+				widget.setTabOrder(LineEdits[x-1],LineEdits[x])
+    
 	def Quit(self):
 		exit()
 	
