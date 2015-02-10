@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Tue Feb 10 14:56:40 2015
+# Created: Tue Feb 10 17:24:47 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -38,7 +38,11 @@ class Ui_MainWindow(object):
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(_fromUtf8(""))
         self.centralwidget = QtGui.QWidget(MainWindow)
-        self.centralwidget.setStyleSheet(_fromUtf8("QTableWidget{border-width:1px;border-color:rgb(0, 0, 0);border-style:solid;border-radius:0px;}"))
+        self.centralwidget.setStyleSheet(_fromUtf8("QWidget#centralwidget{\n"
+"background:white;\n"
+"}\n"
+"\n"
+"QTableWidget{border-width:1px;border-color:rgb(0, 0, 0);border-style:solid;border-radius:0px;}"))
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.gridLayout = QtGui.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
@@ -60,18 +64,18 @@ class Ui_MainWindow(object):
 "}\n"
 "QTabBar::tab \n"
 "{\n"
-"    background: #F6F4F2;\n"
+"    background: rgb(242,242,242);\n"
 "    color: #000000;   \n"
 "    padding:15px 40px;\n"
 "    border-width:1px;\n"
 "    border-style:solid;\n"
-"    border-color:#F6F4F2;\n"
+"    border-color:#FFFFFF;\n"
 "    min-width:90px;\n"
 "    border-radius:0px;\n"
-"/*    border-top-left-radius: 10px;\n"
-"    border-top-right-radius: 10px;*/\n"
 "    font: 10pt \"Arial\";\n"
 "    text-decoration:none;\n"
+"    border-bottom-width:4px;\n"
+"    border-bottom-color:rgb(242,242,242);;\n"
 "}\n"
 "\n"
 "QTabBar::tab:selected, \n"
@@ -80,27 +84,31 @@ class Ui_MainWindow(object):
 "    font: 10pt \"Arial\";\n"
 "    color: black;\n"
 "    text-decoration:none;\n"
+"    \n"
+"    background-color: rgb(255,255,255);\n"
+"border-left-width:1px;\n"
+"border-left-style:solid;\n"
 "\n"
-"    background-color: qlineargradient(spread:pad, x1:0.505556, y1:0, x2:0.517, y2:1, stop:0 rgba(246, 244, 242, 0), stop:1 rgba(255, 255, 255, 255));\n"
-"    border-right-color:qlineargradient(spread:pad, x1:0.511111, y1:1, x2:0.545, y2:0.443182, stop:0 rgba(207, 169, 30, 255), stop:1 rgba(246, 244, 242, 10));\n"
-"    border-left-color: qlineargradient(spread:pad, x1:0.511111, y1:1, x2:0.545, y2:0.443182, stop:0 rgba(207, 169, 30, 255), stop:1 rgba(246, 244, 242, 10));\n"
+"    border-right-color:rgb(219,219,219);\n"
+"    border-left-color : rgb(219,219,219);\n"
+"    border-bottom-color:rgb(8,50,103);\n"
+"    border-bottom-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(116, 140, 170, 255), stop:0.176796 rgba(116, 140, 170, 255), stop:0.198895 rgba(9, 51, 104, 255), stop:0.767956 rgba(9, 51, 104, 255), stop:0.773481 rgba(198, 208, 220, 255), stop:1 rgba(198, 208, 220, 255));\n"
 "}\n"
 "\n"
-"\n"
+"/*\n"
 "QTabBar::tab:selected {\n"
-"/* expand/overlap to the left and right by 4px */\n"
 "margin-left: -4px;\n"
 "margin-right: -4px;\n"
 "}\n"
 "QTabBar::tab:first:selected {\n"
-"margin-left: 0; /* the first selected tab has nothing to overlap with on the left */\n"
+"margin-left: 0;\n"
 "}\n"
 "QTabBar::tab:last:selected {\n"
-"margin-right: 0; /* the last selected tab has nothing to overlap with on the right */\n"
+"margin-right: 0;\n"
 "}\n"
 "QTabBar::tab:!selected {\n"
-"margin-top: 2px; /* make non-selected tabs look smaller */\n"
-"}"))
+"margin-top: 2px; \n"
+"}*/"))
         self.tabWidget.setObjectName(_fromUtf8("tabWidget"))
         self.tab_DataMaster = QtGui.QWidget()
         self.tab_DataMaster.setObjectName(_fromUtf8("tab_DataMaster"))
@@ -239,7 +247,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataCommon_Fbody_Slist.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataCommon_Fbody_Slist.setObjectName(_fromUtf8("sc_DataMaster_DataCommon_Fbody_Slist"))
         self.scontent_DataMaster_DataCommon_Fbody_Slist = QtGui.QWidget()
-        self.scontent_DataMaster_DataCommon_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 332, 18))
+        self.scontent_DataMaster_DataCommon_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 250, 30))
         self.scontent_DataMaster_DataCommon_Fbody_Slist.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataCommon_Fbody_Slist.setObjectName(_fromUtf8("scontent_DataMaster_DataCommon_Fbody_Slist"))
         self.ivl_DataMaster_DataCommon_Fbody_Slist = QtGui.QVBoxLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist)
@@ -1585,7 +1593,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("sc_DataMaster_DataDepartemen_Fbody_Slist"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QWidget()
-        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 332, 18))
+        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 332, 308))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("scontent_DataMaster_DataDepartemen_Fbody_Slist"))
         self.ivl_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QVBoxLayout(self.scontent_DataMaster_DataDepartemen_Fbody_Slist)
@@ -4613,8 +4621,12 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.fr_MainWindow, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 870, 25))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 870, 19))
         self.menubar.setObjectName(_fromUtf8("menubar"))
+        self.menuMenu = QtGui.QMenu(self.menubar)
+        self.menuMenu.setObjectName(_fromUtf8("menuMenu"))
+        self.menuHelp = QtGui.QMenu(self.menubar)
+        self.menuHelp.setObjectName(_fromUtf8("menuHelp"))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
@@ -4622,10 +4634,21 @@ class Ui_MainWindow(object):
         self.toolBar = QtGui.QToolBar(MainWindow)
         self.toolBar.setObjectName(_fromUtf8("toolBar"))
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
+        self.actionLog_Off = QtGui.QAction(MainWindow)
+        self.actionLog_Off.setObjectName(_fromUtf8("actionLog_Off"))
+        self.actionAbout = QtGui.QAction(MainWindow)
+        self.actionAbout.setObjectName(_fromUtf8("actionAbout"))
+        self.actionLicense = QtGui.QAction(MainWindow)
+        self.actionLicense.setObjectName(_fromUtf8("actionLicense"))
+        self.menuMenu.addAction(self.actionLog_Off)
+        self.menuHelp.addAction(self.actionAbout)
+        self.menuHelp.addAction(self.actionLicense)
+        self.menubar.addAction(self.menuMenu.menuAction())
+        self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
-        self.st_DataMaster.setCurrentIndex(3)
+        self.st_DataMaster.setCurrentIndex(0)
         self.st_Penjualan.setCurrentIndex(0)
         self.st_Pembelian.setCurrentIndex(5)
         self.st_BukuBesar.setCurrentIndex(1)
@@ -5162,6 +5185,11 @@ class Ui_MainWindow(object):
         self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Batal.setText(_translate("MainWindow", "Batal", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_BukuBesar), _translate("MainWindow", "Buku Besar", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_KasBank), _translate("MainWindow", "Kas dan Bank", None))
+        self.menuMenu.setTitle(_translate("MainWindow", "Menu", None))
+        self.menuHelp.setTitle(_translate("MainWindow", "Help", None))
         self.toolBar.setWindowTitle(_translate("MainWindow", "toolBar", None))
+        self.actionLog_Off.setText(_translate("MainWindow", "Log Off", None))
+        self.actionAbout.setText(_translate("MainWindow", "About", None))
+        self.actionLicense.setText(_translate("MainWindow", "License", None))
 
 import DataMaster_rc
