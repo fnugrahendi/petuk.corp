@@ -27,3 +27,6 @@ All of these icons were created in Expression Design.
 ## Contact
 
 Please send icon requests to Austin Andrews ([@templarian](http://twitter.com/templarian)) on Twitter or create a new issue.
+
+
+## xlsxwriter © Copyright 2013-2015, John McNamara., BSD license
