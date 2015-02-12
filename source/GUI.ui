@@ -59,7 +59,9 @@ QTableWidget{border-width:1px;border-color:rgb(0, 0, 0);border-style:solid;borde
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">
+          <string notr="true">QFrame{
+	background: #FFFFFF;
+}
 QTabWidget::tab-bar {
 left: 15px;
 }
@@ -79,9 +81,7 @@ QTabBar::tab
 	border-bottom-color:rgb(242,242,242);;
 }
 
-QTabBar::tab:selected, 
-QTabBar::tab:hover 
-{
+QTabBar::tab:selected{
 	font: 10pt &quot;Arial&quot;;
     color: black;
 	text-decoration:none;
@@ -89,11 +89,28 @@ QTabBar::tab:hover
 	background-color: rgb(255,255,255);
 border-left-width:1px;
 border-left-style:solid;
+border-bottom: 5px solid;
 
 	border-right-color:rgb(219,219,219);
 	border-left-color : rgb(219,219,219);
-	border-bottom-color:rgb(8,50,103);
-	border-bottom-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(116, 140, 170, 255), stop:0.176796 rgba(116, 140, 170, 255), stop:0.198895 rgba(9, 51, 104, 255), stop:0.767956 rgba(9, 51, 104, 255), stop:0.773481 rgba(198, 208, 220, 255), stop:1 rgba(198, 208, 220, 255));
+	border-bottom-color:rgb(0,34,85);
+/*	border-bottom-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(116, 140, 170, 255), stop:0.176796 rgba(116, 140, 170, 255), stop:0.198895 rgba(9, 51, 104, 255), stop:0.767956 rgba(9, 51, 104, 255), stop:0.773481 rgba(198, 208, 220, 255), stop:1 rgba(198, 208, 220, 255));*/
+}
+
+QTabBar::tab:hover 
+{
+	font: 10pt &quot;Arial&quot;;
+    color: black;
+	text-decoration:none;
+	
+	background-color: rgb(242,242,242);
+border-left-width:1px;
+border-left-style:solid;
+border-bottom: 3px solid rgb(0,34,85);
+	border-right-color:rgb(219,219,219);
+	border-left-color : rgb(219,219,219);
+	/*border-bottom-color:rgb(8,50,103);
+	border-bottom-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(116, 140, 170, 255), stop:0.176796 rgba(116, 140, 170, 255), stop:0.198895 rgba(9, 51, 104, 255), stop:0.767956 rgba(9, 51, 104, 255), stop:0.773481 rgba(198, 208, 220, 255), stop:1 rgba(198, 208, 220, 255));*/
 }
 
 /*
@@ -350,6 +367,26 @@ margin-top: 2px;
                     <layout class="QVBoxLayout" name="ivl_fr_DataMaster_DataCommon_Fbody_Slist_Container">
                      <item>
                       <widget class="QLineEdit" name="le_DataMaster_DataCommon_Search">
+                       <property name="styleSheet">
+                        <string notr="true">/*border-bottom: 2px solid #042f65;
+border-top: 0;
+border-right: 0;
+border-left: 0;
+border-radius: 10px;
+padding: 3px 3px;
+background: #ffffff;
+selection-background-color: darkgray;
+color: #042f65;*/
+border-bottom: 0px solid #042f65;
+border-top: 0;
+border-right: 0;
+border-left: 0;
+/*border-radius: 10px;*/
+padding: 3px 3px;
+background: rgba(135,170,222,75);
+/*selection-background-color: darkgray;*/
+</string>
+                       </property>
                        <property name="placeholderText">
                         <string>Type to search...</string>
                        </property>
@@ -402,8 +439,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>250</width>
-                          <height>30</height>
+                          <width>332</width>
+                          <height>313</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -508,6 +545,7 @@ QPushButton::hover{
                         <string notr="true">QPushButton{
 	border-radius:15px;
 	background:rgb(206, 206, 206);
+	/*background:#ffffff;*/
 }</string>
                        </property>
                        <property name="frameShape">
@@ -596,7 +634,7 @@ QPushButton::hover{
                            <string/>
                           </property>
                           <property name="icon">
-                           <iconset resource="DataMaster.qrc">
+                           <iconset resource="petuk.corp/source/DataMaster.qrc">
                             <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                           </property>
                          </widget>
@@ -750,7 +788,26 @@ QPushButton::hover{
 *{
 	min-height:20px;
 }
-QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:23px;}</string>
+
+/*QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:23px;}*/
+
+QLineEdit, QPushButton{
+	margin: 0px 0px;
+	border-bottom: 0px solid #042f65;
+	border-top: 0;
+	border-right: 0;
+	border-left: 0;
+	/*border-radius: 10px;*/
+	padding: 3px 3px;
+	background: rgba(135,170,222,75);
+	selection-background-color: darkgray;
+}
+
+QComboBox, QDoubleSpinBox, QDateTimeEdit{
+	background: rgba(135,170,222,75);
+	border:0;
+	padding: 3px 0 3px 5px;
+}</string>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -774,7 +831,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>25</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -803,7 +860,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>25</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -826,7 +883,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>24</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -869,7 +926,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>25</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -892,7 +949,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>25</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -979,7 +1036,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>25</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1002,7 +1059,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>25</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1109,8 +1166,9 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                      </size>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QPushButton{
-	min-height:30px;
+                     <string notr="true">QPushButton {
+color: #ffffff;
+background: #3075c8;
 }</string>
                     </property>
                     <property name="frameShape">
@@ -1139,7 +1197,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                       <widget class="QPushButton" name="tb_DataMaster_DataNamaAlamat_Tambah_Simpan">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                         <horstretch>1</horstretch>
+                         <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
@@ -1149,8 +1207,21 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                          <height>16777215</height>
                         </size>
                        </property>
+                       <property name="styleSheet">
+                        <string notr="true">
+</string>
+                       </property>
                        <property name="text">
                         <string>Simpan</string>
+                       </property>
+                       <property name="autoDefault">
+                        <bool>false</bool>
+                       </property>
+                       <property name="default">
+                        <bool>false</bool>
+                       </property>
+                       <property name="flat">
+                        <bool>false</bool>
                        </property>
                       </widget>
                      </item>
@@ -1168,6 +1239,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="frameShadow">
                         <enum>QFrame::Raised</enum>
                        </property>
+                       <zorder>tb_DataMaster_DataNamaAlamat_Tambah_Batal</zorder>
                       </widget>
                      </item>
                      <item>
@@ -1181,7 +1253,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>50</width>
-                         <height>30</height>
+                         <height>0</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1191,9 +1263,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                         </size>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QPushButton{
-	border-radius:15px;
-}</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Batal</string>
@@ -1204,6 +1274,9 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                    </widget>
                   </item>
                  </layout>
+                 <zorder>fr_DataMaster_DataNamaAlamat_Tambah_Ftop</zorder>
+                 <zorder>fr_DataMaster_DataNamaAlamat_Tambah_Fbot</zorder>
+                 <zorder>fr_DataMaster_DataNamaAlamat_Tambah_Fcontent</zorder>
                 </widget>
                </item>
               </layout>
@@ -1225,7 +1298,11 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                   </sizepolicy>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">QFrame{border-style:none;border-width:0px;}</string>
+                  <string notr="true">QFrame{border-style:none;border-width:0px;}
+QPushButton {
+color: #ffffff;
+background: #3075c8;
+}</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
@@ -1299,7 +1376,25 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
 *{
 	min-height:20px;
 }
-QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:23px;}</string>
+/*QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:23px;}*/
+
+QLineEdit, QPushButton{
+	margin: 0px 0px;
+	border-bottom: 0px solid #042f65;
+	border-top: 0;
+	border-right: 0;
+	border-left: 0;
+	/*border-radius: 10px;*/
+	padding: 3px 3px;
+	background: rgba(135,170,222,75);
+	selection-background-color: darkgray;
+}
+
+QComboBox, QDoubleSpinBox, QDateTimeEdit{
+	background: rgba(135,170,222,75);
+	border:0;
+	padding: 3px 0 3px 5px;
+}</string>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -1320,7 +1415,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>25</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1343,7 +1438,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>25</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1366,7 +1461,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>25</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1389,7 +1484,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>25</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1412,7 +1507,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>100</width>
-                         <height>24</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1450,7 +1545,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>25</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1473,7 +1568,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>24</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1684,7 +1779,25 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                   </sizepolicy>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">QLabel{
+                  <string notr="true">QLineEdit, QPushButton{
+	margin: 0px 0px;
+	border-bottom: 0px solid #042f65;
+	border-top: 0;
+	border-right: 0;
+	border-left: 0;
+	/*border-radius: 10px;*/
+	padding: 3px 3px;
+	background: rgba(135,170,222,75);
+	selection-background-color: darkgray;
+}
+
+QComboBox, QDoubleSpinBox, QDateTimeEdit{
+	background: rgba(135,170,222,75);
+	border:0;
+	padding: 3px 0 3px 5px;
+}
+
+QLabel{
 	font-size:10pt;
 }
 *{
@@ -1716,7 +1829,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                     <x>120</x>
                     <y>10</y>
                     <width>161</width>
-                    <height>24</height>
+                    <height>26</height>
                    </rect>
                   </property>
                  </widget>
@@ -1739,7 +1852,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                     <x>120</x>
                     <y>40</y>
                     <width>571</width>
-                    <height>24</height>
+                    <height>26</height>
                    </rect>
                   </property>
                  </widget>
@@ -1762,7 +1875,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                     <x>120</x>
                     <y>70</y>
                     <width>571</width>
-                    <height>24</height>
+                    <height>26</height>
                    </rect>
                   </property>
                  </widget>
@@ -1838,6 +1951,12 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                    <width>16777215</width>
                    <height>50</height>
                   </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+color: #ffffff;
+background: #3075c8;
+}</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
@@ -2026,8 +2145,26 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                      </size>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}
-QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}</string>
+                     <string notr="true">/*QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}
+QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}*/
+
+QLineEdit, QPushButton{
+	margin: 0px 0px;
+	border-bottom: 0px solid #042f65;
+	border-top: 0;
+	border-right: 0;
+	border-left: 0;
+	/*border-radius: 10px;*/
+	padding: 3px 3px;
+	background: rgba(135,170,222,75);
+	selection-background-color: darkgray;
+}
+
+QComboBox, QDoubleSpinBox, QDateTimeEdit{
+	background: rgba(135,170,222,75);
+	border:0;
+	padding: 3px 0 3px 5px;
+}</string>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -2048,7 +2185,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>27</height>
+                         <height>0</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -2264,6 +2401,12 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                    <height>50</height>
                   </size>
                  </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+color: #ffffff;
+background: #3075c8;
+}</string>
+                 </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
                  </property>
@@ -2424,7 +2567,24 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                   </sizepolicy>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">QLabel{
+                  <string notr="true">QLineEdit, QPushButton{
+	margin: 0px 0px;
+	border-bottom: 0px solid #042f65;
+	border-top: 0;
+	border-right: 0;
+	border-left: 0;
+	/*border-radius: 10px;*/
+	padding: 3px 3px;
+	background: rgba(135,170,222,75);
+	selection-background-color: darkgray;
+}
+
+QComboBox, QDoubleSpinBox, QDateTimeEdit{
+	background: rgba(135,170,222,75);
+	border:0;
+	padding: 3px 0 3px 5px;
+}
+QLabel{
 	font-size:10pt;
 }
 *{
@@ -2465,7 +2625,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                     <property name="minimumSize">
                      <size>
                       <width>200</width>
-                      <height>24</height>
+                      <height>26</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -2500,7 +2660,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                     <property name="minimumSize">
                      <size>
                       <width>500</width>
-                      <height>24</height>
+                      <height>26</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -2529,7 +2689,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                     <property name="minimumSize">
                      <size>
                       <width>500</width>
-                      <height>24</height>
+                      <height>26</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -2545,7 +2705,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                     <property name="minimumSize">
                      <size>
                       <width>200</width>
-                      <height>24</height>
+                      <height>26</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -2625,6 +2785,12 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                    <width>16777215</width>
                    <height>50</height>
                   </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+color: #ffffff;
+background: #3075c8;
+}</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
@@ -2819,6 +2985,17 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                          <height>16777215</height>
                         </size>
                        </property>
+                       <property name="styleSheet">
+                        <string notr="true">	margin: 0px 0px;
+	border-bottom: 2px solid rgba(135,170,222,255);
+	border-top: 0;
+	border-right: 0;
+	border-left: 0;
+	padding: 3px 3px;
+	/*border-radius: 10px;
+	background: rgba(135,170,222,75);
+	selection-background-color: darkgray;*/</string>
+                       </property>
                        <property name="placeholderText">
                         <string>Type to search...</string>
                        </property>
@@ -2936,6 +3113,9 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                       <height>50</height>
                      </size>
                     </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
@@ -3016,7 +3196,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                         <string/>
                        </property>
                        <property name="icon">
-                        <iconset resource="DataMaster.qrc">
+                        <iconset resource="petuk.corp/source/DataMaster.qrc">
                          <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                        </property>
                       </widget>
@@ -3152,7 +3332,25 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                      </sizepolicy>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QLabel{
+                     <string notr="true">QLineEdit, QPushButton{
+	margin: 0px 0px;
+	border-bottom: 0px solid #042f65;
+	border-top: 0;
+	border-right: 0;
+	border-left: 0;
+	/*border-radius: 10px;*/
+	padding: 3px 3px;
+	background: rgba(135,170,222,75);
+	selection-background-color: darkgray;
+}
+
+QComboBox, QDoubleSpinBox, QDateTimeEdit{
+	background: rgba(135,170,222,75);
+	border:0;
+	padding: 3px 0 3px 5px;
+}
+
+QLabel{
 	font-size:10pt;
 }
 *{
@@ -3181,7 +3379,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>24</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3204,7 +3402,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>24</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3227,7 +3425,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>24</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3250,7 +3448,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>24</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3273,7 +3471,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>24</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3296,7 +3494,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>100</width>
-                         <height>24</height>
+                         <height>26</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3339,6 +3537,16 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                       <width>16777215</width>
                       <height>50</height>
                      </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton {
+color: #ffffff;
+background: #3075c8;
+}
+
+QPushButton::hover{
+background: rgb(10,29,125,255);
+}</string>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -3532,6 +3740,25 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                     <layout class="QVBoxLayout" name="ivl_fr_DataMaster_DataDepartemen_Fbody_Slist_Container">
                      <item>
                       <widget class="QLineEdit" name="le_DataMaster_DataDepartemen_Search">
+                       <property name="styleSheet">
+                        <string notr="true">QLineEdit, QPushButton{
+	margin: 0px 0px;
+	border-bottom: 0px solid #042f65;
+	border-top: 0;
+	border-right: 0;
+	border-left: 0;
+	/*border-radius: 10px;*/
+	padding: 3px 3px;
+	background: rgba(135,170,222,75);
+	selection-background-color: darkgray;
+}
+
+QComboBox, QDoubleSpinBox, QDateTimeEdit{
+	background: rgba(135,170,222,75);
+	border:0;
+	padding: 3px 0 3px 5px;
+}</string>
+                       </property>
                        <property name="placeholderText">
                         <string>Type to search..</string>
                        </property>
@@ -3585,7 +3812,7 @@ QPushButton::hover{
                           <x>0</x>
                           <y>0</y>
                           <width>332</width>
-                          <height>308</height>
+                          <height>294</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -3775,7 +4002,7 @@ QPushButton::hover{
                            <string/>
                           </property>
                           <property name="icon">
-                           <iconset resource="DataMaster.qrc">
+                           <iconset resource="petuk.corp/source/DataMaster.qrc">
                             <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                           </property>
                          </widget>
@@ -3914,7 +4141,25 @@ QPushButton::hover{
                      </sizepolicy>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QLabel{
+                     <string notr="true">QLineEdit, QPushButton{
+	margin: 0px 0px;
+	border-bottom: 0px solid #042f65;
+	border-top: 0;
+	border-right: 0;
+	border-left: 0;
+	/*border-radius: 10px;*/
+	padding: 3px 3px;
+	background: rgba(135,170,222,75);
+	min-height:25px;
+}
+
+QComboBox, QDoubleSpinBox, QDateTimeEdit{
+	background: rgba(135,170,222,75);
+	border:0;
+	padding: 3px 0 3px 5px;
+}	
+
+QLabel{
 	font-size:10pt;
 }
 *{
@@ -3943,7 +4188,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>27</height>
+                         <height>31</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3953,7 +4198,7 @@ QPushButton::hover{
                         </size>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;</string>
+                        <string notr="true">/*border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;*/</string>
                        </property>
                       </widget>
                      </item>
@@ -3969,7 +4214,7 @@ QPushButton::hover{
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>27</height>
+                         <height>31</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3979,7 +4224,7 @@ QPushButton::hover{
                         </size>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;</string>
+                        <string notr="true">/*border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;*/</string>
                        </property>
                       </widget>
                      </item>
@@ -4013,7 +4258,7 @@ QPushButton::hover{
                         </size>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;</string>
+                        <string notr="true">/*border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;*/</string>
                        </property>
                       </widget>
                      </item>
@@ -4026,7 +4271,7 @@ QPushButton::hover{
                         </size>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}</string>
+                        <string notr="true">/*QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}*/</string>
                        </property>
                        <property name="text">
                         <string>-</string>
@@ -4042,7 +4287,7 @@ QPushButton::hover{
                         </size>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;</string>
+                        <string notr="true">/*border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;*/</string>
                        </property>
                        <property name="text">
                         <string>-</string>
@@ -4071,6 +4316,12 @@ QPushButton::hover{
                       <width>16777215</width>
                       <height>50</height>
                      </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton {
+color: #ffffff;
+background: #3075c8;
+}</string>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -4164,6 +4415,9 @@ QPushButton::hover{
                    </widget>
                   </item>
                  </layout>
+                 <zorder>fr_DataMaster_DataDepartemen_Tambah_Ft</zorder>
+                 <zorder>fr_DataMaster_DataDepartemen_Tambah_Fb</zorder>
+                 <zorder>fr_DataMaster_DataDepartemen_Tambah_Fcontent</zorder>
                 </widget>
                </item>
               </layout>
@@ -10052,7 +10306,7 @@ min-height:23px;</string>
      <x>0</x>
      <y>0</y>
      <width>870</width>
-     <height>19</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">
@@ -10100,7 +10354,7 @@ min-height:23px;</string>
   </action>
  </widget>
  <resources>
-  <include location="DataMaster.qrc"/>
+  <include location="petuk.corp/source/DataMaster.qrc"/>
  </resources>
  <connections/>
 </ui>
