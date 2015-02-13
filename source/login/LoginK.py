@@ -34,7 +34,6 @@ class Login(Ui_fr_Main):
 		self.LoginUI.le_Login_Password.setEchoMode(QtGui.QLineEdit.Password)
 		self.LoginUI.le_Login_Password_Confirm.setEchoMode(QtGui.QLineEdit.Password)
 		#-- confirm password
-		self.LoginUI.lb_Login_Password_Confirm.hide()
 		self.LoginUI.le_Login_Password_Confirm.hide()
 		
 		
@@ -64,6 +63,9 @@ class Login(Ui_fr_Main):
 		self.MakeSureTodoItOnce_HasIt = False #-- penanda untuk refresh connect bila program baru menjalankan server mysqld
 		
 		self.Login_Connect()
+		
+		self.GarvinImage(self.LoginUI.fr_Connect_Logo,":/Login/img/LogoMedium.png")
+		self.GarvinImage(self.LoginUI.fr_Login_Logo,":/Login/img/LogoMedium.png")
 	
 	def Login_Goto(self,room):
 		if (type(room)==str):
@@ -186,14 +188,12 @@ class Login(Ui_fr_Main):
 		if len(users)<1:
 			#--- Create user and password for admin!
 			self.LoginUI.le_Login_User.setText("admin")
-			developernote = functools.partial(self.DataMaster_Popup,"Note for Developer (Andrew & E-Qraw) : \nCheck ulang apakah field password di table gd_user bertipe varchar(64)!",self.DataMaster_None)
-			self.DataMaster_Popup("User admin belum ada! silahkan beri user dan password untuk admin!",self.DataMaster_None,500,300,developernote)
-			self.LoginUI.lb_Login_Password_Confirm.show()
+			#~ developernote = functools.partial(self.DataMaster_Popup,"Note for Developer (Andrew & E-Qraw) : \nCheck ulang apakah field password di table gd_user bertipe varchar(64)!",self.DataMaster_None)
+			self.DataMaster_Popup("User admin belum ada! silahkan beri user dan password untuk admin!",self.DataMaster_None,500,300,self.DataMaster_None)
 			self.LoginUI.le_Login_Password_Confirm.show()
 			self.GarvinDisconnect(self.LoginUI.tb_Login_Ok.clicked)
 			self.LoginUI.tb_Login_Ok.clicked.connect(self.Login_Login_CreateAdmin)
 		else:
-			self.LoginUI.lb_Login_Password_Confirm.hide()
 			self.LoginUI.le_Login_Password_Confirm.hide()
 			#--- signal tombol sudah di sambungkan di init
 			self.GarvinDisconnect(self.LoginUI.tb_Login_Ok.clicked)
@@ -234,7 +234,6 @@ class Login(Ui_fr_Main):
 		if (sukses):
 			self.DataMaster_Popup("User "+username+" berhasil dibuat.",self.DataMaster_None)
 			#--- succeed. then we hide the confirm, and get the room to login
-			self.LoginUI.lb_Login_Password_Confirm.hide()
 			self.LoginUI.le_Login_Password_Confirm.hide()
 			self.Login_Login()
 	

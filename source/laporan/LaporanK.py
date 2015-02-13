@@ -675,6 +675,10 @@ class Laporan(L_BukuBesar_DTJ):
 		
 		# Create an new Excel file and add a worksheet.
 		#~ workbook = xlsxwriter.Workbook(self.DataPath+'BuktiInvoice.xlsx')
+		
+		#~ simpan = QtGui.QFileDialog()
+		#~ namafilesimpan = str(simpan.getSaveFileName())
+		#~ workbook = xlsxwriter.Workbook(namafilesimpan)
 		workbook = xlsxwriter.Workbook('BuktiInvoice.xlsx')
 		worksheet = workbook.add_worksheet()
 		

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Mon Feb  9 12:45:17 2015
+# Created: Tue Feb 10 17:24:47 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,9 +33,16 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
         MainWindow.setMinimumSize(QtCore.QSize(0, 45))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/Icon/Icon.ico")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(_fromUtf8(""))
         self.centralwidget = QtGui.QWidget(MainWindow)
-        self.centralwidget.setStyleSheet(_fromUtf8("QTableWidget{border-width:1px;border-color:rgb(0, 0, 0);border-style:solid;border-radius:0px;}"))
+        self.centralwidget.setStyleSheet(_fromUtf8("QWidget#centralwidget{\n"
+"background:white;\n"
+"}\n"
+"\n"
+"QTableWidget{border-width:1px;border-color:rgb(0, 0, 0);border-style:solid;border-radius:0px;}"))
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.gridLayout = QtGui.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
@@ -57,18 +64,18 @@ class Ui_MainWindow(object):
 "}\n"
 "QTabBar::tab \n"
 "{\n"
-"    background: #F6F4F2;\n"
+"    background: rgb(242,242,242);\n"
 "    color: #000000;   \n"
 "    padding:15px 40px;\n"
 "    border-width:1px;\n"
 "    border-style:solid;\n"
-"    border-color:#F6F4F2;\n"
+"    border-color:#FFFFFF;\n"
 "    min-width:90px;\n"
 "    border-radius:0px;\n"
-"/*    border-top-left-radius: 10px;\n"
-"    border-top-right-radius: 10px;*/\n"
 "    font: 10pt \"Arial\";\n"
 "    text-decoration:none;\n"
+"    border-bottom-width:4px;\n"
+"    border-bottom-color:rgb(242,242,242);;\n"
 "}\n"
 "\n"
 "QTabBar::tab:selected, \n"
@@ -77,27 +84,31 @@ class Ui_MainWindow(object):
 "    font: 10pt \"Arial\";\n"
 "    color: black;\n"
 "    text-decoration:none;\n"
+"    \n"
+"    background-color: rgb(255,255,255);\n"
+"border-left-width:1px;\n"
+"border-left-style:solid;\n"
 "\n"
-"    background-color: qlineargradient(spread:pad, x1:0.505556, y1:0, x2:0.517, y2:1, stop:0 rgba(246, 244, 242, 0), stop:1 rgba(255, 255, 255, 255));\n"
-"    border-right-color:qlineargradient(spread:pad, x1:0.511111, y1:1, x2:0.545, y2:0.443182, stop:0 rgba(207, 169, 30, 255), stop:1 rgba(246, 244, 242, 10));\n"
-"    border-left-color: qlineargradient(spread:pad, x1:0.511111, y1:1, x2:0.545, y2:0.443182, stop:0 rgba(207, 169, 30, 255), stop:1 rgba(246, 244, 242, 10));\n"
+"    border-right-color:rgb(219,219,219);\n"
+"    border-left-color : rgb(219,219,219);\n"
+"    border-bottom-color:rgb(8,50,103);\n"
+"    border-bottom-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(116, 140, 170, 255), stop:0.176796 rgba(116, 140, 170, 255), stop:0.198895 rgba(9, 51, 104, 255), stop:0.767956 rgba(9, 51, 104, 255), stop:0.773481 rgba(198, 208, 220, 255), stop:1 rgba(198, 208, 220, 255));\n"
 "}\n"
 "\n"
-"\n"
+"/*\n"
 "QTabBar::tab:selected {\n"
-"/* expand/overlap to the left and right by 4px */\n"
 "margin-left: -4px;\n"
 "margin-right: -4px;\n"
 "}\n"
 "QTabBar::tab:first:selected {\n"
-"margin-left: 0; /* the first selected tab has nothing to overlap with on the left */\n"
+"margin-left: 0;\n"
 "}\n"
 "QTabBar::tab:last:selected {\n"
-"margin-right: 0; /* the last selected tab has nothing to overlap with on the right */\n"
+"margin-right: 0;\n"
 "}\n"
 "QTabBar::tab:!selected {\n"
-"margin-top: 2px; /* make non-selected tabs look smaller */\n"
-"}"))
+"margin-top: 2px; \n"
+"}*/"))
         self.tabWidget.setObjectName(_fromUtf8("tabWidget"))
         self.tab_DataMaster = QtGui.QWidget()
         self.tab_DataMaster.setObjectName(_fromUtf8("tab_DataMaster"))
@@ -308,9 +319,9 @@ class Ui_MainWindow(object):
         self.tb_DataMaster_DataCommon_Edit.setMaximumSize(QtCore.QSize(30, 16777215))
         self.tb_DataMaster_DataCommon_Edit.setStyleSheet(_fromUtf8(""))
         self.tb_DataMaster_DataCommon_Edit.setText(_fromUtf8(""))
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/DataMaster/img/edit.png")), QtGui.QIcon.Normal, QtGui.QIcon.On)
-        self.tb_DataMaster_DataCommon_Edit.setIcon(icon)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/DataMaster/img/edit.png")), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.tb_DataMaster_DataCommon_Edit.setIcon(icon1)
         self.tb_DataMaster_DataCommon_Edit.setObjectName(_fromUtf8("tb_DataMaster_DataCommon_Edit"))
         self.ihl_DataMaster_DataCommon_Fbody_FR_Fbot.addWidget(self.tb_DataMaster_DataCommon_Edit)
         self.tb_DataMaster_DataCommon_Delete = QtGui.QPushButton(self.fr_DataMaster_DataCommon_Fbody_FR_Fbot)
@@ -318,9 +329,9 @@ class Ui_MainWindow(object):
         self.tb_DataMaster_DataCommon_Delete.setMaximumSize(QtCore.QSize(30, 16777215))
         self.tb_DataMaster_DataCommon_Delete.setStyleSheet(_fromUtf8(""))
         self.tb_DataMaster_DataCommon_Delete.setText(_fromUtf8(""))
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/DataMaster/img/del.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.tb_DataMaster_DataCommon_Delete.setIcon(icon1)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(_fromUtf8(":/DataMaster/img/del.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.tb_DataMaster_DataCommon_Delete.setIcon(icon2)
         self.tb_DataMaster_DataCommon_Delete.setObjectName(_fromUtf8("tb_DataMaster_DataCommon_Delete"))
         self.ihl_DataMaster_DataCommon_Fbody_FR_Fbot.addWidget(self.tb_DataMaster_DataCommon_Delete)
         self.fr_DataMaster_DataCommon_Fbody_FR_Fbot_Fspace = QtGui.QFrame(self.fr_DataMaster_DataCommon_Fbody_FR_Fbot)
@@ -433,7 +444,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataNamaAlamat_Tambah_Tipe.setObjectName(_fromUtf8("lb_DataMaster_DataNamaAlamat_Tambah_Tipe"))
         self.ifl_DataMaster_DataNamaAlamat_Tambah_Fcontent.setWidget(3, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataNamaAlamat_Tambah_Tipe)
         self.cb_DataMaster_DataNamaAlamat_Tambah_Tipe = QtGui.QComboBox(self.fr_DataMaster_DataNamaAlamat_Tambah_Fcontent)
-        self.cb_DataMaster_DataNamaAlamat_Tambah_Tipe.setMinimumSize(QtCore.QSize(150, 22))
+        self.cb_DataMaster_DataNamaAlamat_Tambah_Tipe.setMinimumSize(QtCore.QSize(150, 24))
         self.cb_DataMaster_DataNamaAlamat_Tambah_Tipe.setMaximumSize(QtCore.QSize(150, 16777215))
         self.cb_DataMaster_DataNamaAlamat_Tambah_Tipe.setObjectName(_fromUtf8("cb_DataMaster_DataNamaAlamat_Tambah_Tipe"))
         self.cb_DataMaster_DataNamaAlamat_Tambah_Tipe.addItem(_fromUtf8(""))
@@ -461,7 +472,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataNamaAlamat_Tambah_Diskon.setObjectName(_fromUtf8("lb_DataMaster_DataNamaAlamat_Tambah_Diskon"))
         self.ifl_DataMaster_DataNamaAlamat_Tambah_Fcontent.setWidget(6, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataNamaAlamat_Tambah_Diskon)
         self.dsb_DataMaster_DataNamaAlamat_Tambah_Diskon = QtGui.QDoubleSpinBox(self.fr_DataMaster_DataNamaAlamat_Tambah_Fcontent)
-        self.dsb_DataMaster_DataNamaAlamat_Tambah_Diskon.setMinimumSize(QtCore.QSize(150, 22))
+        self.dsb_DataMaster_DataNamaAlamat_Tambah_Diskon.setMinimumSize(QtCore.QSize(150, 26))
         self.dsb_DataMaster_DataNamaAlamat_Tambah_Diskon.setMaximumSize(QtCore.QSize(150, 16777215))
         self.dsb_DataMaster_DataNamaAlamat_Tambah_Diskon.setDecimals(3)
         self.dsb_DataMaster_DataNamaAlamat_Tambah_Diskon.setMinimum(-99.0)
@@ -472,7 +483,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataNamaAlamat_Tambah_DiskonAwal.setObjectName(_fromUtf8("lb_DataMaster_DataNamaAlamat_Tambah_DiskonAwal"))
         self.ifl_DataMaster_DataNamaAlamat_Tambah_Fcontent.setWidget(7, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataNamaAlamat_Tambah_DiskonAwal)
         self.dsb_DataMaster_DataNamaAlamat_Tambah_DiskonAwal = QtGui.QDoubleSpinBox(self.fr_DataMaster_DataNamaAlamat_Tambah_Fcontent)
-        self.dsb_DataMaster_DataNamaAlamat_Tambah_DiskonAwal.setMinimumSize(QtCore.QSize(150, 22))
+        self.dsb_DataMaster_DataNamaAlamat_Tambah_DiskonAwal.setMinimumSize(QtCore.QSize(150, 26))
         self.dsb_DataMaster_DataNamaAlamat_Tambah_DiskonAwal.setMaximumSize(QtCore.QSize(150, 16777215))
         self.dsb_DataMaster_DataNamaAlamat_Tambah_DiskonAwal.setDecimals(3)
         self.dsb_DataMaster_DataNamaAlamat_Tambah_DiskonAwal.setMinimum(-100.0)
@@ -499,7 +510,7 @@ class Ui_MainWindow(object):
         self.chk_DataMaster_DataNamaAlamat_Tambah_JatuhTempo.setObjectName(_fromUtf8("chk_DataMaster_DataNamaAlamat_Tambah_JatuhTempo"))
         self.ifl_DataMaster_DataNamaAlamat_Tambah_Fcontent.setWidget(10, QtGui.QFormLayout.LabelRole, self.chk_DataMaster_DataNamaAlamat_Tambah_JatuhTempo)
         self.dte_DataMaster_DataNamaAlamat_Tambah_JatuhTempo = QtGui.QDateTimeEdit(self.fr_DataMaster_DataNamaAlamat_Tambah_Fcontent)
-        self.dte_DataMaster_DataNamaAlamat_Tambah_JatuhTempo.setMinimumSize(QtCore.QSize(150, 22))
+        self.dte_DataMaster_DataNamaAlamat_Tambah_JatuhTempo.setMinimumSize(QtCore.QSize(150, 26))
         self.dte_DataMaster_DataNamaAlamat_Tambah_JatuhTempo.setMaximumSize(QtCore.QSize(150, 16777215))
         self.dte_DataMaster_DataNamaAlamat_Tambah_JatuhTempo.setReadOnly(False)
         self.dte_DataMaster_DataNamaAlamat_Tambah_JatuhTempo.setCalendarPopup(True)
@@ -669,7 +680,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataProduk_Tambah_Sifat.setObjectName(_fromUtf8("lb_DataMaster_DataProduk_Tambah_Sifat"))
         self.formLayout_3.setWidget(4, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataProduk_Tambah_Sifat)
         self.cb_DataMaster_DataProduk_Tambah_Sifat = QtGui.QComboBox(self.fr_DataMaster_DataProduk_Tambah_Fcontent)
-        self.cb_DataMaster_DataProduk_Tambah_Sifat.setMinimumSize(QtCore.QSize(100, 22))
+        self.cb_DataMaster_DataProduk_Tambah_Sifat.setMinimumSize(QtCore.QSize(100, 24))
         self.cb_DataMaster_DataProduk_Tambah_Sifat.setMaximumSize(QtCore.QSize(100, 16777215))
         self.cb_DataMaster_DataProduk_Tambah_Sifat.setObjectName(_fromUtf8("cb_DataMaster_DataProduk_Tambah_Sifat"))
         self.cb_DataMaster_DataProduk_Tambah_Sifat.addItem(_fromUtf8(""))
@@ -688,7 +699,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataProduk_Tambah_Satuan.setObjectName(_fromUtf8("lb_DataMaster_DataProduk_Tambah_Satuan"))
         self.formLayout_3.setWidget(6, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataProduk_Tambah_Satuan)
         self.cb_DataMaster_DataProduk_Tambah_Satuan = QtGui.QComboBox(self.fr_DataMaster_DataProduk_Tambah_Fcontent)
-        self.cb_DataMaster_DataProduk_Tambah_Satuan.setMinimumSize(QtCore.QSize(200, 22))
+        self.cb_DataMaster_DataProduk_Tambah_Satuan.setMinimumSize(QtCore.QSize(200, 24))
         self.cb_DataMaster_DataProduk_Tambah_Satuan.setMaximumSize(QtCore.QSize(200, 16777215))
         self.cb_DataMaster_DataProduk_Tambah_Satuan.setObjectName(_fromUtf8("cb_DataMaster_DataProduk_Tambah_Satuan"))
         self.formLayout_3.setWidget(6, QtGui.QFormLayout.FieldRole, self.cb_DataMaster_DataProduk_Tambah_Satuan)
@@ -1099,7 +1110,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataSatuanPengukuran_Tambah_KodeSatuan.setObjectName(_fromUtf8("lb_DataMaster_DataSatuanPengukuran_Tambah_KodeSatuan"))
         self.formLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataSatuanPengukuran_Tambah_KodeSatuan)
         self.le_DataMaster_DataSatuanPengukuran_Tambah_KodeSatuan = QtGui.QLineEdit(self.fr_DataMaster_DataSatuanPengukuran_Tambah_Fcontent)
-        self.le_DataMaster_DataSatuanPengukuran_Tambah_KodeSatuan.setMinimumSize(QtCore.QSize(200, 22))
+        self.le_DataMaster_DataSatuanPengukuran_Tambah_KodeSatuan.setMinimumSize(QtCore.QSize(200, 24))
         self.le_DataMaster_DataSatuanPengukuran_Tambah_KodeSatuan.setMaximumSize(QtCore.QSize(200, 16777215))
         self.le_DataMaster_DataSatuanPengukuran_Tambah_KodeSatuan.setObjectName(_fromUtf8("le_DataMaster_DataSatuanPengukuran_Tambah_KodeSatuan"))
         self.formLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.le_DataMaster_DataSatuanPengukuran_Tambah_KodeSatuan)
@@ -1109,7 +1120,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataSatuanPengukuran_Tambah_NamaSatuan.setObjectName(_fromUtf8("lb_DataMaster_DataSatuanPengukuran_Tambah_NamaSatuan"))
         self.formLayout.setWidget(1, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataSatuanPengukuran_Tambah_NamaSatuan)
         self.le_DataMaster_DataSatuanPengukuran_Tambah_NamaSatuan = QtGui.QLineEdit(self.fr_DataMaster_DataSatuanPengukuran_Tambah_Fcontent)
-        self.le_DataMaster_DataSatuanPengukuran_Tambah_NamaSatuan.setMinimumSize(QtCore.QSize(500, 22))
+        self.le_DataMaster_DataSatuanPengukuran_Tambah_NamaSatuan.setMinimumSize(QtCore.QSize(500, 24))
         self.le_DataMaster_DataSatuanPengukuran_Tambah_NamaSatuan.setMaximumSize(QtCore.QSize(500, 16777215))
         self.le_DataMaster_DataSatuanPengukuran_Tambah_NamaSatuan.setObjectName(_fromUtf8("le_DataMaster_DataSatuanPengukuran_Tambah_NamaSatuan"))
         self.formLayout.setWidget(1, QtGui.QFormLayout.FieldRole, self.le_DataMaster_DataSatuanPengukuran_Tambah_NamaSatuan)
@@ -1122,12 +1133,12 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.le_DataMaster_DataSatuanPengukuran_Tambah_Keterangan.sizePolicy().hasHeightForWidth())
         self.le_DataMaster_DataSatuanPengukuran_Tambah_Keterangan.setSizePolicy(sizePolicy)
-        self.le_DataMaster_DataSatuanPengukuran_Tambah_Keterangan.setMinimumSize(QtCore.QSize(500, 22))
+        self.le_DataMaster_DataSatuanPengukuran_Tambah_Keterangan.setMinimumSize(QtCore.QSize(500, 24))
         self.le_DataMaster_DataSatuanPengukuran_Tambah_Keterangan.setMaximumSize(QtCore.QSize(500, 16777215))
         self.le_DataMaster_DataSatuanPengukuran_Tambah_Keterangan.setObjectName(_fromUtf8("le_DataMaster_DataSatuanPengukuran_Tambah_Keterangan"))
         self.formLayout.setWidget(2, QtGui.QFormLayout.FieldRole, self.le_DataMaster_DataSatuanPengukuran_Tambah_Keterangan)
         self.cb_DataMaster_DataSatuanPengukuran_Tambah_SatuanInduk = QtGui.QComboBox(self.fr_DataMaster_DataSatuanPengukuran_Tambah_Fcontent)
-        self.cb_DataMaster_DataSatuanPengukuran_Tambah_SatuanInduk.setMinimumSize(QtCore.QSize(200, 22))
+        self.cb_DataMaster_DataSatuanPengukuran_Tambah_SatuanInduk.setMinimumSize(QtCore.QSize(200, 24))
         self.cb_DataMaster_DataSatuanPengukuran_Tambah_SatuanInduk.setMaximumSize(QtCore.QSize(200, 16777215))
         self.cb_DataMaster_DataSatuanPengukuran_Tambah_SatuanInduk.setObjectName(_fromUtf8("cb_DataMaster_DataSatuanPengukuran_Tambah_SatuanInduk"))
         self.cb_DataMaster_DataSatuanPengukuran_Tambah_SatuanInduk.addItem(_fromUtf8(""))
@@ -1139,7 +1150,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataSatuanPengukuran_Tambah_FaktorPengali.setObjectName(_fromUtf8("lb_DataMaster_DataSatuanPengukuran_Tambah_FaktorPengali"))
         self.formLayout.setWidget(4, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataSatuanPengukuran_Tambah_FaktorPengali)
         self.dsb_DataMaster_DataSatuanPengukuran_Tambah_FaktorPengali = QtGui.QDoubleSpinBox(self.fr_DataMaster_DataSatuanPengukuran_Tambah_Fcontent)
-        self.dsb_DataMaster_DataSatuanPengukuran_Tambah_FaktorPengali.setMinimumSize(QtCore.QSize(200, 22))
+        self.dsb_DataMaster_DataSatuanPengukuran_Tambah_FaktorPengali.setMinimumSize(QtCore.QSize(200, 26))
         self.dsb_DataMaster_DataSatuanPengukuran_Tambah_FaktorPengali.setMaximumSize(QtCore.QSize(200, 16777215))
         self.dsb_DataMaster_DataSatuanPengukuran_Tambah_FaktorPengali.setDecimals(9)
         self.dsb_DataMaster_DataSatuanPengukuran_Tambah_FaktorPengali.setMinimum(-999999999.0)
@@ -1312,7 +1323,7 @@ class Ui_MainWindow(object):
         self.tb_DataMaster_DataRekening_Edit.setMaximumSize(QtCore.QSize(30, 16777215))
         self.tb_DataMaster_DataRekening_Edit.setStyleSheet(_fromUtf8(""))
         self.tb_DataMaster_DataRekening_Edit.setText(_fromUtf8(""))
-        self.tb_DataMaster_DataRekening_Edit.setIcon(icon)
+        self.tb_DataMaster_DataRekening_Edit.setIcon(icon1)
         self.tb_DataMaster_DataRekening_Edit.setObjectName(_fromUtf8("tb_DataMaster_DataRekening_Edit"))
         self.ihl_DataMaster_DataRekening_Fb.addWidget(self.tb_DataMaster_DataRekening_Edit)
         self.tb_DataMaster_DataRekening_Delete = QtGui.QPushButton(self.fr_DataMaster_DataRekening_Fb)
@@ -1320,7 +1331,7 @@ class Ui_MainWindow(object):
         self.tb_DataMaster_DataRekening_Delete.setMaximumSize(QtCore.QSize(30, 16777215))
         self.tb_DataMaster_DataRekening_Delete.setStyleSheet(_fromUtf8(""))
         self.tb_DataMaster_DataRekening_Delete.setText(_fromUtf8(""))
-        self.tb_DataMaster_DataRekening_Delete.setIcon(icon1)
+        self.tb_DataMaster_DataRekening_Delete.setIcon(icon2)
         self.tb_DataMaster_DataRekening_Delete.setObjectName(_fromUtf8("tb_DataMaster_DataRekening_Delete"))
         self.ihl_DataMaster_DataRekening_Fb.addWidget(self.tb_DataMaster_DataRekening_Delete)
         self.fr_DataMaster_DataRekening_Fb_Space = QtGui.QFrame(self.fr_DataMaster_DataRekening_Fb)
@@ -1406,7 +1417,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataRekening_NomorAkun.setObjectName(_fromUtf8("lb_DataMaster_DataRekening_NomorAkun"))
         self.formLayout_4.setWidget(0, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataRekening_NomorAkun)
         self.le_DataMaster_DataRekening_NomorAkun = QtGui.QLineEdit(self.fr_DataMaster_DataRekening_Tambah_Fcontent)
-        self.le_DataMaster_DataRekening_NomorAkun.setMinimumSize(QtCore.QSize(200, 22))
+        self.le_DataMaster_DataRekening_NomorAkun.setMinimumSize(QtCore.QSize(200, 24))
         self.le_DataMaster_DataRekening_NomorAkun.setMaximumSize(QtCore.QSize(200, 16777215))
         self.le_DataMaster_DataRekening_NomorAkun.setObjectName(_fromUtf8("le_DataMaster_DataRekening_NomorAkun"))
         self.formLayout_4.setWidget(0, QtGui.QFormLayout.FieldRole, self.le_DataMaster_DataRekening_NomorAkun)
@@ -1414,7 +1425,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataRekening_NamaAkun.setObjectName(_fromUtf8("lb_DataMaster_DataRekening_NamaAkun"))
         self.formLayout_4.setWidget(1, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataRekening_NamaAkun)
         self.le_DataMaster_DataRekening_NamaAkun = QtGui.QLineEdit(self.fr_DataMaster_DataRekening_Tambah_Fcontent)
-        self.le_DataMaster_DataRekening_NamaAkun.setMinimumSize(QtCore.QSize(400, 22))
+        self.le_DataMaster_DataRekening_NamaAkun.setMinimumSize(QtCore.QSize(400, 24))
         self.le_DataMaster_DataRekening_NamaAkun.setMaximumSize(QtCore.QSize(400, 16777215))
         self.le_DataMaster_DataRekening_NamaAkun.setObjectName(_fromUtf8("le_DataMaster_DataRekening_NamaAkun"))
         self.formLayout_4.setWidget(1, QtGui.QFormLayout.FieldRole, self.le_DataMaster_DataRekening_NamaAkun)
@@ -1422,7 +1433,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataRekening_NamaAliasAkun.setObjectName(_fromUtf8("lb_DataMaster_DataRekening_NamaAliasAkun"))
         self.formLayout_4.setWidget(2, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataRekening_NamaAliasAkun)
         self.le_DataMaster_DataRekening_NamaAliasAkun = QtGui.QLineEdit(self.fr_DataMaster_DataRekening_Tambah_Fcontent)
-        self.le_DataMaster_DataRekening_NamaAliasAkun.setMinimumSize(QtCore.QSize(400, 22))
+        self.le_DataMaster_DataRekening_NamaAliasAkun.setMinimumSize(QtCore.QSize(400, 24))
         self.le_DataMaster_DataRekening_NamaAliasAkun.setMaximumSize(QtCore.QSize(400, 16777215))
         self.le_DataMaster_DataRekening_NamaAliasAkun.setObjectName(_fromUtf8("le_DataMaster_DataRekening_NamaAliasAkun"))
         self.formLayout_4.setWidget(2, QtGui.QFormLayout.FieldRole, self.le_DataMaster_DataRekening_NamaAliasAkun)
@@ -1430,7 +1441,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataRekening_SaldoAwal.setObjectName(_fromUtf8("lb_DataMaster_DataRekening_SaldoAwal"))
         self.formLayout_4.setWidget(3, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataRekening_SaldoAwal)
         self.le_DataMaster_DataRekening_SaldoAwal = QtGui.QLineEdit(self.fr_DataMaster_DataRekening_Tambah_Fcontent)
-        self.le_DataMaster_DataRekening_SaldoAwal.setMinimumSize(QtCore.QSize(200, 22))
+        self.le_DataMaster_DataRekening_SaldoAwal.setMinimumSize(QtCore.QSize(200, 24))
         self.le_DataMaster_DataRekening_SaldoAwal.setMaximumSize(QtCore.QSize(200, 16777215))
         self.le_DataMaster_DataRekening_SaldoAwal.setObjectName(_fromUtf8("le_DataMaster_DataRekening_SaldoAwal"))
         self.formLayout_4.setWidget(3, QtGui.QFormLayout.FieldRole, self.le_DataMaster_DataRekening_SaldoAwal)
@@ -1438,7 +1449,7 @@ class Ui_MainWindow(object):
         self.lb_DataMaster_DataRekening_SaldoSekarang.setObjectName(_fromUtf8("lb_DataMaster_DataRekening_SaldoSekarang"))
         self.formLayout_4.setWidget(4, QtGui.QFormLayout.LabelRole, self.lb_DataMaster_DataRekening_SaldoSekarang)
         self.le_DataMaster_DataRekening_SaldoSekarang = QtGui.QLineEdit(self.fr_DataMaster_DataRekening_Tambah_Fcontent)
-        self.le_DataMaster_DataRekening_SaldoSekarang.setMinimumSize(QtCore.QSize(200, 22))
+        self.le_DataMaster_DataRekening_SaldoSekarang.setMinimumSize(QtCore.QSize(200, 24))
         self.le_DataMaster_DataRekening_SaldoSekarang.setMaximumSize(QtCore.QSize(200, 16777215))
         self.le_DataMaster_DataRekening_SaldoSekarang.setObjectName(_fromUtf8("le_DataMaster_DataRekening_SaldoSekarang"))
         self.formLayout_4.setWidget(4, QtGui.QFormLayout.FieldRole, self.le_DataMaster_DataRekening_SaldoSekarang)
@@ -1446,7 +1457,7 @@ class Ui_MainWindow(object):
         self.chk_DataMaster_DataRekening_KasBank.setObjectName(_fromUtf8("chk_DataMaster_DataRekening_KasBank"))
         self.formLayout_4.setWidget(5, QtGui.QFormLayout.LabelRole, self.chk_DataMaster_DataRekening_KasBank)
         self.cb_DataMaster_DataRekening_KasBank = QtGui.QComboBox(self.fr_DataMaster_DataRekening_Tambah_Fcontent)
-        self.cb_DataMaster_DataRekening_KasBank.setMinimumSize(QtCore.QSize(100, 22))
+        self.cb_DataMaster_DataRekening_KasBank.setMinimumSize(QtCore.QSize(100, 24))
         self.cb_DataMaster_DataRekening_KasBank.setMaximumSize(QtCore.QSize(100, 16777215))
         self.cb_DataMaster_DataRekening_KasBank.setObjectName(_fromUtf8("cb_DataMaster_DataRekening_KasBank"))
         self.cb_DataMaster_DataRekening_KasBank.addItem(_fromUtf8(""))
@@ -1582,7 +1593,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("sc_DataMaster_DataDepartemen_Fbody_Slist"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QWidget()
-        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 250, 30))
+        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 332, 308))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("scontent_DataMaster_DataDepartemen_Fbody_Slist"))
         self.ivl_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QVBoxLayout(self.scontent_DataMaster_DataDepartemen_Fbody_Slist)
@@ -1654,7 +1665,7 @@ class Ui_MainWindow(object):
         self.tb_DataMaster_DataDepartemen_Edit.setMaximumSize(QtCore.QSize(30, 16777215))
         self.tb_DataMaster_DataDepartemen_Edit.setStyleSheet(_fromUtf8(""))
         self.tb_DataMaster_DataDepartemen_Edit.setText(_fromUtf8(""))
-        self.tb_DataMaster_DataDepartemen_Edit.setIcon(icon)
+        self.tb_DataMaster_DataDepartemen_Edit.setIcon(icon1)
         self.tb_DataMaster_DataDepartemen_Edit.setObjectName(_fromUtf8("tb_DataMaster_DataDepartemen_Edit"))
         self.ihl_DataMaster_DataDepartemen_Fbody_FR_Fbot.addWidget(self.tb_DataMaster_DataDepartemen_Edit)
         self.tb_DataMaster_DataDepartemen_Delete = QtGui.QPushButton(self.fr_DataMaster_DataDepartemen_Fbody_FR_Fbot)
@@ -1662,7 +1673,7 @@ class Ui_MainWindow(object):
         self.tb_DataMaster_DataDepartemen_Delete.setMaximumSize(QtCore.QSize(30, 16777215))
         self.tb_DataMaster_DataDepartemen_Delete.setStyleSheet(_fromUtf8(""))
         self.tb_DataMaster_DataDepartemen_Delete.setText(_fromUtf8(""))
-        self.tb_DataMaster_DataDepartemen_Delete.setIcon(icon1)
+        self.tb_DataMaster_DataDepartemen_Delete.setIcon(icon2)
         self.tb_DataMaster_DataDepartemen_Delete.setObjectName(_fromUtf8("tb_DataMaster_DataDepartemen_Delete"))
         self.ihl_DataMaster_DataDepartemen_Fbody_FR_Fbot.addWidget(self.tb_DataMaster_DataDepartemen_Delete)
         self.fr_DataMaster_DataDepartemen_Fbody_FR_Fbot_Fspace = QtGui.QFrame(self.fr_DataMaster_DataDepartemen_Fbody_FR_Fbot)
@@ -1872,6 +1883,9 @@ class Ui_MainWindow(object):
         self.tb_Penjualan_Piutang = QtGui.QPushButton(self.fr_Penjualan_Menu)
         self.tb_Penjualan_Piutang.setObjectName(_fromUtf8("tb_Penjualan_Piutang"))
         self.verticalLayout_21.addWidget(self.tb_Penjualan_Piutang)
+        self.pushButton = QtGui.QPushButton(self.fr_Penjualan_Menu)
+        self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        self.verticalLayout_21.addWidget(self.pushButton)
         self.gridLayout_7.addWidget(self.fr_Penjualan_Menu, 0, 0, 2, 1)
         spacerItem5 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.gridLayout_7.addItem(spacerItem5, 0, 1, 1, 1)
@@ -2186,6 +2200,9 @@ class Ui_MainWindow(object):
         self.hl_Penjualan_PenawaranHarga_baru_tombol.addWidget(self.tb_Penjualan_InvoicePenjualan_Batal)
         spacerItem10 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.hl_Penjualan_PenawaranHarga_baru_tombol.addItem(spacerItem10)
+        self.tb_Penjualan_InvoicePenjualan_Cetak = QtGui.QPushButton(self.fr_Penjualan_InvoicePenjualan_tombol)
+        self.tb_Penjualan_InvoicePenjualan_Cetak.setObjectName(_fromUtf8("tb_Penjualan_InvoicePenjualan_Cetak"))
+        self.hl_Penjualan_PenawaranHarga_baru_tombol.addWidget(self.tb_Penjualan_InvoicePenjualan_Cetak)
         self.tb_Penjualan_InvoicePenjualan_Rekam = QtGui.QPushButton(self.fr_Penjualan_InvoicePenjualan_tombol)
         self.tb_Penjualan_InvoicePenjualan_Rekam.setObjectName(_fromUtf8("tb_Penjualan_InvoicePenjualan_Rekam"))
         self.hl_Penjualan_PenawaranHarga_baru_tombol.addWidget(self.tb_Penjualan_InvoicePenjualan_Rekam)
@@ -4604,8 +4621,12 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.fr_MainWindow, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 870, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 870, 19))
         self.menubar.setObjectName(_fromUtf8("menubar"))
+        self.menuMenu = QtGui.QMenu(self.menubar)
+        self.menuMenu.setObjectName(_fromUtf8("menuMenu"))
+        self.menuHelp = QtGui.QMenu(self.menubar)
+        self.menuHelp.setObjectName(_fromUtf8("menuHelp"))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
@@ -4613,12 +4634,23 @@ class Ui_MainWindow(object):
         self.toolBar = QtGui.QToolBar(MainWindow)
         self.toolBar.setObjectName(_fromUtf8("toolBar"))
         MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
+        self.actionLog_Off = QtGui.QAction(MainWindow)
+        self.actionLog_Off.setObjectName(_fromUtf8("actionLog_Off"))
+        self.actionAbout = QtGui.QAction(MainWindow)
+        self.actionAbout.setObjectName(_fromUtf8("actionAbout"))
+        self.actionLicense = QtGui.QAction(MainWindow)
+        self.actionLicense.setObjectName(_fromUtf8("actionLicense"))
+        self.menuMenu.addAction(self.actionLog_Off)
+        self.menuHelp.addAction(self.actionAbout)
+        self.menuHelp.addAction(self.actionLicense)
+        self.menubar.addAction(self.menuMenu.menuAction())
+        self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
-        self.st_DataMaster.setCurrentIndex(3)
+        self.st_DataMaster.setCurrentIndex(0)
         self.st_Penjualan.setCurrentIndex(0)
-        self.st_Pembelian.setCurrentIndex(2)
+        self.st_Pembelian.setCurrentIndex(5)
         self.st_BukuBesar.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -4766,6 +4798,7 @@ class Ui_MainWindow(object):
         self.tb_Penjualan_Invoice.setText(_translate("MainWindow", "Invoice Penjualan", None))
         self.tb_Penjualan_UangMuka.setText(_translate("MainWindow", "Penerimaan Uang Muka", None))
         self.tb_Penjualan_Piutang.setText(_translate("MainWindow", "Piutang Usaha", None))
+        self.pushButton.setText(_translate("MainWindow", "Jurnal Memorial", None))
         self.lb_Penjualan_DaftarInvoice_title.setText(_translate("MainWindow", "Daftar Invoice", None))
         item = self.tbl_Penjualan_DaftarInvoice.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "No. Invoice", None))
@@ -4801,7 +4834,8 @@ class Ui_MainWindow(object):
         self.lb_Penjualan_InvoicePenjualan_Input_HargaPokok.setText(_translate("MainWindow", "Harga Pokok", None))
         self.tb_Penjualan_InvoicePenjualan_Baru.setText(_translate("MainWindow", "Baru", None))
         self.tb_Penjualan_InvoicePenjualan_Batal.setText(_translate("MainWindow", "Batal", None))
-        self.tb_Penjualan_InvoicePenjualan_Rekam.setText(_translate("MainWindow", "Rekam", None))
+        self.tb_Penjualan_InvoicePenjualan_Cetak.setText(_translate("MainWindow", "Cetak", None))
+        self.tb_Penjualan_InvoicePenjualan_Rekam.setText(_translate("MainWindow", "Simpan", None))
         self.tb_Penjualan_InvoicePenjualan_Tutup.setText(_translate("MainWindow", "Tutup", None))
         self.lb_Penjualan_PenawaranHarga_baru_title_2.setText(_translate("MainWindow", "Tambah Barang Pokok", None))
         item = self.tbl_Penjualan_Invoice_TambahBarang.horizontalHeaderItem(0)
@@ -4977,7 +5011,7 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "Catatan :", None))
         self.tb_Penjualan_PembayaranPiutang_Baru_Cetak.setText(_translate("MainWindow", "Cetak", None))
         self.tb_Penjualan_PembayaranPiutang_Baru_Batal.setText(_translate("MainWindow", "Batal", None))
-        self.tb_Penjualan_PembayaranPiutang_Baru_Rekam.setText(_translate("MainWindow", "Rekam", None))
+        self.tb_Penjualan_PembayaranPiutang_Baru_Rekam.setText(_translate("MainWindow", "Simpan", None))
         self.lb_Penjualan_UangMuka_title.setText(_translate("MainWindow", "Penerimaan Uang Muka", None))
         item = self.tbl_Penjualan_UangMuka.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "No", None))
@@ -5151,6 +5185,11 @@ class Ui_MainWindow(object):
         self.tb_BukuBesar_DaftarTransaksiJurnal_Tambah_Batal.setText(_translate("MainWindow", "Batal", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_BukuBesar), _translate("MainWindow", "Buku Besar", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_KasBank), _translate("MainWindow", "Kas dan Bank", None))
+        self.menuMenu.setTitle(_translate("MainWindow", "Menu", None))
+        self.menuHelp.setTitle(_translate("MainWindow", "Help", None))
         self.toolBar.setWindowTitle(_translate("MainWindow", "toolBar", None))
+        self.actionLog_Off.setText(_translate("MainWindow", "Log Off", None))
+        self.actionAbout.setText(_translate("MainWindow", "About", None))
+        self.actionLicense.setText(_translate("MainWindow", "License", None))
 
 import DataMaster_rc

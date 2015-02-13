@@ -100,7 +100,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			if str(self.db).find("open")!= (-1):
 				return True #-- sudah terkoneksi dan open, skip semua termasuk self.cursor creation
 			else:
-				jumpmetoexeptweakprogrammingbutDRY
+				raise TypeError("embuh")
 		except:
 			#-- Belum terkoneksi, koneksikan
 			try:
@@ -569,8 +569,58 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			v = y[-12:]
 			w = y[:-12]
 			return self.Terbilang(w) + g + self.Terbilang(v)
+	
+	def GarvinImage(self,NamaFrame,ResourceImage):
+		""" Jadikan ResourceImage sebagai background dari frame NamaFrame
+			misal 
+			self.GarvinImage(self.LoginUI.fr_Connect_Logo,":/Login/img/LogoMedium.png") (nek rc)
+			atau 
+			self.GarvinImage(self.LoginUI.fr_Connect_Logo,"../img/LogoMedium.png") (nek link biasa)
+		"""
+		originalSS = str(NamaFrame.styleSheet())
+		originalSS = originalSS + " QFrame{background-image: url("+ResourceImage+");}"
+		NamaFrame.setStyleSheet(originalSS)
+	
+	def GarvinAutoOrder(self,widget,layout):
+		""" Otomatis urutkan tab order ke yang paling dekat, penggunaan diisi widget nama widget, layout nama layoutwidgetnya, misal
+		self.GarvinAutoOrder(self.centralwidget,self.igr_centralwidget)
 			
+		"""
+		if type(layout)==QtGui.QGridLayout or type(layout)==QtGui.QFormLayout:
+			if type(layout)==QtGui.QGridLayout:
+				kolom = layout.columnCount()
+				baris = layout.rowCount()
+				pilih = layout.itemAtPosition
+			else:
+				kolom = 2
+				baris = layout.rowCount()
+				pilih = layout.itemAt
+				
+			InputEdits = []
+			for y in range(0,baris):
+				for x in range(0,kolom):
+					item = pilih(y,x)
+					if (item!=None):
+						if type(item.widget()) in [QtGui.QLineEdit, QtGui.QCheckBox, QtGui.QDateTimeEdit, QtGui.QDateEdit, QtGui.QComboBox, QtGui.QSpinBox,QtGui.QDoubleSpinBox,QtGui.QTimeEdit]:
+							#~ print item.widget().objectName()
+							InputEdits.append(item.widget())
+			for x in range(1,len(InputEdits)):
+				widget.setTabOrder(InputEdits[x-1],InputEdits[x])
+	
 if __name__=="__main__":
+	#-- dynamic linking, ben nek dicompile dadi binary .exe ora marai kabotan startup/file e gedhe
+	Path = str(__file__).replace("Garvin.py","").replace("\\","/")
+	DataPath = Path+"../data/"
+
+	loginrcpath = Path+"../image/"+"Image_rc.py"
+	resfile = open(loginrcpath)
+	resource = resfile.read()
+	resfile.close()
+	resource = resource[:resource.find("def qInitResources")]
+	exec(resource)
+	QtCore.qRegisterResourceData(0x01, qt_resource_struct, qt_resource_name, qt_resource_data)
+
+	
 	app = QtGui.QApplication(sys.argv)
 	dmw = MainGUI()
 	#~ dmw.showFullScreen()
