@@ -2,12 +2,8 @@
 
 # Form implementation generated from reading ui file 'kasbank/ui_kasbank.ui'
 #
-<<<<<<< HEAD
-# Created: Fri Feb 13 17:56:19 2015
-=======
-# Created: Fri Feb 13 16:04:03 2015
->>>>>>> 8ad2a0ccc991296c132192f9dff1e756dcd43d2b
-#      by: PyQt4 UI code generator 4.10.4
+# Created: Fri Feb 13 19:21:33 2015
+#      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -394,6 +390,9 @@ class Ui_st_KasBank(object):
         self.tb_KasMasuk_Tambah_Simpan = QtGui.QPushButton(self.fr_KasMasuk_Tambah_B)
         self.tb_KasMasuk_Tambah_Simpan.setObjectName(_fromUtf8("tb_KasMasuk_Tambah_Simpan"))
         self.ihl_KasMasuk_Tambah_B.addWidget(self.tb_KasMasuk_Tambah_Simpan)
+        self.tb_KasMasuk_Tambah_Cetak = QtGui.QPushButton(self.fr_KasMasuk_Tambah_B)
+        self.tb_KasMasuk_Tambah_Cetak.setObjectName(_fromUtf8("tb_KasMasuk_Tambah_Cetak"))
+        self.ihl_KasMasuk_Tambah_B.addWidget(self.tb_KasMasuk_Tambah_Cetak)
         self.tb_KasMasuk_Tambah_Batal = QtGui.QPushButton(self.fr_KasMasuk_Tambah_B)
         self.tb_KasMasuk_Tambah_Batal.setObjectName(_fromUtf8("tb_KasMasuk_Tambah_Batal"))
         self.ihl_KasMasuk_Tambah_B.addWidget(self.tb_KasMasuk_Tambah_Batal)
@@ -1198,7 +1197,7 @@ class Ui_st_KasBank(object):
         st_KasBank.addWidget(self.st_BankKeluar_Tambah)
 
         self.retranslateUi(st_KasBank)
-        st_KasBank.setCurrentIndex(8)
+        st_KasBank.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(st_KasBank)
 
     def retranslateUi(self, st_KasBank):
@@ -1248,6 +1247,7 @@ class Ui_st_KasBank(object):
         self.tb_KasMasuk_Tambah_TambahBaris.setText(_translate("st_KasBank", "Tambah Baris", None))
         self.tb_KasMasuk_Tambah_HapusBaris.setText(_translate("st_KasBank", "Hapus Baris", None))
         self.tb_KasMasuk_Tambah_Simpan.setText(_translate("st_KasBank", "Simpan", None))
+        self.tb_KasMasuk_Tambah_Cetak.setText(_translate("st_KasBank", "Cetak", None))
         self.tb_KasMasuk_Tambah_Batal.setText(_translate("st_KasBank", "Batal", None))
         self.lb_KasKeluar_Judul.setText(_translate("st_KasBank", "Kas Keluar", None))
         self.le_KasKeluar_Search.setPlaceholderText(_translate("st_KasBank", "Type to search...", None))

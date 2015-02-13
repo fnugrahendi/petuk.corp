@@ -18,7 +18,7 @@
 QTableWidget{border-width:1px;border-color:rgb(180, 200, 220);border-style:solid;border-radius:0px;}</string>
   </property>
   <property name="currentIndex">
-   <number>8</number>
+   <number>2</number>
   </property>
   <widget class="QWidget" name="st_Menu">
    <layout class="QGridLayout" name="igr_KasBank_Menu">
@@ -866,6 +866,13 @@ color:rgb(0,0,0);
         <widget class="QPushButton" name="tb_KasMasuk_Tambah_Simpan">
          <property name="text">
           <string>Simpan</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_KasMasuk_Tambah_Cetak">
+         <property name="text">
+          <string>Cetak</string>
          </property>
         </widget>
        </item>

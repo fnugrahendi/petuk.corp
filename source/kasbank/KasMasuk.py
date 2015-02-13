@@ -340,3 +340,8 @@ class KasMasuk(object):
 				self.KasBankUI.tbl_KasMasuk_Tambah.item(row,0).setText(str(data[0]))
 				self.KasBankUI.tbl_KasMasuk_Tambah.item(row,1).setText(str(data[1]))
 			self.DataMaster_DataRekening_Popup_Pilih(data,isi)
+
+	def KasBank_KasMasuk_Tambah_Cetak(self):
+		""" Menyimpan data ke gd_buku_besar """
+		
+		pass
