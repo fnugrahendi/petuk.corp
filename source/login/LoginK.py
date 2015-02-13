@@ -104,7 +104,7 @@ class Login(Ui_fr_Main):
 		self.dbUser = "gd_user_akunting"
 		self.dbPassword = "nyungsep"
 		self.dbDatabase = "INFORMATION_SCHEMA" #-- mandatory, sql connect ask for database name, we open INFORMATION_SCHEMA database at first to escape the error
-		databases = self.DatabaseRunQuery("SHOW DATABASES")
+		databases = self.DatabaseRunQuery("SHOW DATABASES") #-- first login happens here
 		if (databases==None) or (databases==[]):
 			
 #---=============================================================-------

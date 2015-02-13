@@ -176,6 +176,16 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk,DataRekenin
 		self.GarvinValidate(self.le_DataMaster_DataRekening_SaldoAwal,"angka")
 		self.GarvinValidate(self.le_DataMaster_DataRekening_SaldoSekarang,"angka")
 		
+		#-- set button text to empty for styling
+		menus = self.fr_DataMaster_Menu.findChildren(QtGui.QPushButton)
+		for button in menus:
+			button.setText("")
+		self.tb_DataMaster_DataNamaAlamat.setStyleSheet(""" QPushButton{
+			background-image: url('"""+self.DataPath+"""datamaster_menu/nama_alamat.png');
+			background-repeat:no-repeat;
+			background-size:100%;
+
+			}""")
 		
 	def DataMaster_None(self):
 		pass

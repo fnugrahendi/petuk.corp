@@ -18,7 +18,7 @@
 QTableWidget{border-width:1px;border-color:rgb(180, 200, 220);border-style:solid;border-radius:0px;}</string>
   </property>
   <property name="currentIndex">
-   <number>7</number>
+   <number>8</number>
   </property>
   <widget class="QWidget" name="st_Menu">
    <layout class="QGridLayout" name="igr_KasBank_Menu">
@@ -798,6 +798,11 @@ color:rgb(0,0,0);
            <string>Nilai</string>
           </property>
          </column>
+         <column>
+          <property name="text">
+           <string>Keterangan</string>
+          </property>
+         </column>
         </widget>
        </item>
       </layout>
@@ -1434,6 +1439,11 @@ color:rgb(0,0,0);
          <column>
           <property name="text">
            <string>Nilai</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Keterangan</string>
           </property>
          </column>
         </widget>
@@ -2080,6 +2090,11 @@ color:rgb(0,0,0);
            <string>Nilai</string>
           </property>
          </column>
+         <column>
+          <property name="text">
+           <string>Keterangan</string>
+          </property>
+         </column>
         </widget>
        </item>
       </layout>
@@ -2716,6 +2731,11 @@ color:rgb(0,0,0);
          <column>
           <property name="text">
            <string>Nilai</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Keterangan</string>
           </property>
          </column>
         </widget>

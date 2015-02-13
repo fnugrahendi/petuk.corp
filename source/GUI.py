@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Tue Feb 10 17:24:47 2015
+# Created: Thu Feb 12 14:31:06 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -126,43 +126,51 @@ class Ui_MainWindow(object):
         self.igr_DataMaster_Menu = QtGui.QGridLayout(self.st_DataMaster_Menu)
         self.igr_DataMaster_Menu.setObjectName(_fromUtf8("igr_DataMaster_Menu"))
         self.fr_DataMaster_Menu = QtGui.QFrame(self.st_DataMaster_Menu)
-        self.fr_DataMaster_Menu.setMinimumSize(QtCore.QSize(200, 0))
-        self.fr_DataMaster_Menu.setMaximumSize(QtCore.QSize(200, 16777215))
-        self.fr_DataMaster_Menu.setStyleSheet(_fromUtf8("QPushButton{height:50px;border-width:1px;border-color:rgb(150, 137, 188);border-style:outset;border-radius:0px;background:rgb(220, 224, 238);}"))
+        self.fr_DataMaster_Menu.setStyleSheet(_fromUtf8("QPushButton{\n"
+"\n"
+"width:150px;\n"
+"height:220px;\n"
+"border:0px;\n"
+"border-bottom-width:1px;\n"
+"border-bottom-color:black;\n"
+"border-bottom-style:solid;\n"
+"}"))
         self.fr_DataMaster_Menu.setFrameShape(QtGui.QFrame.StyledPanel)
         self.fr_DataMaster_Menu.setFrameShadow(QtGui.QFrame.Raised)
         self.fr_DataMaster_Menu.setObjectName(_fromUtf8("fr_DataMaster_Menu"))
-        self.ivl_DataMaster_Menu = QtGui.QVBoxLayout(self.fr_DataMaster_Menu)
-        self.ivl_DataMaster_Menu.setSpacing(2)
-        self.ivl_DataMaster_Menu.setMargin(3)
-        self.ivl_DataMaster_Menu.setObjectName(_fromUtf8("ivl_DataMaster_Menu"))
-        self.tb_DataMaster_DataNamaAlamat = QtGui.QPushButton(self.fr_DataMaster_Menu)
-        self.tb_DataMaster_DataNamaAlamat.setStyleSheet(_fromUtf8("height:50px;"))
-        self.tb_DataMaster_DataNamaAlamat.setObjectName(_fromUtf8("tb_DataMaster_DataNamaAlamat"))
-        self.ivl_DataMaster_Menu.addWidget(self.tb_DataMaster_DataNamaAlamat)
+        self.igr_DataMaster_Menu_2 = QtGui.QGridLayout(self.fr_DataMaster_Menu)
+        self.igr_DataMaster_Menu_2.setObjectName(_fromUtf8("igr_DataMaster_Menu_2"))
         self.tb_DataMaster_DataProduk = QtGui.QPushButton(self.fr_DataMaster_Menu)
         self.tb_DataMaster_DataProduk.setObjectName(_fromUtf8("tb_DataMaster_DataProduk"))
-        self.ivl_DataMaster_Menu.addWidget(self.tb_DataMaster_DataProduk)
-        self.tb_DataMaster_DataPajak = QtGui.QPushButton(self.fr_DataMaster_Menu)
-        self.tb_DataMaster_DataPajak.setObjectName(_fromUtf8("tb_DataMaster_DataPajak"))
-        self.ivl_DataMaster_Menu.addWidget(self.tb_DataMaster_DataPajak)
-        self.tb_DataMaster_DataProyek = QtGui.QPushButton(self.fr_DataMaster_Menu)
-        self.tb_DataMaster_DataProyek.setObjectName(_fromUtf8("tb_DataMaster_DataProyek"))
-        self.ivl_DataMaster_Menu.addWidget(self.tb_DataMaster_DataProyek)
+        self.igr_DataMaster_Menu_2.addWidget(self.tb_DataMaster_DataProduk, 0, 5, 1, 1)
         self.tb_DataMaster_DataSatuanPengukuran = QtGui.QPushButton(self.fr_DataMaster_Menu)
         self.tb_DataMaster_DataSatuanPengukuran.setObjectName(_fromUtf8("tb_DataMaster_DataSatuanPengukuran"))
-        self.ivl_DataMaster_Menu.addWidget(self.tb_DataMaster_DataSatuanPengukuran)
+        self.igr_DataMaster_Menu_2.addWidget(self.tb_DataMaster_DataSatuanPengukuran, 1, 4, 1, 1)
         self.tb_DataMaster_DataRekening = QtGui.QPushButton(self.fr_DataMaster_Menu)
         self.tb_DataMaster_DataRekening.setObjectName(_fromUtf8("tb_DataMaster_DataRekening"))
-        self.ivl_DataMaster_Menu.addWidget(self.tb_DataMaster_DataRekening)
+        self.igr_DataMaster_Menu_2.addWidget(self.tb_DataMaster_DataRekening, 1, 7, 1, 1)
         self.tb_DataMaster_DataDepartemen = QtGui.QPushButton(self.fr_DataMaster_Menu)
         self.tb_DataMaster_DataDepartemen.setObjectName(_fromUtf8("tb_DataMaster_DataDepartemen"))
-        self.ivl_DataMaster_Menu.addWidget(self.tb_DataMaster_DataDepartemen)
+        self.igr_DataMaster_Menu_2.addWidget(self.tb_DataMaster_DataDepartemen, 1, 9, 1, 1)
+        self.tb_DataMaster_DataNamaAlamat = QtGui.QPushButton(self.fr_DataMaster_Menu)
+        self.tb_DataMaster_DataNamaAlamat.setStyleSheet(_fromUtf8("QPushButton{\n"
+"background-image: url(\"../data/datamaster_menu/nama_alamat.png\");\n"
+"background-repeat:no-repeat;\n"
+"\n"
+"}"))
+        self.tb_DataMaster_DataNamaAlamat.setObjectName(_fromUtf8("tb_DataMaster_DataNamaAlamat"))
+        self.igr_DataMaster_Menu_2.addWidget(self.tb_DataMaster_DataNamaAlamat, 0, 1, 1, 1)
+        self.tb_DataMaster_DataProyek = QtGui.QPushButton(self.fr_DataMaster_Menu)
+        self.tb_DataMaster_DataProyek.setObjectName(_fromUtf8("tb_DataMaster_DataProyek"))
+        self.igr_DataMaster_Menu_2.addWidget(self.tb_DataMaster_DataProyek, 0, 10, 1, 1)
+        self.tb_DataMaster_DataPajak = QtGui.QPushButton(self.fr_DataMaster_Menu)
+        self.tb_DataMaster_DataPajak.setObjectName(_fromUtf8("tb_DataMaster_DataPajak"))
+        self.igr_DataMaster_Menu_2.addWidget(self.tb_DataMaster_DataPajak, 0, 8, 1, 1)
+        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.igr_DataMaster_Menu_2.addItem(spacerItem, 0, 0, 1, 1)
+        spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.igr_DataMaster_Menu_2.addItem(spacerItem1, 0, 11, 1, 1)
         self.igr_DataMaster_Menu.addWidget(self.fr_DataMaster_Menu, 0, 0, 1, 1)
-        spacerItem = QtGui.QSpacerItem(585, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.igr_DataMaster_Menu.addItem(spacerItem, 0, 1, 1, 1)
-        spacerItem1 = QtGui.QSpacerItem(20, 176, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
-        self.igr_DataMaster_Menu.addItem(spacerItem1, 1, 0, 1, 1)
         self.st_DataMaster.addWidget(self.st_DataMaster_Menu)
         self.st_DataMaster_DataCommon = QtGui.QWidget()
         self.st_DataMaster_DataCommon.setObjectName(_fromUtf8("st_DataMaster_DataCommon"))
@@ -247,7 +255,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataCommon_Fbody_Slist.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataCommon_Fbody_Slist.setObjectName(_fromUtf8("sc_DataMaster_DataCommon_Fbody_Slist"))
         self.scontent_DataMaster_DataCommon_Fbody_Slist = QtGui.QWidget()
-        self.scontent_DataMaster_DataCommon_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 250, 30))
+        self.scontent_DataMaster_DataCommon_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 332, 18))
         self.scontent_DataMaster_DataCommon_Fbody_Slist.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataCommon_Fbody_Slist.setObjectName(_fromUtf8("scontent_DataMaster_DataCommon_Fbody_Slist"))
         self.ivl_DataMaster_DataCommon_Fbody_Slist = QtGui.QVBoxLayout(self.scontent_DataMaster_DataCommon_Fbody_Slist)
@@ -1593,7 +1601,7 @@ class Ui_MainWindow(object):
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.sc_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("sc_DataMaster_DataDepartemen_Fbody_Slist"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QWidget()
-        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 332, 308))
+        self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setGeometry(QtCore.QRect(0, 0, 332, 18))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setStyleSheet(_fromUtf8("border-radius:0px;"))
         self.scontent_DataMaster_DataDepartemen_Fbody_Slist.setObjectName(_fromUtf8("scontent_DataMaster_DataDepartemen_Fbody_Slist"))
         self.ivl_DataMaster_DataDepartemen_Fbody_Slist = QtGui.QVBoxLayout(self.scontent_DataMaster_DataDepartemen_Fbody_Slist)
@@ -4656,13 +4664,13 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "Garvin Accounting", None))
-        self.tb_DataMaster_DataNamaAlamat.setText(_translate("MainWindow", "Data Nama Alamat", None))
         self.tb_DataMaster_DataProduk.setText(_translate("MainWindow", "Data Produk", None))
-        self.tb_DataMaster_DataPajak.setText(_translate("MainWindow", "Data Pajak", None))
-        self.tb_DataMaster_DataProyek.setText(_translate("MainWindow", "Data Proyek", None))
         self.tb_DataMaster_DataSatuanPengukuran.setText(_translate("MainWindow", "Satuan Pengukuran", None))
         self.tb_DataMaster_DataRekening.setText(_translate("MainWindow", "Data Rekening", None))
         self.tb_DataMaster_DataDepartemen.setText(_translate("MainWindow", "Data Departemen", None))
+        self.tb_DataMaster_DataNamaAlamat.setText(_translate("MainWindow", "Data Nama Alamat", None))
+        self.tb_DataMaster_DataProyek.setText(_translate("MainWindow", "Data Proyek", None))
+        self.tb_DataMaster_DataPajak.setText(_translate("MainWindow", "Data Pajak", None))
         self.lb_DataMaster_DataCommon_Judul.setText(_translate("MainWindow", "Judul", None))
         self.le_DataMaster_DataCommon_Search.setPlaceholderText(_translate("MainWindow", "Type to search...", None))
         self.tb_DataMaster_DataCommon_Tambah.setText(_translate("MainWindow", "+", None))
