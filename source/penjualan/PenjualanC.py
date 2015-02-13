@@ -615,6 +615,14 @@ class Penjualan(object):
 		self.Penjualan_GoTo_PembayaranPiutang()
 		return
 	
+	def Penjualan_JurnalMemorial_Cetak(self):
+		#~ noAkun piutang dijupuk seko gd rekening
+		#~ noAkun pendapatan lain2 dijupuk gd rekening
+		#~ piutang -> debit (kredit = 0), lain2 -> kredit (debit = 0)
+		#~ id, kodeTransaksi, tanggal, noAkun, debit, kredit
+		
+		return
+	
 	def Penjualan_GoTo_UangMuka(self):
 		jumlahRow = self.tbl_Penjualan_UangMuka.rowCount()
 		if jumlahRow != 0:
@@ -657,3 +665,10 @@ class Penjualan(object):
 			"VALUES ('"+noref+"', '"+tgl+"','"+catatan+"', '"+nominal+"', '"+kodePelanggan+"', '"+noAkunKas+"', '"+noAkunUM+"')"
 		self.DatabaseRunQuery(query)
 		self.Penjualan_GoTo_UangMuka()
+	
+	def Penjualan_UangMuka_Cetak(self):
+		#~ noAkun kasbank dijupuk seko input
+		#~ noAkun uangmuka dijupuk seko input
+		#~ kas/bank -> debit (kredit = 0), uangMuka -> kredit (debit = 0)
+		#~ id, kodeTransaksi, tanggal, noAkun, debit, kredit
+		return
