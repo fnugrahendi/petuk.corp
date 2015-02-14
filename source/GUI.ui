@@ -112,7 +112,7 @@ margin-top: 2px;
 }*/</string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>5</number>
          </property>
          <widget class="QWidget" name="tab_DataMaster">
           <attribute name="title">
@@ -3019,7 +3019,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                         <string/>
                        </property>
                        <property name="icon">
-                        <iconset resource="DataMaster.qrc">
+                        <iconset resource="../petuk.corp/source/DataMaster.qrc">
                          <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                        </property>
                       </widget>
@@ -3778,7 +3778,7 @@ QPushButton::hover{
                            <string/>
                           </property>
                           <property name="icon">
-                           <iconset resource="DataMaster.qrc">
+                           <iconset resource="../petuk.corp/source/DataMaster.qrc">
                             <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                           </property>
                          </widget>
@@ -4186,7 +4186,7 @@ QPushButton::hover{
               <enum>QFrame::NoFrame</enum>
              </property>
              <property name="currentIndex">
-              <number>12</number>
+              <number>14</number>
              </property>
              <widget class="QWidget" name="st_Penjualan_Menu">
               <layout class="QGridLayout" name="gridLayout_7">
@@ -9198,6 +9198,23 @@ min-height:23px;</string>
            </item>
           </layout>
          </widget>
+         <widget class="QWidget" name="tab_KasBank">
+          <attribute name="title">
+           <string>Kas dan Bank</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="ivl_KasBank">
+           <item>
+            <widget class="QFrame" name="fr_KasBank">
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
          <widget class="QWidget" name="tab_BukuBesar">
           <attribute name="title">
            <string>Buku Besar</string>
@@ -10020,19 +10037,112 @@ min-height:23px;</string>
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="tab_KasBank">
+         <widget class="QWidget" name="tab_Laporan">
           <attribute name="title">
-           <string>Kas dan Bank</string>
+           <string>Laporan</string>
           </attribute>
-          <layout class="QVBoxLayout" name="ivl_KasBank">
-           <item>
-            <widget class="QFrame" name="fr_KasBank">
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
+          <layout class="QGridLayout" name="gridLayout_11">
+           <item row="0" column="0">
+            <widget class="QStackedWidget" name="st_Laporan">
+             <property name="currentIndex">
+              <number>1</number>
              </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
+             <widget class="QWidget" name="st_Laporan_Menu">
+              <layout class="QGridLayout" name="gridLayout_12">
+               <item row="1" column="0">
+                <widget class="QFrame" name="frame">
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_27">
+                  <item>
+                   <widget class="QGroupBox" name="groupBox">
+                    <property name="title">
+                     <string>Laporan</string>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_28">
+                     <item>
+                      <widget class="QPushButton" name="pushButton_2">
+                       <property name="text">
+                        <string>Laporan Kas Harian</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="pushButton_3">
+                       <property name="text">
+                        <string>Laporan Laba Rugi</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="pushButton_4">
+                       <property name="text">
+                        <string>Laporan Neraca</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_2">
+                    <property name="title">
+                     <string>Subsidiary Ledger</string>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_29">
+                     <item>
+                      <widget class="QPushButton" name="pushButton_5">
+                       <property name="text">
+                        <string>Laporan Hutang Piutang Perusahaan</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="pushButton_6">
+                       <property name="text">
+                        <string>Laporan Jual Beli Perusahaan</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <spacer name="horizontalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="2" column="0">
+                <spacer name="verticalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="st_Laporan_Periode"/>
             </widget>
            </item>
           </layout>
@@ -10049,8 +10159,8 @@ min-height:23px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1194</width>
-     <height>25</height>
+     <width>870</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">
