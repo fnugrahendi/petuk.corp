@@ -117,6 +117,8 @@ class KasKeluar(object):
 										"kodeTransaksi",
 										str(self.KasBankUI.tbl_KasKeluar.item(row,CKODE).text())
 										)
+		self.GarvinDisconnect(self.KasBankUI.tb_KasKeluar_Tambah_Cetak.clicked)
+		self.KasBankUI.tb_KasKeluar_Tambah_Cetak.clicked.connect(functools.partial(self.KasBank_KasKeluar_Tambah_Cetak,str(self.KasBankUI.tbl_KasKeluar.item(row,CKODE).text())))
 		self.KasBank_KasKeluar_Tambah(data[0])
 	
 	def KasBank_KasKeluar_Tambah_GenerateKode(self):
@@ -275,6 +277,25 @@ class KasKeluar(object):
 		self.GarvinDisconnect(self.KasBankUI.tb_KasKeluar_Tambah_Batal.clicked)
 		self.KasBankUI.tb_KasKeluar_Tambah_Simpan.clicked.connect(functools.partial(self.KasBank_KasKeluar_Tambah_Act_Simpan,idies,sqltorun))
 		self.KasBankUI.tb_KasKeluar_Tambah_Batal.clicked.connect(self.KasBank_KasKeluar)
+		
+		#--- cek sudah di cetak belum
+		pass
+		datacetak = self.DatabaseFetchResult(self.dbDatabase,"gd_buku_besar","kodeTransaksi",str(self.KasBankUI.le_KasKeluar_Tambah_Form_Nomor.text()))
+		if len(datacetak)>0:
+			#-- Ternyata sudah dicetak. disconnect lagi
+			self.GarvinDisconnect(self.KasBankUI.tbl_KasKeluar_Tambah.cellDoubleClicked)
+			self.GarvinDisconnect(self.KasBankUI.tbl_KasKeluar_Tambah.cellClicked)
+			self.GarvinDisconnect(self.KasBankUI.tbl_KasKeluar_Tambah.cellChanged)
+			self.GarvinDisconnect(self.KasBankUI.tb_KasKeluar_Tambah_TambahBaris.clicked)
+			self.GarvinDisconnect(self.KasBankUI.tb_KasKeluar_Tambah_HapusBaris.clicked)
+			self.GarvinDisconnect(self.KasBankUI.tb_KasKeluar_Tambah_Simpan.clicked)
+			self.statusbar.showMessage("Data ini sudah dicetak. Perubahan dikunci.",120000)
+			#--- and give it no edit trigger
+			self.KasBankUI.tbl_KasKeluar_Tambah.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
+		else:
+			#-- make sure to have it an edit trigger
+			self.KasBankUI.tbl_KasKeluar_Tambah.setEditTriggers(QtGui.QAbstractItemView.AnyKeyPressed|QtGui.QAbstractItemView.DoubleClicked|QtGui.QAbstractItemView.EditKeyPressed)
+			self.statusbar.showMessage("",1)
 	
 	def KasBank_KasKeluar_Tambah_Act_Simpan(self,idies,sqltorun):
 		if idies==None: #-- avoid call by reference default value, as it will just append more 
@@ -339,3 +360,63 @@ class KasKeluar(object):
 				self.KasBankUI.tbl_KasKeluar_Tambah.item(row,0).setText(str(data[0]))
 				self.KasBankUI.tbl_KasKeluar_Tambah.item(row,1).setText(str(data[1]))
 			self.DataMaster_DataRekening_Popup_Pilih(data,isi)
+
+	def KasBank_KasKeluar_Tambah_Cetak(self,kode):
+		""" Menyimpan data ke gd_buku_besar 
+		tipe: masuk, rekening Debit, sumber kredit"""
+		#--- step 0: initialize, untuk class kembaran edit hanya di step ini
+		table = "gd_kas_keluar"
+		tabledetail = table.replace("gd_","gd_detail_")
+			#-- field index
+		result = self.DatabaseRunQuery("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='"+table+"';")
+		dataf = list(itertools.chain.from_iterable(result)).index
+		result = self.DatabaseRunQuery("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='"+self.dbDatabase+"' AND `TABLE_NAME`='"+tabledetail+"';")
+		detailf = list(itertools.chain.from_iterable(result)).index
+		
+		#--- step 1: cek sudah di cetak belum
+		pass
+		datacetak = self.DatabaseFetchResult(self.dbDatabase,"gd_buku_besar","kodeTransaksi",kode)
+		if len(datacetak)>0:
+			self.DataMaster_Popup("Data ini sudah dicetak pada tanggal "+str(datacetak[0][2]))
+			return
+		#--- step 2: ambil data
+		datas = self.DatabaseFetchResult(self.dbDatabase,table,"kodeTransaksi",kode)
+		details=self.DatabaseFetchResult(self.dbDatabase,tabledetail,"kodeTransaksi",kode)
+		
+		if (len(datas)==0):
+			return
+		else:
+			data = datas[0]
+			datas = None #garbagecollector get me
+			
+		#--- step 3: simpan ke buku besar untuk data (noAkunKasBank)
+		KB = table.replace("gd_","").replace("_masuk","").replace("_keluar","")
+		KB = KB[0].upper()+KB[1:]
+		noakunkasbank = "noAkun"+KB #-- noAkunKas di field Kas, noAkunBank di field Bank
+		
+		
+		if "masuk" in table:datakreditdebit = "debit" #-- bila kas/bank masuk, debit ke noAkunKasBank
+		else:datakreditdebit = "kredit" #-- sebaliknya
+		self.DatabaseInsertReplace(self.dbDatabase,"gd_buku_besar",None,None,
+									["kodeTransaksi","tanggal","noAkun",datakreditdebit],
+									[
+										data[dataf("kodeTransaksi")],
+										data[dataf("tanggal")],
+										data[dataf(noakunkasbank)],
+										data[dataf("nilaiTotal")]
+									]
+								)
+		#--- step 4: simpan ke buku besar untuk setiap detail
+		if "masuk" in table: detailkreditdebit = "kredit"#-- bila kas/bank masuk, kredit ke noAkunDetail
+		else:detailkreditdebit = "debit" #-- otherwise
+		for detail in details:
+			self.DatabaseInsertReplace(self.dbDatabase,"gd_buku_besar",None,None,
+										["kodeTransaksi","tanggal","noAkun",detailkreditdebit],
+										[
+											data[dataf("kodeTransaksi")],
+											data[dataf("tanggal")],
+											detail[detailf("noAkunDetail")],
+											detail[detailf("nilaiDetail")]
+										]
+									)
+		#-- done
