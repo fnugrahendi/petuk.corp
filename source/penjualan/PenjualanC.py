@@ -621,7 +621,20 @@ class Penjualan(object):
 		#~ noAkun pendapatan lain2 dijupuk gd rekening
 		#~ piutang -> debit (kredit = 0), lain2 -> kredit (debit = 0)
 		#~ id, kodeTransaksi, tanggal, noAkun, debit, kredit
-		
+		namaPelanggan = str(self.le_Penjualan_PembayaranPiutang_Baru_Nama.text())
+		kodeTransaksi = str(self.le_Penjualan_JurnalMemorial_NoRef.text())
+		tanggal = str(self.dte_Penjualan_JurnalMemorial_Tanggal.dateTime().toString("yyyy-MM-dd"))
+		nilai = str(self.le_Penjualan_JurnalMemorial_Jumlah.text())
+		query = "SELECT `noAkunPiutang` FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+namaPelanggan+"'"
+		noAkunPiutang = str(self.DatabaseRunQuery(query)[0][0])
+		noAkunLain = "70000001"
+		queryPiutang = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
+					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunPiutang+"','"+nilai+"','0')"
+		queryLain = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
+					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunLain+"','0','"+nilai+"')"
+		print queryPiutang+"\n"+queryLain
+		#~ self.DatabaseRunQuery(queryPiutang)
+		#~ self.DatabaseRunQuery(queryLain)
 		return
 	
 	def Penjualan_GoTo_UangMuka(self):
@@ -681,6 +694,6 @@ class Penjualan(object):
 		queryKasBank = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunKasBank+"','"+nilai+"','0')"
 		print queryUangMuka+"\n"+queryKasBank
-		#~ self.DatabaseRunQuery(queryPiutang)
+		#~ self.DatabaseRunQuery(queryUangMuka)
 		#~ self.DatabaseRunQuery(queryKasBank)
 		return
