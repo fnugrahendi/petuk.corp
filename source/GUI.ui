@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>870</width>
+    <width>1194</width>
     <height>637</height>
    </rect>
   </property>
@@ -238,7 +238,6 @@ background-repeat:no-repeat;
                    </spacer>
                   </item>
                  </layout>
-                 <zorder>fr_DataMaster_Menu</zorder>
                  <zorder>tb_DataMaster_DataNamaAlamat</zorder>
                  <zorder>tb_DataMaster_DataProduk</zorder>
                  <zorder>tb_DataMaster_DataPajak</zorder>
@@ -406,8 +405,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>332</width>
-                          <height>312</height>
+                          <width>250</width>
+                          <height>30</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -600,7 +599,7 @@ QPushButton::hover{
                            <string/>
                           </property>
                           <property name="icon">
-                           <iconset resource="../petuk.corp/source/DataMaster.qrc">
+                           <iconset resource="DataMaster.qrc">
                             <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                           </property>
                          </widget>
@@ -3020,7 +3019,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                         <string/>
                        </property>
                        <property name="icon">
-                        <iconset resource="../petuk.corp/source/DataMaster.qrc">
+                        <iconset resource="DataMaster.qrc">
                          <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                        </property>
                       </widget>
@@ -3779,7 +3778,7 @@ QPushButton::hover{
                            <string/>
                           </property>
                           <property name="icon">
-                           <iconset resource="../petuk.corp/source/DataMaster.qrc">
+                           <iconset resource="DataMaster.qrc">
                             <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                           </property>
                          </widget>
@@ -4187,7 +4186,7 @@ QPushButton::hover{
               <enum>QFrame::NoFrame</enum>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>12</number>
              </property>
              <widget class="QWidget" name="st_Penjualan_Menu">
               <layout class="QGridLayout" name="gridLayout_7">
@@ -7289,11 +7288,6 @@ min-height:23px;</string>
                     </property>
                     <column>
                      <property name="text">
-                      <string>No</string>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
                       <string>No. Referensi</string>
                      </property>
                     </column>
@@ -10055,7 +10049,7 @@ min-height:23px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>870</width>
+     <width>1194</width>
      <height>25</height>
     </rect>
    </property>
@@ -10104,7 +10098,7 @@ min-height:23px;</string>
   </action>
  </widget>
  <resources>
-  <include location="../petuk.corp/source/DataMaster.qrc"/>
+  <include location="DataMaster.qrc"/>
  </resources>
  <connections/>
 </ui>

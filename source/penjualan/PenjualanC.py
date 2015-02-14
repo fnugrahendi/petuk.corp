@@ -85,6 +85,7 @@ class Penjualan(object):
 		self.tb_Penjualan_UangMuka_Baru_Akun.clicked.connect(functools.partial(self.Popup_Rekening,self.tb_Penjualan_UangMuka_Baru_Akun))
 		self.tb_Penjualan_UangMuka_Baru_AkunUangMuka.clicked.connect(functools.partial(self.Popup_Rekening, self.tb_Penjualan_UangMuka_Baru_AkunUangMuka))
 		self.tb_Penjualan_UangMuka_Baru_Simpan.clicked.connect(self.Penjualan_UangMuka_Simpan)
+		self.tb_Penjualan_UangMuka_Baru_Cetak.clicked.connect(self.Penjualan_UangMuka_Cetak)
 		
 		self.INDEX_ST_PENJUALAN_MENU = 0
 		self.INDEX_ST_PENJUALAN_DI = 1
@@ -634,15 +635,13 @@ class Penjualan(object):
 		jumData = len(result)
 		for a in range(0,jumData):
 			self.tbl_Penjualan_UangMuka.insertRow(a)
-			self.tbl_Penjualan_UangMuka.setItem(a,0,QtGui.QTableWidgetItem(str(a+1))) #no
 			self.tbl_Penjualan_UangMuka.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][1]))) #no ref
 			self.tbl_Penjualan_UangMuka.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][5]))) #pelanggan
 			self.tbl_Penjualan_UangMuka.setItem(a,3,QtGui.QTableWidgetItem(str(result[a][2]))) #tanggal
 			self.tbl_Penjualan_UangMuka.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][3]))) #catatan
 			self.tbl_Penjualan_UangMuka.setItem(a,5,QtGui.QTableWidgetItem(str(result[a][4]))) #jumlah
 			self.tbl_Penjualan_UangMuka.setItem(a,6,QtGui.QTableWidgetItem(str(result[a][6]))) #kas/bank
-		self.tbl_Penjualan_UangMuka.setColumnWidth(0,45)
-		self.tbl_Penjualan_UangMuka.setColumnWidth(2,250)
+		self.tbl_Penjualan_UangMuka.setColumnWidth(1,250)
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_UM)
 		pass
 		
@@ -671,4 +670,17 @@ class Penjualan(object):
 		#~ noAkun uangmuka dijupuk seko input
 		#~ kas/bank -> debit (kredit = 0), uangMuka -> kredit (debit = 0)
 		#~ id, kodeTransaksi, tanggal, noAkun, debit, kredit
+		kodePelanggan = str(self.tb_Penjualan_UangMuka_Baru_Nama.text())
+		kodeTransaksi = str(self.le_Penjualan_UangMuka_Baru_NoRef.text())
+		tanggal = str(self.dte_Penjualan_UangMuka_Baru_Tanggal.dateTime().toString("yyyy-MM-dd"))
+		nilai = str(self.le_Penjualan_UangMuka_Baru_JumlahUang.text())
+		noAkunUM = str(self.tb_Penjualan_UangMuka_Baru_AkunUangMuka.text())
+		noAkunKasBank = str(self.tb_Penjualan_UangMuka_Baru_Akun.text())
+		queryUangMuka = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
+					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunUM+"','0','"+nilai+"')"
+		queryKasBank = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
+					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunKasBank+"','"+nilai+"','0')"
+		print queryUangMuka+"\n"+queryKasBank
+		#~ self.DatabaseRunQuery(queryPiutang)
+		#~ self.DatabaseRunQuery(queryKasBank)
 		return
