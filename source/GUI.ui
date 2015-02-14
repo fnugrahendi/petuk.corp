@@ -128,7 +128,7 @@ margin-top: 2px;
 	}</string>
              </property>
              <property name="currentIndex">
-              <number>3</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="st_DataMaster_Menu">
               <property name="styleSheet">
@@ -405,8 +405,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>250</width>
-                          <height>30</height>
+                          <width>332</width>
+                          <height>18</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -3019,7 +3019,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                         <string/>
                        </property>
                        <property name="icon">
-                        <iconset resource="../petuk.corp/source/DataMaster.qrc">
+                        <iconset resource="DataMaster.qrc">
                          <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                        </property>
                       </widget>
@@ -3587,8 +3587,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>250</width>
-                          <height>30</height>
+                          <width>332</width>
+                          <height>18</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -3778,7 +3778,7 @@ QPushButton::hover{
                            <string/>
                           </property>
                           <property name="icon">
-                           <iconset resource="../petuk.corp/source/DataMaster.qrc">
+                           <iconset resource="DataMaster.qrc">
                             <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                           </property>
                          </widget>
@@ -10052,7 +10052,7 @@ min-height:23px;</string>
                <item row="1" column="0">
                 <widget class="QFrame" name="frame">
                  <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
+                  <enum>QFrame::NoFrame</enum>
                  </property>
                  <property name="frameShadow">
                   <enum>QFrame::Raised</enum>
@@ -10062,6 +10062,12 @@ min-height:23px;</string>
                    <widget class="QGroupBox" name="groupBox">
                     <property name="title">
                      <string>Laporan</string>
+                    </property>
+                    <property name="flat">
+                     <bool>false</bool>
+                    </property>
+                    <property name="checkable">
+                     <bool>false</bool>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_28">
                      <item>
@@ -10142,7 +10148,122 @@ min-height:23px;</string>
                </item>
               </layout>
              </widget>
-             <widget class="QWidget" name="st_Laporan_Periode"/>
+             <widget class="QWidget" name="st_Laporan_Periode">
+              <layout class="QVBoxLayout" name="verticalLayout_30">
+               <item>
+                <widget class="QFrame" name="frame_2">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_13">
+                  <item>
+                   <widget class="QLabel" name="lb_Pembelian_HutangUsaha_Title_2">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Segoe UI Semilight</family>
+                      <pointsize>18</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Judul</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frame_3">
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_13">
+                  <item row="1" column="1">
+                   <widget class="QLabel" name="label_4">
+                    <property name="text">
+                     <string>-</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QDateTimeEdit" name="dateTimeEdit"/>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="label_2">
+                    <property name="text">
+                     <string>Periode</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QDateTimeEdit" name="dateTimeEdit_2"/>
+                  </item>
+                  <item row="1" column="3">
+                   <spacer name="horizontalSpacer_4">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="label_3">
+                    <property name="text">
+                     <string>dari</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="2">
+                   <widget class="QLabel" name="label_5">
+                    <property name="text">
+                     <string>sampai</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <spacer name="verticalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
             </widget>
            </item>
           </layout>
@@ -10159,8 +10280,8 @@ min-height:23px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>870</width>
-     <height>21</height>
+     <width>1194</width>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">

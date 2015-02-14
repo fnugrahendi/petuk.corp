@@ -867,12 +867,14 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk,DataRekenin
 			datadihapus = ""
 		self.tb_DataMaster_DataCommon_Delete.clicked.connect(functools.partial(self.DataMaster_Popup,"Anda yakin akan menghapus data "+datadihapus+" ini?",self.DataMaster_DataSatuanPengukuran_Delete,500,200,None,None))
 		
-	def DataMaster_Popup(self,text,function_callback,FW=500,FH=200,function_exit=False,function_close=False,hide_surrounding=False):
+	def DataMaster_Popup(self,text,function_callback=False,FW=500,FH=200,function_exit=False,function_close=False,hide_surrounding=True):
 		
 		if (FW == False):
 			FW = 500
 		if (FH == False):
 			FH = 500
+		if function_callback==False:
+			function_callback = self.DataMaster_None
 		if function_exit==False:
 			function_exit = self.DataMaster_None
 		if function_close==False:

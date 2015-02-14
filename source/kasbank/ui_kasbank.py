@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'kasbank/ui_kasbank.ui'
 #
-# Created: Sat Feb 14 23:34:35 2015
+# Created: Sun Feb 15 00:59:59 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -657,6 +657,9 @@ class Ui_st_KasBank(object):
         self.tb_KasKeluar_Tambah_Simpan = QtGui.QPushButton(self.fr_KasKeluar_Tambah_B)
         self.tb_KasKeluar_Tambah_Simpan.setObjectName(_fromUtf8("tb_KasKeluar_Tambah_Simpan"))
         self.ihl_KasKeluar_Tambah_B.addWidget(self.tb_KasKeluar_Tambah_Simpan)
+        self.tb_KasKeluar_Tambah_Cetak = QtGui.QPushButton(self.fr_KasKeluar_Tambah_B)
+        self.tb_KasKeluar_Tambah_Cetak.setObjectName(_fromUtf8("tb_KasKeluar_Tambah_Cetak"))
+        self.ihl_KasKeluar_Tambah_B.addWidget(self.tb_KasKeluar_Tambah_Cetak)
         self.tb_KasKeluar_Tambah_Batal = QtGui.QPushButton(self.fr_KasKeluar_Tambah_B)
         self.tb_KasKeluar_Tambah_Batal.setObjectName(_fromUtf8("tb_KasKeluar_Tambah_Batal"))
         self.ihl_KasKeluar_Tambah_B.addWidget(self.tb_KasKeluar_Tambah_Batal)
@@ -926,6 +929,9 @@ class Ui_st_KasBank(object):
         self.tb_BankMasuk_Tambah_Simpan = QtGui.QPushButton(self.fr_BankMasuk_Tambah_B)
         self.tb_BankMasuk_Tambah_Simpan.setObjectName(_fromUtf8("tb_BankMasuk_Tambah_Simpan"))
         self.ihl_BankMasuk_Tambah_B.addWidget(self.tb_BankMasuk_Tambah_Simpan)
+        self.tb_BankMasuk_Tambah_Cetak = QtGui.QPushButton(self.fr_BankMasuk_Tambah_B)
+        self.tb_BankMasuk_Tambah_Cetak.setObjectName(_fromUtf8("tb_BankMasuk_Tambah_Cetak"))
+        self.ihl_BankMasuk_Tambah_B.addWidget(self.tb_BankMasuk_Tambah_Cetak)
         self.tb_BankMasuk_Tambah_Batal = QtGui.QPushButton(self.fr_BankMasuk_Tambah_B)
         self.tb_BankMasuk_Tambah_Batal.setObjectName(_fromUtf8("tb_BankMasuk_Tambah_Batal"))
         self.ihl_BankMasuk_Tambah_B.addWidget(self.tb_BankMasuk_Tambah_Batal)
@@ -1190,6 +1196,9 @@ class Ui_st_KasBank(object):
         self.tb_BankKeluar_Tambah_Simpan = QtGui.QPushButton(self.fr_BankKeluar_Tambah_B)
         self.tb_BankKeluar_Tambah_Simpan.setObjectName(_fromUtf8("tb_BankKeluar_Tambah_Simpan"))
         self.ihl_BankKeluar_Tambah_B.addWidget(self.tb_BankKeluar_Tambah_Simpan)
+        self.tb_BankKeluar_Tambah_Cetak = QtGui.QPushButton(self.fr_BankKeluar_Tambah_B)
+        self.tb_BankKeluar_Tambah_Cetak.setObjectName(_fromUtf8("tb_BankKeluar_Tambah_Cetak"))
+        self.ihl_BankKeluar_Tambah_B.addWidget(self.tb_BankKeluar_Tambah_Cetak)
         self.tb_BankKeluar_Tambah_Batal = QtGui.QPushButton(self.fr_BankKeluar_Tambah_B)
         self.tb_BankKeluar_Tambah_Batal.setObjectName(_fromUtf8("tb_BankKeluar_Tambah_Batal"))
         self.ihl_BankKeluar_Tambah_B.addWidget(self.tb_BankKeluar_Tambah_Batal)
@@ -1197,7 +1206,7 @@ class Ui_st_KasBank(object):
         st_KasBank.addWidget(self.st_BankKeluar_Tambah)
 
         self.retranslateUi(st_KasBank)
-        st_KasBank.setCurrentIndex(2)
+        st_KasBank.setCurrentIndex(6)
         QtCore.QMetaObject.connectSlotsByName(st_KasBank)
 
     def retranslateUi(self, st_KasBank):
@@ -1290,6 +1299,7 @@ class Ui_st_KasBank(object):
         self.tb_KasKeluar_Tambah_TambahBaris.setText(_translate("st_KasBank", "Tambah Baris", None))
         self.tb_KasKeluar_Tambah_HapusBaris.setText(_translate("st_KasBank", "Hapus Baris", None))
         self.tb_KasKeluar_Tambah_Simpan.setText(_translate("st_KasBank", "Simpan", None))
+        self.tb_KasKeluar_Tambah_Cetak.setText(_translate("st_KasBank", "Cetak", None))
         self.tb_KasKeluar_Tambah_Batal.setText(_translate("st_KasBank", "Batal", None))
         self.lb_BankMasuk_Judul.setText(_translate("st_KasBank", "Bank Masuk", None))
         self.le_BankMasuk_Search.setPlaceholderText(_translate("st_KasBank", "Type to search...", None))
@@ -1332,6 +1342,7 @@ class Ui_st_KasBank(object):
         self.tb_BankMasuk_Tambah_TambahBaris.setText(_translate("st_KasBank", "Tambah Baris", None))
         self.tb_BankMasuk_Tambah_HapusBaris.setText(_translate("st_KasBank", "Hapus Baris", None))
         self.tb_BankMasuk_Tambah_Simpan.setText(_translate("st_KasBank", "Simpan", None))
+        self.tb_BankMasuk_Tambah_Cetak.setText(_translate("st_KasBank", "Cetak", None))
         self.tb_BankMasuk_Tambah_Batal.setText(_translate("st_KasBank", "Batal", None))
         self.lb_BankKeluar_Judul.setText(_translate("st_KasBank", "Bank Keluar", None))
         self.le_BankKeluar_Search.setPlaceholderText(_translate("st_KasBank", "Type to search...", None))
@@ -1374,6 +1385,7 @@ class Ui_st_KasBank(object):
         self.tb_BankKeluar_Tambah_TambahBaris.setText(_translate("st_KasBank", "Tambah Baris", None))
         self.tb_BankKeluar_Tambah_HapusBaris.setText(_translate("st_KasBank", "Hapus Baris", None))
         self.tb_BankKeluar_Tambah_Simpan.setText(_translate("st_KasBank", "Simpan", None))
+        self.tb_BankKeluar_Tambah_Cetak.setText(_translate("st_KasBank", "Cetak", None))
         self.tb_BankKeluar_Tambah_Batal.setText(_translate("st_KasBank", "Batal", None))
 
 import ui_kasbankrc_rc
