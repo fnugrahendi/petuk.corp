@@ -59,9 +59,7 @@ QTableWidget{border-width:1px;border-color:rgb(0, 0, 0);border-style:solid;borde
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">QFrame{
-	background: #FFFFFF;
-}
+          <string notr="true">
 QTabWidget::tab-bar {
 left: 15px;
 }
@@ -81,7 +79,9 @@ QTabBar::tab
 	border-bottom-color:rgb(242,242,242);;
 }
 
-QTabBar::tab:selected{
+QTabBar::tab:selected, 
+QTabBar::tab:hover 
+{
 	font: 10pt &quot;Arial&quot;;
     color: black;
 	text-decoration:none;
@@ -89,28 +89,11 @@ QTabBar::tab:selected{
 	background-color: rgb(255,255,255);
 border-left-width:1px;
 border-left-style:solid;
-border-bottom: 5px solid;
 
 	border-right-color:rgb(219,219,219);
 	border-left-color : rgb(219,219,219);
-	border-bottom-color:rgb(0,34,85);
-/*	border-bottom-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(116, 140, 170, 255), stop:0.176796 rgba(116, 140, 170, 255), stop:0.198895 rgba(9, 51, 104, 255), stop:0.767956 rgba(9, 51, 104, 255), stop:0.773481 rgba(198, 208, 220, 255), stop:1 rgba(198, 208, 220, 255));*/
-}
-
-QTabBar::tab:hover 
-{
-	font: 10pt &quot;Arial&quot;;
-    color: black;
-	text-decoration:none;
-	
-	background-color: rgb(242,242,242);
-border-left-width:1px;
-border-left-style:solid;
-border-bottom: 3px solid rgb(0,34,85);
-	border-right-color:rgb(219,219,219);
-	border-left-color : rgb(219,219,219);
-	/*border-bottom-color:rgb(8,50,103);
-	border-bottom-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(116, 140, 170, 255), stop:0.176796 rgba(116, 140, 170, 255), stop:0.198895 rgba(9, 51, 104, 255), stop:0.767956 rgba(9, 51, 104, 255), stop:0.773481 rgba(198, 208, 220, 255), stop:1 rgba(198, 208, 220, 255));*/
+	border-bottom-color:rgb(8,50,103);
+	border-bottom-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(116, 140, 170, 255), stop:0.176796 rgba(116, 140, 170, 255), stop:0.198895 rgba(9, 51, 104, 255), stop:0.767956 rgba(9, 51, 104, 255), stop:0.773481 rgba(198, 208, 220, 255), stop:1 rgba(198, 208, 220, 255));
 }
 
 /*
@@ -145,7 +128,7 @@ margin-top: 2px;
 	}</string>
              </property>
              <property name="currentIndex">
-              <number>1</number>
+              <number>3</number>
              </property>
              <widget class="QWidget" name="st_DataMaster_Menu">
               <property name="styleSheet">
@@ -154,20 +137,16 @@ margin-top: 2px;
               <layout class="QGridLayout" name="igr_DataMaster_Menu">
                <item row="0" column="0">
                 <widget class="QFrame" name="fr_DataMaster_Menu">
-                 <property name="minimumSize">
-                  <size>
-                   <width>200</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>200</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
                  <property name="styleSheet">
-                  <string notr="true">QPushButton{height:50px;border-width:1px;border-color:rgb(150, 137, 188);border-style:outset;border-radius:0px;background:rgb(220, 224, 238);}</string>
+                  <string notr="true">QPushButton{
+
+width:150px;
+height:220px;
+border:0px;
+border-bottom-width:1px;
+border-bottom-color:black;
+border-bottom-style:solid;
+}</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
@@ -175,93 +154,101 @@ margin-top: 2px;
                  <property name="frameShadow">
                   <enum>QFrame::Raised</enum>
                  </property>
-                 <layout class="QVBoxLayout" name="ivl_DataMaster_Menu">
-                  <property name="spacing">
-                   <number>2</number>
-                  </property>
-                  <property name="margin">
-                   <number>3</number>
-                  </property>
-                  <item>
-                   <widget class="QPushButton" name="tb_DataMaster_DataNamaAlamat">
-                    <property name="styleSheet">
-                     <string notr="true">height:50px;</string>
-                    </property>
-                    <property name="text">
-                     <string>Data Nama Alamat</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
+                 <layout class="QGridLayout" name="igr_DataMaster_Menu_2">
+                  <item row="0" column="5">
                    <widget class="QPushButton" name="tb_DataMaster_DataProduk">
                     <property name="text">
                      <string>Data Produk</string>
                     </property>
                    </widget>
                   </item>
-                  <item>
-                   <widget class="QPushButton" name="tb_DataMaster_DataPajak">
-                    <property name="text">
-                     <string>Data Pajak</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="tb_DataMaster_DataProyek">
-                    <property name="text">
-                     <string>Data Proyek</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
+                  <item row="1" column="4">
                    <widget class="QPushButton" name="tb_DataMaster_DataSatuanPengukuran">
                     <property name="text">
                      <string>Satuan Pengukuran</string>
                     </property>
                    </widget>
                   </item>
-                  <item>
+                  <item row="1" column="7">
                    <widget class="QPushButton" name="tb_DataMaster_DataRekening">
                     <property name="text">
                      <string>Data Rekening</string>
                     </property>
                    </widget>
                   </item>
-                  <item>
+                  <item row="1" column="9">
                    <widget class="QPushButton" name="tb_DataMaster_DataDepartemen">
                     <property name="text">
                      <string>Data Departemen</string>
                     </property>
                    </widget>
                   </item>
+                  <item row="0" column="1">
+                   <widget class="QPushButton" name="tb_DataMaster_DataNamaAlamat">
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+background-image: url(&quot;../data/datamaster_menu/nama_alamat.png&quot;);
+background-repeat:no-repeat;
+
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>Data Nama Alamat</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="10">
+                   <widget class="QPushButton" name="tb_DataMaster_DataProyek">
+                    <property name="text">
+                     <string>Data Proyek</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="8">
+                   <widget class="QPushButton" name="tb_DataMaster_DataPajak">
+                    <property name="text">
+                     <string>Data Pajak</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <spacer name="horizontalSpacer_2">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item row="0" column="11">
+                   <spacer name="horizontalSpacer_3">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
                  </layout>
+                 <zorder>fr_DataMaster_Menu</zorder>
+                 <zorder>tb_DataMaster_DataNamaAlamat</zorder>
+                 <zorder>tb_DataMaster_DataProduk</zorder>
+                 <zorder>tb_DataMaster_DataPajak</zorder>
+                 <zorder>tb_DataMaster_DataProyek</zorder>
+                 <zorder>tb_DataMaster_DataSatuanPengukuran</zorder>
+                 <zorder>tb_DataMaster_DataRekening</zorder>
+                 <zorder>tb_DataMaster_DataDepartemen</zorder>
+                 <zorder>horizontalSpacer_2</zorder>
+                 <zorder>horizontalSpacer_3</zorder>
                 </widget>
-               </item>
-               <item row="0" column="1">
-                <spacer name="hs_DataMaster_Menu_HS">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>585</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item row="1" column="0">
-                <spacer name="vs_DataMaster_Menu_VS">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>20</width>
-                   <height>176</height>
-                  </size>
-                 </property>
-                </spacer>
                </item>
               </layout>
              </widget>
@@ -367,26 +354,6 @@ margin-top: 2px;
                     <layout class="QVBoxLayout" name="ivl_fr_DataMaster_DataCommon_Fbody_Slist_Container">
                      <item>
                       <widget class="QLineEdit" name="le_DataMaster_DataCommon_Search">
-                       <property name="styleSheet">
-                        <string notr="true">/*border-bottom: 2px solid #042f65;
-border-top: 0;
-border-right: 0;
-border-left: 0;
-border-radius: 10px;
-padding: 3px 3px;
-background: #ffffff;
-selection-background-color: darkgray;
-color: #042f65;*/
-border-bottom: 0px solid #042f65;
-border-top: 0;
-border-right: 0;
-border-left: 0;
-/*border-radius: 10px;*/
-padding: 3px 3px;
-background: rgba(135,170,222,75);
-/*selection-background-color: darkgray;*/
-</string>
-                       </property>
                        <property name="placeholderText">
                         <string>Type to search...</string>
                        </property>
@@ -440,7 +407,7 @@ QPushButton::hover{
                           <x>0</x>
                           <y>0</y>
                           <width>332</width>
-                          <height>325</height>
+                          <height>312</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -545,7 +512,6 @@ QPushButton::hover{
                         <string notr="true">QPushButton{
 	border-radius:15px;
 	background:rgb(206, 206, 206);
-	/*background:#ffffff;*/
 }</string>
                        </property>
                        <property name="frameShape">
@@ -634,7 +600,7 @@ QPushButton::hover{
                            <string/>
                           </property>
                           <property name="icon">
-                           <iconset resource="DataMaster.qrc">
+                           <iconset resource="../petuk.corp/source/DataMaster.qrc">
                             <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                           </property>
                          </widget>
@@ -788,26 +754,7 @@ QPushButton::hover{
 *{
 	min-height:20px;
 }
-
-/*QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:23px;}*/
-
-QLineEdit, QPushButton{
-	margin: 0px 0px;
-	border-bottom: 0px solid #042f65;
-	border-top: 0;
-	border-right: 0;
-	border-left: 0;
-	/*border-radius: 10px;*/
-	padding: 3px 3px;
-	background: rgba(135,170,222,75);
-	selection-background-color: darkgray;
-}
-
-QComboBox, QDoubleSpinBox, QDateTimeEdit{
-	background: rgba(135,170,222,75);
-	border:0;
-	padding: 3px 0 3px 5px;
-}</string>
+QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:23px;}</string>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -831,7 +778,7 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>26</height>
+                         <height>25</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -860,7 +807,7 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>26</height>
+                         <height>25</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -883,7 +830,7 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>26</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -926,7 +873,7 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>26</height>
+                         <height>25</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -949,7 +896,7 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>26</height>
+                         <height>25</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1036,7 +983,7 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>26</height>
+                         <height>25</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1059,7 +1006,7 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>26</height>
+                         <height>25</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1166,9 +1113,8 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                      </size>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QPushButton {
-color: #ffffff;
-background: #3075c8;
+                     <string notr="true">QPushButton{
+	min-height:30px;
 }</string>
                     </property>
                     <property name="frameShape">
@@ -1197,7 +1143,7 @@ background: #3075c8;
                       <widget class="QPushButton" name="tb_DataMaster_DataNamaAlamat_Tambah_Simpan">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
+                         <horstretch>1</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
                        </property>
@@ -1207,20 +1153,8 @@ background: #3075c8;
                          <height>16777215</height>
                         </size>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
-                       </property>
                        <property name="text">
                         <string>Simpan</string>
-                       </property>
-                       <property name="autoDefault">
-                        <bool>false</bool>
-                       </property>
-                       <property name="default">
-                        <bool>false</bool>
-                       </property>
-                       <property name="flat">
-                        <bool>false</bool>
                        </property>
                       </widget>
                      </item>
@@ -1251,7 +1185,7 @@ background: #3075c8;
                        <property name="minimumSize">
                         <size>
                          <width>50</width>
-                         <height>0</height>
+                         <height>30</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1261,7 +1195,9 @@ background: #3075c8;
                         </size>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">QPushButton{
+	border-radius:15px;
+}</string>
                        </property>
                        <property name="text">
                         <string>Batal</string>
@@ -1272,9 +1208,6 @@ background: #3075c8;
                    </widget>
                   </item>
                  </layout>
-                 <zorder>fr_DataMaster_DataNamaAlamat_Tambah_Ftop</zorder>
-                 <zorder>fr_DataMaster_DataNamaAlamat_Tambah_Fbot</zorder>
-                 <zorder>fr_DataMaster_DataNamaAlamat_Tambah_Fcontent</zorder>
                 </widget>
                </item>
               </layout>
@@ -1296,11 +1229,7 @@ background: #3075c8;
                   </sizepolicy>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">QFrame{border-style:none;border-width:0px;}
-QPushButton {
-color: #ffffff;
-background: #3075c8;
-}</string>
+                  <string notr="true">QFrame{border-style:none;border-width:0px;}</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
@@ -1374,25 +1303,7 @@ background: #3075c8;
 *{
 	min-height:20px;
 }
-/*QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:23px;}*/
-
-QLineEdit, QPushButton{
-	margin: 0px 0px;
-	border-bottom: 0px solid #042f65;
-	border-top: 0;
-	border-right: 0;
-	border-left: 0;
-	/*border-radius: 10px;*/
-	padding: 3px 3px;
-	background: rgba(135,170,222,75);
-	selection-background-color: darkgray;
-}
-
-QComboBox, QDoubleSpinBox, QDateTimeEdit{
-	background: rgba(135,170,222,75);
-	border:0;
-	padding: 3px 0 3px 5px;
-}</string>
+QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:23px;}</string>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -1413,7 +1324,7 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>26</height>
+                         <height>25</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1436,7 +1347,7 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>26</height>
+                         <height>25</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1459,7 +1370,7 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>26</height>
+                         <height>25</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1482,7 +1393,7 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>26</height>
+                         <height>25</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1505,7 +1416,7 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                        <property name="minimumSize">
                         <size>
                          <width>100</width>
-                         <height>26</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1543,7 +1454,7 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>26</height>
+                         <height>25</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1566,7 +1477,7 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>26</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1777,25 +1688,7 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                   </sizepolicy>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">QLineEdit, QPushButton{
-	margin: 0px 0px;
-	border-bottom: 0px solid #042f65;
-	border-top: 0;
-	border-right: 0;
-	border-left: 0;
-	/*border-radius: 10px;*/
-	padding: 3px 3px;
-	background: rgba(135,170,222,75);
-	selection-background-color: darkgray;
-}
-
-QComboBox, QDoubleSpinBox, QDateTimeEdit{
-	background: rgba(135,170,222,75);
-	border:0;
-	padding: 3px 0 3px 5px;
-}
-
-QLabel{
+                  <string notr="true">QLabel{
 	font-size:10pt;
 }
 *{
@@ -1827,7 +1720,7 @@ QLabel{
                     <x>120</x>
                     <y>10</y>
                     <width>161</width>
-                    <height>26</height>
+                    <height>24</height>
                    </rect>
                   </property>
                  </widget>
@@ -1850,7 +1743,7 @@ QLabel{
                     <x>120</x>
                     <y>40</y>
                     <width>571</width>
-                    <height>26</height>
+                    <height>24</height>
                    </rect>
                   </property>
                  </widget>
@@ -1873,7 +1766,7 @@ QLabel{
                     <x>120</x>
                     <y>70</y>
                     <width>571</width>
-                    <height>26</height>
+                    <height>24</height>
                    </rect>
                   </property>
                  </widget>
@@ -1949,12 +1842,6 @@ QLabel{
                    <width>16777215</width>
                    <height>50</height>
                   </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QPushButton {
-color: #ffffff;
-background: #3075c8;
-}</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
@@ -2143,26 +2030,8 @@ background: #3075c8;
                      </size>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">/*QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}
-QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}*/
-
-QLineEdit, QPushButton{
-	margin: 0px 0px;
-	border-bottom: 0px solid #042f65;
-	border-top: 0;
-	border-right: 0;
-	border-left: 0;
-	/*border-radius: 10px;*/
-	padding: 3px 3px;
-	background: rgba(135,170,222,75);
-	selection-background-color: darkgray;
-}
-
-QComboBox, QDoubleSpinBox, QDateTimeEdit{
-	background: rgba(135,170,222,75);
-	border:0;
-	padding: 3px 0 3px 5px;
-}</string>
+                     <string notr="true">QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}
+QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}</string>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -2183,7 +2052,7 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>0</height>
+                         <height>27</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -2399,12 +2268,6 @@ QComboBox, QDoubleSpinBox, QDateTimeEdit{
                    <height>50</height>
                   </size>
                  </property>
-                 <property name="styleSheet">
-                  <string notr="true">QPushButton {
-color: #ffffff;
-background: #3075c8;
-}</string>
-                 </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
                  </property>
@@ -2565,24 +2428,7 @@ background: #3075c8;
                   </sizepolicy>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">QLineEdit, QPushButton{
-	margin: 0px 0px;
-	border-bottom: 0px solid #042f65;
-	border-top: 0;
-	border-right: 0;
-	border-left: 0;
-	/*border-radius: 10px;*/
-	padding: 3px 3px;
-	background: rgba(135,170,222,75);
-	selection-background-color: darkgray;
-}
-
-QComboBox, QDoubleSpinBox, QDateTimeEdit{
-	background: rgba(135,170,222,75);
-	border:0;
-	padding: 3px 0 3px 5px;
-}
-QLabel{
+                  <string notr="true">QLabel{
 	font-size:10pt;
 }
 *{
@@ -2623,7 +2469,7 @@ QLabel{
                     <property name="minimumSize">
                      <size>
                       <width>200</width>
-                      <height>26</height>
+                      <height>24</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -2658,7 +2504,7 @@ QLabel{
                     <property name="minimumSize">
                      <size>
                       <width>500</width>
-                      <height>26</height>
+                      <height>24</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -2687,7 +2533,7 @@ QLabel{
                     <property name="minimumSize">
                      <size>
                       <width>500</width>
-                      <height>26</height>
+                      <height>24</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -2703,7 +2549,7 @@ QLabel{
                     <property name="minimumSize">
                      <size>
                       <width>200</width>
-                      <height>26</height>
+                      <height>24</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -2783,12 +2629,6 @@ QLabel{
                    <width>16777215</width>
                    <height>50</height>
                   </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QPushButton {
-color: #ffffff;
-background: #3075c8;
-}</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
@@ -2983,17 +2823,6 @@ background: #3075c8;
                          <height>16777215</height>
                         </size>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">	margin: 0px 0px;
-	border-bottom: 2px solid rgba(135,170,222,255);
-	border-top: 0;
-	border-right: 0;
-	border-left: 0;
-	padding: 3px 3px;
-	/*border-radius: 10px;
-	background: rgba(135,170,222,75);
-	selection-background-color: darkgray;*/</string>
-                       </property>
                        <property name="placeholderText">
                         <string>Type to search...</string>
                        </property>
@@ -3111,9 +2940,6 @@ background: #3075c8;
                       <height>50</height>
                      </size>
                     </property>
-                    <property name="styleSheet">
-                     <string notr="true"/>
-                    </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
@@ -3194,7 +3020,8 @@ background: #3075c8;
                         <string/>
                        </property>
                        <property name="icon">
-                        <iconset resource="DataMaster.qrc">
+
+                        <iconset resource="../petuk.corp/source/DataMaster.qrc">
                          <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                        </property>
                       </widget>
@@ -3330,25 +3157,7 @@ background: #3075c8;
                      </sizepolicy>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QLineEdit, QPushButton{
-	margin: 0px 0px;
-	border-bottom: 0px solid #042f65;
-	border-top: 0;
-	border-right: 0;
-	border-left: 0;
-	/*border-radius: 10px;*/
-	padding: 3px 3px;
-	background: rgba(135,170,222,75);
-	selection-background-color: darkgray;
-}
-
-QComboBox, QDoubleSpinBox, QDateTimeEdit{
-	background: rgba(135,170,222,75);
-	border:0;
-	padding: 3px 0 3px 5px;
-}
-
-QLabel{
+                     <string notr="true">QLabel{
 	font-size:10pt;
 }
 *{
@@ -3377,7 +3186,7 @@ QLabel{
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>26</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3400,7 +3209,7 @@ QLabel{
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>26</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3423,7 +3232,7 @@ QLabel{
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>26</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3446,7 +3255,7 @@ QLabel{
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>26</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3469,7 +3278,7 @@ QLabel{
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>26</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3492,7 +3301,7 @@ QLabel{
                        <property name="minimumSize">
                         <size>
                          <width>100</width>
-                         <height>26</height>
+                         <height>24</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3535,16 +3344,6 @@ QLabel{
                       <width>16777215</width>
                       <height>50</height>
                      </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton {
-color: #ffffff;
-background: #3075c8;
-}
-
-QPushButton::hover{
-background: rgb(10,29,125,255);
-}</string>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -3738,25 +3537,6 @@ background: rgb(10,29,125,255);
                     <layout class="QVBoxLayout" name="ivl_fr_DataMaster_DataDepartemen_Fbody_Slist_Container">
                      <item>
                       <widget class="QLineEdit" name="le_DataMaster_DataDepartemen_Search">
-                       <property name="styleSheet">
-                        <string notr="true">QLineEdit, QPushButton{
-	margin: 0px 0px;
-	border-bottom: 0px solid #042f65;
-	border-top: 0;
-	border-right: 0;
-	border-left: 0;
-	/*border-radius: 10px;*/
-	padding: 3px 3px;
-	background: rgba(135,170,222,75);
-	selection-background-color: darkgray;
-}
-
-QComboBox, QDoubleSpinBox, QDateTimeEdit{
-	background: rgba(135,170,222,75);
-	border:0;
-	padding: 3px 0 3px 5px;
-}</string>
-                       </property>
                        <property name="placeholderText">
                         <string>Type to search..</string>
                        </property>
@@ -3809,8 +3589,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>332</width>
-                          <height>306</height>
+                          <width>250</width>
+                          <height>30</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -4000,7 +3780,8 @@ QPushButton::hover{
                            <string/>
                           </property>
                           <property name="icon">
-                           <iconset resource="DataMaster.qrc">
+
+                           <iconset resource="../petuk.corp/source/DataMaster.qrc">
                             <normaloff>:/DataMaster/img/del.png</normaloff>:/DataMaster/img/del.png</iconset>
                           </property>
                          </widget>
@@ -4139,25 +3920,7 @@ QPushButton::hover{
                      </sizepolicy>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QLineEdit, QPushButton{
-	margin: 0px 0px;
-	border-bottom: 0px solid #042f65;
-	border-top: 0;
-	border-right: 0;
-	border-left: 0;
-	/*border-radius: 10px;*/
-	padding: 3px 3px;
-	background: rgba(135,170,222,75);
-	min-height:25px;
-}
-
-QComboBox, QDoubleSpinBox, QDateTimeEdit{
-	background: rgba(135,170,222,75);
-	border:0;
-	padding: 3px 0 3px 5px;
-}	
-
-QLabel{
+                     <string notr="true">QLabel{
 	font-size:10pt;
 }
 *{
@@ -4186,7 +3949,7 @@ QLabel{
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>31</height>
+                         <height>27</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -4196,7 +3959,7 @@ QLabel{
                         </size>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">/*border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;*/</string>
+                        <string notr="true">border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;</string>
                        </property>
                       </widget>
                      </item>
@@ -4212,7 +3975,7 @@ QLabel{
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>31</height>
+                         <height>27</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -4222,7 +3985,7 @@ QLabel{
                         </size>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">/*border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;*/</string>
+                        <string notr="true">border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;</string>
                        </property>
                       </widget>
                      </item>
@@ -4256,7 +4019,7 @@ QLabel{
                         </size>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">/*border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;*/</string>
+                        <string notr="true">border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;</string>
                        </property>
                       </widget>
                      </item>
@@ -4269,7 +4032,7 @@ QLabel{
                         </size>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">/*QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}*/</string>
+                        <string notr="true">QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;}</string>
                        </property>
                        <property name="text">
                         <string>-</string>
@@ -4285,7 +4048,7 @@ QLabel{
                         </size>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">/*border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;*/</string>
+                        <string notr="true">border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:25px;</string>
                        </property>
                        <property name="text">
                         <string>-</string>
@@ -4314,12 +4077,6 @@ QLabel{
                       <width>16777215</width>
                       <height>50</height>
                      </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton {
-color: #ffffff;
-background: #3075c8;
-}</string>
                     </property>
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
@@ -4413,9 +4170,6 @@ background: #3075c8;
                    </widget>
                   </item>
                  </layout>
-                 <zorder>fr_DataMaster_DataDepartemen_Tambah_Ft</zorder>
-                 <zorder>fr_DataMaster_DataDepartemen_Tambah_Fb</zorder>
-                 <zorder>fr_DataMaster_DataDepartemen_Tambah_Fcontent</zorder>
                 </widget>
                </item>
               </layout>
@@ -10462,7 +10216,7 @@ min-height:23px;</string>
   </action>
  </widget>
  <resources>
-  <include location="DataMaster.qrc"/>
+  <include location="../petuk.corp/source/DataMaster.qrc"/>
  </resources>
  <connections/>
 </ui>

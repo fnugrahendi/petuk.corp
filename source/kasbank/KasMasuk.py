@@ -160,8 +160,8 @@ class KasMasuk(object):
 		self.GarvinDisconnect(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.textChanged)
 		
 		TABLECOLUMNS = [
-							["Nomor Akun", "Nama Akun", "Nilai Detail"],
-							["noAkunDetail","gd_rekening_jurnal`.`namaAkun","nilaiDetail"]
+							["Nomor Akun", "Nama Akun", "Nilai Detail", "Keterangan"],
+							["noAkunDetail","gd_rekening_jurnal`.`namaAkun","nilaiDetail","catatan"]
 						]
 		idies = []
 		if (dataKasMasuk==False):
@@ -200,6 +200,8 @@ class KasMasuk(object):
 				except:
 					namaakun = ""
 				self.KasBankUI.tbl_KasMasuk_Tambah.item(row,1).setText(str(namaakun))
+				self.KasBankUI.tbl_KasMasuk_Tambah.item(row,3).setText(str(result[row][fkmdetail(TABLECOLUMNS[1][3])]))
+				
 		
 		#----Hapus baris hanya terjadi bila sudah di Act_Simpan, sql query diantrikan
 		sqltorun = []
@@ -338,3 +340,8 @@ class KasMasuk(object):
 				self.KasBankUI.tbl_KasMasuk_Tambah.item(row,0).setText(str(data[0]))
 				self.KasBankUI.tbl_KasMasuk_Tambah.item(row,1).setText(str(data[1]))
 			self.DataMaster_DataRekening_Popup_Pilih(data,isi)
+
+	def KasBank_KasMasuk_Tambah_Cetak(self):
+		""" Menyimpan data ke gd_buku_besar """
+		
+		pass

@@ -160,8 +160,8 @@ class KasKeluar(object):
 		self.GarvinDisconnect(self.KasBankUI.le_KasKeluar_Tambah_Form_Nomor.textChanged)
 		
 		TABLECOLUMNS = [
-							["Nomor Akun", "Nama Akun", "Nilai Detail"],
-							["noAkunDetail","gd_rekening_jurnal`.`namaAkun","nilaiDetail"]
+							["Nomor Akun", "Nama Akun", "Nilai Detail", "Keterangan"],
+							["noAkunDetail","gd_rekening_jurnal`.`namaAkun","nilaiDetail","catatan"]
 						]
 		idies = []
 		if (dataKasKeluar==False):
@@ -200,6 +200,7 @@ class KasKeluar(object):
 				except:
 					namaakun = ""
 				self.KasBankUI.tbl_KasKeluar_Tambah.item(row,1).setText(str(namaakun))
+				self.KasBankUI.tbl_KasKeluar_Tambah.item(row,3).setText(str(result[row][fkmdetail(TABLECOLUMNS[1][3])]))
 		
 		#----Hapus baris hanya terjadi bila sudah di Act_Simpan, sql query diantrikan
 		sqltorun = []

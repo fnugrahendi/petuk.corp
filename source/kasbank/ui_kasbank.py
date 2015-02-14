@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'kasbank/ui_kasbank.ui'
 #
-# Created: Tue Feb 10 18:02:53 2015
-#      by: PyQt4 UI code generator 4.10.4
+# Created: Fri Feb 13 19:21:33 2015
+#      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -354,7 +354,7 @@ class Ui_st_KasBank(object):
         self.ivl_KasMasuk_Tambah_Content.setObjectName(_fromUtf8("ivl_KasMasuk_Tambah_Content"))
         self.tbl_KasMasuk_Tambah = QtGui.QTableWidget(self.fr_KasMasuk_Tambah_Content)
         self.tbl_KasMasuk_Tambah.setObjectName(_fromUtf8("tbl_KasMasuk_Tambah"))
-        self.tbl_KasMasuk_Tambah.setColumnCount(3)
+        self.tbl_KasMasuk_Tambah.setColumnCount(4)
         self.tbl_KasMasuk_Tambah.setRowCount(0)
         item = QtGui.QTableWidgetItem()
         self.tbl_KasMasuk_Tambah.setHorizontalHeaderItem(0, item)
@@ -362,6 +362,8 @@ class Ui_st_KasBank(object):
         self.tbl_KasMasuk_Tambah.setHorizontalHeaderItem(1, item)
         item = QtGui.QTableWidgetItem()
         self.tbl_KasMasuk_Tambah.setHorizontalHeaderItem(2, item)
+        item = QtGui.QTableWidgetItem()
+        self.tbl_KasMasuk_Tambah.setHorizontalHeaderItem(3, item)
         self.ivl_KasMasuk_Tambah_Content.addWidget(self.tbl_KasMasuk_Tambah)
         self.ivl_KasMasuk_Tambah.addWidget(self.fr_KasMasuk_Tambah_Content)
         self.fr_KasMasuk_Tambah_B = QtGui.QFrame(self.st_KasMasuk_Tambah)
@@ -388,6 +390,9 @@ class Ui_st_KasBank(object):
         self.tb_KasMasuk_Tambah_Simpan = QtGui.QPushButton(self.fr_KasMasuk_Tambah_B)
         self.tb_KasMasuk_Tambah_Simpan.setObjectName(_fromUtf8("tb_KasMasuk_Tambah_Simpan"))
         self.ihl_KasMasuk_Tambah_B.addWidget(self.tb_KasMasuk_Tambah_Simpan)
+        self.tb_KasMasuk_Tambah_Cetak = QtGui.QPushButton(self.fr_KasMasuk_Tambah_B)
+        self.tb_KasMasuk_Tambah_Cetak.setObjectName(_fromUtf8("tb_KasMasuk_Tambah_Cetak"))
+        self.ihl_KasMasuk_Tambah_B.addWidget(self.tb_KasMasuk_Tambah_Cetak)
         self.tb_KasMasuk_Tambah_Batal = QtGui.QPushButton(self.fr_KasMasuk_Tambah_B)
         self.tb_KasMasuk_Tambah_Batal.setObjectName(_fromUtf8("tb_KasMasuk_Tambah_Batal"))
         self.ihl_KasMasuk_Tambah_B.addWidget(self.tb_KasMasuk_Tambah_Batal)
@@ -616,7 +621,7 @@ class Ui_st_KasBank(object):
         self.ivl_KasKeluar_Tambah_Content.setObjectName(_fromUtf8("ivl_KasKeluar_Tambah_Content"))
         self.tbl_KasKeluar_Tambah = QtGui.QTableWidget(self.fr_KasKeluar_Tambah_Content)
         self.tbl_KasKeluar_Tambah.setObjectName(_fromUtf8("tbl_KasKeluar_Tambah"))
-        self.tbl_KasKeluar_Tambah.setColumnCount(3)
+        self.tbl_KasKeluar_Tambah.setColumnCount(4)
         self.tbl_KasKeluar_Tambah.setRowCount(0)
         item = QtGui.QTableWidgetItem()
         self.tbl_KasKeluar_Tambah.setHorizontalHeaderItem(0, item)
@@ -624,6 +629,8 @@ class Ui_st_KasBank(object):
         self.tbl_KasKeluar_Tambah.setHorizontalHeaderItem(1, item)
         item = QtGui.QTableWidgetItem()
         self.tbl_KasKeluar_Tambah.setHorizontalHeaderItem(2, item)
+        item = QtGui.QTableWidgetItem()
+        self.tbl_KasKeluar_Tambah.setHorizontalHeaderItem(3, item)
         self.ivl_KasKeluar_Tambah_Content.addWidget(self.tbl_KasKeluar_Tambah)
         self.ivl_KasKeluar_Tambah.addWidget(self.fr_KasKeluar_Tambah_Content)
         self.fr_KasKeluar_Tambah_B = QtGui.QFrame(self.st_KasKeluar_Tambah)
@@ -883,7 +890,7 @@ class Ui_st_KasBank(object):
         self.ivl_BankMasuk_Tambah_Content.setObjectName(_fromUtf8("ivl_BankMasuk_Tambah_Content"))
         self.tbl_BankMasuk_Tambah = QtGui.QTableWidget(self.fr_BankMasuk_Tambah_Content)
         self.tbl_BankMasuk_Tambah.setObjectName(_fromUtf8("tbl_BankMasuk_Tambah"))
-        self.tbl_BankMasuk_Tambah.setColumnCount(3)
+        self.tbl_BankMasuk_Tambah.setColumnCount(4)
         self.tbl_BankMasuk_Tambah.setRowCount(0)
         item = QtGui.QTableWidgetItem()
         self.tbl_BankMasuk_Tambah.setHorizontalHeaderItem(0, item)
@@ -891,6 +898,8 @@ class Ui_st_KasBank(object):
         self.tbl_BankMasuk_Tambah.setHorizontalHeaderItem(1, item)
         item = QtGui.QTableWidgetItem()
         self.tbl_BankMasuk_Tambah.setHorizontalHeaderItem(2, item)
+        item = QtGui.QTableWidgetItem()
+        self.tbl_BankMasuk_Tambah.setHorizontalHeaderItem(3, item)
         self.ivl_BankMasuk_Tambah_Content.addWidget(self.tbl_BankMasuk_Tambah)
         self.ivl_BankMasuk_Tambah.addWidget(self.fr_BankMasuk_Tambah_Content)
         self.fr_BankMasuk_Tambah_B = QtGui.QFrame(self.st_BankMasuk_Tambah)
@@ -1145,7 +1154,7 @@ class Ui_st_KasBank(object):
         self.ivl_BankKeluar_Tambah_Content.setObjectName(_fromUtf8("ivl_BankKeluar_Tambah_Content"))
         self.tbl_BankKeluar_Tambah = QtGui.QTableWidget(self.fr_BankKeluar_Tambah_Content)
         self.tbl_BankKeluar_Tambah.setObjectName(_fromUtf8("tbl_BankKeluar_Tambah"))
-        self.tbl_BankKeluar_Tambah.setColumnCount(3)
+        self.tbl_BankKeluar_Tambah.setColumnCount(4)
         self.tbl_BankKeluar_Tambah.setRowCount(0)
         item = QtGui.QTableWidgetItem()
         self.tbl_BankKeluar_Tambah.setHorizontalHeaderItem(0, item)
@@ -1153,6 +1162,8 @@ class Ui_st_KasBank(object):
         self.tbl_BankKeluar_Tambah.setHorizontalHeaderItem(1, item)
         item = QtGui.QTableWidgetItem()
         self.tbl_BankKeluar_Tambah.setHorizontalHeaderItem(2, item)
+        item = QtGui.QTableWidgetItem()
+        self.tbl_BankKeluar_Tambah.setHorizontalHeaderItem(3, item)
         self.ivl_BankKeluar_Tambah_Content.addWidget(self.tbl_BankKeluar_Tambah)
         self.ivl_BankKeluar_Tambah.addWidget(self.fr_BankKeluar_Tambah_Content)
         self.fr_BankKeluar_Tambah_B = QtGui.QFrame(self.st_BankKeluar_Tambah)
@@ -1186,7 +1197,7 @@ class Ui_st_KasBank(object):
         st_KasBank.addWidget(self.st_BankKeluar_Tambah)
 
         self.retranslateUi(st_KasBank)
-        st_KasBank.setCurrentIndex(7)
+        st_KasBank.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(st_KasBank)
 
     def retranslateUi(self, st_KasBank):
@@ -1231,9 +1242,12 @@ class Ui_st_KasBank(object):
         item.setText(_translate("st_KasBank", "Nama Akun", None))
         item = self.tbl_KasMasuk_Tambah.horizontalHeaderItem(2)
         item.setText(_translate("st_KasBank", "Nilai", None))
+        item = self.tbl_KasMasuk_Tambah.horizontalHeaderItem(3)
+        item.setText(_translate("st_KasBank", "Keterangan", None))
         self.tb_KasMasuk_Tambah_TambahBaris.setText(_translate("st_KasBank", "Tambah Baris", None))
         self.tb_KasMasuk_Tambah_HapusBaris.setText(_translate("st_KasBank", "Hapus Baris", None))
         self.tb_KasMasuk_Tambah_Simpan.setText(_translate("st_KasBank", "Simpan", None))
+        self.tb_KasMasuk_Tambah_Cetak.setText(_translate("st_KasBank", "Cetak", None))
         self.tb_KasMasuk_Tambah_Batal.setText(_translate("st_KasBank", "Batal", None))
         self.lb_KasKeluar_Judul.setText(_translate("st_KasBank", "Kas Keluar", None))
         self.le_KasKeluar_Search.setPlaceholderText(_translate("st_KasBank", "Type to search...", None))
@@ -1271,6 +1285,8 @@ class Ui_st_KasBank(object):
         item.setText(_translate("st_KasBank", "Nama Akun", None))
         item = self.tbl_KasKeluar_Tambah.horizontalHeaderItem(2)
         item.setText(_translate("st_KasBank", "Nilai", None))
+        item = self.tbl_KasKeluar_Tambah.horizontalHeaderItem(3)
+        item.setText(_translate("st_KasBank", "Keterangan", None))
         self.tb_KasKeluar_Tambah_TambahBaris.setText(_translate("st_KasBank", "Tambah Baris", None))
         self.tb_KasKeluar_Tambah_HapusBaris.setText(_translate("st_KasBank", "Hapus Baris", None))
         self.tb_KasKeluar_Tambah_Simpan.setText(_translate("st_KasBank", "Simpan", None))
@@ -1311,6 +1327,8 @@ class Ui_st_KasBank(object):
         item.setText(_translate("st_KasBank", "Nama Akun", None))
         item = self.tbl_BankMasuk_Tambah.horizontalHeaderItem(2)
         item.setText(_translate("st_KasBank", "Nilai", None))
+        item = self.tbl_BankMasuk_Tambah.horizontalHeaderItem(3)
+        item.setText(_translate("st_KasBank", "Keterangan", None))
         self.tb_BankMasuk_Tambah_TambahBaris.setText(_translate("st_KasBank", "Tambah Baris", None))
         self.tb_BankMasuk_Tambah_HapusBaris.setText(_translate("st_KasBank", "Hapus Baris", None))
         self.tb_BankMasuk_Tambah_Simpan.setText(_translate("st_KasBank", "Simpan", None))
@@ -1351,6 +1369,8 @@ class Ui_st_KasBank(object):
         item.setText(_translate("st_KasBank", "Nama Akun", None))
         item = self.tbl_BankKeluar_Tambah.horizontalHeaderItem(2)
         item.setText(_translate("st_KasBank", "Nilai", None))
+        item = self.tbl_BankKeluar_Tambah.horizontalHeaderItem(3)
+        item.setText(_translate("st_KasBank", "Keterangan", None))
         self.tb_BankKeluar_Tambah_TambahBaris.setText(_translate("st_KasBank", "Tambah Baris", None))
         self.tb_BankKeluar_Tambah_HapusBaris.setText(_translate("st_KasBank", "Hapus Baris", None))
         self.tb_BankKeluar_Tambah_Simpan.setText(_translate("st_KasBank", "Simpan", None))
