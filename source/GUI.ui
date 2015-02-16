@@ -112,7 +112,7 @@ margin-top: 2px;
 }*/</string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>5</number>
          </property>
          <widget class="QWidget" name="tab_DataMaster">
           <attribute name="title">
@@ -405,8 +405,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>332</width>
-                          <height>18</height>
+                          <width>250</width>
+                          <height>30</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -3587,8 +3587,8 @@ QPushButton::hover{
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>332</width>
-                          <height>18</height>
+                          <width>250</width>
+                          <height>30</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -10041,7 +10041,7 @@ min-height:23px;</string>
           <attribute name="title">
            <string>Laporan</string>
           </attribute>
-          <layout class="QGridLayout" name="gridLayout_11"/>
+          <layout class="QVBoxLayout" name="verticalLayout_27"/>
          </widget>
         </widget>
        </item>
@@ -10056,7 +10056,7 @@ min-height:23px;</string>
      <x>0</x>
      <y>0</y>
      <width>1196</width>
-     <height>25</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">
