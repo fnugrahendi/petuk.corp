@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'laporan/ui_laporan.ui'
 #
-# Created: Mon Feb 16 16:04:20 2015
+# Created: Mon Feb 16 17:46:38 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!

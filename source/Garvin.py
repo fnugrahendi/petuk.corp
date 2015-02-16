@@ -67,6 +67,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		self.Penjualan_init()
 		self.Pembelian__init()
 		self.KasBank_init()
+		self.Laporan_init()
 		
 		#--- kalau pindah tab, set semua stackedWidget ke index 0 (suppose to be _Menu index)
 		self.tabWidget.setCurrentIndex(0)
