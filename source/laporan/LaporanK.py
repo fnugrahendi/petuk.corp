@@ -13,21 +13,42 @@ import itertools
 import re
 from datetime import datetime
 
-from L_BukuBesar_DTJ import L_BukuBesar_DTJ
-from html import HTML
+###--- from L_BukuBesar_DTJ import L_BukuBesar_DTJ, this one will be dumped, not be used
+#~ from html import HTML
+from ui_laporan import Ui_st_Laporan
 
 
-class Laporan(L_BukuBesar_DTJ):
+class Laporan(object):
 	def __init__(self,parent=None):
 		super(Laporan,self).__init__(parent)
 		pass #-- doesn't triggered
 		
-	def Laporan_init(self):
-		super(L_BukuBesar_DTJ,self).__init__(parent)
+	def Laporan_init(self,si_om=None):
+		self.st_Laporan = QtGui.QStackedWidget(self.tab_KasBank)
+		self.LaporanUI = Ui_st_Laporan()
+		self.LaporanUI.setupUi(self.st_Laporan)
+		self.tab_Laporan.findChild(QtGui.QVBoxLayout).addWidget(self.st_Laporan)
+		#-- after main init
+		super(Laporan,self).__init__(si_om)
 		
-		return
+		self.INDEX_ST_LAPORAN = ["MENU", "LAPORAN KAS HARIAN", "LAPORAN LABA RUGI", "LAPORAN NERACA"]
+		
+		self.Laporan_Goto("LAPORAN LABA RUGI")
+	
+	def Laporan_Goto(self,namaroom):
+		if (type(namaroom)==str):
+			#-- do the find. which each page is no more than a widget (not to be confused with QStackedWidget with st_ name)
+			idx = self.INDEX_ST_LAPORAN.index(namaroom.upper())
+			if idx<0:
+				return False
+			self.st_Laporan.setCurrentIndex(idx)
+		else:
+			self.st_Laporan.setCurrentIndex(namaroom)
+		return True
 	
 	def Laporan_Neraca(self, data):
+		#--- CARA MASUK KE MENU:
+		#--- 
 		
 		pass
 		
