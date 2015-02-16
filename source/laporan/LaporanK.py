@@ -33,7 +33,7 @@ class Laporan(object):
 		
 		self.INDEX_ST_LAPORAN = ["MENU", "LAPORAN KAS HARIAN", "LAPORAN LABA RUGI", "LAPORAN NERACA"]
 		
-		self.Laporan_Goto("LAPORAN LABA RUGI")
+		self.LaporanUI.tb_Menu_Laporan_Neraca.clicked.connect(functools.partial(self.Laporan_Neraca,None))
 	
 	def Laporan_Goto(self,namaroom):
 		if (type(namaroom)==str):
@@ -49,7 +49,7 @@ class Laporan(object):
 	def Laporan_Neraca(self, data):
 		#--- CARA MASUK KE MENU:
 		#--- 
-		
+		self.Laporan_Goto("LAPORAN NERACA")
 		pass
 		
 	def Laporan_BuktiBankMasuk(self,data):
