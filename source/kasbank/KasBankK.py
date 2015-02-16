@@ -85,7 +85,7 @@ class KasBank(KasMasuk,KasKeluar,BankMasuk,BankKeluar):
 		if (type(roomindex)==str):
 			#-- do the find. which each page is no more than a widget (not to be confused with QStackedWidget with st_ name)
 			idx = self.INDEX_ST_KASBANK.index(roomindex.upper())
-			if if len(roomindex)<0:
+			if len(roomindex)<0:
 				return False
 			self.st_kasbank.setCurrentIndex(idx)
 		else:
