@@ -22,7 +22,7 @@ class Laporan(L_BukuBesar_DTJ):
 		super(Laporan,self).__init__(parent)
 		pass #-- doesn't triggered
 		
-	def Laporan_Init(self):
+	def Laporan_init(self):
 		super(L_BukuBesar_DTJ,self).__init__(parent)
 		
 		return
