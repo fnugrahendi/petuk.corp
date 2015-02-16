@@ -45,6 +45,7 @@ class Penjualan(object):
 		self.tbl_Penjualan_Piutang.cellDoubleClicked.connect(self.Penjualan_GoTo_PiutangUsaha_Rincian)
 		self.tbl_Penjualan_RincianPiutang.cellDoubleClicked.connect(self.Penjualan_GoTo_PembayaranPiutang)
 		self.tbl_Penjualan_DaftarInvoice.cellDoubleClicked.connect(self.Penjualan_GoTo_Invoice_Rincian)
+		self.le_Penjualan_PembayaranPiutang_Baru_Dept.textChanged.connect(self.Penjualan_PembayaranPiutang_NoRef)
 		
 		#Tombol&Sinyal pada Halaman OrderPenjualan
 		self.tb_Penjualan_OrderPenjualan_Tutup.clicked.connect(self.Penjualan_GoTo_Menu)
@@ -86,6 +87,7 @@ class Penjualan(object):
 		self.tb_Penjualan_UangMuka_Baru_AkunUangMuka.clicked.connect(functools.partial(self.Popup_Rekening, self.tb_Penjualan_UangMuka_Baru_AkunUangMuka))
 		self.tb_Penjualan_UangMuka_Baru_Simpan.clicked.connect(self.Penjualan_UangMuka_Simpan)
 		self.tb_Penjualan_UangMuka_Baru_Cetak.clicked.connect(self.Penjualan_UangMuka_Cetak)
+		
 		
 		self.INDEX_ST_PENJUALAN_MENU = 0
 		self.INDEX_ST_PENJUALAN_DI = 1
@@ -146,7 +148,7 @@ class Penjualan(object):
 			self.tbl_Penjualan_DaftarInvoice.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][3]))) #Pelanggan
 			self.tbl_Penjualan_DaftarInvoice.setItem(a,4,QtGui.QTableWidgetItem(str(int(result[a][6])))) #Nilai
 		
-	def Penjualan_Generate_NoInvoice(self):
+	'''def Penjualan_Generate_NoInvoice(self):
 		query = "SELECT * FROM `gd_invoice_penjualan`"
 		dataInvoice = self.DatabaseRunQuery(query)
 		lastRow = len(dataInvoice)-1
@@ -155,10 +157,10 @@ class Penjualan(object):
 		kodePreset = kodeNum+1
 		kodeInvoice = str(kodePreset)
 		kodeInvoice = "INV000"+kodeInvoice
-		self.le_Penjualan_InvoicePenjualan_SOPenawaran.setText(kodeInvoice)
+		self.le_Penjualan_InvoicePenjualan_SOPenawaran.setText(kodeInvoice)'''
 	
 	def Penjualan_GoTo_Invoice_Baru(self):
-		self.Penjualan_Generate_NoInvoice()
+		self.GarvinGenerateKode('gd_invoice_penjualan', self.le_Penjualan_InvoicePenjualan_SOPenawaran, 'INV', 4)
 		self.le_Penjualan_InvoicePenjualan_Input_Jumlah.setReadOnly(False)
 		self.le_Penjualan_InvoicePenjualan_Input_HargaJual.setReadOnly(False)
 		self.le_Penjualan_InvoicePenjualan_Input_TotalHarga.setReadOnly(False)
@@ -538,6 +540,16 @@ class Penjualan(object):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_PPB)
 		return
 	
+	def Penjualan_PembayaranPiutang_NoRef(self):
+		kasBank = str(self.tb_Penjualan_PembayaranPiutang_Baru_Akun.text())
+		kasBank = kasBank[0:2]
+		if (kasBank == '11'):
+			prefix = "KM"
+		elif (kasBank == '12'):
+			prefix = "BM"
+		self.GarvinGenerateKode('gd_piutang',self.le_Penjualan_PembayaranPiutang_Baru_NoRef, prefix, 4)
+		pass
+	
 	def Penjualan_PembayaranPiutang_Rekam(self):
 		#~ Baca inputan
 		noInvoice = str(self.le_Penjualan_PembayaranPiutang_Baru_NoInvoice.text())
@@ -555,9 +567,8 @@ class Penjualan(object):
 		jumlahTagihan = self.DatabaseRunQuery(query)[0][0]
 		query = "SELECT SUM(`jumlahPenerimaan`) FROM `gd_piutang` WHERE `noInvoice` LIKE '"+noInvoice+"'"
 		saldoPembayaran = self.DatabaseRunQuery(query)[0][0]
-		#saldoPembayaran = int(saldoPembayaran)
 		saldoPembayaran = saldoPembayaran + jumlahPenerimaan
-		#~ print saldoPembayaran
+		
 		#~ Cek lebih atau nggak
 		if (saldoPembayaran>jumlahTagihan):
 			sisa = saldoPembayaran - jumlahTagihan
@@ -597,6 +608,7 @@ class Penjualan(object):
 		pass
 	
 	def Penjualan_GoTo_JurnalMemorial(self,sisa):
+		self.GarvinGenerateKode('gd_jurnal_memorial', self.le_Penjualan_JurnalMemorial_NoRef, 'MM', 4)
 		self.le_Penjualan_JurnalMemorial_Jumlah.setText(str(sisa))
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_JM)
 		return
@@ -648,18 +660,20 @@ class Penjualan(object):
 		jumData = len(result)
 		for a in range(0,jumData):
 			self.tbl_Penjualan_UangMuka.insertRow(a)
-			self.tbl_Penjualan_UangMuka.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][1]))) #no ref
-			self.tbl_Penjualan_UangMuka.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][5]))) #pelanggan
-			self.tbl_Penjualan_UangMuka.setItem(a,3,QtGui.QTableWidgetItem(str(result[a][2]))) #tanggal
-			self.tbl_Penjualan_UangMuka.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][3]))) #catatan
-			self.tbl_Penjualan_UangMuka.setItem(a,5,QtGui.QTableWidgetItem(str(result[a][4]))) #jumlah
-			self.tbl_Penjualan_UangMuka.setItem(a,6,QtGui.QTableWidgetItem(str(result[a][6]))) #kas/bank
-		self.tbl_Penjualan_UangMuka.setColumnWidth(1,250)
+			self.tbl_Penjualan_UangMuka.setItem(a,0,QtGui.QTableWidgetItem(str(result[a][1]))) #no ref
+			self.tbl_Penjualan_UangMuka.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][5]))) #pelanggan
+			self.tbl_Penjualan_UangMuka.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][2]))) #tanggal
+			self.tbl_Penjualan_UangMuka.setItem(a,3,QtGui.QTableWidgetItem(str(result[a][3]))) #catatan
+			self.tbl_Penjualan_UangMuka.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][4]))) #jumlah
+			self.tbl_Penjualan_UangMuka.setItem(a,5,QtGui.QTableWidgetItem(str(result[a][6]))) #kas/bank
+		self.tbl_Penjualan_UangMuka.setColumnWidth(1,200)
+		self.tbl_Penjualan_UangMuka.setColumnWidth(3,250)
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_UM)
 		pass
 		
 	def Penjualan_GoTo_UangMuka_Baru(self):
 		self.st_Penjualan.setCurrentIndex(self.INDEX_ST_PENJUALAN_UMB)
+		self.GarvinGenerateKode('gd_uang_muka',self.le_Penjualan_UangMuka_Baru_NoRef,"UM",4)
 		pass
 	
 	def Penjualan_UangMuka_Simpan(self):
