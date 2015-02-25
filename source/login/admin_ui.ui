@@ -195,11 +195,6 @@
          </column>
          <column>
           <property name="text">
-           <string>Password</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
            <string>Kewenangan</string>
           </property>
          </column>

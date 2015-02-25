@@ -8,18 +8,14 @@ RCC = pyrcc4
 SED = sed
 PYUIC = pyuic4
 SOURCES = $(UIFILES:.ui=.py)
-PYQTCONVERT = $(PYFILES:.py=.pyqtc)
-PYQTREVERT = $(PYFILES:.py=.pyqtr)
+#~ PYQTCONVERT = $(PYFILES:.py=.pyqtc)
+#~ PYQTREVERT = $(PYFILES:.py=.pyqtr)
 
 %.py: %.ui
 	$(UIC)  $< -o $@
 all: $(SOURCES)
 	# Mbuh piye dadine kui mau wkwk
 
-%pyqtc: %py
-	#~ $(SED) s/PySide/PyQt4/ <$< >$<
-%pyqtr: %py
-	#~ $(SED) s/PyQt4/PySide/ <$< >$<
 
 clean: 
 	rm -f $(SOURCES)

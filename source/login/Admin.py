@@ -57,7 +57,7 @@ class Admin(object):
 	def ListUser(self):
 		self.Goto("List User")
 		self.si_om.clearTable(self.UI.tbl_ListUser_List)
-		KOLOMTABLE = ["username", "password", "level"]
+		KOLOMTABLE = ["username", "level"]
 		users = self.si_om.DatabaseFetchResult(self.si_om.dbDatabase,"gd_user")
 		for row in xrange(len(users)):
 			self.UI.tbl_ListUser_List.insertRow(row)
@@ -67,8 +67,8 @@ class Admin(object):
 					self.UI.tbl_ListUser_List.setItem(row,kolom,item)
 					item.setText(str(users[row][self.si_om.Login_User_Field.index(KOLOMTABLE[kolom])]))
 		self.UI.tbl_ListUser_List.setColumnWidth(0,300)
-		self.UI.tbl_ListUser_List.setColumnWidth(1,400)
-		self.UI.tbl_ListUser_List.setColumnWidth(2,100)
+		self.UI.tbl_ListUser_List.setColumnWidth(1,100)
+		#~ self.UI.tbl_ListUser_List.setColumnWidth(2,100)
 		
 		
 		def setactiveindex(row,column):

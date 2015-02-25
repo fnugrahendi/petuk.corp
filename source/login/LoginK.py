@@ -146,6 +146,7 @@ class Login(Ui_fr_Main):
 	
 	def Login_Database_CreateDatabase(self):
 		self.Login_Goto("DATABASE CREATE")
+		self.GarvinValidate(self.LoginUI.le_Database_Create_Nama,"[-a-zA-Z0-9_]*") #-- set validator
 		self.GarvinDisconnect(self.LoginUI.tb_Database_Create_Buat.clicked)
 		self.LoginUI.tb_Database_Create_Buat.clicked.connect(self.Login_Database_CreateDatabase_Act_Create)
 	
