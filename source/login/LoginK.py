@@ -112,7 +112,7 @@ class Login(Ui_fr_Main):
 			if (self.dbHost=="127.0.0.1"):
 				if (self.MakeSureTodoItOnce_HasIt==False):
 					self.statusbar.showMessage("Menjalankan server database pada komputer local",20000)
-					mysqlpath = self.Path+"../mysql/bin/mysqld --port="+str(self.dbPort)
+					mysqlpath = self.BasePath+"mysql/bin/mysqld --port="+str(self.dbPort)
 					Popen(mysqlpath)
 					print "triggered again"
 					self.MakeSureTodoItOnce_HasIt = True
