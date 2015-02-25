@@ -1,5 +1,5 @@
 import os,sys
-
+import subprocess
 
 class DatabaseCreator(object):
 	def __init__(self,newDatabaseName,parent=None):
@@ -903,8 +903,15 @@ class DatabaseCreator(object):
 		pass
 	
 	def Execute(self):
+		#~ f = open("creator.md","w")
+		#~ f.write(self.sqldump)
+		#~ f.close()
+		#~ f = open("creator.md","r")
+		#~ subprocess.check_call(self.si_om.BasePath[:-1]+"\\mysql\\bin\\mysql.exe --port=44559 -u root test",stdin=f,shell=True)
+		#~ f.close()
+		#~ subprocess.check_call(self.si_om.BasePath+"mysql/bin/echo.exe < "+"creator.md")
 		self.si_om.DatabaseRunQuery(self.sqldump)
-	
+		
 	def close(self):
 		self.sqldump=None
 		self.si_om=None
