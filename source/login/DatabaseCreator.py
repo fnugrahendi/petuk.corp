@@ -1,5 +1,8 @@
 import os,sys
 import subprocess
+import MySQLdb
+from PyQt4 import QtCore
+
 
 class DatabaseCreator(object):
 	def __init__(self,newDatabaseName,parent=None):
@@ -910,7 +913,34 @@ class DatabaseCreator(object):
 		#~ subprocess.check_call(self.si_om.BasePath[:-1]+"\\mysql\\bin\\mysql.exe --port=44559 -u root test",stdin=f,shell=True)
 		#~ f.close()
 		#~ subprocess.check_call(self.si_om.BasePath+"mysql/bin/echo.exe < "+"creator.md")
-		self.si_om.DatabaseRunQuery(self.sqldump)
+		#~ self.si_om.DatabaseRunQuery(self.sqldump)
+		#---- ga bisa pakai runQuery --- commit harus menunggu beberapa detik
+		#---- new attempt: exclusive mysqldb
+		try:
+			self.db = MySQLdb.connect(self.si_om.dbHost,self.si_om.dbUser,self.si_om.dbPass,self.si_om.dbDatabase)
+			print ("connected database to generic mysql port")
+		except:
+			try:
+				print "gagal"
+				self.db = MySQLdb.Connect(host=self.si_om.dbHost, port=self.si_om.dbPort, user=self.si_om.dbUser, passwd=self.si_om.dbPass, db=self.si_om.dbDatabase)
+				print ("connected database to Garvin port")
+			except:
+				print "gagal"
+				#~ exit (1)
+		#-- sudah terkoneksi, bentuk cursor
+		try:
+			self.cursor = self.db.cursor()
+		except:return
+		self.cursor.execute(self.sqldump)
+		self.creatortimer = QtCore.QTimer(self.si_om)
+		self.creatortimer.timeout.connect(self.Selesai)
+		self.creatortimer.start(4000)
+		
+	def Selesai(self):
+		self.db.commit()
+		self.creatortimer.stop()
+		print "commited"
+		self.db.close()
 		
 	def close(self):
 		self.sqldump=None

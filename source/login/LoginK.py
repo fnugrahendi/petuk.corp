@@ -117,8 +117,10 @@ class Login(Ui_fr_Main):
 		self.dbUser = "gd_user_akunting"
 		self.dbPassword = "nyungsep"
 		self.dbDatabase = "INFORMATION_SCHEMA" #-- mandatory, sql connect ask for database name, we open INFORMATION_SCHEMA database at first to escape the error
-		databases = self.DatabaseRunQuery("SHOW DATABASES") #-- first login happens here
+		databases = self.DatabaseRunQuery("SHOW DATABASES;") #-- first login happens here
+		
 		if (databases==None) or (databases==[]):
+			#--- masih none, jalankan server
 #---=============================================================-------
 			#--- kalau server adalah komputer ini sendiri!
 			if (self.dbHost=="127.0.0.1"):
@@ -154,10 +156,10 @@ class Login(Ui_fr_Main):
 			
 		for x in range(len(databases)):
 			if (str(databases[x][0]).find("gd_db_") != -1):
-				tb_data = self.LoginUI.scontent_Database_List.findChild(QtGui.QPushButton,"dtb_Login_Database_List"+str(x))
+				tb_data = self.LoginUI.scontent_Database_List.findChild(QtGui.QPushButton,"dtb_Login_Database_List"+str(databases[x][0]))
 				if (tb_data == None):
 					tb_data = QtGui.QPushButton(self.LoginUI.scontent_Database_List)
-					tb_data.setObjectName("dtb_Login_Database_List"+str(x))
+					tb_data.setObjectName("dtb_Login_Database_List"+str(databases[x][0]))
 					tb_data.setText(str(databases[x][0]).replace("gd_db_",""))
 					self.LoginUI.ivl_Database_ListContent.addWidget(tb_data)
 					tb_data.clicked.connect(functools.partial(self.Login_Database_SetDatabase,databases[x][0]))
@@ -178,6 +180,8 @@ class Login(Ui_fr_Main):
 			#~ #reset animdone
 			#~ self.animtimer2.stop()
 			#~ self.animtimer2.start(2000)
+		#~ self.db.commit()
+		self.animtimer1.stop()
 		pass
 		
 	def Login_Database_CreateDatabase_Act_Create_AnimDone(self):
@@ -202,8 +206,8 @@ class Login(Ui_fr_Main):
 		self.animtimer2 = QtCore.QTimer(self)
 		self.animtimer1.timeout.connect(self.Login_Database_CreateDatabase_Act_Create_Anim)
 		self.animtimer2.timeout.connect(self.Login_Database_CreateDatabase_Act_Create_AnimDone)
-		self.animtimer1.start(1000)
-		self.animtimer2.start(20000) #-- untuk sementara nunggu 20 detik saja
+		#~ self.animtimer1.start(1000)
+		self.animtimer2.start(5000) #-- untuk sementara nunggu 20 detik saja
 		pembuat = DatabaseCreator.DatabaseCreator(namadb,self)
 		pembuat.Execute()
 		#--- todo : wait 10detikan sebelum dan sesudah
