@@ -12,3 +12,6 @@ Featured:
 
 Doing:
 * admin user edit
+
+Just done/Ready to check:
+* Installer
