@@ -28,7 +28,7 @@
    <item row="1" column="0">
     <widget class="QStackedWidget" name="st_Admin">
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="st_Menu">
       <layout class="QGridLayout" name="igr_Menu">
@@ -341,14 +341,14 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
+          <item row="2" column="0">
            <widget class="QLabel" name="lb_Users_Tambah_Password">
             <property name="text">
              <string>Password :</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="0">
+          <item row="4" column="0">
            <widget class="QLabel" name="lb_Users_Tambah_Priviledge">
             <property name="text">
              <string>Priviledge :</string>
@@ -365,7 +365,7 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="1">
+          <item row="2" column="1">
            <widget class="QLineEdit" name="le_Users_Tambah_Password">
             <property name="maximumSize">
              <size>
@@ -375,7 +375,7 @@
             </property>
            </widget>
           </item>
-          <item row="3" column="1">
+          <item row="4" column="1">
            <widget class="QComboBox" name="cb_Users_Tambah_Priviledge">
             <property name="maximumSize">
              <size>
@@ -410,14 +410,14 @@
             </item>
            </widget>
           </item>
-          <item row="2" column="0">
+          <item row="3" column="0">
            <widget class="QLabel" name="lb_Users_Tambah_Password_Confirm">
             <property name="text">
              <string>Confirm Password: </string>
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
+          <item row="3" column="1">
            <widget class="QLineEdit" name="le_Users_Tambah_Password_Confirm">
             <property name="minimumSize">
              <size>
@@ -430,6 +430,13 @@
               <width>200</width>
               <height>16777215</height>
              </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="chk_Users_Tambah_EditPassword">
+            <property name="text">
+             <string>Ubah Password</string>
             </property>
            </widget>
           </item>

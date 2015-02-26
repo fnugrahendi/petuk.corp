@@ -101,14 +101,29 @@ class Admin(object):
 		self.si_om.GarvinDisconnect(self.UI.tb_Users_Tambah.clicked)
 		self.si_om.GarvinDisconnect(self.UI.tbl_ListUser_List.cellClicked)
 		self.si_om.GarvinDisconnect(self.UI.tb_Users_Hapus.clicked)
+		self.si_om.GarvinDisconnect(self.UI.tb_Users_Ubah.clicked)
 		self.UI.tb_Users_Tambah.clicked.connect(self.ListUser_Tambah)
 		self.UI.tbl_ListUser_List.cellClicked.connect(setactiveindex)
 		self.UI.tb_Users_Hapus.clicked.connect(confirmdeletecertainrow)
+		self.UI.tb_Users_Ubah.clicked.connect(self.ListUser_Edit)
 	
-	def ListUser_Tambah(self):
+	def ListUser_Edit(self):
+		username = str(self.UI.tbl_ListUser_List.item(self.ListUser_RowColumnTerpilih[0],0).text())
+		self.UI.le_Users_Tambah_Username.setText(username)
+		self.ListUser_Tambah(True)
+		pass
+	
+	def ListUser_Tambah(self,edit=False):
 		self.Goto("TAMBAH USER")
-		
-		
+		if (not edit):
+			self.UI.le_Users_Tambah_Username.clear()
+			self.UI.le_Users_Tambah_Password.clear()
+			self.UI.le_Users_Tambah_Password_Confirm.clear()
+			self.UI.le_Users_Tambah_Username.setReadOnly(False)
+			self.UI.chk_Users_Tambah_EditPassword.hide()
+		else:
+			self.UI.le_Users_Tambah_Username.setReadOnly(True)
+			self.UI.chk_Users_Tambah_EditPassword.show()
 		self.si_om.GarvinDisconnect(self.UI.tb_Users_Tambah_Simpan.clicked)
 		self.UI.tb_Users_Tambah_Simpan.clicked.connect(self.ListUser_Tambah_Act_Simpan)
 		

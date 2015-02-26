@@ -66,6 +66,9 @@ class Login(Ui_fr_Main):
 		
 		self.GarvinImage(self.LoginUI.fr_Connect_Logo,":/Login/img/LogoMedium.png")
 		self.GarvinImage(self.LoginUI.fr_Login_Logo,":/Login/img/LogoMedium.png")
+		
+		#--- ngeset tab order
+		self.GarvinAutoOrder(self.LoginUI.fr_Login,self.LoginUI.fr_Login.findChild(QtGui.QGridLayout))
 	
 	def Login_Goto(self,room):
 		if (type(room)==str):
@@ -128,6 +131,8 @@ class Login(Ui_fr_Main):
 					Popen(mysqlpath)
 					print "triggered again"
 					self.MakeSureTodoItOnce_HasIt = True
+					#-- disable tombol dulu
+					self.LoginUI.tb_Database_Create.setEnabled(False)
 				else:
 					#~ self.aatime.stop()
 					pass
@@ -139,11 +144,13 @@ class Login(Ui_fr_Main):
 
 			return
 		else:
+			#-- reverts the room 
 			self.aatime.stop()
 			try:self.animtimer.stop()
 			except:pass
 			self.LoginUI.lb_Database_Judul.setText("Pilih Database Perusahaan :")
 			self.statusbar.showMessage("",100)
+			self.LoginUI.tb_Database_Create.setEnabled(True)
 			
 		for x in range(len(databases)):
 			if (str(databases[x][0]).find("gd_db_") != -1):
