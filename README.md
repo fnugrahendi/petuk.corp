@@ -4,3 +4,11 @@
 Njemput
 ============
 Contact goodel.akunting@gmail.com
+
+Bug:
+
+Featured:
+[x] updater
+
+Doing:
+[x] admin user edit
