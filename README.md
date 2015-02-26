@@ -8,7 +8,7 @@ Contact goodel.akunting@gmail.com
 Bug:
 
 Featured:
-[x] updater
+* updater
 
 Doing:
-[x] admin user edit
+* admin user edit
