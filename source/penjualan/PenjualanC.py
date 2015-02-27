@@ -235,9 +235,9 @@ class Penjualan(object):
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunPenjualan+"','"+nilai+"','0')"
 		queryPiutang = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunPiutang+"','0','"+nilai+"')"
-		print queryPenjualan+"\n"+queryPiutang
-		#~ self.DatabaseRunQuery(queryPenjualan)
-		#~ self.DatabaseRunQuery(queryPiutang)
+		#~ print queryPenjualan+"\n"+queryPiutang
+		self.DatabaseRunQuery(queryPenjualan)
+		self.DatabaseRunQuery(queryPiutang)
 		pass
 	
 	def Penjualan_GoTo_Invoice_TambahBarang(self):
@@ -602,9 +602,9 @@ class Penjualan(object):
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunPiutang+"','0','"+nilai+"')"
 		queryKasBank = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunKasBank+"','"+nilai+"','0')"
-		print queryPiutang+"\n"+queryKasBank
-		#~ self.DatabaseRunQuery(queryPiutang)
-		#~ self.DatabaseRunQuery(queryKasBank)
+		#~ print queryPiutang+"\n"+queryKasBank
+		self.DatabaseRunQuery(queryPiutang)
+		self.DatabaseRunQuery(queryKasBank)
 		pass
 	
 	def Penjualan_GoTo_JurnalMemorial(self,sisa):
@@ -644,9 +644,9 @@ class Penjualan(object):
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunPiutang+"','"+nilai+"','0')"
 		queryLain = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunLain+"','0','"+nilai+"')"
-		print queryPiutang+"\n"+queryLain
-		#~ self.DatabaseRunQuery(queryPiutang)
-		#~ self.DatabaseRunQuery(queryLain)
+		#~ print queryPiutang+"\n"+queryLain
+		self.DatabaseRunQuery(queryPiutang)
+		self.DatabaseRunQuery(queryLain)
 		return
 	
 	def Penjualan_GoTo_UangMuka(self):
@@ -707,7 +707,7 @@ class Penjualan(object):
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunUM+"','0','"+nilai+"')"
 		queryKasBank = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunKasBank+"','"+nilai+"','0')"
-		print queryUangMuka+"\n"+queryKasBank
-		#~ self.DatabaseRunQuery(queryUangMuka)
-		#~ self.DatabaseRunQuery(queryKasBank)
+		#~ print queryUangMuka+"\n"+queryKasBank
+		self.DatabaseRunQuery(queryUangMuka)
+		self.DatabaseRunQuery(queryKasBank)
 		return
