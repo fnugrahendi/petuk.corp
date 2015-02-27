@@ -112,20 +112,33 @@ class Admin(object):
 		self.UI.le_Users_Tambah_Username.setText(username)
 		self.ListUser_Tambah(True)
 		pass
-	
+		
+	def ListUser_Edit_EditPassword(self,val):
+		if val>0:
+			self.UI.le_Users_Tambah_Password.setReadOnly(False)
+			self.UI.le_Users_Tambah_Password_Confirm.setReadOnly(False)
+			
+		
 	def ListUser_Tambah(self,edit=False):
 		self.Goto("TAMBAH USER")
+		self.si_om.GarvinDisconnect(self.UI.tb_Users_Tambah_Simpan.clicked)
 		if (not edit):
 			self.UI.le_Users_Tambah_Username.clear()
 			self.UI.le_Users_Tambah_Password.clear()
 			self.UI.le_Users_Tambah_Password_Confirm.clear()
 			self.UI.le_Users_Tambah_Username.setReadOnly(False)
+			self.UI.le_Users_Tambah_Password.setReadOnly(False)
+			self.UI.le_Users_Tambah_Password_Confirm.setReadOnly(False)
 			self.UI.chk_Users_Tambah_EditPassword.hide()
+			self.UI.tb_Users_Tambah_Simpan.clicked.connect(self.ListUser_Tambah_Act_Simpan)
 		else:
 			self.UI.le_Users_Tambah_Username.setReadOnly(True)
 			self.UI.chk_Users_Tambah_EditPassword.show()
-		self.si_om.GarvinDisconnect(self.UI.tb_Users_Tambah_Simpan.clicked)
-		self.UI.tb_Users_Tambah_Simpan.clicked.connect(self.ListUser_Tambah_Act_Simpan)
+			self.UI.le_Users_Tambah_Password.setReadOnly(True)
+			self.UI.le_Users_Tambah_Password_Confirm.setReadOnly(True)
+			self.GarvinDisconnect(self.UI.chk_Users_Tambah_EditPassword.stateChanged)
+			self.UI.chk_Users_Tambah_EditPassword.stateChanged.connect(self.ListUser_Edit_EditPassword)
+			self.UI.tb_Users_Tambah_Simpan.clicked.connect(self.ListUser_Edit_Act_Simpan)
 		
 	def ListUser_Tambah_Act_Simpan(self):
 		username = str(self.UI.le_Users_Tambah_Username.text())
@@ -134,6 +147,15 @@ class Admin(object):
 		if password==str(self.UI.le_Users_Tambah_Password_Confirm.text()):
 			password = self.si_om.Login_Login_HashPassword(username,password)
 			self.si_om.DatabaseInsertAvoidreplace(self.si_om.dbDatabase,"gd_user","username",username,["username","password","level"],[username,password,priviledge],"Username "+username+" telah dipakai")
+			self.ListUser()
+		else:pass
+	def ListUser_Edit_Act_Simpan(self):
+		username = str(self.UI.le_Users_Tambah_Username.text())
+		priviledge = str(self.UI.cb_Users_Tambah_Priviledge.currentIndex())
+		password = str(self.UI.le_Users_Tambah_Password.text())
+		if password==str(self.UI.le_Users_Tambah_Password_Confirm.text()):
+			password = self.si_om.Login_Login_HashPassword(username,password)
+			self.si_om.DatabaseInsertReplace(self.si_om.dbDatabase,"gd_user","username",username,["username","password","level"],[username,password,priviledge])
 			self.ListUser()
 		else:pass
 	
