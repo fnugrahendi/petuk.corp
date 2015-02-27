@@ -43,6 +43,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
         
 		#-- data
 		self.Path = str(__file__).replace("Garvin.py","").replace("\\","/")
+		self.BasePath = self.Path+"../"
 		self.DataPath = self.Path+"../data/"
 		print self.DataPath
 		if not os.path.exists(self.DataPath): os.makedirs(self.DataPath)
@@ -76,7 +77,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		self.ResetRooms()
 		#--- startup program, set semua datetimeedit ke waktu skrg		
 		self.GarvinSetDate(self)
-		#~ self.Laporan_BuktiInvoice("INV0007")
+		self.Laporan_Neraca('2015-02-01','2015-02-28')
 	
 	def Popup_NamaAlamat_Tabel(self,namaTabel,row):
 		data = []

@@ -16,6 +16,7 @@ from DataNamaAlamat import DataNamaAlamat
 from DataProyek import DataProyek
 from DataProduk import DataProduk
 from DataRekening import DataRekening
+from Styling import DataMasterStyling
 
 try:
 	_fromUtf8 = QtCore.QString.fromUtf8
@@ -176,16 +177,9 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk,DataRekenin
 		self.GarvinValidate(self.le_DataMaster_DataRekening_SaldoAwal,"angka")
 		self.GarvinValidate(self.le_DataMaster_DataRekening_SaldoSekarang,"angka")
 		
-		#-- set button text to empty for styling
-		menus = self.fr_DataMaster_Menu.findChildren(QtGui.QPushButton)
-		for button in menus:
-			button.setText("")
-		self.tb_DataMaster_DataNamaAlamat.setStyleSheet(""" QPushButton{
-			background-image: url('"""+self.DataPath+"""datamaster_menu/nama_alamat.png');
-			background-repeat:no-repeat;
-			background-size:100%;
-
-			}""")
+		#-- apply styling
+		style = DataMasterStyling(self)
+		style.DataMaster_Styling_Apply()
 		
 	def DataMaster_None(self):
 		pass

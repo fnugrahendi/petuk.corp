@@ -66,6 +66,9 @@ class Login(Ui_fr_Main):
 		
 		self.GarvinImage(self.LoginUI.fr_Connect_Logo,":/Login/img/LogoMedium.png")
 		self.GarvinImage(self.LoginUI.fr_Login_Logo,":/Login/img/LogoMedium.png")
+		
+		#--- ngeset tab order
+		self.GarvinAutoOrder(self.LoginUI.fr_Login,self.LoginUI.fr_Login.findChild(QtGui.QGridLayout))
 	
 	def Login_Goto(self,room):
 		if (type(room)==str):
@@ -98,24 +101,40 @@ class Login(Ui_fr_Main):
 		if (self.dbHost.lower().find("localhost") != -1):
 			self.dbHost = "127.0.0.1"
 		self.Login_Database()
-
+		
+	def Login_Database_Anim_TextLoading(self):
+		if not ("Menjalankan server" in str(self.LoginUI.lb_Database_Judul.text())):
+			self.LoginUI.lb_Database_Judul.setText("Menjalankan server")
+		loadingtext = str(self.LoginUI.lb_Database_Judul.text())
+		if (loadingtext[-3:]!="..."):
+			self.LoginUI.lb_Database_Judul.setText(loadingtext+".")
+		else:
+			self.LoginUI.lb_Database_Judul.setText(loadingtext.replace(".",""))
+		pass
+		
 	def Login_Database(self):
 		self.Login_Goto("Database")
 		self.dbUser = "gd_user_akunting"
 		self.dbPassword = "nyungsep"
 		self.dbDatabase = "INFORMATION_SCHEMA" #-- mandatory, sql connect ask for database name, we open INFORMATION_SCHEMA database at first to escape the error
-		databases = self.DatabaseRunQuery("SHOW DATABASES") #-- first login happens here
+		databases = self.DatabaseRunQuery("SHOW DATABASES;") #-- first login happens here
+		
 		if (databases==None) or (databases==[]):
-			
+			#--- masih none, jalankan server
 #---=============================================================-------
 			#--- kalau server adalah komputer ini sendiri!
 			if (self.dbHost=="127.0.0.1"):
 				if (self.MakeSureTodoItOnce_HasIt==False):
 					self.statusbar.showMessage("Menjalankan server database pada komputer local",20000)
-					mysqlpath = self.Path+"../mysql/mysql5.6.12/bin/mysqld --port="+str(self.dbPort)
+					self.animtimer = QtCore.QTimer(self)
+					self.animtimer.timeout.connect(self.Login_Database_Anim_TextLoading)
+					self.animtimer.start(500)
+					mysqlpath = self.BasePath+"mysql/bin/mysqld --port="+str(self.dbPort)
 					Popen(mysqlpath)
 					print "triggered again"
 					self.MakeSureTodoItOnce_HasIt = True
+					#-- disable tombol dulu
+					self.LoginUI.tb_Database_Create.setEnabled(False)
 				else:
 					#~ self.aatime.stop()
 					pass
@@ -127,14 +146,20 @@ class Login(Ui_fr_Main):
 
 			return
 		else:
+			#-- reverts the room 
 			self.aatime.stop()
+			try:self.animtimer.stop()
+			except:pass
+			self.LoginUI.lb_Database_Judul.setText("Pilih Database Perusahaan :")
+			self.statusbar.showMessage("",100)
+			self.LoginUI.tb_Database_Create.setEnabled(True)
 			
 		for x in range(len(databases)):
 			if (str(databases[x][0]).find("gd_db_") != -1):
-				tb_data = self.LoginUI.scontent_Database_List.findChild(QtGui.QPushButton,"dtb_Login_Database_List"+str(x))
+				tb_data = self.LoginUI.scontent_Database_List.findChild(QtGui.QPushButton,"dtb_Login_Database_List"+str(databases[x][0]))
 				if (tb_data == None):
 					tb_data = QtGui.QPushButton(self.LoginUI.scontent_Database_List)
-					tb_data.setObjectName("dtb_Login_Database_List"+str(x))
+					tb_data.setObjectName("dtb_Login_Database_List"+str(databases[x][0]))
 					tb_data.setText(str(databases[x][0]).replace("gd_db_",""))
 					self.LoginUI.ivl_Database_ListContent.addWidget(tb_data)
 					tb_data.clicked.connect(functools.partial(self.Login_Database_SetDatabase,databases[x][0]))
@@ -146,19 +171,46 @@ class Login(Ui_fr_Main):
 	
 	def Login_Database_CreateDatabase(self):
 		self.Login_Goto("DATABASE CREATE")
+		self.GarvinValidate(self.LoginUI.le_Database_Create_Nama,"[-a-zA-Z0-9_]*") #-- set validator
 		self.GarvinDisconnect(self.LoginUI.tb_Database_Create_Buat.clicked)
 		self.LoginUI.tb_Database_Create_Buat.clicked.connect(self.Login_Database_CreateDatabase_Act_Create)
+	
+	def Login_Database_CreateDatabase_Act_Create_Anim(self):
+		#~ if (self.DatabaseRunQuery("SHOW DATABASES")==None):
+			#~ #reset animdone
+			#~ self.animtimer2.stop()
+			#~ self.animtimer2.start(2000)
+		#~ self.db.commit()
+		self.animtimer1.stop()
+		pass
+		
+	def Login_Database_CreateDatabase_Act_Create_AnimDone(self):
+		self.LoginUI.lb_Database_Create_Judul.show()
+		self.LoginUI.tb_Database_Create_Buat.show()
+		self.LoginUI.le_Database_Create_Nama.setReadOnly(False)
+		self.LoginUI.le_Database_Create_Nama.setText("")
+		self.animtimer1.stop()
+		self.animtimer2.stop()
+		self.Login_Connect()
+		
 	
 	def Login_Database_CreateDatabase_Act_Create(self):
 		namadb = str(self.LoginUI.le_Database_Create_Nama.text())
 		namadb = "gd_db_"+namadb
+		#-- loading
+		self.LoginUI.lb_Database_Create_Judul.hide()
+		self.LoginUI.tb_Database_Create_Buat.hide()
+		self.LoginUI.le_Database_Create_Nama.setReadOnly(True)
+		self.LoginUI.le_Database_Create_Nama.setText("Memproses...")
+		self.animtimer1 = QtCore.QTimer(self)
+		self.animtimer2 = QtCore.QTimer(self)
+		self.animtimer1.timeout.connect(self.Login_Database_CreateDatabase_Act_Create_Anim)
+		self.animtimer2.timeout.connect(self.Login_Database_CreateDatabase_Act_Create_AnimDone)
+		#~ self.animtimer1.start(1000)
+		self.animtimer2.start(5000) #-- untuk sementara nunggu 20 detik saja
 		pembuat = DatabaseCreator.DatabaseCreator(namadb,self)
 		pembuat.Execute()
-		
-		#-- destroy
-		pembuat.close()
-		pembuat = None
-		self.Login_Connect()
+		#--- todo : wait 10detikan sebelum dan sesudah
 		
 	def Login_Database_SetDatabase(self,dbname):
 		self.dbDatabase = dbname

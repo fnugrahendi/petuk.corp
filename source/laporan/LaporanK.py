@@ -46,11 +46,11 @@ class Laporan(object):
 			self.st_Laporan.setCurrentIndex(namaroom)
 		return True
 	
-	def Laporan_Neraca(self, data):
-		#--- CARA MASUK KE MENU:
-		#--- 
-		self.Laporan_Goto("LAPORAN NERACA")
-		pass
+	#~ def Laporan_Neraca(self, data):
+		#~ #--- CARA MASUK KE MENU:
+		#~ #--- 
+		#~ self.Laporan_Goto("LAPORAN NERACA")
+		#~ pass
 		
 	def Laporan_BuktiBankMasuk(self,data):
 		
@@ -836,3 +836,367 @@ class Laporan(object):
 		
 		workbook.close()
 		return
+
+	def Laporan_LabaRugi(self,tanggalAwal,tanggalAkhir):
+		
+		workbook = xlsxwriter.Workbook('LaporanLabaRugi.xlsx')
+		worksheet = workbook.add_worksheet()
+		
+		formatJudul = workbook.add_format({'align': 'center',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'bold':'true',
+										   'font_size':'17'})
+										   
+		formatSubJudul = workbook.add_format({'align': 'center',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'font_size':'15'})
+
+		formatNoTgl = workbook.add_format({'align': 'center',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'font_size':'12'})
+
+		formatBeriTerima = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'left':0,
+										   'font_size':'12'})
+
+		formatBeriTerimaKpd = workbook.add_format({'align': 'left',
+										   'right':0,
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'font_size':'12'})
+
+		formatBiasa = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'font_size':'12'})
+
+		formatSubBiasa = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'bold':'true',
+										   'font_size':'12'})
+
+		formatTotal = workbook.add_format({'align': 'right',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'font_size':'12'})
+
+		formatTerbilang = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'right':0,
+										   'font_size':'12'})
+
+		formatAngkaTerbilang = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'left':0,
+										   'font_size':'12'})
+
+		formatJudulTandaTangan = workbook.add_format({'align': 'center',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'bold':'true',
+										   'font_size':'12'})
+		
+		# We can only write simple types to merged ranges so we write a blank string.
+		worksheet.merge_range('B2:I2', "LAPORAN", formatJudul)
+
+		worksheet.set_column(1,9,8)
+		worksheet.set_column(2,9,8)
+
+		worksheet.merge_range('B3:I3', "LABA RUGI", formatSubJudul)
+		worksheet.merge_range('B4:I4', "PERIODE "+datetime.strptime(tanggalAwal,"%Y-%m-%d").strftime("%d %B %Y")+" - "+datetime.strptime(tanggalAkhir,"%Y-%m-%d").strftime("%d %B %Y"), formatNoTgl)
+		
+		worksheet.write('B6', "Penjualan", formatBiasa)
+		
+		#~ //select penjualan
+		sql = "SELECT year(tanggal) as tahun,month(tanggal) as bulan,`"+self.dbDatabase+"`.gd_rekening_jurnal.namaAkun,`"+self.dbDatabase+"`.`gd_buku_besar`.noAkun,kodeTransaksi,SUM(debit) as debit,SUM(kredit) as kredit FROM `"+self.dbDatabase+"`.`gd_buku_besar` JOIN `"+self.dbDatabase+"`.gd_rekening_jurnal ON `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun LIKE `"+self.dbDatabase+"`.gd_rekening_jurnal.noAkun  WHERE `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun BETWEEN '4100%' AND '4999%' AND month(tanggal) = 2 GROUP BY noAkun,month(tanggal)"
+		
+		result = self.DatabaseRunQuery(sql)
+		
+		worksheet.write('B7', "Penjualan Produk", formatSubBiasa)
+		for x in range(0,len(result)):
+			index = x+1+7
+			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][3], formatBiasa)
+			worksheet.merge_range('D'+str(index)+':G'+str(index), result[x][2], formatBiasa)
+			worksheet.merge_range('H'+str(index)+':I'+str(index), result[x][6], formatBiasa)
+		worksheet.merge_range('B'+str(index+1)+':G'+str(index+1),"TOTAL : ",formatBiasa)
+		
+		if(len(result)>0):
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "=SUM(H6:I"+str(index)+")", formatBiasa)
+		else:	
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "0", formatBiasa)
+		idxPenjualan = 'H'+str(index+1)
+			
+		index=index+3	
+		awal=index+2
+		worksheet.write('B'+str(index), "Biaya atas Pendapatan", formatSubBiasa)
+		
+		#//select biaya Pendapatan
+		sql = "SELECT year(tanggal) as tahun,month(tanggal) as bulan,`"+self.dbDatabase+"`.gd_rekening_jurnal.namaAkun,`"+self.dbDatabase+"`.`gd_buku_besar`.noAkun,kodeTransaksi,SUM(debit) as debit,SUM(kredit) as kredit FROM `"+self.dbDatabase+"`.`gd_buku_besar` JOIN `"+self.dbDatabase+"`.gd_rekening_jurnal ON `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun LIKE `"+self.dbDatabase+"`.gd_rekening_jurnal.noAkun  WHERE `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun BETWEEN '5100%' AND '5999%' AND tanggal BETWEEN '"+tanggalAwal+"' AND '"+tanggalAkhir+"' GROUP BY noAkun,month(tanggal)"
+		print sql
+		result = self.DatabaseRunQuery(sql)
+		
+		worksheet.write('B'+str(index+1), "Biaya Produksi", formatBiasa)
+		for x in range(0,len(result)):
+			index = x+awal
+			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][3], formatBiasa)
+			worksheet.merge_range('D'+str(index)+':G'+str(index), result[x][2], formatBiasa)
+			worksheet.merge_range('H'+str(index)+':I'+str(index), result[x][6], formatBiasa)
+				
+		if(len(result)>0):
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "=SUM(H"+str(awal)+":I"+str(index)+")", formatBiasa)
+		else:	
+			index+=1
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "0", formatBiasa)
+		worksheet.merge_range('B'+str(index+1)+':G'+str(index+1),"TOTAL : ",formatBiasa);
+		idxProduksi = 'H'+str(index+1)
+			
+			
+			
+		index=index+3	
+		awal=index+2
+		worksheet.write('B'+str(index), "Pengeluaran Operasional", formatSubBiasa)
+		
+		#//select biaya operasional
+		sql = "SELECT year(tanggal) as tahun,month(tanggal) as bulan,`"+self.dbDatabase+"`.gd_rekening_jurnal.namaAkun,`"+self.dbDatabase+"`.`gd_buku_besar`.noAkun,kodeTransaksi,SUM(debit) as debit,SUM(kredit) as kredit FROM `"+self.dbDatabase+"`.`gd_buku_besar` JOIN `"+self.dbDatabase+"`.gd_rekening_jurnal ON `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun LIKE `"+self.dbDatabase+"`.gd_rekening_jurnal.noAkun  WHERE `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun BETWEEN '6100%' AND '6599%' AND tanggal BETWEEN '"+tanggalAwal+"' AND '"+tanggalAkhir+"' GROUP BY noAkun,month(tanggal)"
+		
+		result = self.DatabaseRunQuery(sql)
+		
+		worksheet.write('B'+str(index+1), "Biaya Operasional", formatBiasa)
+		for x in range(0,len(result)):
+			index = x+awal
+			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][3], formatBiasa)
+			worksheet.merge_range('D'+str(index)+':G'+str(index), result[x][2], formatBiasa)
+			worksheet.merge_range('H'+str(index)+':I'+str(index), result[x][6], formatBiasa)
+				
+		if(len(result)>0):
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "=SUM(H"+str(awal)+":I"+str(index)+")", formatBiasa)
+		else:	
+			index+=1
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "0", formatBiasa)
+		worksheet.merge_range('B'+str(index+1)+':G'+str(index+1),"TOTAL : ",formatBiasa);
+		idxOperasional = 'H'+str(index+1)
+			
+			
+			
+		index=index+3	
+		awal=index+2
+		worksheet.write('B'+str(index), "Pendapatan Lain", formatSubBiasa)
+		
+		#//select Pendapatan Lain2
+		sql = "SELECT year(tanggal) as tahun,month(tanggal) as bulan,`"+self.dbDatabase+"`.gd_rekening_jurnal.namaAkun,`"+self.dbDatabase+"`.`gd_buku_besar`.noAkun,kodeTransaksi,SUM(debit) as debit,SUM(kredit) as kredit FROM `"+self.dbDatabase+"`.`gd_buku_besar` JOIN `"+self.dbDatabase+"`.gd_rekening_jurnal ON `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun LIKE `"+self.dbDatabase+"`.gd_rekening_jurnal.noAkun  WHERE `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun BETWEEN '7100%' AND '7599%' AND tanggal BETWEEN '"+tanggalAwal+"' AND '"+tanggalAkhir+"' GROUP BY noAkun,month(tanggal)"
+		
+		result = self.DatabaseRunQuery(sql)
+		
+		worksheet.write('B'+str(index+1), "Biaya Operasional", formatBiasa)
+		for x in range(0,len(result)):
+			index = x+awal
+			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][3], formatBiasa)
+			worksheet.merge_range('D'+str(index)+':G'+str(index), result[x][2], formatBiasa)
+			worksheet.merge_range('H'+str(index)+':I'+str(index), result[x][6], formatBiasa)
+				
+		if(len(result)>0):
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "=SUM(H"+str(awal)+":I"+str(index)+")", formatBiasa)
+		else:	
+			index+=1
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "0", formatBiasa)
+		worksheet.merge_range('B'+str(index+1)+':G'+str(index+1),"TOTAL : ",formatBiasa);
+		idxPendapatanLain = 'H'+str(index+1)
+			
+			
+		index=index+3	
+		awal=index+2
+		worksheet.write('B'+str(index), "Pengeluaran Lain", formatSubBiasa)
+		
+		#//select pengeluaran lain
+		sql = "SELECT year(tanggal) as tahun,month(tanggal) as bulan,`"+self.dbDatabase+"`.gd_rekening_jurnal.namaAkun,`"+self.dbDatabase+"`.`gd_buku_besar`.noAkun,kodeTransaksi,SUM(debit) as debit,SUM(kredit) as kredit FROM `"+self.dbDatabase+"`.`gd_buku_besar` JOIN `"+self.dbDatabase+"`.gd_rekening_jurnal ON `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun LIKE `"+self.dbDatabase+"`.gd_rekening_jurnal.noAkun  WHERE `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun BETWEEN '7600%' AND '7999%' AND tanggal BETWEEN '"+tanggalAwal+"' AND '"+tanggalAkhir+"' GROUP BY noAkun,month(tanggal)"
+		
+		result = self.DatabaseRunQuery(sql)
+		
+		worksheet.write('B'+str(index+1), "Pengeluaran  Lain", formatBiasa)
+		for x in range(0,len(result)):
+			index = x+awal
+			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][3], formatBiasa)
+			worksheet.merge_range('D'+str(index)+':G'+str(index), result[x][2], formatBiasa)
+			worksheet.merge_range('H'+str(index)+':I'+str(index), result[x][6], formatBiasa)
+				
+		if(len(result)>0):
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "=SUM(H"+str(awal)+":I"+str(index)+")", formatBiasa)
+		else:	
+			index+=1
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "0", formatBiasa)
+		worksheet.merge_range('B'+str(index+1)+':G'+str(index+1),"TOTAL : ",formatBiasa);
+		idxPengeluaranLain = 'H'+str(index+1)	
+				
+		worksheet.merge_range('B'+str(index+3)+':G'+str(index+3),"LABA RUGI KOTOR : ",formatBiasa);
+		worksheet.merge_range('H'+str(index+3)+':I'+str(index+3),"="+idxPenjualan+"-"+idxProduksi,formatBiasa);
+				
+		worksheet.merge_range('B'+str(index+4)+':G'+str(index+4),"LABA RUGI OPERASIONAL : ",formatBiasa);
+		worksheet.merge_range('H'+str(index+4)+':I'+str(index+4),"="+idxOperasional,formatBiasa);
+				
+		worksheet.merge_range('B'+str(index+5)+':G'+str(index+5),"LABA RUGI OPERASIONAL : ",formatBiasa);
+		worksheet.merge_range('H'+str(index+5)+':I'+str(index+5),"=("+idxPenjualan+"+"+idxPendapatanLain+")-"+idxProduksi+"-"+idxPengeluaranLain,formatBiasa);
+				
+		workbook.close()
+		return
+		
+	def Laporan_Neraca(self,tanggalAwal,tanggalAkhir):
+		
+		workbook = xlsxwriter.Workbook('LaporanNeraca.xlsx')
+		worksheet = workbook.add_worksheet()
+		
+		formatJudul = workbook.add_format({'align': 'center',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'bold':'true',
+										   'font_size':'17'})
+										   
+		formatSubJudul = workbook.add_format({'align': 'center',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'font_size':'15'})
+
+		formatNoTgl = workbook.add_format({'align': 'center',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'font_size':'12'})
+
+		formatBeriTerima = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'left':0,
+										   'font_size':'12'})
+
+		formatBeriTerimaKpd = workbook.add_format({'align': 'left',
+										   'right':0,
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'font_size':'12'})
+
+		formatBiasa = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'font_size':'12'})
+
+		formatSubBiasa = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'bold':'true',
+										   'font_size':'12'})
+
+		formatTotal = workbook.add_format({'align': 'right',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'font_size':'12'})
+
+		formatTerbilang = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'right':0,
+										   'font_size':'12'})
+
+		formatAngkaTerbilang = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'left':0,
+										   'font_size':'12'})
+
+		formatJudulTandaTangan = workbook.add_format({'align': 'center',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'bold':'true',
+										   'font_size':'12'})
+		
+		# We can only write simple types to merged ranges so we write a blank string.
+		worksheet.merge_range('B2:I2', "LAPORAN", formatJudul)
+
+		worksheet.set_column(1,9,8)
+		worksheet.set_column(2,9,8)
+
+		worksheet.merge_range('B3:I3', "NERACA STANDAR", formatSubJudul)
+		worksheet.merge_range('B4:I4', "PERIODE "+datetime.strptime(tanggalAwal,"%Y-%m-%d").strftime("%d %B %Y")+" - "+datetime.strptime(tanggalAkhir,"%Y-%m-%d").strftime("%d %B %Y"), formatNoTgl)
+		
+		worksheet.write('B6', "Harta", formatSubBiasa)
+		
+		#~ //select Harta
+		sql = "SELECT year(tanggal) as tahun,month(tanggal) as bulan,`"+self.dbDatabase+"`.gd_rekening_jurnal.namaAkun,`"+self.dbDatabase+"`.`gd_buku_besar`.noAkun,kodeTransaksi,SUM(debit) as debit,SUM(kredit) as kredit FROM `"+self.dbDatabase+"`.`gd_buku_besar` JOIN `"+self.dbDatabase+"`.gd_rekening_jurnal ON `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun LIKE `"+self.dbDatabase+"`.gd_rekening_jurnal.noAkun  WHERE `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun BETWEEN '1100%' AND '1999%' AND month(tanggal) = 2 GROUP BY noAkun,month(tanggal)"
+		
+		result = self.DatabaseRunQuery(sql)
+		
+		for x in range(0,len(result)):
+			index = x+1+7
+			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][3], formatBiasa)
+			worksheet.merge_range('D'+str(index)+':G'+str(index), result[x][2], formatBiasa)
+			worksheet.merge_range('H'+str(index)+':I'+str(index), result[x][5]-result[x][6], formatBiasa)
+		worksheet.merge_range('B'+str(index+1)+':G'+str(index+1),"TOTAL : ",formatBiasa)
+		
+		if(len(result)>0):
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "=SUM(H6:I"+str(index)+")", formatBiasa)
+		else:	
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "0", formatBiasa)
+		idxHarta = 'H'+str(index+1)
+			
+			
+		index=index+3	
+		awal=index+2
+		worksheet.write('B'+str(index), "Kewajiban", formatSubBiasa)
+		
+		#//select Kewajiban
+		sql = "SELECT year(tanggal) as tahun,month(tanggal) as bulan,`"+self.dbDatabase+"`.gd_rekening_jurnal.namaAkun,`"+self.dbDatabase+"`.`gd_buku_besar`.noAkun,kodeTransaksi,SUM(debit) as debit,SUM(kredit) as kredit FROM `"+self.dbDatabase+"`.`gd_buku_besar` JOIN `"+self.dbDatabase+"`.gd_rekening_jurnal ON `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun LIKE `"+self.dbDatabase+"`.gd_rekening_jurnal.noAkun  WHERE `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun BETWEEN '2100%' AND '2999%' AND tanggal BETWEEN '"+tanggalAwal+"' AND '"+tanggalAkhir+"' GROUP BY noAkun,month(tanggal)"
+		print sql
+		result = self.DatabaseRunQuery(sql)
+		
+		for x in range(0,len(result)):
+			index = x+awal
+			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][3], formatBiasa)
+			worksheet.merge_range('D'+str(index)+':G'+str(index), result[x][2], formatBiasa)
+			worksheet.merge_range('H'+str(index)+':I'+str(index), result[x][5]-result[x][6], formatBiasa)
+				
+		if(len(result)>0):
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "=SUM(H"+str(awal)+":I"+str(index)+")", formatBiasa)
+		else:	
+			index+=1
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "0", formatBiasa)
+		worksheet.merge_range('B'+str(index+1)+':G'+str(index+1),"TOTAL : ",formatBiasa);
+		idxKewajiban = 'H'+str(index+1)
+			
+			
+		index=index+3	
+		awal=index+2
+		worksheet.write('B'+str(index), "Modal", formatSubBiasa)
+		
+		#//select Modal
+		sql = "SELECT year(tanggal) as tahun,month(tanggal) as bulan,`"+self.dbDatabase+"`.gd_rekening_jurnal.namaAkun,`"+self.dbDatabase+"`.`gd_buku_besar`.noAkun,kodeTransaksi,SUM(debit) as debit,SUM(kredit) as kredit FROM `"+self.dbDatabase+"`.`gd_buku_besar` JOIN `"+self.dbDatabase+"`.gd_rekening_jurnal ON `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun LIKE `"+self.dbDatabase+"`.gd_rekening_jurnal.noAkun  WHERE `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun BETWEEN '3100%' AND '3999%' AND tanggal BETWEEN '"+tanggalAwal+"' AND '"+tanggalAkhir+"' GROUP BY noAkun,month(tanggal)"
+		print sql
+		result = self.DatabaseRunQuery(sql)
+		
+		for x in range(0,len(result)):
+			index = x+awal
+			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][3], formatBiasa)
+			worksheet.merge_range('D'+str(index)+':G'+str(index), result[x][2], formatBiasa)
+			worksheet.merge_range('H'+str(index)+':I'+str(index), result[x][5]-result[x][6], formatBiasa)
+				
+		if(len(result)>0):
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "=SUM(H"+str(awal)+":I"+str(index)+")", formatBiasa)
+		else:	
+			index+=1
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "0", formatBiasa)
+		worksheet.merge_range('B'+str(index+1)+':G'+str(index+1),"TOTAL : ",formatBiasa);
+		idxModal = 'H'+str(index+1)
+			
+		worksheet.merge_range('B'+str(index+3)+':G'+str(index+3),"TOTAL HARTA : ",formatBiasa);
+		worksheet.merge_range('H'+str(index+3)+':I'+str(index+3),"="+idxHarta,formatBiasa);
+				
+		worksheet.merge_range('B'+str(index+4)+':G'+str(index+4),"TOTAL KEWAJIBAN DAN MODAL : ",formatBiasa);
+		worksheet.merge_range('H'+str(index+4)+':I'+str(index+4),"="+idxKewajiban+"+"+idxModal,formatBiasa);
+							
+		workbook.close()
+		return
+		

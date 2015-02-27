@@ -4,3 +4,16 @@
 Njemput
 ============
 Contact goodel.akunting@gmail.com
+
+Bug:
+* -issue issues
+
+Featured:
+* updater
+
+Doing:
+* admin user edit
+
+Just done/Ready to check:
+* Installer
+* Menu Buat Database

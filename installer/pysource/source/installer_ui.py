@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'installer_ui.ui'
 #
-# Created: Mon Feb 09 16:09:14 2015
+# Created: Wed Feb 25 09:10:11 2015
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -43,14 +43,22 @@ class Ui_MainWindow(object):
         self.frame_2.setObjectName(_fromUtf8("frame_2"))
         self.gridLayout_2 = QtGui.QGridLayout(self.frame_2)
         self.gridLayout_2.setObjectName(_fromUtf8("gridLayout_2"))
+        self.te_Lisensi = QtGui.QTextEdit(self.frame_2)
+        self.te_Lisensi.setStyleSheet(_fromUtf8("QTextEdit{\n"
+"    background:white;\n"
+"\n"
+"}"))
+        self.te_Lisensi.setReadOnly(True)
+        self.te_Lisensi.setObjectName(_fromUtf8("te_Lisensi"))
+        self.gridLayout_2.addWidget(self.te_Lisensi, 0, 0, 1, 3)
         self.tb_Install = QtGui.QPushButton(self.frame_2)
         self.tb_Install.setObjectName(_fromUtf8("tb_Install"))
-        self.gridLayout_2.addWidget(self.tb_Install, 2, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.tb_Install, 4, 1, 1, 1)
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.gridLayout_2.addItem(spacerItem, 2, 0, 1, 1)
+        self.gridLayout_2.addItem(spacerItem, 4, 0, 1, 1)
         self.tb_Quit = QtGui.QPushButton(self.frame_2)
         self.tb_Quit.setObjectName(_fromUtf8("tb_Quit"))
-        self.gridLayout_2.addWidget(self.tb_Quit, 2, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.tb_Quit, 4, 2, 1, 1)
         self.frame = QtGui.QFrame(self.frame_2)
         self.frame.setMinimumSize(QtCore.QSize(300, 0))
         self.frame.setFrameShape(QtGui.QFrame.StyledPanel)
@@ -64,10 +72,13 @@ class Ui_MainWindow(object):
         self.tb_Browse = QtGui.QPushButton(self.frame)
         self.tb_Browse.setObjectName(_fromUtf8("tb_Browse"))
         self.horizontalLayout.addWidget(self.tb_Browse)
-        self.gridLayout_2.addWidget(self.frame, 1, 0, 1, 3)
+        self.gridLayout_2.addWidget(self.frame, 3, 0, 1, 3)
         self.lb_Judul = QtGui.QLabel(self.frame_2)
         self.lb_Judul.setObjectName(_fromUtf8("lb_Judul"))
-        self.gridLayout_2.addWidget(self.lb_Judul, 0, 0, 1, 3)
+        self.gridLayout_2.addWidget(self.lb_Judul, 2, 0, 1, 3)
+        self.tb_Lisensi = QtGui.QToolButton(self.frame_2)
+        self.tb_Lisensi.setObjectName(_fromUtf8("tb_Lisensi"))
+        self.gridLayout_2.addWidget(self.tb_Lisensi, 1, 0, 1, 2)
         self.gridLayout_3.addWidget(self.frame_2, 1, 1, 1, 1)
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.gridLayout_3.addItem(spacerItem1, 1, 2, 1, 1)
@@ -186,18 +197,19 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusBar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Garvin Accounting- Install", None))
         self.tb_Install.setText(_translate("MainWindow", "Install", None))
         self.tb_Quit.setText(_translate("MainWindow", "Quit", None))
         self.tb_Browse.setText(_translate("MainWindow", "Browse", None))
         self.lb_Judul.setText(_translate("MainWindow", "-   Install directory:", None))
-        self.tb_InstallBin_Next.setText(_translate("MainWindow", "Next", None))
+        self.tb_Lisensi.setText(_translate("MainWindow", "License Agreement", None))
+        self.tb_InstallBin_Next.setText(_translate("MainWindow", "Finish", None))
         self.lb_InstallBin_Judul.setText(_translate("MainWindow", "Menginstall Garvin Accounting", None))
-        self.tb_Popup_Cancel.setText(_translate("MainWindow", "CANCEL", None))
-        self.tb_Popup_Ok.setText(_translate("MainWindow", "YES", None))
+        self.tb_Popup_Cancel.setText(_translate("MainWindow", "Cancel", None))
+        self.tb_Popup_Ok.setText(_translate("MainWindow", "Yes", None))
         self.lb_Popup_Text.setText(_translate("MainWindow", "TextLabel", None))
 
