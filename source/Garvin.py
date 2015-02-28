@@ -59,7 +59,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		
 		
 		#--- check if garvin is recent version
-		#~ self.GarvinCheckIsUpdated()
+		self.GarvinCheckIsUpdated()
 	
 	def GarvinInit(self):
 		#-- init dipindah disini, karena dipanggil setelah berhasil login (set database dsb) di fungsi self.Login_Done
