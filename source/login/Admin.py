@@ -51,8 +51,11 @@ class Admin(object):
 	
 	def __exit__(self):
 		self.si_om.tab_Admin.close()
-		self.si_om.tabWidget.removeTab(5) #-- soft code this parameter so that it will make sure which tab is removed??
+		self.si_om.tabWidget.removeTab(self.si_om.tabWidget.count()-1) #-- soft code this parameter so that it will make sure which tab is removed??
 
+	
+	def Menu(self):
+		self.Goto("MENU")
 	
 	def ListUser(self):
 		self.Goto("List User")
@@ -69,6 +72,8 @@ class Admin(object):
 		self.UI.tbl_ListUser_List.setColumnWidth(0,300)
 		self.UI.tbl_ListUser_List.setColumnWidth(1,100)
 		#~ self.UI.tbl_ListUser_List.setColumnWidth(2,100)
+		self.si_om.GarvinDisconnect(self.UI.tb_Users_Tutup.clicked)
+		self.UI.tb_Users_Tutup.clicked.connect(self.Menu)
 		
 		
 		def setactiveindex(row,column):
@@ -121,6 +126,9 @@ class Admin(object):
 		
 	def ListUser_Tambah(self,edit=False):
 		self.Goto("TAMBAH USER")
+		self.si_om.GarvinDisconnect(self.UI.tb_Users_Tambah_Tutup.clicked)
+		self.UI.tb_Users_Tambah_Tutup.clicked.connect(self.ListUser)
+		
 		self.si_om.GarvinDisconnect(self.UI.tb_Users_Tambah_Simpan.clicked)
 		if (not edit):
 			self.UI.le_Users_Tambah_Username.clear()
@@ -136,7 +144,7 @@ class Admin(object):
 			self.UI.chk_Users_Tambah_EditPassword.show()
 			self.UI.le_Users_Tambah_Password.setReadOnly(True)
 			self.UI.le_Users_Tambah_Password_Confirm.setReadOnly(True)
-			self.GarvinDisconnect(self.UI.chk_Users_Tambah_EditPassword.stateChanged)
+			self.si_om.GarvinDisconnect(self.UI.chk_Users_Tambah_EditPassword.stateChanged)
 			self.UI.chk_Users_Tambah_EditPassword.stateChanged.connect(self.ListUser_Edit_EditPassword)
 			self.UI.tb_Users_Tambah_Simpan.clicked.connect(self.ListUser_Edit_Act_Simpan)
 		
@@ -152,12 +160,16 @@ class Admin(object):
 	def ListUser_Edit_Act_Simpan(self):
 		username = str(self.UI.le_Users_Tambah_Username.text())
 		priviledge = str(self.UI.cb_Users_Tambah_Priviledge.currentIndex())
-		password = str(self.UI.le_Users_Tambah_Password.text())
-		if password==str(self.UI.le_Users_Tambah_Password_Confirm.text()):
-			password = self.si_om.Login_Login_HashPassword(username,password)
-			self.si_om.DatabaseInsertReplace(self.si_om.dbDatabase,"gd_user","username",username,["username","password","level"],[username,password,priviledge])
+		if (self.UI.le_Users_Tambah_Password.isReadOnly()):
+			self.si_om.DatabaseInsertReplace(self.si_om.dbDatabase,"gd_user","username",username,["username","level"],[username,priviledge])
 			self.ListUser()
-		else:pass
+		else:
+			password = str(self.UI.le_Users_Tambah_Password.text())
+			if password==str(self.UI.le_Users_Tambah_Password_Confirm.text()):
+				password = self.si_om.Login_Login_HashPassword(username,password)
+				self.si_om.DatabaseInsertReplace(self.si_om.dbDatabase,"gd_user","username",username,["username","password","level"],[username,password,priviledge])
+				self.ListUser()
+			else:pass
 	
 	#~ def ListUser_Edit(self):
 		
