@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'installer_ui.ui'
 #
-# Created: Tue Feb 24 21:24:39 2015
+# Created: Wed Feb 25 09:10:11 2015
 #      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -197,7 +197,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusBar)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -207,7 +207,7 @@ class Ui_MainWindow(object):
         self.tb_Browse.setText(_translate("MainWindow", "Browse", None))
         self.lb_Judul.setText(_translate("MainWindow", "-   Install directory:", None))
         self.tb_Lisensi.setText(_translate("MainWindow", "License Agreement", None))
-        self.tb_InstallBin_Next.setText(_translate("MainWindow", "Next", None))
+        self.tb_InstallBin_Next.setText(_translate("MainWindow", "Finish", None))
         self.lb_InstallBin_Judul.setText(_translate("MainWindow", "Menginstall Garvin Accounting", None))
         self.tb_Popup_Cancel.setText(_translate("MainWindow", "Cancel", None))
         self.tb_Popup_Ok.setText(_translate("MainWindow", "Yes", None))
