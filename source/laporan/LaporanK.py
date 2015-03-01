@@ -1200,3 +1200,118 @@ class Laporan(object):
 		workbook.close()
 		return
 		
+	def Laporan_KasHarian(self,noAkun,tanggalAwal,tanggalAkhir):
+		
+		workbook = xlsxwriter.Workbook('LaporanKasHarian.xlsx')
+		worksheet = workbook.add_worksheet()
+		
+		formatJudul = workbook.add_format({'align': 'center',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'bold':'true',
+										   'font_size':'17'})
+										   
+		formatSubJudul = workbook.add_format({'align': 'center',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'font_size':'15'})
+
+		formatNoTgl = workbook.add_format({'align': 'center',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'font_size':'12'})
+
+		formatBeriTerima = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'left':0,
+										   'font_size':'12'})
+
+		formatBeriTerimaKpd = workbook.add_format({'align': 'left',
+										   'right':0,
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'font_size':'12'})
+
+		formatBiasa = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'font_size':'12'})
+
+		formatSubBiasa = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'bold':'true',
+										   'font_size':'12'})
+
+		formatTotal = workbook.add_format({'align': 'right',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'font_size':'12'})
+
+		formatTerbilang = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'right':0,
+										   'font_size':'12'})
+
+		formatAngkaTerbilang = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'left':0,
+										   'font_size':'12'})
+
+		formatJudulTandaTangan = workbook.add_format({'align': 'center',
+										   'valign': 'vcenter',
+										   'border': 1,
+										   'bold':'true',
+										   'font_size':'12'})
+		
+		# We can only write simple types to merged ranges so we write a blank string.
+		worksheet.merge_range('B2:J2', "LAPORAN KAS HARIAN", formatJudul)
+
+		worksheet.set_column(1,1,4)
+		worksheet.set_column(2,12,8)
+		worksheet.set_column(4,4,25)
+
+		worksheet.merge_range('B4:J4', "PERIODE "+datetime.strptime(tanggalAwal,"%Y-%m-%d").strftime("%d %B %Y")+" - "+datetime.strptime(tanggalAkhir,"%Y-%m-%d").strftime("%d %B %Y"), formatNoTgl)
+		
+		#~ //select akun kas
+		sql = "SELECT tanggal,`"+self.dbDatabase+"`.gd_rekening_jurnal.namaAkun,`"+self.dbDatabase+"`.`gd_buku_besar`.noAkun,kodeTransaksi,SUM(debit) as debit,SUM(kredit) as kredit FROM `"+self.dbDatabase+"`.`gd_buku_besar` JOIN `"+self.dbDatabase+"`.gd_rekening_jurnal ON `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun LIKE `"+self.dbDatabase+"`.gd_rekening_jurnal.noAkun  WHERE `"+self.dbDatabase+"`.`gd_buku_besar`.noAkun LIKE "+noAkun
+		
+		result = self.DatabaseRunQuery(sql)
+		worksheet.write("B7","No",formatBiasa);
+		worksheet.write("C7","Tanggal",formatBiasa);
+		worksheet.write("D7","No Referensi",formatBiasa);
+		worksheet.write("E7","Keterangan",formatBiasa);
+		worksheet.write("F7","No Akun Perk.",formatBiasa);
+		worksheet.write("G7","Debit",formatBiasa);
+		worksheet.write("H7","Kredit",formatBiasa);
+		for x in range(0,len(result)):
+			index = x+1+7
+			
+			if(x==0):
+				worksheet.merge_range('B3:J3', result[x][2]+" - "+result[x][1], formatSubJudul)
+			
+			kode = result[x][3]
+			if(kode.find('KM')>=0):
+				cat = "SELECT catatan FROM `gd_kas_masuk` WHERE kodeTransaksi LIKE '"+result[x][3]+"'"
+				print  cat
+				resultCat = self.DatabaseRunQuery(cat)
+				worksheet.write('E'+str(index),resultCat[0][0], formatBiasa)
+				
+			worksheet.write("B"+str(index),str(x+1),formatBiasa);
+			worksheet.write("C"+str(index),result[x][0].strftime("%d-%m-%Y"),formatBiasa);
+			worksheet.write('D'+str(index),result[x][3], formatBiasa)
+			worksheet.write('F'+str(index),result[x][2], formatBiasa)
+			worksheet.write('G'+str(index),result[x][4], formatBiasa)
+			worksheet.write('H'+str(index),result[x][5], formatBiasa)
+		
+		if(len(result)>0):
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "=SUM(H6:I"+str(index)+")", formatBiasa)
+		else:	
+			worksheet.merge_range('H'+str(index+1)+':I'+str(index+1), "0", formatBiasa)
+		idxHarta = 'H'+str(index+1)
+										
+		workbook.close()
+		return
