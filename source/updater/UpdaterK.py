@@ -69,6 +69,12 @@ class Updater(object):
 			if versigarvin[x]>versiini[x]:
 				todownload.append(component[x]+str(versigarvin[x])+".grvz")
 				downloadcmd.append(serverprefix+str(versigarvin[x])+"/"+todownload[-1])
-				
-		print todownload
+		
+		pesantext = "Modul berikut perlu di update:\n"
+		for moduldownload in todownload:
+			pesantext += "\t"+moduldownload+"\n"
+		pesantext += "Download update sekarang?"
+		self.DataMaster_Popup(pesantext)
+		
+		print "Updater sejatinya akan mendownload dan mengupdate modul berikut: "
 		print downloadcmd
