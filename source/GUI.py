@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Tue Mar  3 17:04:41 2015
+# Created: Tue Mar  3 17:23:21 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -4889,10 +4889,10 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
         self.st_DataMaster.setCurrentIndex(0)
-        self.st_Penjualan.setCurrentIndex(11)
-        self.st_Pembelian.setCurrentIndex(8)
+        self.st_Penjualan.setCurrentIndex(8)
+        self.st_Pembelian.setCurrentIndex(5)
         self.st_BukuBesar.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -5198,7 +5198,7 @@ class Ui_MainWindow(object):
         item = self.tbl_Penjualan_Piutang.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Pelanggan", None))
         item = self.tbl_Penjualan_Piutang.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "Kurs", None))
+        item.setText(_translate("MainWindow", "Nama", None))
         item = self.tbl_Penjualan_Piutang.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Debet", None))
         item = self.tbl_Penjualan_Piutang.horizontalHeaderItem(3)
@@ -5357,7 +5357,7 @@ class Ui_MainWindow(object):
         item = self.tbl_Pembelian_HutangUsaha.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Vendor", None))
         item = self.tbl_Pembelian_HutangUsaha.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "Kurs", None))
+        item.setText(_translate("MainWindow", "Nama", None))
         item = self.tbl_Pembelian_HutangUsaha.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Debet", None))
         item = self.tbl_Pembelian_HutangUsaha.horizontalHeaderItem(3)
