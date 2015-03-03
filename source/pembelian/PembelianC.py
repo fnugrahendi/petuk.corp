@@ -51,6 +51,7 @@ class Pembelian(object):
 		self.tb_Pembelian_HutangUsaha_Tutup.clicked.connect(self.Pembelian_GoTo_Menu)
 		self.tb_Pembelian_HutangUsaha_Perincian.clicked.connect(self.Pembelian_GoTo_HutangUsaha_Rincian)
 		self.tb_Pembelian_RincianHutang_Tutup.clicked.connect(self.Pembelian_GoTo_HutangUsaha)
+		self.tbl_Pembelian_HutangUsaha.cellDoubleClicked.connect(self.Pembelian_GoTo_HutangUsaha_Rincian)
 		
 		#Tombol pada Pembayaran Hutang
 		
@@ -314,14 +315,15 @@ class Pembelian(object):
 		if jumlahRow != 0:
 			for x in range (0,jumlahRow+1):
 				self.tbl_Pembelian_HutangUsaha.removeRow(x)
+		self.tbl_Pembelian_HutangUsaha.setRowCount(0)
 		query = "SELECT * FROM `gd_pembelian_barang` GROUP BY `kodeVendor`"
 		data = self.DatabaseRunQuery(query)
 		querytotal = "SELECT  SUM(`totalHarga`) FROM `gd_pembelian_barang` GROUP BY `kodeVendor`"
 		result = self.DatabaseRunQuery(querytotal)
-		for a in range (0,len(result)):
+		for a in range (0,len(data)):
 			kodePelanggan = str(data[a][4])
-			print data
-			print kodePelanggan
+			#print data
+			#print kodePelanggan
 			query = "SELECT * FROM `gd_nama_alamat` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"'"
 			nama = str(self.DatabaseRunQuery(query)[0][2])
 			totalHutang = str(int(result[a][0]))
@@ -345,6 +347,7 @@ class Pembelian(object):
 		self.tbl_Pembelian_RincianHutang.setRowCount(0)
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_HUTANG_RINCIAN)
 		self.lb_Pembelian_RincianHutang_Title_Nama.setText(nama)
+		self.lb_Pembelian_RincianHutang_Title_Kurs.setText("(IDR)")
 		query = "SELECT * FROM `gd_pembelian_barang` WHERE `kodeVendor` LIKE '"+kodePelanggan+"' GROUP BY `noInvoice`"
 		result = self.DatabaseRunQuery(query)
 		for a in range (0,len(result)):
