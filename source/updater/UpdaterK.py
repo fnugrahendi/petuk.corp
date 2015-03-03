@@ -10,7 +10,6 @@ class Updater(object):
 		pass
 		
 	def GarvinCheckIsUpdated(self):
-		#-- deteksi 64 bit ataukah 32 bit
 		wget = "wget"
 		if ("win" in sys.platform):#-- bila windows ada nih
 			wget = self.BasePath+"downloader/wget_win/wget.exe"
@@ -34,7 +33,6 @@ class Updater(object):
 		f.close()
 		
 	def Updater_Download(self):
-		#-- deteksi 64 bit ataukah 32 bit
 		wget = "wget"
 		if ("win" in sys.platform):#-- bila windows ada nih
 			wget = self.BasePath+"downloader/wget_win/wget.exe"
