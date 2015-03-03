@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1196</width>
+    <width>1264</width>
     <height>637</height>
    </rect>
   </property>
@@ -44,7 +44,7 @@ QTableWidget{border-width:1px;border-color:rgb(0, 0, 0);border-style:solid;borde
     <item row="0" column="0">
      <widget class="QFrame" name="fr_MainWindow">
       <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
+       <enum>QFrame::NoFrame</enum>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
@@ -59,8 +59,7 @@ QTableWidget{border-width:1px;border-color:rgb(0, 0, 0);border-style:solid;borde
           </sizepolicy>
          </property>
          <property name="styleSheet">
-          <string notr="true">
-QTabWidget::tab-bar {
+          <string notr="true">QTabWidget::tab-bar {
 left: 15px;
 }
 QTabBar::tab 
@@ -115,6 +114,17 @@ margin-top: 2px;
           <number>0</number>
          </property>
          <widget class="QWidget" name="tab_DataMaster">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background: rgb(255,255,255);
+border: 0px;
+</string>
+          </property>
           <attribute name="title">
            <string>Data Master</string>
           </attribute>
@@ -125,6 +135,7 @@ margin-top: 2px;
               <string notr="true">QFrame{
 	border-style:none;
 	border-width:0px;
+    background: rgb(255,255,255);
 	}</string>
              </property>
              <property name="currentIndex">
@@ -256,16 +267,7 @@ background-image: url(&quot;../data/datamaster_menu/nama_alamat1.png&quot;);
                <property name="spacing">
                 <number>1</number>
                </property>
-               <property name="leftMargin">
-                <number>2</number>
-               </property>
-               <property name="topMargin">
-                <number>2</number>
-               </property>
-               <property name="rightMargin">
-                <number>2</number>
-               </property>
-               <property name="bottomMargin">
+               <property name="margin">
                 <number>2</number>
                </property>
                <item>
@@ -330,16 +332,7 @@ background-image: url(&quot;../data/datamaster_menu/nama_alamat1.png&quot;);
                   <property name="spacing">
                    <number>2</number>
                   </property>
-                  <property name="leftMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="bottomMargin">
+                  <property name="margin">
                    <number>1</number>
                   </property>
                   <item>
@@ -478,16 +471,7 @@ QPushButton::hover{
                      <property name="spacing">
                       <number>2</number>
                      </property>
-                     <property name="leftMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="bottomMargin">
+                     <property name="margin">
                       <number>1</number>
                      </property>
                      <item>
@@ -550,16 +534,7 @@ QPushButton::hover{
                         <property name="spacing">
                          <number>2</number>
                         </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
+                        <property name="margin">
                          <number>1</number>
                         </property>
                         <item>
@@ -697,16 +672,7 @@ QPushButton::hover{
                <property name="spacing">
                 <number>0</number>
                </property>
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
+               <property name="margin">
                 <number>0</number>
                </property>
                <item>
@@ -730,16 +696,7 @@ QPushButton::hover{
                   <property name="spacing">
                    <number>2</number>
                   </property>
-                  <property name="leftMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="bottomMargin">
+                  <property name="margin">
                    <number>1</number>
                   </property>
                   <item>
@@ -883,7 +840,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>22</height>
+                         <height>20</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -972,7 +929,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>22</height>
+                         <height>20</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1004,7 +961,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>22</height>
+                         <height>20</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1082,7 +1039,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>150</width>
-                         <height>22</height>
+                         <height>20</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1270,16 +1227,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                <property name="spacing">
                 <number>0</number>
                </property>
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
+               <property name="margin">
                 <number>0</number>
                </property>
                <item>
@@ -1303,16 +1251,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                   <property name="spacing">
                    <number>2</number>
                   </property>
-                  <property name="leftMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="bottomMargin">
+                  <property name="margin">
                    <number>1</number>
                   </property>
                   <item>
@@ -1487,7 +1426,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>100</width>
-                         <height>22</height>
+                         <height>20</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1548,7 +1487,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>22</height>
+                         <height>20</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -1703,16 +1642,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                <property name="spacing">
                 <number>2</number>
                </property>
-               <property name="leftMargin">
-                <number>1</number>
-               </property>
-               <property name="topMargin">
-                <number>1</number>
-               </property>
-               <property name="rightMargin">
-                <number>1</number>
-               </property>
-               <property name="bottomMargin">
+               <property name="margin">
                 <number>1</number>
                </property>
                <item>
@@ -2021,16 +1951,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                <property name="spacing">
                 <number>2</number>
                </property>
-               <property name="leftMargin">
-                <number>1</number>
-               </property>
-               <property name="topMargin">
-                <number>1</number>
-               </property>
-               <property name="rightMargin">
-                <number>1</number>
-               </property>
-               <property name="bottomMargin">
+               <property name="margin">
                 <number>1</number>
                </property>
                <item>
@@ -2095,16 +2016,7 @@ QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;bord
                   <property name="spacing">
                    <number>2</number>
                   </property>
-                  <property name="leftMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="bottomMargin">
+                  <property name="margin">
                    <number>1</number>
                   </property>
                   <item>
@@ -2464,16 +2376,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                <property name="spacing">
                 <number>2</number>
                </property>
-               <property name="leftMargin">
-                <number>1</number>
-               </property>
-               <property name="topMargin">
-                <number>1</number>
-               </property>
-               <property name="rightMargin">
-                <number>1</number>
-               </property>
-               <property name="bottomMargin">
+               <property name="margin">
                 <number>1</number>
                </property>
                <item>
@@ -2506,16 +2409,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                   <property name="spacing">
                    <number>2</number>
                   </property>
-                  <property name="leftMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="bottomMargin">
+                  <property name="margin">
                    <number>1</number>
                   </property>
                   <item>
@@ -2585,7 +2479,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                     <property name="minimumSize">
                      <size>
                       <width>200</width>
-                      <height>22</height>
+                      <height>20</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -2620,7 +2514,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                     <property name="minimumSize">
                      <size>
                       <width>500</width>
-                      <height>22</height>
+                      <height>20</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -2649,7 +2543,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                     <property name="minimumSize">
                      <size>
                       <width>500</width>
-                      <height>22</height>
+                      <height>20</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -2665,7 +2559,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                     <property name="minimumSize">
                      <size>
                       <width>200</width>
-                      <height>22</height>
+                      <height>20</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -2700,7 +2594,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                     <property name="minimumSize">
                      <size>
                       <width>200</width>
-                      <height>22</height>
+                      <height>20</height>
                      </size>
                     </property>
                     <property name="maximumSize">
@@ -2844,16 +2738,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                <property name="spacing">
                 <number>0</number>
                </property>
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
+               <property name="margin">
                 <number>0</number>
                </property>
                <item>
@@ -2871,16 +2756,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                   <property name="spacing">
                    <number>2</number>
                   </property>
-                  <property name="leftMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="bottomMargin">
+                  <property name="margin">
                    <number>1</number>
                   </property>
                   <item>
@@ -2913,16 +2789,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                      <property name="spacing">
                       <number>6</number>
                      </property>
-                     <property name="leftMargin">
-                      <number>9</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>9</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>9</number>
-                     </property>
-                     <property name="bottomMargin">
+                     <property name="margin">
                       <number>9</number>
                      </property>
                      <item>
@@ -3222,16 +3089,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                <property name="spacing">
                 <number>0</number>
                </property>
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
+               <property name="margin">
                 <number>0</number>
                </property>
                <item>
@@ -3246,16 +3104,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                   <property name="spacing">
                    <number>2</number>
                   </property>
-                  <property name="leftMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="bottomMargin">
+                  <property name="margin">
                    <number>1</number>
                   </property>
                   <item>
@@ -3288,16 +3137,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                      <property name="spacing">
                       <number>2</number>
                      </property>
-                     <property name="leftMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="bottomMargin">
+                     <property name="margin">
                       <number>1</number>
                      </property>
                      <item>
@@ -3355,7 +3195,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>22</height>
+                         <height>20</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3378,7 +3218,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>22</height>
+                         <height>20</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3401,7 +3241,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>400</width>
-                         <height>22</height>
+                         <height>20</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3424,7 +3264,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>22</height>
+                         <height>20</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3447,7 +3287,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
-                         <height>22</height>
+                         <height>20</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3470,7 +3310,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                        <property name="minimumSize">
                         <size>
                          <width>100</width>
-                         <height>22</height>
+                         <height>20</height>
                         </size>
                        </property>
                        <property name="maximumSize">
@@ -3674,16 +3514,7 @@ QLineEdit{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb
                   <property name="spacing">
                    <number>2</number>
                   </property>
-                  <property name="leftMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="bottomMargin">
+                  <property name="margin">
                    <number>1</number>
                   </property>
                   <item>
@@ -3819,16 +3650,7 @@ QPushButton::hover{
                      <property name="spacing">
                       <number>2</number>
                      </property>
-                     <property name="leftMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="bottomMargin">
+                     <property name="margin">
                       <number>1</number>
                      </property>
                      <item>
@@ -3891,16 +3713,7 @@ QPushButton::hover{
                         <property name="spacing">
                          <number>2</number>
                         </property>
-                        <property name="leftMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>1</number>
-                        </property>
-                        <property name="bottomMargin">
+                        <property name="margin">
                          <number>1</number>
                         </property>
                         <item>
@@ -4038,16 +3851,7 @@ QPushButton::hover{
                <property name="spacing">
                 <number>1</number>
                </property>
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
+               <property name="margin">
                 <number>0</number>
                </property>
                <item>
@@ -4062,16 +3866,7 @@ QPushButton::hover{
                   <property name="spacing">
                    <number>2</number>
                   </property>
-                  <property name="leftMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="bottomMargin">
+                  <property name="margin">
                    <number>1</number>
                   </property>
                   <item>
@@ -4104,16 +3899,7 @@ QPushButton::hover{
                      <property name="spacing">
                       <number>2</number>
                      </property>
-                     <property name="leftMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="bottomMargin">
+                     <property name="margin">
                       <number>1</number>
                      </property>
                      <item>
@@ -4442,16 +4228,7 @@ QPushButton::hover{
                   <property name="spacing">
                    <number>2</number>
                   </property>
-                  <property name="leftMargin">
-                   <number>3</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>3</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>3</number>
-                  </property>
-                  <property name="bottomMargin">
+                  <property name="margin">
                    <number>3</number>
                   </property>
                   <item>
@@ -8100,16 +7877,7 @@ min-height:23px;</string>
                   <property name="spacing">
                    <number>1</number>
                   </property>
-                  <property name="leftMargin">
-                   <number>3</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>3</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>3</number>
-                  </property>
-                  <property name="bottomMargin">
+                  <property name="margin">
                    <number>3</number>
                   </property>
                   <item>
@@ -9488,16 +9256,7 @@ min-height:23px;</string>
                <property name="spacing">
                 <number>0</number>
                </property>
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
+               <property name="margin">
                 <number>0</number>
                </property>
                <item>
@@ -9515,16 +9274,7 @@ min-height:23px;</string>
                   <property name="spacing">
                    <number>2</number>
                   </property>
-                  <property name="leftMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="bottomMargin">
+                  <property name="margin">
                    <number>1</number>
                   </property>
                   <item>
@@ -9703,16 +9453,7 @@ min-height:23px;</string>
                      <property name="spacing">
                       <number>2</number>
                      </property>
-                     <property name="leftMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="bottomMargin">
+                     <property name="margin">
                       <number>1</number>
                      </property>
                      <item>
@@ -9808,16 +9549,7 @@ min-height:23px;</string>
                <property name="spacing">
                 <number>0</number>
                </property>
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
+               <property name="margin">
                 <number>0</number>
                </property>
                <item>
@@ -9835,16 +9567,7 @@ min-height:23px;</string>
                   <property name="spacing">
                    <number>2</number>
                   </property>
-                  <property name="leftMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>1</number>
-                  </property>
-                  <property name="bottomMargin">
+                  <property name="margin">
                    <number>1</number>
                   </property>
                   <item>
@@ -10269,16 +9992,7 @@ min-height:23px;</string>
                      <property name="spacing">
                       <number>2</number>
                      </property>
-                     <property name="leftMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>1</number>
-                     </property>
-                     <property name="bottomMargin">
+                     <property name="margin">
                       <number>1</number>
                      </property>
                      <item>
@@ -10352,8 +10066,8 @@ min-height:23px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1196</width>
-     <height>21</height>
+     <width>1264</width>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMenu">
