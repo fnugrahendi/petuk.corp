@@ -50,6 +50,8 @@ class Pembelian(object):
 		#Tombol pada Hutang Usaha
 		self.tb_Pembelian_HutangUsaha_Tutup.clicked.connect(self.Pembelian_GoTo_Menu)
 		self.tb_Pembelian_HutangUsaha_Perincian.clicked.connect(self.Pembelian_GoTo_HutangUsaha_Rincian)
+		self.tb_Pembelian_RincianHutang_Tutup.clicked.connect(self.Pembelian_GoTo_HutangUsaha)
+		self.tbl_Pembelian_HutangUsaha.cellDoubleClicked.connect(self.Pembelian_GoTo_HutangUsaha_Rincian)
 		
 		#Tombol pada Pembayaran Hutang
 		
@@ -307,24 +309,27 @@ class Pembelian(object):
 		self.DatabaseRunQuery(query2)
 	
 	def Pembelian_GoTo_HutangUsaha(self):
+		self.tbl_Pembelian_HutangUsaha.setColumnWidth(0,300) #perbesar kolom nama pelanggan
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_HUTANG)
 		jumlahRow = self.tbl_Pembelian_HutangUsaha.rowCount()
 		if jumlahRow != 0:
 			for x in range (0,jumlahRow+1):
 				self.tbl_Pembelian_HutangUsaha.removeRow(x)
+		self.tbl_Pembelian_HutangUsaha.setRowCount(0)
 		query = "SELECT * FROM `gd_pembelian_barang` GROUP BY `kodeVendor`"
 		data = self.DatabaseRunQuery(query)
 		querytotal = "SELECT  SUM(`totalHarga`) FROM `gd_pembelian_barang` GROUP BY `kodeVendor`"
 		result = self.DatabaseRunQuery(querytotal)
-		for a in range (0,len(result)):
+		for a in range (0,len(data)):
 			kodePelanggan = str(data[a][4])
-			print data
-			print kodePelanggan
+			#print data
+			#print kodePelanggan
 			query = "SELECT * FROM `gd_nama_alamat` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"'"
 			nama = str(self.DatabaseRunQuery(query)[0][2])
 			totalHutang = str(int(result[a][0]))
 			self.tbl_Pembelian_HutangUsaha.insertRow(a)
-			self.tbl_Pembelian_HutangUsaha.setItem(a,0,QtGui.QTableWidgetItem(kodePelanggan)) #nama
+			self.tbl_Pembelian_HutangUsaha.setItem(a,0,QtGui.QTableWidgetItem(kodePelanggan)) #kode
+			self.tbl_Pembelian_HutangUsaha.setItem(a,1,QtGui.QTableWidgetItem(nama)) #nama
 			self.tbl_Pembelian_HutangUsaha.setItem(a,4,QtGui.QTableWidgetItem(totalHutang)) #hutang saldo	
 		#query = "SELECT SUM(`jumlahTagihan`) FROM `gd_hutang`"
 		#self.lb_Pembelian_HutangUsaha_TotalNilai.setText("Rp "+str(int(self.DatabaseRunQuery(query)[0][0])))
@@ -332,23 +337,23 @@ class Pembelian(object):
 	
 	def Pembelian_GoTo_HutangUsaha_Rincian(self):
 		currentRow = self.tbl_Pembelian_HutangUsaha.currentRow()
-		nama = str(self.tbl_Pembelian_HutangUsaha.item(currentRow,0).text())
+		nama = str(self.tbl_Pembelian_HutangUsaha.item(currentRow,1).text())
 		query = "SELECT * FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
 		kodePelanggan = str(self.DatabaseRunQuery(query)[0][1])
 		jumlahRow = self.tbl_Pembelian_RincianHutang.rowCount()
 		if jumlahRow != 0:
 			for x in range (0,jumlahRow):
 				self.tbl_Pembelian_RincianHutang.removeRow(x)
+		self.tbl_Pembelian_RincianHutang.setRowCount(0)
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_HUTANG_RINCIAN)
 		self.lb_Pembelian_RincianHutang_Title_Nama.setText(nama)
-		query = "SELECT * FROM `gd_piutang` WHERE `kodePelanggan` LIKE '"+kodePelanggan+"'"
+		self.lb_Pembelian_RincianHutang_Title_Kurs.setText("(IDR)")
+		query = "SELECT * FROM `gd_pembelian_barang` WHERE `kodeVendor` LIKE '"+kodePelanggan+"' GROUP BY `noInvoice`"
 		result = self.DatabaseRunQuery(query)
-		print result
 		for a in range (0,len(result)):
 			self.tbl_Pembelian_RincianHutang.insertRow(a)
-			self.tbl_Pembelian_RincianHutang.setItem(a,0,QtGui.QTableWidgetItem(str(result[a][5])))
-			self.tbl_Pembelian_RincianHutang.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][2])))
-		pass
+			self.tbl_Pembelian_RincianHutang.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][1])))
+		return
 	
 	def Pembelian_GoTo_PembayaranHutang(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_PEMBAYARANHUTANG)

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui_kasbank.ui'
+# Form implementation generated from reading ui file 'kasbank/ui_kasbank.ui'
 #
-# Created: Sat Feb 21 15:09:09 2015
-#      by: PyQt4 UI code generator 4.10.1
+# Created: Tue Mar  3 16:43:09 2015
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
