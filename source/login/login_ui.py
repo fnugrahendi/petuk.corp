@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'login_ui.ui'
+# Form implementation generated from reading ui file 'login/login_ui.ui'
 #
-# Created: Thu Feb 26 08:49:56 2015
-#      by: PyQt4 UI code generator 4.10.1
+# Created: Tue Mar  3 16:43:10 2015
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
