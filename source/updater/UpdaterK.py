@@ -49,7 +49,7 @@ class Updater(object):
 					"source"]
 		versiini = [
 				["garvin",		1, "localhost"],
-				["bin", 		2, "localhost"],
+				["bin", 		1, "localhost"],
 				["data", 		1, "localhost"],
 				["doc", 		1, "localhost"],
 				["image", 		1, "localhost"],
@@ -76,10 +76,17 @@ class Updater(object):
 			for moduldownload in todownload:
 				pesantext += "\t"+moduldownload+"\n"
 			pesantext += "Download update sekarang?"
-			self.DataMaster_Popup(pesantext)
+			self.DataMaster_Popup(pesantext,functools.partial(self.Updater_Download_Act,downloadcmd))
 		
 		#~ print "Updater sejatinya akan mendownload dan mengupdate modul berikut: "
 		#~ print downloadcmd
+		#~ for cmd in downloadcmd:
+			#~ print cmd
+			#~ subprocess.Popen(cmd,shell=True)
+	
+	def Updater_Download_Act(self,downloadcmd):
 		for cmd in downloadcmd:
 			print cmd
-			#~ subprocess.Popen(cmd,shell=True)
+			subprocess.Popen(cmd,shell=True)
+	
+		
