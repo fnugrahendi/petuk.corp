@@ -36,6 +36,7 @@ class Updater(object):
 		wget = "wget"
 		if ("win" in sys.platform):#-- bila windows ada nih
 			wget = self.BasePath+"downloader/wget_win/wget.exe"
+		wget = "\""+ wget+ "\" -c  --no-check-certificate "
 		downloadfolder = self.DataPath
 		serverprefix = "https://github.com/fnugrahendi/petuk.corp/releases/download/"
 		component = ["garvin",
@@ -66,7 +67,7 @@ class Updater(object):
 		for x in range(len(versiini)):
 			if versigarvin[x]>versiini[x]:
 				todownload.append(component[x]+str(versigarvin[x])+".grvz")
-				downloadcmd.append(serverprefix+str(versigarvin[x])+"/"+todownload[-1])
+				downloadcmd.append(wget+serverprefix+str(versigarvin[x])+"/"+todownload[-1])
 		
 		pesantext = "Modul berikut perlu di update:\n"
 		for moduldownload in todownload:
