@@ -22,7 +22,8 @@ class Pembelian(object):
 		self.INDEX_ST_PEMBELIAN_HUTANG = 5
 		self.INDEX_ST_PEMBELIAN_HUTANG_RINCIAN = 6
 		self.INDEX_ST_PEMBELIAN_PEMBAYARANHUTANG = 7
-		self.INDEX_ST_PEMBELIAN_RETURPEMBELIAN = 8	
+		self.INDEX_ST_PEMBELIAN_PEMBAYARANHUTANG_BARU = 8
+		self.INDEX_ST_PEMBELIAN_RETURPEMBELIAN = 9
 		
 		#Tombol Pada Halaman Menu
 		self.tb_Pembelian_InvoicePembelian.clicked.connect(self.Pembelian_GoTo_InvoicePembelian)
@@ -54,6 +55,7 @@ class Pembelian(object):
 		self.tbl_Pembelian_HutangUsaha.cellDoubleClicked.connect(self.Pembelian_GoTo_HutangUsaha_Rincian)
 		
 		#Tombol pada Pembayaran Hutang
+		self.tb_Pembelian_PembayaranHutang_Baru.clicked.connect(self.Pembelian_GoTo_PembayaranHutang_Baru)
 		
 		#Tombol pada Retur Pembelian
 	
@@ -356,7 +358,32 @@ class Pembelian(object):
 		return
 	
 	def Pembelian_GoTo_PembayaranHutang(self):
+		self.tbl_Pembelian_PembayaranHutang.setColumnWidth(2,300)
+		curRow = self.tbl_Pembelian_RincianHutang.currentRow()
+		noInvoice = str(self.tbl_Pembelian_RincianHutang.item(curRow,1).text())
+		query = "SELECT * FROM `gd_hutang` WHERE `noInvoice` LIKE '"+noInvoice+"'"
+		result = self.DatabaseRunQuery(query)
+		jumlahRow = self.tbl_Pembelian_PembayaranHutang.rowCount()
+		if jumlahRow != 0:
+			for x in range (0,jumlahRow):
+				self.tbl_Pembelian_PembayaranHutang.removeRow(x)
+		self.tbl_Pembelian_PembayaranHutang.setRowCount(0)
+		for a in range (0,len(result)):
+			self.tbl_Pembelian_PembayaranHutang.insertRow(a)
+			self.tbl_Pembelian_PembayaranHutang.setItem(a,0,QtGui.QTableWidgetItem(str(result[a][2]))) #no ref
+			self.tbl_Pembelian_PembayaranHutang.setItem(a,1,QtGui.QTableWidgetItem(str(result[a][3]))) #tanggal
+			self.tbl_Pembelian_PembayaranHutang.setItem(a,2,QtGui.QTableWidgetItem(str(result[a][4]))) #pelanggan
+			self.tbl_Pembelian_PembayaranHutang.setItem(a,4,QtGui.QTableWidgetItem(str(result[a][6]))) #nilai
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_PEMBAYARANHUTANG)
+		return
+		
+	def Pembelian_GoTo_PembayaranHutang_Baru(self):
+		nama = str(self.lb_Pembelian_RincianHutang_Title_Nama.text())
+		self.le_Pembelian_PembayaranHutang_Baru_Nama.setText(nama)
+		curRow = self.tbl_Pembelian_RincianHutang.currentRow()
+		noInvoice = str(self.tbl_Pembelian_RincianHutang.item(curRow,1).text())
+		self.le_Pembelian_PembayaranHutang_Baru_NoInvoice.setText(noInvoice)
+		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_PEMBAYARANHUTANG_BARU)
 		return
 	
 	def Pembelian_GoTo_ReturPembelian(self):
