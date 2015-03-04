@@ -15,7 +15,13 @@ class MainGUI(QtGui.QMainWindow,Ui_MainWindow):
 		self.show()
 		#-- path
 		self.Path = str(__file__).replace("installer.py","").replace("\\","/")
+		print self.Path
 		self.BasePath = self.Path+"../"
+		try:open(self.BasePath+"archive/eula.txt","r").close()
+		except Exception,e:
+			print str(e)
+			self.BasePath = self.Path
+			print ("base path is now",self.BasePath)
 		
 		#-- icon
 		icon = QtGui.QIcon()
@@ -67,14 +73,14 @@ class MainGUI(QtGui.QMainWindow,Ui_MainWindow):
 	
 	def InstallBin_Act(self):
 		self.aatime.stop()
-		archiveBin = self.Path+"../archive/bin.grvz"
+		archiveBin = self.BasePath+"archive/bin.grvz"
 		
 		installpath = str(self.le_InstallDir.text())
 		if not os.path.exists(installpath): os.makedirs(installpath)
-		os.system(self.Path+"..\\7z.exe -y x "+archiveBin+" -o"+installpath+" -pnyungsep")
+		os.system(self.BasePath+"7z.exe -y x "+archiveBin+" -o"+installpath+" -pnyungsep")
 		#~ self.tb_InstallBin_Next.show()
 		self.InstallMysql()
-		
+		os.makedirs(installpath+"\data")
 	
 	def InstallBin(self):
 		self.Goto("Install Bin")
@@ -86,14 +92,14 @@ class MainGUI(QtGui.QMainWindow,Ui_MainWindow):
 	
 	def InstallMysql_Act(self):
 		self.aatime.stop()
-		archiveBin = self.Path+"../archive/mysql32.grvz"
+		archiveBin = self.BasePath+"archive/mysql32.grvz"
 		if self.arc==64:
-			archiveBin = "../archive/mysql64.grvz"
+			archiveBin = self.BasePath+"archive/mysql64.grvz"
 			
 		
 		installpath = str(self.le_InstallDir.text())
 		if not os.path.exists(installpath): os.makedirs(installpath)
-		os.system(self.Path+"..\\7z.exe -y x "+archiveBin+" -o"+installpath+" -pnyungsep")
+		os.system(self.BasePath+"7z.exe -y x "+archiveBin+" -o"+installpath+" -pnyungsep")
 		self.InstallConfig()
 		
 	def InstallMysql(self):
@@ -146,7 +152,7 @@ class MainGUI(QtGui.QMainWindow,Ui_MainWindow):
 		self.tb_InstallBin_Next.clicked.connect(self.Quit)
 		
 	def Quit(self):
-		exit (0)
+		sys.exit (0)
 	
 	def GarvinDisconnect(self,stuff):
 		"nyimpel2ke disconnect signal, cara manggil koyo self.GarvinDisconnect(self.tbl_BukuBesar_DaftarTransaksiJurnal_Tambah_List.cellDoubleClicked)"
