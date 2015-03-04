@@ -5,7 +5,7 @@ from PyQt4 import QtGui
 #~ from PyQt4.QtCore import *
 #~ from PyQt4.QtGui import *
 #~ import sip 
-#~ import sys,os
+import sys
 import functools
 import itertools
 import re

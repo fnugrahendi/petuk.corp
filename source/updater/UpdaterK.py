@@ -10,18 +10,17 @@ class Updater(object):
 		pass
 		
 	def GarvinCheckIsUpdated(self):
-		#-- deteksi 64 bit ataukah 32 bit
 		wget = "wget"
 		if ("win" in sys.platform):#-- bila windows ada nih
 			wget = self.BasePath+"downloader/wget_win/wget.exe"
 			
 		downloadfolder = self.DataPath
 		#-- download info versi sekarang 
-		cmd = "\""+wget +"\""+ " --no-check-certificate https://github.com/fnugrahendi/petuk.corp/blob/master/currentversion.md -o "+downloadfolder+"currentversion.md.o -O "+downloadfolder+"currentversion.md"
+		cmd = "\""+wget +"\""+ " --no-check-certificate https://raw.githubusercontent.com/fnugrahendi/petuk.corp/master/currentversion.rb -o "+downloadfolder+"currentversion.rb.o -O "+downloadfolder+"currentversion.rb"
 		print cmd
 		subprocess.Popen(cmd,shell=True)
 		self.UpdaterTimer = QtCore.QTimer(self)
-		self.UpdaterTimer.timeout.connect(functools.partial(self.Updater_CekSudah,"currentversion.md",self.Updater_Download))
+		self.UpdaterTimer.timeout.connect(functools.partial(self.Updater_CekSudah,"currentversion.rb",self.Updater_Download))
 		self.UpdaterTimer.start(3000)
 		
 	def Updater_CekSudah(self,namafile,callbackfunction):
@@ -34,10 +33,10 @@ class Updater(object):
 		f.close()
 		
 	def Updater_Download(self):
-		#-- deteksi 64 bit ataukah 32 bit
 		wget = "wget"
 		if ("win" in sys.platform):#-- bila windows ada nih
 			wget = self.BasePath+"downloader/wget_win/wget.exe"
+		wget = "\""+ wget+ "\" -c  --no-check-certificate "
 		downloadfolder = self.DataPath
 		serverprefix = "https://github.com/fnugrahendi/petuk.corp/releases/download/"
 		component = ["garvin",
@@ -48,33 +47,46 @@ class Updater(object):
 					"installer",
 					"mysql",
 					"source"]
-		versiini = [1,
-					1,
-					1,
-					1,
-					1,
-					1,
-					1,
-					1]
+		versiini = [
+				["garvin",		1, "localhost"],
+				["bin", 		1, "localhost"],
+				["data", 		1, "localhost"],
+				["doc", 		1, "localhost"],
+				["image", 		1, "localhost"],
+				["installer", 	1, "localhost"],
+				["mysql", 		1, "localhost"],
+				["source", 		1, "localhost"]
+			]
 		versigarvin = versiini
-		f = open(downloadfolder+"currentversion.md","r")
+		f = open(downloadfolder+"currentversion.rb","r")
 		data = f.read()
 		f.close()
 		
-		data = data[data.find("=start")+6:data.find("=end")]
+		data = data[data.find("ruby")+6:]
 		exec(data)
 		todownload = []
 		downloadcmd = []
 		for x in range(len(versiini)):
-			if versigarvin[x]>versiini[x]:
-				todownload.append(component[x]+str(versigarvin[x])+".grvz")
-				downloadcmd.append(serverprefix+str(versigarvin[x])+"/"+todownload[-1])
+			if versigarvin[x][1]>versiini[x][1]:
+				todownload.append(versigarvin[x][0]+str(versigarvin[x][1])+".grvz")
+				downloadcmd.append(wget+serverprefix+str(versigarvin[x][2]))
+				
+		if len(todownload)>0:
+			pesantext = "Modul berikut perlu di update:\n"
+			for moduldownload in todownload:
+				pesantext += "\t"+moduldownload+"\n"
+			pesantext += "Download update sekarang?"
+			self.DataMaster_Popup(pesantext,functools.partial(self.Updater_Download_Act,downloadcmd))
 		
-		pesantext = "Modul berikut perlu di update:\n"
-		for moduldownload in todownload:
-			pesantext += "\t"+moduldownload+"\n"
-		pesantext += "Download update sekarang?"
-		self.DataMaster_Popup(pesantext)
+		#~ print "Updater sejatinya akan mendownload dan mengupdate modul berikut: "
+		#~ print downloadcmd
+		#~ for cmd in downloadcmd:
+			#~ print cmd
+			#~ subprocess.Popen(cmd,shell=True)
+	
+	def Updater_Download_Act(self,downloadcmd):
+		for cmd in downloadcmd:
+			print cmd
+			subprocess.Popen(cmd,shell=True)
+	
 		
-		print "Updater sejatinya akan mendownload dan mengupdate modul berikut: "
-		print downloadcmd
