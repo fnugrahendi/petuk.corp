@@ -1360,7 +1360,10 @@ class Laporan(object):
 										   'font_size':'12'})
 										   		
 		#~ #Select piutang
-		sqlPiutang = "SELECT * FROM gd_invoice_penjualan AS aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan WHERE aDB.kodePelanggan LIKE '"+idNama+"' ORDER BY tanggal, kodeTransaksi ASC "
+		if(idNama == 0):
+			sqlPiutang = "SELECT * FROM gd_invoice_penjualan AS aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan WHERE 1 ORDER BY tanggal, kodeTransaksi ASC "
+		else:	
+			sqlPiutang = "SELECT * FROM gd_invoice_penjualan AS aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan WHERE aDB.kodePelanggan LIKE '"+idNama+"' ORDER BY tanggal, kodeTransaksi ASC "
 		resultPiutang = self.DatabaseRunQuery(sqlPiutang)
 		
 		namaPelanggan = resultPiutang[0][10]
@@ -1451,7 +1454,10 @@ class Laporan(object):
 		index = index+2	
 										   		
 		#~ #Select hutang
-		sqlHutang = "SELECT * FROM gd_invoice_penjualan AS aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan WHERE aDB.kodePelanggan LIKE '"+idNama+"' ORDER BY tanggal, kodeTransaksi ASC "
+		if(idNama == 0):
+			sqlHutang = "SELECT * FROM gd_invoice_penjualan AS aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan WHERE 1 ORDER BY tanggal, kodeTransaksi ASC "
+		else:	
+			sqlHutang = "SELECT * FROM gd_invoice_penjualan AS aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan WHERE aDB.kodePelanggan LIKE '"+idNama+"' ORDER BY tanggal, kodeTransaksi ASC "
 		resultHutang = self.DatabaseRunQuery(sqlHutang)
 		
 		namaPelanggan = resultHutang[0][10]
@@ -1489,8 +1495,8 @@ class Laporan(object):
 				#~# print kodeTransaksi," ",(jmlPenerimaan)," ",(jmlTagihan)," ",(jmlPenerimaan < jmlTagihan)
 				if((jmlPenerimaan >= jmlTagihan)) and (ket==__LUNAS__): 
 					worksheet.write("B"+str(index),str(noUrut),formatBiasa);
-					worksheet.write("D"+str(index),resultHutang[x][1],formatBiasa);
-					worksheet.write("C"+str(index),resultHutang[x][4].strftime("%d-%m-%Y"),formatBiasa);
+					worksheet.write("C"+str(index),resultHutang[x][1],formatBiasa);
+					worksheet.write("D"+str(index),resultHutang[x][4].strftime("%d-%m-%Y"),formatBiasa);
 					worksheet.write("E"+str(index),resultHutang[x][10],formatBiasa);
 					worksheet.write("F"+str(index),resultHutang[x][6],formatBiasa);
 					worksheet.write("G"+str(index),jmlPenerimaan,formatBiasa);
@@ -1503,8 +1509,8 @@ class Laporan(object):
 						
 				elif((jmlPenerimaan < jmlTagihan)) and (ket==__BELUM_LUNAS__):
 					worksheet.write("B"+str(index),str(noUrut),formatBiasa);
-					worksheet.write("D"+str(index),resultHutang[x][1],formatBiasa);
-					worksheet.write("C"+str(index),resultHutang[x][4].strftime("%d-%m-%Y"),formatBiasa);
+					worksheet.write("C"+str(index),resultHutang[x][1],formatBiasa);
+					worksheet.write("D"+str(index),resultHutang[x][4].strftime("%d-%m-%Y"),formatBiasa);
 					worksheet.write("E"+str(index),resultHutang[x][10],formatBiasa);
 					worksheet.write("F"+str(index),resultHutang[x][6],formatBiasa);
 					worksheet.write("G"+str(index),jmlPenerimaan,formatBiasa);
@@ -1521,8 +1527,8 @@ class Laporan(object):
 						
 				elif (ket==__SEMUA__):	
 					worksheet.write("B"+str(index),str(noUrut),formatBiasa);
-					worksheet.write("D"+str(index),resultHutang[x][1],formatBiasa);
-					worksheet.write("C"+str(index),resultHutang[x][4].strftime("%d-%m-%Y"),formatBiasa);
+					worksheet.write("C"+str(index),resultHutang[x][1],formatBiasa);
+					worksheet.write("D"+str(index),resultHutang[x][4].strftime("%d-%m-%Y"),formatBiasa);
 					worksheet.write("E"+str(index),resultHutang[0][10],formatBiasa);
 					worksheet.write("F"+str(index),resultHutang[0][6],formatBiasa);
 					worksheet.write("G"+str(index),jmlPenerimaan,formatBiasa);
@@ -1537,6 +1543,141 @@ class Laporan(object):
 						worksheet.write("G"+str(index),0,formatBiasa);
 						index1+=1
 				
+		workbook.close()
+		return
+
+	def Laporan_JualBeli(self,idNama,ket,tanggalAwal,tanggalAkhir):
+		
+		workbook = xlsxwriter.Workbook('LaporanJualBeli.xlsx')
+		worksheet = workbook.add_worksheet()
+		
+		formatJudul = workbook.add_format({'align': 'center',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'bold':'true',
+										   'font_size':'17'})
+										   
+		formatSubJudul = workbook.add_format({'align': 'center',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'font_size':'15'})
+										   
+		formatBiasa = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'font_size':'12'})
+										   
+		formatTblHeader = workbook.add_format({'align': 'left',
+										   'valign': 'vcenter',
+										   'border': 0,
+										   'bold':'true',
+										   'font_size':'12'})
+										   		
+		#~ #Select penjualan
+		sqlPenjualan = "SELECT * FROM gd_invoice_penjualan AS aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan JOIN gd_order_penjualan AS cDB ON cDB.kodeTransaksi LIKE aDB.kodeTransaksi WHERE aDB.kodePelanggan LIKE '"+idNama+"' ORDER BY aDB.tanggal, aDB.kodeTransaksi ASC"
+		resultPenjualan = self.DatabaseRunQuery(sqlPenjualan)
+		
+		if(len(resultPenjualan)>0):
+			namaPelanggan = resultPenjualan[0][10]
+			worksheet.merge_range("B3:H3",namaPelanggan,formatJudul)
+		
+		worksheet.merge_range("B2:H2","BUKU PENJUALAN PEMBELIAN",formatJudul)
+		
+		worksheet.merge_range("B5:C5","Penjualan",formatTblHeader);
+		worksheet.write("B6","No",formatTblHeader);
+		worksheet.write("C6","No Invoice",formatTblHeader);
+		worksheet.write("D6","Tanggal",formatTblHeader);
+		worksheet.write("E6","Customer",formatTblHeader);
+		worksheet.write("F6","Produk",formatTblHeader);
+		worksheet.write("G6","Jumlah Invoice",formatTblHeader);
+		worksheet.write("H6","Jumlah Dibayar",formatTblHeader);
+		worksheet.write("I6","Saldo Piutang",formatTblHeader);
+		
+		index1 = 0;
+		noUrut=1;
+		index = index1+8
+		
+		if(len(resultPenjualan)>0):
+			for x in range(0,len(resultPenjualan)):
+				kodeTransaksi = resultPenjualan[x][1]
+				index = index1+8
+
+				sqlX = "SELECT SUM(jumlahPenerimaan) AS jml,jumlahTagihan AS nilai FROM gd_piutang WHERE noInvoice LIKE '"+kodeTransaksi+"'"
+				resultX = self.DatabaseRunQuery(sqlX)
+				jmlPenerimaan = resultX[0][0]
+				jmlTagihan = resultPenjualan[x][6]
+				
+				if not(resultX[0][0]>0):
+					jmlPenerimaan = 0
+									
+				sqlRef = "SELECT noReferensi FROM gd_piutang WHERE noInvoice LIKE '"+kodeTransaksi+"'"
+				resultRef = self.DatabaseRunQuery(sqlRef)
+				
+				#~ print kodeTransaksi," ",(jmlPenerimaan)," ",(jmlTagihan)," ",(jmlPenerimaan < jmlTagihan)
+				worksheet.write("B"+str(index),str(noUrut),formatBiasa);
+				worksheet.write("D"+str(index),resultPenjualan[x][1],formatBiasa);
+				worksheet.write("C"+str(index),resultPenjualan[x][4].strftime("%d-%m-%Y"),formatBiasa);
+				worksheet.write("E"+str(index),resultPenjualan[x][10],formatBiasa);
+				worksheet.write("F"+str(index),resultPenjualan[x][26],formatBiasa);
+				worksheet.write("G"+str(index),resultPenjualan[x][6],formatBiasa);
+				worksheet.write("H"+str(index),jmlPenerimaan,formatBiasa);
+				worksheet.write("I"+str(index),"=G"+str(index)+"-H"+str(index),formatBiasa);
+				noUrut+=1
+				index1+=1
+							
+		
+		index = index+2
+		index1 = index+3	
+		
+		#~ #Select pembelian
+		sqlPembelian = "SELECT * FROM gd_pembelian_barang AS aDB JOIN gd_nama_alamat AS bDB ON aDB.kodeVendor LIKE bDB.kodePelanggan JOIN gd_invoice_penjualan AS cDB ON aDB.noInvoice LIKE cDB.kodeTransaksi WHERE aDB.kodeVendor LIKE '"+idNama+"' ORDER BY cDB.tanggal, cDB.kodeTransaksi ASC"
+		resultPembelian = self.DatabaseRunQuery(sqlPembelian)
+					
+		if not(len(resultPenjualan)>0):
+			namaPelanggan = resultPembelian[0][10]
+			worksheet.merge_range("B3:H3",namaPelanggan,formatJudul)
+				
+		worksheet.merge_range("B"+str(index)+":C"+str(index),"Pembelian",formatTblHeader);
+		index+=1
+		worksheet.write("B"+str(index),"No",formatTblHeader);
+		worksheet.write("C"+str(index),"No Invoice",formatTblHeader);
+		worksheet.write("D"+str(index),"Tanggal",formatTblHeader);
+		worksheet.write("E"+str(index),"Customer",formatTblHeader);
+		worksheet.write("F"+str(index),"Produk",formatTblHeader);
+		worksheet.write("G"+str(index),"Jumlah Invoice",formatTblHeader);
+		worksheet.write("H"+str(index),"Jumlah Dibayar",formatTblHeader);
+		worksheet.write("I"+str(index),"Hutang",formatTblHeader);
+		
+		noUrut=1;
+		
+		if(len(resultPembelian)>0):
+			for x in range(0,len(resultPembelian)):
+				kodeTransaksi = resultPembelian[x][1]
+				index = index1
+
+				sqlX = "SELECT SUM(jumlahPenerimaan) AS jml,jumlahTagihan AS nilai FROM gd_hutang WHERE noInvoice LIKE '"+kodeTransaksi+"'"
+				resultX = self.DatabaseRunQuery(sqlX)
+				jmlPenerimaan = resultX[0][0]
+				jmlTagihan = resultPembelian[x][6]
+				
+				if not(resultX[0][0]>0):
+					jmlPenerimaan = 0
+									
+				sqlRef = "SELECT noReferensi FROM gd_hutang WHERE noInvoice LIKE '"+kodeTransaksi+"'"
+				resultRef = self.DatabaseRunQuery(sqlRef)
+				
+				#~ print kodeTransaksi," ",(jmlPenerimaan)," ",(jmlTagihan)," ",(jmlPenerimaan < jmlTagihan)
+				worksheet.write("B"+str(index),str(noUrut),formatBiasa);
+				worksheet.write("D"+str(index),resultPembelian[x][1],formatBiasa);
+				worksheet.write("C"+str(index),resultPembelian[x][27].strftime("%d-%m-%Y"),formatBiasa);
+				worksheet.write("E"+str(index),resultPembelian[x][11],formatBiasa);
+				worksheet.write("F"+str(index),resultPembelian[x][3]+" (@"+str(resultPembelian[x][5])+"x"+str(resultPembelian[x][6])+" "+(resultPembelian[x][7])+")",formatBiasa);
+				worksheet.write("G"+str(index),resultPembelian[x][8],formatBiasa);
+				worksheet.write("H"+str(index),jmlPenerimaan,formatBiasa);
+				worksheet.write("I"+str(index),"=H"+str(index)+"-G"+str(index),formatBiasa);
+				noUrut+=1
+				index1+=1
+		
 		workbook.close()
 		return
 
