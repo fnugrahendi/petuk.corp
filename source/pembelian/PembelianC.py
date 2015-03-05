@@ -57,8 +57,12 @@ class Pembelian(object):
 		self.tb_Pembelian_RincianHutang_Perincian.clicked.connect(self.Pembelian_GoTo_PembayaranHutang)
 		
 		#Tombol pada Pembayaran Hutang
+		self.tb_Pembelian_PembayaranHutang_Tutup.clicked.connect(self.Pembelian_GoTo_HutangUsaha_Rincian)
 		self.tb_Pembelian_PembayaranHutang_Baru.clicked.connect(self.Pembelian_GoTo_PembayaranHutang_Baru)
 		self.tb_Pembelian_PembayaranHutang_Baru_Batal.clicked.connect(self.Pembelian_GoTo_PembayaranHutang)
+		self.tb_Pembelian_PembayaranHutang_Baru_Akun.clicked.connect(functools.partial(self.Popup_Rekening, self.tb_Pembelian_PembayaranHutang_Baru_Akun))
+		self.le_Pembelian_PembayaranHutang_Baru_Dept.textChanged.connect(self.Pembelian_GoTo_PembayaranHutang_NoRef)
+		self.tb_Pembelian_PembayaranHutang_Baru_Rekam.clicked.connect(self.Pembelian_GoTo_PembayaranHutang_Rekam)
 		
 		#Tombol pada Retur Pembelian
 	
@@ -386,18 +390,50 @@ class Pembelian(object):
 		curRow = self.tbl_Pembelian_RincianHutang.currentRow()
 		noInvoice = str(self.tbl_Pembelian_RincianHutang.item(curRow,1).text())
 		self.le_Pembelian_PembayaranHutang_Baru_NoInvoice.setText(noInvoice)
+		self.tb_Pembelian_PembayaranHutang_Baru_Akun.setText("-")
+		self.le_Pembelian_PembayaranHutang_Baru_Dept.setText("")
+		self.le_Pembelian_PembayaranHutang_Baru_NoRef.setText("")
+		self.le_Pembelian_PembayaranHutang_Baru_Nominal.setText("")
+		self.le_Pembelian_PembayaranHutang_Baru_Catatan.setText("")
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_PEMBAYARANHUTANG_BARU)
 		return
 		
 	def Pembelian_GoTo_PembayaranHutang_NoRef(self):
-		kasBank = str(self.tb_Penjualan_PembayaranPiutang_Baru_Akun.text())
+		kasBank = str(self.tb_Pembelian_PembayaranHutang_Baru_Akun.text())
 		kasBank = kasBank[0:2]
 		if (kasBank == '11'):
-			prefix = "KM"
+			prefix = "KK"
 		elif (kasBank == '12'):
-			prefix = "BM"
-		self.GarvinGenerateKode('gd_piutang',self.le_Penjualan_PembayaranPiutang_Baru_NoRef, prefix, 4)
+			prefix = "BK"
+		self.GarvinGenerateKode('gd_piutang',self.le_Pembelian_PembayaranHutang_Baru_NoRef, prefix, 4)
 		pass
+		
+	def Pembelian_GoTo_PembayaranHutang_Rekam(self):
+		#~ Baca inputan
+		noInvoice = str(self.le_Pembelian_PembayaranHutang_Baru_NoInvoice.text())
+		noRef = str(self.le_Pembelian_PembayaranHutang_Baru_NoRef.text())
+		tgl = str(self.dte_Pembelian_PembayaranHutang_Baru_Tanggal.dateTime().toString("yyyy-MM-dd"))
+		nama = str(self.le_Pembelian_PembayaranHutang_Baru_Nama.text())
+		query = "SELECT `kodePelanggan` FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+nama+"'"
+		kodePelanggan = str(self.DatabaseRunQuery(query)[0][0])
+		catatan = str(self.le_Pembelian_PembayaranHutang_Baru_Catatan.text())
+		jumlahPengeluaran = str(self.le_Pembelian_PembayaranHutang_Baru_Nominal.text())
+		jumlahPengeluaran = int(jumlahPengeluaran)
+		noAkunKas = str(self.tb_Pembelian_PembayaranHutang_Baru_Akun.text())
+		noAkunPiutang = "21000002"
+		query = "SELECT `totalHarga` FROM `gd_pembelian_barang` WHERE `noInvoice` LIKE '"+noInvoice+"'"
+		
+		#~ hitung jumlah tagihan pada satu invoice (multipel barang)
+		jumlahTagihan = 0
+		jumlahBarang = len(self.DatabaseRunQuery(query))
+		for a in range(0,jumlahBarang):
+			jumlahTagihan = jumlahTagihan+self.DatabaseRunQuery(query)[a][0]
+		
+		#~ masukkan database
+		query_insert = "INSERT INTO `gd_hutang` (`noInvoice`,`noReferensi`,`tanggal`,`kodePelanggan`,`catatan`,`jumlahPenerimaan`,`jumlahTagihan`,`noAkunKas`,`noAkunPiutang`)"+\
+			"VALUES ('"+noInvoice+"','"+noRef+"','"+tgl+"','"+kodePelanggan+"','"+catatan+"','"+str(jumlahPengeluaran)+"','"+str(jumlahTagihan)+"','"+noAkunKas+"','"+noAkunPiutang+"')"
+		self.DatabaseRunQuery(query_insert)
+		self.Pembelian_GoTo_PembayaranHutang()
 	
 	def Pembelian_GoTo_ReturPembelian(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_RETURPEMBELIAN)
