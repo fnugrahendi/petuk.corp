@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Tue Mar  3 17:23:21 2015
+# Created: Thu Mar  5 12:22:41 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -3668,9 +3668,6 @@ class Ui_MainWindow(object):
         self.tb_Pembelian_HutangUsaha = QtGui.QPushButton(self.fr_Pembelian_Menu_Fmenu)
         self.tb_Pembelian_HutangUsaha.setObjectName(_fromUtf8("tb_Pembelian_HutangUsaha"))
         self.ivl_Pembelian_Menu_FMenu.addWidget(self.tb_Pembelian_HutangUsaha)
-        self.tb_Pembelian_PembayaranHutang = QtGui.QPushButton(self.fr_Pembelian_Menu_Fmenu)
-        self.tb_Pembelian_PembayaranHutang.setObjectName(_fromUtf8("tb_Pembelian_PembayaranHutang"))
-        self.ivl_Pembelian_Menu_FMenu.addWidget(self.tb_Pembelian_PembayaranHutang)
         self.tb_Pembelian_ReturPembelian = QtGui.QPushButton(self.fr_Pembelian_Menu_Fmenu)
         self.tb_Pembelian_ReturPembelian.setObjectName(_fromUtf8("tb_Pembelian_ReturPembelian"))
         self.ivl_Pembelian_Menu_FMenu.addWidget(self.tb_Pembelian_ReturPembelian)
@@ -4889,10 +4886,10 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         self.st_DataMaster.setCurrentIndex(0)
         self.st_Penjualan.setCurrentIndex(8)
-        self.st_Pembelian.setCurrentIndex(5)
+        self.st_Pembelian.setCurrentIndex(0)
         self.st_BukuBesar.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -5297,7 +5294,6 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_Penjualan), _translate("MainWindow", "Penjualan", None))
         self.tb_Pembelian_InvoicePembelian.setText(_translate("MainWindow", "Invoice Pembelian", None))
         self.tb_Pembelian_HutangUsaha.setText(_translate("MainWindow", "Hutang Usaha", None))
-        self.tb_Pembelian_PembayaranHutang.setText(_translate("MainWindow", "Pembayaran Hutang", None))
         self.tb_Pembelian_ReturPembelian.setText(_translate("MainWindow", "Retur Pembelian", None))
         self.lb_Pembelian_InvoicePembelian_Title.setText(_translate("MainWindow", "Invoice Pembelian", None))
         item = self.tbl_Pembelian_InvoicePembelian.horizontalHeaderItem(0)

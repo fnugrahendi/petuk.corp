@@ -28,7 +28,7 @@ class Pembelian(object):
 		#Tombol Pada Halaman Menu
 		self.tb_Pembelian_InvoicePembelian.clicked.connect(self.Pembelian_GoTo_InvoicePembelian)
 		self.tb_Pembelian_HutangUsaha.clicked.connect(self.Pembelian_GoTo_HutangUsaha)
-		self.tb_Pembelian_PembayaranHutang.clicked.connect(self.Pembelian_GoTo_PembayaranHutang)
+		#self.tb_Pembelian_PembayaranHutang.clicked.connect(self.Pembelian_GoTo_PembayaranHutang)
 		self.tb_Pembelian_ReturPembelian.clicked.connect(self.Pembelian_GoTo_ReturPembelian)
 		
 		#Tombol pada Invoice Pembelian
@@ -53,9 +53,12 @@ class Pembelian(object):
 		self.tb_Pembelian_HutangUsaha_Perincian.clicked.connect(self.Pembelian_GoTo_HutangUsaha_Rincian)
 		self.tb_Pembelian_RincianHutang_Tutup.clicked.connect(self.Pembelian_GoTo_HutangUsaha)
 		self.tbl_Pembelian_HutangUsaha.cellDoubleClicked.connect(self.Pembelian_GoTo_HutangUsaha_Rincian)
+		self.tbl_Pembelian_RincianHutang.cellDoubleClicked.connect(self.Pembelian_GoTo_PembayaranHutang)
+		self.tb_Pembelian_RincianHutang_Perincian.clicked.connect(self.Pembelian_GoTo_PembayaranHutang)
 		
 		#Tombol pada Pembayaran Hutang
 		self.tb_Pembelian_PembayaranHutang_Baru.clicked.connect(self.Pembelian_GoTo_PembayaranHutang_Baru)
+		self.tb_Pembelian_PembayaranHutang_Baru_Batal.clicked.connect(self.Pembelian_GoTo_PembayaranHutang)
 		
 		#Tombol pada Retur Pembelian
 	
@@ -385,6 +388,16 @@ class Pembelian(object):
 		self.le_Pembelian_PembayaranHutang_Baru_NoInvoice.setText(noInvoice)
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_PEMBAYARANHUTANG_BARU)
 		return
+		
+	def Pembelian_GoTo_PembayaranHutang_NoRef(self):
+		kasBank = str(self.tb_Penjualan_PembayaranPiutang_Baru_Akun.text())
+		kasBank = kasBank[0:2]
+		if (kasBank == '11'):
+			prefix = "KM"
+		elif (kasBank == '12'):
+			prefix = "BM"
+		self.GarvinGenerateKode('gd_piutang',self.le_Penjualan_PembayaranPiutang_Baru_NoRef, prefix, 4)
+		pass
 	
 	def Pembelian_GoTo_ReturPembelian(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_RETURPEMBELIAN)
