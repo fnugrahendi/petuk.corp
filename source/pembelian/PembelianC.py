@@ -45,7 +45,7 @@ class Pembelian(object):
 		self.tb_Pembelian_InvoicePembelian_Baru_Batal.clicked.connect(self.Pembelian_GoTo_InvoicePembelian_Batal)
 		self.tbl_Pembelian_InvoicePembelian_Baru.cellDoubleClicked.connect(self.Pembelian_GoTo_InvoicePembelian_Baru_PilihVendor)
 		self.tbl_Pembelian_InvoicePembelian_Baru.cellChanged.connect(self.Pembelian_GoTo_InvoicePembelian_Baru_TotalHarga)
-		
+		self.tb_Pembelian_InvoicePembelian_Baru_Cetak.clicked.connect(self.Pembelian_GoTo_InvoicePembelian_Baru_Cetak)
 		#~ self.tb_Pembelian_InvoicePembelian_Baru_Nama.clicked.connect(functools.partial())
 		
 		#Tombol pada Hutang Usaha
@@ -65,7 +65,7 @@ class Pembelian(object):
 		self.tb_Pembelian_PembayaranHutang_Baru_Rekam.clicked.connect(self.Pembelian_GoTo_PembayaranHutang_Rekam)
 		self.tb_Pembelian_PembayaranHutang_Cetak.clicked.connect(self.Pembelian_GoTo_PembayaranHutang_Rincian)
 		self.tbl_Pembelian_PembayaranHutang.cellDoubleClicked.connect(self.Pembelian_GoTo_PembayaranHutang_Rincian)
-		
+		self.tb_Pembelian_PembayaranHutang_Baru_Cetak.clicked.connect(self.Pembelian_GoTo_PembayaranHutang_Cetak)
 		#Tombol pada Retur Pembelian
 	
 	def Pembelian_GoTo_Menu(self):
@@ -188,7 +188,6 @@ class Pembelian(object):
 		self.Pembelian_GoTo_InvoicePembelian()
 		return
 		
-#~ dari penjualan		
 	def Pembelian_GoTo_InvoicePembelian_Baru_Cetak(self):
 		#~ noAkun sing pembelian 51000003
 		#~ noAkun hutang 21000002
@@ -198,15 +197,25 @@ class Pembelian(object):
 		tanggal = str(self.dte_Pembelian_InvoicePembelian_Baru_Tanggal.dateTime().toString("yyyy-MM-dd"))
 		noAkunPembelian = "51000003"
 		noAkunHutang = "21000002"
+		
+		#~ Menghitung jumlah dari totalHarga semua barang di invoice ini
+		nilai = 0
+		jumlahBarang = self.tbl_Pembelian_InvoicePembelian_Baru.rowCount()
+		for a in range(0,jumlahBarang):
+			totalHarga = str(self.tbl_Pembelian_InvoicePembelian_Baru.item(a,6).text())
+			totalHarga = float(totalHarga)
+			nilai = nilai + int(totalHarga)
+		nilai = str(nilai)
 		queryPembelian = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunPembelian+"','"+nilai+"','0')"
 		queryHutang = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunHutang+"','0','"+nilai+"')"
-		#~ print queryPenjualan+"\n"+queryPiutang
-		self.DatabaseRunQuery(queryPembelian)
-		self.DatabaseRunQuery(queryHutang)
+		print queryPembelian+"\n"+queryHutang
+		#self.DatabaseRunQuery(queryPembelian)
+		#self.DatabaseRunQuery(queryHutang)
+		pesan = "Invoice Pembelian dengan kode "+kodeTransaksi+" berhasil dicetak"
+		self.DataMaster_Popup(pesan,self.Pembelian_GoTo_InvoicePembelian)
 		pass
-#~ dari penjualan		
 	
 	def Pembelian_GoTo_OrderPembelian_TambahProduk(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_OP_TAMBAHPRODUK)
@@ -340,7 +349,9 @@ class Pembelian(object):
 		self.DatabaseRunQuery(query2)
 	
 	def Pembelian_GoTo_HutangUsaha(self):
-		self.tbl_Pembelian_HutangUsaha.setColumnWidth(0,300) #perbesar kolom nama pelanggan
+		self.tbl_Pembelian_HutangUsaha.setColumnWidth(0,155) #perbesar kolom kode pelanggan
+		self.tbl_Pembelian_HutangUsaha.setColumnWidth(1,210) #perbesar kolom nama pelanggan
+		self.tbl_Pembelian_HutangUsaha.setColumnWidth(3,120) #perbesar kolom piutangterbayar
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_HUTANG)
 		jumlahRow = self.tbl_Pembelian_HutangUsaha.rowCount()
 		if jumlahRow != 0:
@@ -387,7 +398,7 @@ class Pembelian(object):
 		return
 	
 	def Pembelian_GoTo_PembayaranHutang(self):
-		self.tbl_Pembelian_PembayaranHutang.setColumnWidth(2,300)
+		self.tbl_Pembelian_PembayaranHutang.setColumnWidth(2,200)
 		curRow = self.tbl_Pembelian_RincianHutang.currentRow()
 		noInvoice = str(self.tbl_Pembelian_RincianHutang.item(curRow,1).text())
 		query = "SELECT * FROM `gd_hutang` WHERE `noInvoice` LIKE '"+noInvoice+"'"
@@ -487,7 +498,6 @@ class Pembelian(object):
 		self.DatabaseRunQuery(query_insert)
 		self.Pembelian_GoTo_PembayaranHutang()
 
-#~ iki durung diedit	
 	def Pembelian_GoTo_PembayaranHutang_Cetak(self):
 		#~ noAkun sing kas dijupuk seko akun kas/bank terpilih
 		#~ noAkun hutang "21000002"
@@ -503,9 +513,11 @@ class Pembelian(object):
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunHutang+"','"+nilai+"','0')"
 		queryKasBank = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunKasBank+"','0','"+nilai+"')"
-		#~ print queryPiutang+"\n"+queryKasBank
-		self.DatabaseRunQuery(queryPiutang)
-		self.DatabaseRunQuery(queryKasBank)
+		print queryHutang+"\n"+queryKasBank
+		#self.DatabaseRunQuery(queryPiutang)
+		#self.DatabaseRunQuery(queryKasBank)
+		pesan = "Pembayaran hutang kepada "+namaPelanggan+" berhasil dicetak"
+		self.DataMaster_Popup(pesan,self.Pembelian_GoTo_PembayaranHutang)
 		pass
 	
 	def Pembelian_GoTo_ReturPembelian(self):
