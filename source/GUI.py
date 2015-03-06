@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Fri Mar  6 15:04:28 2015
+# Created: Fri Mar  6 22:42:38 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -4889,10 +4889,10 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
         self.st_DataMaster.setCurrentIndex(0)
-        self.st_Penjualan.setCurrentIndex(8)
-        self.st_Pembelian.setCurrentIndex(8)
+        self.st_Penjualan.setCurrentIndex(0)
+        self.st_Pembelian.setCurrentIndex(0)
         self.st_BukuBesar.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -5396,7 +5396,7 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Nilai", None))
         self.tb_Pembelian_PembayaranHutang_Baru.setText(_translate("MainWindow", "Baru", None))
         self.tb_Pembelian_PembayaranHutang_Hapus.setText(_translate("MainWindow", "Hapus", None))
-        self.tb_Pembelian_PembayaranHutang_Cetak.setText(_translate("MainWindow", "Cetak", None))
+        self.tb_Pembelian_PembayaranHutang_Cetak.setText(_translate("MainWindow", "Rincian", None))
         self.tb_Pembelian_PembayaranHutang_Tutup.setText(_translate("MainWindow", "Tutup", None))
         self.lb_Pembelian_PembayaranHutang_Baru_title.setText(_translate("MainWindow", "Pembayaran Hutang Usaha", None))
         self.chk_Pembelian_PembayaranHutang_BaruGiro.setText(_translate("MainWindow", "Giro", None))

@@ -111,7 +111,7 @@ margin-top: 2px;
 }*/</string>
          </property>
          <property name="currentIndex">
-          <number>2</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="tab_DataMaster">
           <property name="sizePolicy">
@@ -4197,7 +4197,7 @@ QPushButton::hover{
               <enum>QFrame::NoFrame</enum>
              </property>
              <property name="currentIndex">
-              <number>8</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="st_Penjualan_Menu">
               <layout class="QGridLayout" name="gridLayout_7">
@@ -7846,7 +7846,7 @@ min-height:23px;</string>
 	}</string>
              </property>
              <property name="currentIndex">
-              <number>8</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="st_Pembelian_Menu">
               <layout class="QGridLayout" name="igr_Pembelian_Menu">
@@ -9352,7 +9352,7 @@ min-height:23px;</string>
                   <item>
                    <widget class="QPushButton" name="tb_Pembelian_PembayaranHutang_Cetak">
                     <property name="text">
-                     <string>Cetak</string>
+                     <string>Rincian</string>
                     </property>
                    </widget>
                   </item>
