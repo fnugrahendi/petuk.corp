@@ -111,7 +111,7 @@ margin-top: 2px;
 }*/</string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="tab_DataMaster">
           <property name="sizePolicy">
@@ -7846,7 +7846,7 @@ min-height:23px;</string>
 	}</string>
              </property>
              <property name="currentIndex">
-              <number>5</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="st_Pembelian_Menu">
               <layout class="QGridLayout" name="igr_Pembelian_Menu">
@@ -7891,13 +7891,6 @@ min-height:23px;</string>
                    <widget class="QPushButton" name="tb_Pembelian_HutangUsaha">
                     <property name="text">
                      <string>Hutang Usaha</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="tb_Pembelian_PembayaranHutang">
-                    <property name="text">
-                     <string>Pembayaran Hutang</string>
                     </property>
                    </widget>
                   </item>

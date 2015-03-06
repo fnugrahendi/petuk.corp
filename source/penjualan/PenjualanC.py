@@ -563,7 +563,7 @@ class Penjualan(object):
 		jumlahPenerimaan = int(jumlahPenerimaan)
 		noAkunKas = str(self.tb_Penjualan_PembayaranPiutang_Baru_Akun.text())
 		noAkunPiutang = "13000002"
-		query = "SELECT `jumlahTagihan` FROM `gd_piutang` WHERE `noInvoice` LIKE '"+noInvoice+"'"
+		query = "SELECT `nilai` FROM `gd_invoice_penjualan` WHERE `noInvoice` LIKE '"+noInvoice+"'"
 		jumlahTagihan = self.DatabaseRunQuery(query)[0][0]
 		query = "SELECT SUM(`jumlahPenerimaan`) FROM `gd_piutang` WHERE `noInvoice` LIKE '"+noInvoice+"'"
 		saldoPembayaran = self.DatabaseRunQuery(query)[0][0]
