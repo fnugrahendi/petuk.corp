@@ -7846,7 +7846,7 @@ min-height:23px;</string>
 	}</string>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>8</number>
              </property>
              <widget class="QWidget" name="st_Pembelian_Menu">
               <layout class="QGridLayout" name="igr_Pembelian_Menu">
@@ -8449,6 +8449,13 @@ min-height:23px;</string>
                      </size>
                     </property>
                    </spacer>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="tb_Pembelian_InvoicePembelian_Baru_Cetak">
+                    <property name="text">
+                     <string>Cetak</string>
+                    </property>
+                   </widget>
                   </item>
                   <item>
                    <widget class="QPushButton" name="tb_Pembelian_InvoicePembelian_Baru_Rekam">
@@ -9428,7 +9435,7 @@ min-height:23px;</string>
                   <item row="2" column="0">
                    <widget class="QLabel" name="lb_Pembelian_PembayaranHutang_Baru_Dari">
                     <property name="text">
-                     <string>Dari :</string>
+                     <string>Untuk :</string>
                     </property>
                    </widget>
                   </item>

@@ -185,6 +185,26 @@ class Pembelian(object):
 			self.DatabaseRunQuery(query)
 		self.Pembelian_GoTo_InvoicePembelian()
 		return
+		
+#~ dari penjualan		
+	def Pembelian_GoTo_InvoicePembelian_Baru_Cetak(self):
+		#~ noAkun sing pembelian 51000003
+		#~ noAkun hutang 21000002
+		#~ pembelian -> debit (kredit = 0), hutang -> kredit (debit = 0)
+		#~ id, kodeTransaksi, tanggal, noAkun, debit, kredit
+		kodeTransaksi = str(self.le_Pembelian_InvoicePembelian_Baru_NoPO.text())
+		tanggal = str(self.dte_Pembelian_InvoicePembelian_Baru_Tanggal.dateTime().toString("yyyy-MM-dd"))
+		noAkunPembelian = "51000003"
+		noAkunHutang = "21000002"
+		queryPembelian = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
+					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunPembelian+"','"+nilai+"','0')"
+		queryHutang = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
+					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunHutang+"','0','"+nilai+"')"
+		#~ print queryPenjualan+"\n"+queryPiutang
+		self.DatabaseRunQuery(queryPembelian)
+		self.DatabaseRunQuery(queryHutang)
+		pass
+#~ dari penjualan		
 	
 	def Pembelian_GoTo_OrderPembelian_TambahProduk(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_OP_TAMBAHPRODUK)
@@ -434,6 +454,28 @@ class Pembelian(object):
 			"VALUES ('"+noInvoice+"','"+noRef+"','"+tgl+"','"+kodePelanggan+"','"+catatan+"','"+str(jumlahPengeluaran)+"','"+str(jumlahTagihan)+"','"+noAkunKas+"','"+noAkunPiutang+"')"
 		self.DatabaseRunQuery(query_insert)
 		self.Pembelian_GoTo_PembayaranHutang()
+	
+	def Pembelian_GoTo_PembayaranHutang_Cetak(self):
+		#~ noAkun sing kas dijupuk seko akun kas/bank terpilih
+		#~ noAkun hutang "21000002"
+		#~ hutang -> debit (kredit = 0), kas -> kredit (debit = 0)
+		#~ id, kodeTransaksi, tanggal, noAkun, debit, kredit
+		namaPelanggan = str(self.le_Penjualan_PembayaranPiutang_Baru_Nama.text())
+		kodeTransaksi = str(self.le_Penjualan_PembayaranPiutang_Baru_NoRef.text())
+		tanggal = str(self.dte_Penjualan_PembayaranPiutang_Baru_Tanggal.dateTime().toString("yyyy-MM-dd"))
+		nilai = str(self.le_Penjualan_PembayaranPiutang_Baru_Nominal.text())
+		kodeBarang = str(self.tb_Penjualan_InvoicePenjualan_Input_KodeProduk.text())
+		query = "SELECT `noAkunPiutang` FROM `gd_nama_alamat` WHERE `namaPelanggan` LIKE '"+namaPelanggan+"'"
+		noAkunPiutang = str(self.DatabaseRunQuery(query)[0][0])
+		noAkunKasBank = str(self.tb_Penjualan_PembayaranPiutang_Baru_Akun.text())
+		queryPiutang = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
+					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunPiutang+"','0','"+nilai+"')"
+		queryKasBank = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
+					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunKasBank+"','"+nilai+"','0')"
+		#~ print queryPiutang+"\n"+queryKasBank
+		self.DatabaseRunQuery(queryPiutang)
+		self.DatabaseRunQuery(queryKasBank)
+		pass
 	
 	def Pembelian_GoTo_ReturPembelian(self):
 		self.st_Pembelian.setCurrentIndex(self.INDEX_ST_PEMBELIAN_RETURPEMBELIAN)

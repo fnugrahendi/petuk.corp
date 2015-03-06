@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'GUI.ui'
 #
-# Created: Thu Mar  5 12:22:41 2015
+# Created: Fri Mar  6 15:04:28 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -3925,6 +3925,9 @@ class Ui_MainWindow(object):
         self.hl_Penjualan_OrderPenjualan_tombol_2.addWidget(self.tb_Pembelian_InvoicePembelian_Baru_HapusBaris)
         spacerItem46 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.hl_Penjualan_OrderPenjualan_tombol_2.addItem(spacerItem46)
+        self.tb_Pembelian_InvoicePembelian_Baru_Cetak = QtGui.QPushButton(self.fr_Pembelian_InvoicePembelian_Baru_Tombol)
+        self.tb_Pembelian_InvoicePembelian_Baru_Cetak.setObjectName(_fromUtf8("tb_Pembelian_InvoicePembelian_Baru_Cetak"))
+        self.hl_Penjualan_OrderPenjualan_tombol_2.addWidget(self.tb_Pembelian_InvoicePembelian_Baru_Cetak)
         self.tb_Pembelian_InvoicePembelian_Baru_Rekam = QtGui.QPushButton(self.fr_Pembelian_InvoicePembelian_Baru_Tombol)
         self.tb_Pembelian_InvoicePembelian_Baru_Rekam.setObjectName(_fromUtf8("tb_Pembelian_InvoicePembelian_Baru_Rekam"))
         self.hl_Penjualan_OrderPenjualan_tombol_2.addWidget(self.tb_Pembelian_InvoicePembelian_Baru_Rekam)
@@ -4889,7 +4892,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setCurrentIndex(2)
         self.st_DataMaster.setCurrentIndex(0)
         self.st_Penjualan.setCurrentIndex(8)
-        self.st_Pembelian.setCurrentIndex(0)
+        self.st_Pembelian.setCurrentIndex(8)
         self.st_BukuBesar.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -5334,6 +5337,7 @@ class Ui_MainWindow(object):
         self.tb_Pembelian_InvoicePembelian_Baru_TambahBaris.setText(_translate("MainWindow", "Tambah Baris", None))
         self.tb_Pembelian_InvoicePembelian_Baru_Batal.setText(_translate("MainWindow", "Batal", None))
         self.tb_Pembelian_InvoicePembelian_Baru_HapusBaris.setText(_translate("MainWindow", "Hapus Baris", None))
+        self.tb_Pembelian_InvoicePembelian_Baru_Cetak.setText(_translate("MainWindow", "Cetak", None))
         self.tb_Pembelian_InvoicePembelian_Baru_Rekam.setText(_translate("MainWindow", "Rekam", None))
         self.tb_Pembelian_InvoicePembelian_Baru_Tutup.setText(_translate("MainWindow", "Tutup", None))
         self.lb_Pembelian_OrderPembelian_TambahProduk_Judul.setText(_translate("MainWindow", "+ Produk dibeli", None))
@@ -5396,7 +5400,7 @@ class Ui_MainWindow(object):
         self.tb_Pembelian_PembayaranHutang_Tutup.setText(_translate("MainWindow", "Tutup", None))
         self.lb_Pembelian_PembayaranHutang_Baru_title.setText(_translate("MainWindow", "Pembayaran Hutang Usaha", None))
         self.chk_Pembelian_PembayaranHutang_BaruGiro.setText(_translate("MainWindow", "Giro", None))
-        self.lb_Pembelian_PembayaranHutang_Baru_Dari.setText(_translate("MainWindow", "Dari :", None))
+        self.lb_Pembelian_PembayaranHutang_Baru_Dari.setText(_translate("MainWindow", "Untuk :", None))
         self.lb_Pembelian_PembayaranHutang_Baru_Akun.setText(_translate("MainWindow", "Akun Kas /Bank: ", None))
         self.le_Pembelian_PembayaranHutang_Baru_Nominal.setPlaceholderText(_translate("MainWindow", "Nominal yang dibayarkan", None))
         self.lb_Pembelian_PembayaranHutang_Baru_NoRef.setText(_translate("MainWindow", "Ref. No :", None))
