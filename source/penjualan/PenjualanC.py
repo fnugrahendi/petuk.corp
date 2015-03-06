@@ -238,6 +238,8 @@ class Penjualan(object):
 		#~ print queryPenjualan+"\n"+queryPiutang
 		self.DatabaseRunQuery(queryPenjualan)
 		self.DatabaseRunQuery(queryPiutang)
+		pesan = "Invoice Penjualan dengan kode "+kodeTransaksi+" berhasil dicetak"
+		self.DataMaster_Popup(pesan,self.Penjualan_GoTo_Invoice)
 		pass
 	
 	def Penjualan_GoTo_Invoice_TambahBarang(self):
@@ -605,6 +607,8 @@ class Penjualan(object):
 		#~ print queryPiutang+"\n"+queryKasBank
 		self.DatabaseRunQuery(queryPiutang)
 		self.DatabaseRunQuery(queryKasBank)
+		pesan = "Pembayaran Piutang dengan kode "+kodeTransaksi+" berhasil dicetak"
+		self.DataMaster_Popup(pesan,self.Penjualan_GoTo_PembayaranPiutang)
 		pass
 	
 	def Penjualan_GoTo_JurnalMemorial(self,sisa):
@@ -647,6 +651,8 @@ class Penjualan(object):
 		#~ print queryPiutang+"\n"+queryLain
 		self.DatabaseRunQuery(queryPiutang)
 		self.DatabaseRunQuery(queryLain)
+		pesan = "Jurnal Memorial dengan kode "+kodeTransaksi+" berhasil dicetak"
+		self.DataMaster_Popup(pesan,self.Penjualan_GoTo_PembayaranPiutang)
 		return
 	
 	def Penjualan_GoTo_UangMuka(self):
@@ -710,4 +716,6 @@ class Penjualan(object):
 		#~ print queryUangMuka+"\n"+queryKasBank
 		self.DatabaseRunQuery(queryUangMuka)
 		self.DatabaseRunQuery(queryKasBank)
+		pesan = "Uang Muka dengan kode "+kodeTransaksi+" berhasil dicetak"
+		self.DataMaster_Popup(pesan,self.Penjualan_GoTo_UangMuka)
 		return

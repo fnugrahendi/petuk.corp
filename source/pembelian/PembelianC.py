@@ -210,9 +210,9 @@ class Pembelian(object):
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunPembelian+"','"+nilai+"','0')"
 		queryHutang = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunHutang+"','0','"+nilai+"')"
-		print queryPembelian+"\n"+queryHutang
-		#self.DatabaseRunQuery(queryPembelian)
-		#self.DatabaseRunQuery(queryHutang)
+		#print queryPembelian+"\n"+queryHutang
+		self.DatabaseRunQuery(queryPembelian)
+		self.DatabaseRunQuery(queryHutang)
 		pesan = "Invoice Pembelian dengan kode "+kodeTransaksi+" berhasil dicetak"
 		self.DataMaster_Popup(pesan,self.Pembelian_GoTo_InvoicePembelian)
 		pass
@@ -513,9 +513,9 @@ class Pembelian(object):
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunHutang+"','"+nilai+"','0')"
 		queryKasBank = "INSERT INTO `gd_buku_besar` (`kodeTransaksi`,`tanggal`,`noAkun`,`debit`,`kredit`)"+\
 					"VALUES ('"+kodeTransaksi+"','"+tanggal+"','"+noAkunKasBank+"','0','"+nilai+"')"
-		print queryHutang+"\n"+queryKasBank
-		#self.DatabaseRunQuery(queryPiutang)
-		#self.DatabaseRunQuery(queryKasBank)
+		#print queryHutang+"\n"+queryKasBank
+		self.DatabaseRunQuery(queryPiutang)
+		self.DatabaseRunQuery(queryKasBank)
 		pesan = "Pembayaran hutang kepada "+namaPelanggan+" berhasil dicetak"
 		self.DataMaster_Popup(pesan,self.Pembelian_GoTo_PembayaranHutang)
 		pass
