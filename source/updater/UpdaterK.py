@@ -61,16 +61,19 @@ class Updater(object):
 		f = open(downloadfolder+"currentversion.rb","r")
 		data = f.read()
 		f.close()
-		
-		data = data[data.find("ruby")+6:]
+		print data
+		data = data[data.find("ruby")+4:]
 		exec(data)
+		print versigarvin
 		todownload = []
 		downloadcmd = []
 		for x in range(len(versiini)):
 			if versigarvin[x][1]>versiini[x][1]:
 				todownload.append(versigarvin[x][0]+str(versigarvin[x][1])+".grvz")
-				downloadcmd.append(wget+serverprefix+str(versigarvin[x][2]))
-				
+				downloadcmd.append(wget+serverprefix+str(versigarvin[x][2]) +" -o "+str(versigarvin[x][0])+".o")
+		
+		print todownload
+		print downloadcmd
 		if len(todownload)>0:
 			pesantext = "Modul berikut perlu di update:\n"
 			for moduldownload in todownload:
