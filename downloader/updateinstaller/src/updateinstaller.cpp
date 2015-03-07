@@ -11,7 +11,7 @@
 	#define pclose _pclose
 	#include <windows.h>
 	#define delay(x) Sleep(x)
-	#define CEKPROSES (char*)"wmic process get description,executablepath"
+	#define CEKPROSES (char*)"wmic process get commandline "
 #else
 	#include <unistd.h> //posix
 	#define delay(x) usleep(x*1000)
