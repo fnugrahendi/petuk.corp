@@ -111,7 +111,7 @@ margin-top: 2px;
 }*/</string>
          </property>
          <property name="currentIndex">
-          <number>2</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="tab_DataMaster">
           <property name="sizePolicy">
@@ -4197,7 +4197,7 @@ QPushButton::hover{
               <enum>QFrame::NoFrame</enum>
              </property>
              <property name="currentIndex">
-              <number>8</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="st_Penjualan_Menu">
               <layout class="QGridLayout" name="gridLayout_7">
@@ -8451,6 +8451,13 @@ min-height:23px;</string>
                    </spacer>
                   </item>
                   <item>
+                   <widget class="QPushButton" name="tb_Pembelian_InvoicePembelian_Baru_Cetak">
+                    <property name="text">
+                     <string>Cetak</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
                    <widget class="QPushButton" name="tb_Pembelian_InvoicePembelian_Baru_Rekam">
                     <property name="text">
                      <string>Rekam</string>
@@ -9345,7 +9352,7 @@ min-height:23px;</string>
                   <item>
                    <widget class="QPushButton" name="tb_Pembelian_PembayaranHutang_Cetak">
                     <property name="text">
-                     <string>Cetak</string>
+                     <string>Rincian</string>
                     </property>
                    </widget>
                   </item>
@@ -9428,7 +9435,7 @@ min-height:23px;</string>
                   <item row="2" column="0">
                    <widget class="QLabel" name="lb_Pembelian_PembayaranHutang_Baru_Dari">
                     <property name="text">
-                     <string>Dari :</string>
+                     <string>Untuk :</string>
                     </property>
                    </widget>
                   </item>
