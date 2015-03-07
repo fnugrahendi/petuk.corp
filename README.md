@@ -36,3 +36,10 @@ Bug:
     - 7z_win (7zip archive extractor)
 
 ```
+
+building
+`make all`
+`make binary`
+`make -C installer/pysource/source all`
+`make -C installer/pysource/source binary`
+`make -C downloader/updateinstaller all`
