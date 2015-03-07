@@ -56,7 +56,7 @@ class Updater(object):
 				["installer", 	1, "localhost"],
 				["mysql", 		1, "localhost"],
 				["source", 		1, "localhost"]
-			]
+			]#-- TODO SOFTCODE & LOAD THIS, UPDATE THE VaLUE ON SOFTWARE UPDATE TOO
 		versigarvin = versiini
 		f = open(downloadfolder+"currentversion.rb","r")
 		data = f.read()
@@ -65,31 +65,53 @@ class Updater(object):
 		data = data[data.find("ruby")+4:]
 		exec(data)
 		print versigarvin
-		todownload = []
-		downloadcmd = []
+		self.Updater_Todownload = []
+		self.Updater_Downloadcmd = []
 		for x in range(len(versiini)):
 			if versigarvin[x][1]>versiini[x][1]:
-				todownload.append(versigarvin[x][0]+str(versigarvin[x][1])+".grvz")
-				downloadcmd.append(wget+serverprefix+str(versigarvin[x][2]) +" -o "+str(versigarvin[x][0])+".o")
+				self.Updater_Todownload.append(versigarvin[x][0]+str(versigarvin[x][1])+".grvz")
+				self.Updater_Downloadcmd.append(wget+str(versigarvin[x][2]) +\
+							" -o "+downloadfolder+self.Updater_Todownload[:-1]+".o "+\
+							" -O "+downloadfolder+self.Updater_Todownload[:-1]
+							)
 		
-		print todownload
-		print downloadcmd
-		if len(todownload)>0:
+		print self.Updater_Todownload
+		print self.Updater_Downloadcmd
+		if len(self.Updater_Todownload)>0:
 			pesantext = "Modul berikut perlu di update:\n"
-			for moduldownload in todownload:
+			for moduldownload in self.Updater_Todownload:
 				pesantext += "\t"+moduldownload+"\n"
-			pesantext += "Download update sekarang?"
-			self.DataMaster_Popup(pesantext,functools.partial(self.Updater_Download_Act,downloadcmd))
+			pesantext += "Download update sekarang? (proses berjalan di background)"
+			self.DataMaster_Popup(pesantext,self.Updater_Download_Act)
 		
 		#~ print "Updater sejatinya akan mendownload dan mengupdate modul berikut: "
-		#~ print downloadcmd
-		#~ for cmd in downloadcmd:
+		#~ print self.Updater_Downloadcmd
+		#~ for cmd in self.Updater_Downloadcmd:
 			#~ print cmd
 			#~ subprocess.Popen(cmd,shell=True)
 	
-	def Updater_Download_Act(self,downloadcmd):
-		for cmd in downloadcmd:
+	def Updater_Download_Act(self):
+		for cmd in self.Updater_Downloadcmd:
 			print cmd
 			subprocess.Popen(cmd,shell=True)
 	
-		
+	def Updater_Download_Act_CekSudah(self):
+		""" cek sudah, timernya self.UpdaterTimer bisa"""
+		#-- cek masing2 file
+		selesai = True
+		for donlotan in self.Updater_Todownload:
+			try:
+				f = open(self.Updater_Todownload+".o","r")
+				data = f.read()
+				f.close()
+				if not("saved" in data):
+					selesai = False
+					break
+			except:
+				selesai = False
+				break
+		if selesai:
+			self.GarvinDisconnect(self.UpdaterTimer.timeout)
+			print "Download update selesai"
+			#-- extract
+			#~ self.DataMaster_Popup("Lakukan update sekarang?"
