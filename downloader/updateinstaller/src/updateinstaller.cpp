@@ -19,10 +19,15 @@
 #endif
 	
 #define umpomo if
+#define nekra else
 #define njerone(panggongolek,singdigoleti) panggongolek.find(singdigoleti)!=std::string::npos
 
 
 namespace Garvin{
+	#ifndef umpomo
+		#define umpomo if
+		#define nekra else
+	#endif
 	std::string exec(char* cmd) {
 		FILE* pipe = popen(cmd, "r");
 		if (!pipe) return "ERROR";
@@ -40,11 +45,11 @@ namespace Garvin{
 	{
 		uint32_t posisi;
 		posisi = padaapa.find(apa);
-		if (posisi==std::string::npos)
+		umpomo (posisi==std::string::npos)
 		{
 			return (padaapa);
 		}
-		else
+		nekra
 		{
 			return (padaapa.replace(posisi,apa.length(),denganapa));
 		}
