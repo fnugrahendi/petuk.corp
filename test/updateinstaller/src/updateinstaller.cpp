@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <csignal>
 #include <fstream>
+#define uint32_t unsigned int
 
 #define WINDOWS
 #ifdef WINDOWS
@@ -10,45 +11,51 @@
 	#define pclose _pclose
 	#include <windows.h>
 	#define delay(x) Sleep(x)
-	#define CEKPROSES "wmic process get description,executablepath"
+	#define CEKPROSES (char*)"wmic process get description,executablepath"
 #else
 	#include <unistd.h> //posix
 	#define delay(x) usleep(x*1000)
-	#define CEKPROSES "ps -ef | grep Garvin"
+	#define CEKPROSES (char*)"ps -ef | grep Garvin"
 #endif
 	
 #define umpomo if
 #define njerone(panggongolek,singdigoleti) panggongolek.find(singdigoleti)!=std::string::npos
 
-std::string exec(char* cmd) {
-    FILE* pipe = popen(cmd, "r");
-    if (!pipe) return "ERROR";
-    char buffer[128];
-    std::string result = "";
-    while(!feof(pipe)) {
-    	if(fgets(buffer, 128, pipe) != NULL)
-    		result += buffer;
-    }
-    pclose(pipe);
-    return result;
-}
 
+namespace Garvin{
+	std::string exec(char* cmd) {
+		FILE* pipe = popen(cmd, "r");
+		if (!pipe) return "ERROR";
+		char buffer[128];
+		std::string result = "";
+		while(!feof(pipe)) {
+			if(fgets(buffer, 128, pipe) != NULL)
+				result += buffer;
+		}
+		pclose(pipe);
+		return result;
+	}
+
+	std::string replace(std::string apa, std::string denganapa, std::string padaapa)
+	{
+		uint32_t posisi;
+		posisi = padaapa.find(apa);
+		if (posisi==std::string::npos)
+		{
+			return (padaapa);
+		}
+		else
+		{
+			return (padaapa.replace(posisi,apa.length(),denganapa));
+		}
+	}
+};
 
 int main(int argc, char* kvlt[])
 {
 	std::string BasePath;
 	BasePath = kvlt[0];
-	//~ std::cout<<exec(argkvlt[1])<<"\n";
-	//~ std::cin>>argc;
-	//~ std::cout<<argc<<"\n";
-	//~ for (int x=0;x<argc;x++)
-	//~ {
-		//~ std::cout<<x<<" "<<kvlt[x]<<"\n";
-	//~ }
-	//~ std::cin>>argc;
-	//~ std::string isi = kvlt[1];
-	//~ std::string cari = kvlt[2];
-	//~ std::size_t found = isi.find(cari);
+	std::cout<< Garvin::replace(std::string("updateinstaller.exe"),std::string(" "),BasePath)<<"\n";
 	
 	
 	bool downloaddone=true;
@@ -95,9 +102,9 @@ int main(int argc, char* kvlt[])
 	}
 	while (!downloaddone);
 	
-	while (njerone(exec(CEKPROSES),"Garvin"))
+	while (njerone(Garvin::exec(CEKPROSES),"Garvin"))
 	{
-		std::cout<<"download selesai, pemasangan update akan dilakukan bila pengguna sudah siap (sudah menutup Garvin)\n";		
+		std::cout<<"download selesai, pemasangan update akan dilakukan bila pengguna sudah siap (sudah menutup Garvin)\n";
 		delay(3000);
 	}
 	std::cout<<"Memasang update\n";

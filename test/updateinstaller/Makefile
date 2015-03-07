@@ -1,5 +1,3 @@
-# saved
-
 EXE = updateinstaller
 
 CFLAGS   = 
@@ -8,9 +6,6 @@ LDFLAGS  =
 
 INCLUDE = 
 
-# No need to edit below here
-
-# All C++ source files of the project
 CXXFILES   = $(shell find src -maxdepth 1 -type f -name '*.cpp')
 CXXOBJECTS = $(CXXFILES:.cpp=.o)
 
@@ -19,7 +14,7 @@ OBJECTS = $(CXXOBJECTS)
 
 
 all: $(EXE)
-	# Build successful!
+	# Mbuh pie dadine kui mau wkwkwk
 
 $(EXE): $(OBJECTS)
 	# Linking...
