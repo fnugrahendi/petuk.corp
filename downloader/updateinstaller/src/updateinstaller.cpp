@@ -125,7 +125,7 @@ int main(int argc, char* kvlt[])
 	{
 		std::cout<<"Memasang "<<kvlt[x]<<"... ";
 		perintah = SevenZip + " -y x "+(DataPath+std::string(kvlt[x])).data()+" -o\""+BasePath+"\" -pnyungsep";
-		_popen(perintah.data(),"r");
+		std::cout<<Garvin::exec((char *)perintah.data());
 		std::cout<<"[OK]\n";
 	}
 	std::cout<<"Updater selesai\n";
