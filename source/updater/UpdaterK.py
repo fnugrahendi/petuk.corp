@@ -71,8 +71,8 @@ class Updater(object):
 			if versigarvin[x][1]>versiini[x][1]:
 				self.Updater_Todownload.append(versigarvin[x][0]+str(versigarvin[x][1])+".grvz")
 				self.Updater_Downloadcmd.append(wget+str(versigarvin[x][2]) +\
-							" -o "+downloadfolder+self.Updater_Todownload[:-1]+".o "+\
-							" -O "+downloadfolder+self.Updater_Todownload[:-1]
+							" -o "+downloadfolder+self.Updater_Todownload[-1]+".o "+\
+							" -O "+downloadfolder+self.Updater_Todownload[-1]
 							)
 		
 		print self.Updater_Todownload
@@ -94,6 +94,12 @@ class Updater(object):
 		for cmd in self.Updater_Downloadcmd:
 			print cmd
 			subprocess.Popen(cmd,shell=True)
+		print self.Updater_Todownload
+		cmd = "\""+self.BasePath+"downloader/updateinstaller/updateinstaller.exe\" "
+		for didownload in self.Updater_Todownload:
+			cmd = cmd+ didownload + " "
+		print cmd
+		subprocess.Popen(cmd, shell=True)
 	
 	def Updater_Download_Act_CekSudah(self):
 		""" cek sudah, timernya self.UpdaterTimer bisa"""

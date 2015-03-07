@@ -129,5 +129,7 @@ int main(int argc, char* kvlt[])
 		std::cout<<"[OK]\n";
 	}
 	std::cout<<"Updater selesai\n";
+	//~ std::cin>>argc;
+	delay(10000);
 	return (0);
 }
