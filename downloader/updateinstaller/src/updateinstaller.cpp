@@ -21,7 +21,7 @@
 #define umpomo if
 #define nekra else
 #define njerone(panggongolek,singdigoleti) panggongolek.find(singdigoleti)!=std::string::npos
-
+#define print(x) std::cout<<x<<"\n"
 
 namespace Garvin{
 	#ifndef umpomo
@@ -58,9 +58,15 @@ namespace Garvin{
 
 int main(int argc, char* kvlt[])
 {
+	std::string Path;
 	std::string BasePath;
-	BasePath = kvlt[0];
-	std::cout<< Garvin::replace(std::string("updateinstaller.exe"),std::string(" "),BasePath)<<"\n";
+	std::string DataPath;
+	std::string SevenZip;
+	Path = kvlt[0];
+	BasePath = Garvin::replace("updateinstaller.exe","",Path)+"..\\..\\";
+	DataPath = BasePath+"data\\";
+	SevenZip = BasePath+"downloader\\7z_win\\7z.exe ";
+	print(DataPath);
 	
 	
 	bool downloaddone=true;
@@ -72,7 +78,7 @@ int main(int argc, char* kvlt[])
 			try
 			{
 				std::string line;
-				std::ifstream myfile (kvlt[x]);
+				std::ifstream myfile ((DataPath+std::string(kvlt[x])+std::string(".o")).data());///tambah .o manual di program ini... btw digest std::string ke char* dengan method ::data()
 				if (myfile.is_open())
 				{
 					bool thisfiledone = false;
@@ -113,6 +119,15 @@ int main(int argc, char* kvlt[])
 		delay(3000);
 	}
 	std::cout<<"Memasang update\n";
-	std::cin>>argc;
+	std::string perintah;
+	
+	for (int x=1;x<argc;x++)
+	{
+		std::cout<<"Memasang "<<kvlt[x]<<"... ";
+		perintah = SevenZip + " -y x "+(DataPath+std::string(kvlt[x])).data()+" -o\""+BasePath+"\" -pnyungsep";
+		_popen(perintah.data(),"r");
+		std::cout<<"[OK]\n";
+	}
+	std::cout<<"Updater selesai\n";
 	return (0);
 }
