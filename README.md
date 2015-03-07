@@ -6,14 +6,33 @@ Njemput
 Contact goodel.akunting@gmail.com
 
 Bug:
-* -issue issues
+* issue issues
 
-Featured:
-* updater
+`Important Folder hierarchy`
+```
 
-Doing:
-* admin user edit
+- petuk.corp (root folder)
 
-Just done/Ready to check:
-* Installer
-* Menu Buat Database
+  - bin (binary file)
+
+  - data (user-data folder)
+
+  - image (resource folder)
+
+  - source (source file)
+  
+  - mysql (3rd party database engine root folder, containing bin & other folders)
+    
+    - bin (mysql binary)
+    
+  - downloader (other component & 3rd party software)
+  
+    - updateinstaller (Garvin's updater program, binary stored here)
+      
+      - src (updateinstaller source)
+      
+    - wget_win (wget downloader)
+    
+    - 7z_win (7zip archive extractor)
+
+```
