@@ -9,3 +9,4 @@ versigarvin = [
 			["mysql", 		1, "https://github.com/fnugrahendi/petuk.corp/releases/download/1/garvin1.grvz"],
 			["source", 		1, "https://github.com/fnugrahendi/petuk.corp/releases/download/1/garvin1.grvz"]
 			]
+
