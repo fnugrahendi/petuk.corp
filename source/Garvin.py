@@ -60,6 +60,17 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		
 		#--- check if garvin is recent version
 		self.GarvinCheckIsUpdated()
+		
+		#--- perlu ada reset versi garvin, dipanggil dengan melewatkan argumen pada pemanggilan garvin dengan argumen seperti yang tertera dibawah
+		#~ if len(sys.argv)>1:
+			#~ if sys.argv[1]=="-RESETGARVIN":
+				#~ self.DataMaster_Popup("Anda akan mereset Garvin ke versi awal")
+				
+		if (self.GarvinGetConfig("FILE VERSION","bin/garvinbin.dat")==""):
+			print ("File version gak ada, menuliskan")
+			dataversi = "versiini = [['garvin', 1, 'localhost'],['bin',  1, 'localhost'],['data',  1, 'localhost'],['doc',  1, 'localhost'],['image',  1, 'localhost'],['installer', 1, 'localhost'],['mysql',  1, 'localhost'],['source',  1, 'localhost']]" #-- lgsg executable array asignment
+			self.GarvinSetConfig("FILE VERSION",dataversi,"bin/garvinbin.dat")
+			print ("done.")
 	
 	def GarvinInit(self):
 		#-- init dipindah disini, karena dipanggil setelah berhasil login (set database dsb) di fungsi self.Login_Done
@@ -360,7 +371,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		for dte in dtedte:
 			dte.setDateTime(QDateTime.fromString(tanggal.strftime("%Y-%m-%d %H:%M:%S"),"yyyy-MM-dd hh:mm:ss"))
 
-	def GarvinLoadConfig(self):
+	def GarvinLoadConfig(self,filedata="data/garvin.dat"):
 		#-- maksude diantara baris kunci, config tersimpan dalam bentuk hex ascii number
 		#-- misal 	101262004472696E6B202020202020202020202024
 		#-- 		DATADISINI00000000000000000000000000000000
@@ -374,14 +385,14 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 						]
 		
 		try:
-			f = open(self.DataPath+"garvin.dat",'r')
+			f = open(self.BasePath+filedata,'r')
 			self.UserData = f.read()
 			f.close()
 		except:
 			self.UserData = ""
 	
-	def GarvinGetConfig(self,configname):
-		self.GarvinLoadConfig()
+	def GarvinGetConfig(self,configname,filedata="data/garvin.dat"):
+		self.GarvinLoadConfig(filedata)
 		configname = configname.upper()
 		if (configname in self.ConfigKey[0]):
 			key = self.ConfigKey[1][self.ConfigKey[0].index(configname)]
@@ -401,8 +412,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		else:
 			return ""
 	
-	def GarvinSetConfig(self,configname,configvalue):
-		self.GarvinLoadConfig()
+	def GarvinSetConfig(self,configname,configvalue,filedata="data/garvin.dat"):
+		self.GarvinLoadConfig(filedata)
 		configname = configname.upper()
 		if (configname in self.ConfigKey[0]):
 			key = self.ConfigKey[1][self.ConfigKey[0].index(configname)]
@@ -446,7 +457,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 				encodeddata = encodeddata +key+"\n:" + lbaris +"\n" #-- tambah newline juga di akhir
 				self.UserData = encodeddata + self.UserData
 				pass
-			f = open(self.DataPath+"garvin.dat",'w')
+			f = open(self.BasePath+filedata,'w')
 			f.write(self.UserData)
 			f.close()
 		else:
