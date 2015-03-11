@@ -59,7 +59,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		
 		
 		#--- check if garvin is recent version
-		self.GarvinCheckIsUpdated()
+		#~ self.GarvinCheckIsUpdated()
 	
 	def GarvinInit(self):
 		#-- init dipindah disini, karena dipanggil setelah berhasil login (set database dsb) di fungsi self.Login_Done
@@ -77,7 +77,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		self.ResetRooms()
 		#--- startup program, set semua datetimeedit ke waktu skrg		
 		self.GarvinSetDate(self)
-		self.Laporan_JualBeli('CUSTOMER.00000004','0','2015-02-01','2015-02-28')
+		self.Laporan_BuktiKasMasuk('KM0001')
 	
 	def Popup_NamaAlamat_Tabel(self,namaTabel,row):
 		data = []
