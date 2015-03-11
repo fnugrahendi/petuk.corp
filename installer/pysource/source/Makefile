@@ -26,8 +26,7 @@ pyqtr: $(PYQTREVERT)
 binary:
 	rm -fr ../bin/*
 	$(PYC) $(EXE).py -F -i ../archive/garvin.ico  --distpath=../bin/
-	mv ../bin/$(EXE)/* ../bin/
-	rm -rf ../bin/$(EXE)
+	
 
 commit:
 	git commit -a
