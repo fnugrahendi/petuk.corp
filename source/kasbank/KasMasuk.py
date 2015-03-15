@@ -178,6 +178,7 @@ class KasMasuk(object):
 			self.GarvinDisconnect(self.KasBankUI.le_KasKeluar_Tambah_Form_Nomor.textChanged)
 			self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.textChanged.connect(self.KasBank_KasMasuk_Tambah_KodeCek)
 		else:
+			print self.KasBank_DetailKasMasuk_Field
 			# --- edit mode
 			self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.setReadOnly(True)
 			self.KasBankUI.tb_KasMasuk_Tambah_Form_Penyetor.setText(str(dataKasMasuk[fkm("kodePelanggan")]))
@@ -419,4 +420,5 @@ class KasMasuk(object):
 											detail[detailf("nilaiDetail")]
 										]
 									)
-		#-- done
+		#-- step 5: Bukti cetak
+		self.Laporan_BuktiKasMasuk(kode)
