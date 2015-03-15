@@ -2,7 +2,7 @@ EXE = updateinstaller
 
 CFLAGS   = 
 CXXFLAGS = -Wall -Wextra 
-LDFLAGS  = 
+LDFLAGS  = -DWINDOWS
 
 INCLUDE = 
 
@@ -22,7 +22,7 @@ $(EXE): $(OBJECTS)
 
 src/%.o: src/%.cpp
 	# Compiling $<...
-	$(MUTE)$(CXX) $(CXXFLAGS) $(INCLUDE) $< -c -o $@
+	$(MUTE)$(CXX) $(CXXFLAGS) $(INCLUDE) $(LDFLAGS) $< -c -o $@
 	$(BUILD)
 
 src/%.o: src/%.c

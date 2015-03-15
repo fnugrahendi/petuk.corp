@@ -5,7 +5,7 @@
 #include <fstream>
 #define uint32_t unsigned int
 
-#define WINDOWS
+//~ #define WINDOWS
 #ifdef WINDOWS
 	#define popen _popen
 	#define pclose _pclose
@@ -43,7 +43,7 @@ namespace Garvin{
 
 	std::string replace(std::string apa, std::string denganapa, std::string padaapa)
 	{
-		uint32_t posisi;
+		size_t posisi;
 		posisi = padaapa.find(apa);
 		umpomo (posisi==std::string::npos)
 		{
