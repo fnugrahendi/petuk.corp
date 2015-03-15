@@ -59,18 +59,18 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		
 		
 		#--- check if garvin is recent version
-		self.GarvinCheckIsUpdated()
+		#~ self.GarvinCheckIsUpdated()
 		
 		#--- perlu ada reset versi garvin, dipanggil dengan melewatkan argumen pada pemanggilan garvin dengan argumen seperti yang tertera dibawah
 		#~ if len(sys.argv)>1:
 			#~ if sys.argv[1]=="-RESETGARVIN":
 				#~ self.DataMaster_Popup("Anda akan mereset Garvin ke versi awal")
 				
-		if (self.GarvinGetConfig("FILE VERSION","bin/garvinbin.dat")==""):
-			print ("File version gak ada, menuliskan")
-			dataversi = "versiini = [['garvin', 1, 'localhost'],['bin',  1, 'localhost'],['data',  1, 'localhost'],['doc',  1, 'localhost'],['image',  1, 'localhost'],['installer', 1, 'localhost'],['mysql',  1, 'localhost'],['source',  1, 'localhost']]" #-- lgsg executable array asignment
-			self.GarvinSetConfig("FILE VERSION",dataversi,"bin/garvinbin.dat")
-			print ("done.")
+		#~ if (self.GarvinGetConfig("FILE VERSION","bin/garvinbin.dat")==""):
+			#~ print ("File version gak ada, menuliskan")
+			#~ dataversi = "versiini = [['garvin', 1, 'localhost'],['bin',  1, 'localhost'],['data',  1, 'localhost'],['doc',  1, 'localhost'],['image',  1, 'localhost'],['installer', 1, 'localhost'],['mysql',  1, 'localhost'],['source',  1, 'localhost']]" #-- lgsg executable array asignment
+			#~ self.GarvinSetConfig("FILE VERSION",dataversi,"bin/garvinbin.dat")
+			#~ print ("done.")
 	
 	def GarvinInit(self):
 		#-- init dipindah disini, karena dipanggil setelah berhasil login (set database dsb) di fungsi self.Login_Done
@@ -88,7 +88,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		self.ResetRooms()
 		#--- startup program, set semua datetimeedit ke waktu skrg		
 		self.GarvinSetDate(self)
-		self.Laporan_BuktiKasMasuk('KM0001')
+		self.Laporan_BuktiKasKeluar('KK0001')
 	
 	def Popup_NamaAlamat_Tabel(self,namaTabel,row):
 		data = []
