@@ -169,7 +169,7 @@ class Laporan(object):
 			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][3], formatBiasa)
 			worksheet.merge_range('D'+str(index)+':H'+str(index), result[x][15], formatBiasa)
 			worksheet.merge_range('I'+str(index)+':K'+str(index), result[x][4], formatBiasa)
-			total = total +  int(result[x][4])
+			total = total +  int(result[x][4]) 
 		worksheet.merge_range('B'+str(index+1)+':H'+str(index+1), "TOTAL : ", formatTotal)
 		worksheet.merge_range('I'+str(index+1)+':K'+str(index+1), "=SUM(I"+str(8)+":K"+str(index)+")", formatBiasa)
 		

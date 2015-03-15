@@ -305,15 +305,17 @@ class KasMasuk(object):
 			sqltorun = []
 		CNOAKUN = 0
 		CNILAI = 2
+		CCATATAN = 3
 		#--- edit (simpen replace)
 		#--- update dan tambah detail transaksi jurnal
 		tablerow = 0
 		for tablerowid in idies:
 			self.DatabaseInsertReplace(self.dbDatabase,"gd_detail_kas_masuk","id",tablerowid,
-										["kodeTransaksi","noAkunDetail","nilaiDetail"],
+										["kodeTransaksi","noAkunDetail","nilaiDetail", "catatan"],
 										[str(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.text()),
 										str(self.KasBankUI.tbl_KasMasuk_Tambah.item(tablerow,CNOAKUN).text()),
-										str(self.KasBankUI.tbl_KasMasuk_Tambah.item(tablerow,CNILAI	).text())
+										str(self.KasBankUI.tbl_KasMasuk_Tambah.item(tablerow,CNILAI	).text()),
+										str(self.KasBankUI.tbl_KasMasuk_Tambah.item(tablerow,CCATATAN).text())
 										]
 									)
 			tablerow+=1
@@ -321,10 +323,11 @@ class KasMasuk(object):
 			#"ada tambahan baru"
 			for tablerow in range(len(idies),self.KasBankUI.tbl_KasMasuk_Tambah.rowCount()):
 				self.DatabaseInsertReplace(self.dbDatabase,"gd_detail_kas_masuk",	None,None,
-											["kodeTransaksi","noAkunDetail","nilaiDetail"],
+											["kodeTransaksi","noAkunDetail","nilaiDetail", "catatan"],
 											[str(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.text()),
 											str(self.KasBankUI.tbl_KasMasuk_Tambah.item(tablerow,CNOAKUN).text()),
-											str(self.KasBankUI.tbl_KasMasuk_Tambah.item(tablerow,CNILAI	).text())
+											str(self.KasBankUI.tbl_KasMasuk_Tambah.item(tablerow,CNILAI	).text()),
+											str(self.KasBankUI.tbl_KasMasuk_Tambah.item(tablerow,CCATATAN).text())
 											]	)
 		self.DatabaseInsertReplace(self.dbDatabase,"gd_kas_masuk","kodeTransaksi",str(self.KasBankUI.le_KasMasuk_Tambah_Form_Nomor.text()),
 											["kodeTransaksi", "noAkunKas", "kodePelanggan", "catatan", "tanggal", "nilaiTotal"],
