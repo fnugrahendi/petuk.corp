@@ -118,7 +118,7 @@ class MainGUI(QtGui.QMainWindow,Ui_MainWindow):
 	def InstallConfig_Act(self):
 		self.aatime.stop()
 		print "jalankan", str(self.le_InstallDir.text())+"\\mysql\\bin\\mysqld --port=44559"
-		Popen(str(self.le_InstallDir.text())+"\\mysql\\bin\\mysqld --port=44559")
+		self.childproses = Popen(str(self.le_InstallDir.text())+"\\mysql\\bin\\mysqld --port=44559")
 		
 		self.aatime = QtCore.QTimer(self)
 		self.aatime.timeout.connect(self.InstallConfig_MysqlUser)
@@ -174,9 +174,14 @@ class MainGUI(QtGui.QMainWindow,Ui_MainWindow):
 		self.lb_InstallBin_Judul.setText("Instalasi sukses")
 		self.tb_InstallBin_Next.show()
 		self.tb_InstallBin_Next.setText("Finish")
+		
 		self.tb_InstallBin_Next.clicked.connect(self.Quit)
 		
+		
 	def Quit(self):
+		#-- bunuh subproses mysqld dulu
+		try:self.childproses.kill()
+		except:pass
 		sys.exit (0)
 	
 	def GarvinDisconnect(self,stuff):
