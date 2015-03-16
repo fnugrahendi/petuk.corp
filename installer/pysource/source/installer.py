@@ -5,6 +5,8 @@ import functools
 import itertools
 import re
 from subprocess import Popen 
+import pythoncom #-- shortcut
+from win32com.shell import shell, shellcon
 
 from installer_ui import Ui_MainWindow
 
@@ -83,6 +85,8 @@ class MainGUI(QtGui.QMainWindow,Ui_MainWindow):
 		os.makedirs(installpath+"\data")
 	
 	def InstallBin(self):
+		if str(self.le_InstallDir.text())[-1]=='\\':
+			self.le_InstallDir.setText(str(self.le_InstallDir.text())[:-1]) #-- strip \ dibelakang
 		self.Goto("Install Bin")
 		self.lb_InstallBin_Judul.setText("Menginstall Garvin Accounting...")
 		self.tb_InstallBin_Next.hide()
@@ -131,9 +135,9 @@ class MainGUI(QtGui.QMainWindow,Ui_MainWindow):
 		f.close()
 		print "jalankan",(str(self.le_InstallDir.text())+"\\mysql\\bin\\mysql --port=44559 -u root test < querytambahuser.md")
 		os.system(str(self.le_InstallDir.text())+"\\mysql\\bin\\mysql --port=44559 -u root test < querytambahuser.md")
-		self.Selesai()
+		self.Install_StartMenu()
 	
-		
+	
 	def InstallConfig(self):
 		self.Goto("Install Bin")
 		self.lb_InstallBin_Judul.setText("Melakukan configurasi program...")
@@ -141,6 +145,27 @@ class MainGUI(QtGui.QMainWindow,Ui_MainWindow):
 		self.aatime = QtCore.QTimer(self)
 		self.aatime.timeout.connect(self.InstallConfig_Act)
 		self.aatime.start(100)
+	
+	
+	def Install_StartMenu(self):
+		#--- install start menu
+		self.Goto("Install Bin")
+		self.lb_InstallBin_Judul.setText("Memasang start menu...")
+		self.tb_InstallBin_Next.hide()
+		startmenudir = os.environ["PROGRAMDATA"]+"\\Microsoft\\Windows\\Start Menu\\Garvin Accounting"
+		installpath = str(self.le_InstallDir.text())
+		
+		if not os.path.exists(startmenudir): os.makedirs(startmenudir)
+		startmenulink = startmenudir + "\\Garvin.lnk"	
+			
+		shortcut = pythoncom.CoCreateInstance (shell.CLSID_ShellLink, None, pythoncom.CLSCTX_INPROC_SERVER, shell.IID_IShellLink)
+		shortcut.SetPath(installpath+"\\bin\\Garvin.exe")
+		shortcut.SetDescription ("Garvin Accounting")
+		shortcut.SetIconLocation(installpath+"\\bin\\Garvin.exe",0)
+		shortcut.SetWorkingDirectory(installpath+"\\bin\\")
+		persist_file = shortcut.QueryInterface (pythoncom.IID_IPersistFile)
+		persist_file.Save(startmenulink,0)
+		self.Selesai()
 	
 	def Selesai(self):
 		#--- todo tambah source file info
