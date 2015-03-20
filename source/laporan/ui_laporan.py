@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'laporan/ui_laporan.ui'
 #
-# Created: Tue Mar  3 16:43:10 2015
-#      by: PyQt4 UI code generator 4.10.4
+# Created: Fri Mar 20 21:20:04 2015
+#      by: PyQt4 UI code generator 4.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -92,7 +92,7 @@ class Ui_st_Laporan(object):
         sizePolicy.setHeightForWidth(self.lb_Laporan_KasHarian_Judul.sizePolicy().hasHeightForWidth())
         self.lb_Laporan_KasHarian_Judul.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
-        font.setFamily(_fromUtf8("Segoe UI Semilight"))
+        font.setFamily(_fromUtf8("Segoe    UI    Semilight"))
         font.setPointSize(18)
         self.lb_Laporan_KasHarian_Judul.setFont(font)
         self.lb_Laporan_KasHarian_Judul.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
@@ -125,6 +125,9 @@ class Ui_st_Laporan(object):
         self.lb_Laporan_KasHarian_Sampai = QtGui.QLabel(self.fr_Laporan_KasHarian_FA)
         self.lb_Laporan_KasHarian_Sampai.setObjectName(_fromUtf8("lb_Laporan_KasHarian_Sampai"))
         self.gridLayout_13.addWidget(self.lb_Laporan_KasHarian_Sampai, 2, 2, 1, 1)
+        self.le_Laporan_KasHarian_NoAkunKas = QtGui.QLineEdit(self.fr_Laporan_KasHarian_FA)
+        self.le_Laporan_KasHarian_NoAkunKas.setObjectName(_fromUtf8("le_Laporan_KasHarian_NoAkunKas"))
+        self.gridLayout_13.addWidget(self.le_Laporan_KasHarian_NoAkunKas, 3, 0, 1, 1)
         self.gridLayout_2.addWidget(self.fr_Laporan_KasHarian_FA, 1, 0, 1, 1)
         self.fr_Laporan_KasHarian = QtGui.QFrame(self.st_Laporan_KasHarian)
         self.fr_Laporan_KasHarian.setFrameShape(QtGui.QFrame.StyledPanel)
@@ -166,7 +169,7 @@ class Ui_st_Laporan(object):
         sizePolicy.setHeightForWidth(self.lb_Laporan_LabaRugi_Judul.sizePolicy().hasHeightForWidth())
         self.lb_Laporan_LabaRugi_Judul.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
-        font.setFamily(_fromUtf8("Segoe UI Semilight"))
+        font.setFamily(_fromUtf8("Segoe    UI    Semilight"))
         font.setPointSize(18)
         self.lb_Laporan_LabaRugi_Judul.setFont(font)
         self.lb_Laporan_LabaRugi_Judul.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
@@ -240,7 +243,7 @@ class Ui_st_Laporan(object):
         sizePolicy.setHeightForWidth(self.lb_Laporan_Neraca_Judul.sizePolicy().hasHeightForWidth())
         self.lb_Laporan_Neraca_Judul.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
-        font.setFamily(_fromUtf8("Segoe UI Semilight"))
+        font.setFamily(_fromUtf8("Segoe    UI    Semilight"))
         font.setPointSize(18)
         self.lb_Laporan_Neraca_Judul.setFont(font)
         self.lb_Laporan_Neraca_Judul.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
@@ -300,27 +303,28 @@ class Ui_st_Laporan(object):
     def retranslateUi(self, st_Laporan):
         st_Laporan.setWindowTitle(_translate("st_Laporan", "StackedWidget", None))
         self.gb_Menu_Laporan.setTitle(_translate("st_Laporan", "Laporan", None))
-        self.tb_Menu_Laporan_KasHarian.setText(_translate("st_Laporan", "Laporan Kas Harian", None))
-        self.tb_Menu_Laporan_LabaRugi.setText(_translate("st_Laporan", "Laporan Laba Rugi", None))
-        self.tb_Menu_Laporan_Neraca.setText(_translate("st_Laporan", "Laporan Neraca", None))
-        self.gb_Menu_SubLedger.setTitle(_translate("st_Laporan", "Subsidiary Ledger", None))
-        self.tb_Menu_Laporan_HutangPiutangPerusahaan.setText(_translate("st_Laporan", "Laporan Hutang Piutang Perusahaan", None))
-        self.tb_Menu_Laporan_JualBeliPerusahaan.setText(_translate("st_Laporan", "Laporan Jual Beli Perusahaan", None))
-        self.lb_Laporan_KasHarian_Judul.setText(_translate("st_Laporan", "Laporan Kas Harian", None))
+        self.tb_Menu_Laporan_KasHarian.setText(_translate("st_Laporan", "Laporan    Kas    Harian", None))
+        self.tb_Menu_Laporan_LabaRugi.setText(_translate("st_Laporan", "Laporan    Laba    Rugi", None))
+        self.tb_Menu_Laporan_Neraca.setText(_translate("st_Laporan", "Laporan    Neraca", None))
+        self.gb_Menu_SubLedger.setTitle(_translate("st_Laporan", "Subsidiary    Ledger", None))
+        self.tb_Menu_Laporan_HutangPiutangPerusahaan.setText(_translate("st_Laporan", "Laporan    Hutang    Piutang    Perusahaan", None))
+        self.tb_Menu_Laporan_JualBeliPerusahaan.setText(_translate("st_Laporan", "Laporan    Jual    Beli    Perusahaan", None))
+        self.lb_Laporan_KasHarian_Judul.setText(_translate("st_Laporan", "Laporan    Kas    Harian", None))
         self.lb_Laporan_KasHarian_.setText(_translate("st_Laporan", "-", None))
         self.lb_Laporan_KasHarian_Periode.setText(_translate("st_Laporan", "Periode", None))
         self.lb_Laporan_KasHarian_Dari.setText(_translate("st_Laporan", "dari", None))
         self.lb_Laporan_KasHarian_Sampai.setText(_translate("st_Laporan", "sampai", None))
+        self.le_Laporan_KasHarian_NoAkunKas.setPlaceholderText(_translate("st_Laporan", "nomor akun kas", None))
         self.tb_Laporan_KasHarian_Cetak.setText(_translate("st_Laporan", "Cetak", None))
         self.tb_Laporan_KasHarian_Kembali.setText(_translate("st_Laporan", "Kembali", None))
-        self.lb_Laporan_LabaRugi_Judul.setText(_translate("st_Laporan", "Laporan Laba Rugi", None))
+        self.lb_Laporan_LabaRugi_Judul.setText(_translate("st_Laporan", "Laporan    Laba    Rugi", None))
         self.lb_Laporan_LabaRugi_.setText(_translate("st_Laporan", "-", None))
         self.lb_Laporan_LabaRugi_Periode.setText(_translate("st_Laporan", "Periode", None))
         self.lb_Laporan_LabaRugi_Dari.setText(_translate("st_Laporan", "dari", None))
         self.lb_Laporan_LabaRugi_Sampai.setText(_translate("st_Laporan", "sampai", None))
         self.tb_Laporan_LabaRugi_Cetak.setText(_translate("st_Laporan", "Cetak", None))
         self.tb_Laporan_LabaRugi_Kembali.setText(_translate("st_Laporan", "Kembali", None))
-        self.lb_Laporan_Neraca_Judul.setText(_translate("st_Laporan", "Laporan Neraca", None))
+        self.lb_Laporan_Neraca_Judul.setText(_translate("st_Laporan", "Laporan    Neraca", None))
         self.lb_Laporan_Neraca_.setText(_translate("st_Laporan", "-", None))
         self.lb_Laporan_Neraca_Periode.setText(_translate("st_Laporan", "Periode", None))
         self.lb_Laporan_Neraca_Dari.setText(_translate("st_Laporan", "dari", None))
