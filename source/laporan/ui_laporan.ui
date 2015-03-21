@@ -1,595 +1,619 @@
-<?xml	version="1.0"	encoding="UTF-8"?>
-<ui	version="4.0">
-	<class>st_Laporan</class>
-	<widget	class="QStackedWidget"	name="st_Laporan">
-		<property	name="geometry">
-			<rect>
-				<x>0</x>
-				<y>0</y>
-				<width>679</width>
-				<height>486</height>
-			</rect>
-		</property>
-		<property	name="windowTitle">
-			<string>StackedWidget</string>
-		</property>
-		<property	name="currentIndex">
-			<number>0</number>
-		</property>
-		<widget	class="QWidget"	name="st_Menu">
-			<layout	class="QGridLayout"	name="igr_Menu">
-				<item	row="0"	column="0">
-					<widget	class="QFrame"	name="fr_Menu">
-						<property	name="frameShape">
-							<enum>QFrame::NoFrame</enum>
-						</property>
-						<property	name="frameShadow">
-							<enum>QFrame::Raised</enum>
-						</property>
-						<layout	class="QVBoxLayout"	name="ivl_Menu">
-							<item>
-								<widget	class="QGroupBox"	name="gb_Menu_Laporan">
-									<property	name="title">
-										<string>Laporan</string>
-									</property>
-									<property	name="flat">
-										<bool>false</bool>
-									</property>
-									<property	name="checkable">
-										<bool>false</bool>
-									</property>
-									<layout	class="QVBoxLayout"	name="verticalLayout_28">
-										<item>
-											<widget	class="QPushButton"	name="tb_Menu_Laporan_KasHarian">
-												<property	name="text">
-													<string>Laporan	Kas	Harian</string>
-												</property>
-											</widget>
-										</item>
-										<item>
-											<widget	class="QPushButton"	name="tb_Menu_Laporan_LabaRugi">
-												<property	name="text">
-													<string>Laporan	Laba	Rugi</string>
-												</property>
-											</widget>
-										</item>
-										<item>
-											<widget	class="QPushButton"	name="tb_Menu_Laporan_Neraca">
-												<property	name="text">
-													<string>Laporan	Neraca</string>
-												</property>
-											</widget>
-										</item>
-									</layout>
-								</widget>
-							</item>
-							<item>
-								<widget	class="QGroupBox"	name="gb_Menu_SubLedger">
-									<property	name="title">
-										<string>Subsidiary	Ledger</string>
-									</property>
-									<layout	class="QVBoxLayout"	name="verticalLayout_29">
-										<item>
-											<widget	class="QPushButton"	name="tb_Menu_Laporan_HutangPiutangPerusahaan">
-												<property	name="text">
-													<string>Laporan	Hutang	Piutang	Perusahaan</string>
-												</property>
-											</widget>
-										</item>
-										<item>
-											<widget	class="QPushButton"	name="tb_Menu_Laporan_JualBeliPerusahaan">
-												<property	name="text">
-													<string>Laporan	Jual	Beli	Perusahaan</string>
-												</property>
-											</widget>
-										</item>
-									</layout>
-								</widget>
-							</item>
-						</layout>
-					</widget>
-				</item>
-				<item	row="0"	column="1">
-					<spacer	name="hs_Menu_Laporan">
-						<property	name="orientation">
-							<enum>Qt::Horizontal</enum>
-						</property>
-						<property	name="sizeHint"	stdset="0">
-							<size>
-								<width>430</width>
-								<height>20</height>
-							</size>
-						</property>
-					</spacer>
-				</item>
-				<item	row="1"	column="0">
-					<spacer	name="vs_Menu_Laporan">
-						<property	name="orientation">
-							<enum>Qt::Vertical</enum>
-						</property>
-						<property	name="sizeHint"	stdset="0">
-							<size>
-								<width>20</width>
-								<height>236</height>
-							</size>
-						</property>
-					</spacer>
-				</item>
-			</layout>
-		</widget>
-		<widget	class="QWidget"	name="st_Laporan_KasHarian">
-			<layout	class="QGridLayout"	name="gridLayout_2">
-				<item	row="0"	column="0">
-					<widget	class="QFrame"	name="fr_Laporan_KasHarian_Judul">
-						<property	name="sizePolicy">
-							<sizepolicy	hsizetype="Preferred"	vsizetype="Maximum">
-								<horstretch>0</horstretch>
-								<verstretch>0</verstretch>
-							</sizepolicy>
-						</property>
-						<property	name="frameShape">
-							<enum>QFrame::NoFrame</enum>
-						</property>
-						<property	name="frameShadow">
-							<enum>QFrame::Raised</enum>
-						</property>
-						<layout	class="QHBoxLayout"	name="horizontalLayout_13">
-							<item>
-								<widget	class="QLabel"	name="lb_Laporan_KasHarian_Judul">
-									<property	name="sizePolicy">
-										<sizepolicy	hsizetype="Preferred"	vsizetype="Maximum">
-											<horstretch>0</horstretch>
-											<verstretch>0</verstretch>
-										</sizepolicy>
-									</property>
-									<property	name="font">
-										<font>
-											<family>Segoe	UI	Semilight</family>
-											<pointsize>18</pointsize>
-										</font>
-									</property>
-									<property	name="text">
-										<string>Laporan	Kas	Harian</string>
-									</property>
-									<property	name="alignment">
-										<set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-									</property>
-								</widget>
-							</item>
-						</layout>
-					</widget>
-				</item>
-				<item	row="1"	column="0">
-					<widget	class="QFrame"	name="fr_Laporan_KasHarian_FA">
-						<property	name="frameShape">
-							<enum>QFrame::NoFrame</enum>
-						</property>
-						<property	name="frameShadow">
-							<enum>QFrame::Raised</enum>
-						</property>
-						<layout	class="QGridLayout"	name="gridLayout_13">
-							<item	row="1"	column="1">
-								<widget	class="QLabel"	name="lb_Laporan_KasHarian_">
-									<property	name="text">
-										<string>-</string>
-									</property>
-								</widget>
-							</item>
-							<item	row="1"	column="0">
-								<widget	class="QDateTimeEdit"	name="dte_Laporan_KasHarian_Dari"/>
-							</item>
-							<item	row="0"	column="0">
-								<widget	class="QLabel"	name="lb_Laporan_KasHarian_Periode">
-									<property	name="text">
-										<string>Periode</string>
-									</property>
-								</widget>
-							</item>
-							<item	row="1"	column="2">
-								<widget	class="QDateTimeEdit"	name="dte_Laporan_KasHarian_Sampai"/>
-							</item>
-							<item	row="1"	column="3">
-								<spacer	name="hs_Laporan_KasHarian_FA">
-									<property	name="orientation">
-										<enum>Qt::Horizontal</enum>
-									</property>
-									<property	name="sizeHint"	stdset="0">
-										<size>
-											<width>40</width>
-											<height>20</height>
-										</size>
-									</property>
-								</spacer>
-							</item>
-							<item	row="2"	column="0">
-								<widget	class="QLabel"	name="lb_Laporan_KasHarian_Dari">
-									<property	name="text">
-										<string>dari</string>
-									</property>
-								</widget>
-							</item>
-							<item	row="2"	column="2">
-								<widget	class="QLabel"	name="lb_Laporan_KasHarian_Sampai">
-									<property	name="text">
-										<string>sampai</string>
-									</property>
-								</widget>
-							</item>
-							<item	row="3"	column="0">
-								<widget	class="QLineEdit"	name="le_Laporan_KasHarian_NoAkunKas">
-									<property	name="placeholderText">
-										<string>nomor akun kas</string>
-									</property>
-								</widget>
-							</item>
-						</layout>
-					</widget>
-				</item>
-				<item	row="3"	column="0">
-					<widget	class="QFrame"	name="fr_Laporan_KasHarian">
-						<property	name="frameShape">
-							<enum>QFrame::StyledPanel</enum>
-						</property>
-						<property	name="frameShadow">
-							<enum>QFrame::Raised</enum>
-						</property>
-						<layout	class="QHBoxLayout"	name="horizontalLayout">
-							<item>
-								<widget	class="QPushButton"	name="tb_Laporan_KasHarian_Cetak">
-									<property	name="text">
-										<string>Cetak</string>
-									</property>
-								</widget>
-							</item>
-							<item>
-								<widget	class="QPushButton"	name="tb_Laporan_KasHarian_Kembali">
-									<property	name="text">
-										<string>Kembali</string>
-									</property>
-								</widget>
-							</item>
-							<item>
-								<spacer	name="hs_Laporan_KasHarian">
-									<property	name="orientation">
-										<enum>Qt::Horizontal</enum>
-									</property>
-									<property	name="sizeHint"	stdset="0">
-										<size>
-											<width>40</width>
-											<height>20</height>
-										</size>
-									</property>
-								</spacer>
-							</item>
-						</layout>
-					</widget>
-				</item>
-				<item	row="4"	column="0">
-					<spacer	name="vs_Laporan_Kasharian">
-						<property	name="orientation">
-							<enum>Qt::Vertical</enum>
-						</property>
-						<property	name="sizeHint"	stdset="0">
-							<size>
-								<width>20</width>
-								<height>330</height>
-							</size>
-						</property>
-					</spacer>
-				</item>
-			</layout>
-		</widget>
-		<widget	class="QWidget"	name="st_Laporan_LabaRugi">
-			<layout	class="QGridLayout"	name="gridLayout">
-				<item	row="0"	column="0">
-					<widget	class="QFrame"	name="fr_Laporan_LabaRugi_Judul">
-						<property	name="sizePolicy">
-							<sizepolicy	hsizetype="Preferred"	vsizetype="Maximum">
-								<horstretch>0</horstretch>
-								<verstretch>0</verstretch>
-							</sizepolicy>
-						</property>
-						<property	name="frameShape">
-							<enum>QFrame::NoFrame</enum>
-						</property>
-						<property	name="frameShadow">
-							<enum>QFrame::Raised</enum>
-						</property>
-						<layout	class="QHBoxLayout"	name="horizontalLayout_14">
-							<item>
-								<widget	class="QLabel"	name="lb_Laporan_LabaRugi_Judul">
-									<property	name="sizePolicy">
-										<sizepolicy	hsizetype="Preferred"	vsizetype="Maximum">
-											<horstretch>0</horstretch>
-											<verstretch>0</verstretch>
-										</sizepolicy>
-									</property>
-									<property	name="font">
-										<font>
-											<family>Segoe	UI	Semilight</family>
-											<pointsize>18</pointsize>
-										</font>
-									</property>
-									<property	name="text">
-										<string>Laporan	Laba	Rugi</string>
-									</property>
-									<property	name="alignment">
-										<set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-									</property>
-								</widget>
-							</item>
-						</layout>
-					</widget>
-				</item>
-				<item	row="1"	column="0">
-					<widget	class="QFrame"	name="fr_Laporan_LabaRugi_FA">
-						<property	name="frameShape">
-							<enum>QFrame::NoFrame</enum>
-						</property>
-						<property	name="frameShadow">
-							<enum>QFrame::Raised</enum>
-						</property>
-						<layout	class="QGridLayout"	name="gridLayout_14">
-							<item	row="1"	column="1">
-								<widget	class="QLabel"	name="lb_Laporan_LabaRugi_">
-									<property	name="text">
-										<string>-</string>
-									</property>
-								</widget>
-							</item>
-							<item	row="1"	column="0">
-								<widget	class="QDateTimeEdit"	name="dte_Laporan_LabaRugi_Dari"/>
-							</item>
-							<item	row="0"	column="0">
-								<widget	class="QLabel"	name="lb_Laporan_LabaRugi_Periode">
-									<property	name="text">
-										<string>Periode</string>
-									</property>
-								</widget>
-							</item>
-							<item	row="1"	column="2">
-								<widget	class="QDateTimeEdit"	name="dte_Laporan_LabaRugi_Sampai"/>
-							</item>
-							<item	row="1"	column="3">
-								<spacer	name="hs_Laporan_LabaRugi_FA">
-									<property	name="orientation">
-										<enum>Qt::Horizontal</enum>
-									</property>
-									<property	name="sizeHint"	stdset="0">
-										<size>
-											<width>40</width>
-											<height>20</height>
-										</size>
-									</property>
-								</spacer>
-							</item>
-							<item	row="2"	column="0">
-								<widget	class="QLabel"	name="lb_Laporan_LabaRugi_Dari">
-									<property	name="text">
-										<string>dari</string>
-									</property>
-								</widget>
-							</item>
-							<item	row="2"	column="2">
-								<widget	class="QLabel"	name="lb_Laporan_LabaRugi_Sampai">
-									<property	name="text">
-										<string>sampai</string>
-									</property>
-								</widget>
-							</item>
-						</layout>
-					</widget>
-				</item>
-				<item	row="2"	column="0">
-					<widget	class="QFrame"	name="fr_Laporan_LabaRugi">
-						<property	name="frameShape">
-							<enum>QFrame::StyledPanel</enum>
-						</property>
-						<property	name="frameShadow">
-							<enum>QFrame::Raised</enum>
-						</property>
-						<layout	class="QHBoxLayout"	name="horizontalLayout_2">
-							<item>
-								<widget	class="QPushButton"	name="tb_Laporan_LabaRugi_Cetak">
-									<property	name="text">
-										<string>Cetak</string>
-									</property>
-								</widget>
-							</item>
-							<item>
-								<widget	class="QPushButton"	name="tb_Laporan_LabaRugi_Kembali">
-									<property	name="text">
-										<string>Kembali</string>
-									</property>
-								</widget>
-							</item>
-							<item>
-								<spacer	name="hs_Laporan_LabaRugi_Periode">
-									<property	name="orientation">
-										<enum>Qt::Horizontal</enum>
-									</property>
-									<property	name="sizeHint"	stdset="0">
-										<size>
-											<width>40</width>
-											<height>20</height>
-										</size>
-									</property>
-								</spacer>
-							</item>
-						</layout>
-					</widget>
-				</item>
-				<item	row="3"	column="0">
-					<spacer	name="vs_Laporan_LabaRugi">
-						<property	name="orientation">
-							<enum>Qt::Vertical</enum>
-						</property>
-						<property	name="sizeHint"	stdset="0">
-							<size>
-								<width>20</width>
-								<height>262</height>
-							</size>
-						</property>
-					</spacer>
-				</item>
-			</layout>
-		</widget>
-		<widget	class="QWidget"	name="st_Laporan_Neraca">
-			<layout	class="QGridLayout"	name="gridLayout_3">
-				<item	row="0"	column="0">
-					<widget	class="QFrame"	name="fr_Laporan_Neraca_Judul">
-						<property	name="sizePolicy">
-							<sizepolicy	hsizetype="Preferred"	vsizetype="Maximum">
-								<horstretch>0</horstretch>
-								<verstretch>0</verstretch>
-							</sizepolicy>
-						</property>
-						<property	name="frameShape">
-							<enum>QFrame::NoFrame</enum>
-						</property>
-						<property	name="frameShadow">
-							<enum>QFrame::Raised</enum>
-						</property>
-						<layout	class="QHBoxLayout"	name="horizontalLayout_15">
-							<item>
-								<widget	class="QLabel"	name="lb_Laporan_Neraca_Judul">
-									<property	name="sizePolicy">
-										<sizepolicy	hsizetype="Preferred"	vsizetype="Maximum">
-											<horstretch>0</horstretch>
-											<verstretch>0</verstretch>
-										</sizepolicy>
-									</property>
-									<property	name="font">
-										<font>
-											<family>Segoe	UI	Semilight</family>
-											<pointsize>18</pointsize>
-										</font>
-									</property>
-									<property	name="text">
-										<string>Laporan	Neraca</string>
-									</property>
-									<property	name="alignment">
-										<set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-									</property>
-								</widget>
-							</item>
-						</layout>
-					</widget>
-				</item>
-				<item	row="1"	column="0">
-					<widget	class="QFrame"	name="fr_Laporan_Neraca_FA">
-						<property	name="frameShape">
-							<enum>QFrame::NoFrame</enum>
-						</property>
-						<property	name="frameShadow">
-							<enum>QFrame::Raised</enum>
-						</property>
-						<layout	class="QGridLayout"	name="gridLayout_15">
-							<item	row="1"	column="1">
-								<widget	class="QLabel"	name="lb_Laporan_Neraca_">
-									<property	name="text">
-										<string>-</string>
-									</property>
-								</widget>
-							</item>
-							<item	row="1"	column="0">
-								<widget	class="QDateTimeEdit"	name="dte_Laporan_Neraca_Dari"/>
-							</item>
-							<item	row="0"	column="0">
-								<widget	class="QLabel"	name="lb_Laporan_Neraca_Periode">
-									<property	name="text">
-										<string>Periode</string>
-									</property>
-								</widget>
-							</item>
-							<item	row="1"	column="2">
-								<widget	class="QDateTimeEdit"	name="dte_Laporan_Neraca_Sampai"/>
-							</item>
-							<item	row="1"	column="3">
-								<spacer	name="hs_Laporan_Neraca_FA">
-									<property	name="orientation">
-										<enum>Qt::Horizontal</enum>
-									</property>
-									<property	name="sizeHint"	stdset="0">
-										<size>
-											<width>40</width>
-											<height>20</height>
-										</size>
-									</property>
-								</spacer>
-							</item>
-							<item	row="2"	column="0">
-								<widget	class="QLabel"	name="lb_Laporan_Neraca_Dari">
-									<property	name="text">
-										<string>dari</string>
-									</property>
-								</widget>
-							</item>
-							<item	row="2"	column="2">
-								<widget	class="QLabel"	name="lb_Laporan_Neraca_Sampai">
-									<property	name="text">
-										<string>sampai</string>
-									</property>
-								</widget>
-							</item>
-						</layout>
-					</widget>
-				</item>
-				<item	row="2"	column="0">
-					<widget	class="QFrame"	name="fr_Laporan_Neraca">
-						<property	name="frameShape">
-							<enum>QFrame::StyledPanel</enum>
-						</property>
-						<property	name="frameShadow">
-							<enum>QFrame::Raised</enum>
-						</property>
-						<layout	class="QHBoxLayout"	name="horizontalLayout_3">
-							<item>
-								<widget	class="QPushButton"	name="tb_Laporan_Neraca_Cetak">
-									<property	name="text">
-										<string>Cetak</string>
-									</property>
-								</widget>
-							</item>
-							<item>
-								<widget	class="QPushButton"	name="tb_Laporan_Neraca_Kembali">
-									<property	name="text">
-										<string>Kembali</string>
-									</property>
-								</widget>
-							</item>
-							<item>
-								<spacer	name="hs_Laporan_Neraca_Periode">
-									<property	name="orientation">
-										<enum>Qt::Horizontal</enum>
-									</property>
-									<property	name="sizeHint"	stdset="0">
-										<size>
-											<width>40</width>
-											<height>20</height>
-										</size>
-									</property>
-								</spacer>
-							</item>
-						</layout>
-					</widget>
-				</item>
-				<item	row="3"	column="0">
-					<spacer	name="vs_Laporan_Neraca">
-						<property	name="orientation">
-							<enum>Qt::Vertical</enum>
-						</property>
-						<property	name="sizeHint"	stdset="0">
-							<size>
-								<width>20</width>
-								<height>262</height>
-							</size>
-						</property>
-					</spacer>
-				</item>
-			</layout>
-		</widget>
-	</widget>
-	<resources/>
-	<connections/>
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>st_Laporan</class>
+ <widget class="QStackedWidget" name="st_Laporan">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>679</width>
+    <height>486</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>StackedWidget</string>
+  </property>
+  <property name="currentIndex">
+   <number>1</number>
+  </property>
+  <widget class="QWidget" name="st_Menu">
+   <layout class="QGridLayout" name="igr_Menu">
+    <item row="0" column="0">
+     <widget class="QFrame" name="fr_Menu">
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="ivl_Menu">
+       <item>
+        <widget class="QGroupBox" name="gb_Menu_Laporan">
+         <property name="title">
+          <string>Laporan</string>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <property name="checkable">
+          <bool>false</bool>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_28">
+          <item>
+           <widget class="QPushButton" name="tb_Menu_Laporan_KasHarian">
+            <property name="text">
+             <string>Laporan	Kas	Harian</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="tb_Menu_Laporan_LabaRugi">
+            <property name="text">
+             <string>Laporan	Laba	Rugi</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="tb_Menu_Laporan_Neraca">
+            <property name="text">
+             <string>Laporan	Neraca</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="gb_Menu_SubLedger">
+         <property name="title">
+          <string>Subsidiary	Ledger</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_29">
+          <item>
+           <widget class="QPushButton" name="tb_Menu_Laporan_HutangPiutangPerusahaan">
+            <property name="text">
+             <string>Laporan	Hutang	Piutang	Perusahaan</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="tb_Menu_Laporan_JualBeliPerusahaan">
+            <property name="text">
+             <string>Laporan	Jual	Beli	Perusahaan</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <spacer name="hs_Menu_Laporan">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>430</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="0">
+     <spacer name="vs_Menu_Laporan">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>236</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="st_Laporan_KasHarian">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <widget class="QFrame" name="fr_Laporan_KasHarian_Judul">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_13">
+       <item>
+        <widget class="QLabel" name="lb_Laporan_KasHarian_Judul">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe	UI	Semilight</family>
+           <pointsize>18</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Laporan Kas Harian</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QFrame" name="fr_Laporan_KasHarian_FA">
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_13">
+       <item row="2" column="4">
+        <widget class="QLabel" name="lb_Laporan_KasHarian_">
+         <property name="text">
+          <string>-</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QDateTimeEdit" name="dte_Laporan_KasHarian_Dari"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="lb_Laporan_KasHarian_Periode">
+         <property name="text">
+          <string>Periode</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="6">
+        <widget class="QDateTimeEdit" name="dte_Laporan_KasHarian_Sampai"/>
+       </item>
+       <item row="2" column="7">
+        <spacer name="hs_Laporan_KasHarian_FA">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="lb_Laporan_KasHarian_Dari">
+         <property name="text">
+          <string>dari</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5">
+        <widget class="QLabel" name="lb_Laporan_KasHarian_Sampai">
+         <property name="text">
+          <string>sampai</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2" colspan="2">
+        <widget class="QPushButton" name="tb_Laporan_KasHarian_noAkunKas">
+         <property name="styleSheet">
+          <string notr="true">QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:23px;}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="lb_Laporan_KasHarian_NoAkunKas">
+         <property name="text">
+          <string>Nomor Akun Kas</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>:</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QFrame" name="fr_Laporan_KasHarian">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="tb_Laporan_KasHarian_Cetak">
+         <property name="text">
+          <string>Cetak</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_Laporan_KasHarian_Kembali">
+         <property name="text">
+          <string>Kembali</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="hs_Laporan_KasHarian">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <spacer name="vs_Laporan_Kasharian">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>330</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="st_Laporan_LabaRugi">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QFrame" name="fr_Laporan_LabaRugi_Judul">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_14">
+       <item>
+        <widget class="QLabel" name="lb_Laporan_LabaRugi_Judul">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe	UI	Semilight</family>
+           <pointsize>18</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Laporan	Laba	Rugi</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QFrame" name="fr_Laporan_LabaRugi_FA">
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_14">
+       <item row="1" column="1">
+        <widget class="QLabel" name="lb_Laporan_LabaRugi_">
+         <property name="text">
+          <string>-</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QDateTimeEdit" name="dte_Laporan_LabaRugi_Dari"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="lb_Laporan_LabaRugi_Periode">
+         <property name="text">
+          <string>Periode</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QDateTimeEdit" name="dte_Laporan_LabaRugi_Sampai"/>
+       </item>
+       <item row="1" column="3">
+        <spacer name="hs_Laporan_LabaRugi_FA">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="lb_Laporan_LabaRugi_Dari">
+         <property name="text">
+          <string>dari</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="lb_Laporan_LabaRugi_Sampai">
+         <property name="text">
+          <string>sampai</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QFrame" name="fr_Laporan_LabaRugi">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QPushButton" name="tb_Laporan_LabaRugi_Cetak">
+         <property name="text">
+          <string>Cetak</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_Laporan_LabaRugi_Kembali">
+         <property name="text">
+          <string>Kembali</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="hs_Laporan_LabaRugi_Periode">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <spacer name="vs_Laporan_LabaRugi">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>262</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="st_Laporan_Neraca">
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="0">
+     <widget class="QFrame" name="fr_Laporan_Neraca_Judul">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_15">
+       <item>
+        <widget class="QLabel" name="lb_Laporan_Neraca_Judul">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe	UI	Semilight</family>
+           <pointsize>18</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Laporan	Neraca</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QFrame" name="fr_Laporan_Neraca_FA">
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_15">
+       <item row="1" column="1">
+        <widget class="QLabel" name="lb_Laporan_Neraca_">
+         <property name="text">
+          <string>-</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QDateTimeEdit" name="dte_Laporan_Neraca_Dari"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="lb_Laporan_Neraca_Periode">
+         <property name="text">
+          <string>Periode</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QDateTimeEdit" name="dte_Laporan_Neraca_Sampai"/>
+       </item>
+       <item row="1" column="3">
+        <spacer name="hs_Laporan_Neraca_FA">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="lb_Laporan_Neraca_Dari">
+         <property name="text">
+          <string>dari</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="lb_Laporan_Neraca_Sampai">
+         <property name="text">
+          <string>sampai</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QFrame" name="fr_Laporan_Neraca">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QPushButton" name="tb_Laporan_Neraca_Cetak">
+         <property name="text">
+          <string>Cetak</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tb_Laporan_Neraca_Kembali">
+         <property name="text">
+          <string>Kembali</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="hs_Laporan_Neraca_Periode">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <spacer name="vs_Laporan_Neraca">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>262</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
 </ui>
