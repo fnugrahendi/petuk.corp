@@ -141,9 +141,10 @@ int main(int argc, char* kvlt[])
 	
 	std::cout<<"configurasi update\n";
 	
-	ConfigfileHandler data(BasePath, "garvinbin.dat");
+	ConfigfileHandler data(BasePath+std::string("data/"), "garvin.dat");
 	data.Load();
 	data.Getconfig("FILE VERSION");
+	data.Setconfig("FILE VERSION","versiini = [['garvin', 1, 'localhost'],['bin',  1, 'localhost'],['data',  1, 'localhost'],['doc',  1, 'localhost'],['image',  1, 'localhost'],['installer', 1, 'localhost'],['mysql',  1, 'localhost'],['source',  1, 'localhost']]");
 	
 	std::cout<<"Pemasangan selesai\n";
 	
