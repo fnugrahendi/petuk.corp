@@ -3,7 +3,9 @@
 #include <stdio.h>
 #include <csignal>
 #include <fstream>
-#define uint32_t unsigned int
+#include "ConfigfileHandler.h"
+
+
 
 //~ #define WINDOWS
 #ifdef WINDOWS
@@ -15,7 +17,7 @@
 #else
 	#include <unistd.h> //posix
 	#define delay(x) usleep(x*1000)
-	#define CEKPROSES (char*)"ps -ef | grep Garvin"
+	#define CEKPROSES (char*)"ps -ef | grep Garvin | grep -v grep"
 #endif
 	
 #define umpomo if
@@ -54,6 +56,7 @@ namespace Garvin{
 			return (padaapa.replace(posisi,apa.length(),denganapa));
 		}
 	}
+	
 };
 
 int main(int argc, char* kvlt[])
@@ -63,11 +66,18 @@ int main(int argc, char* kvlt[])
 	std::string DataPath;
 	std::string SevenZip;
 	Path = kvlt[0];
-	BasePath = Garvin::replace("updateinstaller.exe","",Path)+"..\\..\\";
-	DataPath = BasePath+"data\\";
-	SevenZip = BasePath+"downloader\\7z_win\\7z.exe ";
+	#ifdef WINDOWS
+		BasePath = Garvin::replace("updateinstaller.exe","",Path)+"..\\..\\";		
+		DataPath = BasePath+"data\\";
+		SevenZip = BasePath+"downloader\\7z_win\\7z.exe ";
+	#else
+		BasePath = Garvin::replace("updateinstaller.exe","",Path)+"../../";
+		DataPath = BasePath+"data/";
+		SevenZip = BasePath+"downloader/7z_win/7z.exe ";
+	#endif
+	print(BasePath);
 	print(DataPath);
-	
+	print(SevenZip);
 	
 	bool downloaddone=true;
 	do
@@ -128,8 +138,17 @@ int main(int argc, char* kvlt[])
 		std::cout<<Garvin::exec((char *)perintah.data());
 		std::cout<<"[OK]\n";
 	}
-	std::cout<<"Updater selesai\n";
-	//~ std::cin>>argc;
-	delay(10000);
+	
+	std::cout<<"configurasi update\n";
+	
+	ConfigfileHandler data(BasePath, "garvinbin.dat");
+	data.Load();
+	data.Getconfig("FILE VERSION");
+	
+	std::cout<<"Pemasangan selesai\n";
+	
+	
+	std::cin>>argc;
+	//~ delay(3000);
 	return (0);
 }
