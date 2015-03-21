@@ -49,8 +49,10 @@ class Laporan(object):
 		
 		self.INDEX_ST_LAPORAN = ["MENU", "LAPORAN KAS HARIAN", "LAPORAN LABA RUGI", "LAPORAN NERACA"]
 		
+		#-- signal connect 
 		self.LaporanUI.tb_Menu_Laporan_Neraca.clicked.connect(functools.partial(self.Laporan_Neraca,None))
-	
+		self.LaporanUI.tb_Menu_Laporan_KasHarian.clicked.connect(self.Laporan_RKasHarian)
+		
 	def Laporan_Goto(self,namaroom):
 		if (type(namaroom)==str):
 			#-- do the find. which each page is no more than a widget (not to be confused with QStackedWidget with st_ name)
@@ -1205,6 +1207,13 @@ class Laporan(object):
 							
 		workbook.close()
 		return
+		
+	
+	def Laporan_RKasHarian(self):
+		"""Kontrol untuk RKasHarian"""
+		self.Laporan_Goto("LAPORAN KAS HARIAN")
+		self.GarvinDisconnect(self.LaporanUI.tb_Laporan_KasHarian_noAkunKas.clicked) #-- fungsi RKasHarian bakalan dipanggil berkali2 pas program jalan, dadi kudu pastikan diskonek sikik
+		self.LaporanUI.tb_Laporan_KasHarian_noAkunKas.clicked.connect(functools.partial(self.Popup_Rekening,self.LaporanUI.tb_Laporan_KasHarian_noAkunKas))
 		
 	def Laporan_KasHarian(self,noAkun,tanggalAwal,tanggalAkhir):
 		
