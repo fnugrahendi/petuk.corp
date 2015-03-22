@@ -56,7 +56,10 @@ class Updater(object):
 				["installer", 	1, "localhost"],
 				["mysql", 		1, "localhost"],
 				["source", 		1, "localhost"]
-			]#-- TODO SOFTCODE & LOAD THIS, UPDATE THE VaLUE ON SOFTWARE UPDATE TOO
+			]
+		#-- SOFTCODE & LOAD THIS, UPDATE THE VaLUE ON SOFTWARE UPDATE TOO
+		cmdversiini = self.GarvinGetConfig("FILE VERSION","bin/garvinbin.dat")
+		exec(cmdversiini)
 		versigarvin = versiini
 		f = open(downloadfolder+"currentversion.rb","r")
 		data = f.read()

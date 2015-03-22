@@ -59,7 +59,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		
 		
 		#--- check if garvin is recent version
-		#~ self.GarvinCheckIsUpdated()
+		self.GarvinCheckIsUpdated()
 		
 		#--- perlu ada reset versi garvin, dipanggil dengan melewatkan argumen pada pemanggilan garvin dengan argumen seperti yang tertera dibawah
 		#~ if len(sys.argv)>1:
