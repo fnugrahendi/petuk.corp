@@ -124,7 +124,12 @@ void ConfigfileHandler::Setconfig(std::string configname, std::string configvalu
 		encodeddata = encodeddata + key +std::string("\n:")+lbaris.substr(0,42)+std::string("\n");///-- tambah newline juga di akhir
 		
 		ConfigfileHandler::UserData = bagianatas + encodeddata + bagianbawah;
-		std::cout<<ConfigfileHandler::UserData;
+		//~ std::cout<<ConfigfileHandler::UserData;
+		std::cout<<" Warning,, garvin config will be saved ";
+		
+		ConfigfileHandler::File.open(ConfigfileHandler::FilePath.data(), std::fstream::out |std::fstream::trunc);
+		ConfigfileHandler::File<<ConfigfileHandler::UserData;
+		ConfigfileHandler::File.close();
 	}
 }
 

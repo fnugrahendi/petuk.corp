@@ -141,15 +141,26 @@ int main(int argc, char* kvlt[])
 	
 	std::cout<<"configurasi update\n";
 	
-	ConfigfileHandler data(BasePath+std::string("data/"), "garvin.dat");
-	data.Load();
-	data.Getconfig("FILE VERSION");
-	data.Setconfig("FILE VERSION","versiini = [['garvin', 1, 'localhost'],['bin',  1, 'localhost'],['data',  1, 'localhost'],['doc',  1, 'localhost'],['image',  1, 'localhost'],['installer', 1, 'localhost'],['mysql',  1, 'localhost'],['source',  1, 'localhost']]");
+	ConfigfileHandler data(BasePath+std::string("bin/"), std::string("garvinbin.dat")); //construct file handler
+	///data versi ini adalah versi garvin di data/currentversion.rb
+	std::string currentversion;
+	std::fstream filecurrentversion;
+	filecurrentversion.open(std::string(DataPath+std::string("currentversion.rb")).data(), std::fstream::in);
+	std::string attemp;
+	currentversion = "";
+	while(std::getline(filecurrentversion, attemp)) 
+	{
+		currentversion = currentversion + attemp + std::string("\n");
+	}
+	filecurrentversion.close();
+	currentversion = Garvin::replace("versigarvin","versiini",currentversion);
+	currentversion = Garvin::replace("#!/usr/bin/env ruby","",currentversion);
+	data.Setconfig("FILE VERSION",currentversion);
 	
-	std::cout<<"Pemasangan selesai\n";
+	std::cout<<"\nPemasangan selesai\n";
 	
 	
-	std::cin>>argc;
-	//~ delay(3000);
+	//~ std::cin>>argc;
+	delay(3000);
 	return (0);
 }
