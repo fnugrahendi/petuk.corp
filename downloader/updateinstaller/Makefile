@@ -1,16 +1,25 @@
 EXE = updateinstaller
 
-CFLAGS   = 
-CXXFLAGS = -Wall -Wextra 
+CFLAGS   =
+CPPFLAGS = -Wall -Wextra
+CXXFLAGS = -Wall -Wextra -std=c++11
+
+#~ ifdef SYSTEMROOT
+#~ 	LDFLAGS  = -DWINDOWS
+#~ else
+#~ 	LDFLAGS = -DLINUX
+#~ endif
 LDFLAGS  = -DWINDOWS
 
 INCLUDE = 
 
-CXXFILES   = $(shell find src -maxdepth 1 -type f -name '*.cpp')
-CXXOBJECTS = $(CXXFILES:.cpp=.o)
+CPPFILES   = $(shell find src -maxdepth 1 -type f -name '*.cpp')
+CPPOBJECTS = $(CPPFILES:.cpp=.opp)
+CXXFILES   = $(shell find src -maxdepth 1 -type f -name '*.cxx')
+CXXOBJECTS = $(CXXFILES:.cxx=.oxx)
 
-SOURCES = $(CXXFILES)
-OBJECTS = $(CXXOBJECTS)
+SOURCES = $(CXXFILES) $(CPPFILES)
+OBJECTS = $(CXXOBJECTS) $(CPPOBJECTS)
 
 
 all: $(EXE)
@@ -18,13 +27,16 @@ all: $(EXE)
 
 $(EXE): $(OBJECTS)
 	# Linking...
-	$(MUTE)$(CXX) $(OBJECTS) -o $(EXE) $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(EXE) $(LDFLAGS)
 
-src/%.o: src/%.cpp
+src/%.opp: src/%.cpp
 	# Compiling $<...
-	$(MUTE)$(CXX) $(CXXFLAGS) $(INCLUDE) $(LDFLAGS) $< -c -o $@
-	$(BUILD)
-
+	$(CXX) $(CPPFLAGS) $(INCLUDE) $(LDFLAGS) $< -c -o $@
+	
+src/%.oxx: src/%.cxx
+	# Compiling $<...
+	$(CXX) $(CXXFLAGS) $(INCLUDE) $(LDFLAGS) $< -c -o $@
+	
 src/%.o: src/%.c
 	# Compiling $<...
 	$(MUTE)$(CC) $(CFLAGS) $(INCLUDE) $< -c -o $@
@@ -34,5 +46,5 @@ run: all
 
 clean:
 	# Cleaning...
-	-$(MUTE)rm -f $(EXE) $(OBJECTS)
+	rm -f $(EXE) $(OBJECTS)
 

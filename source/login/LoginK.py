@@ -279,6 +279,7 @@ class Login(Ui_fr_Main):
 	def Login_Login_CreateUser(self,username,password,level):
 		""" Create user, with parameters: unique username, (unhashed/plain) password, and level """
 		hashedpassword = self.Login_Login_HashPassword(username,password)
+		#~ print self.dbDatabase,"<<<<<" #-- kenapa ra iso gawe user makin pas pertama? padahal kosong? sebuah misteri
 		sukses = self.DatabaseInsertAvoidreplace(self.dbDatabase,"gd_user","username",username,
 										["id","username","password","level","lastActivity"],
 										["NULL",username,hashedpassword,str(level),"CURRENT_TIMESTAMP"]

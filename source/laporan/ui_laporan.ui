@@ -14,7 +14,7 @@
    <string>StackedWidget</string>
   </property>
   <property name="currentIndex">
-   <number>0</number>
+   <number>1</number>
   </property>
   <widget class="QWidget" name="st_Menu">
    <layout class="QGridLayout" name="igr_Menu">
@@ -42,21 +42,21 @@
           <item>
            <widget class="QPushButton" name="tb_Menu_Laporan_KasHarian">
             <property name="text">
-             <string>Laporan Kas Harian</string>
+             <string>Laporan	Kas	Harian</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="tb_Menu_Laporan_LabaRugi">
             <property name="text">
-             <string>Laporan Laba Rugi</string>
+             <string>Laporan	Laba	Rugi</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="tb_Menu_Laporan_Neraca">
             <property name="text">
-             <string>Laporan Neraca</string>
+             <string>Laporan	Neraca</string>
             </property>
            </widget>
           </item>
@@ -66,20 +66,20 @@
        <item>
         <widget class="QGroupBox" name="gb_Menu_SubLedger">
          <property name="title">
-          <string>Subsidiary Ledger</string>
+          <string>Subsidiary	Ledger</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_29">
           <item>
            <widget class="QPushButton" name="tb_Menu_Laporan_HutangPiutangPerusahaan">
             <property name="text">
-             <string>Laporan Hutang Piutang Perusahaan</string>
+             <string>Laporan	Hutang	Piutang	Perusahaan</string>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="tb_Menu_Laporan_JualBeliPerusahaan">
             <property name="text">
-             <string>Laporan Jual Beli Perusahaan</string>
+             <string>Laporan	Jual	Beli	Perusahaan</string>
             </property>
            </widget>
           </item>
@@ -144,7 +144,7 @@
          </property>
          <property name="font">
           <font>
-           <family>Segoe UI Semilight</family>
+           <family>Segoe	UI	Semilight</family>
            <pointsize>18</pointsize>
           </font>
          </property>
@@ -168,27 +168,27 @@
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QGridLayout" name="gridLayout_13">
-       <item row="1" column="1">
+       <item row="2" column="4">
         <widget class="QLabel" name="lb_Laporan_KasHarian_">
          <property name="text">
           <string>-</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
+       <item row="2" column="3">
         <widget class="QDateTimeEdit" name="dte_Laporan_KasHarian_Dari"/>
        </item>
-       <item row="0" column="0">
+       <item row="2" column="0">
         <widget class="QLabel" name="lb_Laporan_KasHarian_Periode">
          <property name="text">
           <string>Periode</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="2">
+       <item row="2" column="6">
         <widget class="QDateTimeEdit" name="dte_Laporan_KasHarian_Sampai"/>
        </item>
-       <item row="1" column="3">
+       <item row="2" column="7">
         <spacer name="hs_Laporan_KasHarian_FA">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -201,17 +201,48 @@
          </property>
         </spacer>
        </item>
-       <item row="2" column="0">
+       <item row="2" column="2">
         <widget class="QLabel" name="lb_Laporan_KasHarian_Dari">
          <property name="text">
           <string>dari</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="2">
+       <item row="2" column="5">
         <widget class="QLabel" name="lb_Laporan_KasHarian_Sampai">
          <property name="text">
           <string>sampai</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2" colspan="2">
+        <widget class="QPushButton" name="tb_Laporan_KasHarian_noAkunKas">
+         <property name="styleSheet">
+          <string notr="true">QLineEdit,QPushButton{border-style:inset;border-width:1px;border-radius:2px;border-color:rgb(156, 156, 156);background-color:#ffffff;min-height:23px;}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="lb_Laporan_KasHarian_NoAkunKas">
+         <property name="text">
+          <string>Nomor Akun Kas</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>:</string>
          </property>
         </widget>
        </item>
@@ -299,12 +330,12 @@
          </property>
          <property name="font">
           <font>
-           <family>Segoe UI Semilight</family>
+           <family>Segoe	UI	Semilight</family>
            <pointsize>18</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Laporan Laba Rugi</string>
+          <string>Laporan	Laba	Rugi</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -454,12 +485,12 @@
          </property>
          <property name="font">
           <font>
-           <family>Segoe UI Semilight</family>
+           <family>Segoe	UI	Semilight</family>
            <pointsize>18</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Laporan Neraca</string>
+          <string>Laporan	Neraca</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>

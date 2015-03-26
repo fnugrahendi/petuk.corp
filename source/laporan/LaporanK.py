@@ -49,8 +49,10 @@ class Laporan(object):
 		
 		self.INDEX_ST_LAPORAN = ["MENU", "LAPORAN KAS HARIAN", "LAPORAN LABA RUGI", "LAPORAN NERACA"]
 		
+		#-- signal connect 
 		self.LaporanUI.tb_Menu_Laporan_Neraca.clicked.connect(functools.partial(self.Laporan_Neraca,None))
-	
+		self.LaporanUI.tb_Menu_Laporan_KasHarian.clicked.connect(self.Laporan_RKasHarian)
+		
 	def Laporan_Goto(self,namaroom):
 		if (type(namaroom)==str):
 			#-- do the find. which each page is no more than a widget (not to be confused with QStackedWidget with st_ name)
@@ -74,6 +76,10 @@ class Laporan(object):
 		workbook = xlsxwriter.Workbook('Bukti Bank  Masuk.xlsx')
 		worksheet = workbook.add_worksheet()
 
+		idxNilaiDetail = self.KasBank_DetailBankMasuk_Field.index("nilaiDetail")
+		idxCatatan = self.KasBank_DetailBankMasuk_Field.index("catatan")
+		idxNoAkunDetail = self.KasBank_DetailBankMasuk_Field.index("noAkunDetail")
+		
 		# Set up some formats to use.
 		#~ red = workbook.add_format({'color': 'red', 'bold' : 'true'})
 		#~ blue = workbook.add_format({'color': 'blue'})
@@ -139,25 +145,19 @@ class Laporan(object):
 		worksheet.set_column(1,9,8)
 		worksheet.set_column(2,9,8)
 
-		sql = "SELECT * FROM `"+self.dbDatabase+"`.`gd_bank_masuk` as aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan  WHERE kodeTransaksi LIKE '"+kodeTransaksi+"'"
+		sql = "SELECT tanggal,aDB.kodePelanggan,namaPelanggan,catatan FROM `"+self.dbDatabase+"`.`gd_bank_masuk` as aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan  WHERE kodeTransaksi LIKE '"+kodeTransaksi+"'"
 		result = self.DatabaseRunQuery(sql)
 		
-		catatan = result[0][3]
-		
+		print result[0][0],result[0][1],result[0][2]
 		worksheet.write(1,9, ': '+kodeTransaksi, formatNoTgl)
-		worksheet.write(2,9, ': '+(result[0][2].strftime("%d-%m-%Y")), formatNoTgl)
+		worksheet.write(2,9, ': '+(result[0][0].strftime("%d-%m-%Y")), formatNoTgl)
 
 		worksheet.merge_range('D3:H3', "BANK KELUAR", formatSubJudul)
-		worksheet.merge_range('B5:K6', "Diberikan Kepada : "+result[0][10], formatBeriTerima)
+		worksheet.merge_range('B5:K6', "Diberikan Kepada : "+result[0][2]+" ("+result[0][1]+")", formatBeriTerima)
 
 		worksheet.merge_range('B7:C7', "Perkiraan", formatBiasa)
 		worksheet.merge_range('D7:H7', "Keterangan", formatBiasa)
 		worksheet.merge_range('I7:K7', "Jumlah", formatBiasa)
-
-		# We then overwrite the first merged cell with a rich string. Note that we
-		# must also pass the cell format used in the merged cells format at the end.
-		#~ worksheet.set_column(0,0,45);
-		#~ worksheet.write_formula('A'+str(ax+1),'=SUM('+'A'+str(awal)+':'+'A'+str(ax)+')')
 		
 		sql = "SELECT * FROM `"+self.dbDatabase+"`.`gd_detail_bank_masuk` JOIN `gd_rekening_jurnal` ON `gd_rekening_jurnal`.`noAkun` LIKE `gd_detail_bank_masuk`.`noAkunDetail` JOIN `gd_bank_masuk` ON `gd_bank_masuk`.kodeTransaksi LIKE `gd_detail_bank_masuk`.kodeTransaksi WHERE `gd_detail_bank_masuk`.kodeTransaksi LIKE '"+kodeTransaksi+"'"
 		print sql
@@ -166,10 +166,10 @@ class Laporan(object):
 		
 		for x in range(0,len(result)):
 			index = x+1+7
-			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][3], formatBiasa)
-			worksheet.merge_range('D'+str(index)+':H'+str(index), result[x][15], formatBiasa)
-			worksheet.merge_range('I'+str(index)+':K'+str(index), result[x][4], formatBiasa)
-			total = total +  int(result[x][4])
+			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][idxNoAkunDetail], formatBiasa)
+			worksheet.merge_range('D'+str(index)+':H'+str(index), result[x][idxCatatan], formatBiasa)
+			worksheet.merge_range('I'+str(index)+':K'+str(index), result[x][idxNilaiDetail], formatBiasa)
+			total = total +  int(result[x][idxNilaiDetail]) 
 		worksheet.merge_range('B'+str(index+1)+':H'+str(index+1), "TOTAL : ", formatTotal)
 		worksheet.merge_range('I'+str(index+1)+':K'+str(index+1), "=SUM(I"+str(8)+":K"+str(index)+")", formatBiasa)
 		
@@ -201,6 +201,10 @@ class Laporan(object):
 		workbook = xlsxwriter.Workbook('Bukti Kas  Masuk.xlsx')
 		worksheet = workbook.add_worksheet()
 
+		idxNilaiDetail = self.KasBank_DetailKasMasuk_Field.index("nilaiDetail")
+		idxCatatan = self.KasBank_DetailKasMasuk_Field.index("catatan")
+		idxNoAkunDetail = self.KasBank_DetailKasMasuk_Field.index("noAkunDetail")
+		
 		# Set up some formats to use.
 		#~ red = workbook.add_format({'color': 'red', 'bold' : 'true'})
 		#~ blue = workbook.add_format({'color': 'blue'})
@@ -266,25 +270,19 @@ class Laporan(object):
 		worksheet.set_column(1,9,8)
 		worksheet.set_column(2,9,8)
 
-		sql = "SELECT * FROM `"+self.dbDatabase+"`.`gd_kas_masuk` as aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan  WHERE kodeTransaksi LIKE '"+kodeTransaksi+"'"
+		sql = "SELECT tanggal,aDB.kodePelanggan,namaPelanggan,catatan FROM `"+self.dbDatabase+"`.`gd_kas_masuk` as aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan  WHERE kodeTransaksi LIKE '"+kodeTransaksi+"'"
 		result = self.DatabaseRunQuery(sql)
 		
-		catatan = result[0][3]
-		
+		print result[0][0],result[0][1],result[0][2]
 		worksheet.write(1,9, ': '+kodeTransaksi, formatNoTgl)
-		worksheet.write(2,9, ': '+(result[0][2].strftime("%d-%m-%Y")), formatNoTgl)
+		worksheet.write(2,9, ': '+(result[0][0].strftime("%d-%m-%Y")), formatNoTgl)
 
 		worksheet.merge_range('D3:H3', "KAS KELUAR", formatSubJudul)
-		worksheet.merge_range('B5:K6', "Diberikan Kepada : "+result[0][9], formatBeriTerima)
+		worksheet.merge_range('B5:K6', "Diberikan Kepada : "+result[0][2]+" ("+result[0][1]+")", formatBeriTerima)
 
 		worksheet.merge_range('B7:C7', "Perkiraan", formatBiasa)
 		worksheet.merge_range('D7:H7', "Keterangan", formatBiasa)
 		worksheet.merge_range('I7:K7', "Jumlah", formatBiasa)
-
-		# We then overwrite the first merged cell with a rich string. Note that we
-		# must also pass the cell format used in the merged cells format at the end.
-		#~ worksheet.set_column(0,0,45);
-		#~ worksheet.write_formula('A'+str(ax+1),'=SUM('+'A'+str(awal)+':'+'A'+str(ax)+')')
 		
 		sql = "SELECT * FROM `"+self.dbDatabase+"`.`gd_detail_kas_masuk` JOIN `gd_rekening_jurnal` ON `gd_rekening_jurnal`.`noAkun` LIKE `gd_detail_kas_masuk`.`noAkunDetail` JOIN `gd_kas_masuk` ON `gd_kas_masuk`.kodeTransaksi LIKE `gd_detail_kas_masuk`.kodeTransaksi WHERE `gd_detail_kas_masuk`.kodeTransaksi LIKE '"+kodeTransaksi+"'"
 		print sql
@@ -293,10 +291,10 @@ class Laporan(object):
 		
 		for x in range(0,len(result)):
 			index = x+1+7
-			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][3], formatBiasa)
-			worksheet.merge_range('D'+str(index)+':H'+str(index), result[x][15], formatBiasa)
-			worksheet.merge_range('I'+str(index)+':K'+str(index), result[x][4], formatBiasa)
-			total = total +  int(result[x][4])
+			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][idxNoAkunDetail], formatBiasa)
+			worksheet.merge_range('D'+str(index)+':H'+str(index), result[x][idxCatatan], formatBiasa)
+			worksheet.merge_range('I'+str(index)+':K'+str(index), result[x][idxNilaiDetail], formatBiasa)
+			total = total +  int(result[x][idxNilaiDetail]) 
 		worksheet.merge_range('B'+str(index+1)+':H'+str(index+1), "TOTAL : ", formatTotal)
 		worksheet.merge_range('I'+str(index+1)+':K'+str(index+1), "=SUM(I"+str(8)+":K"+str(index)+")", formatBiasa)
 		
@@ -328,6 +326,10 @@ class Laporan(object):
 		workbook = xlsxwriter.Workbook('Bukti Bank  Keluar.xlsx')
 		worksheet = workbook.add_worksheet()
 
+		idxNilaiDetail = self.KasBank_DetailBankKeluar_Field.index("nilaiDetail")
+		idxCatatan = self.KasBank_DetailBankKeluar_Field.index("catatan")
+		idxNoAkunDetail = self.KasBank_DetailBankKeluar_Field.index("noAkunDetail")
+		
 		# Set up some formats to use.
 		#~ red = workbook.add_format({'color': 'red', 'bold' : 'true'})
 		#~ blue = workbook.add_format({'color': 'blue'})
@@ -393,25 +395,19 @@ class Laporan(object):
 		worksheet.set_column(1,9,8)
 		worksheet.set_column(2,9,8)
 
-		sql = "SELECT * FROM `"+self.dbDatabase+"`.`gd_bank_keluar` as aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan  WHERE kodeTransaksi LIKE '"+kodeTransaksi+"'"
+		sql = "SELECT tanggal,aDB.kodePelanggan,namaPelanggan,catatan FROM `"+self.dbDatabase+"`.`gd_bank_keluar` as aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan  WHERE kodeTransaksi LIKE '"+kodeTransaksi+"'"
 		result = self.DatabaseRunQuery(sql)
 		
-		catatan = result[0][3]
-		
+		print result[0][0],result[0][1],result[0][2]
 		worksheet.write(1,9, ': '+kodeTransaksi, formatNoTgl)
-		worksheet.write(2,9, ': '+(result[0][2].strftime("%d-%m-%Y")), formatNoTgl)
+		worksheet.write(2,9, ': '+(result[0][0].strftime("%d-%m-%Y")), formatNoTgl)
 
 		worksheet.merge_range('D3:H3', "BANK KELUAR", formatSubJudul)
-		worksheet.merge_range('B5:K6', "Diberikan Kepada : "+result[0][10], formatBeriTerima)
+		worksheet.merge_range('B5:K6', "Diberikan Kepada : "+result[0][2]+" ("+result[0][1]+")", formatBeriTerima)
 
 		worksheet.merge_range('B7:C7', "Perkiraan", formatBiasa)
 		worksheet.merge_range('D7:H7', "Keterangan", formatBiasa)
 		worksheet.merge_range('I7:K7', "Jumlah", formatBiasa)
-
-		# We then overwrite the first merged cell with a rich string. Note that we
-		# must also pass the cell format used in the merged cells format at the end.
-		#~ worksheet.set_column(0,0,45);
-		#~ worksheet.write_formula('A'+str(ax+1),'=SUM('+'A'+str(awal)+':'+'A'+str(ax)+')')
 		
 		sql = "SELECT * FROM `"+self.dbDatabase+"`.`gd_detail_bank_keluar` JOIN `gd_rekening_jurnal` ON `gd_rekening_jurnal`.`noAkun` LIKE `gd_detail_bank_keluar`.`noAkunDetail` JOIN `gd_bank_keluar` ON `gd_bank_keluar`.kodeTransaksi LIKE `gd_detail_bank_keluar`.kodeTransaksi WHERE `gd_detail_bank_keluar`.kodeTransaksi LIKE '"+kodeTransaksi+"'"
 		print sql
@@ -420,10 +416,10 @@ class Laporan(object):
 		
 		for x in range(0,len(result)):
 			index = x+1+7
-			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][3], formatBiasa)
-			worksheet.merge_range('D'+str(index)+':H'+str(index), result[x][15], formatBiasa)
-			worksheet.merge_range('I'+str(index)+':K'+str(index), result[x][4], formatBiasa)
-			total = total +  int(result[x][4])
+			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][idxNoAkunDetail], formatBiasa)
+			worksheet.merge_range('D'+str(index)+':H'+str(index), result[x][idxCatatan], formatBiasa)
+			worksheet.merge_range('I'+str(index)+':K'+str(index), result[x][idxNilaiDetail], formatBiasa)
+			total = total +  int(result[x][idxNilaiDetail]) 
 		worksheet.merge_range('B'+str(index+1)+':H'+str(index+1), "TOTAL : ", formatTotal)
 		worksheet.merge_range('I'+str(index+1)+':K'+str(index+1), "=SUM(I"+str(8)+":K"+str(index)+")", formatBiasa)
 		
@@ -455,6 +451,10 @@ class Laporan(object):
 		workbook = xlsxwriter.Workbook('Bukti Kas  Keluar.xlsx')
 		worksheet = workbook.add_worksheet()
 
+		idxNilaiDetail = self.KasBank_DetailKasKeluar_Field.index("nilaiDetail")
+		idxCatatan = self.KasBank_DetailKasKeluar_Field.index("catatan")
+		idxNoAkunDetail = self.KasBank_DetailKasKeluar_Field.index("noAkunDetail")
+		
 		# Set up some formats to use.
 		#~ red = workbook.add_format({'color': 'red', 'bold' : 'true'})
 		#~ blue = workbook.add_format({'color': 'blue'})
@@ -520,25 +520,19 @@ class Laporan(object):
 		worksheet.set_column(1,9,8)
 		worksheet.set_column(2,9,8)
 
-		sql = "SELECT * FROM `"+self.dbDatabase+"`.`gd_kas_keluar` as aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan  WHERE kodeTransaksi LIKE '"+kodeTransaksi+"'"
+		sql = "SELECT tanggal,aDB.kodePelanggan,namaPelanggan,catatan FROM `"+self.dbDatabase+"`.`gd_kas_keluar` as aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan  WHERE kodeTransaksi LIKE '"+kodeTransaksi+"'"
 		result = self.DatabaseRunQuery(sql)
 		
-		catatan = result[0][3]
-		
+		print result[0][0],result[0][1],result[0][2]
 		worksheet.write(1,9, ': '+kodeTransaksi, formatNoTgl)
-		worksheet.write(2,9, ': '+(result[0][2].strftime("%d-%m-%Y")), formatNoTgl)
+		worksheet.write(2,9, ': '+(result[0][0].strftime("%d-%m-%Y")), formatNoTgl)
 
 		worksheet.merge_range('D3:H3', "KAS KELUAR", formatSubJudul)
-		worksheet.merge_range('B5:K6', "Diberikan Kepada : "+result[0][9], formatBeriTerima)
+		worksheet.merge_range('B5:K6', "Diberikan Kepada : "+result[0][2]+" ("+result[0][1]+")", formatBeriTerima)
 
 		worksheet.merge_range('B7:C7', "Perkiraan", formatBiasa)
 		worksheet.merge_range('D7:H7', "Keterangan", formatBiasa)
 		worksheet.merge_range('I7:K7', "Jumlah", formatBiasa)
-
-		# We then overwrite the first merged cell with a rich string. Note that we
-		# must also pass the cell format used in the merged cells format at the end.
-		#~ worksheet.set_column(0,0,45);
-		#~ worksheet.write_formula('A'+str(ax+1),'=SUM('+'A'+str(awal)+':'+'A'+str(ax)+')')
 		
 		sql = "SELECT * FROM `"+self.dbDatabase+"`.`gd_detail_kas_keluar` JOIN `gd_rekening_jurnal` ON `gd_rekening_jurnal`.`noAkun` LIKE `gd_detail_kas_keluar`.`noAkunDetail` JOIN `gd_kas_keluar` ON `gd_kas_keluar`.kodeTransaksi LIKE `gd_detail_kas_keluar`.kodeTransaksi WHERE `gd_detail_kas_keluar`.kodeTransaksi LIKE '"+kodeTransaksi+"'"
 		print sql
@@ -547,10 +541,10 @@ class Laporan(object):
 		
 		for x in range(0,len(result)):
 			index = x+1+7
-			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][3], formatBiasa)
-			worksheet.merge_range('D'+str(index)+':H'+str(index), result[x][15], formatBiasa)
-			worksheet.merge_range('I'+str(index)+':K'+str(index), result[x][4], formatBiasa)
-			total = total +  int(result[x][4])
+			worksheet.merge_range('B'+str(index)+':C'+str(index), result[x][idxNoAkunDetail], formatBiasa)
+			worksheet.merge_range('D'+str(index)+':H'+str(index), result[x][idxCatatan], formatBiasa)
+			worksheet.merge_range('I'+str(index)+':K'+str(index), result[x][idxNilaiDetail], formatBiasa)
+			total = total +  int(result[x][idxNilaiDetail]) 
 		worksheet.merge_range('B'+str(index+1)+':H'+str(index+1), "TOTAL : ", formatTotal)
 		worksheet.merge_range('I'+str(index+1)+':K'+str(index+1), "=SUM(I"+str(8)+":K"+str(index)+")", formatBiasa)
 		
@@ -1213,6 +1207,13 @@ class Laporan(object):
 							
 		workbook.close()
 		return
+		
+	
+	def Laporan_RKasHarian(self):
+		"""Kontrol untuk RKasHarian"""
+		self.Laporan_Goto("LAPORAN KAS HARIAN")
+		self.GarvinDisconnect(self.LaporanUI.tb_Laporan_KasHarian_noAkunKas.clicked) #-- fungsi RKasHarian bakalan dipanggil berkali2 pas program jalan, dadi kudu pastikan diskonek sikik
+		self.LaporanUI.tb_Laporan_KasHarian_noAkunKas.clicked.connect(functools.partial(self.Popup_Rekening,self.LaporanUI.tb_Laporan_KasHarian_noAkunKas))
 		
 	def Laporan_KasHarian(self,noAkun,tanggalAwal,tanggalAkhir):
 		
