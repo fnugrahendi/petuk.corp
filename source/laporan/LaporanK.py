@@ -1214,6 +1214,8 @@ class Laporan(object):
 		self.Laporan_Goto("LAPORAN KAS HARIAN")
 		self.GarvinDisconnect(self.LaporanUI.tb_Laporan_KasHarian_noAkunKas.clicked) #-- fungsi RKasHarian bakalan dipanggil berkali2 pas program jalan, dadi kudu pastikan diskonek sikik
 		self.LaporanUI.tb_Laporan_KasHarian_noAkunKas.clicked.connect(functools.partial(self.Popup_Rekening,self.LaporanUI.tb_Laporan_KasHarian_noAkunKas))
+		#njupuk text noAkunKas piye? ra bisa seka ngene y?
+		#~ self.LaporanUI.tb_Laporan_KasHarian_Cetak.clicked.connect(functools.partial(self.Laporan_KasHarian,tb_Laporan_KasHarian_noAkunKas.text(),'2015-01-02','2015-01-03'))
 		
 	def Laporan_KasHarian(self,noAkun,tanggalAwal,tanggalAkhir):
 		
