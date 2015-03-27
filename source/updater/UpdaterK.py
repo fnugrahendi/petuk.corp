@@ -10,9 +10,9 @@ class Updater(object):
 		pass
 		
 	def GarvinCheckIsUpdated(self):
-		wget = "wget"
+		wget = "wget --user-agent=\"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0\""
 		if ("win" in sys.platform):#-- bila windows ada nih
-			wget = self.BasePath+"downloader/wget_win/wget.exe"
+			wget = self.BasePath+"downloader/wget_win/wget.exe --user-agent=\"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0\""
 			
 		downloadfolder = self.DataPath
 		#-- download info versi sekarang 
@@ -33,9 +33,9 @@ class Updater(object):
 		f.close()
 		
 	def Updater_Download(self):
-		wget = "wget"
+		wget = "wget --user-agent=\"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0\""
 		if ("win" in sys.platform):#-- bila windows ada nih
-			wget = self.BasePath+"downloader/wget_win/wget.exe"
+			wget = self.BasePath+"downloader/wget_win/wget.exe --user-agent=\"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0\""
 		wget = "\""+ wget+ "\" -c  --no-check-certificate "
 		downloadfolder = self.DataPath
 		serverprefix = "https://github.com/fnugrahendi/petuk.corp/releases/download/"

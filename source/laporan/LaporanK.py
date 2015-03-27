@@ -47,9 +47,9 @@ class Laporan(object):
 		#-- after main init
 		super(Laporan,self).__init__(si_om)
 		
-		self.INDEX_ST_LAPORAN = ["MENU", "LAPORAN KAS HARIAN", "LAPORAN LABA RUGI", "LAPORAN NERACA"]
+		self.INDEX_ST_LAPORAN = ["MENU", "LAPORAN KAS HARIAN", "LAPORAN LABA RUGI", "LAPORAN NERACA", "LAPORAN HUTANG PIUTANG", "LAPORAN JUAL BELI"]
 		
-		#-- signal connect 
+		#-- signal connect NING KENE, Connect tombol seko room Menu ke fungsi Kontrol bersangkutan
 		self.LaporanUI.tb_Menu_Laporan_Neraca.clicked.connect(functools.partial(self.Laporan_Neraca,None))
 		self.LaporanUI.tb_Menu_Laporan_KasHarian.clicked.connect(self.Laporan_RKasHarian)
 		
@@ -1331,6 +1331,12 @@ class Laporan(object):
 		workbook.close()
 		return
 		
+	def Laporan_RHutangPiutang(self):
+		"""Kontrol untuk RHutangPiutang"""
+		self.Laporan_Goto("LAPORAN HUTANG PIUTANG")
+		self.GarvinDisconnect(self.LaporanUI.tb_Laporan_HutangPiutang_KodePelanggan.clicked)
+		self.LaporanUI.tb_Laporan_HutangPiutang_KodePelanggan.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.LaporanUI.tb_Laporan_HutangPiutang_KodePelanggan))
+	
 	def Laporan_HutangPiutang(self,idNama,ket,tanggalAwal,tanggalAkhir):
 		
 		workbook = xlsxwriter.Workbook('LaporanHutangPiutang.xlsx')
@@ -1560,6 +1566,13 @@ class Laporan(object):
 				
 		workbook.close()
 		return
+
+
+	def Laporan_RJualBeli(self):
+		"""Kontrol untuk RJualBeli"""
+		self.Laporan_Goto("LAPORAN JUAL BELI")
+		self.GarvinDisconnect(self.LaporanUI.tb_Laporan_JualBeli_KodePelanggan.clicked)
+		self.LaporanUI.tb_Laporan_JualBeli_KodePelanggan.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.LaporanUI.tb_Laporan_JualBeli_KodePelanggan))
 
 	def Laporan_JualBeli(self,idNama,ket,tanggalAwal,tanggalAkhir):
 		
