@@ -88,7 +88,7 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		self.ResetRooms()
 		#--- startup program, set semua datetimeedit ke waktu skrg		
 		self.GarvinSetDate(self)
-		self.Laporan_BuktiKasKeluar('KK0001')
+		#~ self.Laporan_BuktiKasKeluar('KK0001')
 	
 	def Popup_NamaAlamat_Tabel(self,namaTabel,row):
 		data = []
@@ -97,6 +97,16 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		def batal():
 			namaTabel.setItem(row,0,QtGui.QTableWidgetItem("-"))
 		self.DataMaster_DataNamaAlamat_Popup_Pilih(data,isi,batal)	
+		
+	def Popup_NamaAlamat(self, namaTombol):
+		data = ["",""]
+		def isi():
+			namaTombol.setText(str(data[0]))
+		def batal():
+			pass
+			#~ namaTombol.setText("-")
+		self.DataMaster_DataNamaAlamat_Popup_Pilih(data,isi,batal)
+		print namaTombol.text()
 		
 	def Popup_Rekening(self, namaTombol):
 		data = ["",""]
