@@ -14,7 +14,7 @@
    <string>StackedWidget</string>
   </property>
   <property name="currentIndex">
-   <number>5</number>
+   <number>0</number>
   </property>
   <widget class="QWidget" name="st_Menu">
    <layout class="QGridLayout" name="igr_Menu">
@@ -50,6 +50,13 @@
            <widget class="QPushButton" name="tb_Menu_Laporan_LabaRugi">
             <property name="text">
              <string>Laporan	Laba	Rugi</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="tb_Menu_Laporan_HutangPiutang">
+            <property name="text">
+             <string>Laporan Hutang Piutang</string>
             </property>
            </widget>
           </item>

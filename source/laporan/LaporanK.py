@@ -50,8 +50,10 @@ class Laporan(object):
 		self.INDEX_ST_LAPORAN = ["MENU", "LAPORAN KAS HARIAN", "LAPORAN LABA RUGI", "LAPORAN NERACA", "LAPORAN HUTANG PIUTANG", "LAPORAN JUAL BELI"]
 		
 		#-- signal connect NING KENE, Connect tombol seko room Menu ke fungsi Kontrol bersangkutan
-		self.LaporanUI.tb_Menu_Laporan_Neraca.clicked.connect(functools.partial(self.Laporan_Neraca,None))
+		#~ self.LaporanUI.tb_Menu_Laporan_Neraca.clicked.connect(functools.partial(self.Laporan_Neraca,None))
 		self.LaporanUI.tb_Menu_Laporan_KasHarian.clicked.connect(self.Laporan_RKasHarian)
+		self.LaporanUI.tb_Menu_Laporan_LabaRugi.clicked.connect(self.Laporan_RLabaRugi)
+		#~ self.LaporanUI.tb_Menu_Laporan_Neraca.clicked.connect(self.Laporan_RNeraca)
 		
 	def Laporan_Goto(self,namaroom):
 		if (type(namaroom)==str):
@@ -69,7 +71,10 @@ class Laporan(object):
 		#~ #--- 
 		#~ self.Laporan_Goto("LAPORAN NERACA")
 		#~ pass
-			
+	
+	def Laporan_RMenu(self):		
+		self.Laporan_Goto("MENU")
+				
 	def Laporan_BuktiBankMasuk(self,kodeTransaksi):
 		
 		# Create an new Excel file and add a worksheet.
@@ -845,6 +850,14 @@ class Laporan(object):
 		workbook.close()
 		return
 
+	def Laporan_RLabaRugi(self):
+		"""Kontrol untuk RLabaRugi"""
+		self.Laporan_Goto("LAPORAN LABA RUGI")
+		self.GarvinDisconnect(self.LaporanUI.tb_Laporan_LabaRugi_KodePelanggan.clicked)
+		#~ self.LaporanUI.tb_Laporan_LabaRugi_KodePelanggan.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.LaporanUI.tb_Laporan_LabaRugi_KodePelanggan))
+		self.LaporanUI.tb_Laporan_LabaRugi_Cetak.clicked.connect(self.Laporan_RMenu)
+		self.LaporanUI.tb_Laporan_LabaRugi_Kembali.clicked.connect(self.Laporan_RMenu)
+		
 	def Laporan_LabaRugi(self,tanggalAwal,tanggalAkhir):
 		
 		workbook = xlsxwriter.Workbook('LaporanLabaRugi.xlsx')
@@ -1055,6 +1068,12 @@ class Laporan(object):
 		workbook.close()
 		return
 		
+	def Laporan_RNeraca(self):
+		"""Kontrol untuk RHutangPiutang"""
+		self.Laporan_Goto("LAPORAN NERACA")
+		self.GarvinDisconnect(self.LaporanUI.tb_Laporan_Neraca_KodePelanggan.clicked)
+		self.LaporanUI.tb_Laporan_Neraca_KodePelanggan.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.LaporanUI.tb_Laporan_Neraca_KodePelanggan))
+		
 	def Laporan_Neraca(self,tanggalAwal,tanggalAkhir):
 		
 		workbook = xlsxwriter.Workbook('LaporanNeraca.xlsx')
@@ -1214,14 +1233,14 @@ class Laporan(object):
 		self.Laporan_Goto("LAPORAN KAS HARIAN")
 		self.GarvinDisconnect(self.LaporanUI.tb_Laporan_KasHarian_noAkunKas.clicked) #-- fungsi RKasHarian bakalan dipanggil berkali2 pas program jalan, dadi kudu pastikan diskonek sikik
 		self.LaporanUI.tb_Laporan_KasHarian_noAkunKas.clicked.connect(functools.partial(self.Popup_Rekening,self.LaporanUI.tb_Laporan_KasHarian_noAkunKas))
-		#njupuk text noAkunKas piye? ra bisa seka ngene y?
-		self.LaporanUI.tb_Laporan_KasHarian_Cetak.clicked.connect(functools.partial(self.Laporan_KasHarian,self.LaporanUI.tb_Laporan_KasHarian_noAkunKas.text(),'2015-01-02','2015-01-03'))
+		self.LaporanUI.tb_Laporan_KasHarian_Cetak.clicked.connect(functools.partial(self.Laporan_KasHarian,self.LaporanUI.tb_Laporan_KasHarian_noAkunKas.text(),str(self.LaporanUI.dte_Laporan_KasHarian_Dari.dateTime().toString("yyyy-MM-dd")),str(self.LaporanUI.dte_Laporan_KasHarian_Sampai.dateTime().toString("yyyy-MM-dd"))))
+		self.LaporanUI.tb_Laporan_KasHarian_Kembali.clicked.connect(self.Laporan_RMenu)
 		
 	def Laporan_KasHarian(self,noAkun,tanggalAwal,tanggalAkhir):
 		
 		workbook = xlsxwriter.Workbook('../../LaporanKasHarian.xlsx')
 		worksheet = workbook.add_worksheet()
-		
+		print '--------------------------------',tanggalAwal,tanggalAkhir,'----------------------------------------'
 		formatJudul = workbook.add_format({'align': 'center',
 										   'valign': 'vcenter',
 										   'border': 0,
