@@ -53,7 +53,9 @@ class Laporan(object):
 		#~ self.LaporanUI.tb_Menu_Laporan_Neraca.clicked.connect(functools.partial(self.Laporan_Neraca,None))
 		self.LaporanUI.tb_Menu_Laporan_KasHarian.clicked.connect(self.Laporan_RKasHarian)
 		self.LaporanUI.tb_Menu_Laporan_LabaRugi.clicked.connect(self.Laporan_RLabaRugi)
-		#~ self.LaporanUI.tb_Menu_Laporan_Neraca.clicked.connect(self.Laporan_RNeraca)
+		self.LaporanUI.tb_Menu_Laporan_Neraca.clicked.connect(self.Laporan_RNeraca)
+		self.LaporanUI.tb_Menu_Laporan_HutangPiutangPerusahaan.clicked.connect(self.Laporan_RHutangPiutang)
+		self.LaporanUI.tb_Menu_Laporan_JualBeliPerusahaan.clicked.connect(self.Laporan_RJualBeli)
 		
 	def Laporan_Goto(self,namaroom):
 		if (type(namaroom)==str):
@@ -853,12 +855,14 @@ class Laporan(object):
 	def Laporan_RLabaRugi(self):
 		"""Kontrol untuk RLabaRugi"""
 		self.Laporan_Goto("LAPORAN LABA RUGI")
-		self.GarvinDisconnect(self.LaporanUI.tb_Laporan_LabaRugi_KodePelanggan.clicked)
+		#~ self.GarvinDisconnect(self.LaporanUI.tb_Laporan_LabaRugi_KodePelanggan.clicked)
 		#~ self.LaporanUI.tb_Laporan_LabaRugi_KodePelanggan.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.LaporanUI.tb_Laporan_LabaRugi_KodePelanggan))
-		self.LaporanUI.tb_Laporan_LabaRugi_Cetak.clicked.connect(self.Laporan_RMenu)
+		self.LaporanUI.tb_Laporan_LabaRugi_Cetak.clicked.connect(functools.partial(self.Laporan_LabaRugi))
 		self.LaporanUI.tb_Laporan_LabaRugi_Kembali.clicked.connect(self.Laporan_RMenu)
 		
-	def Laporan_LabaRugi(self,tanggalAwal,tanggalAkhir):
+	def Laporan_LabaRugi(self):
+		tanggalAwal = str(self.LaporanUI.dte_Laporan_LabaRugi_Dari.dateTime().toString("yyyy-MM-dd"))
+		tanggalAkhir = str(self.LaporanUI.dte_Laporan_LabaRugi_Sampai.dateTime().toString("yyyy-MM-dd"))
 		
 		workbook = xlsxwriter.Workbook('LaporanLabaRugi.xlsx')
 		worksheet = workbook.add_worksheet()
@@ -1069,12 +1073,16 @@ class Laporan(object):
 		return
 		
 	def Laporan_RNeraca(self):
-		"""Kontrol untuk RHutangPiutang"""
+		"""Kontrol untuk RNeraca"""
 		self.Laporan_Goto("LAPORAN NERACA")
-		self.GarvinDisconnect(self.LaporanUI.tb_Laporan_Neraca_KodePelanggan.clicked)
-		self.LaporanUI.tb_Laporan_Neraca_KodePelanggan.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.LaporanUI.tb_Laporan_Neraca_KodePelanggan))
+		#~ self.GarvinDisconnect(self.LaporanUI.tb_Laporan_Neraca_KodePelanggan.clicked)
+		#~ self.LaporanUI.tb_Laporan_Neraca_KodePelanggan.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.LaporanUI.tb_Laporan_Neraca_KodePelanggan))
+		self.LaporanUI.tb_Laporan_Neraca_Cetak.clicked.connect(functools.partial(self.Laporan_Neraca))
+		self.LaporanUI.tb_Laporan_Neraca_Kembali.clicked.connect(self.Laporan_RMenu)
 		
-	def Laporan_Neraca(self,tanggalAwal,tanggalAkhir):
+	def Laporan_Neraca(self):
+		tanggalAwal = str(self.LaporanUI.dte_Laporan_KasHarian_Dari.dateTime().toString("yyyy-MM-dd"))
+		tanggalAkhir = str(self.LaporanUI.dte_Laporan_KasHarian_Sampai.dateTime().toString("yyyy-MM-dd"))
 		
 		workbook = xlsxwriter.Workbook('LaporanNeraca.xlsx')
 		worksheet = workbook.add_worksheet()
@@ -1233,14 +1241,17 @@ class Laporan(object):
 		self.Laporan_Goto("LAPORAN KAS HARIAN")
 		self.GarvinDisconnect(self.LaporanUI.tb_Laporan_KasHarian_noAkunKas.clicked) #-- fungsi RKasHarian bakalan dipanggil berkali2 pas program jalan, dadi kudu pastikan diskonek sikik
 		self.LaporanUI.tb_Laporan_KasHarian_noAkunKas.clicked.connect(functools.partial(self.Popup_Rekening,self.LaporanUI.tb_Laporan_KasHarian_noAkunKas))
-		self.LaporanUI.tb_Laporan_KasHarian_Cetak.clicked.connect(functools.partial(self.Laporan_KasHarian,self.LaporanUI.tb_Laporan_KasHarian_noAkunKas.text(),str(self.LaporanUI.dte_Laporan_KasHarian_Dari.dateTime().toString("yyyy-MM-dd")),str(self.LaporanUI.dte_Laporan_KasHarian_Sampai.dateTime().toString("yyyy-MM-dd"))))
+		self.LaporanUI.tb_Laporan_KasHarian_Cetak.clicked.connect(functools.partial(self.Laporan_KasHarian))
 		self.LaporanUI.tb_Laporan_KasHarian_Kembali.clicked.connect(self.Laporan_RMenu)
 		
-	def Laporan_KasHarian(self,noAkun,tanggalAwal,tanggalAkhir):
+	def Laporan_KasHarian(self):
+		noAkun = str(self.LaporanUI.tb_Laporan_KasHarian_noAkunKas.text())		
+		tanggalAwal = str(self.LaporanUI.dte_Laporan_KasHarian_Dari.dateTime().toString("yyyy-MM-dd"))
+		tanggalAkhir = str(self.LaporanUI.dte_Laporan_KasHarian_Sampai.dateTime().toString("yyyy-MM-dd"))
 		
-		workbook = xlsxwriter.Workbook('../../LaporanKasHarian.xlsx')
+		workbook = xlsxwriter.Workbook('LaporanKasHarian.xlsx')
 		worksheet = workbook.add_worksheet()
-		print '--------------------------------',tanggalAwal,tanggalAkhir,'----------------------------------------'
+		#~ print '--------------------------------',tanggalAwal,tanggalAkhir,'----------------------------------------'
 		formatJudul = workbook.add_format({'align': 'center',
 										   'valign': 'vcenter',
 										   'border': 0,
@@ -1357,8 +1368,15 @@ class Laporan(object):
 		self.Laporan_Goto("LAPORAN HUTANG PIUTANG")
 		self.GarvinDisconnect(self.LaporanUI.tb_Laporan_HutangPiutang_KodePelanggan.clicked)
 		self.LaporanUI.tb_Laporan_HutangPiutang_KodePelanggan.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.LaporanUI.tb_Laporan_HutangPiutang_KodePelanggan))
-	
-	def Laporan_HutangPiutang(self,idNama,ket,tanggalAwal,tanggalAkhir):
+		self.LaporanUI.tb_Laporan_HutangPiutang_Cetak.clicked.connect(functools.partial(self.Laporan_HutangPiutang))
+		self.LaporanUI.tb_Laporan_HutangPiutang_Kembali.clicked.connect(self.Laporan_RMenu)
+		
+	def Laporan_HutangPiutang(self):
+		
+		idNama = str(self.LaporanUI.tb_Laporan_HutangPiutang_KodePelanggan.text())
+		ket = str(self.LaporanUI.cb_Laporan_HutangPiutang_Tampilkan.currentIndex())
+		tanggalAwal =str(self.LaporanUI.dte_Laporan_HutangPiutang_Dari.dateTime().toString("yyyy-MM-dd"))
+		tanggalAkhir =str(self.LaporanUI.dte_Laporan_HutangPiutang_Sampai.dateTime().toString("yyyy-MM-dd"))
 		
 		workbook = xlsxwriter.Workbook('LaporanHutangPiutang.xlsx')
 		worksheet = workbook.add_worksheet()
@@ -1402,9 +1420,8 @@ class Laporan(object):
 			sqlPiutang = "SELECT * FROM gd_invoice_penjualan AS aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan WHERE aDB.kodePelanggan LIKE '"+idNama+"' ORDER BY tanggal, kodeTransaksi ASC "
 			resultPiutang = self.DatabaseRunQuery(sqlPiutang)
 			if(len(resultPiutang)>0):
-				namaPelanggan = resultPiutang[0][10]
-				
-		worksheet.merge_range("B3:H3",namaPelanggan,formatJudul)
+				namaPelanggan = resultPiutang[0][10]				
+				worksheet.merge_range("B3:H3",namaPelanggan,formatJudul)
 		
 		#~ namaPelanggan = resultPiutang[0][10]
 		
@@ -1472,6 +1489,7 @@ class Laporan(object):
 						index1+=1		
 						
 				elif (ket==__SEMUA__):	
+					print kodeTransaksi," ",(jmlPenerimaan)," ",(jmlTagihan)," ",(jmlPenerimaan < jmlTagihan)
 					worksheet.write("B"+str(index),str(noUrut),formatBiasa);
 					worksheet.write("D"+str(index),resultPiutang[x][1],formatBiasa);
 					worksheet.write("C"+str(index),resultPiutang[x][4].strftime("%d-%m-%Y"),formatBiasa);
@@ -1488,7 +1506,8 @@ class Laporan(object):
 					else:
 						worksheet.write("G"+str(index),0,formatBiasa);
 						index1+=1
-				
+		else:
+			index = 8		
 		
 		index = index+2	
 										   		
@@ -1498,10 +1517,14 @@ class Laporan(object):
 			namaPelanggan = ""
 			resultHutang = self.DatabaseRunQuery(sqlHutang)
 		else:	
-			sqlHutang = "SELECT * FROM gd_invoice_penjualan AS aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan WHERE aDB.kodePelanggan LIKE '"+idNama+"' ORDER BY tanggal, kodeTransaksi ASC "
+			#~ sqlHutang = "SELECT * FROM gd_invoice_penjualan AS aDB JOIN gd_nama_alamat AS bDB ON aDB.kodePelanggan LIKE bDB.kodePelanggan WHERE aDB.kodePelanggan LIKE '"+idNama+"' ORDER BY tanggal, kodeTransaksi ASC "
+			sqlHutang = "SELECT * FROM gd_pembelian_barang AS aDB JOIN gd_nama_alamat AS bDB ON aDB.kodeVendor LIKE bDB.kodePelanggan JOIN gd_invoice_penjualan AS cDB ON cDB.kodeTransaksi LIKE aDB.noInvoice WHERE aDB.kodeVendor LIKE '"+idNama+"' ORDER BY tanggal, kodeTransaksi ASC"
+			#~ SELECT * FROM gd_pembelian_barang AS aDB JOIN gd_nama_alamat AS bDB ON aDB.kodeVendor LIKE bDB.kodePelanggan JOIN gd_invoice_penjualan AS cDB ON cDB.kodeTransaksi LIKE aDB.noInvoice WHERE aDB.kodeVendor LIKE 'VENDOR.000004' ORDER BY tanggal, kodeTransaksi ASC
 			resultHutang = self.DatabaseRunQuery(sqlHutang)
 			if(len(resultHutang)>0):
-				namaPelanggan = resultHutang[0][10]
+				if not(len(resultPiutang)>0):
+					namaPelanggan = resultHutang[0][11]
+					worksheet.merge_range("B3:H3",namaPelanggan,formatJudul)
 		
 				
 		worksheet.merge_range("B"+str(index)+":C"+str(index),"Hutang Dagang",formatTblHeader);
@@ -1538,9 +1561,9 @@ class Laporan(object):
 				if((jmlPenerimaan >= jmlTagihan)) and (ket==__LUNAS__): 
 					worksheet.write("B"+str(index),str(noUrut),formatBiasa);
 					worksheet.write("C"+str(index),resultHutang[x][1],formatBiasa);
-					worksheet.write("D"+str(index),resultHutang[x][4].strftime("%d-%m-%Y"),formatBiasa);
-					worksheet.write("E"+str(index),resultHutang[x][10],formatBiasa);
-					worksheet.write("F"+str(index),resultHutang[x][6],formatBiasa);
+					worksheet.write("D"+str(index),resultHutang[x][27].strftime("%d-%m-%Y"),formatBiasa);
+					worksheet.write("E"+str(index),resultHutang[x][11],formatBiasa);
+					worksheet.write("F"+str(index),resultHutang[x][8],formatBiasa);
 					worksheet.write("G"+str(index),jmlPenerimaan,formatBiasa);
 					noUrut+=1
 					
@@ -1552,9 +1575,9 @@ class Laporan(object):
 				elif((jmlPenerimaan < jmlTagihan)) and (ket==__BELUM_LUNAS__):
 					worksheet.write("B"+str(index),str(noUrut),formatBiasa);
 					worksheet.write("C"+str(index),resultHutang[x][1],formatBiasa);
-					worksheet.write("D"+str(index),resultHutang[x][4].strftime("%d-%m-%Y"),formatBiasa);
-					worksheet.write("E"+str(index),resultHutang[x][10],formatBiasa);
-					worksheet.write("F"+str(index),resultHutang[x][6],formatBiasa);
+					worksheet.write("D"+str(index),resultHutang[x][27].strftime("%d-%m-%Y"),formatBiasa);
+					worksheet.write("E"+str(index),resultHutang[x][11],formatBiasa);
+					worksheet.write("F"+str(index),resultHutang[x][8],formatBiasa);
 					worksheet.write("G"+str(index),jmlPenerimaan,formatBiasa);
 					noUrut+=1
 					
@@ -1570,9 +1593,9 @@ class Laporan(object):
 				elif (ket==__SEMUA__):	
 					worksheet.write("B"+str(index),str(noUrut),formatBiasa);
 					worksheet.write("C"+str(index),resultHutang[x][1],formatBiasa);
-					worksheet.write("D"+str(index),resultHutang[x][4].strftime("%d-%m-%Y"),formatBiasa);
-					worksheet.write("E"+str(index),resultHutang[x][10],formatBiasa);
-					worksheet.write("F"+str(index),resultHutang[x][6],formatBiasa);
+					worksheet.write("D"+str(index),resultHutang[x][27].strftime("%d-%m-%Y"),formatBiasa);
+					worksheet.write("E"+str(index),resultHutang[x][11],formatBiasa);
+					worksheet.write("F"+str(index),resultHutang[x][8],formatBiasa);
 					worksheet.write("G"+str(index),jmlPenerimaan,formatBiasa);
 					noUrut+=1
 					
@@ -1594,9 +1617,16 @@ class Laporan(object):
 		self.Laporan_Goto("LAPORAN JUAL BELI")
 		self.GarvinDisconnect(self.LaporanUI.tb_Laporan_JualBeli_KodePelanggan.clicked)
 		self.LaporanUI.tb_Laporan_JualBeli_KodePelanggan.clicked.connect(functools.partial(self.Popup_NamaAlamat,self.LaporanUI.tb_Laporan_JualBeli_KodePelanggan))
+		self.LaporanUI.tb_Laporan_JualBeli_Cetak.clicked.connect(functools.partial(self.Laporan_JualBeli))
+		self.LaporanUI.tb_Laporan_JualBeli_Kembali.clicked.connect(self.Laporan_RMenu)
 
-	def Laporan_JualBeli(self,idNama,ket,tanggalAwal,tanggalAkhir):
+	def Laporan_JualBeli(self):
+		idNama = str(self.LaporanUI.tb_Laporan_JualBeli_KodePelanggan.text())
+		ket = self.LaporanUI.cb_Laporan_JualBeli_Tampilkan.currentIndex()
+		tanggalAwal =str(self.LaporanUI.dte_Laporan_JualBeli_Dari.dateTime().toString("yyyy-MM-dd"))
+		tanggalAkhir =str(self.LaporanUI.dte_Laporan_JualBeli_Sampai.dateTime().toString("yyyy-MM-dd"))
 		
+		print '--------------------','(',idNama,',',ket,',',tanggalAwal,',',tanggalAkhir,')','--------------------'
 		workbook = xlsxwriter.Workbook('LaporanJualBeli.xlsx')
 		worksheet = workbook.add_worksheet()
 		
