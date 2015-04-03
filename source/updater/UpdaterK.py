@@ -10,13 +10,16 @@ class Updater(object):
 		pass
 		
 	def GarvinCheckIsUpdated(self):
-		wget = "wget --user-agent=\"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0\""
+		wget = "wget"
 		if ("win" in sys.platform):#-- bila windows ada nih
-			wget = self.BasePath+"downloader/wget_win/wget.exe --user-agent=\"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0\""
+			wget = self.BasePath+"downloader/wget_win/wget.exe"
 			
 		downloadfolder = self.DataPath
+		#-- hapus download sebelumnya 
+		subprocess.call("rm -rf "+downloadfolder+"currentversion.rb.o",shell=True)
+		subprocess.call("rm -rf "+downloadfolder+"currentversion.rb",shell=True)
 		#-- download info versi sekarang 
-		cmd = "\""+wget +"\""+ " --no-check-certificate https://raw.githubusercontent.com/fnugrahendi/petuk.corp/master/currentversion.rb -o "+downloadfolder+"currentversion.rb.o -O "+downloadfolder+"currentversion.rb"
+		cmd = "\""+wget +"\""+ "  --user-agent=\"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0\" --no-check-certificate https://raw.githubusercontent.com/fnugrahendi/petuk.corp/master/currentversion.rb -o "+downloadfolder+"currentversion.rb.o -O "+downloadfolder+"currentversion.rb"
 		print cmd
 		subprocess.Popen(cmd,shell=True)
 		self.UpdaterTimer = QtCore.QTimer(self)
@@ -25,7 +28,8 @@ class Updater(object):
 		
 	def Updater_CekSudah(self,namafile,callbackfunction):
 		downloadfolder = self.DataPath
-		f = open(downloadfolder+namafile+".o","r")
+		try:f = open(downloadfolder+namafile+".o","r")
+		except:return
 		if "saved" in f.read():
 			self.UpdaterTimer.stop()
 			print "download "+namafile+" selesai"
@@ -33,10 +37,10 @@ class Updater(object):
 		f.close()
 		
 	def Updater_Download(self):
-		wget = "wget --user-agent=\"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0\""
+		wget = "wget"
 		if ("win" in sys.platform):#-- bila windows ada nih
-			wget = self.BasePath+"downloader/wget_win/wget.exe --user-agent=\"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0\""
-		wget = "\""+ wget+ "\" -c  --no-check-certificate "
+			wget = self.BasePath+"downloader/wget_win/wget.exe"
+		wget = "\""+ wget+ "\" -c  --no-check-certificate  --user-agent=\"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0\" "
 		downloadfolder = self.DataPath
 		serverprefix = "https://github.com/fnugrahendi/petuk.corp/releases/download/"
 		component = ["garvin",
@@ -61,6 +65,8 @@ class Updater(object):
 		cmdversiini = self.GarvinGetConfig("FILE VERSION","bin/garvinbin.dat")
 		exec(cmdversiini)
 		versigarvin = versiini
+		print ("versi yg tersimpan adalah:::\n")
+		print (versiini)
 		f = open(downloadfolder+"currentversion.rb","r")
 		data = f.read()
 		f.close()
