@@ -11,9 +11,15 @@ import functools #partial
 import itertools #ubah tuple ke array
 import re #regular expression
 
+import PenjualanStyling #styling e
+
 class Penjualan(object):
 	def Penjualan_init(self):
 		#---------------------------------------------------------------Penjualan Init Itut
+		#-- set styling
+		PenjualanStylingOb = PenjualanStyling.PenjualanStyling(self)
+		PenjualanStylingOb.Apply()
+		
 		self.st_Penjualan.setCurrentIndex(0)
 		#Tombol pada Halaman Menu
 		self.tb_Penjualan_Invoice.clicked.connect(self.Penjualan_GoTo_Invoice)
