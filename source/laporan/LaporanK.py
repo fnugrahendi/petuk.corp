@@ -80,7 +80,13 @@ class Laporan(object):
 	def Laporan_BuktiBankMasuk(self,kodeTransaksi):
 		
 		# Create an new Excel file and add a worksheet.
-		workbook = xlsxwriter.Workbook('Bukti Bank  Masuk.xlsx')
+		simpan = QtGui.QFileDialog()
+		namafilesimpan = str(simpan.getSaveFileName())
+		if not namafilesimpan.endswith('.xlsx'):
+			namafilesimpan = namafilesimpan + '.xlsx'
+		workbook = xlsxwriter.Workbook(namafilesimpan)
+		
+		#~ workbook = xlsxwriter.Workbook('Bukti Bank  Masuk.xlsx')
 		worksheet = workbook.add_worksheet()
 
 		idxNilaiDetail = self.KasBank_DetailBankMasuk_Field.index("nilaiDetail")
@@ -205,7 +211,13 @@ class Laporan(object):
 	def Laporan_BuktiKasMasuk(self,kodeTransaksi):
 		
 		# Create an new Excel file and add a worksheet.
-		workbook = xlsxwriter.Workbook('Bukti Kas  Masuk.xlsx')
+		#~ workbook = xlsxwriter.Workbook('Bukti Kas  Masuk.xlsx')
+		simpan = QtGui.QFileDialog()
+		namafilesimpan = str(simpan.getSaveFileName())
+		if not namafilesimpan.endswith('.xlsx'):
+			namafilesimpan = namafilesimpan + '.xlsx'
+		workbook = xlsxwriter.Workbook(namafilesimpan)
+		
 		worksheet = workbook.add_worksheet()
 
 		idxNilaiDetail = self.KasBank_DetailKasMasuk_Field.index("nilaiDetail")
@@ -330,7 +342,13 @@ class Laporan(object):
 	def Laporan_BuktiBankKeluar(self,kodeTransaksi):
 		
 		# Create an new Excel file and add a worksheet.
-		workbook = xlsxwriter.Workbook('Bukti Bank  Keluar.xlsx')
+		#~ workbook = xlsxwriter.Workbook('Bukti Bank  Keluar.xlsx')
+		simpan = QtGui.QFileDialog()
+		namafilesimpan = str(simpan.getSaveFileName())
+		if not namafilesimpan.endswith('.xlsx'):
+			namafilesimpan = namafilesimpan + '.xlsx'
+		workbook = xlsxwriter.Workbook(namafilesimpan)
+		
 		worksheet = workbook.add_worksheet()
 
 		idxNilaiDetail = self.KasBank_DetailBankKeluar_Field.index("nilaiDetail")
@@ -455,7 +473,13 @@ class Laporan(object):
 	def Laporan_BuktiKasKeluar(self,kodeTransaksi):
 		
 		# Create an new Excel file and add a worksheet.
-		workbook = xlsxwriter.Workbook('Bukti Kas  Keluar.xlsx')
+		#~ workbook = xlsxwriter.Workbook('Bukti Kas  Keluar.xlsx')
+		simpan = QtGui.QFileDialog()
+		namafilesimpan = str(simpan.getSaveFileName())
+		if not namafilesimpan.endswith('.xlsx'):
+			namafilesimpan = namafilesimpan + '.xlsx'
+		workbook = xlsxwriter.Workbook(namafilesimpan)
+		
 		worksheet = workbook.add_worksheet()
 
 		idxNilaiDetail = self.KasBank_DetailKasKeluar_Field.index("nilaiDetail")
@@ -580,7 +604,13 @@ class Laporan(object):
 	def Laporan_BuktiMemorial(self,data):
 		
 		# Create an new Excel file and add a worksheet.
-		workbook = xlsxwriter.Workbook('Bukti memorial.xlsx')
+		#~ workbook = xlsxwriter.Workbook('Bukti memorial.xlsx')
+		simpan = QtGui.QFileDialog()
+		namafilesimpan = str(simpan.getSaveFileName())
+		if not namafilesimpan.endswith('.xlsx'):
+			namafilesimpan = namafilesimpan + '.xlsx'
+		workbook = xlsxwriter.Workbook(namafilesimpan)
+		
 		worksheet = workbook.add_worksheet()
 		
 		formatJudul = workbook.add_format({'align': 'center',
@@ -715,7 +745,13 @@ class Laporan(object):
 		#~ simpan = QtGui.QFileDialog()
 		#~ namafilesimpan = str(simpan.getSaveFileName())
 		#~ workbook = xlsxwriter.Workbook(namafilesimpan)
-		workbook = xlsxwriter.Workbook('BuktiInvoice.xlsx')
+		#~ workbook = xlsxwriter.Workbook('BuktiInvoice.xlsx')
+		simpan = QtGui.QFileDialog()
+		namafilesimpan = str(simpan.getSaveFileName())
+		if not namafilesimpan.endswith('.xlsx'):
+			namafilesimpan = namafilesimpan + '.xlsx'
+		workbook = xlsxwriter.Workbook(namafilesimpan)
+		
 		worksheet = workbook.add_worksheet()
 		
 		# Set up some formats to use.
@@ -864,7 +900,13 @@ class Laporan(object):
 		tanggalAwal = str(self.LaporanUI.dte_Laporan_LabaRugi_Dari.dateTime().toString("yyyy-MM-dd"))
 		tanggalAkhir = str(self.LaporanUI.dte_Laporan_LabaRugi_Sampai.dateTime().toString("yyyy-MM-dd"))
 		
-		workbook = xlsxwriter.Workbook('LaporanLabaRugi.xlsx')
+		#~ workbook = xlsxwriter.Workbook('LaporanLabaRugi.xlsx')
+		simpan = QtGui.QFileDialog()
+		namafilesimpan = str(simpan.getSaveFileName())
+		if not namafilesimpan.endswith('.xlsx'):
+			namafilesimpan = namafilesimpan + '.xlsx'
+		workbook = xlsxwriter.Workbook(namafilesimpan)
+		
 		worksheet = workbook.add_worksheet()
 		
 		formatJudul = workbook.add_format({'align': 'center',
@@ -1084,7 +1126,13 @@ class Laporan(object):
 		tanggalAwal = str(self.LaporanUI.dte_Laporan_KasHarian_Dari.dateTime().toString("yyyy-MM-dd"))
 		tanggalAkhir = str(self.LaporanUI.dte_Laporan_KasHarian_Sampai.dateTime().toString("yyyy-MM-dd"))
 		
-		workbook = xlsxwriter.Workbook('LaporanNeraca.xlsx')
+		#~ workbook = xlsxwriter.Workbook('LaporanNeraca.xlsx')
+		simpan = QtGui.QFileDialog()
+		namafilesimpan = str(simpan.getSaveFileName())
+		if not namafilesimpan.endswith('.xlsx'):
+			namafilesimpan = namafilesimpan + '.xlsx'
+		workbook = xlsxwriter.Workbook(namafilesimpan)
+		
 		worksheet = workbook.add_worksheet()
 		
 		formatJudul = workbook.add_format({'align': 'center',
@@ -1249,7 +1297,13 @@ class Laporan(object):
 		tanggalAwal = str(self.LaporanUI.dte_Laporan_KasHarian_Dari.dateTime().toString("yyyy-MM-dd"))
 		tanggalAkhir = str(self.LaporanUI.dte_Laporan_KasHarian_Sampai.dateTime().toString("yyyy-MM-dd"))
 		
-		workbook = xlsxwriter.Workbook('LaporanKasHarian.xlsx')
+		#~ workbook = xlsxwriter.Workbook('LaporanKasHarian.xlsx')
+		simpan = QtGui.QFileDialog()
+		namafilesimpan = str(simpan.getSaveFileName())
+		if not namafilesimpan.endswith('.xlsx'):
+			namafilesimpan = namafilesimpan + '.xlsx'
+		workbook = xlsxwriter.Workbook(namafilesimpan)
+		
 		worksheet = workbook.add_worksheet()
 		#~ print '--------------------------------',tanggalAwal,tanggalAkhir,'----------------------------------------'
 		formatJudul = workbook.add_format({'align': 'center',
@@ -1378,7 +1432,12 @@ class Laporan(object):
 		tanggalAwal =str(self.LaporanUI.dte_Laporan_HutangPiutang_Dari.dateTime().toString("yyyy-MM-dd"))
 		tanggalAkhir =str(self.LaporanUI.dte_Laporan_HutangPiutang_Sampai.dateTime().toString("yyyy-MM-dd"))
 		
-		workbook = xlsxwriter.Workbook('LaporanHutangPiutang.xlsx')
+		simpan = QtGui.QFileDialog()
+		namafilesimpan = str(simpan.getSaveFileName())
+		if not namafilesimpan.endswith('.xlsx'):
+			namafilesimpan = namafilesimpan + '.xlsx'
+		workbook = xlsxwriter.Workbook(namafilesimpan)
+		
 		worksheet = workbook.add_worksheet()
 		
 		formatJudul = workbook.add_format({'align': 'center',
@@ -1626,8 +1685,14 @@ class Laporan(object):
 		tanggalAwal =str(self.LaporanUI.dte_Laporan_JualBeli_Dari.dateTime().toString("yyyy-MM-dd"))
 		tanggalAkhir =str(self.LaporanUI.dte_Laporan_JualBeli_Sampai.dateTime().toString("yyyy-MM-dd"))
 		
-		print '--------------------','(',idNama,',',ket,',',tanggalAwal,',',tanggalAkhir,')','--------------------'
-		workbook = xlsxwriter.Workbook('LaporanJualBeli.xlsx')
+		#~ print '--------------------','(',idNama,',',ket,',',tanggalAwal,',',tanggalAkhir,')','--------------------'
+		simpan = QtGui.QFileDialog()
+		namafilesimpan = str(simpan.getSaveFileName())
+		if not namafilesimpan.endswith('.xlsx'):
+			namafilesimpan = namafilesimpan + '.xlsx'
+		workbook = xlsxwriter.Workbook(namafilesimpan)
+		
+		#~ workbook = xlsxwriter.Workbook('LaporanJualBeli.xlsx')
 		worksheet = workbook.add_worksheet()
 		
 		formatJudul = workbook.add_format({'align': 'center',
