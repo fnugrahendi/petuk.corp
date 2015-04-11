@@ -26,6 +26,7 @@ binary:
 	rm -fr ../bin/*
 	$(PYC) $(EXE).py -i garvin.ico --distpath=../bin/ -w
 	mv ../bin/Garvin/* ../bin/
+	rm -rf ../bin/Garvin
 
 commit:
 	git commit -a
