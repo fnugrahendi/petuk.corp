@@ -886,12 +886,13 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk,DataRekenin
 			FrameWindowH = QtGui.QFrame(self.centralwidget)
 		else:
 			FrameWindowH = FrameWindowH[0]
+		FrameWindowH.setGeometry(QtCore.QRect(0, 0, WinW+20, WinH+20))
 		if (hide_surrounding):
-			FrameWindowH.setGeometry(QtCore.QRect(0, 0, WinW+20, WinH+20))
+			alpha = 170
 		else:
-			FrameWindowH.setGeometry(QtCore.QRect(0, 0, 0, 0))
+			alpha = 10
 		FrameWindowH.setObjectName(_fromUtf8("DataMaster_Popup_FrameWindowH"))
-		FrameWindowH.setStyleSheet(_fromUtf8("QFrame{background:#E3EFE8;border-radius:0px;border-style: solid;border-width: 2px;border-color:#828282;}"))
+		FrameWindowH.setStyleSheet(_fromUtf8("QFrame{background-color:rgba(230,230,230,"+str(alpha)+");border-radius:0px;border-style: solid;border-width: 2px;border-color:#828282;}"))
 		FrameWindowH.show()
 	
 		FrameWindowS = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_Popup_FrameWindowS"))

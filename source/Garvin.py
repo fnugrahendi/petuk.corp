@@ -22,6 +22,7 @@ from kasbank import KasBank
 from laporan import Laporan
 from login import Login
 from updater import Updater
+import AnimK
 
 try:
 	_fromUtf8 = QtCore.QString.fromUtf8
@@ -37,10 +38,8 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		super(MainGUI,self).__init__(parent)
 		self.setupUi(self)
 		self.showFullScreen()
-		def ___metu():
-			exit(0)
-			return True
         
+
 		#-- data
 		self.Path = str(__file__).replace("Garvin.py","").replace("\\","/")
 		self.BasePath = self.Path+"../"
@@ -72,6 +71,11 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 			dataversi = "versiini = [['garvin', 1, 'localhost'],['bin',  1, 'localhost'],['data',  1, 'localhost'],['doc',  1, 'localhost'],['image',  1, 'localhost'],['installer', 1, 'localhost'],['mysql',  1, 'localhost'],['source',  1, 'localhost']]" #-- lgsg executable array asignment
 			self.GarvinSetConfig("FILE VERSION",dataversi,"bin/garvinbin.dat")
 			print ("done.")
+		self.TampilExitButton()
+	
+	def GarvinQuit(self):
+		exit(0)
+		return True
 	
 	def GarvinInit(self):
 		#-- init dipindah disini, karena dipanggil setelah berhasil login (set database dsb) di fungsi self.Login_Done
@@ -91,6 +95,18 @@ class MainGUI(QtGui.QMainWindow, Ui_MainWindow,BukuBesar,DataMaster,Penjualan,Pe
 		self.GarvinSetDate(self)
 		#~ self.Laporan_BuktiKasKeluar('KK0001')
 		#~ self.Laporan_JualBeli('CUSTOMER.00000001',1,'2015-1-1','2015-5-30')
+		
+	def TampilExitButton(self):
+		#~ WinW = self.centralwidget.geometry().width()
+		#~ WinH = self.centralwidget.geometry().height()
+		WinW = 1366
+		WinH = 768
+		self.tb_Exit =  AnimK.GarvinButtonExit("X",self)
+		self.tb_Exit.setObjectName("tb_Exit")
+		self.tb_Exit.setText("X")
+		self.tb_Exit.setGeometry(QtCore.QRect((WinW-40), 0, 40, 40))
+		self.tb_Exit.show()
+		self.tb_Exit.clicked.connect(functools.partial(self.DataMaster_Popup,"You sure you want to quit?",self.GarvinQuit))
 	
 	def Popup_NamaAlamat_Tabel(self,namaTabel,row):
 		data = []
