@@ -900,7 +900,7 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk,DataRekenin
 			FrameWindowS = QtGui.QFrame(self.centralwidget)
 		else:
 			FrameWindowS = FrameWindowS[0]
-		FrameWindowS.setGeometry(QtCore.QRect((WinW/2)-FW/2+10, WinH/2- FH/2+10, FW, FH))
+		
 		FrameWindowS.setObjectName(_fromUtf8("DataMaster_Popup_FrameWindowS"))
 		FrameWindowS.setStyleSheet(_fromUtf8("QFrame{background:#828282;border-radius:0px;border-style: solid;border-width: 2px;border-color:#828282;}"))
 		FrameWindowS.show()
@@ -910,10 +910,26 @@ class DataMaster(DataDepartemen,DataNamaAlamat,DataProyek,DataProduk,DataRekenin
 			FrameWindow = QtGui.QFrame(self.centralwidget)
 		else:
 			FrameWindow = FrameWindow[0]
-		FrameWindow.setGeometry(QtCore.QRect((WinW/2)-FW/2, WinH/2- FH/2, FW, FH))
+		#~ FrameWindow.setGeometry(QtCore.QRect((WinW/2)-FW/2, WinH/2- FH/2, FW, FH))
 		FrameWindow.setObjectName(_fromUtf8("DataMaster_Popup_FrameWindow"))
 		FrameWindow.setStyleSheet(_fromUtf8("QFrame{background:#ffffff;border-radius:0px;border-style: solid;border-width: 2px;border-color:#868686;}QFrame>QFrame{border-style:none;border-width:0px;}"))
 		FrameWindow.show()
+		
+		self.DataMaster_Popup_y = -FH
+		self.DataMaster_Popup_yTambahan = 1
+		def _PopupAnim():
+			if (self.DataMaster_Popup_y<0):
+				self.DataMaster_Popup_y = self.DataMaster_Popup_y+self.DataMaster_Popup_yTambahan
+				self.DataMaster_Popup_yTambahan += 0.16
+				FrameWindow.setGeometry(QtCore.QRect((WinW/2)-FW/2, self.DataMaster_Popup_y, FW, FH))
+				FrameWindowS.setGeometry(QtCore.QRect((WinW/2)-FW/2+10, self.DataMaster_Popup_y+10, FW, FH))
+			else:
+				self.PopupTimer.stop()
+			
+		self.PopupTimer = QtCore.QTimer(self)
+		self.PopupTimer.timeout.connect(_PopupAnim)
+		self.PopupTimer.start(10)
+		
 		
 		Label = self.findChildren(QtGui.QFrame,_fromUtf8("DataMaster_Popup_Label"))
 		if (len(Label)<1):
