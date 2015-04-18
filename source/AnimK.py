@@ -26,7 +26,7 @@ class GarvinButtonExit(GarvinButton):
 	def __init__(self,text="",parent=None):
 		super(GarvinButtonExit,self).__init__(text,parent)
 		self.minValue = 0 #-- for alpha, no prefix
-		self.maxValue = 80
+		self.maxValue = 130
 		self.minValueR = 3 #-- for border radius
 		self.maxValueR = 20
 		self.alphav = self.minValue
